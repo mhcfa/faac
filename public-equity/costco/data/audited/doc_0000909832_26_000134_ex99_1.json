@@ -1,0 +1,305 @@
+{
+  "document": {
+    "doc_id": "doc_0000909832_26_000134_ex99_1",
+    "file_path": "data/raw/sec/0000909832/0000909832-26-000134_ex99-1.htm",
+    "sha256": "b953d98332cbb4ef1c3099109496ab19ea70b4b1bbe3574b9087fd3f873ae02c",
+    "doc_type": "sec_filing",
+    "size_bytes": 7602,
+    "title": "Costco Wholesale Corp. Form 8-K Ex. 99.1 ($30 Special Dividend & $4B Buyback Reauthorization, Nov 10, 2026)",
+    "report_date": "2026-11-07",
+    "filing_date": "2026-11-10",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000909832",
+      "form": "8-K",
+      "exhibit": "99.1",
+      "accession_number": "0000909832-26-000134",
+      "tickers": "COST"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "cost_capital_return_events",
+      "title": "Post-FY26 Capital Return Events (Special Dividend & Buyback Reauthorization)",
+      "source": {
+        "doc_id": "doc_0000909832_26_000134_ex99_1",
+        "entity": "COST",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "cap_ret_2026_11_10_val",
+          "label": "Nov 10, 2026 Event Value",
+          "period_key": "2026-11-10",
+          "as_of_date": "2026-11-10",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_11_10_decl_date",
+          "label": "Declaration Date",
+          "data_type": "date",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_11_10_rec_date",
+          "label": "Record Date",
+          "data_type": "date",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_11_10_pay_date",
+          "label": "Payable Date",
+          "data_type": "date",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_11_10_notes",
+          "label": "Terms & Notes",
+          "data_type": "text",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "special_cash_dividend_per_share",
+          "label": "Special cash dividend declared per share",
+          "category": "special_dividend",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "cap_ret_2026_11_10_val": {
+              "value": 30,
+              "raw_text": "$30",
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_decl_date": {
+              "value": "2026-11-10",
+              "raw_text": "November 10, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
+              },
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_rec_date": {
+              "value": "2026-11-24",
+              "raw_text": "November 24, 2026",
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_pay_date": {
+              "value": "2026-12-04",
+              "raw_text": "December 4, 2026",
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_notes": {
+              "value": "$30.00/sh special cash dividend declared Nov 10, 2026, record Nov 24, 2026, payable Dec 4, 2026",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "special_cash_dividend_aggregate_payout",
+          "label": "Special cash dividend approximate aggregate payout",
+          "category": "special_dividend",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "cap_ret_2026_11_10_val": {
+              "value": 13300,
+              "raw_text": "$13.3 billion",
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_notes": {
+              "value": "Approximate aggregate cash payout (~$13.3 billion)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "buyback_reauthorization_amount",
+          "label": "Common stock repurchase program reauthorization",
+          "category": "share_repurchase",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[5]/font[1]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "cap_ret_2026_11_10_val": {
+              "value": 4000,
+              "raw_text": "$4 billion",
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_decl_date": {
+              "value": "2026-11-10",
+              "raw_text": "November 10, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
+              },
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_notes": {
+              "value": "Up to $4 billion expiring November 2030; replaces Jan 2023 $4B program (due Jan 2027)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "prior_buyback_purchased_to_date",
+          "label": "Cumulative repurchases under replaced 2023 $4B program",
+          "category": "share_repurchase",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[5]/font[1]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "cap_ret_2026_11_10_val": {
+              "value": 3100,
+              "raw_text": "$3.1 billion",
+              "is_restatement": false
+            },
+            "cap_ret_2026_11_10_notes": {
+              "value": "$3.1 billion repurchased under 2023 $4B program prior to replacement",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "Mixed-unit capital return event schedule (per-share dividend, aggregate payout, repurchase authorization, and dates)",
+      "is_restatement": false
+    },
+    {
+      "table_id": "cost_warehouse_kpis",
+      "title": "Warehouse Count Snapshot (Nov 10, 2026)",
+      "source": {
+        "doc_id": "doc_0000909832_26_000134_ex99_1",
+        "entity": "COST",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[6]/font[1]"
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "as_of_2026_11_10",
+          "label": "As of Nov 10, 2026",
+          "period_key": "2026-11-10",
+          "as_of_date": "2026-11-10",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "warehouses_us",
+          "label": "Warehouses - United States & Puerto Rico",
+          "category": "warehouse_geo",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "as_of_2026_11_10": {
+              "value": 653,
+              "raw_text": "653",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_canada",
+          "label": "Warehouses - Canada",
+          "category": "warehouse_geo",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "as_of_2026_11_10": {
+              "value": 115,
+              "raw_text": "115",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_other_intl",
+          "label": "Warehouses - Other International",
+          "category": "warehouse_geo",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "as_of_2026_11_10": {
+              "value": 177,
+              "note": "Sum of 12 disclosed Other International country counts: MX 43, JP 37, UK 29, KR 20, AU 15, TW 14, CN 7, ES 5, FR 3, SE 2, IS 1, NZ 1",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_total",
+          "label": "Total membership warehouses",
+          "category": "warehouse_total",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "as_of_2026_11_10": {
+              "value": 945,
+              "raw_text": "945",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "warehouses_total",
+          "components": [
+            {
+              "id": "warehouses_us",
+              "sign": 1
+            },
+            {
+              "id": "warehouses_canada",
+              "sign": 1
+            },
+            {
+              "id": "warehouses_other_intl",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

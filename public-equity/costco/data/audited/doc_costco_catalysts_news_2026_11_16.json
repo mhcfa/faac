@@ -1,0 +1,2105 @@
+{
+  "document": {
+    "doc_id": "doc_costco_catalysts_news_2026_11_16",
+    "file_path": "data/raw/market/costco_catalysts_news_2026-11-16.md",
+    "sha256": "602a183647e6276ba966813d167bad93c7c46d101836397e9b5e011790186f7e",
+    "doc_type": "other",
+    "size_bytes": 15568,
+    "title": "COST Special Dividend, Monthly Sales (Sep/Oct 2026), FY27 Guidance & Club Competition",
+    "report_date": "2026-11-16",
+    "source_meta": {}
+  },
+  "tables": [
+    {
+      "table_id": "cost_monthly_sales_comps",
+      "title": "Costco Monthly Sales & Comparable Store Metrics (September & October 2026)",
+      "source": {
+        "doc_id": "doc_costco_catalysts_news_2026_11_16",
+        "entity": "COST",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 55,
+          "line_end": 86
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "sep_2026_5w",
+          "label": "Sep FY27 (5W ended 2026-10-04)",
+          "raw_label": "September 2026 Retail Month (5 weeks ended 2026-10-04, released 2026-10-07)",
+          "period_key": "2026-10-04",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 55,
+            "line_end": 70
+          },
+          "as_of_date": "2026-10-04",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "oct_2026_4w",
+          "label": "Oct FY27 (4W ended 2026-11-01)",
+          "raw_label": "October 2026 Retail Month (4 weeks ended 2026-11-01, released 2026-11-04)",
+          "period_key": "2026-11-01",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 71,
+            "line_end": 86
+          },
+          "as_of_date": "2026-11-01",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_sales",
+          "label": "Monthly Net Sales",
+          "category": "Sales",
+          "unit": "USD",
+          "scale": 1000000000,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 30.02,
+              "raw_text": "$30.02B",
+              "note": "5W ended 2026-10-04 vs $26.58B prior year",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56,
+                "line_end": 56
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 24.5,
+              "raw_text": "$24.50B",
+              "note": "4W ended 2026-11-01 vs $21.75B prior year; 9W YTD net sales $54.52B (+12.8% YoY)",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 72,
+                "line_end": 72
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_sales_yoy",
+          "label": "Monthly Net Sales YoY Growth",
+          "category": "Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 13,
+              "raw_text": "+13.0%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56,
+                "line_end": 56
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 12.6,
+              "raw_text": "+12.6%",
+              "note": "First 9W FY27 net sales +12.8% YoY",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 72,
+                "line_end": 72
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_total_reported",
+          "label": "Total Company Comp Sales (Reported)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 11.4,
+              "raw_text": "+11.4%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58,
+                "line_end": 58
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 11.1,
+              "raw_text": "+11.1%",
+              "note": "9W YTD +11.3% reported",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 75,
+                "line_end": 75
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_total_ex_gas_fx",
+          "label": "Total Company Comp Sales (ex-Gas & FX)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 7.6,
+              "raw_text": "+7.6%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58,
+                "line_end": 58
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 7.3,
+              "raw_text": "+7.3%",
+              "note": "9W YTD +7.5% ex-gas/FX",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 75,
+                "line_end": 75
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_us_reported",
+          "label": "U.S. Comp Sales (Reported)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 12.5,
+              "raw_text": "+12.5%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59,
+                "line_end": 59
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 12.6,
+              "raw_text": "+12.6%",
+              "note": "9W YTD +12.5% reported",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 76,
+                "line_end": 76
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_us_ex_gas_fx",
+          "label": "U.S. Comp Sales (ex-Gas & FX)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 8,
+              "raw_text": "+8.0%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59,
+                "line_end": 59
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 8.1,
+              "raw_text": "+8.1%",
+              "note": "9W YTD +8.1% ex-gas/FX",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 76,
+                "line_end": 76
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_ca_reported",
+          "label": "Canada Comp Sales (Reported)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 6.3,
+              "raw_text": "+6.3%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60,
+                "line_end": 60
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 4.9,
+              "raw_text": "+4.9%",
+              "note": "9W YTD +5.7% reported",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 77,
+                "line_end": 77
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_ca_ex_gas_fx",
+          "label": "Canada Comp Sales (ex-Gas & FX)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 4.9,
+              "raw_text": "+4.9%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60,
+                "line_end": 60
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 3.5,
+              "raw_text": "+3.5%",
+              "note": "9W YTD +4.3% ex-gas/FX",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 77,
+                "line_end": 77
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_intl_reported",
+          "label": "Other International Comp Sales (Reported)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 10.8,
+              "raw_text": "+10.8%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61,
+                "line_end": 61
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 9.4,
+              "raw_text": "+9.4%",
+              "note": "9W YTD +10.2% reported",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 78,
+                "line_end": 78
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_intl_ex_gas_fx",
+          "label": "Other International Comp Sales (ex-Gas & FX)",
+          "category": "Comparable Sales",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 7.7,
+              "raw_text": "+7.7%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61,
+                "line_end": 61
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 6.9,
+              "raw_text": "+6.9%",
+              "note": "9W YTD +7.4% ex-gas/FX",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 78,
+                "line_end": 78
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_traffic_ww",
+          "label": "Worldwide Comparable Traffic Growth",
+          "category": "Traffic & Ticket",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 4.7,
+              "raw_text": "+4.7%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63,
+                "line_end": 63
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 4.1,
+              "raw_text": "+4.1%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 80,
+                "line_end": 80
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_traffic_us",
+          "label": "U.S. Comparable Traffic Growth",
+          "category": "Traffic & Ticket",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 4.3,
+              "raw_text": "+4.3%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63,
+                "line_end": 63
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_ticket_reported",
+          "label": "Worldwide Average Ticket Growth (Reported)",
+          "category": "Traffic & Ticket",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 6.4,
+              "raw_text": "+6.4%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 64,
+                "line_end": 64
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 6.8,
+              "raw_text": "+6.8%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 81,
+                "line_end": 81
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_ticket_ex_gas_fx",
+          "label": "Worldwide Average Ticket Growth (ex-Gas & FX)",
+          "category": "Traffic & Ticket",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 2.8,
+              "raw_text": "+2.8%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 64,
+                "line_end": 64
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 3.1,
+              "raw_text": "+3.1%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 81,
+                "line_end": 81
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_digital_reported",
+          "label": "Digitally-Enabled Sales Growth (Reported)",
+          "category": "Digital",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 19,
+              "raw_text": "+19.0%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 65,
+                "line_end": 65
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 22.5,
+              "raw_text": "+22.5%",
+              "note": "9W YTD +20.5% reported",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 83,
+                "line_end": 83
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_digital_ex_fx",
+          "label": "Digitally-Enabled Sales Growth (ex-FX)",
+          "category": "Digital",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 19.1,
+              "raw_text": "+19.1%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 65,
+                "line_end": 65
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 22.6,
+              "raw_text": "+22.6%",
+              "note": "9W YTD +20.6% ex-FX",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 83,
+                "line_end": 83
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gas_price_yoy",
+          "label": "Average Gas Selling Price YoY Change",
+          "category": "Drivers",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 32.8,
+              "raw_text": "+32.8%",
+              "note": "Added ~3.8 pp to reported companywide comps; Labor Day shift added >50 bps",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 67,
+                "line_end": 67
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_us_pr",
+          "label": "Warehouses Open: U.S. & Puerto Rico",
+          "category": "Footprint",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 647,
+              "raw_text": "647",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 69,
+                "line_end": 69
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 651,
+              "raw_text": "651",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 85,
+                "line_end": 85
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_canada",
+          "label": "Warehouses Open: Canada",
+          "category": "Footprint",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 115,
+              "raw_text": "115",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 69,
+                "line_end": 69
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 115,
+              "raw_text": "115",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 85,
+                "line_end": 85
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_other_intl",
+          "label": "Warehouses Open: Other International",
+          "category": "Footprint",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 177,
+              "raw_text": "177",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 69,
+                "line_end": 69
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 177,
+              "note": "Derived sum of printed international markets: 43 MX + 37 JP + 29 UK + 20 KR + 15 AU + 14 TW + 7 CN + 5 ES + 3 FR + 2 SE + 1 IS + 1 NZ",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 85,
+                "line_end": 85
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_total",
+          "label": "Total Warehouses Open at Release Date",
+          "category": "Footprint",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "sep_2026_5w": {
+              "value": 939,
+              "raw_text": "939",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 69,
+                "line_end": 69
+              },
+              "is_restatement": false
+            },
+            "oct_2026_4w": {
+              "value": 943,
+              "raw_text": "943",
+              "note": "Expanded to 945 warehouses (653 U.S./PR) by 2026-11-10 special dividend release",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 85,
+                "line_end": 85
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "warehouses_total",
+          "components": [
+            {
+              "id": "warehouses_us_pr",
+              "sign": 1
+            },
+            {
+              "id": "warehouses_canada",
+              "sign": 1
+            },
+            {
+              "id": "warehouses_other_intl",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "cost_fy27_guidance",
+      "title": "Costco FY27 Guidance, Q4 FY26 QoE/MFI Pass-Through & Club Fee Comparison",
+      "source": {
+        "doc_id": "doc_costco_catalysts_news_2026_11_16",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 138
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "cost_fy26",
+          "label": "COST FY26 Actual",
+          "period_key": "2026-FY",
+          "entity": "COST",
+          "as_of_date": "2026-08-30",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cost_q4_fy26",
+          "label": "COST Q4 FY26 Actual",
+          "period_key": "2026-Q4",
+          "entity": "COST",
+          "as_of_date": "2026-08-30",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cost_fy27_guidance",
+          "label": "COST FY27 Guidance",
+          "period_key": "2027-FY",
+          "entity": "COST",
+          "as_of_date": "2026-09-24",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cost_nov26_events",
+          "label": "COST Nov 10 Capital Return",
+          "period_key": "2026-11-10",
+          "entity": "COST",
+          "as_of_date": "2026-11-10",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cost_club_fees",
+          "label": "COST Membership Fee Schedule",
+          "period_key": "2026-11-16",
+          "entity": "COST",
+          "as_of_date": "2026-11-16",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "sams_club_fees",
+          "label": "Sam's Club Fee Schedule",
+          "period_key": "2026-11-16",
+          "entity": "WMT_SAMS",
+          "as_of_date": "2026-11-16",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "sams_club_q1_fy27",
+          "label": "Sam's Club Q1 FY27",
+          "period_key": "2027-Q1",
+          "entity": "WMT_SAMS",
+          "as_of_date": "2026-11-16",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "sams_club_q2_fy27",
+          "label": "Sam's Club Q2 FY27",
+          "period_key": "2027-Q2",
+          "entity": "WMT_SAMS",
+          "as_of_date": "2026-11-16",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "bj_club_fees",
+          "label": "BJ's Fee Schedule",
+          "period_key": "2026-11-16",
+          "entity": "BJ",
+          "as_of_date": "2026-11-16",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "bj_club_q2_fy26",
+          "label": "BJ's Q2 FY26 (ended 2026-08-01)",
+          "period_key": "2026-08-01",
+          "entity": "BJ",
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "gross_openings",
+          "label": "Gross Warehouse Openings",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 28,
+              "raw_text": "28",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 111,
+                "line_end": 111
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 33,
+              "raw_text": "33",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 112,
+                "line_end": 112
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "relocations",
+          "label": "Warehouse Relocations",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 3,
+              "raw_text": "3",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 111,
+                "line_end": 111
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 5,
+              "raw_text": "5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 112,
+                "line_end": 112
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_openings",
+          "label": "Net New Warehouse Openings",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 25,
+              "raw_text": "25",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 111,
+                "line_end": 111
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 28,
+              "raw_text": "28",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 112,
+                "line_end": 112
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_net_openings_target",
+          "label": "Long-Term Annual Net Openings Target",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy27_guidance": {
+              "value": 30,
+              "raw_text": "30",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 116,
+                "line_end": 116
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_us",
+          "label": "Ending Warehouses: U.S.",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 647,
+              "raw_text": "647",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 113,
+                "line_end": 113
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 665,
+              "raw_text": "665",
+              "note": "+18 net new U.S. warehouses",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 113,
+                "line_end": 113
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_canada",
+          "label": "Ending Warehouses: Canada",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 115,
+              "raw_text": "115",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 114,
+                "line_end": 114
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 120,
+              "raw_text": "120",
+              "note": "+5 net new Canada warehouses",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 114,
+                "line_end": 114
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_other_intl",
+          "label": "Ending Warehouses: Other International",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 177,
+              "raw_text": "177",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 115,
+                "line_end": 115
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 182,
+              "raw_text": "182",
+              "note": "+5 net new (4 Europe, 1 Mexico)",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 115,
+                "line_end": 115
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "warehouses_total",
+          "label": "Ending Warehouses: Total Company",
+          "category": "FY27 Expansion Guidance",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 939,
+              "raw_text": "939",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 111,
+                "line_end": 111
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 967,
+              "raw_text": "967",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 112,
+                "line_end": 112
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Capital Expenditures (Actual / Guidance)",
+          "category": "CapEx Guidance",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 6400,
+              "raw_text": "$6.4B",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 117,
+                "line_end": 117
+              },
+              "is_restatement": false
+            },
+            "cost_q4_fy26": {
+              "value": 2210,
+              "raw_text": "$2.21B",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 117,
+                "line_end": 117
+              },
+              "is_restatement": false
+            },
+            "cost_fy27_guidance": {
+              "value": 7500,
+              "raw_text": "~$7.5B",
+              "note": "+17% YoY; expected to moderate beyond FY27",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 117,
+                "line_end": 117
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_sales",
+          "label": "Net Sales",
+          "category": "Q4 & FY26 Results",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 297200,
+              "raw_text": "$297.2B",
+              "note": "+10.1% YoY vs $269.9B",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 92,
+                "line_end": 92
+              },
+              "is_restatement": false
+            },
+            "cost_q4_fy26": {
+              "value": 93870,
+              "raw_text": "$93.87B",
+              "note": "16W ended 2026-08-30; +11.2% YoY vs $84.43B",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 92,
+                "line_end": 92
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_revenue",
+          "label": "Total Revenue (Net Sales + MFI)",
+          "category": "Q4 & FY26 Results",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 303150,
+              "raw_text": "$303.15B",
+              "note": "Net Sales + MFI; +10.14% YoY",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 93,
+                "line_end": 93
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mfi",
+          "label": "Membership Fee Income (MFI)",
+          "category": "MFI Pass-Through",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 5910,
+              "raw_text": "$5.91B",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 101,
+                "line_end": 101
+              },
+              "is_restatement": false
+            },
+            "cost_q4_fy26": {
+              "value": 1849,
+              "raw_text": "$1.849B",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 101,
+                "line_end": 101
+              },
+              "is_restatement": false
+            },
+            "bj_club_q2_fy26": {
+              "value": 135.6,
+              "raw_text": "$135.6M",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 136,
+                "line_end": 136
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mfi_yoy_reported",
+          "label": "MFI YoY Growth (Reported)",
+          "category": "MFI Pass-Through",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 11,
+              "raw_text": "+11.0%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 101,
+                "line_end": 101
+              },
+              "is_restatement": false
+            },
+            "cost_q4_fy26": {
+              "value": 7.3,
+              "raw_text": "+7.3%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 101,
+                "line_end": 101
+              },
+              "is_restatement": false
+            },
+            "sams_club_q1_fy27": {
+              "value": 5.6,
+              "raw_text": "+5.6%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 136,
+                "line_end": 136
+              },
+              "is_restatement": false
+            },
+            "bj_club_q2_fy26": {
+              "value": 9.9,
+              "raw_text": "+9.9%",
+              "note": "Q2 FY26 MFI $135.6M",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 136,
+                "line_end": 136
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mfi_yoy_ex_fx",
+          "label": "MFI YoY Growth (ex-FX)",
+          "category": "MFI Pass-Through",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 7.7,
+              "raw_text": "+7.7%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 101,
+                "line_end": 101
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mfi_fee_hike_tailwind_cap",
+          "label": "Sept 2024 MFI Hike Q4 Tailwind Upper Bound",
+          "category": "MFI Pass-Through",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 1,
+              "raw_text": "< 1%",
+              "note": "Upper bound '< 1%' of Q4 FY26 MFI growth from Sept 2024 fee hike; final quarter of YoY tailwind",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 102,
+                "line_end": 102
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mfi_yoy_underlying_ex_hike_fx",
+          "label": "Underlying MFI YoY Growth (ex-Fee Hike & ex-FX)",
+          "category": "MFI Pass-Through",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 6.8,
+              "raw_text": "+6.8%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 103,
+                "line_end": 103
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_ex_fuel",
+          "label": "Comparable Sales (ex-Gas/Fuel & FX)",
+          "category": "Club Comparison",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 6.7,
+              "raw_text": "+6.7%",
+              "note": "U.S. +7.2%, Canada +4.6%, Other Intl +6.2% ex-gas/FX",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 94,
+                "line_end": 94
+              },
+              "is_restatement": false
+            },
+            "sams_club_q1_fy27": {
+              "value": 3.9,
+              "raw_text": "+3.9%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 135,
+                "line_end": 135
+              },
+              "is_restatement": false
+            },
+            "sams_club_q2_fy27": {
+              "value": 4.4,
+              "raw_text": "+4.4%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 135,
+                "line_end": 135
+              },
+              "is_restatement": false
+            },
+            "bj_club_q2_fy26": {
+              "value": 3.1,
+              "raw_text": "+3.1%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 135,
+                "line_end": 135
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_incl_fuel",
+          "label": "Comparable Sales (Reported incl. Fuel)",
+          "category": "Club Comparison",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 9.4,
+              "raw_text": "+9.4%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 94,
+                "line_end": 94
+              },
+              "is_restatement": false
+            },
+            "sams_club_q1_fy27": {
+              "value": 5.9,
+              "raw_text": "+5.9%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 135,
+                "line_end": 135
+              },
+              "is_restatement": false
+            },
+            "sams_club_q2_fy27": {
+              "value": 8.5,
+              "raw_text": "+8.5%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 135,
+                "line_end": 135
+              },
+              "is_restatement": false
+            },
+            "bj_club_q2_fy26": {
+              "value": 11.9,
+              "raw_text": "+11.9%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 135,
+                "line_end": 135
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "paid_members",
+          "label": "Paid Memberships",
+          "category": "Membership KPIs",
+          "unit": "count",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 84.1,
+              "raw_text": "84.1M",
+              "note": "+3.8% YoY",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 105,
+                "line_end": 105
+              },
+              "is_restatement": false
+            },
+            "bj_club_q2_fy26": {
+              "value": 8.5,
+              "raw_text": "8.5M",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 136,
+                "line_end": 136
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_cardholders",
+          "label": "Total Cardholders",
+          "category": "Membership KPIs",
+          "unit": "count",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 150.4,
+              "raw_text": "150.4M",
+              "note": "+3.6% YoY",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 105,
+                "line_end": 105
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "executive_members",
+          "label": "Executive Memberships",
+          "category": "Membership KPIs",
+          "unit": "count",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 42.3,
+              "raw_text": "42.3M",
+              "note": "+9.4% YoY",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 106,
+                "line_end": 106
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "executive_sales_share",
+          "label": "Executive Share of Total Sales",
+          "category": "Membership KPIs",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 75.6,
+              "raw_text": "75.6%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 106,
+                "line_end": 106
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "renewal_rate_us_ca",
+          "label": "U.S. & Canada Renewal Rate",
+          "category": "Membership KPIs",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 92.3,
+              "raw_text": "92.3%",
+              "note": "+10 bps QoQ",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 107,
+                "line_end": 107
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "renewal_rate_ww",
+          "label": "Worldwide Renewal Rate",
+          "category": "Membership KPIs",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 89.8,
+              "raw_text": "89.8%",
+              "note": "+10 bps QoQ",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 108,
+                "line_end": 108
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lifo_charge",
+          "label": "Q4 LIFO Expense Charge",
+          "category": "Q4 QoE Items",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 152,
+              "raw_text": "$152M",
+              "note": "vs $43M in Q4 FY25 (-11 bps reported / -12 bps ex-gas GM drag)",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 96,
+                "line_end": 96
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ieepa_refund_principal",
+          "label": "IEEPA Tariff Refund Cash Principal",
+          "category": "Q4 QoE Items",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 174,
+              "raw_text": "$174M",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 95,
+                "line_end": 95
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ieepa_refund_interest",
+          "label": "IEEPA Tariff Refund Cash Interest",
+          "category": "Q4 QoE Items",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 10,
+              "raw_text": "$10M",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 95,
+                "line_end": 95
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ieepa_refund_cash_total",
+          "label": "IEEPA Tariff Refund Total Cash Received",
+          "category": "Q4 QoE Items",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 184,
+              "raw_text": "$184M",
+              "note": "~1/3 of total expected refunds; similar tranche received in Q1 FY27",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 95,
+                "line_end": 95
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ieepa_reinvested_est",
+          "label": "IEEPA Refund Reinvested in Member Pricing (Est.)",
+          "category": "Q4 QoE Items",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 100,
+              "raw_text": "~$100M",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 95,
+                "line_end": 95
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ieepa_eps_benefit",
+          "label": "IEEPA Net EPS Benefit",
+          "category": "Q4 QoE Items",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_q4_fy26": {
+              "value": 0.15,
+              "raw_text": "+$0.15/sh",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 95,
+                "line_end": 95
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gaap_diluted_eps",
+          "label": "GAAP Diluted EPS",
+          "category": "Q4 & FY26 Results",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_fy26": {
+              "value": 20.76,
+              "raw_text": "$20.76",
+              "note": "vs $18.21 in FY25",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 95,
+                "line_end": 95
+              },
+              "is_restatement": false
+            },
+            "cost_q4_fy26": {
+              "value": 6.75,
+              "raw_text": "$6.75",
+              "note": "+15.0% YoY; +12.4% ex-IEEPA benefit",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 95,
+                "line_end": 95
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "special_dividend_ps",
+          "label": "Special Cash Dividend Per Share (Nov 2026)",
+          "category": "Capital Return",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_nov26_events": {
+              "value": 30,
+              "raw_text": "$30.00",
+              "note": "Declared 2026-11-10, record/ex-date 2026-11-24, pay 2026-12-04",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23,
+                "line_end": 23
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "special_dividend_total",
+          "label": "Special Cash Dividend Aggregate Payout (Approx.)",
+          "category": "Capital Return",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_nov26_events": {
+              "value": 13300,
+              "raw_text": "~$13.3 billion",
+              "note": "Exact 443,129,349 sh x $30.00 = $13.294B",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "buyback_reauth_amount",
+          "label": "Share Repurchase Reauthorization (exp. Nov 2030)",
+          "category": "Capital Return",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_nov26_events": {
+              "value": 4000,
+              "raw_text": "$4.0 billion",
+              "note": "Reauthorized 2026-11-10 expiring Nov 2030",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29,
+                "line_end": 29
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "buyback_prior_utilized",
+          "label": "Prior 2023 Buyback Program Utilized",
+          "category": "Capital Return",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost_nov26_events": {
+              "value": 3100,
+              "raw_text": "$3.1 billion",
+              "note": "Repurchased under prior $4.0B 2023 program",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29,
+                "line_end": 29
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "entry_tier_fee",
+          "label": "Standard / Entry Tier Annual Membership Fee",
+          "category": "Club Fee Comparison",
+          "unit": "USD",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_club_fees": {
+              "value": 65,
+              "raw_text": "$65/yr",
+              "note": "Gold Star & Business; raised from $60 effective 2024-09-01",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 133,
+                "line_end": 133
+              },
+              "is_restatement": false
+            },
+            "sams_club_fees": {
+              "value": 60,
+              "raw_text": "$60/yr",
+              "note": "Sam's Club entry; raised from $50 effective 2026-05-01",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 133,
+                "line_end": 133
+              },
+              "is_restatement": false
+            },
+            "bj_club_fees": {
+              "value": 60,
+              "raw_text": "$60/yr",
+              "note": "BJ's Club; raised from $55 effective 2025-01-01",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 133,
+                "line_end": 133
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "entry_tier_fee_prior",
+          "label": "Prior Standard / Entry Tier Annual Fee",
+          "category": "Club Fee Comparison",
+          "unit": "USD",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_club_fees": {
+              "value": 60,
+              "raw_text": "$60",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 133,
+                "line_end": 133
+              },
+              "is_restatement": false
+            },
+            "sams_club_fees": {
+              "value": 50,
+              "raw_text": "$50",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 133,
+                "line_end": 133
+              },
+              "is_restatement": false
+            },
+            "bj_club_fees": {
+              "value": 55,
+              "raw_text": "$55",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 133,
+                "line_end": 133
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "premium_tier_fee",
+          "label": "Premium / Rewards Tier Annual Membership Fee",
+          "category": "Club Fee Comparison",
+          "unit": "USD",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_club_fees": {
+              "value": 130,
+              "raw_text": "$130/yr",
+              "note": "Executive; raised from $120 effective 2024-09-01",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            },
+            "sams_club_fees": {
+              "value": 120,
+              "raw_text": "$120/yr",
+              "note": "Sam's Club Plus; raised from $110 effective 2026-05-01",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            },
+            "bj_club_fees": {
+              "value": 120,
+              "raw_text": "$120/yr",
+              "note": "BJ's Club+; raised from $110 effective 2025-01-01 (incl. 10c/gal gas discount)",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "premium_tier_fee_prior",
+          "label": "Prior Premium / Rewards Tier Annual Fee",
+          "category": "Club Fee Comparison",
+          "unit": "USD",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_club_fees": {
+              "value": 120,
+              "raw_text": "$120",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            },
+            "sams_club_fees": {
+              "value": 110,
+              "raw_text": "$110",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            },
+            "bj_club_fees": {
+              "value": 110,
+              "raw_text": "$110",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "premium_reward_rate",
+          "label": "Premium Tier Annual Reward Rate",
+          "category": "Club Fee Comparison",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost_club_fees": {
+              "value": 2,
+              "raw_text": "2%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            },
+            "sams_club_fees": {
+              "value": 2,
+              "raw_text": "2%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            },
+            "bj_club_fees": {
+              "value": 2,
+              "raw_text": "2%",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "premium_reward_cap",
+          "label": "Premium Tier Annual Reward Cap",
+          "category": "Club Fee Comparison",
+          "unit": "USD",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_club_fees": {
+              "value": 1250,
+              "raw_text": "$1,250",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 99,
+                "line_end": 99
+              },
+              "is_restatement": false
+            },
+            "sams_club_fees": {
+              "value": 750,
+              "raw_text": "$750",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            },
+            "bj_club_fees": {
+              "value": 500,
+              "raw_text": "$500",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "premium_reward_cap_prior",
+          "label": "Prior Premium Tier Annual Reward Cap",
+          "category": "Club Fee Comparison",
+          "unit": "USD",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost_club_fees": {
+              "value": 1000,
+              "raw_text": "$1,000",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 99,
+                "line_end": 99
+              },
+              "is_restatement": false
+            },
+            "sams_club_fees": {
+              "value": 500,
+              "raw_text": "$500",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 134,
+                "line_end": 134
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "net_openings",
+          "components": [
+            {
+              "id": "gross_openings",
+              "sign": 1
+            },
+            {
+              "id": "relocations",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["cost_fy26", "cost_fy27_guidance"],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "warehouses_total",
+          "components": [
+            {
+              "id": "warehouses_us",
+              "sign": 1
+            },
+            {
+              "id": "warehouses_canada",
+              "sign": 1
+            },
+            {
+              "id": "warehouses_other_intl",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["cost_fy26", "cost_fy27_guidance"],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ieepa_refund_cash_total",
+          "components": [
+            {
+              "id": "ieepa_refund_principal",
+              "sign": 1
+            },
+            {
+              "id": "ieepa_refund_interest",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["cost_q4_fy26"],
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

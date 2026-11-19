@@ -1,0 +1,4314 @@
+{
+  "document": {
+    "doc_id": "doc_wmt_20260731",
+    "file_path": "data/raw/sec/0000104169/0000104169-26-000154/wmt-20260731.htm",
+    "sha256": "4892b4ed315cc2f9b34b0f9f76ce7b924718d0bc2bd9fe917ba2f09229a716af",
+    "doc_type": "sec_filing",
+    "size_bytes": 1433308,
+    "title": "Walmart Inc. Form 10-Q (Q2 FY2027 6M ended July 31, 2026)",
+    "report_date": "2026-07-31",
+    "filing_date": "2026-08-28",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000104169",
+      "company_name": "Walmart Inc.",
+      "tickers": "WMT",
+      "form": "10-Q",
+      "accession_number": "0000104169-26-000154",
+      "filing_date": "2026-08-28",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/104169/000010416926000154/wmt-20260731.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "peer_income_statement",
+      "title": "Walmart Inc. Condensed Consolidated Statements of Income (6M H1 FY26–FY27)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[7]",
+          "table_index": 7
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY2027 (6M)",
+          "raw_label": "Six Months Ended July 31, 2026",
+          "period_key": "2027-H1",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY2026 (6M)",
+          "raw_label": "Six Months Ended July 31, 2025",
+          "period_key": "2026-H1",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2025-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_sales",
+          "label": "Net sales",
+          "raw_label": "Net sales",
+          "category": "revenue",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 361784,
+              "raw_text": "$361,784",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 339731,
+              "raw_text": "$339,731",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "membership_and_other_income",
+          "label": "Membership and other income",
+          "raw_label": "Membership and other income",
+          "category": "revenue",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3904,
+              "raw_text": "3,904",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 3280,
+              "raw_text": "3,280",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_revenues",
+          "label": "Total revenues",
+          "raw_label": "Total revenues",
+          "category": "revenue",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 365688,
+              "raw_text": "365,688",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 343011,
+              "raw_text": "343,011",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cost_of_sales",
+          "label": "Cost of sales",
+          "raw_label": "Cost of sales",
+          "category": "cost_of_sales",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 271862,
+              "raw_text": "271,862",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 257074,
+              "raw_text": "257,074",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sga",
+          "label": "Operating, selling, general and administrative expenses",
+          "raw_label": "Operating, selling, general and administrative expenses",
+          "category": "operating_expense",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 76950,
+              "raw_text": "76,950",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 71516,
+              "raw_text": "71,516",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_income",
+          "label": "Operating income",
+          "raw_label": "Operating income",
+          "category": "operating_income",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 16876,
+              "raw_text": "16,876",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 14421,
+              "raw_text": "14,421",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "interest_expense_debt",
+          "label": "Interest expense - debt",
+          "raw_label": "Debt",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 711,
+              "raw_text": "711",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1170,
+              "raw_text": "1,170",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "interest_expense_finance_lease",
+          "label": "Interest expense - finance lease",
+          "raw_label": "Finance lease",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 251,
+              "raw_text": "251",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 236,
+              "raw_text": "236",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "interest_income",
+          "label": "Interest income",
+          "raw_label": "Interest income",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 171,
+              "raw_text": "(171)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 187,
+              "raw_text": "(187)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "interest_net_expense",
+          "label": "Interest, net",
+          "raw_label": "Interest, net",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 791,
+              "raw_text": "791",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1219,
+              "raw_text": "1,219",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_other_income",
+          "label": "Net other income / (loss)",
+          "raw_label": "Other (gains) and losses",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -925,
+              "raw_text": "925",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 2111,
+              "raw_text": "(2,111)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "pretax_income",
+          "label": "Income before income taxes",
+          "raw_label": "Income before income taxes",
+          "category": "pretax_income",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 15160,
+              "raw_text": "15,160",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 15313,
+              "raw_text": "15,313",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "tax_provision",
+          "label": "Provision for income taxes",
+          "raw_label": "Provision for income taxes",
+          "category": "tax",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3141,
+              "raw_text": "3,141",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 3523,
+              "raw_text": "3,523",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income_incl_nci",
+          "label": "Consolidated net income",
+          "raw_label": "Consolidated net income",
+          "category": "net_income",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 12019,
+              "raw_text": "12,019",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 11790,
+              "raw_text": "11,790",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income_nci",
+          "label": "Net income attributable to noncontrolling interest",
+          "raw_label": "Consolidated net income attributable to noncontrolling interest",
+          "category": "net_income",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 323,
+              "raw_text": "(323)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 277,
+              "raw_text": "(277)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income_attr_parent",
+          "label": "Consolidated net income attributable to Walmart",
+          "raw_label": "Consolidated net income attributable to Walmart",
+          "category": "net_income",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11696,
+              "raw_text": "$11,696",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 11513,
+              "raw_text": "$11,513",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_revenues",
+          "components": [
+            {
+              "id": "net_sales",
+              "sign": 1
+            },
+            {
+              "id": "membership_and_other_income",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "operating_income",
+          "components": [
+            {
+              "id": "total_revenues",
+              "sign": 1
+            },
+            {
+              "id": "cost_of_sales",
+              "sign": -1
+            },
+            {
+              "id": "sga",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "interest_net_expense",
+          "components": [
+            {
+              "id": "interest_expense_debt",
+              "sign": 1
+            },
+            {
+              "id": "interest_expense_finance_lease",
+              "sign": 1
+            },
+            {
+              "id": "interest_income",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "pretax_income",
+          "components": [
+            {
+              "id": "operating_income",
+              "sign": 1
+            },
+            {
+              "id": "interest_net_expense",
+              "sign": -1
+            },
+            {
+              "id": "net_other_income",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income_incl_nci",
+          "components": [
+            {
+              "id": "pretax_income",
+              "sign": 1
+            },
+            {
+              "id": "tax_provision",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income_attr_parent",
+          "components": [
+            {
+              "id": "net_income_incl_nci",
+              "sign": 1
+            },
+            {
+              "id": "net_income_nci",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_balance_sheet",
+      "title": "Walmart Inc. Condensed Consolidated Balance Sheet (As of July 31, 2026)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[9]",
+          "table_index": 9
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "Jul 31, 2026",
+          "raw_label": "July 31, 2026",
+          "period_key": "2027-H1",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "cash_and_equivalents",
+          "label": "Cash and cash equivalents",
+          "raw_label": "Cash and cash equivalents",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11529,
+              "raw_text": "$11,529",
+              "note": "Excludes restricted cash included in Cash Flow ending cash ($463M at Jul 31, 2026; ASU 2016-18)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "receivables_net",
+          "label": "Receivables, net",
+          "raw_label": "Receivables, net",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11075,
+              "raw_text": "11,075",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "inventories_net",
+          "label": "Inventories",
+          "raw_label": "Inventories",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 61600,
+              "raw_text": "61,600",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "prepaid_and_other_current_assets",
+          "label": "Prepaid expenses and other",
+          "raw_label": "Prepaid expenses and other",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 4499,
+              "raw_text": "4,499",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_current_assets",
+          "label": "Total current assets",
+          "raw_label": "Total current assets",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 88703,
+              "raw_text": "88,703",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ppe_net",
+          "label": "Property and equipment, net",
+          "raw_label": "Property and equipment, net",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 142482,
+              "raw_text": "142,482",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_rou_assets",
+          "label": "Operating lease right-of-use assets",
+          "raw_label": "Operating lease right-of-use assets",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 15650,
+              "raw_text": "15,650",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_rou_assets_net",
+          "label": "Finance lease right-of-use assets, net",
+          "raw_label": "Finance lease right-of-use assets, net",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 6178,
+              "raw_text": "6,178",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "goodwill",
+          "label": "Goodwill",
+          "raw_label": "Goodwill",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 28260,
+              "raw_text": "28,260",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_assets",
+          "label": "Other long-term assets",
+          "raw_label": "Other long-term assets",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 12641,
+              "raw_text": "12,641",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_assets",
+          "label": "Total assets",
+          "raw_label": "Total assets",
+          "category": "total_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 293914,
+              "raw_text": "$293,914",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "short_term_borrowings",
+          "label": "Short-term borrowings",
+          "raw_label": "Short-term borrowings",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 10479,
+              "raw_text": "$10,479",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "accounts_payable",
+          "label": "Accounts payable",
+          "raw_label": "Accounts payable",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 64318,
+              "raw_text": "64,318",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dividends_payable",
+          "label": "Dividends payable",
+          "raw_label": "Dividends payable",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3949,
+              "raw_text": "3,949",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "accrued_liabilities",
+          "label": "Accrued liabilities",
+          "raw_label": "Accrued liabilities",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 30074,
+              "raw_text": "30,074",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "accrued_income_taxes",
+          "label": "Accrued income taxes",
+          "raw_label": "Accrued income taxes",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 746,
+              "raw_text": "746",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_long_term_debt",
+          "label": "Long-term debt due within one year",
+          "raw_label": "Long-term debt due within one year",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3470,
+              "raw_text": "3,470",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_operating_lease_liabilities",
+          "label": "Operating lease obligations due within one year",
+          "raw_label": "Operating lease obligations due within one year",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1714,
+              "raw_text": "1,714",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_finance_lease_liabilities",
+          "label": "Finance lease obligations due within one year",
+          "raw_label": "Finance lease obligations due within one year",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 880,
+              "raw_text": "880",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_current_liabilities",
+          "label": "Total current liabilities",
+          "raw_label": "Total current liabilities",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 115630,
+              "raw_text": "115,630",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "long_term_debt",
+          "label": "Long-term debt",
+          "raw_label": "Long-term debt",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 36462,
+              "raw_text": "36,462",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_operating_lease_liabilities",
+          "label": "Long-term operating lease obligations",
+          "raw_label": "Long-term operating lease obligations",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 14798,
+              "raw_text": "14,798",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_finance_lease_liabilities",
+          "label": "Long-term finance lease obligations",
+          "raw_label": "Long-term finance lease obligations",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 5952,
+              "raw_text": "5,952",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_income_taxes_and_other",
+          "label": "Deferred income taxes and other",
+          "raw_label": "Deferred income taxes and other",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 16273,
+              "raw_text": "16,273",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "redeemable_noncontrolling_interest",
+          "label": "Redeemable noncontrolling interest",
+          "raw_label": "Redeemable noncontrolling interest",
+          "category": "mezzanine",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 293,
+              "raw_text": "293",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "common_stock",
+          "label": "Common stock",
+          "raw_label": "Common stock",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 794,
+              "raw_text": "794",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "additional_paid_in_capital",
+          "label": "Capital in excess of par value",
+          "raw_label": "Capital in excess of par value",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7046,
+              "raw_text": "7,046",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "retained_earnings",
+          "label": "Retained earnings",
+          "raw_label": "Retained earnings",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 103601,
+              "raw_text": "103,601",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "aoci",
+          "label": "Accumulated other comprehensive loss",
+          "raw_label": "Accumulated other comprehensive loss",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -13203,
+              "raw_text": "(13,203)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_parent_equity",
+          "label": "Total Walmart shareholders' equity",
+          "raw_label": "Total Walmart shareholders' equity",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 98238,
+              "raw_text": "98,238",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "nonredeemable_nci",
+          "label": "Nonredeemable noncontrolling interest",
+          "raw_label": "Nonredeemable noncontrolling interest",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 6268,
+              "raw_text": "6,268",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_equity",
+          "label": "Total shareholders' equity",
+          "raw_label": "Total shareholders' equity",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 104506,
+              "raw_text": "104,506",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_liabilities_and_equity",
+          "label": "Total liabilities, redeemable noncontrolling interest, and shareholders' equity",
+          "raw_label": "Total liabilities, redeemable noncontrolling interest, and shareholders' equity",
+          "category": "total_liabilities_and_equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 293914,
+              "raw_text": "$293,914",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_current_assets",
+          "components": [
+            {
+              "id": "cash_and_equivalents",
+              "sign": 1
+            },
+            {
+              "id": "receivables_net",
+              "sign": 1
+            },
+            {
+              "id": "inventories_net",
+              "sign": 1
+            },
+            {
+              "id": "prepaid_and_other_current_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "ppe_net",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_rou_assets",
+              "sign": 1
+            },
+            {
+              "id": "finance_lease_rou_assets_net",
+              "sign": 1
+            },
+            {
+              "id": "goodwill",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_current_liabilities",
+          "components": [
+            {
+              "id": "short_term_borrowings",
+              "sign": 1
+            },
+            {
+              "id": "accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "dividends_payable",
+              "sign": 1
+            },
+            {
+              "id": "accrued_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "accrued_income_taxes",
+              "sign": 1
+            },
+            {
+              "id": "current_long_term_debt",
+              "sign": 1
+            },
+            {
+              "id": "current_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "current_finance_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_parent_equity",
+          "components": [
+            {
+              "id": "common_stock",
+              "sign": 1
+            },
+            {
+              "id": "additional_paid_in_capital",
+              "sign": 1
+            },
+            {
+              "id": "retained_earnings",
+              "sign": 1
+            },
+            {
+              "id": "aoci",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_equity",
+          "components": [
+            {
+              "id": "total_parent_equity",
+              "sign": 1
+            },
+            {
+              "id": "nonredeemable_nci",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_current_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "long_term_debt",
+              "sign": 1
+            },
+            {
+              "id": "lt_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "lt_finance_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "deferred_income_taxes_and_other",
+              "sign": 1
+            },
+            {
+              "id": "redeemable_noncontrolling_interest",
+              "sign": 1
+            },
+            {
+              "id": "total_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_liabilities_and_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_cash_flow",
+      "title": "Walmart Inc. Condensed Consolidated Statements of Cash Flows (6M H1 FY26–FY27)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[12]",
+          "table_index": 12
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY2027 (6M)",
+          "raw_label": "Six Months Ended July 31, 2026",
+          "period_key": "2027-H1",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY2026 (6M)",
+          "raw_label": "Six Months Ended July 31, 2025",
+          "period_key": "2026-H1",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2025-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_income_incl_nci",
+          "label": "Consolidated net income",
+          "raw_label": "Consolidated net income",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 12019,
+              "raw_text": "$12,019",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 11790,
+              "raw_text": "$11,790",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "depreciation_and_amortization",
+          "label": "Depreciation and amortization",
+          "raw_label": "Depreciation and amortization",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7746,
+              "raw_text": "7,746",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 6856,
+              "raw_text": "6,856",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "investment_gains_losses_net",
+          "label": "Investment (gains) and losses, net",
+          "raw_label": "Investment (gains) and losses, net",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 947,
+              "raw_text": "947",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -2066,
+              "raw_text": "(2,066)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_income_taxes",
+          "label": "Deferred income taxes",
+          "raw_label": "Deferred income taxes",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 845,
+              "raw_text": "845",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1551,
+              "raw_text": "1,551",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_operating_activities",
+          "label": "Other operating activities",
+          "raw_label": "Other operating activities",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 816,
+              "raw_text": "816",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1370,
+              "raw_text": "1,370",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_receivables",
+          "label": "Changes in receivables, net",
+          "raw_label": "Receivables, net",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 9,
+              "raw_text": "9",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -405,
+              "raw_text": "(405)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_inventories",
+          "label": "Changes in inventories",
+          "raw_label": "Inventories",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -2660,
+              "raw_text": "(2,660)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -659,
+              "raw_text": "(659)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_accounts_payable",
+          "label": "Changes in accounts payable",
+          "raw_label": "Accounts payable",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1648,
+              "raw_text": "1,648",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1302,
+              "raw_text": "1,302",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_accrued_liabilities",
+          "label": "Changes in accrued liabilities",
+          "raw_label": "Accrued liabilities",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -1449,
+              "raw_text": "(1,449)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -1453,
+              "raw_text": "(1,453)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_accrued_income_taxes",
+          "label": "Changes in accrued income taxes",
+          "raw_label": "Accrued income taxes",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -211,
+              "raw_text": "(211)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 66,
+              "raw_text": "66",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cfo",
+          "label": "Net cash provided by operating activities",
+          "raw_label": "Net cash provided by operating activities",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 19710,
+              "raw_text": "19,710",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 18352,
+              "raw_text": "18,352",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Payments for property and equipment",
+          "raw_label": "Payments for property and equipment",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -14181,
+              "raw_text": "(14,181)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -11409,
+              "raw_text": "(11,409)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_disposal_ppe",
+          "label": "Proceeds from disposal of property and equipment",
+          "raw_label": "Proceeds from disposal of property and equipment",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 124,
+              "raw_text": "124",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 41,
+              "raw_text": "41",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_strategic_investments",
+          "label": "Proceeds from disposal of certain strategic investments",
+          "raw_label": "Proceeds from disposal of certain strategic investments",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 42,
+              "raw_text": "42",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 775,
+              "raw_text": "775",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_investing_activities",
+          "label": "Other investing activities",
+          "raw_label": "Other investing activities",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -249,
+              "raw_text": "(249)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -606,
+              "raw_text": "(606)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cfi",
+          "label": "Net cash used in investing activities",
+          "raw_label": "Net cash used in investing activities",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -14264,
+              "raw_text": "(14,264)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -11199,
+              "raw_text": "(11,199)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_change_short_term_borrowings",
+          "label": "Net change in short-term borrowings",
+          "raw_label": "Net change in short-term borrowings",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3923,
+              "raw_text": "3,923",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 759,
+              "raw_text": "759",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_lt_debt",
+          "label": "Proceeds from issuance of long-term debt",
+          "raw_label": "Proceeds from issuance of long-term debt",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 4230,
+              "raw_text": "4,230",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 3983,
+              "raw_text": "3,983",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "repayments_lt_debt",
+          "label": "Repayments of long-term debt",
+          "raw_label": "Repayments of long-term debt",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -2303,
+              "raw_text": "(2,303)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -875,
+              "raw_text": "(875)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dividends_paid",
+          "label": "Dividends paid",
+          "raw_label": "Dividends paid",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -3945,
+              "raw_text": "(3,945)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -3755,
+              "raw_text": "(3,755)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "share_repurchases",
+          "label": "Purchase of Company stock",
+          "raw_label": "Purchase of Company stock",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -5104,
+              "raw_text": "(5,104)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -6200,
+              "raw_text": "(6,200)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_financing_activities",
+          "label": "Other financing activities",
+          "raw_label": "Other financing activities",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -1643,
+              "raw_text": "(1,643)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -905,
+              "raw_text": "(905)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cff",
+          "label": "Net cash used in financing activities",
+          "raw_label": "Net cash used in financing activities",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -4842,
+              "raw_text": "(4,842)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -6993,
+              "raw_text": "(6,993)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "fx_effect_on_cash",
+          "label": "Effect of exchange rates on cash, cash equivalents and restricted cash",
+          "raw_label": "Effect of exchange rates on cash, cash equivalents and restricted cash",
+          "category": "cash_bridge",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 67,
+              "raw_text": "67",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 181,
+              "raw_text": "181",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_change_in_cash",
+          "label": "Net increase in cash, cash equivalents and restricted cash",
+          "raw_label": "Net increase in cash, cash equivalents and restricted cash",
+          "category": "cash_bridge",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 671,
+              "raw_text": "671",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 341,
+              "raw_text": "341",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "beginning_cash_and_restricted_cash",
+          "label": "Cash, cash equivalents and restricted cash at beginning of year",
+          "raw_label": "Cash, cash equivalents and restricted cash at beginning of year",
+          "category": "cash_bridge",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11321,
+              "raw_text": "11,321",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 9536,
+              "raw_text": "9,536",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ending_cash_and_restricted_cash",
+          "label": "Cash, cash equivalents and restricted cash at end of period",
+          "raw_label": "Cash, cash equivalents and restricted cash at end of period",
+          "category": "cash_bridge",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11992,
+              "raw_text": "$11,992",
+              "note": "Includes restricted cash ($463M at Jul 31, 2026 vs BS Cash & cash equivalents); ASU 2016-18",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 9877,
+              "raw_text": "$9,877",
+              "note": "Includes restricted cash ($463M at Jul 31, 2026 vs BS Cash & cash equivalents); ASU 2016-18",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "cfo",
+          "components": [
+            {
+              "id": "net_income_incl_nci",
+              "sign": 1
+            },
+            {
+              "id": "depreciation_and_amortization",
+              "sign": 1
+            },
+            {
+              "id": "investment_gains_losses_net",
+              "sign": 1
+            },
+            {
+              "id": "deferred_income_taxes",
+              "sign": 1
+            },
+            {
+              "id": "other_operating_activities",
+              "sign": 1
+            },
+            {
+              "id": "chg_receivables",
+              "sign": 1
+            },
+            {
+              "id": "chg_inventories",
+              "sign": 1
+            },
+            {
+              "id": "chg_accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "chg_accrued_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "chg_accrued_income_taxes",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "cfi",
+          "components": [
+            {
+              "id": "capex",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_disposal_ppe",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_strategic_investments",
+              "sign": 1
+            },
+            {
+              "id": "other_investing_activities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "cff",
+          "components": [
+            {
+              "id": "net_change_short_term_borrowings",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_lt_debt",
+              "sign": 1
+            },
+            {
+              "id": "repayments_lt_debt",
+              "sign": 1
+            },
+            {
+              "id": "dividends_paid",
+              "sign": 1
+            },
+            {
+              "id": "share_repurchases",
+              "sign": 1
+            },
+            {
+              "id": "other_financing_activities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_change_in_cash",
+          "components": [
+            {
+              "id": "cfo",
+              "sign": 1
+            },
+            {
+              "id": "cfi",
+              "sign": 1
+            },
+            {
+              "id": "cff",
+              "sign": 1
+            },
+            {
+              "id": "fx_effect_on_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ending_cash_and_restricted_cash",
+          "components": [
+            {
+              "id": "beginning_cash_and_restricted_cash",
+              "sign": 1
+            },
+            {
+              "id": "net_change_in_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_eps_shares",
+      "title": "Walmart Inc. EPS, Share Counts & Dividends Per Share (6M H1 FY26–FY27)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[13]",
+          "table_index": 13
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY2027 (6M)",
+          "raw_label": "Six Months Ended July 31, 2026",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY2026 (6M)",
+          "raw_label": "Six Months Ended July 31, 2025",
+          "period_key": "2026-H1",
+          "as_of_date": "2025-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cover_20260826",
+          "label": "Cover 2026-08-26",
+          "raw_label": "August 26, 2026",
+          "period_key": "2026-08-26",
+          "as_of_date": "2026-08-26",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "eps_numerator",
+          "label": "Net income attributable to Walmart (EPS numerator)",
+          "raw_label": "Consolidated net income attributable to Walmart",
+          "category": "numerator",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[13]",
+            "table_index": 13
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11696,
+              "raw_text": "$11,696",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 11513,
+              "raw_text": "$11,513",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "basic_eps",
+          "label": "Basic EPS",
+          "raw_label": "Basic",
+          "category": "eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[13]",
+            "table_index": 13
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1.47,
+              "raw_text": "$1.47",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1.44,
+              "raw_text": "$1.44",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "diluted_eps",
+          "label": "Diluted EPS",
+          "raw_label": "Diluted",
+          "category": "eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[13]",
+            "table_index": 13
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1.46,
+              "raw_text": "1.46",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1.43,
+              "raw_text": "1.43",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "weighted_avg_basic_shares",
+          "label": "Weighted-average basic shares",
+          "raw_label": "Weighted-average common shares outstanding, basic",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[13]",
+            "table_index": 13
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7962,
+              "raw_text": "7,962",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 7994,
+              "raw_text": "7,994",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dilutive_effect_shares",
+          "label": "Dilutive impact of share-based awards",
+          "raw_label": "Dilutive impact of share-based awards",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[13]",
+            "table_index": 13
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 27,
+              "raw_text": "27",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 39,
+              "raw_text": "39",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "weighted_avg_diluted_shares",
+          "label": "Weighted-average diluted shares",
+          "raw_label": "Weighted-average common shares outstanding, diluted",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[13]",
+            "table_index": 13
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7989,
+              "raw_text": "7,989",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 8033,
+              "raw_text": "8,033",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dividends_declared_per_share",
+          "label": "Dividends declared per share",
+          "raw_label": "Dividends declared per common share",
+          "category": "dps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[7]",
+            "table_index": 7
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0.99,
+              "raw_text": "$0.99",
+              "note": "WMT declares full-year annual dividend ($0.99 in Q1 FY27, $0.94 in Q1 FY26) in Q1",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 0.94,
+              "raw_text": "$0.94",
+              "note": "WMT declares full-year annual dividend ($0.99 in Q1 FY27, $0.94 in Q1 FY26) in Q1",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ending_shares_outstanding",
+          "label": "Period-end common shares outstanding",
+          "raw_label": "Common Stock Shares (Statements of Shareholders' Equity)",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[10]",
+            "table_index": 10
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7942,
+              "raw_text": "7,942",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cover_shares_outstanding",
+          "label": "DEI cover common shares outstanding",
+          "raw_label": "Common stock outstanding as of August 26, 2026",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., '7,933,746,241')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "cover_20260826": {
+              "value": 7933746241,
+              "raw_text": "7,933,746,241",
+              "note": "10-Q cover page p. 1, as of August 26, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., '7,933,746,241')]"
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "weighted_avg_diluted_shares",
+          "components": [
+            {
+              "id": "weighted_avg_basic_shares",
+              "sign": 1
+            },
+            {
+              "id": "dilutive_effect_shares",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["h1_27", "h1_26"],
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_debt_leases",
+      "title": "Walmart Inc. Debt, Credit Facilities & Lease Balances (As of July 31, 2026)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[14]",
+          "table_index": 14
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "Jul 31, 2026",
+          "raw_label": "July 31, 2026",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "short_term_borrowings",
+          "label": "Short-term borrowings",
+          "raw_label": "Short-term borrowings",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 10479,
+              "raw_text": "$10,479",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_long_term_debt_excl_leases",
+          "label": "Long-term debt due within one year (excl. leases)",
+          "raw_label": "Long-term debt due within one year",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[14]",
+            "table_index": 14
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3470,
+              "raw_text": "$3,470",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "long_term_debt_excl_leases",
+          "label": "Long-term debt (excl. leases)",
+          "raw_label": "Long-term debt",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[14]",
+            "table_index": 14
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 36462,
+              "raw_text": "$36,462",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_lt_debt_excl_leases",
+          "label": "Total long-term debt (incl. current portion, excl. leases)",
+          "raw_label": "Total long-term debt",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[14]",
+            "table_index": 14
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 39932,
+              "raw_text": "$39,932",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_financial_debt_excl_leases",
+          "label": "Total financial debt (excl. lease obligations)",
+          "raw_label": "Total financial debt (excl. lease obligations)",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[14]",
+            "table_index": 14
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 50411,
+              "note": "Derived as Short-term borrowings ($10,479M) + Total long-term debt excl. leases ($39,932M) on Table 8 Balance Sheet",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_finance_lease_liabilities",
+          "label": "Finance lease obligations due within one year",
+          "raw_label": "Finance lease obligations due within one year",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 880,
+              "raw_text": "880",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_finance_lease_liabilities",
+          "label": "Long-term finance lease obligations",
+          "raw_label": "Long-term finance lease obligations",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 5952,
+              "raw_text": "5,952",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_finance_lease_liabilities",
+          "label": "Total finance lease liabilities",
+          "raw_label": "Total finance lease liabilities",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 6832,
+              "note": "Derived as Current ($880M) + Long-term ($5,952M) finance lease obligations on Table 8 Balance Sheet",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_operating_lease_liabilities",
+          "label": "Operating lease obligations due within one year",
+          "raw_label": "Operating lease obligations due within one year",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1714,
+              "raw_text": "1,714",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_operating_lease_liabilities",
+          "label": "Long-term operating lease obligations",
+          "raw_label": "Long-term operating lease obligations",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 14798,
+              "raw_text": "14,798",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_operating_lease_liabilities",
+          "label": "Total operating lease liabilities",
+          "raw_label": "Total operating lease liabilities",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 16512,
+              "note": "Derived as Current ($1,714M) + Long-term ($14,798M) operating lease obligations on Table 8 Balance Sheet",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_rou_assets",
+          "label": "Operating lease ROU assets",
+          "raw_label": "Operating lease right-of-use assets",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 15650,
+              "raw_text": "15,650",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_rou_assets_net",
+          "label": "Finance lease ROU assets, net",
+          "raw_label": "Finance lease right-of-use assets, net",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[9]",
+            "table_index": 9
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 6178,
+              "raw_text": "6,178",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "revolving_credit_capacity",
+          "label": "Committed credit facilities capacity",
+          "raw_label": "Total committed lines of credit in U.S.",
+          "category": "credit_facility",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., 'committed lines of credit in the U.S. of $15.0 billion')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 15000,
+              "raw_text": "$15.0 billion",
+              "note": "Note 3 p. 9: $15.0B committed lines ($10B 364-day + $5B 5-yr), all undrawn",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., 'committed lines of credit in the U.S. of $15.0 billion')]"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "revolving_credit_drawn",
+          "label": "Committed credit facilities drawn",
+          "raw_label": "Undrawn committed lines of credit",
+          "category": "credit_facility",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., 'committed lines of credit in the U.S. of $15.0 billion')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0,
+              "raw_text": "all undrawn",
+              "note": "Note 3 p. 9: all undrawn at July 31, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., 'committed lines of credit in the U.S. of $15.0 billion')]"
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_lt_debt_excl_leases",
+          "components": [
+            {
+              "id": "current_long_term_debt_excl_leases",
+              "sign": 1
+            },
+            {
+              "id": "long_term_debt_excl_leases",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_financial_debt_excl_leases",
+          "components": [
+            {
+              "id": "short_term_borrowings",
+              "sign": 1
+            },
+            {
+              "id": "total_lt_debt_excl_leases",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_finance_lease_liabilities",
+          "components": [
+            {
+              "id": "current_finance_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "lt_finance_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_operating_lease_liabilities",
+          "components": [
+            {
+              "id": "current_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "lt_operating_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_operating_kpis",
+      "title": "Walmart Inc. Consolidated Operating KPIs & Segment Summary (6M H1 FY26–FY27)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[32]",
+          "table_index": 32
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY2027 (6M)",
+          "raw_label": "Six Months Ended July 31, 2026",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY2026 (6M)",
+          "raw_label": "Six Months Ended July 31, 2025",
+          "period_key": "2026-H1",
+          "as_of_date": "2025-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "ending_store_count",
+          "label": "Consolidated ending retail unit count",
+          "raw_label": "Unit counts at period end",
+          "category": "store_count",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[32]",
+            "table_index": 32
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11000,
+              "raw_text": "11,000",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 10797,
+              "raw_text": "10,797",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_us_store_count",
+          "label": "Walmart U.S. retail unit count",
+          "raw_label": "Unit counts at period end",
+          "category": "store_count",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[33]",
+            "table_index": 33
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 4615,
+              "raw_text": "4,615",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 4606,
+              "raw_text": "4,606",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_intl_store_count",
+          "label": "Walmart International retail unit count",
+          "raw_label": "Unit counts at period end",
+          "category": "store_count",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[34]",
+            "table_index": 34
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 5783,
+              "raw_text": "5,783",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 5591,
+              "raw_text": "5,591",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sams_club_store_count",
+          "label": "Sam's Club U.S. retail unit count",
+          "raw_label": "Unit counts at period end",
+          "category": "store_count",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 602,
+              "raw_text": "602",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 600,
+              "raw_text": "600",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "retail_sqft",
+          "label": "Consolidated retail square feet",
+          "raw_label": "Retail square feet at period end",
+          "category": "sqft",
+          "unit": "sqft",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[32]",
+            "table_index": 32
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1058,
+              "raw_text": "1,058",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1052,
+              "raw_text": "1,052",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_us_retail_sqft",
+          "label": "Walmart U.S. retail square feet",
+          "raw_label": "Retail square feet at period end",
+          "category": "sqft",
+          "unit": "sqft",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[33]",
+            "table_index": 33
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 699,
+              "raw_text": "699",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 698,
+              "raw_text": "698",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_intl_retail_sqft",
+          "label": "Walmart International retail square feet",
+          "raw_label": "Retail square feet at period end",
+          "category": "sqft",
+          "unit": "sqft",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[34]",
+            "table_index": 34
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 278,
+              "raw_text": "278",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 274,
+              "raw_text": "274",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sams_club_retail_sqft",
+          "label": "Sam's Club U.S. retail square feet",
+          "raw_label": "Retail square feet at period end",
+          "category": "sqft",
+          "unit": "sqft",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 81,
+              "raw_text": "81",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 80,
+              "raw_text": "80",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_us_comp_sales_incl_fuel",
+          "label": "Walmart U.S. calendar comp sales (incl. fuel)",
+          "raw_label": "Walmart U.S.",
+          "category": "comps",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[26]",
+            "table_index": 26
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3.8,
+              "raw_text": "3.8%",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 3.9,
+              "raw_text": "3.9%",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_us_comp_sales_fuel_impact",
+          "label": "Walmart U.S. comp sales fuel impact",
+          "raw_label": "Fuel Impact",
+          "category": "comps",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[26]",
+            "table_index": 26
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0.3,
+              "raw_text": "0.3%",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -0.1,
+              "raw_text": "(0.1)%",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_us_net_sales",
+          "label": "Walmart U.S. net sales",
+          "raw_label": "Net sales",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 242358,
+              "raw_text": "$242,358",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 233074,
+              "raw_text": "$233,074",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_us_operating_income",
+          "label": "Walmart U.S. operating income",
+          "raw_label": "Operating income",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 14017,
+              "raw_text": "$14,017",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 12428,
+              "raw_text": "$12,428",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_intl_net_sales",
+          "label": "Walmart International net sales",
+          "raw_label": "Net sales",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 70308,
+              "raw_text": "$70,308",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 60955,
+              "raw_text": "$60,955",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "walmart_intl_operating_income",
+          "label": "Walmart International operating income",
+          "raw_label": "Operating income",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3041,
+              "raw_text": "$3,041",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 2527,
+              "raw_text": "$2,527",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "corporate_and_support_operating_loss",
+          "label": "Corporate and support operating loss",
+          "raw_label": "Operating loss",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -1534,
+              "raw_text": "$(1,534)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -1670,
+              "raw_text": "$(1,670)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "consolidated_da_segment_note",
+          "label": "Consolidated D&A (Segment Note)",
+          "raw_label": "Depreciation and amortization",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7746,
+              "raw_text": "$7,746",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 6856,
+              "raw_text": "$6,856",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "consolidated_capex_segment_note",
+          "label": "Consolidated CapEx (Segment Note)",
+          "raw_label": "Capital expenditures",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 14181,
+              "raw_text": "14,181",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 11409,
+              "raw_text": "11,409",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "consolidated_assets_segment_note",
+          "label": "Consolidated Total Assets (Segment Note)",
+          "raw_label": "Total assets",
+          "category": "segment",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[22]",
+            "table_index": 22
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 293914,
+              "raw_text": "$293,914",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "ending_store_count",
+          "components": [
+            {
+              "id": "walmart_us_store_count",
+              "sign": 1
+            },
+            {
+              "id": "walmart_intl_store_count",
+              "sign": 1
+            },
+            {
+              "id": "sams_club_store_count",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "retail_sqft",
+          "components": [
+            {
+              "id": "walmart_us_retail_sqft",
+              "sign": 1
+            },
+            {
+              "id": "walmart_intl_retail_sqft",
+              "sign": 1
+            },
+            {
+              "id": "sams_club_retail_sqft",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 2000000,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "sams_club_segment",
+      "title": "Sam's Club U.S. Segment Financials & KPIs (6M H1 FY26–FY27, Post-Feb 2026 Overhead Recast)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT_SAMS",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[20]",
+          "table_index": 20
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY2027 (6M)",
+          "raw_label": "Six Months Ended July 31, 2026",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY2026 (6M)",
+          "raw_label": "Six Months Ended July 31, 2025",
+          "period_key": "2026-H1",
+          "as_of_date": "2025-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_sales",
+          "label": "Net sales (incl. fuel)",
+          "raw_label": "Net sales",
+          "category": "revenue",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 49118,
+              "raw_text": "$49,118",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 45702,
+              "raw_text": "$45,702",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "membership_and_other_income",
+          "label": "Membership and other income",
+          "raw_label": "Membership and other income",
+          "category": "revenue",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1328,
+              "raw_text": "1,328",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1224,
+              "raw_text": "1,224",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_revenues",
+          "label": "Total revenues",
+          "raw_label": "Total revenues",
+          "category": "revenue",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 50446,
+              "raw_text": "50,446",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 46926,
+              "raw_text": "46,926",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cost_of_sales",
+          "label": "Cost of sales",
+          "raw_label": "Cost of sales",
+          "category": "cost_of_sales",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 43525,
+              "raw_text": "43,525",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 40549,
+              "raw_text": "40,549",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gross_profit",
+          "label": "Gross profit",
+          "raw_label": "Gross profit",
+          "category": "gross_profit",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 5593,
+              "raw_text": "5,593",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 5153,
+              "raw_text": "5,153",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sga",
+          "label": "Operating, selling, general and administrative expenses",
+          "raw_label": "Operating, selling, general and administrative expenses",
+          "category": "operating_expense",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 5569,
+              "raw_text": "5,569",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 5241,
+              "raw_text": "5,241",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_income",
+          "label": "Operating income (incl. fuel)",
+          "raw_label": "Operating income",
+          "category": "operating_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1352,
+              "raw_text": "$1,352",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1136,
+              "raw_text": "$1,136",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "da",
+          "label": "Depreciation and amortization",
+          "raw_label": "Depreciation and amortization",
+          "category": "segment_cf",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 408,
+              "raw_text": "$408",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 384,
+              "raw_text": "$384",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Capital expenditures",
+          "raw_label": "Capital expenditures",
+          "category": "segment_cf",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 664,
+              "raw_text": "664",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 338,
+              "raw_text": "338",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_assets",
+          "label": "Total assets",
+          "raw_label": "Sam's Club U.S.",
+          "category": "segment_bs",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[22]",
+            "table_index": 22
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 18203,
+              "raw_text": "18,203",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "club_count",
+          "label": "Club count at period end",
+          "raw_label": "Unit counts at period end",
+          "category": "kpis",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 602,
+              "raw_text": "602",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 600,
+              "raw_text": "600",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "retail_sqft",
+          "label": "Retail square feet at period end",
+          "raw_label": "Retail square feet at period end",
+          "category": "kpis",
+          "unit": "sqft",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 81,
+              "raw_text": "81",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 80,
+              "raw_text": "80",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_sales_ex_fuel",
+          "label": "Net sales (excl. fuel)",
+          "raw_label": "Net sales",
+          "category": "ex_fuel",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 42656,
+              "raw_text": "$42,656",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 40924,
+              "raw_text": "$40,924",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_sales_ex_fuel_growth",
+          "label": "Net sales growth (excl. fuel)",
+          "raw_label": "Percentage change from comparable period",
+          "category": "ex_fuel",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 4.2,
+              "raw_text": "4.2%",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 5.8,
+              "raw_text": "5.8%",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_income_ex_fuel",
+          "label": "Operating income (excl. fuel)",
+          "raw_label": "Operating income",
+          "category": "ex_fuel",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[35]",
+            "table_index": 35
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1000,
+              "raw_text": "$1,000",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 843,
+              "raw_text": "$843",
+              "note": "Post-Feb 2026 corporate overhead allocation recast (Note 6: comparative 2026-H1 revised for comparability)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_sales_incl_fuel",
+          "label": "Calendar comparable sales (incl. fuel)",
+          "raw_label": "Sam's Club U.S.",
+          "category": "comps",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[26]",
+            "table_index": 26
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7.3,
+              "raw_text": "7.3%",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 3.1,
+              "raw_text": "3.1%",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_sales_fuel_impact",
+          "label": "Comparable sales fuel impact",
+          "raw_label": "Fuel Impact",
+          "category": "comps",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[26]",
+            "table_index": 26
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 3.2,
+              "raw_text": "3.2%",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -2.6,
+              "raw_text": "(2.6)%",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ecommerce_net_sales",
+          "label": "eCommerce net sales (approx.)",
+          "raw_label": "Sam's Club U.S. eCommerce net sales (Note 6)",
+          "category": "kpis",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., 'approximately $8.8 billion')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 8800,
+              "raw_text": "$8.8 billion",
+              "note": "Note 6 p. 16: approx. $8.8B for 6M ended Jul 31, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., 'approximately $8.8 billion')]"
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 7100,
+              "raw_text": "$7.1 billion",
+              "note": "Note 6 p. 16: approx. $7.1B for 6M ended Jul 31, 2025",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., '$7.1 billion related to eCommerce')]"
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_revenues",
+          "components": [
+            {
+              "id": "net_sales",
+              "sign": 1
+            },
+            {
+              "id": "membership_and_other_income",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "gross_profit",
+          "components": [
+            {
+              "id": "net_sales",
+              "sign": 1
+            },
+            {
+              "id": "cost_of_sales",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "operating_income",
+          "components": [
+            {
+              "id": "total_revenues",
+              "sign": 1
+            },
+            {
+              "id": "cost_of_sales",
+              "sign": -1
+            },
+            {
+              "id": "sga",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_qoe_items",
+      "title": "Walmart Inc. Disclosed Quality-of-Earnings Adjustments (6M H1 FY26–FY27)",
+      "source": {
+        "doc_id": "doc_wmt_20260731",
+        "entity": "WMT",
+        "basis": "qoe",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[7]",
+          "table_index": 7
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY2027 (6M)",
+          "raw_label": "Six Months Ended July 31, 2026",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY2026 (6M)",
+          "raw_label": "Six Months Ended July 31, 2025",
+          "period_key": "2026-H1",
+          "as_of_date": "2025-07-31",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "tariff_refunds_pretax",
+          "label": "IEEPA tariff refunds recognized in Cost of Sales (pretax)",
+          "raw_label": "IEEPA tariff refunds (Note 5 Gain Contingencies)",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., 'approximately $2.9 billion in tariff refunds')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -2900,
+              "raw_text": "$2.9 billion",
+              "note": "Note 5 p. 13 & MD&A p. 17: ~$2.9B IEEPA tariff refunds received Q2 FY27 recorded as COS reduction; negative removes one-time refund gain (significant portion reinvested in price)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., 'approximately $2.9 billion in tariff refunds')]"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "uncertain_tax_interest_benefit_pretax",
+          "label": "Interest expense reduction from uncertain tax position changes (pretax)",
+          "raw_label": "Reduction of interest expense (Note 1)",
+          "category": "non_operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., '0.5') and contains(., 'reduction of interest expense')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -500,
+              "raw_text": "$0.5 billion",
+              "note": "Note 1 p. 8: $0.5B reduction of interest expense in Q2 FY27 from uncertain tax position changes; negative removes one-time interest reduction",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., '0.5') and contains(., 'reduction of interest expense')]"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "uncertain_tax_benefit_tax",
+          "label": "Income tax benefit from uncertain tax position changes (tax)",
+          "raw_label": "Benefit to income tax expense (Note 1)",
+          "category": "tax_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., '0.4') and contains(., 'benefit to income tax expense')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -400,
+              "raw_text": "$0.4 billion",
+              "note": "Note 1 p. 8: $0.4B income tax benefit in Q2 FY27 from uncertain tax position changes; negative removes one-time tax benefit",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., '0.4') and contains(., 'benefit to income tax expense')]"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "legal_matters_charge_pretax",
+          "label": "Legal matters charges in SG&A (pretax)",
+          "raw_label": "Charges related to certain legal matters (MD&A)",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[not(.//div) and contains(., 'charges of $0.4 billion related to certain legal matters')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_26": {
+              "value": 400,
+              "raw_text": "$0.4 billion",
+              "note": "MD&A Margin p. 18: $0.4B legal charges in 3M and 6M ended Jul 31, 2025; positive adds back one-time legal expense",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., 'charges of $0.4 billion related to certain legal matters')]"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_gains_losses_pretax_adj",
+          "label": "Equity & debt investment fair value gains/(losses) reversal (pretax)",
+          "raw_label": "Other (gains) and losses",
+          "category": "non_operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[7]",
+            "table_index": 7
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 925,
+              "raw_text": "925",
+              "note": "Printed as expense/(gain) in IS; positive removes investment loss, negative removes investment gain",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -2111,
+              "raw_text": "(2,111)",
+              "note": "Printed as expense/(gain) in IS; positive removes investment loss, negative removes investment gain",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "Disclosed GAAP QoE adjustment items from filing notes and MD&A without a management Non-GAAP subtotal table",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": [
+    {
+      "name": "ni_is_cf_h1_27",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income_incl_nci",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_incl_nci",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "da_cf_seg_h1_27",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "depreciation_and_amortization",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "consolidated_da_segment_note",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "sams_club_count_h1_27",
+      "target": {
+        "table_id": "sams_club_segment",
+        "row_id": "club_count",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "sams_club_store_count",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "capex_cf_seg_h1_27",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "consolidated_capex_segment_note",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "capex",
+          "col_id": "h1_27",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "seg_sales_sum_h1_27",
+      "target": {
+        "table_id": "peer_income_statement",
+        "row_id": "net_sales",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_us_net_sales",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_intl_net_sales",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "sams_club_segment",
+          "row_id": "net_sales",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "seg_oi_sum_h1_27",
+      "target": {
+        "table_id": "peer_income_statement",
+        "row_id": "operating_income",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_us_operating_income",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_intl_operating_income",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "sams_club_segment",
+          "row_id": "operating_income",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "corporate_and_support_operating_loss",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "ni_is_cf_h1_26",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income_incl_nci",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_incl_nci",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "da_cf_seg_h1_26",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "depreciation_and_amortization",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "consolidated_da_segment_note",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "sams_club_count_h1_26",
+      "target": {
+        "table_id": "sams_club_segment",
+        "row_id": "club_count",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "sams_club_store_count",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "capex_cf_seg_h1_26",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "consolidated_capex_segment_note",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "capex",
+          "col_id": "h1_26",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "seg_sales_sum_h1_26",
+      "target": {
+        "table_id": "peer_income_statement",
+        "row_id": "net_sales",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_us_net_sales",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_intl_net_sales",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "sams_club_segment",
+          "row_id": "net_sales",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "seg_oi_sum_h1_26",
+      "target": {
+        "table_id": "peer_income_statement",
+        "row_id": "operating_income",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_us_operating_income",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "walmart_intl_operating_income",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "sams_club_segment",
+          "row_id": "operating_income",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "corporate_and_support_operating_loss",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_assets_eq_le_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "total_assets",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_balance_sheet",
+          "row_id": "total_liabilities_and_equity",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "seg_assets_bs_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "total_assets",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "consolidated_assets_segment_note",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_st_debt_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "short_term_borrowings",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "short_term_borrowings",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_curr_debt_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_long_term_debt",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_long_term_debt_excl_leases",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_lt_debt_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "long_term_debt",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "long_term_debt_excl_leases",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_curr_ol_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_operating_lease_liabilities",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_operating_lease_liabilities",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_lt_ol_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "lt_operating_lease_liabilities",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "lt_operating_lease_liabilities",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_curr_fl_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_finance_lease_liabilities",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_finance_lease_liabilities",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_lt_fl_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "lt_finance_lease_liabilities",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "lt_finance_lease_liabilities",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    }
+  ]
+}

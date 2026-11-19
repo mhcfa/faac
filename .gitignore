@@ -1,0 +1,21 @@
+# Node & TypeScript
+node_modules/
+dist/
+*.tsbuildinfo
+
+# Temporary and Lock Files (Excel, Office)
+~$*.xlsx
+~$*.xlsm
+~$*.xls
+~$*.docx
+~$*.pptx
+*.tmp
+
+# Environment variables & secrets
+.env
+.env.*
+!.env.example
+
+# OS files
+.DS_Store
+Thumbs.db

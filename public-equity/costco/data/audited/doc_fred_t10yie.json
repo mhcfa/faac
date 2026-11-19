@@ -1,0 +1,192 @@
+{
+  "document": {
+    "doc_id": "doc_fred_t10yie",
+    "file_path": "data/raw/market/fred_T10YIE.csv",
+    "sha256": "17faf3a0aec4b7dca413488e3d587956888606f3ecff6c926165ea15d9d5584f",
+    "doc_type": "other",
+    "size_bytes": 4296,
+    "title": "10-Year Breakeven Inflation Rate (T10YIE) (market/fred_T10YIE.csv)",
+    "report_date": "2026-11-13",
+    "source_meta": {}
+  },
+  "tables": [
+    {
+      "table_id": "mkt_inflation_fedfunds",
+      "title": "US 10-Year Breakeven Inflation & Effective Federal Funds Rate",
+      "source": {
+        "doc_id": "doc_fred_t10yie",
+        "entity": "US_MACRO",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 271
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "d_2025_11_13",
+          "label": "2025-11-13",
+          "raw_label": "2025-11-13",
+          "period_key": "2025-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 10,
+            "line_end": 10
+          },
+          "as_of_date": "2025-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_01_02",
+          "label": "2026-01-02",
+          "raw_label": "2026-01-02",
+          "period_key": "2026-01-02",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 46,
+            "line_end": 46
+          },
+          "as_of_date": "2026-01-02",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_10_13",
+          "label": "2026-10-13",
+          "raw_label": "2026-10-13",
+          "period_key": "2026-10-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 248,
+            "line_end": 248
+          },
+          "as_of_date": "2026-10-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_06",
+          "label": "2026-11-06",
+          "raw_label": "2026-11-06",
+          "period_key": "2026-11-06",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 266,
+            "line_end": 266
+          },
+          "as_of_date": "2026-11-06",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_12",
+          "label": "2026-11-12",
+          "raw_label": "2026-11-12",
+          "period_key": "2026-11-12",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 270,
+            "line_end": 270
+          },
+          "as_of_date": "2026-11-12",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_13",
+          "label": "2026-11-13",
+          "raw_label": "2026-11-13",
+          "period_key": "2026-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 271,
+            "line_end": 271
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "t10yie_breakeven",
+          "label": "10-Year Breakeven Inflation Rate (T10YIE)",
+          "raw_label": "T10YIE",
+          "category": "Inflation Expectations",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2025_11_13": {
+              "value": 2.28,
+              "raw_text": "2.28",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10,
+                "line_end": 10
+              },
+              "is_restatement": false
+            },
+            "d_2026_01_02": {
+              "value": 2.25,
+              "raw_text": "2.25",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46,
+                "line_end": 46
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 2.33,
+              "raw_text": "2.33",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 248,
+                "line_end": 248
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 2.23,
+              "raw_text": "2.23",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 266,
+                "line_end": 266
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 2.24,
+              "raw_text": "2.24",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 270,
+                "line_end": 270
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 2.24,
+              "raw_text": "2.24",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 271,
+                "line_end": 271
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "US macro breakeven inflation and effective federal funds rates; non-additive",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

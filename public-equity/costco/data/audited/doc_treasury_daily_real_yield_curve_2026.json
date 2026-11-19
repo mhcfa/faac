@@ -1,0 +1,412 @@
+{
+  "document": {
+    "doc_id": "doc_treasury_daily_real_yield_curve_2026",
+    "file_path": "data/raw/market/treasury_daily_real_yield_curve_2026.csv",
+    "sha256": "d85da9c44e9256d75f3ef3221472436879ebbcdd461085ef17d21f3fdc4abe6f",
+    "doc_type": "other",
+    "size_bytes": 7890,
+    "title": "US Treasury Daily Real TIPS Yield Curve Rates (2026)",
+    "report_date": "2026-11-13",
+    "source_meta": {}
+  },
+  "tables": [
+    {
+      "table_id": "mkt_treasury_real_curve",
+      "title": "US Treasury Daily Real TIPS Yield Curve Rates (2026)",
+      "source": {
+        "doc_id": "doc_treasury_daily_real_yield_curve_2026",
+        "entity": "US_TREASURY",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 219
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "d_2026_01_02",
+          "label": "2026-01-02",
+          "raw_label": "01/02/2026",
+          "period_key": "2026-01-02",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 219,
+            "line_end": 219
+          },
+          "as_of_date": "2026-01-02",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_10_13",
+          "label": "2026-10-13",
+          "raw_label": "10/13/2026",
+          "period_key": "2026-10-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 24,
+            "line_end": 24
+          },
+          "as_of_date": "2026-10-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_06",
+          "label": "2026-11-06",
+          "raw_label": "11/06/2026",
+          "period_key": "2026-11-06",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 6,
+            "line_end": 6
+          },
+          "as_of_date": "2026-11-06",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_12",
+          "label": "2026-11-12",
+          "raw_label": "11/12/2026",
+          "period_key": "2026-11-12",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 3,
+            "line_end": 3
+          },
+          "as_of_date": "2026-11-12",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_13",
+          "label": "2026-11-13",
+          "raw_label": "11/13/2026",
+          "period_key": "2026-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 2,
+            "line_end": 2
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "real_5y",
+          "label": "5-Year Real TIPS Yield",
+          "raw_label": "5 YR",
+          "category": "TIPS Real CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 1.46,
+              "raw_text": "1.46",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 2.67,
+              "raw_text": "2.67",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 2.35,
+              "raw_text": "2.35",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 2.64,
+              "raw_text": "2.64",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 2.68,
+              "raw_text": "2.68",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "real_7y",
+          "label": "7-Year Real TIPS Yield",
+          "raw_label": "7 YR",
+          "category": "TIPS Real CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 1.69,
+              "raw_text": "1.69",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 2.77,
+              "raw_text": "2.77",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 2.48,
+              "raw_text": "2.48",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 2.74,
+              "raw_text": "2.74",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 2.78,
+              "raw_text": "2.78",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "real_10y",
+          "label": "10-Year Real TIPS Yield",
+          "raw_label": "10 YR",
+          "category": "TIPS Real CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 1.94,
+              "raw_text": "1.94",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 2.88,
+              "raw_text": "2.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 2.63,
+              "raw_text": "2.63",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 2.86,
+              "raw_text": "2.86",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 2.91,
+              "raw_text": "2.91",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "real_20y",
+          "label": "20-Year Real TIPS Yield",
+          "raw_label": "20 YR",
+          "category": "TIPS Real CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 2.39,
+              "raw_text": "2.39",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 3.13,
+              "raw_text": "3.13",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 2.91,
+              "raw_text": "2.91",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 3.11,
+              "raw_text": "3.11",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 3.15,
+              "raw_text": "3.15",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "real_30y",
+          "label": "30-Year Real TIPS Yield",
+          "raw_label": "30 YR",
+          "category": "TIPS Real CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 2.63,
+              "raw_text": "2.63",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 3.28,
+              "raw_text": "3.28",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 3.07,
+              "raw_text": "3.07",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 3.24,
+              "raw_text": "3.24",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 3.28,
+              "raw_text": "3.28",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "US Treasury TIPS real constant-maturity yield curve rates; non-additive across tenors",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

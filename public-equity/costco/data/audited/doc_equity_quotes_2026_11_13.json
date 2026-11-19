@@ -1,0 +1,1771 @@
+{
+  "document": {
+    "doc_id": "doc_equity_quotes_2026_11_13",
+    "file_path": "data/raw/market/equity_quotes_2026-11-13.json",
+    "sha256": "552863d8ff5de86acedf48ea4bfe2faddb4e6662c01ff75caf876fad52f4017b",
+    "doc_type": "other",
+    "size_bytes": 17415,
+    "title": "Market Equity Quotes, Share Counts, Betas & Multiples (2026-11-13 Close)",
+    "report_date": "2026-11-13",
+    "source_meta": {}
+  },
+  "tables": [
+    {
+      "table_id": "mkt_equity_quotes",
+      "title": "Market Equity Quotes, Capitalization, Betas & LTM Multiples (2026-11-13 Close)",
+      "source": {
+        "doc_id": "doc_equity_quotes_2026_11_13",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 475
+        },
+        "as_of_date": "2026-11-13",
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "cost",
+          "label": "COST",
+          "raw_label": "COST (Costco Wholesale Corporation)",
+          "period_key": "2026-11-13",
+          "entity": "COST",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 11,
+            "line_end": 87
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "bj",
+          "label": "BJ",
+          "raw_label": "BJ (BJ's Wholesale Club Holdings, Inc.)",
+          "period_key": "2026-11-13",
+          "entity": "BJ",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 88,
+            "line_end": 164
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "psmt",
+          "label": "PSMT",
+          "raw_label": "PSMT (PriceSmart, Inc.)",
+          "period_key": "2026-11-13",
+          "entity": "PSMT",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 165,
+            "line_end": 242
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "wmt",
+          "label": "WMT",
+          "raw_label": "WMT (Walmart Inc.)",
+          "period_key": "2026-11-13",
+          "entity": "WMT",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 243,
+            "line_end": 319
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "tgt",
+          "label": "TGT",
+          "raw_label": "TGT (Target Corporation)",
+          "period_key": "2026-11-13",
+          "entity": "TGT",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 320,
+            "line_end": 396
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "kr",
+          "label": "KR",
+          "raw_label": "KR (The Kroger Co.)",
+          "period_key": "2026-11-13",
+          "entity": "KR",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 397,
+            "line_end": 473
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "close_price",
+          "label": "Closing Share Price",
+          "category": "Price",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 1106.21,
+              "raw_text": "1106.21",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17,
+                "line_end": 17
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 110.34,
+              "raw_text": "110.34",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 94,
+                "line_end": 94
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 164.77,
+              "raw_text": "164.77",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 171,
+                "line_end": 171
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 128.09,
+              "raw_text": "128.09",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 249,
+                "line_end": 249
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 161.45,
+              "raw_text": "161.45",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 326,
+                "line_end": 326
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 70.8,
+              "raw_text": "70.8",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 403,
+                "line_end": 403
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "daily_change_pct",
+          "label": "Daily Price Change",
+          "category": "Price",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 1.28,
+              "raw_text": "1.28",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23,
+                "line_end": 23
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": -0.49,
+              "raw_text": "-0.49",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 100,
+                "line_end": 100
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 0.18,
+              "raw_text": "0.18",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 177,
+                "line_end": 177
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 1.51,
+              "raw_text": "1.51",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 255,
+                "line_end": 255
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 0.34,
+              "raw_text": "0.34",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 332,
+                "line_end": 332
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 1.42,
+              "raw_text": "1.42",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 409,
+                "line_end": 409
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "volume",
+          "label": "Daily Trading Volume",
+          "category": "Price",
+          "unit": "shares",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 1874100,
+              "raw_text": "1874100",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21,
+                "line_end": 21
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 1565800,
+              "raw_text": "1565800",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 98,
+                "line_end": 98
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 107100,
+              "raw_text": "107100",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 175,
+                "line_end": 175
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 16619500,
+              "raw_text": "16619500",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 253,
+                "line_end": 253
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 2344400,
+              "raw_text": "2344400",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 330,
+                "line_end": 330
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 4550700,
+              "raw_text": "4550700",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 407,
+                "line_end": 407
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "52w_low",
+          "label": "52-Week Low Price",
+          "category": "Range",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 844.06,
+              "raw_text": "844.06",
+              "note": "52W low date 2025-12-16",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35,
+                "line_end": 35
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 83.21,
+              "raw_text": "83.21",
+              "note": "52W low date 2026-06-22",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 112,
+                "line_end": 112
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 114.43,
+              "raw_text": "114.43",
+              "note": "52W low date 2025-11-14",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 189,
+                "line_end": 189
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 98.88,
+              "raw_text": "98.88",
+              "note": "52W low date 2025-11-14",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 267,
+                "line_end": 267
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 83.44,
+              "raw_text": "83.44",
+              "note": "52W low date 2025-11-20",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 344,
+                "line_end": 344
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 54.15,
+              "raw_text": "54.15",
+              "note": "52W low date 2026-07-01",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 421,
+                "line_end": 421
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "52w_high",
+          "label": "52-Week High Price",
+          "category": "Range",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 1109.5,
+              "raw_text": "1109.5",
+              "note": "52W high date 2026-11-13",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37,
+                "line_end": 37
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 113.35,
+              "raw_text": "113.35",
+              "note": "52W high date 2026-11-05",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 114,
+                "line_end": 114
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 199.84,
+              "raw_text": "199.84",
+              "note": "52W high date 2026-07-06",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 191,
+                "line_end": 191
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 135.16,
+              "raw_text": "135.16",
+              "note": "52W high date 2026-05-19",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 269,
+                "line_end": 269
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 170.75,
+              "raw_text": "170.75",
+              "note": "52W high date 2026-08-24",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 346,
+                "line_end": 346
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 76.58,
+              "raw_text": "76.58",
+              "note": "52W high date 2026-03-12",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 423,
+                "line_end": 423
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "pct_off_52w_high",
+          "label": "Discount to 52-Week High",
+          "category": "Range",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": -0.3,
+              "raw_text": "-0.3",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39,
+                "line_end": 39
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": -2.66,
+              "raw_text": "-2.66",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 116,
+                "line_end": 116
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": -17.55,
+              "raw_text": "-17.55",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 193,
+                "line_end": 193
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": -5.23,
+              "raw_text": "-5.23",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 271,
+                "line_end": 271
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": -5.45,
+              "raw_text": "-5.45",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 348,
+                "line_end": 348
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": -7.55,
+              "raw_text": "-7.55",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 425,
+                "line_end": 425
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sec_shares_outstanding",
+          "label": "SEC Filing Common Shares Outstanding",
+          "category": "Capitalization",
+          "unit": "shares",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 443129349,
+              "raw_text": "443129349",
+              "note": "10-K (FY26) as of 2026-09-29",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42,
+                "line_end": 42
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 126314692,
+              "raw_text": "126314692",
+              "note": "10-Q (Q2 FY26) as of 2026-08-20",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 119,
+                "line_end": 119
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 30928227,
+              "raw_text": "30928227",
+              "note": "10-K (FY26) as of 2026-10-21",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 196,
+                "line_end": 196
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 7933746241,
+              "raw_text": "7933746241",
+              "note": "10-Q (Q2 FY27) as of 2026-08-26",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 274,
+                "line_end": 274
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 454296736,
+              "raw_text": "454296736",
+              "note": "10-Q (Q2 FY26) as of 2026-08-21",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 351,
+                "line_end": 351
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 590588700,
+              "raw_text": "590588700",
+              "note": "10-Q (Q2 FY26) as of 2026-09-15",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 428,
+                "line_end": 428
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "stockanalysis_shares",
+          "label": "StockAnalysis Common Shares",
+          "category": "Capitalization",
+          "unit": "shares",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 443.13,
+              "raw_text": "443.13",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49,
+                "line_end": 49
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 126.31,
+              "raw_text": "126.31",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 126,
+                "line_end": 126
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 30.16,
+              "raw_text": "30.16",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 204,
+                "line_end": 204
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 7930,
+              "raw_text": "7930.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 281,
+                "line_end": 281
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 454.3,
+              "raw_text": "454.3",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 358,
+                "line_end": 358
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 590.59,
+              "raw_text": "590.59",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 435,
+                "line_end": 435
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "market_cap_sec_shares",
+          "label": "Market Capitalization (SEC Shares)",
+          "category": "Capitalization",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 490194.12,
+              "raw_text": "490194.12",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50,
+                "line_end": 50
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 13937.56,
+              "raw_text": "13937.56",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 127,
+                "line_end": 127
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 5096.04,
+              "raw_text": "5096.04",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 205,
+                "line_end": 205
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 1016233.56,
+              "raw_text": "1016233.56",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 282,
+                "line_end": 282
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 73346.21,
+              "raw_text": "73346.21",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 359,
+                "line_end": 359
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 41813.68,
+              "raw_text": "41813.68",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 436,
+                "line_end": 436
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mrq_cash_and_st_investments",
+          "label": "MRQ Cash & Short-Term Investments",
+          "category": "Capitalization",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 21300,
+              "raw_text": "21300.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53,
+                "line_end": 53
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 29.98,
+              "raw_text": "29.98",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 130,
+                "line_end": 130
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 332.51,
+              "raw_text": "332.51",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 208,
+                "line_end": 208
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 11530,
+              "raw_text": "11530.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 285,
+                "line_end": 285
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 5410,
+              "raw_text": "5410.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 362,
+                "line_end": 362
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 1680,
+              "raw_text": "1680.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 439,
+                "line_end": 439
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mrq_total_debt_incl_leases",
+          "label": "MRQ Total Debt (incl. Leases)",
+          "category": "Capitalization",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 10180,
+              "raw_text": "10180.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54,
+                "line_end": 54
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 2770,
+              "raw_text": "2770.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 131,
+                "line_end": 131
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 360.6,
+              "raw_text": "360.6",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 209,
+                "line_end": 209
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 75090,
+              "raw_text": "75090.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 286,
+                "line_end": 286
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 19200,
+              "raw_text": "19200.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 363,
+                "line_end": 363
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 24160,
+              "raw_text": "24160.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 440,
+                "line_end": 440
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mrq_net_cash",
+          "label": "MRQ Net Cash / (Net Debt)",
+          "category": "Capitalization",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 11120,
+              "raw_text": "11120.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55,
+                "line_end": 55
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": -2740,
+              "raw_text": "-2740.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 132,
+                "line_end": 132
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": -28.1,
+              "raw_text": "-28.1",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 210,
+                "line_end": 210
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": -63560,
+              "raw_text": "-63560.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 287,
+                "line_end": 287
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": -13790,
+              "raw_text": "-13790.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 364,
+                "line_end": 364
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": -22480,
+              "raw_text": "-22480.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 441,
+                "line_end": 441
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ev_sec_shares_mrq_bs",
+          "label": "Enterprise Value (SEC Shares & MRQ BS)",
+          "category": "Capitalization",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 479074.12,
+              "raw_text": "479074.12",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56,
+                "line_end": 56
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 16677.58,
+              "raw_text": "16677.58",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 133,
+                "line_end": 133
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 5124.13,
+              "raw_text": "5124.13",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 211,
+                "line_end": 211
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 1079793.56,
+              "raw_text": "1079793.56",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 288,
+                "line_end": 288
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 87136.21,
+              "raw_text": "87136.21",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 365,
+                "line_end": 365
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 64293.68,
+              "raw_text": "64293.68",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 442,
+                "line_end": 442
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "beta_5y_monthly",
+          "label": "Beta (5Y Monthly vs S&P 500)",
+          "category": "Risk",
+          "unit": "ratio",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 0.85,
+              "raw_text": "0.85",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61,
+                "line_end": 61
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 0.14,
+              "raw_text": "0.14",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 138,
+                "line_end": 138
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 0.81,
+              "raw_text": "0.81",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 216,
+                "line_end": 216
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 0.53,
+              "raw_text": "0.53",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 293,
+                "line_end": 293
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 0.97,
+              "raw_text": "0.97",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 370,
+                "line_end": 370
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 0.34,
+              "raw_text": "0.34",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 447,
+                "line_end": 447
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "stockanalysis_5y_beta",
+          "label": "Beta (StockAnalysis 5Y)",
+          "category": "Risk",
+          "unit": "ratio",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 0.85,
+              "raw_text": "0.85",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60,
+                "line_end": 60
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 0.14,
+              "raw_text": "0.14",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 137,
+                "line_end": 137
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 0.81,
+              "raw_text": "0.81",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 215,
+                "line_end": 215
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 0.53,
+              "raw_text": "0.53",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 292,
+                "line_end": 292
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 0.93,
+              "raw_text": "0.93",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 369,
+                "line_end": 369
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 0.36,
+              "raw_text": "0.36",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 446,
+                "line_end": 446
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "beta_2y_weekly",
+          "label": "Beta (2Y Weekly vs S&P 500)",
+          "category": "Risk",
+          "unit": "ratio",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 0.22,
+              "raw_text": "0.22",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62,
+                "line_end": 62
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": -0.48,
+              "raw_text": "-0.48",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 139,
+                "line_end": 139
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 0.42,
+              "raw_text": "0.42",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 217,
+                "line_end": 217
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 0.48,
+              "raw_text": "0.48",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 294,
+                "line_end": 294
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 0.55,
+              "raw_text": "0.55",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 371,
+                "line_end": 371
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": -0.35,
+              "raw_text": "-0.35",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 448,
+                "line_end": 448
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "regular_annual_dps",
+          "label": "Regular Annual Dividend Per Share",
+          "category": "Dividend",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 5.88,
+              "raw_text": "5.88",
+              "note": "Ex-date Nov 24, 2026",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 66,
+                "line_end": 66
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 1.4,
+              "raw_text": "1.4",
+              "note": "Ex-date Aug 17, 2026",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 221,
+                "line_end": 221
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 0.99,
+              "raw_text": "0.99",
+              "note": "Ex-date Dec 11, 2026",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 298,
+                "line_end": 298
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 4.64,
+              "raw_text": "4.64",
+              "note": "Ex-date Nov 10, 2026",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 375,
+                "line_end": 375
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 1.56,
+              "raw_text": "1.56",
+              "note": "Ex-date Nov 16, 2026",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 452,
+                "line_end": 452
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "regular_dividend_yield",
+          "label": "Regular Dividend Yield",
+          "category": "Dividend",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 0.5315,
+              "raw_text": "0.5315",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 67,
+                "line_end": 67
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 0,
+              "raw_text": "0.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 144,
+                "line_end": 144
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 0.8497,
+              "raw_text": "0.8497",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 222,
+                "line_end": 222
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 0.7729,
+              "raw_text": "0.7729",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 299,
+                "line_end": 299
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 2.874,
+              "raw_text": "2.874",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 376,
+                "line_end": 376
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 2.2034,
+              "raw_text": "2.2034",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 453,
+                "line_end": 453
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "special_dividend_ps",
+          "label": "Special Cash Dividend Per Share",
+          "category": "Dividend",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 30,
+              "raw_text": "$30.00",
+              "note": "COST declared a $30.00/sh special cash dividend on Nov 10, 2026 (record/ex-date Nov 24, 2026, pay Dec 4, 2026; ~2.71% special yield on Nov 13 close); excluded from regular annual DPS $5.88.",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 69,
+                "line_end": 69
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "pe_ltm",
+          "label": "P / LTM EPS",
+          "category": "Multiples",
+          "unit": "multiple",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 53.29,
+              "raw_text": "53.29",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 81,
+                "line_end": 81
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 24.14,
+              "raw_text": "24.14",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 158,
+                "line_end": 158
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 30.51,
+              "raw_text": "30.51",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 236,
+                "line_end": 236
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 46.41,
+              "raw_text": "46.41",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 313,
+                "line_end": 313
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 16.75,
+              "raw_text": "16.75",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 390,
+                "line_end": 390
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 41.16,
+              "raw_text": "41.16",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 467,
+                "line_end": 467
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ev_to_ltm_sales",
+          "label": "EV / LTM Sales",
+          "category": "Multiples",
+          "unit": "multiple",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 1.58,
+              "raw_text": "1.58",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 82,
+                "line_end": 82
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 0.73,
+              "raw_text": "0.73",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 159,
+                "line_end": 159
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 0.87,
+              "raw_text": "0.87",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 237,
+                "line_end": 237
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 1.47,
+              "raw_text": "1.47",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 314,
+                "line_end": 314
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 0.81,
+              "raw_text": "0.81",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 391,
+                "line_end": 391
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 0.43,
+              "raw_text": "0.43",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 468,
+                "line_end": 468
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ev_to_ltm_ebitda",
+          "label": "EV / LTM EBITDA",
+          "category": "Multiples",
+          "unit": "multiple",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 33.76,
+              "raw_text": "33.76",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 83,
+                "line_end": 83
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 14.38,
+              "raw_text": "14.38",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 160,
+                "line_end": 160
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 14.07,
+              "raw_text": "14.07",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 238,
+                "line_end": 238
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 24.5,
+              "raw_text": "24.5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 315,
+                "line_end": 315
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 10.14,
+              "raw_text": "10.14",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 392,
+                "line_end": 392
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 8,
+              "raw_text": "8.0",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 469,
+                "line_end": 469
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ev_to_ltm_ebit",
+          "label": "EV / LTM EBIT",
+          "category": "Multiples",
+          "unit": "multiple",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 41.62,
+              "raw_text": "41.62",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 84,
+                "line_end": 84
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 19.43,
+              "raw_text": "19.43",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 161,
+                "line_end": 161
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 19.35,
+              "raw_text": "19.35",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 239,
+                "line_end": 239
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 37.26,
+              "raw_text": "37.26",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 316,
+                "line_end": 316
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 16.08,
+              "raw_text": "16.08",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 393,
+                "line_end": 393
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 13.45,
+              "raw_text": "13.45",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 470,
+                "line_end": 470
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "p_to_ltm_fcf",
+          "label": "P / LTM Free Cash Flow",
+          "category": "Multiples",
+          "unit": "multiple",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cost": {
+              "value": 52.26,
+              "raw_text": "52.26",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 85,
+                "line_end": 85
+              },
+              "is_restatement": false
+            },
+            "bj": {
+              "value": 38.91,
+              "raw_text": "38.91",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 162,
+                "line_end": 162
+              },
+              "is_restatement": false
+            },
+            "psmt": {
+              "value": 52.87,
+              "raw_text": "52.87",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 240,
+                "line_end": 240
+              },
+              "is_restatement": false
+            },
+            "wmt": {
+              "value": 75.22,
+              "raw_text": "75.22",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 317,
+                "line_end": 317
+              },
+              "is_restatement": false
+            },
+            "tgt": {
+              "value": 16.45,
+              "raw_text": "16.45",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 394,
+                "line_end": 394
+              },
+              "is_restatement": false
+            },
+            "kr": {
+              "value": 17.57,
+              "raw_text": "17.57",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 471,
+                "line_end": 471
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "Market quotes, share counts, betas, dividend yields, and valuation multiples across peer tickers; no additive cross-row total",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

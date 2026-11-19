@@ -1,0 +1,3193 @@
+{
+  "document": {
+    "doc_id": "doc_bj_20260801",
+    "file_path": "data/raw/sec/0001531152/0001531152-26-000057/bj-20260801.htm",
+    "sha256": "635a32ac466a964fceb5cb2abce3b827817950c1f2d6a82f68686a709fe37982",
+    "doc_type": "sec_filing",
+    "size_bytes": 993254,
+    "title": "BJ's Wholesale Club Holdings, Inc. 10-Q (2026-08-01)",
+    "report_date": "2026-08-01",
+    "filing_date": "2026-08-25",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001531152",
+      "company_name": "BJ's Wholesale Club Holdings, Inc.",
+      "tickers": "BJ",
+      "form": "10-Q",
+      "accession_number": "0001531152-26-000057",
+      "filing_date": "2026-08-25",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1531152/000153115226000057/bj-20260801.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "peer_income_statement",
+      "title": "Consolidated Statements of Operations",
+      "source": {
+        "doc_id": "doc_bj_20260801",
+        "entity": "BJ",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[9]",
+          "table_index": 9
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY27 (26W ended Aug 1, 2026)",
+          "raw_label": "August 1, 2026",
+          "period_key": "2027-H1",
+          "unit": "USD",
+          "scale": 1000,
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY26 (26W ended Aug 2, 2025)",
+          "raw_label": "August 2, 2025",
+          "period_key": "2026-H1",
+          "unit": "USD",
+          "scale": 1000,
+          "as_of_date": "2025-08-02",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_sales",
+          "label": "Net sales",
+          "raw_label": "Net sales",
+          "category": "revenue",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11620120,
+              "raw_text": "$11,620,120",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 10290001,
+              "raw_text": "$10,290,001",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "membership_and_other_income",
+          "label": "Membership fee income",
+          "raw_label": "Membership fee income",
+          "category": "revenue",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 267959,
+              "raw_text": "267,959",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 243722,
+              "raw_text": "243,722",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_revenue",
+          "label": "Total revenues",
+          "raw_label": "Total revenues",
+          "category": "revenue",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 11888079,
+              "raw_text": "11,888,079",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 10533723,
+              "raw_text": "10,533,723",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cost_of_sales",
+          "label": "Cost of sales",
+          "raw_label": "Cost of sales",
+          "category": "operating_expenses",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 9750179,
+              "raw_text": "9,750,179",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 8558049,
+              "raw_text": "8,558,049",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sga",
+          "label": "Selling, general and administrative expenses",
+          "raw_label": "Selling, general and administrative expenses",
+          "category": "operating_expenses",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1657216,
+              "raw_text": "1,657,216",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 1547238,
+              "raw_text": "1,547,238",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "pre_opening_expenses",
+          "label": "Pre-opening expenses",
+          "raw_label": "Pre-opening expenses",
+          "category": "operating_expenses",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 20414,
+              "raw_text": "20,414",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 8261,
+              "raw_text": "8,261",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_income",
+          "label": "Operating income",
+          "raw_label": "Operating income",
+          "category": "operating_income",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 460270,
+              "raw_text": "460,270",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 420175,
+              "raw_text": "420,175",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "interest_expense_net",
+          "label": "Interest expense, net",
+          "raw_label": "Interest expense, net",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 25450,
+              "raw_text": "25,450",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 21492,
+              "raw_text": "21,492",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ebt",
+          "label": "Income before income taxes",
+          "raw_label": "Income before income taxes",
+          "category": "ebt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 434820,
+              "raw_text": "434,820",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 398683,
+              "raw_text": "398,683",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "income_tax_expense",
+          "label": "Provision for income taxes",
+          "raw_label": "Provision for income taxes",
+          "category": "taxes",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 118227,
+              "raw_text": "118,227",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 98210,
+              "raw_text": "98,210",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income",
+          "label": "Net income",
+          "raw_label": "Net income",
+          "category": "net_income",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 316593,
+              "raw_text": "$316,593",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 300473,
+              "raw_text": "$300,473",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_revenue",
+          "components": [
+            {
+              "id": "net_sales",
+              "sign": 1
+            },
+            {
+              "id": "membership_and_other_income",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "operating_income",
+          "components": [
+            {
+              "id": "total_revenue",
+              "sign": 1
+            },
+            {
+              "id": "cost_of_sales",
+              "sign": -1
+            },
+            {
+              "id": "sga",
+              "sign": -1
+            },
+            {
+              "id": "pre_opening_expenses",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ebt",
+          "components": [
+            {
+              "id": "operating_income",
+              "sign": 1
+            },
+            {
+              "id": "interest_expense_net",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income",
+          "components": [
+            {
+              "id": "ebt",
+              "sign": 1
+            },
+            {
+              "id": "income_tax_expense",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_balance_sheet",
+      "title": "Consolidated Balance Sheets",
+      "source": {
+        "doc_id": "doc_bj_20260801",
+        "entity": "BJ",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[7]",
+          "table_index": 7
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "Q2 FY27 (as of Aug 1, 2026)",
+          "raw_label": "August 1, 2026",
+          "period_key": "2027-H1",
+          "unit": "USD",
+          "scale": 1000,
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "cash_and_equivalents",
+          "label": "Cash and cash equivalents",
+          "raw_label": "Cash and cash equivalents",
+          "category": "current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 29982,
+              "raw_text": "$29,982",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "receivables_net",
+          "label": "Accounts receivable, net",
+          "raw_label": "Accounts receivable, net",
+          "category": "current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 308605,
+              "raw_text": "308,605",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "inventories",
+          "label": "Merchandise inventories",
+          "raw_label": "Merchandise inventories",
+          "category": "current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1617034,
+              "raw_text": "1,617,034",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_current_assets",
+          "label": "Prepaid expenses and other current assets",
+          "raw_label": "Prepaid expenses and other current assets",
+          "category": "current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 215080,
+              "raw_text": "215,080",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_current_assets",
+          "label": "Total current assets",
+          "raw_label": "Total current assets",
+          "category": "current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2170701,
+              "raw_text": "2,170,701",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_rou_assets",
+          "label": "Operating lease right-of-use assets, net",
+          "raw_label": "Operating lease right-of-use assets, net",
+          "category": "non_current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2061412,
+              "raw_text": "2,061,412",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ppe_net",
+          "label": "Property and equipment, net",
+          "raw_label": "Property and equipment, net",
+          "category": "non_current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2589472,
+              "raw_text": "2,589,472",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "goodwill",
+          "label": "Goodwill",
+          "raw_label": "Goodwill",
+          "category": "non_current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1008816,
+              "raw_text": "1,008,816",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "intangibles_net",
+          "label": "Intangibles, net",
+          "raw_label": "Intangibles, net",
+          "category": "non_current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 93015,
+              "raw_text": "93,015",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_income_taxes_asset",
+          "label": "Deferred income taxes (asset)",
+          "raw_label": "Deferred income taxes",
+          "category": "non_current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 4167,
+              "raw_text": "4,167",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_assets_noncurrent",
+          "label": "Other assets",
+          "raw_label": "Other assets",
+          "category": "non_current_assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 64203,
+              "raw_text": "64,203",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_assets",
+          "label": "Total assets",
+          "raw_label": "Total assets",
+          "category": "assets",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7991786,
+              "raw_text": "$7,991,786",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "short_term_debt_and_current_lt_debt",
+          "label": "Short-term debt",
+          "raw_label": "Short-term debt",
+          "category": "current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 230000,
+              "raw_text": "$230,000",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_operating_lease_liabilities",
+          "label": "Current portion of operating lease liabilities",
+          "raw_label": "Current portion of operating lease liabilities",
+          "category": "current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 187865,
+              "raw_text": "187,865",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "accounts_payable",
+          "label": "Accounts payable",
+          "raw_label": "Accounts payable",
+          "category": "current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1427905,
+              "raw_text": "1,427,905",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_current_liabilities",
+          "label": "Accrued expenses and other current liabilities",
+          "raw_label": "Accrued expenses and other current liabilities",
+          "category": "current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1126778,
+              "raw_text": "1,126,778",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_current_liabilities",
+          "label": "Total current liabilities",
+          "raw_label": "Total current liabilities",
+          "category": "current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2972548,
+              "raw_text": "2,972,548",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "long_term_operating_lease_liabilities",
+          "label": "Long-term operating lease liabilities",
+          "raw_label": "Long-term operating lease liabilities",
+          "category": "non_current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1956213,
+              "raw_text": "1,956,213",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "long_term_debt",
+          "label": "Long-term debt",
+          "raw_label": "Long-term debt",
+          "category": "non_current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 399245,
+              "raw_text": "399,245",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_income_taxes_liability",
+          "label": "Deferred income taxes (liability)",
+          "raw_label": "Deferred income taxes",
+          "category": "non_current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 72826,
+              "raw_text": "72,826",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_non_current_liabilities",
+          "label": "Other non-current liabilities",
+          "raw_label": "Other non-current liabilities",
+          "category": "non_current_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 393522,
+              "raw_text": "393,522",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_liabilities",
+          "label": "Total liabilities",
+          "raw_label": "Total liabilities",
+          "category": "liabilities",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 5794354,
+              "raw_text": "5,794,354",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "preferred_stock",
+          "label": "Preferred stock",
+          "raw_label": "Preferred stock; par value $0.01; 5,000 shares authorized, and no shares issued",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0,
+              "raw_text": "—",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "common_stock",
+          "label": "Common stock",
+          "raw_label": "Common stock, par value $0.01; 300,000 shares authorized, 126,452 shares issued and outstanding at August 1, 2026; 129,638 shares issued and outstanding at January 31, 2026; and 149,820 shares issued and 131,749 outstanding at August 2, 2025",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1265,
+              "raw_text": "1,265",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "additional_paid_in_capital",
+          "label": "Additional paid-in capital",
+          "raw_label": "Additional paid-in capital",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 678294,
+              "raw_text": "678,294",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "retained_earnings",
+          "label": "Retained earnings",
+          "raw_label": "Retained earnings",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1517800,
+              "raw_text": "1,517,800",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "aoci",
+          "label": "Accumulated other comprehensive income",
+          "raw_label": "Accumulated other comprehensive income",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 73,
+              "raw_text": "73",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "treasury_stock",
+          "label": "Treasury stock",
+          "raw_label": "Treasury stock, at cost, no shares at August 1, 2026 and January 31, 2026; and 18,071 shares at August 2, 2025",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0,
+              "raw_text": "—",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_stockholders_equity",
+          "label": "Total stockholders' equity",
+          "raw_label": "Total stockholders’ equity",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2197432,
+              "raw_text": "2,197,432",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_liabilities_and_equity",
+          "label": "Total liabilities and stockholders' equity",
+          "raw_label": "Total liabilities and stockholders’ equity",
+          "category": "liabilities_and_equity",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 7991786,
+              "raw_text": "$7,991,786",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_long_term_assets",
+          "label": "Other long-term assets",
+          "category": "non_current_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[7]",
+            "table_index": 7
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 68370,
+              "note": "Derived peer subtotal: Deferred income taxes + Other assets",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[7]",
+                "table_index": 7
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_long_term_liabilities",
+          "label": "Other long-term liabilities",
+          "category": "non_current_liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[7]",
+            "table_index": 7
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 466348,
+              "note": "Derived peer subtotal: Deferred income taxes + Other non-current liabilities",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[7]",
+                "table_index": 7
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_equity",
+          "label": "Total equity",
+          "category": "equity",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[7]",
+            "table_index": 7
+          },
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2197432,
+              "raw_text": "2,197,432",
+              "note": "Equals total stockholders' equity (no noncontrolling interests)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[7]",
+                "table_index": 7
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_current_assets",
+          "components": [
+            {
+              "id": "cash_and_equivalents",
+              "sign": 1
+            },
+            {
+              "id": "receivables_net",
+              "sign": 1
+            },
+            {
+              "id": "inventories",
+              "sign": 1
+            },
+            {
+              "id": "other_current_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "other_long_term_assets",
+          "components": [
+            {
+              "id": "deferred_income_taxes_asset",
+              "sign": 1
+            },
+            {
+              "id": "other_assets_noncurrent",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_rou_assets",
+              "sign": 1
+            },
+            {
+              "id": "ppe_net",
+              "sign": 1
+            },
+            {
+              "id": "goodwill",
+              "sign": 1
+            },
+            {
+              "id": "intangibles_net",
+              "sign": 1
+            },
+            {
+              "id": "other_long_term_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_current_liabilities",
+          "components": [
+            {
+              "id": "short_term_debt_and_current_lt_debt",
+              "sign": 1
+            },
+            {
+              "id": "current_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "other_current_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "other_long_term_liabilities",
+          "components": [
+            {
+              "id": "deferred_income_taxes_liability",
+              "sign": 1
+            },
+            {
+              "id": "other_non_current_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities",
+          "components": [
+            {
+              "id": "total_current_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "long_term_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "long_term_debt",
+              "sign": 1
+            },
+            {
+              "id": "other_long_term_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_stockholders_equity",
+          "components": [
+            {
+              "id": "preferred_stock",
+              "sign": 1
+            },
+            {
+              "id": "common_stock",
+              "sign": 1
+            },
+            {
+              "id": "additional_paid_in_capital",
+              "sign": 1
+            },
+            {
+              "id": "retained_earnings",
+              "sign": 1
+            },
+            {
+              "id": "aoci",
+              "sign": 1
+            },
+            {
+              "id": "treasury_stock",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_equity",
+          "components": [
+            {
+              "id": "total_stockholders_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "total_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_cash_flow",
+      "title": "Condensed Consolidated Statements of Cash Flows",
+      "source": {
+        "doc_id": "doc_bj_20260801",
+        "entity": "BJ",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[12]",
+          "table_index": 12
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY27 (26W ended Aug 1, 2026)",
+          "raw_label": "August 1, 2026",
+          "period_key": "2027-H1",
+          "unit": "USD",
+          "scale": 1000,
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY26 (26W ended Aug 2, 2025)",
+          "raw_label": "August 2, 2025",
+          "period_key": "2026-H1",
+          "unit": "USD",
+          "scale": 1000,
+          "as_of_date": "2025-08-02",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_income",
+          "label": "Net income",
+          "raw_label": "Net income",
+          "category": "operating_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 316593,
+              "raw_text": "$316,593",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 300473,
+              "raw_text": "$300,473",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "da_total",
+          "label": "Depreciation and amortization",
+          "raw_label": "Depreciation and amortization",
+          "category": "operating_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 155335,
+              "raw_text": "155,335",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 141598,
+              "raw_text": "141,598",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "amortization_debt_issuance_costs",
+          "label": "Amortization of debt issuance costs and accretion of OID",
+          "raw_label": "Amortization of debt issuance costs and accretion of original issue discount",
+          "category": "operating_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 546,
+              "raw_text": "546",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 546,
+              "raw_text": "546",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sbc",
+          "label": "Stock-based compensation expense",
+          "raw_label": "Stock-based compensation expense",
+          "category": "operating_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 28740,
+              "raw_text": "28,740",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 24599,
+              "raw_text": "24,599",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_income_tax_cf",
+          "label": "Deferred income tax provision",
+          "raw_label": "Deferred income tax provision",
+          "category": "operating_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 8197,
+              "raw_text": "8,197",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 9577,
+              "raw_text": "9,577",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "changes_operating_leases_other",
+          "label": "Changes in operating leases and other non-cash items",
+          "raw_label": "Changes in operating leases and other non-cash items",
+          "category": "operating_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -41065,
+              "raw_text": "(41,065)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -22178,
+              "raw_text": "(22,178)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "wc_receivables",
+          "label": "Change in accounts receivable, net",
+          "raw_label": "Accounts receivable, net",
+          "category": "working_capital",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -40219,
+              "raw_text": "(40,219)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 12243,
+              "raw_text": "12,243",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "wc_inventories",
+          "label": "Change in merchandise inventories",
+          "raw_label": "Merchandise inventories",
+          "category": "working_capital",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -61563,
+              "raw_text": "(61,563)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -11696,
+              "raw_text": "(11,696)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "wc_prepaids_other",
+          "label": "Change in prepaid expenses and other current assets",
+          "raw_label": "Prepaid expenses and other current assets",
+          "category": "working_capital",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -30292,
+              "raw_text": "(30,292)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -18589,
+              "raw_text": "(18,589)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "wc_other_assets",
+          "label": "Change in other assets",
+          "raw_label": "Other assets",
+          "category": "working_capital",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2895,
+              "raw_text": "2,895",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -1158,
+              "raw_text": "(1,158)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "wc_accounts_payable",
+          "label": "Change in accounts payable",
+          "raw_label": "Accounts payable",
+          "category": "working_capital",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 120500,
+              "raw_text": "120,500",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 10696,
+              "raw_text": "10,696",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "wc_accrued_liabilities",
+          "label": "Change in accrued expenses and other current liabilities",
+          "raw_label": "Accrued expenses and other current liabilities",
+          "category": "working_capital",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 80018,
+              "raw_text": "80,018",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -9107,
+              "raw_text": "(9,107)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "wc_other_noncurrent_liabilities",
+          "label": "Change in other non-current liabilities",
+          "raw_label": "Other non-current liabilities",
+          "category": "working_capital",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1754,
+              "raw_text": "1,754",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 20953,
+              "raw_text": "20,953",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_cf",
+          "label": "Net cash provided by operating activities",
+          "raw_label": "Net cash provided by operating activities",
+          "category": "operating_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 541439,
+              "raw_text": "541,439",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 457957,
+              "raw_text": "457,957",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Additions to property and equipment, net of disposals",
+          "raw_label": "Additions to property and equipment, net of disposals",
+          "category": "investing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -359339,
+              "raw_text": "(359,339)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -306065,
+              "raw_text": "(306,065)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_sale_leaseback",
+          "label": "Proceeds from sale-leaseback transactions",
+          "raw_label": "Proceeds from sale-leaseback transactions",
+          "category": "investing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0,
+              "raw_text": "—",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 2995,
+              "raw_text": "2,995",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_purchase_option_assignment",
+          "label": "Proceeds from assignment of purchase option (Note 12)",
+          "raw_label": "Proceeds from assignment of purchase option (see Note 12)",
+          "category": "investing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 122100,
+              "raw_text": "122,100",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 0,
+              "raw_text": "—",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "payment_purchase_option_exercise",
+          "label": "Payment upon exercise of purchase option (Note 12)",
+          "raw_label": "Payment upon exercise of purchase option (see Note 12)",
+          "category": "investing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -80718,
+              "raw_text": "(80,718)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 0,
+              "raw_text": "—",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_investing_cf",
+          "label": "Other investing activities",
+          "raw_label": "Other investing activities",
+          "category": "investing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -3782,
+              "raw_text": "(3,782)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -3086,
+              "raw_text": "(3,086)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "investing_cf",
+          "label": "Net cash used in investing activities",
+          "raw_label": "Net cash used in investing activities",
+          "category": "investing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -321739,
+              "raw_text": "(321,739)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -306156,
+              "raw_text": "(306,156)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_revolver",
+          "label": "Proceeds from revolving lines of credit",
+          "raw_label": "Proceeds from revolving lines of credit",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 496000,
+              "raw_text": "496,000",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 131000,
+              "raw_text": "131,000",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "payments_revolver",
+          "label": "Payments on revolving lines of credit",
+          "raw_label": "Payments on revolving lines of credit",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -386000,
+              "raw_text": "(386,000)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -201000,
+              "raw_text": "(201,000)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_option_exercises",
+          "label": "Net cash received from stock option exercises",
+          "raw_label": "Net cash received from stock option exercises",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1366,
+              "raw_text": "1,366",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 5014,
+              "raw_text": "5,014",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_espp",
+          "label": "Net cash received from ESPP",
+          "raw_label": "Net cash received from ESPP",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 4874,
+              "raw_text": "4,874",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 4449,
+              "raw_text": "4,449",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "share_repurchases",
+          "label": "Acquisition of treasury stock",
+          "raw_label": "Acquisition of treasury stock",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -348761,
+              "raw_text": "(348,761)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -82895,
+              "raw_text": "(82,895)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_financing_obligations",
+          "label": "Net proceeds from financing obligations",
+          "raw_label": "Net proceeds from financing obligations",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2894,
+              "raw_text": "2,894",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 14804,
+              "raw_text": "14,804",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_financing_cf",
+          "label": "Other financing activities",
+          "raw_label": "Other financing activities",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -6336,
+              "raw_text": "(6,336)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -4172,
+              "raw_text": "(4,172)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "financing_cf",
+          "label": "Net cash used in financing activities",
+          "raw_label": "Net cash used in financing activities",
+          "category": "financing_cf",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -235963,
+              "raw_text": "(235,963)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -132800,
+              "raw_text": "(132,800)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "change_in_cash",
+          "label": "Net (decrease) increase in cash and cash equivalents",
+          "raw_label": "Net (decrease) increase in cash and cash equivalents",
+          "category": "cash_summary",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -16263,
+              "raw_text": "(16,263)",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 19001,
+              "raw_text": "19,001",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "beginning_cash_and_restricted_cash",
+          "label": "Cash and cash equivalents at beginning of period",
+          "raw_label": "Cash and cash equivalents at beginning of period",
+          "category": "cash_summary",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 46245,
+              "raw_text": "46,245",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 28272,
+              "raw_text": "28,272",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ending_cash_and_restricted_cash",
+          "label": "Cash and cash equivalents at end of period",
+          "raw_label": "Cash and cash equivalents at end of period",
+          "category": "cash_summary",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 29982,
+              "raw_text": "$29,982",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 47273,
+              "raw_text": "$47,273",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cash_interest_paid",
+          "label": "Supplemental: Interest paid",
+          "raw_label": "Interest paid",
+          "category": "supplemental",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 13272,
+              "raw_text": "$13,272",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 16921,
+              "raw_text": "$16,921",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cash_taxes_paid",
+          "label": "Supplemental: Income taxes paid",
+          "raw_label": "Income taxes paid",
+          "category": "supplemental",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 131969,
+              "raw_text": "131,969",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 104626,
+              "raw_text": "104,626",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_rou_obtained",
+          "label": "Supplemental: Operating lease liabilities from ROU assets",
+          "raw_label": "Operating lease liabilities arising from obtaining right-of-use assets and other non-cash lease-related operating items",
+          "category": "supplemental",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 189012,
+              "raw_text": "189,012",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 52886,
+              "raw_text": "52,886",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_rou_obtained",
+          "label": "Supplemental: Finance lease liabilities from ROU assets",
+          "raw_label": "Finance lease liabilities arising from obtaining right-of-use assets",
+          "category": "supplemental",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 81444,
+              "raw_text": "81,444",
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 4431,
+              "raw_text": "4,431",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "operating_cf",
+          "components": [
+            {
+              "id": "net_income",
+              "sign": 1
+            },
+            {
+              "id": "da_total",
+              "sign": 1
+            },
+            {
+              "id": "amortization_debt_issuance_costs",
+              "sign": 1
+            },
+            {
+              "id": "sbc",
+              "sign": 1
+            },
+            {
+              "id": "deferred_income_tax_cf",
+              "sign": 1
+            },
+            {
+              "id": "changes_operating_leases_other",
+              "sign": 1
+            },
+            {
+              "id": "wc_receivables",
+              "sign": 1
+            },
+            {
+              "id": "wc_inventories",
+              "sign": 1
+            },
+            {
+              "id": "wc_prepaids_other",
+              "sign": 1
+            },
+            {
+              "id": "wc_other_assets",
+              "sign": 1
+            },
+            {
+              "id": "wc_accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "wc_accrued_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "wc_other_noncurrent_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "investing_cf",
+          "components": [
+            {
+              "id": "capex",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_sale_leaseback",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_purchase_option_assignment",
+              "sign": 1
+            },
+            {
+              "id": "payment_purchase_option_exercise",
+              "sign": 1
+            },
+            {
+              "id": "other_investing_cf",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "financing_cf",
+          "components": [
+            {
+              "id": "proceeds_revolver",
+              "sign": 1
+            },
+            {
+              "id": "payments_revolver",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_option_exercises",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_espp",
+              "sign": 1
+            },
+            {
+              "id": "share_repurchases",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_financing_obligations",
+              "sign": 1
+            },
+            {
+              "id": "other_financing_cf",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "change_in_cash",
+          "components": [
+            {
+              "id": "operating_cf",
+              "sign": 1
+            },
+            {
+              "id": "investing_cf",
+              "sign": 1
+            },
+            {
+              "id": "financing_cf",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ending_cash_and_restricted_cash",
+          "components": [
+            {
+              "id": "beginning_cash_and_restricted_cash",
+              "sign": 1
+            },
+            {
+              "id": "change_in_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_eps_shares",
+      "title": "Earnings Per Share and Share Counts (26W H1)",
+      "source": {
+        "doc_id": "doc_bj_20260801",
+        "entity": "BJ",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[22]",
+          "table_index": 22
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY27 (26W ended Aug 1, 2026)",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY26 (26W ended Aug 2, 2025)",
+          "period_key": "2026-H1",
+          "as_of_date": "2025-08-02",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cover_20260820",
+          "label": "Cover Date (Aug 20, 2026)",
+          "period_key": "2026-08-20",
+          "as_of_date": "2026-08-20",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "weighted_avg_shares_basic",
+          "label": "Weighted-average basic shares",
+          "unit": "shares",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 127929,
+              "raw_text": "127,929",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[22]",
+                "table_index": 22
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 131684,
+              "raw_text": "131,684",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[22]",
+                "table_index": 22
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dilutive_securities_shares",
+          "label": "Dilutive incremental shares",
+          "unit": "shares",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 632,
+              "raw_text": "632",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[22]",
+                "table_index": 22
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 949,
+              "raw_text": "949",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[22]",
+                "table_index": 22
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "weighted_avg_shares_diluted",
+          "label": "Weighted-average diluted shares",
+          "unit": "shares",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 128561,
+              "raw_text": "128,561",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[22]",
+                "table_index": 22
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 132633,
+              "raw_text": "132,633",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[22]",
+                "table_index": 22
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "eps_basic",
+          "label": "Basic EPS",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2.47,
+              "raw_text": "$2.47",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[9]",
+                "table_index": 9
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 2.28,
+              "raw_text": "$2.28",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[9]",
+                "table_index": 9
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "eps_diluted",
+          "label": "Diluted EPS",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2.46,
+              "raw_text": "$2.46",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[9]",
+                "table_index": 9
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 2.27,
+              "raw_text": "$2.27",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[9]",
+                "table_index": 9
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ending_shares_outstanding",
+          "label": "Period-end common shares outstanding",
+          "unit": "shares",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 126452,
+              "raw_text": "126,452 shares issued and outstanding at August 1, 2026",
+              "note": "Balance sheet common stock caption (in thousands)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[7]",
+                "table_index": 7
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cover_shares_outstanding",
+          "label": "Cover page common shares outstanding",
+          "unit": "shares",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "cover_20260820": {
+              "value": 126314692,
+              "raw_text": "126,314,692",
+              "note": "10-Q cover DEI shares outstanding as of August 20, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='f-24']"
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "weighted_avg_shares_diluted",
+          "components": [
+            {
+              "id": "weighted_avg_shares_basic",
+              "sign": 1
+            },
+            {
+              "id": "dilutive_securities_shares",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["h1_27", "h1_26"],
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_debt_leases",
+      "title": "Debt and Operating Lease Liabilities (MRQ Aug 1, 2026)",
+      "source": {
+        "doc_id": "doc_bj_20260801",
+        "entity": "BJ",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[17]",
+          "table_index": 17
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "Q2 FY27 (as of Aug 1, 2026)",
+          "period_key": "2027-H1",
+          "unit": "USD",
+          "scale": 1000,
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "abl_revolving_facility",
+          "label": "ABL Revolving Facility",
+          "category": "financial_debt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 230000,
+              "raw_text": "$230,000",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "term_loan_principal",
+          "label": "First Lien Term Loan (principal)",
+          "category": "financial_debt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 400000,
+              "raw_text": "400,000",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gross_financial_debt",
+          "label": "Total gross financial debt",
+          "category": "financial_debt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 630000,
+              "raw_text": "$630,000",
+              "note": "Note 9 Table 19: Total Debt carrying amount ($630,000k)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[19]",
+                "table_index": 19
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "unamortized_debt_issuance_costs",
+          "label": "Unamortized OID and debt issuance costs",
+          "category": "financial_debt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -755,
+              "raw_text": "(755)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "carrying_financial_debt",
+          "label": "Total carrying financial debt (net of OID/issuance costs)",
+          "category": "financial_debt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 629245,
+              "note": "Derived subtotal: abl_revolving_facility + term_loan_principal + unamortized_debt_issuance_costs (Note 5 Table 17)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "short_term_debt",
+          "label": "Short-term debt (ABL Revolver)",
+          "category": "financial_debt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 230000,
+              "raw_text": "$230,000",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "long_term_debt",
+          "label": "Long-term debt (net of current portion & OID)",
+          "category": "financial_debt",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 399245,
+              "raw_text": "$399,245",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_operating_lease_liabilities",
+          "label": "Current operating lease liabilities",
+          "category": "operating_leases",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 187865,
+              "raw_text": "187,865",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[7]",
+                "table_index": 7
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_operating_lease_liabilities",
+          "label": "Long-term operating lease liabilities",
+          "category": "operating_leases",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 1956213,
+              "raw_text": "1,956,213",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[7]",
+                "table_index": 7
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_operating_lease_liabilities",
+          "label": "Total operating lease liabilities",
+          "category": "operating_leases",
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2144078,
+              "note": "Derived sum: current_operating_lease_liabilities (187,865) + lt_operating_lease_liabilities (1,956,213) from face Balance Sheet (Table 7); includes $93.6M Ohio DC lease added in Q2 (Note 12)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[7]",
+                "table_index": 7
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "gross_financial_debt",
+          "components": [
+            {
+              "id": "abl_revolving_facility",
+              "sign": 1
+            },
+            {
+              "id": "term_loan_principal",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "carrying_financial_debt",
+          "components": [
+            {
+              "id": "gross_financial_debt",
+              "sign": 1
+            },
+            {
+              "id": "unamortized_debt_issuance_costs",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "long_term_debt",
+          "components": [
+            {
+              "id": "carrying_financial_debt",
+              "sign": 1
+            },
+            {
+              "id": "short_term_debt",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_operating_lease_liabilities",
+          "components": [
+            {
+              "id": "current_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "lt_operating_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_operating_kpis",
+      "title": "Operating Key Performance Indicators (26W H1)",
+      "source": {
+        "doc_id": "doc_bj_20260801",
+        "entity": "BJ",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[26]",
+          "table_index": 26
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY27 (ended Aug 1, 2026)",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY26 (ended Aug 2, 2025)",
+          "period_key": "2026-H1",
+          "as_of_date": "2025-08-02",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "club_count",
+          "label": "Total clubs at end of period",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 267,
+              "raw_text": "267",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[26]",
+                "table_index": 26
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 255,
+              "raw_text": "255",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[26]",
+                "table_index": 26
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gas_station_count",
+          "label": "Gas stations at end of period",
+          "unit": "count",
+          "scale": 1,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 206,
+              "raw_text": "206",
+              "note": "Note 1 (Description of Business), p. 10",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='f-408']"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "paid_members_accounts",
+          "label": "Paid members (approx.)",
+          "unit": "count",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 8.5,
+              "raw_text": "approximately 8.5 million",
+              "note": "MD&A Overview p. 21: approximately 8.5 million members paying annual fees",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//div[not(.//div) and contains(., 'approximately 8.5') and contains(., 'paying annual fees')]"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_sales_total",
+          "label": "Comparable club sales growth (incl. gas, 26W)",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 9.2,
+              "raw_text": "9.2%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[26]",
+                "table_index": 26
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 0.6,
+              "raw_text": "0.6%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[26]",
+                "table_index": 26
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_sales_ex_gas",
+          "label": "Merchandise comparable club sales growth (ex-gas, 26W)",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 2.3,
+              "raw_text": "2.3%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[26]",
+                "table_index": 26
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 3.1,
+              "raw_text": "3.1%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[26]",
+                "table_index": 26
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_sales_gas_impact",
+          "label": "Gasoline comparable sales impact (26W)",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 6.9,
+              "raw_text": "6.9%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[27]",
+                "table_index": 27
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_membership_fees_note",
+          "label": "Deferred membership fee income (Note 3 / Balance Sheet memo)",
+          "unit": "USD",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 291015,
+              "raw_text": "291,015",
+              "note": "Included in Accrued expenses and other current liabilities",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[13]",
+                "table_index": 13
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 267382,
+              "raw_text": "267,382",
+              "note": "Included in Accrued expenses and other current liabilities",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[13]",
+                "table_index": 13
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "Heterogeneous non-additive operating KPIs (club/gas counts, approximate member count, 26W comparable sales rates, deferred membership fee balance)",
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_qoe_items",
+      "title": "Quality of Earnings and Non-GAAP Reconciliation Items (26W H1)",
+      "source": {
+        "doc_id": "doc_bj_20260801",
+        "entity": "BJ",
+        "basis": "qoe",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[28]",
+          "table_index": 28
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "h1_27",
+          "label": "H1 FY27 (26W ended Aug 1, 2026)",
+          "period_key": "2027-H1",
+          "as_of_date": "2026-08-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "h1_26",
+          "label": "H1 FY26 (26W ended Aug 2, 2025)",
+          "period_key": "2026-H1",
+          "as_of_date": "2025-08-02",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "gaap_net_income",
+          "label": "GAAP net income",
+          "unit": "USD",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 316593,
+              "raw_text": "$316,593",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 300473,
+              "raw_text": "$300,473",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "restructuring_charges",
+          "label": "Restructuring charges (in SG&A, + add-back)",
+          "unit": "USD",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0,
+              "raw_text": "—",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 2580,
+              "raw_text": "2,580",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "qoe_tax_impact_mgmt",
+          "label": "Tax impact of management adjustments",
+          "unit": "USD",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 0,
+              "raw_text": "—",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": -722,
+              "raw_text": "(722)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mgmt_adjusted_net_income",
+          "label": "Management Adjusted Net Income",
+          "unit": "USD",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 316593,
+              "raw_text": "$316,593",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 302331,
+              "raw_text": "$302,331",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[28]",
+                "table_index": 28
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_noncash_ebitda_adjustments",
+          "label": "Other non-cash EBITDA adjustments (ARO & post-ret. accretion)",
+          "unit": "USD",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 921,
+              "raw_text": "921",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[29]",
+                "table_index": 29
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 745,
+              "raw_text": "745",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[29]",
+                "table_index": 29
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "mgmt_adjusted_ebitda",
+          "label": "Management Adjusted EBITDA",
+          "unit": "USD",
+          "scale": 1000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": 645266,
+              "raw_text": "$645,266",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[29]",
+                "table_index": 29
+              },
+              "is_restatement": false
+            },
+            "h1_26": {
+              "value": 589697,
+              "raw_text": "$589,697",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[29]",
+                "table_index": 29
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sale_leaseback_gain_sga",
+          "label": "Ohio DC sale-leaseback gain in SG&A (- deduction for normalized EBIT/EBITDA)",
+          "unit": "USD",
+          "scale": 1000000,
+          "is_restatement": false,
+          "cells": {
+            "h1_27": {
+              "value": -10.6,
+              "raw_text": "10.6",
+              "note": "Note 12 (Leases), p. 19: $10.6M gain from Ohio ambient DC purchase option assignment/SLB recognized as SG&A reduction in Q2/H1 FY27; not excluded by mgmt Adjusted EBITDA",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='f-698']"
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "mgmt_adjusted_net_income",
+          "components": [
+            {
+              "id": "gaap_net_income",
+              "sign": 1
+            },
+            {
+              "id": "restructuring_charges",
+              "sign": 1
+            },
+            {
+              "id": "qoe_tax_impact_mgmt",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["h1_27", "h1_26"],
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": [
+    {
+      "name": "cash_bs_to_cf_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "cash_and_equivalents",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "ending_cash_and_restricted_cash",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_assets_eq_le_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "total_assets",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_balance_sheet",
+          "row_id": "total_liabilities_and_equity",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "debt_st_bs_to_note_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "short_term_debt_and_current_lt_debt",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "short_term_debt",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "debt_lt_bs_to_note_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "long_term_debt",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "long_term_debt",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "lease_cur_bs_to_note_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_operating_lease_liabilities",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_operating_lease_liabilities",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "lease_lt_bs_to_note_h1_27",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "long_term_operating_lease_liabilities",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "lt_operating_lease_liabilities",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "ni_is_to_cf_h1_27",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_gaap_ni_tie_h1_27",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "gaap_net_income",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_mgmt_adj_ebitda_tie_h1_27",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "mgmt_adjusted_ebitda",
+        "col_id": "h1_27"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "operating_income",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "da_total",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "sbc",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_qoe_items",
+          "row_id": "restructuring_charges",
+          "col_id": "h1_27",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_qoe_items",
+          "row_id": "other_noncash_ebitda_adjustments",
+          "col_id": "h1_27",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "ni_is_to_cf_h1_26",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_gaap_ni_tie_h1_26",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "gaap_net_income",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_mgmt_adj_ebitda_tie_h1_26",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "mgmt_adjusted_ebitda",
+        "col_id": "h1_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "operating_income",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "da_total",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "sbc",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_qoe_items",
+          "row_id": "restructuring_charges",
+          "col_id": "h1_26",
+          "sign": 1
+        },
+        {
+          "table_id": "peer_qoe_items",
+          "row_id": "other_noncash_ebitda_adjustments",
+          "col_id": "h1_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    }
+  ]
+}

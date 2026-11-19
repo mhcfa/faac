@@ -1,0 +1,168 @@
+{
+  "document": {
+    "doc_id": "doc_fred_dff",
+    "file_path": "data/raw/market/fred_DFF.csv",
+    "sha256": "38af12a09d0025b086716d8247896ee683fa672d58de4c638a528c1070b5ebaf",
+    "doc_type": "other",
+    "size_bytes": 6053,
+    "title": "Effective Federal Funds Rate (DFF) (market/fred_DFF.csv)",
+    "report_date": "2026-11-12",
+    "source_meta": {}
+  },
+  "tables": [
+    {
+      "table_id": "mkt_inflation_fedfunds",
+      "title": "US 10-Year Breakeven Inflation & Effective Federal Funds Rate",
+      "source": {
+        "doc_id": "doc_fred_dff",
+        "entity": "US_MACRO",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 378
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "d_2025_11_13",
+          "label": "2025-11-13",
+          "raw_label": "2025-11-13",
+          "period_key": "2025-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 14,
+            "line_end": 14
+          },
+          "as_of_date": "2025-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_01_02",
+          "label": "2026-01-02",
+          "raw_label": "2026-01-02",
+          "period_key": "2026-01-02",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 64,
+            "line_end": 64
+          },
+          "as_of_date": "2026-01-02",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_10_13",
+          "label": "2026-10-13",
+          "raw_label": "2026-10-13",
+          "period_key": "2026-10-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 348,
+            "line_end": 348
+          },
+          "as_of_date": "2026-10-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_06",
+          "label": "2026-11-06",
+          "raw_label": "2026-11-06",
+          "period_key": "2026-11-06",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 372,
+            "line_end": 372
+          },
+          "as_of_date": "2026-11-06",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_12",
+          "label": "2026-11-12",
+          "raw_label": "2026-11-12",
+          "period_key": "2026-11-12",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 378,
+            "line_end": 378
+          },
+          "as_of_date": "2026-11-12",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "dff_fed_funds",
+          "label": "Effective Federal Funds Rate (DFF)",
+          "raw_label": "DFF",
+          "category": "Policy Rate",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2025_11_13": {
+              "value": 3.88,
+              "raw_text": "3.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14,
+                "line_end": 14
+              },
+              "is_restatement": false
+            },
+            "d_2026_01_02": {
+              "value": 3.64,
+              "raw_text": "3.64",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 64,
+                "line_end": 64
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 3.88,
+              "raw_text": "3.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 348,
+                "line_end": 348
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 3.88,
+              "raw_text": "3.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 372,
+                "line_end": 372
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 3.88,
+              "raw_text": "3.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 378,
+                "line_end": 378
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "US macro breakeven inflation and effective federal funds rates; non-additive",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

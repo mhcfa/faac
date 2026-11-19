@@ -1,0 +1,778 @@
+{
+  "document": {
+    "doc_id": "doc_treasury_daily_yield_curve_2026",
+    "file_path": "data/raw/market/treasury_daily_yield_curve_2026.csv",
+    "sha256": "7940584cb08f8aa016d786b71015d85e3226612c7a3756129c064b32fa9795da",
+    "doc_type": "other",
+    "size_bytes": 17768,
+    "title": "US Treasury Daily Par Yield Curve Rates (2026)",
+    "report_date": "2026-11-13",
+    "source_meta": {}
+  },
+  "tables": [
+    {
+      "table_id": "mkt_treasury_par_curve",
+      "title": "US Treasury Daily Par Yield Curve Rates (2026)",
+      "source": {
+        "doc_id": "doc_treasury_daily_yield_curve_2026",
+        "entity": "US_TREASURY",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 219
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "d_2026_01_02",
+          "label": "2026-01-02",
+          "raw_label": "01/02/2026",
+          "period_key": "2026-01-02",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 219,
+            "line_end": 219
+          },
+          "as_of_date": "2026-01-02",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_10_13",
+          "label": "2026-10-13",
+          "raw_label": "10/13/2026",
+          "period_key": "2026-10-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 24,
+            "line_end": 24
+          },
+          "as_of_date": "2026-10-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_06",
+          "label": "2026-11-06",
+          "raw_label": "11/06/2026",
+          "period_key": "2026-11-06",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 6,
+            "line_end": 6
+          },
+          "as_of_date": "2026-11-06",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_12",
+          "label": "2026-11-12",
+          "raw_label": "11/12/2026",
+          "period_key": "2026-11-12",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 3,
+            "line_end": 3
+          },
+          "as_of_date": "2026-11-12",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_13",
+          "label": "2026-11-13",
+          "raw_label": "11/13/2026",
+          "period_key": "2026-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 2,
+            "line_end": 2
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "par_1m",
+          "label": "1-Month Par Yield",
+          "raw_label": "1 Mo",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.72,
+              "raw_text": "3.72",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 4.1,
+              "raw_text": "4.10",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.02,
+              "raw_text": "4.02",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 4.12,
+              "raw_text": "4.12",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 4.1,
+              "raw_text": "4.10",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_3m",
+          "label": "3-Month Par Yield",
+          "raw_label": "3 Mo",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.65,
+              "raw_text": "3.65",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 4.26,
+              "raw_text": "4.26",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.19,
+              "raw_text": "4.19",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 4.32,
+              "raw_text": "4.32",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 4.32,
+              "raw_text": "4.32",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_6m",
+          "label": "6-Month Par Yield",
+          "raw_label": "6 Mo",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.58,
+              "raw_text": "3.58",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 4.34,
+              "raw_text": "4.34",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.23,
+              "raw_text": "4.23",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 4.42,
+              "raw_text": "4.42",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 4.42,
+              "raw_text": "4.42",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_1y",
+          "label": "1-Year Par Yield",
+          "raw_label": "1 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.47,
+              "raw_text": "3.47",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 4.48,
+              "raw_text": "4.48",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.33,
+              "raw_text": "4.33",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 4.65,
+              "raw_text": "4.65",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 4.65,
+              "raw_text": "4.65",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_2y",
+          "label": "2-Year Par Yield",
+          "raw_label": "2 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.47,
+              "raw_text": "3.47",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 4.79,
+              "raw_text": "4.79",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.51,
+              "raw_text": "4.51",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 4.86,
+              "raw_text": "4.86",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 4.88,
+              "raw_text": "4.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_3y",
+          "label": "3-Year Par Yield",
+          "raw_label": "3 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.55,
+              "raw_text": "3.55",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 4.9,
+              "raw_text": "4.90",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.59,
+              "raw_text": "4.59",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 4.9,
+              "raw_text": "4.90",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 4.92,
+              "raw_text": "4.92",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_5y",
+          "label": "5-Year Par Yield",
+          "raw_label": "5 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.74,
+              "raw_text": "3.74",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 5,
+              "raw_text": "5.00",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.64,
+              "raw_text": "4.64",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 4.95,
+              "raw_text": "4.95",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 4.98,
+              "raw_text": "4.98",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_7y",
+          "label": "7-Year Par Yield",
+          "raw_label": "7 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 3.95,
+              "raw_text": "3.95",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 5.11,
+              "raw_text": "5.11",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.74,
+              "raw_text": "4.74",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 5.02,
+              "raw_text": "5.02",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 5.05,
+              "raw_text": "5.05",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_10y",
+          "label": "10-Year Par Yield",
+          "raw_label": "10 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 4.19,
+              "raw_text": "4.19",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 5.21,
+              "raw_text": "5.21",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 4.86,
+              "raw_text": "4.86",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 5.1,
+              "raw_text": "5.10",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 5.15,
+              "raw_text": "5.15",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_20y",
+          "label": "20-Year Par Yield",
+          "raw_label": "20 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 4.81,
+              "raw_text": "4.81",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 5.6,
+              "raw_text": "5.60",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 5.29,
+              "raw_text": "5.29",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 5.48,
+              "raw_text": "5.48",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 5.52,
+              "raw_text": "5.52",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "par_30y",
+          "label": "30-Year Par Yield",
+          "raw_label": "30 Yr",
+          "category": "Nominal Par CMT Yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2026_01_02": {
+              "value": 4.86,
+              "raw_text": "4.86",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 219,
+                "line_end": 219
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 5.56,
+              "raw_text": "5.56",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24,
+                "line_end": 24
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 5.26,
+              "raw_text": "5.26",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6,
+                "line_end": 6
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 5.43,
+              "raw_text": "5.43",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3,
+                "line_end": 3
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 5.47,
+              "raw_text": "5.47",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2,
+                "line_end": 2
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "US Treasury nominal par constant-maturity yield curve rates; non-additive across tenors",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

@@ -1,0 +1,117 @@
+{
+  "document": {
+    "doc_id": "doc_cost_20261014",
+    "file_path": "data/raw/sec/0000909832/0000909832-26-000096/cost-20261014.htm",
+    "sha256": "4e1dbf0302e459acb83cfdcfbaf4787498d98094e4f05f34ef0b39f2c504d1ed",
+    "doc_type": "sec_filing",
+    "size_bytes": 23006,
+    "title": "Costco Wholesale Corp. Form 8-K ($1.47/sh Quarterly Cash Dividend, Oct 14, 2026)",
+    "report_date": "2026-10-14",
+    "filing_date": "2026-10-14",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000909832",
+      "company_name": "COSTCO WHOLESALE CORP /NEW",
+      "tickers": "COST",
+      "form": "8-K",
+      "accession_number": "0000909832-26-000096",
+      "filing_date": "2026-10-14",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/909832/000090983226000096/cost-20261014.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "cost_capital_return_events",
+      "title": "Post-FY26 Capital Return Events (Quarterly Cash Dividend)",
+      "source": {
+        "doc_id": "doc_cost_20261014",
+        "entity": "COST",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "/html/body[1]/div[47]/span[1]"
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "cap_ret_2026_10_14_val",
+          "label": "Oct 14, 2026 Event Value",
+          "period_key": "2026-10-14",
+          "as_of_date": "2026-10-14",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_10_14_decl_date",
+          "label": "Declaration Date",
+          "data_type": "date",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_10_14_rec_date",
+          "label": "Record Date",
+          "data_type": "date",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_10_14_pay_date",
+          "label": "Payable Date",
+          "data_type": "date",
+          "is_restatement": false
+        },
+        {
+          "id": "cap_ret_2026_10_14_notes",
+          "label": "Terms & Notes",
+          "data_type": "text",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "quarterly_cash_dividend_per_share",
+          "label": "Quarterly cash dividend declared per share",
+          "category": "regular_dividend",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "/html/body[1]/div[47]/span[1]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "cap_ret_2026_10_14_val": {
+              "value": 1.47,
+              "raw_text": "$1.47",
+              "is_restatement": false
+            },
+            "cap_ret_2026_10_14_decl_date": {
+              "value": "2026-10-14",
+              "raw_text": "October 14, 2026",
+              "is_restatement": false
+            },
+            "cap_ret_2026_10_14_rec_date": {
+              "value": "2026-10-30",
+              "raw_text": "October 30, 2026",
+              "is_restatement": false
+            },
+            "cap_ret_2026_10_14_pay_date": {
+              "value": "2026-11-13",
+              "raw_text": "November 13, 2026",
+              "is_restatement": false
+            },
+            "cap_ret_2026_10_14_notes": {
+              "value": "Quarterly cash dividend of $1.47/sh declared Oct 14, 2026, record Oct 30, 2026, payable Nov 13, 2026",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "Regular quarterly dividend event metadata (per-share dividend rate and declaration/record/payable dates)",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

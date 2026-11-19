@@ -1,0 +1,192 @@
+{
+  "document": {
+    "doc_id": "doc_fred_bamlh0a0hym2",
+    "file_path": "data/raw/market/fred_BAMLH0A0HYM2.csv",
+    "sha256": "833456bfc1bd276c8f99b6f6e959e319edaec1814c4224b14dedd7ac126c775b",
+    "doc_type": "other",
+    "size_bytes": 4406,
+    "title": "ICE BofA US High Yield OAS (BAMLH0A0HYM2) (market/fred_BAMLH0A0HYM2.csv)",
+    "report_date": "2026-11-13",
+    "source_meta": {}
+  },
+  "tables": [
+    {
+      "table_id": "mkt_credit_oas",
+      "title": "ICE BofA US Corporate & High Yield Option-Adjusted Spreads (OAS)",
+      "source": {
+        "doc_id": "doc_fred_bamlh0a0hym2",
+        "entity": "US_MACRO",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 275
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "d_2025_11_13",
+          "label": "2025-11-13",
+          "raw_label": "2025-11-13",
+          "period_key": "2025-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 10,
+            "line_end": 10
+          },
+          "as_of_date": "2025-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_01_02",
+          "label": "2026-01-02",
+          "raw_label": "2026-01-02",
+          "period_key": "2026-01-02",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 47,
+            "line_end": 47
+          },
+          "as_of_date": "2026-01-02",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_10_13",
+          "label": "2026-10-13",
+          "raw_label": "2026-10-13",
+          "period_key": "2026-10-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 252,
+            "line_end": 252
+          },
+          "as_of_date": "2026-10-13",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_06",
+          "label": "2026-11-06",
+          "raw_label": "2026-11-06",
+          "period_key": "2026-11-06",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 270,
+            "line_end": 270
+          },
+          "as_of_date": "2026-11-06",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_12",
+          "label": "2026-11-12",
+          "raw_label": "2026-11-12",
+          "period_key": "2026-11-12",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 274,
+            "line_end": 274
+          },
+          "as_of_date": "2026-11-12",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "d_2026_11_13",
+          "label": "2026-11-13",
+          "raw_label": "2026-11-13",
+          "period_key": "2026-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 275,
+            "line_end": 275
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "oas_hy",
+          "label": "ICE BofA US High Yield OAS (BAMLH0A0HYM2)",
+          "raw_label": "BAMLH0A0HYM2",
+          "category": "High Yield OAS",
+          "unit": "ratio",
+          "scale": 0.01,
+          "is_restatement": false,
+          "cells": {
+            "d_2025_11_13": {
+              "value": 3.09,
+              "raw_text": "3.09",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10,
+                "line_end": 10
+              },
+              "is_restatement": false
+            },
+            "d_2026_01_02": {
+              "value": 2.83,
+              "raw_text": "2.83",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47,
+                "line_end": 47
+              },
+              "is_restatement": false
+            },
+            "d_2026_10_13": {
+              "value": 3.16,
+              "raw_text": "3.16",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 252,
+                "line_end": 252
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_06": {
+              "value": 3.42,
+              "raw_text": "3.42",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 270,
+                "line_end": 270
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_12": {
+              "value": 3.2,
+              "raw_text": "3.20",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 274,
+                "line_end": 274
+              },
+              "is_restatement": false
+            },
+            "d_2026_11_13": {
+              "value": 3.23,
+              "raw_text": "3.23",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 275,
+                "line_end": 275
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [],
+      "checksum_exemption": "ICE BofA credit option-adjusted spread (OAS) index rates; non-additive across rating tiers",
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": []
+}

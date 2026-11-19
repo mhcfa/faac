@@ -1,0 +1,6344 @@
+{
+  "document": {
+    "doc_id": "doc_kr_20260131x10k",
+    "file_path": "data/raw/sec/0000056873/0001104659-26-037723/kr-20260131x10k.htm",
+    "sha256": "a20614e49a7f89610aabf28bbfe74b00d6a1395fda424bea8a04fddf0748c87b",
+    "doc_type": "sec_filing",
+    "size_bytes": 4834144,
+    "title": "The Kroger Co. Form 10-K (FY2025 / Jan 2026 ended January 31, 2026)",
+    "report_date": "2026-01-31",
+    "filing_date": "2026-03-31",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000056873",
+      "company_name": "KROGER CO",
+      "tickers": "KR",
+      "form": "10-K",
+      "accession_number": "0001104659-26-037723",
+      "filing_date": "2026-03-31",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/56873/000110465926037723/kr-20260131x10k.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "peer_income_statement",
+      "title": "The Kroger Co. Consolidated Statements of Operations (FY24–FY26; KR 2023–2025)",
+      "source": {
+        "doc_id": "doc_kr_20260131x10k",
+        "entity": "KR",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[122]",
+          "table_index": 122
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "fy26",
+          "label": "FY2026 (KR 2025 52W)",
+          "raw_label": "2025 (52 weeks)",
+          "period_key": "2026-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2026-01-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy25",
+          "label": "FY2025 (KR 2024 52W)",
+          "raw_label": "2024 (52 weeks)",
+          "period_key": "2025-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2025-02-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024 (KR 2023 53W)",
+          "raw_label": "2023 (53 weeks)",
+          "period_key": "2024-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2024-02-03",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_sales",
+          "label": "Sales",
+          "raw_label": "Sales",
+          "category": "revenue",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 147642,
+              "raw_text": "$147,642",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 147123,
+              "raw_text": "$147,123",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 150039,
+              "raw_text": "$150,039",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cost_of_sales",
+          "label": "Merchandise costs (incl. advertising, warehousing, transportation & LIFO)",
+          "raw_label": "Merchandise costs, including advertising, warehousing, and transportation, excluding items shown separately below",
+          "category": "cost_of_sales",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 113240,
+              "raw_text": "113,240",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 113720,
+              "raw_text": "113,720",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 116675,
+              "raw_text": "116,675",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sga",
+          "label": "Operating, general and administrative",
+          "raw_label": "Operating, general and administrative",
+          "category": "operating_expense",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 28308,
+              "raw_text": "28,308",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 25431,
+              "raw_text": "25,431",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 26252,
+              "raw_text": "26,252",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "rent_expense",
+          "label": "Rent",
+          "raw_label": "Rent",
+          "category": "operating_expense",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 872,
+              "raw_text": "872",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 877,
+              "raw_text": "877",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 891,
+              "raw_text": "891",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "da_is",
+          "label": "Depreciation and amortization",
+          "raw_label": "Depreciation and amortization",
+          "category": "operating_expense",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3332,
+              "raw_text": "3,332",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3246,
+              "raw_text": "3,246",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 3125,
+              "raw_text": "3,125",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_income",
+          "label": "Operating profit",
+          "raw_label": "Operating profit",
+          "category": "operating_income",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1890,
+              "raw_text": "1,890",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3849,
+              "raw_text": "3,849",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 3096,
+              "raw_text": "3,096",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "interest_net_expense",
+          "label": "Net interest expense",
+          "raw_label": "Net interest expense (see Note 5)",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 639,
+              "raw_text": "(639)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 450,
+              "raw_text": "(450)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 441,
+              "raw_text": "(441)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "non_service_pension_income",
+          "label": "Non-service component of pension plan benefits / (expense)",
+          "raw_label": "Non-service component of company-sponsored pension plan (expense) benefits",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -10,
+              "raw_text": "(10)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 12,
+              "raw_text": "12",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 30,
+              "raw_text": "30",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gain_loss_on_investments",
+          "label": "Gain / (loss) on investments",
+          "raw_label": "(Loss) gain on investments",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -41,
+              "raw_text": "(41)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -148,
+              "raw_text": "(148)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 151,
+              "raw_text": "151",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gain_on_sale_of_business",
+          "label": "Gain on the sale of business",
+          "raw_label": "Gain on the sale of business",
+          "category": "non_operating",
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": 79,
+              "raw_text": "79",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "pretax_income",
+          "label": "Net earnings before income tax expense",
+          "raw_label": "Net earnings before income tax expense",
+          "category": "pretax_income",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1200,
+              "raw_text": "1,200",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3342,
+              "raw_text": "3,342",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2836,
+              "raw_text": "2,836",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "tax_provision",
+          "label": "Income tax expense",
+          "raw_label": "Income tax expense",
+          "category": "tax",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 176,
+              "raw_text": "176",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 670,
+              "raw_text": "670",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 667,
+              "raw_text": "667",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income_incl_nci",
+          "label": "Net earnings including noncontrolling interests",
+          "raw_label": "Net earnings including noncontrolling interests",
+          "category": "net_income",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1024,
+              "raw_text": "1,024",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2672,
+              "raw_text": "2,672",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2169,
+              "raw_text": "2,169",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income_nci",
+          "label": "Net income attributable to noncontrolling interests",
+          "raw_label": "Net income attributable to noncontrolling interests",
+          "category": "net_income",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 8,
+              "raw_text": "8",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 7,
+              "raw_text": "7",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 5,
+              "raw_text": "5",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income_attr_parent",
+          "label": "Net earnings attributable to The Kroger Co.",
+          "raw_label": "Net earnings attributable to The Kroger Co.",
+          "category": "net_income",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1016,
+              "raw_text": "$1,016",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2665,
+              "raw_text": "$2,665",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2164,
+              "raw_text": "$2,164",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "operating_income",
+          "components": [
+            {
+              "id": "net_sales",
+              "sign": 1
+            },
+            {
+              "id": "cost_of_sales",
+              "sign": -1
+            },
+            {
+              "id": "sga",
+              "sign": -1
+            },
+            {
+              "id": "rent_expense",
+              "sign": -1
+            },
+            {
+              "id": "da_is",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "pretax_income",
+          "components": [
+            {
+              "id": "operating_income",
+              "sign": 1
+            },
+            {
+              "id": "interest_net_expense",
+              "sign": -1
+            },
+            {
+              "id": "non_service_pension_income",
+              "sign": 1
+            },
+            {
+              "id": "gain_loss_on_investments",
+              "sign": 1
+            },
+            {
+              "id": "gain_on_sale_of_business",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "net_income_incl_nci",
+          "components": [
+            {
+              "id": "pretax_income",
+              "sign": 1
+            },
+            {
+              "id": "tax_provision",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income_attr_parent",
+          "components": [
+            {
+              "id": "net_income_incl_nci",
+              "sign": 1
+            },
+            {
+              "id": "net_income_nci",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_balance_sheet",
+      "title": "The Kroger Co. Consolidated Balance Sheets (FY25–FY26)",
+      "source": {
+        "doc_id": "doc_kr_20260131x10k",
+        "entity": "KR",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[121]",
+          "table_index": 121
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "fy26",
+          "label": "FY2026 (Jan 31, 2026)",
+          "raw_label": "January 31, 2026",
+          "period_key": "2026-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2026-01-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy25",
+          "label": "FY2025 (Feb 1, 2025)",
+          "raw_label": "February 1, 2025",
+          "period_key": "2025-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2025-02-01",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "cash_and_equivalents",
+          "label": "Cash and temporary cash investments",
+          "raw_label": "Cash and temporary cash investments",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3334,
+              "raw_text": "$3,334",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3959,
+              "raw_text": "$3,959",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "store_deposits_in_transit",
+          "label": "Store deposits in-transit",
+          "raw_label": "Store deposits in-transit",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1244,
+              "raw_text": "1,244",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1312,
+              "raw_text": "1,312",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "receivables_net",
+          "label": "Receivables",
+          "raw_label": "Receivables",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2192,
+              "raw_text": "2,192",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2195,
+              "raw_text": "2,195",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "fifo_inventory",
+          "label": "FIFO inventory",
+          "raw_label": "FIFO inventory",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 9445,
+              "raw_text": "9,445",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 9442,
+              "raw_text": "9,442",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lifo_reserve",
+          "label": "LIFO reserve",
+          "raw_label": "LIFO reserve",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -2553,
+              "raw_text": "(2,553)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -2404,
+              "raw_text": "(2,404)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "prepaid_and_other_current_assets",
+          "label": "Prepaid and other current assets",
+          "raw_label": "Prepaid and other current assets",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 843,
+              "raw_text": "843",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 769,
+              "raw_text": "769",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_current_assets",
+          "label": "Total current assets",
+          "raw_label": "Total current assets",
+          "category": "current_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 14505,
+              "raw_text": "14,505",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 15273,
+              "raw_text": "15,273",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ppe_net",
+          "label": "Property, plant and equipment, net",
+          "raw_label": "Property, plant and equipment, net",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 24260,
+              "raw_text": "24,260",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 25703,
+              "raw_text": "25,703",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_rou_assets",
+          "label": "Operating lease assets",
+          "raw_label": "Operating lease assets",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 6682,
+              "raw_text": "6,682",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 6839,
+              "raw_text": "6,839",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "intangibles_net",
+          "label": "Intangibles, net",
+          "raw_label": "Intangibles, net",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 808,
+              "raw_text": "808",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 834,
+              "raw_text": "834",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "goodwill",
+          "label": "Goodwill",
+          "raw_label": "Goodwill",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2595,
+              "raw_text": "2,595",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2674,
+              "raw_text": "2,674",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_assets",
+          "label": "Other assets",
+          "raw_label": "Other assets",
+          "category": "noncurrent_asset",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1103,
+              "raw_text": "1,103",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1293,
+              "raw_text": "1,293",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_assets",
+          "label": "Total Assets",
+          "raw_label": "Total Assets",
+          "category": "total_assets",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 49953,
+              "raw_text": "$49,953",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 52616,
+              "raw_text": "$52,616",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_debt_and_other_borrowings",
+          "label": "Current portion of long-term debt including obligations under finance leases",
+          "raw_label": "Current portion of long-term debt including obligations under finance leases",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1802,
+              "raw_text": "$1,802",
+              "note": "Includes current finance lease liabilities ($436M FY26, $168M FY25 per Note 9)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 272,
+              "raw_text": "$272",
+              "note": "Includes current finance lease liabilities ($436M FY26, $168M FY25 per Note 9)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_operating_lease_liabilities",
+          "label": "Current portion of operating lease liabilities",
+          "raw_label": "Current portion of operating lease liabilities",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 665,
+              "raw_text": "665",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 599,
+              "raw_text": "599",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "accounts_payable",
+          "label": "Accounts payable",
+          "raw_label": "Accounts payable",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 10488,
+              "raw_text": "10,488",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 10124,
+              "raw_text": "10,124",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "accrued_salaries_and_wages",
+          "label": "Accrued salaries and wages",
+          "raw_label": "Accrued salaries and wages",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1267,
+              "raw_text": "1,267",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1330,
+              "raw_text": "1,330",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_current_liabilities",
+          "label": "Other current liabilities",
+          "raw_label": "Other current liabilities",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3886,
+              "raw_text": "3,886",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3615,
+              "raw_text": "3,615",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_current_liabilities",
+          "label": "Total current liabilities",
+          "raw_label": "Total current liabilities",
+          "category": "current_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 18108,
+              "raw_text": "18,108",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 15940,
+              "raw_text": "15,940",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "long_term_debt_and_other_borrowings",
+          "label": "Long-term debt including obligations under finance leases",
+          "raw_label": "Long-term debt including obligations under finance leases",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 15764,
+              "raw_text": "15,764",
+              "note": "Includes noncurrent finance lease liabilities ($1,255M FY26, $1,828M FY25 per Note 9)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 17633,
+              "raw_text": "17,633",
+              "note": "Includes noncurrent finance lease liabilities ($1,255M FY26, $1,828M FY25 per Note 9)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_operating_lease_liabilities",
+          "label": "Noncurrent operating lease liabilities",
+          "raw_label": "Noncurrent operating lease liabilities",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 6461,
+              "raw_text": "6,461",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 6578,
+              "raw_text": "6,578",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_income_taxes",
+          "label": "Deferred income taxes",
+          "raw_label": "Deferred income taxes",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1094,
+              "raw_text": "1,094",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1417,
+              "raw_text": "1,417",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "pension_and_postretirement_obligations",
+          "label": "Pension and postretirement benefit obligations",
+          "raw_label": "Pension and postretirement benefit obligations",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 421,
+              "raw_text": "421",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 387,
+              "raw_text": "387",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_liabilities",
+          "label": "Other long-term liabilities",
+          "raw_label": "Other long-term liabilities",
+          "category": "noncurrent_liability",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2169,
+              "raw_text": "2,169",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2380,
+              "raw_text": "2,380",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_liabilities",
+          "label": "Total Liabilities",
+          "raw_label": "Total Liabilities",
+          "category": "total_liabilities",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 44017,
+              "raw_text": "44,017",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 44335,
+              "raw_text": "44,335",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "common_stock",
+          "label": "Common shares",
+          "raw_label": "Common shares, $1 par per share, 2,000 shares authorized; 1,918 shares issued in 2025 and 2024",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1918,
+              "raw_text": "1,918",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1918,
+              "raw_text": "1,918",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "additional_paid_in_capital",
+          "label": "Additional paid-in capital",
+          "raw_label": "Additional paid-in capital",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3907,
+              "raw_text": "3,907",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3087,
+              "raw_text": "3,087",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "aoci",
+          "label": "Accumulated other comprehensive loss",
+          "raw_label": "Accumulated other comprehensive loss",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -635,
+              "raw_text": "(635)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -621,
+              "raw_text": "(621)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "retained_earnings",
+          "label": "Accumulated earnings",
+          "raw_label": "Accumulated earnings",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 28850,
+              "raw_text": "28,850",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 28724,
+              "raw_text": "28,724",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "treasury_stock",
+          "label": "Common shares in treasury, at cost",
+          "raw_label": "Common shares in treasury, at cost, 1,303 shares in 2025 and 1,258 shares in 2024",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -28113,
+              "raw_text": "(28,113)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -24823,
+              "raw_text": "(24,823)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_parent_equity",
+          "label": "Total Shareowners' Equity - The Kroger Co.",
+          "raw_label": "Total Shareowners’ Equity - The Kroger Co.",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 5927,
+              "raw_text": "5,927",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 8285,
+              "raw_text": "8,285",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "nonredeemable_nci",
+          "label": "Noncontrolling interests",
+          "raw_label": "Noncontrolling interests",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 9,
+              "raw_text": "9",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -4,
+              "raw_text": "(4)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_equity",
+          "label": "Total Equity",
+          "raw_label": "Total Equity",
+          "category": "equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 5936,
+              "raw_text": "5,936",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 8281,
+              "raw_text": "8,281",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_liabilities_and_equity",
+          "label": "Total Liabilities and Equity",
+          "raw_label": "Total Liabilities and Equity",
+          "category": "total_liabilities_and_equity",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 49953,
+              "raw_text": "$49,953",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 52616,
+              "raw_text": "$52,616",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_current_assets",
+          "components": [
+            {
+              "id": "cash_and_equivalents",
+              "sign": 1
+            },
+            {
+              "id": "store_deposits_in_transit",
+              "sign": 1
+            },
+            {
+              "id": "receivables_net",
+              "sign": 1
+            },
+            {
+              "id": "fifo_inventory",
+              "sign": 1
+            },
+            {
+              "id": "lifo_reserve",
+              "sign": 1
+            },
+            {
+              "id": "prepaid_and_other_current_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "ppe_net",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_rou_assets",
+              "sign": 1
+            },
+            {
+              "id": "intangibles_net",
+              "sign": 1
+            },
+            {
+              "id": "goodwill",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_current_liabilities",
+          "components": [
+            {
+              "id": "current_debt_and_other_borrowings",
+              "sign": 1
+            },
+            {
+              "id": "current_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "accrued_salaries_and_wages",
+              "sign": 1
+            },
+            {
+              "id": "other_current_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities",
+          "components": [
+            {
+              "id": "total_current_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "long_term_debt_and_other_borrowings",
+              "sign": 1
+            },
+            {
+              "id": "lt_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "deferred_income_taxes",
+              "sign": 1
+            },
+            {
+              "id": "pension_and_postretirement_obligations",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_parent_equity",
+          "components": [
+            {
+              "id": "common_stock",
+              "sign": 1
+            },
+            {
+              "id": "additional_paid_in_capital",
+              "sign": 1
+            },
+            {
+              "id": "aoci",
+              "sign": 1
+            },
+            {
+              "id": "retained_earnings",
+              "sign": 1
+            },
+            {
+              "id": "treasury_stock",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_equity",
+          "components": [
+            {
+              "id": "total_parent_equity",
+              "sign": 1
+            },
+            {
+              "id": "nonredeemable_nci",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "total_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_liabilities_and_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_cash_flow",
+      "title": "The Kroger Co. Consolidated Statements of Cash Flows (FY24–FY26; KR 2023–2025)",
+      "source": {
+        "doc_id": "doc_kr_20260131x10k",
+        "entity": "KR",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[127]",
+          "table_index": 127
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "fy26",
+          "label": "FY2026 (KR 2025 52W)",
+          "raw_label": "2025 (52 weeks)",
+          "period_key": "2026-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2026-01-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy25",
+          "label": "FY2025 (KR 2024 52W)",
+          "raw_label": "2024 (52 weeks)",
+          "period_key": "2025-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2025-02-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024 (KR 2023 53W)",
+          "raw_label": "2023 (53 weeks)",
+          "period_key": "2024-FY",
+          "unit": "USD",
+          "scale": 1000000,
+          "as_of_date": "2024-02-03",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_income_incl_nci",
+          "label": "Net earnings including noncontrolling interests",
+          "raw_label": "Net earnings including noncontrolling interests",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1024,
+              "raw_text": "$1,024",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2672,
+              "raw_text": "$2,672",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2169,
+              "raw_text": "$2,169",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "depreciation_and_amortization",
+          "label": "Depreciation and amortization",
+          "raw_label": "Depreciation and amortization",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3332,
+              "raw_text": "3,332",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3246,
+              "raw_text": "3,246",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 3125,
+              "raw_text": "3,125",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "fulfillment_network_impairment",
+          "label": "Fulfillment network impairment and related charges",
+          "raw_label": "Fulfillment network impairment and related charges",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2497,
+              "raw_text": "2,497",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "asset_impairment_and_store_closures",
+          "label": "Asset impairment and store closure charges",
+          "raw_label": "Asset impairment and store closure charges",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 187,
+              "raw_text": "187",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 98,
+              "raw_text": "98",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 69,
+              "raw_text": "69",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_asset_amortization",
+          "label": "Operating lease asset amortization",
+          "raw_label": "Operating lease asset amortization",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 588,
+              "raw_text": "588",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 603,
+              "raw_text": "603",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 625,
+              "raw_text": "625",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lifo_charge",
+          "label": "LIFO charge",
+          "raw_label": "LIFO charge",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 157,
+              "raw_text": "157",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 95,
+              "raw_text": "95",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 113,
+              "raw_text": "113",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "share_based_compensation",
+          "label": "Share-based employee compensation",
+          "raw_label": "Share-based employee compensation",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 157,
+              "raw_text": "157",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 175,
+              "raw_text": "175",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 172,
+              "raw_text": "172",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "deferred_income_taxes",
+          "label": "Deferred income taxes",
+          "raw_label": "Deferred income taxes",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -330,
+              "raw_text": "(330)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -102,
+              "raw_text": "(102)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -155,
+              "raw_text": "(155)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gain_on_sale_of_business",
+          "label": "Gain on sale of business",
+          "raw_label": "Gain on sale of business",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": -79,
+              "raw_text": "(79)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gain_on_sale_of_assets",
+          "label": "Gain on sale of assets",
+          "raw_label": "Gain on sale of assets",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -13,
+              "raw_text": "(13)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -70,
+              "raw_text": "(70)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -56,
+              "raw_text": "(56)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "investment_gains_losses_net",
+          "label": "Loss / (gain) on investments",
+          "raw_label": "Loss on investments",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 41,
+              "raw_text": "41",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 148,
+              "raw_text": "148",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -151,
+              "raw_text": "(151)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_operating_noncash",
+          "label": "Other operating adjustments",
+          "raw_label": "Other",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1,
+              "raw_text": "1",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 20,
+              "raw_text": "20",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 69,
+              "raw_text": "69",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_store_deposits",
+          "label": "Changes in store deposits in-transit",
+          "raw_label": "Store deposits in-transit",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 68,
+              "raw_text": "68",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -97,
+              "raw_text": "(97)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -88,
+              "raw_text": "(88)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_receivables",
+          "label": "Changes in receivables",
+          "raw_label": "Receivables",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 113,
+              "raw_text": "113",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -288,
+              "raw_text": "(288)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 14,
+              "raw_text": "14",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_inventories",
+          "label": "Changes in inventories",
+          "raw_label": "Inventories",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -86,
+              "raw_text": "(86)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -144,
+              "raw_text": "(144)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 342,
+              "raw_text": "342",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_prepaid_other",
+          "label": "Changes in prepaid and other current assets",
+          "raw_label": "Prepaid and other current assets",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 8,
+              "raw_text": "8",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -166,
+              "raw_text": "(166)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 72,
+              "raw_text": "72",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_accounts_payable",
+          "label": "Changes in accounts payable",
+          "raw_label": "Accounts payable",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 388,
+              "raw_text": "388",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 253,
+              "raw_text": "253",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 545,
+              "raw_text": "545",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_accrued_expenses",
+          "label": "Changes in accrued expenses",
+          "raw_label": "Accrued expenses",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 165,
+              "raw_text": "165",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 107,
+              "raw_text": "107",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -222,
+              "raw_text": "(222)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_income_taxes",
+          "label": "Changes in income taxes receivable and payable",
+          "raw_label": "Income taxes receivable and payable",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -115,
+              "raw_text": "(115)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 76,
+              "raw_text": "76",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 68,
+              "raw_text": "68",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "chg_operating_lease_liabilities",
+          "label": "Changes in operating lease liabilities",
+          "raw_label": "Operating lease liabilities",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -529,
+              "raw_text": "(529)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -609,
+              "raw_text": "(609)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -695,
+              "raw_text": "(695)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_operating_wc",
+          "label": "Other operating working capital changes",
+          "raw_label": "Other",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -342,
+              "raw_text": "(342)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -144,
+              "raw_text": "(144)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 772,
+              "raw_text": "772",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cfo",
+          "label": "Net cash provided by operating activities",
+          "raw_label": "Net cash provided by operating activities",
+          "category": "cfo",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 7311,
+              "raw_text": "7,311",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 5794,
+              "raw_text": "5,794",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 6788,
+              "raw_text": "6,788",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Payments for property and equipment, incl. lease buyouts",
+          "raw_label": "Payments for property and equipment, including payments for lease buyouts",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -3855,
+              "raw_text": "(3,855)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -4017,
+              "raw_text": "(4,017)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -3904,
+              "raw_text": "(3,904)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_disposal_ppe",
+          "label": "Proceeds from sale of assets",
+          "raw_label": "Proceeds from sale of assets",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 76,
+              "raw_text": "76",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 377,
+              "raw_text": "377",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 101,
+              "raw_text": "101",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_sale_of_business",
+          "label": "Net proceeds from sale of business",
+          "raw_label": "Net proceeds from sale of business",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 52,
+              "raw_text": "52",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 464,
+              "raw_text": "464",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_investing_activities",
+          "label": "Other investing activities",
+          "raw_label": "Other",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -187,
+              "raw_text": "(187)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -52,
+              "raw_text": "(52)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 53,
+              "raw_text": "53",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cfi",
+          "label": "Net cash used by investing activities",
+          "raw_label": "Net cash used by investing activities",
+          "category": "cfi",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -3914,
+              "raw_text": "(3,914)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -3228,
+              "raw_text": "(3,228)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -3750,
+              "raw_text": "(3,750)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_lt_debt",
+          "label": "Proceeds from issuance of long-term debt",
+          "raw_label": "Proceeds from issuance of long-term debt",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 43,
+              "raw_text": "43",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 10502,
+              "raw_text": "10,502",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 15,
+              "raw_text": "15",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "repayments_lt_debt",
+          "label": "Payments on long-term debt including finance leases",
+          "raw_label": "Payments on long-term debt including obligations under finance leases",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -540,
+              "raw_text": "(540)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -4883,
+              "raw_text": "(4,883)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -1301,
+              "raw_text": "(1,301)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dividends_paid",
+          "label": "Dividends paid",
+          "raw_label": "Dividends paid",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -885,
+              "raw_text": "(885)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -883,
+              "raw_text": "(883)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -796,
+              "raw_text": "(796)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "financing_fees_paid",
+          "label": "Financing fees paid",
+          "raw_label": "Financing fees paid",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": -116,
+              "raw_text": "(116)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "proceeds_stock_issuance",
+          "label": "Proceeds from issuance of capital stock",
+          "raw_label": "Proceeds from issuance of capital stock",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 182,
+              "raw_text": "182",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 127,
+              "raw_text": "127",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 50,
+              "raw_text": "50",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "share_repurchases",
+          "label": "Treasury stock purchases",
+          "raw_label": "Treasury stock purchases",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -2699,
+              "raw_text": "(2,699)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -4156,
+              "raw_text": "(4,156)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -62,
+              "raw_text": "(62)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "unsettled_asr",
+          "label": "Unsettled accelerated share repurchases",
+          "raw_label": "Unsettled accelerated share repurchases",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": -1000,
+              "raw_text": "(1,000)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_financing_activities",
+          "label": "Other financing activities",
+          "raw_label": "Other",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -123,
+              "raw_text": "(123)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -81,
+              "raw_text": "(81)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -76,
+              "raw_text": "(76)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cff",
+          "label": "Net cash used by financing activities",
+          "raw_label": "Net cash used by financing activities",
+          "category": "cff",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -4022,
+              "raw_text": "(4,022)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -490,
+              "raw_text": "(490)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -2170,
+              "raw_text": "(2,170)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_change_in_cash",
+          "label": "Net (decrease) increase in cash and temporary cash investments",
+          "raw_label": "Net (decrease) increase in cash and temporary cash investments",
+          "category": "cash_bridge",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -625,
+              "raw_text": "(625)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2076,
+              "raw_text": "2,076",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 868,
+              "raw_text": "868",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "beginning_cash",
+          "label": "Beginning cash and temporary cash investments",
+          "raw_label": "Beginning of year",
+          "category": "cash_bridge",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3959,
+              "raw_text": "3,959",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1883,
+              "raw_text": "1,883",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1015,
+              "raw_text": "1,015",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ending_cash",
+          "label": "Ending cash and temporary cash investments",
+          "raw_label": "End of year",
+          "category": "cash_bridge",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3334,
+              "raw_text": "$3,334",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3959,
+              "raw_text": "$3,959",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1883,
+              "raw_text": "$1,883",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "capital_investments_excl_buyouts",
+          "label": "Total capital investments, excluding lease buyouts",
+          "raw_label": "Total capital investments, excluding lease buyouts",
+          "category": "supplemental",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -3862,
+              "raw_text": "$(3,862)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -3623,
+              "raw_text": "$(3,623)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -3560,
+              "raw_text": "$(3,560)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cash_interest_paid",
+          "label": "Cash paid during the year for net interest",
+          "raw_label": "Cash paid during the year for net interest",
+          "category": "supplemental",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 633,
+              "raw_text": "$633",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 252,
+              "raw_text": "$252",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 488,
+              "raw_text": "$488",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cash_taxes_paid",
+          "label": "Cash paid during the year for income taxes",
+          "raw_label": "Cash paid during the year for income taxes",
+          "category": "supplemental",
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 635,
+              "raw_text": "$635",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 681,
+              "raw_text": "$681",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 751,
+              "raw_text": "$751",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "cfo",
+          "components": [
+            {
+              "id": "net_income_incl_nci",
+              "sign": 1
+            },
+            {
+              "id": "depreciation_and_amortization",
+              "sign": 1
+            },
+            {
+              "id": "fulfillment_network_impairment",
+              "sign": 1
+            },
+            {
+              "id": "asset_impairment_and_store_closures",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_asset_amortization",
+              "sign": 1
+            },
+            {
+              "id": "lifo_charge",
+              "sign": 1
+            },
+            {
+              "id": "share_based_compensation",
+              "sign": 1
+            },
+            {
+              "id": "deferred_income_taxes",
+              "sign": 1
+            },
+            {
+              "id": "gain_on_sale_of_business",
+              "sign": 1
+            },
+            {
+              "id": "gain_on_sale_of_assets",
+              "sign": 1
+            },
+            {
+              "id": "investment_gains_losses_net",
+              "sign": 1
+            },
+            {
+              "id": "other_operating_noncash",
+              "sign": 1
+            },
+            {
+              "id": "chg_store_deposits",
+              "sign": 1
+            },
+            {
+              "id": "chg_receivables",
+              "sign": 1
+            },
+            {
+              "id": "chg_inventories",
+              "sign": 1
+            },
+            {
+              "id": "chg_prepaid_other",
+              "sign": 1
+            },
+            {
+              "id": "chg_accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "chg_accrued_expenses",
+              "sign": 1
+            },
+            {
+              "id": "chg_income_taxes",
+              "sign": 1
+            },
+            {
+              "id": "chg_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "other_operating_wc",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "cfi",
+          "components": [
+            {
+              "id": "capex",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_disposal_ppe",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_sale_of_business",
+              "sign": 1
+            },
+            {
+              "id": "other_investing_activities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "cff",
+          "components": [
+            {
+              "id": "proceeds_lt_debt",
+              "sign": 1
+            },
+            {
+              "id": "repayments_lt_debt",
+              "sign": 1
+            },
+            {
+              "id": "dividends_paid",
+              "sign": 1
+            },
+            {
+              "id": "financing_fees_paid",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_stock_issuance",
+              "sign": 1
+            },
+            {
+              "id": "share_repurchases",
+              "sign": 1
+            },
+            {
+              "id": "unsettled_asr",
+              "sign": 1
+            },
+            {
+              "id": "other_financing_activities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "net_change_in_cash",
+          "components": [
+            {
+              "id": "cfo",
+              "sign": 1
+            },
+            {
+              "id": "cfi",
+              "sign": 1
+            },
+            {
+              "id": "cff",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ending_cash",
+          "components": [
+            {
+              "id": "beginning_cash",
+              "sign": 1
+            },
+            {
+              "id": "net_change_in_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_eps_shares",
+      "title": "The Kroger Co. EPS, Share Counts & Dividends Per Share (FY24–FY26)",
+      "source": {
+        "doc_id": "doc_kr_20260131x10k",
+        "entity": "KR",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[188]",
+          "table_index": 188
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "fy26",
+          "label": "FY2026 (KR 2025)",
+          "raw_label": "2025",
+          "period_key": "2026-FY",
+          "as_of_date": "2026-01-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy25",
+          "label": "FY2025 (KR 2024)",
+          "raw_label": "2024",
+          "period_key": "2025-FY",
+          "as_of_date": "2025-02-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024 (KR 2023)",
+          "raw_label": "2023",
+          "period_key": "2024-FY",
+          "as_of_date": "2024-02-03",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "cover_20260325",
+          "label": "Cover 2026-03-25",
+          "raw_label": "March 25, 2026",
+          "period_key": "2026-03-25",
+          "as_of_date": "2026-03-25",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "eps_numerator",
+          "label": "EPS numerator (net earnings less participating securities)",
+          "raw_label": "Net earnings attributable to The Kroger Co. per basic common share",
+          "category": "numerator",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[188]",
+            "table_index": 188
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1009,
+              "raw_text": "$1,009",
+              "note": "Two-class EPS numerator: Net earnings attr. Kroger less participating securities earnings ($7M FY26, $20M FY25, $18M FY24)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2645,
+              "raw_text": "$2,645",
+              "note": "Two-class EPS numerator: Net earnings attr. Kroger less participating securities earnings ($7M FY26, $20M FY25, $18M FY24)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2146,
+              "raw_text": "$2,146",
+              "note": "Two-class EPS numerator: Net earnings attr. Kroger less participating securities earnings ($7M FY26, $20M FY25, $18M FY24)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "basic_eps",
+          "label": "Basic EPS",
+          "raw_label": "Net earnings attributable to The Kroger Co. per basic common share",
+          "category": "eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[122]",
+            "table_index": 122
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1.55,
+              "raw_text": "$1.55",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3.7,
+              "raw_text": "$3.70",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2.99,
+              "raw_text": "$2.99",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "diluted_eps",
+          "label": "Diluted EPS",
+          "raw_label": "Net earnings attributable to The Kroger Co. per diluted common share",
+          "category": "eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[122]",
+            "table_index": 122
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1.54,
+              "raw_text": "$1.54",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3.67,
+              "raw_text": "$3.67",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2.96,
+              "raw_text": "$2.96",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "weighted_avg_basic_shares",
+          "label": "Weighted-average basic shares",
+          "raw_label": "Net earnings attributable to The Kroger Co. per basic common share",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[188]",
+            "table_index": 188
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 652,
+              "raw_text": "652",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 715,
+              "raw_text": "715",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 718,
+              "raw_text": "718",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dilutive_effect_shares",
+          "label": "Dilutive effect of stock options",
+          "raw_label": "Dilutive effect of stock options",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[188]",
+            "table_index": 188
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3,
+              "raw_text": "3",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 5,
+              "raw_text": "5",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 7,
+              "raw_text": "7",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "weighted_avg_diluted_shares",
+          "label": "Weighted-average diluted shares",
+          "raw_label": "Net earnings attributable to The Kroger Co. per diluted common share",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[188]",
+            "table_index": 188
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 655,
+              "raw_text": "655",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 720,
+              "raw_text": "720",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 725,
+              "raw_text": "725",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "dividends_declared_per_share",
+          "label": "Cash dividends declared per common share",
+          "raw_label": "Cash dividends declared per common share (Equity statement)",
+          "category": "dps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[128]",
+            "table_index": 128
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1.37,
+              "raw_text": "$1.37",
+              "note": "Table 128 p. 58: $1.37/sh declared in KR 2025",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[128]",
+                "table_index": 128
+              },
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1.25,
+              "raw_text": "$1.25",
+              "note": "Table 128 p. 58: $1.25/sh declared in KR 2024",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[128]",
+                "table_index": 128
+              },
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1.13,
+              "raw_text": "$1.13",
+              "note": "Table 128 p. 58: $1.13/sh declared in KR 2023",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[128]",
+                "table_index": 128
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "common_shares_issued",
+          "label": "Common shares issued",
+          "raw_label": "Common Stock Shares (Equity statement)",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[128]",
+            "table_index": 128
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1918,
+              "raw_text": "1,918",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1918,
+              "raw_text": "1,918",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1918,
+              "raw_text": "1,918",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "treasury_shares",
+          "label": "Treasury stock shares",
+          "raw_label": "Treasury Stock Shares (Equity statement)",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[128]",
+            "table_index": 128
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1303,
+              "raw_text": "1,303",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1258,
+              "raw_text": "1,258",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1198,
+              "raw_text": "1,198",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "ending_shares_outstanding",
+          "label": "Period-end common shares outstanding (issued minus treasury)",
+          "raw_label": "Common Stock minus Treasury Shares",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[128]",
+            "table_index": 128
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 615,
+              "note": "Issued common shares (1,918M) minus treasury shares (Table 128 Equity statement)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 660,
+              "note": "Issued common shares (1,918M) minus treasury shares (Table 128 Equity statement)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 720,
+              "note": "Issued common shares (1,918M) minus treasury shares (Table 128 Equity statement)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "cover_shares_outstanding",
+          "label": "DEI cover common shares outstanding",
+          "raw_label": "Shares outstanding as of March 25, 2026",
+          "category": "shares",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '612,575,611')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "cover_20260325": {
+              "value": 612575611,
+              "raw_text": "612,575,611",
+              "note": "10-K cover page p. 1, as of March 25, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//p[contains(., '612,575,611')]"
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "weighted_avg_diluted_shares",
+          "components": [
+            {
+              "id": "weighted_avg_basic_shares",
+              "sign": 1
+            },
+            {
+              "id": "dilutive_effect_shares",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["fy26", "fy25", "fy24"],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ending_shares_outstanding",
+          "components": [
+            {
+              "id": "common_shares_issued",
+              "sign": 1
+            },
+            {
+              "id": "treasury_shares",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["fy26", "fy25", "fy24"],
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_debt_leases",
+      "title": "The Kroger Co. Debt, Credit Facility & Lease Summary (FY25–FY26)",
+      "source": {
+        "doc_id": "doc_kr_20260131x10k",
+        "entity": "KR",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[155]",
+          "table_index": 155
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "fy26",
+          "label": "FY2026 (Jan 31, 2026)",
+          "raw_label": "January 31, 2026",
+          "period_key": "2026-FY",
+          "as_of_date": "2026-01-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy25",
+          "label": "FY2025 (Feb 1, 2025)",
+          "raw_label": "February 1, 2025",
+          "period_key": "2025-FY",
+          "as_of_date": "2025-02-01",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "short_term_borrowings",
+          "label": "Short-term borrowings (commercial paper)",
+          "raw_label": "Commercial paper outstanding",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'January 31, 2026 and February 1, 2025') and contains(., 'no commercial paper borrowings')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 0,
+              "raw_text": "no commercial paper borrowings",
+              "note": "Note 5 p. 73: no commercial paper borrowings and no borrowings under the Credit Agreement at Jan 31, 2026",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//p[contains(., 'January 31, 2026 and February 1, 2025') and contains(., 'no commercial paper borrowings')]"
+              },
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 0,
+              "raw_text": "no commercial paper borrowings",
+              "note": "Note 5 p. 73: no commercial paper borrowings and no borrowings under the Credit Agreement at Feb 1, 2025",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//p[contains(., 'January 31, 2026 and February 1, 2025') and contains(., 'no commercial paper borrowings')]"
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_long_term_debt_excl_leases",
+          "label": "Current portion of debt (excl. finance leases)",
+          "raw_label": "Less current portion",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[155]",
+            "table_index": 155
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1366,
+              "raw_text": "(1,366)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 104,
+              "raw_text": "(104)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "long_term_debt_excl_leases",
+          "label": "Long-term debt (excl. finance leases)",
+          "raw_label": "Total long-term debt, excluding obligations under finance leases",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[155]",
+            "table_index": 155
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 14509,
+              "raw_text": "$14,509",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 15805,
+              "raw_text": "$15,805",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_financial_debt_excl_leases",
+          "label": "Total debt (excl. obligations under finance leases)",
+          "raw_label": "Total debt, excluding obligations under finance leases",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[155]",
+            "table_index": 155
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 15875,
+              "raw_text": "15,875",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 15909,
+              "raw_text": "15,909",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_finance_lease_liabilities",
+          "label": "Current portion of finance lease liabilities",
+          "raw_label": "Finance",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[174]",
+            "table_index": 174
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 436,
+              "raw_text": "436",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 168,
+              "raw_text": "168",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_finance_lease_liabilities",
+          "label": "Noncurrent finance lease liabilities",
+          "raw_label": "Finance",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[174]",
+            "table_index": 174
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1255,
+              "raw_text": "1,255",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1828,
+              "raw_text": "1,828",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_finance_lease_liabilities",
+          "label": "Total finance lease liabilities",
+          "raw_label": "Present value of lease liabilities(1)",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[180]",
+            "table_index": 180
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1691,
+              "raw_text": "$1,691",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[180]",
+                "table_index": 180
+              },
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1996,
+              "note": "Derived as Current ($168M) + Noncurrent ($1,828M) finance lease obligations in Table 174 Note 9",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[174]",
+                "table_index": 174
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_debt_and_finance_leases_bs",
+          "label": "Current portion of debt incl. finance leases (BS)",
+          "raw_label": "Current portion of long-term debt including obligations under finance leases",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[121]",
+            "table_index": 121
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1802,
+              "raw_text": "$1,802",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 272,
+              "raw_text": "$272",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_debt_and_finance_leases_bs",
+          "label": "Long-term debt incl. finance leases (BS)",
+          "raw_label": "Long-term debt including obligations under finance leases",
+          "category": "debt",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[121]",
+            "table_index": 121
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 15764,
+              "raw_text": "15,764",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 17633,
+              "raw_text": "17,633",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "current_operating_lease_liabilities",
+          "label": "Current portion of operating lease liabilities",
+          "raw_label": "Operating",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[174]",
+            "table_index": 174
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 665,
+              "raw_text": "$665",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 599,
+              "raw_text": "$599",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lt_operating_lease_liabilities",
+          "label": "Noncurrent operating lease liabilities",
+          "raw_label": "Operating",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[174]",
+            "table_index": 174
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 6461,
+              "raw_text": "6,461",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 6578,
+              "raw_text": "6,578",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_operating_lease_liabilities",
+          "label": "Total operating lease liabilities",
+          "raw_label": "Present value of lease liabilities(1)",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[180]",
+            "table_index": 180
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 7126,
+              "raw_text": "$7,126",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[180]",
+                "table_index": 180
+              },
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 7177,
+              "note": "Derived as Current ($599M) + Noncurrent ($6,578M) operating lease liabilities in Table 174 Note 9",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[174]",
+                "table_index": 174
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_rou_assets",
+          "label": "Operating lease assets",
+          "raw_label": "Operating",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[174]",
+            "table_index": 174
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 6682,
+              "raw_text": "$6,682",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 6839,
+              "raw_text": "$6,839",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_rou_assets_net",
+          "label": "Finance lease assets (inside PP&E, net)",
+          "raw_label": "Finance",
+          "category": "lease",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[174]",
+            "table_index": 174
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 910,
+              "raw_text": "910",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1917,
+              "raw_text": "1,917",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "undiscounted_operating_leases_total",
+          "label": "Total undiscounted operating lease payments",
+          "raw_label": "Total lease payments",
+          "category": "lease_maturity",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[180]",
+            "table_index": 180
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 10121,
+              "raw_text": "10,121",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_imputed_interest",
+          "label": "Imputed interest on operating leases",
+          "raw_label": "Less amount representing interest",
+          "category": "lease_maturity",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[180]",
+            "table_index": 180
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2995,
+              "raw_text": "2,995",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "undiscounted_finance_leases_total",
+          "label": "Total undiscounted finance lease payments",
+          "raw_label": "Total lease payments",
+          "category": "lease_maturity",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[180]",
+            "table_index": 180
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2198,
+              "raw_text": "2,198",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_imputed_interest",
+          "label": "Imputed interest on finance leases",
+          "raw_label": "Less amount representing interest",
+          "category": "lease_maturity",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[180]",
+            "table_index": 180
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 507,
+              "raw_text": "507",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_cost",
+          "label": "Operating lease cost",
+          "raw_label": "Operating lease cost(1)",
+          "category": "lease_cost",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[178]",
+            "table_index": 178
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 980,
+              "raw_text": "$980",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 988,
+              "raw_text": "$988",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sublease_income",
+          "label": "Sublease and other rental income",
+          "raw_label": "Sublease and other rental income",
+          "category": "lease_cost",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[178]",
+            "table_index": 178
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -108,
+              "raw_text": "(108)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -111,
+              "raw_text": "(111)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_amortization",
+          "label": "Finance lease asset amortization",
+          "raw_label": "Amortization of leased assets",
+          "category": "lease_cost",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[178]",
+            "table_index": 178
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 190,
+              "raw_text": "190",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 203,
+              "raw_text": "203",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_interest",
+          "label": "Finance lease interest expense",
+          "raw_label": "Interest on lease liabilities",
+          "category": "lease_cost",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[178]",
+            "table_index": 178
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 89,
+              "raw_text": "89",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 84,
+              "raw_text": "84",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_cash_flows_operating_leases",
+          "label": "Operating cash outflows from operating leases",
+          "raw_label": "Operating cash flows from operating leases",
+          "category": "lease_cf",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[183]",
+            "table_index": 183
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 855,
+              "raw_text": "$855",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 916,
+              "raw_text": "$916",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_cash_flows_finance_leases",
+          "label": "Operating cash outflows from finance leases",
+          "raw_label": "Operating cash flows from finance leases",
+          "category": "lease_cf",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[183]",
+            "table_index": 183
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 89,
+              "raw_text": "$89",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 84,
+              "raw_text": "$84",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "financing_cash_flows_finance_leases",
+          "label": "Financing cash outflows from finance leases",
+          "raw_label": "Financing cash flows from finance leases(1)",
+          "category": "lease_cf",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[183]",
+            "table_index": 183
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 415,
+              "raw_text": "$415",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 168,
+              "raw_text": "$168",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_wtd_avg_term_years",
+          "label": "Weighted-average remaining lease term - operating",
+          "raw_label": "Operating leases",
+          "category": "lease_terms",
+          "unit": "years",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[182]",
+            "table_index": 182
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 13.7,
+              "raw_text": "13.7",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 13.7,
+              "raw_text": "13.7",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_wtd_avg_term_years",
+          "label": "Weighted-average remaining lease term - finance",
+          "raw_label": "Finance leases",
+          "category": "lease_terms",
+          "unit": "years",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[182]",
+            "table_index": 182
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 11.8,
+              "raw_text": "11.8",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 11.5,
+              "raw_text": "11.5",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "operating_lease_wtd_avg_discount_rate",
+          "label": "Weighted-average discount rate - operating",
+          "raw_label": "Operating leases",
+          "category": "lease_terms",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[182]",
+            "table_index": 182
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 4.8,
+              "raw_text": "4.8%",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 4.6,
+              "raw_text": "4.6%",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "finance_lease_wtd_avg_discount_rate",
+          "label": "Weighted-average discount rate - finance",
+          "raw_label": "Finance leases",
+          "category": "lease_terms",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[182]",
+            "table_index": 182
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 4,
+              "raw_text": "4.0%",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 4.7,
+              "raw_text": "4.7%",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "revolving_credit_capacity",
+          "label": "Unsecured revolving credit facility capacity",
+          "raw_label": "$2.75 billion unsecured revolving credit facility",
+          "category": "credit_facility",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'September 13, 2029') and contains(., '2.75 billion')]"
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2750,
+              "raw_text": "$2.75 billion",
+              "note": "Item 7 p. 46: $2.75B unsecured revolving credit facility (terminates Sep 13, 2029)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//p[contains(., 'September 13, 2029') and contains(., '2.75 billion')]"
+              },
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2750,
+              "raw_text": "$2,750",
+              "note": "Note 5 p. 71: $2,750M aggregate initial commitments under Sep 13, 2024 Credit Agreement on and after Dec 11, 2024",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//p[contains(., 'On and after December 11, 2024') and contains(., '2,750')]"
+              },
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_financial_debt_excl_leases",
+          "components": [
+            {
+              "id": "short_term_borrowings",
+              "sign": 1
+            },
+            {
+              "id": "current_long_term_debt_excl_leases",
+              "sign": 1
+            },
+            {
+              "id": "long_term_debt_excl_leases",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_finance_lease_liabilities",
+          "components": [
+            {
+              "id": "current_finance_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "lt_finance_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "current_debt_and_finance_leases_bs",
+          "components": [
+            {
+              "id": "current_long_term_debt_excl_leases",
+              "sign": 1
+            },
+            {
+              "id": "current_finance_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "lt_debt_and_finance_leases_bs",
+          "components": [
+            {
+              "id": "long_term_debt_excl_leases",
+              "sign": 1
+            },
+            {
+              "id": "lt_finance_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_operating_lease_liabilities",
+          "components": [
+            {
+              "id": "current_operating_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "lt_operating_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_operating_lease_liabilities",
+          "components": [
+            {
+              "id": "undiscounted_operating_leases_total",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_imputed_interest",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["fy26"],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_finance_lease_liabilities",
+          "components": [
+            {
+              "id": "undiscounted_finance_leases_total",
+              "sign": 1
+            },
+            {
+              "id": "finance_lease_imputed_interest",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["fy26"],
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_operating_kpis",
+      "title": "The Kroger Co. Operating KPIs & Sales Breakdown (FY24–FY26)",
+      "source": {
+        "doc_id": "doc_kr_20260131x10k",
+        "entity": "KR",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[85]",
+          "table_index": 85
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "fy26",
+          "label": "FY2026 (KR 2025 52W)",
+          "raw_label": "2025",
+          "period_key": "2026-FY",
+          "as_of_date": "2026-01-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy25",
+          "label": "FY2025 (KR 2024 52W)",
+          "raw_label": "2024",
+          "period_key": "2025-FY",
+          "as_of_date": "2025-02-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024 (KR 2023 53W)",
+          "raw_label": "2023",
+          "period_key": "2024-FY",
+          "as_of_date": "2024-02-03",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "ending_store_count",
+          "label": "Ending supermarket count",
+          "raw_label": "End of year",
+          "category": "store_count",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[103]",
+            "table_index": 103
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2697,
+              "raw_text": "2,697",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2731,
+              "raw_text": "2,731",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2722,
+              "raw_text": "2,722",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "retail_sqft",
+          "label": "Total supermarket square footage",
+          "raw_label": "Total supermarket square footage (in millions)",
+          "category": "sqft",
+          "unit": "sqft",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[103]",
+            "table_index": 103
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 180,
+              "raw_text": "180",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 182,
+              "raw_text": "182",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 180,
+              "raw_text": "180",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "comp_sales_ex_fuel_growth",
+          "label": "Identical sales growth (excl. fuel & Adjusted Items)",
+          "raw_label": "Identical sales excluding fuel",
+          "category": "comps",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[92]",
+            "table_index": 92
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2.9,
+              "raw_text": "2.9%",
+              "note": "Identical sales excluding fuel and 2025 Q1 Colorado Labor Dispute",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1.5,
+              "raw_text": "1.5%",
+              "note": "Identical sales excluding fuel and 2025 Q1 Colorado Labor Dispute",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "retail_sales_ex_fuel",
+          "label": "Total sales to retail customers without fuel",
+          "raw_label": "Total sales to retail customers without fuel(4)",
+          "category": "revenue_mix",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[85]",
+            "table_index": 85
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 132712,
+              "raw_text": "$132,712",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 130973,
+              "raw_text": "$130,973",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 132284,
+              "raw_text": "$132,284",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "supermarket_fuel_sales",
+          "label": "Supermarket fuel sales",
+          "raw_label": "Supermarket fuel sales",
+          "category": "revenue_mix",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[85]",
+            "table_index": 85
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 13584,
+              "raw_text": "13,584",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 14973,
+              "raw_text": "14,973",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 16621,
+              "raw_text": "16,621",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_sales",
+          "label": "Other sales (plants, media, specialty pharmacy)",
+          "raw_label": "Other sales(5)",
+          "category": "revenue_mix",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[85]",
+            "table_index": 85
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1346,
+              "raw_text": "1,346",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 1177,
+              "raw_text": "1,177",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1134,
+              "raw_text": "1,134",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "sales_ex_fuel",
+          "label": "Total sales without fuel",
+          "raw_label": "Sales without fuel(1)",
+          "category": "revenue_mix",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[42]",
+            "table_index": 42
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 134058,
+              "raw_text": "$134,058",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[42]",
+                "table_index": 42
+              },
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 132150,
+              "raw_text": "$132,150",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[42]",
+                "table_index": 42
+              },
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 133418,
+              "note": "Derived as Total sales to retail customers without fuel ($132,284M) + Other sales ($1,134M) for KR 2023 (53W ended Feb 3, 2024)",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[85]",
+                "table_index": 85
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_sales",
+          "label": "Total sales",
+          "raw_label": "Total sales",
+          "category": "revenue_mix",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[85]",
+            "table_index": 85
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 147642,
+              "raw_text": "$147,642",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 147123,
+              "raw_text": "$147,123",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 150039,
+              "raw_text": "$150,039",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lifo_charge",
+          "label": "LIFO charge",
+          "raw_label": "LIFO charge",
+          "category": "accounting_memo",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[127]",
+            "table_index": 127
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 157,
+              "raw_text": "157",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 95,
+              "raw_text": "95",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 113,
+              "raw_text": "113",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "sales_ex_fuel",
+          "components": [
+            {
+              "id": "retail_sales_ex_fuel",
+              "sign": 1
+            },
+            {
+              "id": "other_sales",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_sales",
+          "components": [
+            {
+              "id": "sales_ex_fuel",
+              "sign": 1
+            },
+            {
+              "id": "supermarket_fuel_sales",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ],
+      "is_restatement": false
+    },
+    {
+      "table_id": "peer_qoe_items",
+      "title": "The Kroger Co. Non-GAAP & Quality-of-Earnings Adjustments (FY24–FY26)",
+      "source": {
+        "doc_id": "doc_kr_20260131x10k",
+        "entity": "KR",
+        "basis": "qoe",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[68]",
+          "table_index": 68
+        },
+        "is_restatement": false
+      },
+      "columns": [
+        {
+          "id": "fy26",
+          "label": "FY2026 (KR 2025)",
+          "raw_label": "2025",
+          "period_key": "2026-FY",
+          "as_of_date": "2026-01-31",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy25",
+          "label": "FY2025 (KR 2024)",
+          "raw_label": "2024",
+          "period_key": "2025-FY",
+          "as_of_date": "2025-02-01",
+          "data_type": "number",
+          "is_restatement": false
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024 (KR 2023)",
+          "raw_label": "2023",
+          "period_key": "2024-FY",
+          "as_of_date": "2024-02-03",
+          "data_type": "number",
+          "is_restatement": false
+        }
+      ],
+      "rows": [
+        {
+          "id": "operating_income_gaap",
+          "label": "Operating profit (GAAP)",
+          "raw_label": "Operating profit",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1890,
+              "raw_text": "$1,890",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3849,
+              "raw_text": "$3,849",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "lifo_charge_qoe",
+          "label": "LIFO charge add-back",
+          "raw_label": "LIFO charge",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 157,
+              "raw_text": "157",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 95,
+              "raw_text": "95",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "fifo_operating_profit",
+          "label": "FIFO operating profit",
+          "raw_label": "FIFO Operating profit",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2047,
+              "raw_text": "2,047",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3944,
+              "raw_text": "3,944",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "labor_dispute_pretax",
+          "label": "Labor dispute charges (pretax)",
+          "raw_label": "Adjustment for labor dispute charges",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 44,
+              "raw_text": "44",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "store_closures_pretax",
+          "label": "Store closures (pretax)",
+          "raw_label": "Adjustment for store closures",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 100,
+              "raw_text": "100",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "exec_comp_credit_pretax",
+          "label": "Executive stock compensation credit (pretax)",
+          "raw_label": "Adjustment for executive stock compensation for a former executive",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -21,
+              "raw_text": "(21)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "merger_related_costs_pretax",
+          "label": "Albertsons merger-related costs (pretax)",
+          "raw_label": "Adjustment for merger-related costs(1)",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": 684,
+              "raw_text": "684",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 316,
+              "raw_text": "$316",
+              "note": "Table 66/74 p. 30: $316M pretax Albertsons merger costs in KR 2023",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[74]",
+                "table_index": 74
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "merger_litigation_settlement_pretax",
+          "label": "Albertsons merger-related litigation & settlement charges (pretax)",
+          "raw_label": "Adjustment for merger-related litigation and settlement charges",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 161,
+              "raw_text": "161",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "property_losses_pretax",
+          "label": "Property losses (pretax)",
+          "raw_label": "Adjustment for property losses",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": 25,
+              "raw_text": "25",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "opioid_settlement_charges_pretax",
+          "label": "Opioid settlement charges & vendor reserves (pretax)",
+          "raw_label": "Adjustment for opioid settlement charges and vendor reserves",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -6,
+              "raw_text": "(6)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -27,
+              "raw_text": "(27)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1475,
+              "raw_text": "$1,475",
+              "note": "Table 78 p. 31: $1,475M pretax opioid settlement charges in KR 2023",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[78]",
+                "table_index": 78
+              },
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "intangible_impairment_pretax",
+          "label": "Impairment of intangible assets (pretax)",
+          "raw_label": "Adjustment for impairment of intangible assets",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 50,
+              "raw_text": "50",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 30,
+              "raw_text": "30",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "severance_pretax",
+          "label": "Severance charge and related benefits (pretax)",
+          "raw_label": "Adjustment for severance charge and related benefits",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 47,
+              "raw_text": "47",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 32,
+              "raw_text": "32",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "fulfillment_network_impairment_pretax",
+          "label": "Fulfillment network (Ocado) impairment and related charges (pretax)",
+          "raw_label": "Adjustment for fulfillment network impairment and related charges",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2497,
+              "raw_text": "2,497",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "other_operating_qoe_pretax",
+          "label": "Other operating profit adjustments (pretax)",
+          "raw_label": "Other",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -14,
+              "raw_text": "(14)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -14,
+              "raw_text": "(14)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_adjusted_items_op_profit",
+          "label": "Total Adjusted items (operating profit)",
+          "raw_label": "2025 and 2024 Adjusted items",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2858,
+              "raw_text": "2,858",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 730,
+              "raw_text": "730",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "adj_fifo_operating_profit",
+          "label": "Adjusted FIFO operating profit (Non-GAAP)",
+          "raw_label": "Adjusted FIFO operating profit excluding the adjusted items above",
+          "category": "operating_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[96]",
+            "table_index": 96
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 4905,
+              "raw_text": "$4,905",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 4674,
+              "raw_text": "$4,674",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "net_income_attr_parent_gaap",
+          "label": "Net earnings attributable to Kroger (GAAP)",
+          "raw_label": "Net earnings attributable to The Kroger Co.",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1016,
+              "raw_text": "$1,016",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 2665,
+              "raw_text": "$2,665",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2164,
+              "raw_text": "$2,164",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "investment_loss_gain_after_tax",
+          "label": "Loss / (gain) on investments (net of tax)",
+          "raw_label": "Adjustment for loss (gain) on investments(1)(2)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 33,
+              "raw_text": "33",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 112,
+              "raw_text": "112",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": -116,
+              "raw_text": "(116)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "labor_dispute_after_tax",
+          "label": "Labor dispute charges (net of tax)",
+          "raw_label": "Adjustment for labor dispute charges(1)(3)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 33,
+              "raw_text": "33",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "store_closures_after_tax",
+          "label": "Store closures (net of tax)",
+          "raw_label": "Adjustment for store closures(1)(4)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 77,
+              "raw_text": "77",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "exec_comp_credit_after_tax",
+          "label": "Executive stock compensation credit (net of tax)",
+          "raw_label": "Adjustment for executive stock compensation for a former executive(1)(5)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -16,
+              "raw_text": "(16)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "merger_related_costs_after_tax",
+          "label": "Merger-related costs (net of tax)",
+          "raw_label": "Adjustment for merger-related costs(1)(6)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": 489,
+              "raw_text": "489",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 268,
+              "raw_text": "268",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "merger_litigation_settlement_after_tax",
+          "label": "Merger-related litigation & settlement charges (net of tax)",
+          "raw_label": "Adjustment for merger-related litigation and settlement charges(1)(7)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 121,
+              "raw_text": "121",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "property_losses_after_tax",
+          "label": "Property losses (net of tax)",
+          "raw_label": "Adjustment for property losses(1)(8)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": 19,
+              "raw_text": "19",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "merger_net_interest_after_tax",
+          "label": "Merger-related net interest expense (net of tax)",
+          "raw_label": "Adjustment for merger-related net interest expense(1)(9)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": 26,
+              "raw_text": "26",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "opioid_settlement_charges_after_tax",
+          "label": "Opioid settlement charges & vendor reserves (net of tax)",
+          "raw_label": "Adjustment for opioid settlement charges and vendor reserves(1)(10)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -3,
+              "raw_text": "(3)",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": -21,
+              "raw_text": "(21)",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1163,
+              "raw_text": "1,163",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "intangible_impairment_after_tax",
+          "label": "Impairment of intangible assets (net of tax)",
+          "raw_label": "Adjustment for the impairment of intangible assets(1)(11)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 34,
+              "raw_text": "34",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 23,
+              "raw_text": "23",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "gain_sale_specialty_pharmacy_after_tax",
+          "label": "Gain on sale of Kroger Specialty Pharmacy (net of tax)",
+          "raw_label": "Adjustment for gain on sale of Kroger Specialty Pharmacy(1)(12)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": -60,
+              "raw_text": "(60)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "severance_after_tax",
+          "label": "Severance charge and related benefits (net of tax)",
+          "raw_label": "Adjustment for severance charge and related benefits(1)(13)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 37,
+              "raw_text": "37",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 24,
+              "raw_text": "24",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "fulfillment_network_impairment_after_tax",
+          "label": "Fulfillment network impairment and related charges (net of tax)",
+          "raw_label": "Adjustment for fulfillment network impairment and related charges(1)(14)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1908,
+              "raw_text": "1,908",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "exec_comp_tax_adj",
+          "label": "Executive stock comp income tax adjustment",
+          "raw_label": "Executive stock compensation for a former executive income tax adjustment",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -7,
+              "raw_text": "(7)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "specialty_pharmacy_tax_adj",
+          "label": "Income tax benefit on sale of Kroger Specialty Pharmacy",
+          "raw_label": "Adjustment for income tax expense on sale of Kroger Specialty Pharmacy",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy25": {
+              "value": -31,
+              "raw_text": "(31)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "vitacost_tax_adj",
+          "label": "Income tax benefit on sale of Vitacost.com",
+          "raw_label": "Adjustment for income tax expense on sale of Vitacost.com",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": -34,
+              "raw_text": "(34)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_adjusted_items_after_tax",
+          "label": "Total Adjusted Items (net of tax)",
+          "raw_label": "Total Adjusted Items",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 2183,
+              "raw_text": "2,183",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 581,
+              "raw_text": "581",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1315,
+              "raw_text": "1,315",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "adj_net_income_non_gaap",
+          "label": "Adjusted net earnings (excl. Adjusted Items)",
+          "raw_label": "Net earnings attributable to The Kroger Co. excluding the Adjusted Items",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3199,
+              "raw_text": "$3,199",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3246,
+              "raw_text": "$3,246",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 3479,
+              "raw_text": "$3,479",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "extra_week_after_tax",
+          "label": "Extra Week (53rd week) adjustment (net of tax)",
+          "raw_label": "Extra Week adjustment(1)(15)",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy24": {
+              "value": -144,
+              "raw_text": "(144)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "adj_net_income_ex_extra_week",
+          "label": "Adjusted net earnings (excl. Adjusted Items & Extra Week)",
+          "raw_label": "Net earnings attributable to The Kroger Co. excluding the Adjusted Items and the Extra Week adjustment",
+          "category": "net_income_qoe",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3199,
+              "raw_text": "$3,199",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3246,
+              "raw_text": "$3,246",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 3335,
+              "raw_text": "$3,335",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "diluted_eps_gaap",
+          "label": "Diluted EPS (GAAP)",
+          "raw_label": "Net earnings attributable to The Kroger Co. per diluted common share",
+          "category": "eps_qoe",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 1.54,
+              "raw_text": "$1.54",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 3.67,
+              "raw_text": "$3.67",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 2.96,
+              "raw_text": "$2.96",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "total_adjusted_items_eps",
+          "label": "Total Adjusted Items (per diluted share)",
+          "raw_label": "Total Adjusted Items",
+          "category": "eps_qoe",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 3.31,
+              "raw_text": "3.31",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 0.8,
+              "raw_text": "0.80",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 1.8,
+              "raw_text": "1.80",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "adj_diluted_eps_non_gaap",
+          "label": "Adjusted diluted EPS (excl. Adjusted Items)",
+          "raw_label": "Net earnings attributable to The Kroger Co. per diluted common share excluding the Adjusted Items",
+          "category": "eps_qoe",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 4.85,
+              "raw_text": "$4.85",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 4.47,
+              "raw_text": "$4.47",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 4.76,
+              "raw_text": "$4.76",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "extra_week_eps",
+          "label": "Extra Week (53rd week) adjustment (per diluted share)",
+          "raw_label": "Extra Week adjustment(16)",
+          "category": "eps_qoe",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy24": {
+              "value": -0.2,
+              "raw_text": "(0.20)",
+              "is_restatement": false
+            }
+          }
+        },
+        {
+          "id": "adj_diluted_eps_ex_extra_week",
+          "label": "Adjusted diluted EPS (excl. Adjusted Items & Extra Week)",
+          "raw_label": "Net earnings attributable to The Kroger Co. per diluted common share excluding the Adjusted Items and the Extra Week adjustment",
+          "category": "eps_qoe",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[68]",
+            "table_index": 68
+          },
+          "is_restatement": false,
+          "cells": {
+            "fy26": {
+              "value": 4.85,
+              "raw_text": "$4.85",
+              "is_restatement": false
+            },
+            "fy25": {
+              "value": 4.47,
+              "raw_text": "$4.47",
+              "is_restatement": false
+            },
+            "fy24": {
+              "value": 4.56,
+              "raw_text": "$4.56",
+              "is_restatement": false
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "fifo_operating_profit",
+          "components": [
+            {
+              "id": "operating_income_gaap",
+              "sign": 1
+            },
+            {
+              "id": "lifo_charge_qoe",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["fy26", "fy25"],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_adjusted_items_op_profit",
+          "components": [
+            {
+              "id": "labor_dispute_pretax",
+              "sign": 1
+            },
+            {
+              "id": "store_closures_pretax",
+              "sign": 1
+            },
+            {
+              "id": "exec_comp_credit_pretax",
+              "sign": 1
+            },
+            {
+              "id": "merger_related_costs_pretax",
+              "sign": 1
+            },
+            {
+              "id": "merger_litigation_settlement_pretax",
+              "sign": 1
+            },
+            {
+              "id": "property_losses_pretax",
+              "sign": 1
+            },
+            {
+              "id": "opioid_settlement_charges_pretax",
+              "sign": 1
+            },
+            {
+              "id": "intangible_impairment_pretax",
+              "sign": 1
+            },
+            {
+              "id": "severance_pretax",
+              "sign": 1
+            },
+            {
+              "id": "fulfillment_network_impairment_pretax",
+              "sign": 1
+            },
+            {
+              "id": "other_operating_qoe_pretax",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["fy26", "fy25"],
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "adj_fifo_operating_profit",
+          "components": [
+            {
+              "id": "fifo_operating_profit",
+              "sign": 1
+            },
+            {
+              "id": "total_adjusted_items_op_profit",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": ["fy26", "fy25"],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_adjusted_items_after_tax",
+          "components": [
+            {
+              "id": "investment_loss_gain_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "labor_dispute_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "store_closures_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "exec_comp_credit_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "merger_related_costs_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "merger_litigation_settlement_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "property_losses_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "merger_net_interest_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "opioid_settlement_charges_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "intangible_impairment_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "gain_sale_specialty_pharmacy_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "severance_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "fulfillment_network_impairment_after_tax",
+              "sign": 1
+            },
+            {
+              "id": "exec_comp_tax_adj",
+              "sign": 1
+            },
+            {
+              "id": "specialty_pharmacy_tax_adj",
+              "sign": 1
+            },
+            {
+              "id": "vitacost_tax_adj",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "adj_net_income_non_gaap",
+          "components": [
+            {
+              "id": "net_income_attr_parent_gaap",
+              "sign": 1
+            },
+            {
+              "id": "total_adjusted_items_after_tax",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "adj_net_income_ex_extra_week",
+          "components": [
+            {
+              "id": "adj_net_income_non_gaap",
+              "sign": 1
+            },
+            {
+              "id": "extra_week_after_tax",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "adj_diluted_eps_non_gaap",
+          "components": [
+            {
+              "id": "diluted_eps_gaap",
+              "sign": 1
+            },
+            {
+              "id": "total_adjusted_items_eps",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0.01,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "adj_diluted_eps_ex_extra_week",
+          "components": [
+            {
+              "id": "adj_diluted_eps_non_gaap",
+              "sign": 1
+            },
+            {
+              "id": "extra_week_eps",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0.01,
+          "missing_components": "zero"
+        }
+      ],
+      "is_restatement": false
+    }
+  ],
+  "cross_checksums": [
+    {
+      "name": "ni_is_cf_fy26",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income_incl_nci",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_incl_nci",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "da_cf_is_fy26",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "depreciation_and_amortization",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "da_is",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "lifo_kpi_cf_fy26",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "lifo_charge",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "lifo_charge",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "net_sales_kpi_is_fy26",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "net_sales",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_sales",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_ni_tie_fy26",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "net_income_attr_parent_gaap",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_attr_parent",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_eps_tie_fy26",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "diluted_eps_gaap",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_eps_shares",
+          "row_id": "diluted_eps",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "ni_is_cf_fy25",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income_incl_nci",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_incl_nci",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "da_cf_is_fy25",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "depreciation_and_amortization",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "da_is",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "lifo_kpi_cf_fy25",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "lifo_charge",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "lifo_charge",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "net_sales_kpi_is_fy25",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "net_sales",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_sales",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_ni_tie_fy25",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "net_income_attr_parent_gaap",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_attr_parent",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_eps_tie_fy25",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "diluted_eps_gaap",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_eps_shares",
+          "row_id": "diluted_eps",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "ni_is_cf_fy24",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income_incl_nci",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_incl_nci",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "da_cf_is_fy24",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "depreciation_and_amortization",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "da_is",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "lifo_kpi_cf_fy24",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "lifo_charge",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "lifo_charge",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "net_sales_kpi_is_fy24",
+      "target": {
+        "table_id": "peer_operating_kpis",
+        "row_id": "net_sales",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_sales",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_ni_tie_fy24",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "net_income_attr_parent_gaap",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income_attr_parent",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_eps_tie_fy24",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "diluted_eps_gaap",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "peer_eps_shares",
+          "row_id": "diluted_eps",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_assets_eq_le_fy26",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "total_assets",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_balance_sheet",
+          "row_id": "total_liabilities_and_equity",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cash_bs_cf_fy26",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "cash_and_equivalents",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "ending_cash",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_opinc_tie_fy26",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "operating_income_gaap",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "operating_income",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_lifo_tie_fy26",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "lifo_charge_qoe",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "lifo_charge",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_curr_debt_fl_fy26",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_debt_and_other_borrowings",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_debt_and_finance_leases_bs",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_lt_debt_fl_fy26",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "long_term_debt_and_other_borrowings",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "lt_debt_and_finance_leases_bs",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_curr_ol_fy26",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_operating_lease_liabilities",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_operating_lease_liabilities",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_lt_ol_fy26",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "lt_operating_lease_liabilities",
+        "col_id": "fy26"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "lt_operating_lease_liabilities",
+          "col_id": "fy26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_assets_eq_le_fy25",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "total_assets",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_balance_sheet",
+          "row_id": "total_liabilities_and_equity",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cash_bs_cf_fy25",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "cash_and_equivalents",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_cash_flow",
+          "row_id": "ending_cash",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_opinc_tie_fy25",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "operating_income_gaap",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "operating_income",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "qoe_lifo_tie_fy25",
+      "target": {
+        "table_id": "peer_qoe_items",
+        "row_id": "lifo_charge_qoe",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_operating_kpis",
+          "row_id": "lifo_charge",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_curr_debt_fl_fy25",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_debt_and_other_borrowings",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_debt_and_finance_leases_bs",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_lt_debt_fl_fy25",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "long_term_debt_and_other_borrowings",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "lt_debt_and_finance_leases_bs",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_curr_ol_fy25",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "current_operating_lease_liabilities",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "current_operating_lease_liabilities",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_lt_ol_fy25",
+      "target": {
+        "table_id": "peer_balance_sheet",
+        "row_id": "lt_operating_lease_liabilities",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "peer_debt_leases",
+          "row_id": "lt_operating_lease_liabilities",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    }
+  ]
+}
