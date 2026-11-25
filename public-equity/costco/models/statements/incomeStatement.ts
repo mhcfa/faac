@@ -11,8 +11,7 @@ import {
 
 export function buildIncomeStatement(
   sheet: Sheet,
-  kg: CostcoKnowledgeData,
-  belowTarget?: Table
+  kg: CostcoKnowledgeData
 ): Table {
   const table = sheet.addTable(
     "IncomeStatement",
@@ -23,7 +22,6 @@ export function buildIncomeStatement(
         `Source: ${kg.citations.incomeStatement}`,
       ],
       currency: "USD",
-      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(table, {

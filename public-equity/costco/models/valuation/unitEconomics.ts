@@ -43,10 +43,13 @@ const UNIT_ECON_COL_HEADERS: Readonly<
   },
 }
 
-export function buildUnitEconomicsSchedule(
+export function buildUnitEconomicsTables(
   sheet: Sheet,
   kg: CostcoKnowledgeData
-): Table {
+): {
+  readonly unitEconomics: Table
+  readonly bridge: Table
+} {
   const table = sheet.addTable(
     "ClubUnitEconomics",
     "Warehouse Club Unit Economics: COST vs. Sam's Club, BJ's & PriceSmart ($M / Club / SqFt)",
@@ -498,7 +501,7 @@ export function buildUnitEconomicsSchedule(
     },
   })
 
-  // Supporting Schedule paired right of ClubUnitEconomics
+  // Supporting schedule of as-reported segment & peer inputs
   const bridge = sheet.addTable(
     "ClubUnitEconBridge",
     "As-Reported Segment & Peer Inputs ($M / %)",
@@ -508,7 +511,6 @@ export function buildUnitEconomicsSchedule(
         "Source: WMT Q2 FY27 10-Q; COST/PSMT 10-K",
       ],
       currency: "USD",
-      rightOf: table,
     }
   )
   bridge.addColumn("line_item", {
@@ -661,5 +663,5 @@ export function buildUnitEconomicsSchedule(
     },
   })
 
-  return table
+  return { unitEconomics: table, bridge }
 }

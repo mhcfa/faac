@@ -506,7 +506,6 @@ export function buildFinancialStatementsSheet(
       SCALE_NOTE_USD_M,
       "Meta Platforms Form 10-K (FY2023–FY2025) & Form 10-Q (Q3 2026); fully integrated balance sheet",
     ],
-    below: is,
   })
   bs.addColumn("label", { role: "descriptor", header: "Balance Sheet Line" })
   addTimelineColumns(bs, "bs")
@@ -952,7 +951,6 @@ export function buildFinancialStatementsSheet(
         SCALE_NOTE_USD_M,
         "Meta Platforms Form 10-K (FY2023–FY2025) & Form 10-Q (Q3 2026); reconciles cash & restricted cash",
       ],
-      below: bs,
     }
   )
   cf.addColumn("label", { role: "descriptor", header: "Cash Flow Line" })

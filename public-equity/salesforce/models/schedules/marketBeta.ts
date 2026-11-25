@@ -46,12 +46,10 @@ function addPriceReturnSeriesTable(
   subtitle: readonly string[],
   dates: readonly string[],
   closes: Readonly<Record<MarketTicker, readonly number[]>>,
-  rowPrefix: string,
-  below?: Table
+  rowPrefix: string
 ): Table {
   const table = sheet.addTable(id, title, {
     subtitle,
-    ...(below !== undefined ? { below } : {}),
   })
   table.addColumn("item", { role: "descriptor", header: "Trade date" })
   for (const ticker of MARKET_TICKERS) {
@@ -181,7 +179,7 @@ export function buildMarketAndBetaSheet(
     shade: "alt",
   })
 
-  // Multi-Horizon OLS Beta Summary Table (paired rightOf MacroRatesTable)
+  // Multi-Horizon OLS Beta Summary Table
   const mLast = `m_${String(audited.marketPrices.monthlyDates.length - 1).padStart(3, "0")}`
   const wLast = `w_${String(audited.marketPrices.weeklyDates.length - 1).padStart(3, "0")}`
 
@@ -196,8 +194,6 @@ export function buildMarketAndBetaSheet(
         ],
         92
       ),
-      rightOf: macroRates,
-      gap: 1,
     }
   )
   betaSummary.addColumn("item", { role: "descriptor", header: "Company" })
@@ -339,8 +335,7 @@ export function buildMarketDataSheet(
     ),
     audited.marketPrices.weeklyDates,
     audited.marketPrices.weeklyCloses,
-    "w",
-    betaMonthly5Y
+    "w"
   )
 
   return {

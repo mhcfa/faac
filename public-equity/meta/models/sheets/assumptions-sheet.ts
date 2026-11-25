@@ -97,7 +97,6 @@ function addPeriodVectorTable(
   subtitle: readonly string[],
   vectors: OperatingVectorDrivers | null,
   options: {
-    readonly below?: Table
     readonly isActiveSelector?: boolean
     readonly referenceVectors?: OperatingVectorDrivers
     readonly notesMode: "full" | "diff" | "basis"
@@ -106,7 +105,6 @@ function addPeriodVectorTable(
 ): Table {
   const table = sheet.addTable(id, title, {
     subtitle,
-    below: options.below,
   })
 
   table.addColumn("label", {
@@ -266,7 +264,6 @@ export function buildAssumptionsSheet(
     [SCALE_NOTE_USD_M, "Linked dynamically to the active scenario selection"],
     null,
     {
-      below: control,
       isActiveSelector: true,
       referenceVectors: bundles.base.vectors,
       notesMode: "full",
@@ -283,7 +280,6 @@ export function buildAssumptionsSheet(
     ],
     bundles.downside.vectors,
     {
-      below: vecActive,
       notesMode: "diff",
       baseVectorsForDiff: bundles.base.vectors,
     }
@@ -298,11 +294,10 @@ export function buildAssumptionsSheet(
     ],
     bundles.base.vectors,
     {
-      below: vecDown,
       notesMode: "basis",
     }
   )
-  addPeriodVectorTable(
+  const vecUp = addPeriodVectorTable(
     sheet,
     "VectorDriversUpside",
     "Upside Case — Multi-Year Operating Assumptions",
@@ -312,14 +307,13 @@ export function buildAssumptionsSheet(
     ],
     bundles.upside.vectors,
     {
-      below: vecBase,
       notesMode: "diff",
       baseVectorsForDiff: bundles.base.vectors,
     }
   )
 
   // =========================================================================
-  // Right Lane (Cols J..O; gap Col I = width 3):
+  // Right Lane (Cols J..O; laneGap Col I = width 2):
   // Scenario Framing, Core Assumptions & Post-Q3 Financing Schedule
   // =========================================================================
   const framing = sheet.addTable(
@@ -327,8 +321,6 @@ export function buildAssumptionsSheet(
     "Scenario Framing & Operating Summary",
     {
       subtitle: ["Qualitative operating and valuation summary by scenario"],
-      rightOf: control,
-      gap: 6,
     }
   )
   framing.addColumn("label", {
@@ -358,7 +350,6 @@ export function buildAssumptionsSheet(
         SCALE_NOTE_USD_M,
         "Active column updates live; Base column anchors scenario variance attribution",
       ],
-      below: framing,
     }
   )
   scalars.addColumn("label", { role: "descriptor", header: "Assumption" })
@@ -443,7 +434,6 @@ export function buildAssumptionsSheet(
         "Meta Platforms Form 8-K filings (Oct 29, Nov 5, Nov 12, 2026)",
         "Gross face principal, fixed coupons & Federal Reserve H.10 EUR/USD",
       ],
-      below: scalars,
     }
   )
   reg.addColumn("label", { role: "descriptor", header: "Instrument / Term" })
@@ -851,4 +841,13 @@ export function buildAssumptionsSheet(
     },
     style: "total",
   })
+
+  sheet.setBands([
+    {
+      lanes: [
+        { tables: [control, vecActive, vecDown, vecBase, vecUp] },
+        { tables: [framing, scalars, reg] },
+      ],
+    },
+  ])
 }

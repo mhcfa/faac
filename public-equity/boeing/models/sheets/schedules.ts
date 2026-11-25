@@ -286,8 +286,6 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     "PP&E, Capital Expenditures & Depreciation / Amortization Schedule",
     {
       subtitle: `($ in millions) | Sources: ${citations.segmentCapex}`,
-      below: "WorkingCapitalSchedule",
-      gap: 2,
     }
   )
   addFlowTimelineColumns(ppe)
@@ -491,8 +489,6 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     "Debt Maturity Wall, Cash Sweep & Liquidity Covenant Schedule",
     {
       subtitle: `($ in millions) | Interest computed on opening debt and cash balances; maturities from ${citations.debtMaturities}`,
-      below: "PpeCapexDaSchedule",
-      gap: 2,
     }
   )
   addSnapshotTimelineColumns(debt)
@@ -1015,8 +1011,6 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     "Federal NOL Carryforward, Cash Taxes & Valuation Allowance Schedule",
     {
       subtitle: `($ in millions) | Source: ${citations.deferredTaxes}; ASC 740 full valuation allowance ($9,754M) offsets federal book tax while active`,
-      below: "DebtLiquiditySchedule",
-      gap: 2,
     }
   )
   addFlowTimelineColumns(tax)
@@ -1363,8 +1357,6 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     {
       subtitle:
         "(Shares in millions; dividends in $M) | Used solely for 3-statement GAAP EPS; DCF uses valuation-date diluted shares (no SBC/401k double-count)",
-      below: "TaxNolSchedule",
-      gap: 2,
     }
   )
   addFlowTimelineColumns(sh)
@@ -1563,8 +1555,6 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     {
       subtitle:
         "($ in millions) | Clean US GAAP operating-rent & 25.0% combined tax basis; Operating NOA (incl. $5.0B min cash) ties identically to Financing Capital (Debt + Pension/OPEB + Equity − Excess Cash)",
-      below: "ShareCountSchedule",
-      gap: 2,
     }
   )
   addSnapshotTimelineColumns(ic)

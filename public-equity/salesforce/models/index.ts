@@ -236,32 +236,117 @@ function buildModelInternal(
   })
 
   buildExecutiveSummarySheet(execSheet, snapshots)
-  buildAssumptionsSheet(assumptionsSheet, scenarios, activeScenario, audited)
+
+  const assumptionTables = buildAssumptionsSheet(
+    assumptionsSheet,
+    scenarios,
+    activeScenario,
+    audited
+  )
+  assumptionsSheet.setBands([
+    {
+      lanes: [
+        { tables: [assumptionTables.scenarioControl] },
+        { tables: [assumptionTables.scenarioGuide] },
+      ],
+    },
+    assumptionTables.scalarDrivers,
+    assumptionTables.periodDriversActive,
+    assumptionTables.periodDriversDownside,
+    assumptionTables.periodDriversBase,
+    assumptionTables.periodDriversUpside,
+    assumptionTables.debtTrancheRegistry,
+  ])
 
   const stmtTables = buildStatementsTables(financialModelSheet, audited)
-  const opTables = buildOperatingAnnualTables(
+  const opTables = buildOperatingAnnualTables(financialModelSheet, audited)
+  const diagTables = buildDiagnosticsTables(financialModelSheet)
+  const anchorTables = buildLtmAndQ2AnchorTables(financialModelSheet, audited)
+  const auditedAnchors = buildAuditedFootnoteAnchorsTable(
     financialModelSheet,
-    audited,
-    stmtTables.cashFlowStatement
+    audited
   )
-  const diagTables = buildDiagnosticsTables(
-    financialModelSheet,
-    opTables.debtSchedule
-  )
-  const anchorTables = buildLtmAndQ2AnchorTables(
-    financialModelSheet,
-    audited,
-    diagTables.capitalAllocation
-  )
-  buildAuditedFootnoteAnchorsTable(
-    financialModelSheet,
-    audited,
-    anchorTables.q2BalanceSheetAnchor
-  )
+  financialModelSheet.setBands([
+    stmtTables.incomeStatement,
+    stmtTables.balanceSheet,
+    stmtTables.cashFlowStatement,
+    opTables.revenueSchedule,
+    opTables.ppeAndIntangibles,
+    opTables.costAndSbc,
+    opTables.workingCapital,
+    opTables.shareCount,
+    opTables.debtSchedule,
+    diagTables.qoeAndCashConversion,
+    diagTables.investedCapitalAndRoic,
+    diagTables.capitalAllocation,
+    {
+      lanes: [
+        { tables: [anchorTables.ltmFlowBridge] },
+        { tables: [anchorTables.q2BalanceSheetAnchor, auditedAnchors] },
+      ],
+    },
+  ])
 
-  buildValuationSheet(valuationSheet)
+  const valTables = buildValuationSheet(valuationSheet)
+  valuationSheet.setBands([
+    {
+      lanes: [
+        { tables: [valTables.waccSchedule] },
+        { tables: [valTables.dcfSummary] },
+      ],
+    },
+    valTables.dcfModel,
+    {
+      lanes: [
+        { tables: [valTables.evToEquityBridge] },
+        { tables: [valTables.scenarioVarianceBridge] },
+      ],
+    },
+    {
+      lanes: [
+        {
+          tables: [
+            valTables.sensitivityWaccVsGrowth,
+            valTables.waccSensitivityWorkings,
+          ],
+          tableGap: 1,
+        },
+      ],
+    },
+    {
+      lanes: [
+        {
+          tables: [
+            valTables.reverseDcfMatrix,
+            valTables.expectationWaccWorkings,
+          ],
+          tableGap: 1,
+        },
+      ],
+    },
+    valTables.terminalReinvestSensitivity,
+    {
+      lanes: [
+        {
+          tables: [valTables.icStressScenarios, valTables.icStressWorkings],
+          tableGap: 1,
+        },
+      ],
+    },
+  ])
+
   buildPeerCompsSheet(peerCompsSheet, audited)
-  buildMarketAndBetaSheet(marketBetaSheet, audited)
+
+  const marketBetaTables = buildMarketAndBetaSheet(marketBetaSheet, audited)
+  marketBetaSheet.setBands([
+    {
+      lanes: [
+        { tables: [marketBetaTables.macroRates] },
+        { tables: [marketBetaTables.betaSummary] },
+      ],
+    },
+  ])
+
   buildMarketDataSheet(marketDataSheet, audited)
 
   return model

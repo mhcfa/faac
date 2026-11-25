@@ -13,8 +13,7 @@ export interface OperatingAnnualTables {
 
 export function buildOperatingAnnualTables(
   sheet: Sheet,
-  audited: AuditedDataSnapshot,
-  below: Table
+  audited: AuditedDataSnapshot
 ): OperatingAnnualTables {
   // Table 1: Revenue Schedule (Organic vs. Inorganic M&A Build)
   const revenueSchedule = sheet.addTable(
@@ -25,7 +24,6 @@ export function buildOperatingAnnualTables(
         `($ in Millions) | Source: ${audited.citations.crmIs10K}; FY27E–FY31E splits organic S&S from Year-1 M&A layers`,
         128
       ),
-      below,
     }
   )
   addAnnualColumns(revenueSchedule)
@@ -140,7 +138,6 @@ export function buildOperatingAnnualTables(
         `($ in Millions) | Sources: ${audited.citations.crmBs10KPrior}; ${audited.citations.crmBs10K}; ${audited.citations.crmIntangibles} (Notes 6 & 7)`,
         104
       ),
-      below: revenueSchedule,
     }
   )
   addAnnualColumns(ppeAndIntangibles)
@@ -500,7 +497,6 @@ export function buildOperatingAnnualTables(
         `($ in Millions) | Source: ${audited.citations.crmIs10K}; separates cash expenses, functional SBC, and Note 7 intangible amortization`,
         115
       ),
-      below: ppeAndIntangibles,
     }
   )
   addAnnualColumns(costAndSbc)
@@ -732,7 +728,6 @@ export function buildOperatingAnnualTables(
         `($ in Millions) | Sources: ${audited.citations.crmBs10KPrior}; ${audited.citations.crmBs10K}; drives operating working capital and cash flow changes`,
         128
       ),
-      below: costAndSbc,
     }
   )
   addAnnualColumns(workingCapital)
@@ -866,7 +861,6 @@ export function buildOperatingAnnualTables(
         `(Shares in Millions) | Source: ${audited.citations.crmEpsShares}; models final ASR share retirement and ongoing SBC vs. repurchases`,
         110
       ),
-      below: workingCapital,
     }
   )
   addAnnualColumns(shareCount)
@@ -1015,7 +1009,6 @@ export function buildOperatingAnnualTables(
         `($ in Millions) | Source: ${audited.citations.crmDebt} (Note 8); opening-balance interest with automatic liquidity sweep`,
         128
       ),
-      below: shareCount,
     }
   )
   addAnnualColumns(debtSchedule)
@@ -1254,8 +1247,7 @@ export function buildOperatingAnnualTables(
 
 export function buildAuditedFootnoteAnchorsTable(
   sheet: Sheet,
-  audited: AuditedDataSnapshot,
-  below: Table
+  audited: AuditedDataSnapshot
 ): Table {
   const m = audited.crmH1.q2Fy27Meta
 
@@ -1267,7 +1259,6 @@ export function buildAuditedFootnoteAnchorsTable(
         `($ in Millions, shares in Millions, per-share in $) | Sources: ${audited.citations.crmIs10K}; ${audited.citations.crmIntangibles} (Notes 6, 7 & 11); ${audited.citations.crmGuidance}; ${audited.citations.crmConsensusTargets}`,
         68
       ),
-      below,
     }
   )
   auditedAnchors.addColumn("item", {

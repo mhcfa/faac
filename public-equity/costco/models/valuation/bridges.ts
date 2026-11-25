@@ -195,8 +195,7 @@ export function extractScenarioSnapshot(
 
 export function buildValuationBridges(
   sheet: Sheet,
-  snapshots: Readonly<Record<ScenarioName, ScenarioSnapshot>> | null,
-  belowTarget: Table
+  snapshots: Readonly<Record<ScenarioName, ScenarioSnapshot>> | null
 ): {
   readonly footballField: Table
   readonly scenarioVariance: Table
@@ -212,7 +211,6 @@ export function buildValuationBridges(
         "Implied enterprise value ($M) and cum-dividend vs. ex-special-dividend value per share against spot close",
       ],
       currency: "USD",
-      below: belowTarget,
     }
   )
   footballField.addColumn("line_item", {
@@ -418,7 +416,6 @@ export function buildValuationBridges(
         "Downside and Upside hold static scenario snapshots; Active tracks the active case",
       ],
       currency: "USD",
-      below: footballField,
     }
   )
   scenarioVariance.addColumn("line_item", {
@@ -596,7 +593,6 @@ export function buildValuationBridges(
         "Compounds roll-forward, forecast delta, multiple shift, net cash, share count, and 2Y regular div. yield",
       ],
       currency: "USD",
-      below: scenarioVariance,
     }
   )
   priceAttribution.addColumn("line_item", {

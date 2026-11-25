@@ -28,13 +28,10 @@ function addPeriodScenarioTable(
   subtitle: string,
   bundle: ScenarioBundle,
   baseBundle: ScenarioBundle,
-  trailingMode: "source" | "flex",
-  belowTableId: string
+  trailingMode: "source" | "flex"
 ): Table {
   const tbl = sheet.addTable(tableId, title, {
     subtitle,
-    below: belowTableId,
-    gap: 2,
   })
   tbl.addColumn("driver", {
     role: "descriptor",
@@ -166,8 +163,6 @@ export function buildAssumptionsSheet(
     {
       subtitle:
         "Active forecast assumptions for the selected scenario across commercial deliveries, segment margins, CapEx, and working capital",
-      below: "ScalarDrivers",
-      gap: 2,
     }
   )
   activePeriodTbl.addColumn("driver", {
@@ -217,8 +212,7 @@ export function buildAssumptionsSheet(
     "Stressed production ramp, persistent BDS charges, slower working-capital unwind, and elevated CapEx",
     scenarios.downside,
     scenarios.base,
-    "flex",
-    "PeriodDriversActive"
+    "flex"
   )
   addPeriodScenarioTable(
     sheet,
@@ -227,8 +221,7 @@ export function buildAssumptionsSheet(
     "Consensus-aligned FY26E–FY29E recovery fading to peer-benchmarked steady state by FY32E",
     scenarios.base,
     scenarios.base,
-    "source",
-    "PeriodDriversDown"
+    "source"
   )
   addPeriodScenarioTable(
     sheet,
@@ -237,7 +230,6 @@ export function buildAssumptionsSheet(
     "Full FAA rate expansion, clean BDS execution, rapid working-capital unwind, and disciplined CapEx",
     scenarios.upside,
     scenarios.base,
-    "flex",
-    "PeriodDriversBase"
+    "flex"
   )
 }

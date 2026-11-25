@@ -19,5 +19,3 @@ pnpm typecheck
 # Compile and emit the multi-sheet Excel workbook (.xlsx)
 pnpm build
 ```
-
-Read more about this: [Autonomous Costco Equity Research](https://mhcfa.github.io/blog/autonomous-costco-equity-research/)

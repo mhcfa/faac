@@ -4,12 +4,12 @@ Open-source repository of institutional financial models and equity valuations g
 
 ## Covered Engagements
 
-| Engagement | Path | Excel Model | Valuation Presentation | Write-up |
-| :--- | :--- | :--- | :--- | :--- |
-| **Costco Wholesale Corp. (`COST`)** | `public-equity/costco` | `public-equity/costco/deliverables/costco-valuation.xlsx` | `public-equity/costco/deliverables/costco-equity-valuation.pdf` | [Autonomous Costco Equity Research](https://mhcfa.github.io/blog/autonomous-costco-equity-research/) |
-| **The Boeing Company (`BA`)** | `public-equity/boeing` | `public-equity/boeing/deliverables/boeing-valuation-model.xlsx` | `public-equity/boeing/deliverables/boeing-initiation-deck.pdf` | — |
-| **Meta Platforms, Inc. (`META`)** | `public-equity/meta` | `public-equity/meta/deliverables/meta_model.xlsx` | `public-equity/meta/deliverables/meta_presentation.pdf` | — |
-| **Salesforce, Inc. (`CRM`)** | `public-equity/salesforce` | `public-equity/salesforce/deliverables/salesforce_financial_model.xlsx` | `public-equity/salesforce/deliverables/salesforce-initiation.pdf` | — |
+| Engagement                          | Path                       | Excel Model                                                             | Valuation Presentation                                            |
+| :---------------------------------- | :------------------------- | :---------------------------------------------------------------------- | :---------------------------------------------------------------- |
+| **Costco Wholesale Corp. (`COST`)** | `public-equity/costco`     | `public-equity/costco/deliverables/costco-valuation.xlsx`               | `public-equity/costco/deliverables/costco-equity-valuation.pdf`   |
+| **The Boeing Company (`BA`)**       | `public-equity/boeing`     | `public-equity/boeing/deliverables/boeing-valuation-model.xlsx`         | `public-equity/boeing/deliverables/boeing-initiation-deck.pdf`    |
+| **Meta Platforms, Inc. (`META`)**   | `public-equity/meta`       | `public-equity/meta/deliverables/meta_model.xlsx`                       | `public-equity/meta/deliverables/meta_presentation.pdf`           |
+| **Salesforce, Inc. (`CRM`)**        | `public-equity/salesforce` | `public-equity/salesforce/deliverables/salesforce_financial_model.xlsx` | `public-equity/salesforce/deliverables/salesforce-initiation.pdf` |
 
 ## Quick Start
 
@@ -25,3 +25,7 @@ pnpm build
 Each engagement in this repository includes the full TypeScript financial model built on [`f8-engine`](https://github.com/mhcfa/f8) along with its audited knowledge-graph data bundles (`data/audited/*.json`) and final deliverables (`.xlsx` and `.pdf`). The upstream data ingestion and auditing library (`f2`) and the presentation/report authoring library (`f12`) used in the workflow are not open-sourced at this time.
 
 Model schedules, cell notes, and audited data bundles (`data/audited/*.json`) cite specific page numbers, XPath table indices, and line numbers from original SEC EDGAR filings (Forms 10-K, 10-Q, 8-K) and market datasets. To keep the repository lightweight, raw HTML/PDF/CSV source files (`data/raw/`) and intermediate extraction slices (`data/extracted/`) are **not committed**; all extracted historical figures, restatement flags, and SHA-256 document provenance hashes are preserved verbatim in each engagement's `data/audited/*.json` bundles.
+
+## Disclaimer
+
+> Disclaimer: Sample deliverables are AI-generated technical demonstrations and do not constitute financial analysis or investment advice.

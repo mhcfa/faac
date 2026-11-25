@@ -441,8 +441,6 @@ export function buildBetaWaccSheet(
         "5Y Monthly (n=58 through Oct 2026; RDDT n=30 post-IPO) & 2Y Weekly (n=104 through Nov 16, 2026)",
         "Yahoo Finance adjusted close prices; trailing duplicate Nov 20 bar excluded",
       ],
-      rightOf: wacc,
-      gap: 1,
     }
   )
   betaSum.addColumn("label", { role: "descriptor", header: "Company" })
@@ -614,6 +612,8 @@ export function buildBetaWaccSheet(
     style: "bold",
   })
 
+  sheet.setBands([{ lanes: [wacc, betaSum] }])
+
   // =========================================================================
   // 3. Supporting 5-Year Monthly Price, Return & Excess-Return Matrices (Flat)
   // =========================================================================
@@ -647,7 +647,6 @@ export function buildBetaWaccSheet(
       subtitle: [
         "Live period-over-period return series feeding OLS beta regressions",
       ],
-      below: mPrices,
     }
   )
   mRets.addColumn("label", { role: "descriptor", header: "Month" })
@@ -695,7 +694,6 @@ export function buildBetaWaccSheet(
       subtitle: [
         "Periodic return minus sample mean across n=58 months (n=30 for RDDT post-IPO window)",
       ],
-      below: mRets,
     }
   )
   mExcess.addColumn("label", { role: "descriptor", header: "Month" })
@@ -741,7 +739,6 @@ export function buildBetaWaccSheet(
       subtitle: [
         "Yahoo Finance weekly adjusted close; 105 weekly bars (duplicate Nov 20 bar excluded)",
       ],
-      below: mExcess,
     }
   )
   wPrices.addColumn("label", { role: "descriptor", header: "Week" })
@@ -765,7 +762,6 @@ export function buildBetaWaccSheet(
       subtitle: [
         "Live weekly return series feeding 2-year OLS beta regressions",
       ],
-      below: wPrices,
     }
   )
   wRets.addColumn("label", { role: "descriptor", header: "Week" })
@@ -801,7 +797,6 @@ export function buildBetaWaccSheet(
       subtitle: [
         "Periodic return minus sample mean across n=104 completed weeks",
       ],
-      below: wRets,
     }
   )
   wExcess.addColumn("label", { role: "descriptor", header: "Week" })

@@ -217,18 +217,13 @@ function loadPricePanel(
   scheduleId: "monthly_adj_close" | "weekly_adj_close",
   maxPeriodInclusive: string
 ): PriceSeriesPanel {
-  const rows = kg.sql(
-    `SELECT entity, period_key, normalized_num
-     FROM cells
-     WHERE schedule_id = ?
-       AND status = 'primary'
-       AND data_type = 'number'
-       AND period_key <= ?
-     ORDER BY period_sort_key ASC`,
-    [scheduleId, maxPeriodInclusive]
-  )
+  const breakdown = kg.breakdown(scheduleId, "adj_close", {
+    by: "entity",
+    basis: "market",
+    divisors: DISPLAY_DIVISORS,
+  })
 
-  const periodSet = new Set<string>()
+  const periods = breakdown.periods.filter((p) => p <= maxPeriodInclusive)
   const byTicker: Record<MarketTicker, Record<string, number | null>> = {
     GSPC: {},
     META: {},
@@ -240,29 +235,25 @@ function loadPricePanel(
     RDDT: {},
   }
 
-  for (const r of rows) {
-    const ent = r["entity"]
-    const pk = r["period_key"]
-    const num = r["normalized_num"]
-    if (
-      typeof ent !== "string" ||
-      typeof pk !== "string" ||
-      typeof num !== "number" ||
-      !isMarketTicker(ent)
-    ) {
-      continue
-    }
-    periodSet.add(pk)
-    byTicker[ent][pk] = num
-  }
-
-  const periods = Array.from(periodSet).sort()
   for (const t of ALL_MARKET_TICKERS) {
     for (const p of periods) {
-      if (!Object.hasOwn(byTicker[t], p)) {
-        byTicker[t][p] = null
+      byTicker[t][p] = null
+    }
+  }
+
+  for (const group of breakdown.groups) {
+    if (group.key === null || !isMarketTicker(group.key)) {
+      continue
+    }
+    for (const p of periods) {
+      const num = group.values[p]
+      if (typeof num === "number" && Number.isFinite(num)) {
+        byTicker[group.key][p] = num
       }
     }
+  }
+
+  for (const t of ALL_MARKET_TICKERS) {
     Object.freeze(byTicker[t])
   }
 

@@ -278,8 +278,6 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
     {
       subtitle:
         "($ in millions USD; AIR.PA translated at spot EUR/USD) | US peers exclude ASC 842 operating leases; AIR.PA on as-reported IFRS 16 less Dassault stake",
-      below: "TradingComps",
-      gap: 2,
     }
   )
   evb.addColumn("company", { role: "descriptor", headers: ["Company"] })
@@ -429,8 +427,6 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
     {
       subtitle:
         "5Y Monthly (61 returns) and 2Y Weekly (107 returns) OLS vs. S&P 500; unlevered via Hamada (D = Gross Carrying Debt ex-US op leases, T = 25.0%)",
-      below: "PeerEvBridge",
-      gap: 2,
     }
   )
   bs.addColumn("company", { role: "descriptor", headers: ["Company"] })
@@ -549,8 +545,6 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
         "Spot EUR/USD & Airbus FY25 IFRS footnotes",
         "USD translation & Airbus US-GAAP adjustments",
       ],
-      below: "BetaSummary",
-      gap: 2,
     }
   )
   fxTbl.addColumn("item", { role: "descriptor", headers: ["Input item"] })
@@ -623,8 +617,6 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
         "(Millions local currency, except EPS/sh; AIR.PA in EUR, US peers in USD)",
         "As of November 20, 2026; translated at spot EUR/USD in Trading Comps",
       ],
-      rightOf: "CompsFxParity",
-      gap: 1,
     }
   )
   consIn.addColumn("company", { role: "descriptor", headers: ["Company"] })
@@ -686,7 +678,6 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
     {
       subtitle:
         "(Millions of local currency; AIR.PA in €M, US peers in $M; shares in M) | Balance sheet & footnote basis for Peer EV Bridge",
-      gap: 2,
     }
   )
   evComp.addColumn("component", {
@@ -875,8 +866,6 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
     {
       subtitle:
         "($ in millions USD; AIR.PA local rows in €M translated at spot EUR/USD) | LTM Q3 2026A equals FY2025A + 9M 2026A − 9M 2025A",
-      below: "PeerEvComponents",
-      gap: 2,
     }
   )
   ltm.addColumn("metric", { role: "descriptor", headers: ["Peer & metric"] })
@@ -1199,4 +1188,13 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
       notes: "Ex-IFRS 16 lease prin.",
     },
   })
+
+  sheet.setBands([
+    comps,
+    evb,
+    bs,
+    { lanes: [{ tables: [fxTbl] }, { tables: [consIn] }] },
+    evComp,
+    ltm,
+  ])
 }

@@ -300,7 +300,7 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         )
       }
 
-      // C3a: Master time-series alignment (4-col leading descriptor B..E), uniform 2-tier headers & 3-char regime gutters (K=10, P=15)
+      // C3a: Master time-series alignment (4-col leading descriptor B..E), uniform 2-tier headers & 2-char regime gutters (K=10, P=15)
       const expectedMasterPeriodCol: Readonly<Record<string, number>> = {
         "2021A": 5,
         "2022A": 6,
@@ -350,12 +350,12 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         const si = compiled.inspectSheet(sheetName)
         expect(
           si.colWidths[10],
-          `${sheetName} Col K (Historical | Interim regime gutter) must be 3 chars wide`
-        ).toBe(3)
+          `${sheetName} Col K (Historical | Interim regime gutter) must be 2 chars wide`
+        ).toBe(2)
         expect(
           si.colWidths[15],
-          `${sheetName} Col P (Interim/Stub | Forecast regime gutter) must be 3 chars wide`
-        ).toBe(3)
+          `${sheetName} Col P (Interim/Stub | Forecast regime gutter) must be 2 chars wide`
+        ).toBe(2)
         for (const colIdx of [
           5, 6, 7, 8, 9, 11, 12, 13, 14, 16, 17, 18, 19, 20, 21,
         ]) {
@@ -385,7 +385,7 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         }
       }
 
-      // Diagnostics & QoE Band 4: rightOf gap aligns on Col K (10, width 3), OffBalanceSheetContingencies gutter aligns on Col P (15, width 3), flush right edge at Col V (21)
+      // Diagnostics & QoE Band 4: laneGap aligns on Col K (10, width 2), OffBalanceSheetContingencies gutter aligns on Col P (15, width 2), flush right edge at Col V (21)
       const diagInsp = compiled.inspectSheet("Diagnostics & QoE")
       const diagByTbl = physicalColsByTable("Diagnostics & QoE")
       expect(diagByTbl.get("ProFormaCapitalSummary")?.get("label")).toBe(1)
@@ -434,7 +434,7 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         compiled.inspectTable("CashYieldVsRf").columns.filter((c) => c.isGutter)
           .length
       ).toBe(1)
-      expect(dcfSheetInsp.colWidths[9]).toBe(3)
+      expect(dcfSheetInsp.colWidths[9]).toBe(2)
       for (const p of FORECAST_PERIODS) {
         expect(dcfByTbl.get("CashYieldVsRf")?.get(p)).toBe(
           dcfByTbl.get("DcfFcff")?.get(p)

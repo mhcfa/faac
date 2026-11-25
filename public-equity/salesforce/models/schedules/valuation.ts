@@ -17,7 +17,7 @@ export interface ValuationTables {
 }
 
 export function buildValuationSheet(sheet: Sheet): ValuationTables {
-  // Band 1 Left: WACC & Cost of Capital Schedule (Hamada Relevered 5Y-M Primary vs. 2Y-W Cross-Check)
+  // WACC & Cost of Capital Schedule (Hamada Relevered 5Y-M Primary vs. 2Y-W Cross-Check)
   const waccSchedule = sheet.addTable(
     "WaccSchedule",
     "Weighted Average Cost of Capital (WACC)",
@@ -196,7 +196,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     decimals: 4,
   })
 
-  // Band 1 Right: DCF Enterprise Value Summary & Terminal Cross-Checks
+  // DCF Enterprise Value Summary & Terminal Cross-Checks
   const dcfSummary = sheet.addTable(
     "DcfSummaryTable",
     "Enterprise Value Summary & Yield Test",
@@ -205,8 +205,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ in Millions) | Mid-year Gordon growth DCF cross-checked against Exit EV / GAAP EBITDA and spot FCFF yield vs. 10Y Treasury",
         56
       ),
-      rightOf: waccSchedule,
-      gap: 1,
     }
   )
   dcfSummary.addColumn("item", {
@@ -368,7 +366,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     decimals: 2,
   })
 
-  // Band 2: Explicit Cash Flow DCF Schedule (H2 FY27E Stub + FY28E-FY31E + Terminal)
+  // Explicit Cash Flow DCF Schedule (H2 FY27E Stub + FY28E-FY31E + Terminal)
   const dcfModel = sheet.addTable(
     "DcfModel",
     "Unlevered Economic FCFF Discounted Cash Flow Schedule",
@@ -556,7 +554,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     decimals: 0,
   })
 
-  // Band 3 Left: Enterprise Value to Equity Value Bridge
+  // Enterprise Value to Equity Value Bridge
   const evToEquityBridge = sheet.addTable(
     "EvToEquityBridge",
     "Enterprise Value to Equity Value & Per-Share Bridge",
@@ -836,7 +834,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     decimals: 4,
   })
 
-  // Band 3 Right: Live Scenario Variance Attribution Bridge (Active vs. Base Case)
+  // Live Scenario Variance Attribution Bridge (Active vs. Base Case)
   const scenarioVarianceBridge = sheet.addTable(
     "ScenarioVarianceBridge",
     "Scenario Value Attribution Bridge (Active vs. Base)",
@@ -845,8 +843,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ per share) | Live variance decomposition anchored to Base Case Gordon DCF benchmark",
         56
       ),
-      rightOf: evToEquityBridge,
-      gap: 1,
     }
   )
   scenarioVarianceBridge.addColumn("item", {
@@ -1113,7 +1109,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     decimals: 2,
   })
 
-  // Band 4: 5x5 WACC vs. Terminal Growth Rate Sensitivity Matrix + Companion Discount Factors
+  // 5x5 WACC vs. Terminal Growth Rate Sensitivity Matrix + Companion Discount Factors
   const sensitivityWaccVsGrowth = sheet.addTable(
     "SensitivityWaccVsGrowth",
     "Implied Share Price Sensitivity: WACC vs. Terminal Growth (g)",
@@ -1245,7 +1241,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ in Millions, except factors and rates) | Per-WACC discount factors, explicit FCFF present value, and equity roll-forward terms",
         140
       ),
-      below: sensitivityWaccVsGrowth,
     }
   )
   waccSensitivityWorkings.addColumn("item", {
@@ -1321,7 +1316,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     })
   }
 
-  // Band 5: Market Expectation Matrix (WACC Regimes vs. 4-Yr FY27E-FY31E Total Revenue CAGR)
+  // Market Expectation Matrix (WACC Regimes vs. 4-Yr FY27E-FY31E Total Revenue CAGR)
   const reverseDcfMatrix = sheet.addTable(
     "ReverseDcfMatrix",
     "Market Expectation Matrix: WACC Regime vs. 4-Year Revenue CAGR",
@@ -1330,7 +1325,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ per share) | Holds active-case FCFF margins constant across WACC regimes and 4-year FY27E–FY31E consolidated revenue CAGR",
         104
       ),
-      below: waccSensitivityWorkings,
     }
   )
   reverseDcfMatrix.addColumn("item", {
@@ -1426,7 +1420,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ in Millions, except factors and rates) | Discounted FY27E revenue-margin bases and terminal factors per WACC regime",
         140
       ),
-      below: reverseDcfMatrix,
     }
   )
   expectationWaccWorkings.addColumn("item", {
@@ -1523,7 +1516,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     })
   }
 
-  // Band 6: Terminal Reinvestment Rate Sensitivity
+  // Terminal Reinvestment Rate Sensitivity
   const terminalReinvestSensitivity = sheet.addTable(
     "TerminalReinvestSensitivity",
     "Terminal Reinvestment Rate Sensitivity (% of EBITA NOPAT)",
@@ -1532,7 +1525,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ in Millions, except per-share and multiples) | Isolates valuation sensitivity to steady-state SaaS float tailwind vs. capital reinvestment drag",
         116
       ),
-      below: expectationWaccWorkings,
     }
   )
   terminalReinvestSensitivity.addColumn("item", {
@@ -1641,7 +1633,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     })
   }
 
-  // Band 7: Investment Committee Single-Factor Stress & Cushion Scenarios
+  // Investment Committee Single-Factor Stress & Cushion Scenarios
   const icStressScenarios = sheet.addTable(
     "IcStressScenarios",
     "Single-Factor Stress & Valuation Cushion Scenarios",
@@ -1650,7 +1642,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ in Millions, except per-share) | Live single-factor shocks relative to active primary 5Y-M DCF anchor",
         92
       ),
-      below: terminalReinvestSensitivity,
     }
   )
   icStressScenarios.addColumn("item", {
@@ -1832,7 +1823,6 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
         "($ in Millions) | Per-period explicit present value contributions and terminal present value by stress case (at Jul 31, 2026)",
         96
       ),
-      below: icStressScenarios,
     }
   )
   icStressWorkings.addColumn("item", {

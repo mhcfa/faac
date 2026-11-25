@@ -262,7 +262,7 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 2,
   })
 
-  // TABLE 1B: SecurityValuationInputs (below WaccBuild)
+  // TABLE 1B: SecurityValuationInputs (Band 1, Lane 0 below WaccBuild)
   const sec = sheet.addTable(
     "SecurityValuationInputs",
     "Audited Share, Convertible, Pension & PPA Inputs",
@@ -271,8 +271,6 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
         "Boeing FY2025 Form 10-K & Q3 2026 Form 10-Q",
         "Convertible, pension & PPA valuation terms",
       ],
-      below: "WaccBuild",
-      gap: 2,
     }
   )
   sec.addColumn("item", { role: "descriptor", headers: ["Audited term"] })
@@ -469,7 +467,7 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
 
   // =========================================================================
-  // BAND 1 RIGHT: EvToEquityBridge (rightOf WaccBuild)
+  // BAND 1 RIGHT: EvToEquityBridge (Band 1, Lane 1)
   // =========================================================================
   const bridge = sheet.addTable(
     "EvToEquityBridge",
@@ -479,8 +477,6 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
         "($M, except shares in M and $/sh) | Sep 30 EV to Nov 20 Equity at Ke",
         "Incorporates BA-PRA conversion collar & Spirit exchangeable notes",
       ],
-      rightOf: "WaccBuild",
-      gap: 1,
     }
   )
   bridge.addColumn("item", {
@@ -1057,7 +1053,6 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
     {
       subtitle:
         "($ in millions) | Anchored Sep 30, 2026; 25.0% combined taxes (21% fed + 4% foreign/state, $120M/yr floor); SBC + 401(k) deducted; Terminal Value uses g / RONIC",
-      gap: 2,
     }
   )
   dcf.addColumn("line_item", { role: "descriptor", headers: ["Line item"] })
@@ -1424,7 +1419,6 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
         "($M, except $/sh) | Strips $209M Spirit PPA amort. from BCA",
         "Blended mult. on Unallocated; finite PV on FY29–31 FAS/CAS",
       ],
-      gap: 2,
     }
   )
   sotp.addColumn("segment", { role: "descriptor", headers: ["Segment / step"] })
@@ -1677,7 +1671,7 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
     highlight: true,
   })
 
-  // BAND 3 RIGHT: PostTerminalNolRunoff (rightOf SotpValuation, 8c)
+  // BAND 3 RIGHT: PostTerminalNolRunoff (Band 3, Lane 1)
   const postNol = sheet.addTable(
     "PostTerminalNolRunoff",
     "Post-FY32E Finite-Life Federal NOL Runoff (FY33E–FY37E)",
@@ -1686,8 +1680,6 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
         "($M) | Values remaining FY32E unlevered federal NOL pool",
         "80% × 21% cap without capitalizing NOLs in perpetuity",
       ],
-      rightOf: "SotpValuation",
-      gap: 1,
     }
   )
   postNol.addColumn("line_item", { role: "descriptor", headers: ["Line item"] })
@@ -1865,7 +1857,6 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
         "All 5 remaining quarterly 6.00% cash dividends ($431.25M nominal)",
         "Discounted from pay date to Sep 30, 2026 at active pre-tax Kd",
       ],
-      gap: 2,
     }
   )
   divPv.addColumn("quarter", { role: "descriptor", headers: ["Payment"] })
@@ -1933,8 +1924,6 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
         "Tests when Economic FCFF yield on Spot EV clears 10Y UST",
         "Memo compares Headline FCF yield on diluted market cap",
       ],
-      rightOf: "BaPraDividendPv",
-      gap: 1,
     }
   )
   cy.addColumn("metric", { role: "descriptor", headers: ["Metric"] })
@@ -1972,4 +1961,11 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
     format: "percentage",
     decimals: 2,
   })
+
+  sheet.setBands([
+    { lanes: [{ tables: [wacc, sec] }, { tables: [bridge] }] },
+    dcf,
+    { lanes: [{ tables: [sotp] }, { tables: [postNol] }] },
+    { lanes: [{ tables: [divPv] }, { tables: [cy] }] },
+  ])
 }

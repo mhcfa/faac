@@ -11,8 +11,7 @@ import {
 
 export function buildCashFlowStatement(
   sheet: Sheet,
-  kg: CostcoKnowledgeData,
-  belowTarget?: Table
+  kg: CostcoKnowledgeData
 ): Table {
   const table = sheet.addTable(
     "CashFlowStatement",
@@ -23,7 +22,6 @@ export function buildCashFlowStatement(
         `Source: ${kg.citations.cashFlow}`,
       ],
       currency: "USD",
-      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(table, {

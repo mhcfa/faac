@@ -713,8 +713,6 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
         SCALE_NOTE_USD_M,
         `Valuation date ${VALUATION_AS_OF_DATE}; SBC expensed inside NOPAT (never added back); Actual/365 mid-year discounting`,
       ],
-      rightOf: bridge,
-      gap: 1,
     }
   )
   fcff.addColumn("label", { role: "descriptor", header: "DCF Cash Flow Line" })
@@ -905,7 +903,6 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
         SCALE_NOTE_USD_M,
         "Measures years of AI CapEx digestion before unlevered cash yield clears spot sovereign yield",
       ],
-      below: fcff,
     }
   )
   cy.addColumn("label", { role: "descriptor", header: "Cash Yield Metric" })
@@ -961,7 +958,6 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
         SCALE_NOTE_USD_M,
         "Per-share impact on Active DCF if unaccrued contingent claims crystallize (excl. $19.9B accrued legal)",
       ],
-      below: cy,
     }
   )
   tail.addColumn("label", {
@@ -1058,4 +1054,6 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     "All 5 claims combined",
     "total"
   )
+
+  sheet.setBands([{ lanes: [bridge, { tables: [fcff, cy, tail] }] }])
 }

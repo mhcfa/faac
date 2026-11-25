@@ -1,5 +1,4 @@
 import type { Sheet, Table } from "f8-engine"
-import type { CostcoKnowledgeData } from "../kg.ts"
 import {
   FORECAST_PERIODS,
   PERIOD_METADATA,
@@ -8,15 +7,12 @@ import {
   type ScenarioName,
 } from "../timeline.ts"
 import type { ScenarioSnapshot } from "./bridges.ts"
-import { buildWaccSchedule } from "./wacc.ts"
 
-export function buildDcfAndWaccSheet(
+export function buildDcfTables(
   sheet: Sheet,
-  kg: CostcoKnowledgeData,
   snapshots: Readonly<Record<ScenarioName, ScenarioSnapshot>> | null
 ): {
   readonly dcfSchedule: Table
-  readonly waccSchedule: Table
   readonly dcfBridge: Table
   readonly reverseDcf: Table
   readonly impliedRateCalc: Table
@@ -28,7 +24,7 @@ export function buildDcfAndWaccSheet(
   readonly rateDiscountFactors: Table
   readonly opsSensFactors: Table
 } {
-  // Band 1: 10-Year Unlevered FCFF Cash Flow & Discounting Schedule
+  // 10-Year Unlevered FCFF Cash Flow & Discounting Schedule
   const dcfSchedule = sheet.addTable(
     "DcfSchedule",
     "10-Year Unlevered Discounted Cash Flow (DCF) Schedule ($M)",
@@ -346,9 +342,7 @@ export function buildDcfAndWaccSheet(
     cells: { line_item: "Clears 10Y Treasury yield (1=Yes)" },
   })
 
-  // Band 2: WaccSchedule (left) + DcfBridge (right)
-  const waccSchedule = buildWaccSchedule(sheet, kg, dcfSchedule)
-
+  // DCF Valuation Summary & EV-to-Equity Bridge
   const dcfBridge = sheet.addTable(
     "DcfBridge",
     "DCF Valuation Summary & EV-to-Equity Bridge ($M / $/sh)",
@@ -358,7 +352,6 @@ export function buildDcfAndWaccSheet(
         "Ex-op.-lease EV basis; cum- vs. ex-special-dividend prices",
       ],
       currency: "USD",
-      rightOf: waccSchedule,
     }
   )
   dcfBridge.addColumn("line_item", {
@@ -729,7 +722,7 @@ export function buildDcfAndWaccSheet(
     },
   })
 
-  // Band 3: ReverseDcfTable (left) + MarketImpliedRateCalc (right)
+  // Market-Implied Operating & Discount-Rate Expectations
   const reverseDcf = sheet.addTable(
     "ReverseDcfTable",
     "Market-Implied Operating & Discount-Rate Expectations",
@@ -939,7 +932,7 @@ export function buildDcfAndWaccSheet(
     },
   })
 
-  // Supporting Schedule: Market-Implied Discount Rate Iterative Convergence (right of ReverseDcfTable)
+  // Supporting Schedule: Market-Implied Discount Rate Iterative Convergence
   const iterCols = [
     "iter_0",
     "iter_1",
@@ -957,7 +950,6 @@ export function buildDcfAndWaccSheet(
         "Holds active unlevered FCFF and terminal growth constant across passes",
       ],
       currency: "USD",
-      rightOf: reverseDcf,
     }
   )
   impliedRateCalc.addColumn("line_item", {
@@ -1141,7 +1133,7 @@ export function buildDcfAndWaccSheet(
     },
   })
 
-  // Band 4: Joint Indifference Frontier & Key Economic Knobs Summary
+  // Joint Indifference Frontier & Key Economic Knobs Summary
   const downSnap = snapshots?.Downside ?? null
   const baseSnap = snapshots?.Base ?? null
   const upSnap = snapshots?.Upside ?? null
@@ -1326,7 +1318,7 @@ export function buildDcfAndWaccSheet(
     "+50 bps CapEx/sales net of tax"
   )
 
-  // Band 5: SensitivityPerpWaccG (left) + SensitivityExitWaccMult (right)
+  // Rate & Terminal Sensitivity Grids (WACC vs. Terminal g / Exit Multiple)
   const gSteps = [-2, -1, 0, 1, 2] as const
   const gColIds = ["g_m2", "g_m1", "g_0", "g_p1", "g_p2"] as const
   const wSteps = [-2, -1, 0, 1, 2] as const
@@ -1420,7 +1412,6 @@ export function buildDcfAndWaccSheet(
         "Cum-dividend share price ($/sh); center cell ties to Exit-Multiple DCF",
       ],
       currency: "USD",
-      rightOf: sensitivityPerp,
     }
   )
   sensitivityExit.addColumn("line_item", {
@@ -1493,7 +1484,7 @@ export function buildDcfAndWaccSheet(
     })
   }
 
-  // Band 5: Operating Sensitivity (EBIT Margin vs Revenue Growth)
+  // Operating Sensitivity Grids (EBIT Margin vs. Revenue Growth)
   const sensitivityOps = sheet.addTable(
     "SensitivityOpsPerp",
     "Sensitivity: Perpetuity DCF Cum-Div. Price — EBIT Margin vs. Rev. Growth",
@@ -1582,7 +1573,6 @@ export function buildDcfAndWaccSheet(
         "Companion grid to operating price sensitivity; center ties to Perp. DCF",
       ],
       currency: "USD",
-      rightOf: sensitivityOps,
     }
   )
   sensitivityOpsVsSpot.addColumn("line_item", {
@@ -1655,7 +1645,7 @@ export function buildDcfAndWaccSheet(
     })
   }
 
-  // Band 6: Discount-Factor Supporting Matrix (for WACC sensitivities & rate regimes)
+  // Discount-Factor Supporting Matrix (for WACC sensitivities & rate regimes)
   const rateDiscountFactors = sheet.addTable(
     "DcfRateDiscountFactors",
     "Discount-Factor Schedule Across Sensitivity & Rate Regimes",
@@ -1792,7 +1782,7 @@ export function buildDcfAndWaccSheet(
     })
   }
 
-  // Band 7: Operating Sensitivity Factor Schedule (for EBIT Margin vs Rev Growth grid)
+  // Operating Sensitivity Factor Schedule (for EBIT Margin vs Rev Growth grid)
   const opsSensFactors = sheet.addTable(
     "DcfOperatingSensFactors",
     "Operating Sensitivity Cash-Flow Factor Schedule ($M)",
@@ -1945,7 +1935,6 @@ export function buildDcfAndWaccSheet(
 
   return {
     dcfSchedule,
-    waccSchedule,
     dcfBridge,
     reverseDcf,
     impliedRateCalc,

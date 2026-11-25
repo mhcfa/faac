@@ -147,8 +147,6 @@ export function buildSummarySheet(
         "Market-implied margin, WACC & cash yield",
         "Nov 20, 2026 spot = $155.89/sh",
       ],
-      below: "ScenarioControl",
-      gap: 2,
     }
   )
   clearSummary.addColumn("metric", { role: "descriptor", headers: ["Metric"] })
@@ -214,8 +212,6 @@ export function buildSummarySheet(
         "($M, except $/sh) | As of Nov 20, 2026",
         "Yahoo Finance, StockAnalysis & agencies",
       ],
-      rightOf: "ScenarioControl",
-      gap: 1,
     }
   )
   mkt.addColumn("metric", { role: "descriptor", headers: ["Market metric"] })
@@ -438,7 +434,6 @@ export function buildSummarySheet(
         "($M, except per-share data and shares in M)",
         "Downside, Base, and Upside columns are static snapshots; Active column reflects the selected scenario",
       ],
-      gap: 2,
     }
   )
   vs.addColumn("metric", { role: "descriptor", headers: ["Valuation / KPI"] })
@@ -680,7 +675,6 @@ export function buildSummarySheet(
         "($M, except $/sh) | Model projections vs. consensus as of November 20, 2026",
         "Sources: StockAnalysis (Rev, EBIT, FCF, FY26–27E EPS), Nasdaq/Zacks (FY26–29E EPS), Yahoo Finance",
       ],
-      gap: 2,
     }
   )
   cb.addColumn("metric", { role: "descriptor", headers: ["Benchmark"] })
@@ -899,7 +893,6 @@ export function buildSummarySheet(
         "Enterprise value variance vs. Base (operating cash flows vs. discount-rate & terminal return effects)",
         "Enterprise-to-per-share return bridge from Nov 20, 2026 spot ($155.89/sh)",
       ],
-      gap: 2,
     }
   )
   attr.addColumn("step", { role: "descriptor", headers: ["Attribution step"] })
@@ -1060,7 +1053,6 @@ export function buildSummarySheet(
     {
       subtitle:
         "Nov 20, 2026 spot = $155.89/sh | Reflects full EV-to-equity bridge, BA-PRA collar & Spirit dilution",
-      gap: 2,
     }
   )
   sens.addColumn("wacc_lbl", {
@@ -1082,4 +1074,12 @@ export function buildSummarySheet(
       ...(i === 3 ? { style: "bold" } : {}),
     })
   }
+
+  sheet.setBands([
+    { lanes: [{ tables: [ctrl, clearSummary] }, { tables: [mkt] }] },
+    vs,
+    cb,
+    attr,
+    sens,
+  ])
 }

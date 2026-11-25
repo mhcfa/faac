@@ -307,8 +307,6 @@ export function buildCoverSummarySheet(
         "Splits each scenario delta into (a) operating cash flows at Base",
         "WACC / g / RONIC plus (b) valuation parameter residual",
       ],
-      rightOf: valSum,
-      gap: 1,
     }
   )
   varAttr.addColumn("label", {
@@ -1037,4 +1035,6 @@ export function buildCoverSummarySheet(
         "Resolves EU WhatsApp remedies, unaccrued damages & beta spread",
     },
   })
+
+  sheet.setBands([{ lanes: [valSum, varAttr] }, comp, ret, ms])
 }

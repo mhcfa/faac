@@ -11,8 +11,7 @@ import {
 
 export function buildBalanceSheet(
   sheet: Sheet,
-  kg: CostcoKnowledgeData,
-  belowTarget?: Table
+  kg: CostcoKnowledgeData
 ): Table {
   const bs = kg.cost.balanceSheet
 
@@ -25,7 +24,6 @@ export function buildBalanceSheet(
         `Source: ${kg.citations.balanceSheet}`,
       ],
       currency: "USD",
-      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(balanceSheet, {
@@ -242,8 +240,7 @@ export function buildBalanceSheet(
 
 export function buildShareEquitySchedule(
   sheet: Sheet,
-  kg: CostcoKnowledgeData,
-  belowTarget?: Table
+  kg: CostcoKnowledgeData
 ): Table {
   const bs = kg.cost.balanceSheet
   const eq = kg.cost.equityAndShares
@@ -257,7 +254,6 @@ export function buildShareEquitySchedule(
         `Source: ${kg.citations.balanceSheet}; ${kg.citations.guidanceCapitalReturn}`,
       ],
       currency: "USD",
-      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(shareEquity, {

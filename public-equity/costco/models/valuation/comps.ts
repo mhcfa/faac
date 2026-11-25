@@ -42,7 +42,7 @@ export function buildCompsSchedules(
 } {
   const peerMeta = kg.market.peers.meta
 
-  // Band 1: Reported & QoE-Normalized LTM Trading Comparables + Fundamental Drivers
+  // Reported & QoE-Normalized LTM Trading Comparables + Fundamental Drivers
   const compsLtm = sheet.addTable(
     "TradingCompsLTM",
     "Trading Comparables — LTM Multiples, Betas, ROIC & CapEx Intensity ($M / $/sh / x)",
@@ -362,7 +362,7 @@ export function buildCompsSchedules(
     "KR"
   )
 
-  // Band 2: Consensus Forward FY27E / FY28E Trading Comparables
+  // Consensus Forward FY27E / FY28E Trading Comparables
   const compsForward = sheet.addTable(
     "TradingCompsForward",
     "Trading Comparables — Street Consensus FY27E & FY28E Multiples & Growth ($M / $/sh / x)",
@@ -372,7 +372,6 @@ export function buildCompsSchedules(
         `Source: ${kg.citations.consensusEstimates}; ${kg.citations.priceTargets}`,
       ],
       currency: "USD",
-      below: compsLtm,
     }
   )
   compsForward.addColumn("ticker_name", {
@@ -672,7 +671,7 @@ export function buildCompsSchedules(
     "KR"
   )
 
-  // Band 3 (left): Peer LTM Flow Calendarization Bridge
+  // Peer LTM Flow Calendarization Bridge
   const peerLtmBridge = sheet.addTable(
     "PeerLtmBridge",
     "Peer LTM Flow Calendarization Bridge ($M)",
@@ -682,7 +681,6 @@ export function buildCompsSchedules(
         "Aug-FY PSMT: LTM = FY26; Source: SEC 10-K/10-Q",
       ],
       currency: "USD",
-      below: compsForward,
     }
   )
   peerLtmBridge.addColumn("line_item", {
@@ -836,7 +834,7 @@ export function buildCompsSchedules(
   )
   addJanPeerFlowRow("kr_qoe_ni_adj", "KR QoE: after-tax NI adj.", kr.qoeNiAdj)
 
-  // Band 3 (middle): 6-Company EV Balance Sheet, QoE & LTM ROIC Bridge
+  // 6-Company EV Balance Sheet, QoE & LTM ROIC Bridge
   const peerEvAndQoeBridge = sheet.addTable(
     "PeerEvAndQoeBridge",
     "Peer EV, Debt/Lease, QoE & ROIC Normalization Bridge ($M)",
@@ -846,7 +844,6 @@ export function buildCompsSchedules(
         "Computes uniform ex-op.-lease EV & IC (headline incl.-lease EV memo below)",
       ],
       currency: "USD",
-      rightOf: peerLtmBridge,
     }
   )
   peerEvAndQoeBridge.addColumn("line_item", {
@@ -1288,7 +1285,7 @@ export function buildCompsSchedules(
     cells: { line_item: "QoE-adjusted LTM net income" },
   })
 
-  // Band 3 (right): Quality-Calibrated Comps Target Valuation for COST
+  // Quality-Calibrated Comps Target Valuation for COST
   const compsValuation = sheet.addTable(
     "CompsValuationCalibration",
     "Calibrated Comps Valuation ($M / $/sh)",
@@ -1298,7 +1295,6 @@ export function buildCompsSchedules(
         "Bridges net cash, FV debt & special div.",
       ],
       currency: "USD",
-      rightOf: peerEvAndQoeBridge,
     }
   )
   compsValuation.addColumn("line_item", {

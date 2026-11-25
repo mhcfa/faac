@@ -422,7 +422,6 @@ export function buildOperatingSchedulesSheet(
         SCALE_NOTE_USD_M,
         "2026E flow columns reflect Q4 2026E stub rolling from Q3 2026A ($253.2B net PP&E); opening-balance D&A basis",
       ],
-      below: seg,
     }
   )
   ppe.addColumn("label", { role: "descriptor", header: "PP&E / CapEx Line" })
@@ -660,7 +659,6 @@ export function buildOperatingSchedulesSheet(
         SCALE_NOTE_USD_M,
         "Isolates debt-like accrued legal liabilities ($19.9B) and current LT debt ($2.7B) from operating NWC",
       ],
-      below: ppe,
     }
   )
   wc.addColumn("label", { role: "descriptor", header: "Working Capital Line" })
@@ -961,7 +959,6 @@ export function buildOperatingSchedulesSheet(
         SCALE_NOTE_USD_M,
         "Opening-balance interest basis; incorporates Nov 2026 USD/EUR notes, Oct 2026 METAM preferred & Nov 2026 forward equity",
       ],
-      below: wc,
     }
   )
   debt.addColumn("label", {
@@ -1663,7 +1660,6 @@ export function buildOperatingSchedulesSheet(
         SCALE_NOTE_USD_M,
         "Meta Platforms Form 10-K (FY2023–FY2025) & Form 10-Q (Q3 2026); DAP in billions",
       ],
-      below: debt,
     }
   )
   geo.addColumn("label", { role: "descriptor", header: "Region / Metric" })

@@ -357,7 +357,6 @@ export function buildExecutiveSummarySheet(
         "($ per share vs. current market price) | All ranges linked live to valuation and peer comparables schedules",
         116
       ),
-      below: executiveDashboard,
     }
   )
   valuationFootballField.addColumn("item", {

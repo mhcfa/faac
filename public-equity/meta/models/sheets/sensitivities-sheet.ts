@@ -1,4 +1,4 @@
-import { Cell, type Sheet, type Table } from "f8-engine"
+import { Cell, type BandInputItem, type Sheet, type Table } from "f8-engine"
 import { SCALE_NOTE_USD_M } from "../scale.ts"
 import { DCF_PERIODS } from "../timeline.ts"
 import {
@@ -47,6 +47,7 @@ export function buildSensitivitiesSheet(
     })
   }
 
+  let sensGcPxTable: Table | undefined
   if (growthCapexEvGrid !== undefined) {
     const sensGcPx = sheet.addTable(
       "SensGrowthCapexPx",
@@ -56,8 +57,6 @@ export function buildSensitivitiesSheet(
           "25-point full-model operating grid with PP&E / D&A feedback",
           "Share prices link live over EV grid via TSM RSU & METAM bridge",
         ],
-        rightOf: sensWgPx,
-        gap: 1,
       }
     )
     sensGcPx.addColumn("label", {
@@ -94,6 +93,7 @@ export function buildSensitivitiesSheet(
       },
       style: "bold",
     })
+    sensGcPxTable = sensGcPx
   }
 
   // =========================================================================
@@ -125,6 +125,7 @@ export function buildSensitivitiesSheet(
     })
   }
 
+  let sensGcEvTable: Table | undefined
   if (growthCapexEvGrid !== undefined) {
     const sensGcEv = sheet.addTable(
       "SensGrowthCapexEv",
@@ -134,8 +135,6 @@ export function buildSensitivitiesSheet(
           SCALE_NOTE_USD_M,
           "25-point full-model EV snapshots at active scenario WACC, g & RONIC",
         ],
-        rightOf: sensWgEv,
-        gap: 1,
       }
     )
     sensGcEv.addColumn("label", {
@@ -161,11 +160,13 @@ export function buildSensitivitiesSheet(
         decimals: 0,
       })
     }
+    sensGcEvTable = sensGcEv
   }
 
   // =========================================================================
   // Band 3: Single-Driver Base Case Tornado Sensitivity
   // =========================================================================
+  let tornTable: Table | undefined
   if (scalarTornado !== undefined && scalarTornado.length > 0) {
     const torn = sheet.addTable(
       "ScalarTornadoSensitivity",
@@ -217,6 +218,7 @@ export function buildSensitivitiesSheet(
         },
       })
     }
+    tornTable = torn
   }
 
   // =========================================================================
@@ -290,7 +292,6 @@ export function buildSensitivitiesSheet(
         SCALE_NOTE_USD_M,
         "FY31E NOPAT × (1 + g) × (1 − g / RONIC) across g columns",
       ],
-      ...(indiffTable !== undefined ? { rightOf: indiffTable, gap: 1 } : {}),
     }
   )
   gHelper.addColumn("label", { role: "descriptor", header: "Terminal Metric" })
@@ -363,4 +364,21 @@ export function buildSensitivitiesSheet(
     }
     wHelper.addRow(w.id, { cells })
   }
+
+  const bands: BandInputItem[] = [
+    sensGcPxTable !== undefined
+      ? { lanes: [sensWgPx, sensGcPxTable] }
+      : sensWgPx,
+    sensGcEvTable !== undefined
+      ? { lanes: [sensWgEv, sensGcEvTable] }
+      : sensWgEv,
+  ]
+  if (tornTable !== undefined) {
+    bands.push(tornTable)
+  }
+  bands.push(
+    indiffTable !== undefined ? { lanes: [indiffTable, gHelper] } : gHelper
+  )
+  bands.push(wHelper)
+  sheet.setBands(bands)
 }

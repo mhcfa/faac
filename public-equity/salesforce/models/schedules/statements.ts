@@ -333,7 +333,6 @@ export function buildStatementsTables(
         `($ in Millions, as of January 31) | Sources: ${audited.citations.crmBs10KPrior}; ${audited.citations.crmBs10K}; FY27E–FY31E integrated forecast`,
         118
       ),
-      below: incomeStatement,
     }
   )
   addAnnualColumns(balanceSheet)
@@ -695,7 +694,6 @@ export function buildStatementsTables(
         `($ in Millions) | Source: ${audited.citations.crmCf10K}; FY27E–FY31E ties directly to Balance Sheet cash`,
         128
       ),
-      below: balanceSheet,
     }
   )
   addAnnualColumns(cashFlowStatement)
@@ -1170,8 +1168,7 @@ export function buildStatementsTables(
 
 export function buildLtmAndQ2AnchorTables(
   sheet: Sheet,
-  audited: AuditedDataSnapshot,
-  below: Table
+  audited: AuditedDataSnapshot
 ): LtmAndQ2AnchorTables {
   const is = audited.crmIs
   const bs = audited.crmBs
@@ -1181,7 +1178,7 @@ export function buildLtmAndQ2AnchorTables(
   const q2bs = audited.crmH1.q2Fy27Bs
   const h1Val = (map: CrmH1Metrics, key: keyof CrmH1Metrics): number => map[key]
 
-  // Left Anchor Table: Live LTM Q2 FY27 Flow Bridge (FY26A + H1 FY27A - H1 FY26A)
+  // Live LTM Q2 FY27 Flow Bridge (FY26A + H1 FY27A - H1 FY26A)
   const ltmFlowBridge = sheet.addTable(
     "LtmFlowBridge",
     "Trailing Twelve Months (LTM Q2 FY27) Flow Bridge",
@@ -1190,7 +1187,6 @@ export function buildLtmAndQ2AnchorTables(
         `($ in Millions) | Sources: ${audited.citations.crmIs10K}; ${audited.citations.crmIs10Q} (IS & CF)`,
         68
       ),
-      below,
     }
   )
   ltmFlowBridge.addColumn("item", { role: "descriptor", header: "Line item" })
@@ -1550,7 +1546,7 @@ export function buildLtmAndQ2AnchorTables(
     style: "total",
   })
 
-  // Right Top Anchor Table: Audited Q2 FY27 Balance Sheet Anchor
+  // Audited Q2 FY27 Balance Sheet Anchor
   const q2BalanceSheetAnchor = sheet.addTable(
     "Q2BalanceSheetAnchor",
     "Audited Q2 FY27 Balance Sheet Anchor (July 31, 2026)",
@@ -1559,8 +1555,6 @@ export function buildLtmAndQ2AnchorTables(
         `($ in Millions) | Sources: ${audited.citations.crmBs10K}; ${audited.citations.crmBs10Q} (BS & Note 7)`,
         68
       ),
-      rightOf: ltmFlowBridge,
-      gap: 1,
     }
   )
   q2BalanceSheetAnchor.addColumn("item", {

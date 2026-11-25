@@ -35,12 +35,10 @@ function addPeriodDriverTable(
   title: string,
   subtitle: readonly string[],
   bundle: ScenarioBundle,
-  baseBundle: ScenarioBundle,
-  below: Table
+  baseBundle: ScenarioBundle
 ): Table {
   const table = sheet.addTable(id, title, {
     subtitle,
-    below,
   })
   addForecastColumns(table, "Assumption")
   table.addColumn("provenance", {
@@ -162,8 +160,6 @@ export function buildAssumptionsSheet(
       "Scenario index mapping (Downside / Base / Upside)",
       80
     ),
-    rightOf: scenarioControl,
-    gap: 1,
   })
   scenarioGuide.addColumn("item", { role: "descriptor", header: "Case" })
   scenarioGuide.addColumn("idx", {
@@ -268,7 +264,6 @@ export function buildAssumptionsSheet(
         "($ in Millions, except per-share, days, and percentages) | Live active-case forecast inputs",
         148
       ),
-      below: scalarDrivers,
     }
   )
   addForecastColumns(periodDriversActive, "Assumption")
@@ -306,18 +301,16 @@ export function buildAssumptionsSheet(
     "Downside Case Multi-Year Assumptions",
     wrapSubtitle(scenarios.downside.framing, 148),
     scenarios.downside,
-    scenarios.base,
-    periodDriversActive
+    scenarios.base
   )
 
   const periodDriversBase = addPeriodDriverTable(
     sheet,
     "PeriodDriversBase",
     "Base Case Multi-Year Assumptions",
-    wrapSubtitle(scenarios.base.framing, 108),
+    wrapSubtitle(scenarios.base.framing, 140),
     scenarios.base,
-    scenarios.base,
-    periodDriversDownside
+    scenarios.base
   )
 
   const periodDriversUpside = addPeriodDriverTable(
@@ -326,8 +319,7 @@ export function buildAssumptionsSheet(
     "Upside Case Multi-Year Assumptions",
     wrapSubtitle(scenarios.upside.framing, 148),
     scenarios.upside,
-    scenarios.base,
-    periodDriversBase
+    scenarios.base
   )
 
   // Note 8 Debt Tranche Registry (Audited Q2 FY27 Senior Notes & Term Loan)
@@ -342,7 +334,6 @@ export function buildAssumptionsSheet(
         ],
         148
       ),
-      below: periodDriversUpside,
     }
   )
   debtTrancheRegistry.addColumn("item", {

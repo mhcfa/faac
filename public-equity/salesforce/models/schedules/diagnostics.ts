@@ -7,10 +7,7 @@ export interface DiagnosticsTables {
   readonly capitalAllocation: Table
 }
 
-export function buildDiagnosticsTables(
-  sheet: Sheet,
-  below: Table
-): DiagnosticsTables {
+export function buildDiagnosticsTables(sheet: Sheet): DiagnosticsTables {
   // Table 1: Quality of Earnings, True Economic Cash Conversion & Unlevered FCFF
   const qoeAndCashConversion = sheet.addTable(
     "QoeAndCashConversion",
@@ -20,7 +17,6 @@ export function buildDiagnosticsTables(
         "($ in Millions) | Treats SBC as a real economic cost and deducts recurring finance-lease principal outflows",
         128
       ),
-      below,
     }
   )
   addAnnualColumns(qoeAndCashConversion)
@@ -194,7 +190,6 @@ export function buildDiagnosticsTables(
         "($ in Millions) | Operating and financing invested capital reconcile each period; ex-goodwill IC is negative due to deferred-revenue float",
         128
       ),
-      below: qoeAndCashConversion,
     }
   )
   addAnnualColumns(investedCapitalAndRoic)
@@ -366,7 +361,6 @@ export function buildDiagnosticsTables(
         "($ in Millions) | Tracks operating cash generation against CapEx, finance leases, M&A, buybacks, dividends, and debt",
         140
       ),
-      below: investedCapitalAndRoic,
     }
   )
   addAnnualColumns(capitalAllocation)

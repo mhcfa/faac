@@ -1,4 +1,4 @@
-import type { Sheet } from "f8-engine"
+import type { Sheet, Table } from "f8-engine"
 import type { CostcoKnowledgeData } from "../kg.ts"
 import {
   ANCHOR_BS_DATE_TUPLE,
@@ -9,15 +9,20 @@ import {
   rowFormatOptions,
   type ScenarioName,
 } from "../timeline.ts"
-import { buildValuationBridges, type ScenarioSnapshot } from "./bridges.ts"
+import type { ScenarioSnapshot } from "./bridges.ts"
 
-export function buildExecutiveSummarySheet(
+export function buildExecutiveSummaryTables(
   sheet: Sheet,
   kg: CostcoKnowledgeData,
   activeScenario: ScenarioName,
   snapshots: Readonly<Record<ScenarioName, ScenarioSnapshot>> | null
-): void {
-  // Band 1: ScenarioControl (left) + ExecutiveKPIs (right)
+): {
+  readonly control: Table
+  readonly kpiTable: Table
+  readonly scenarioSummary: Table
+  readonly consensusTable: Table
+} {
+  // Control panel & date anchors
   const control = sheet.addTable(
     "ScenarioControl",
     "Model Control Panel & Date Anchors",
@@ -107,7 +112,6 @@ export function buildExecutiveSummarySheet(
         kg.citations.equityQuotes,
       ],
       currency: "USD",
-      rightOf: control,
     }
   )
   kpiTable.addColumn("line_item", {
@@ -242,7 +246,7 @@ export function buildExecutiveSummarySheet(
     },
   })
 
-  // Band 2: Side-by-Side Scenario Matrix (stack below Band 1)
+  // Side-by-side scenario matrix
   const scenarioSummary = sheet.addTable(
     "ScenarioSummary",
     "Scenario Comparison — Downside, Base, Upside & Active ($M / $/sh)",
@@ -500,7 +504,7 @@ export function buildExecutiveSummarySheet(
     "bold"
   )
 
-  // Band 3: Consensus Benchmark & Dispersion (FY27E–FY29E + Price Targets)
+  // Consensus benchmark & dispersion (FY27E–FY29E + price targets)
   const consensusTable = sheet.addTable(
     "ConsensusBenchmark",
     "Model vs. Street Consensus & Estimate Dispersion (FY27E–FY29E)",
@@ -510,7 +514,6 @@ export function buildExecutiveSummarySheet(
         "Source: Street Consensus Estimates FY27E–FY29E & Analyst Price Targets / Ratings (2026-11-13)",
       ],
       currency: "USD",
-      below: scenarioSummary,
     }
   )
   consensusTable.addColumn("line_item", {
@@ -996,6 +999,10 @@ export function buildExecutiveSummarySheet(
     },
   })
 
-  // Band 4–6: Football Field, Scenario Variance & Public Price Attribution
-  buildValuationBridges(sheet, snapshots, consensusTable)
+  return {
+    control,
+    kpiTable,
+    scenarioSummary,
+    consensusTable,
+  }
 }

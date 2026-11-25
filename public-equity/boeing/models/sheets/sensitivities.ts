@@ -50,8 +50,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
         "Holds active operating path & RONIC fixed; varies WACC & terminal g",
         "Includes Nov 20 Ke roll-forward, BA-PRA collar & Spirit dilution",
       ],
-      rightOf: "ReverseDcfMarginGrid",
-      gap: 1,
     }
   )
   revGrowthPx.addColumn("wacc_lbl", {
@@ -86,7 +84,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
         "Active operating ramp shifted linearly toward target FY32E EBIT margin",
         "Includes post-FY32E finite NOL runoff; requires WACC > terminal growth (g)",
       ],
-      gap: 2,
     }
   )
   revEvGrid.addColumn("wacc_lbl", {
@@ -117,8 +114,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
         "Holds active operating path & RONIC fixed; varies WACC & terminal g",
         "Requires WACC strictly above terminal growth (g)",
       ],
-      rightOf: "ReverseDcfMarginEvGrid",
-      gap: 1,
     }
   )
   revGrowthEv.addColumn("wacc_lbl", {
@@ -164,7 +159,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
         "Identifies WACC equating Sep 30 EV (incl. post-FY32E NOL) to Spot EV",
         "Evaluates WACC range from g + 25 bps to 35.0% to match Sep 30 spot EV",
       ],
-      gap: 2,
     }
   )
   bisect.addColumn("step", { role: "descriptor", headers: ["Step"] })
@@ -278,8 +272,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
         "Implied FY32E EBIT margin (at active WACC) & implied WACC (at active forecast)",
         "Equates valuation to Nov 20, 2026 spot price ($155.89/sh) within $0.01",
       ],
-      rightOf: "ClearingWaccBisection",
-      gap: 1,
     }
   )
   bnd.addColumn("metric", {
@@ -448,7 +440,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
         "Maps FY32E EBIT margin to operating ramp delta & Terminal FCFF(T+1)",
         "25.0% combined tax rate and active g / RONIC",
       ],
-      gap: 2,
     }
   )
   marginHelper.addColumn("metric", { role: "descriptor", headers: ["Metric"] })
@@ -485,8 +476,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
         "Sep 30 explicit FCFF PVs, post-NOL PVs & terminal discount factors",
         "Supporting valuation components across WACC sensitivity levels",
       ],
-      rightOf: "ReverseDcfMarginHelper",
-      gap: 1,
     }
   )
   waccHelper.addColumn("axis", { role: "descriptor", headers: ["WACC level"] })
@@ -548,7 +537,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
     {
       subtitle:
         "Per-period discount factors (Q4 26E–FY32E explicit, YE32 terminal, and FY33E–FY37E post-NOL) across WACC sensitivity levels",
-      gap: 2,
     }
   )
   dfMatrix.addColumn("axis", { role: "descriptor", headers: ["WACC level"] })
@@ -621,8 +609,6 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
     {
       subtitle:
         "Per-period discount factors (Q4 26E–FY32E explicit, YE32 terminal, and FY33E–FY37E post-NOL) across WACC test rates",
-      below: "ReverseDcfDfMatrix",
-      gap: 2,
     }
   )
   cwDf.addColumn("iter", { role: "descriptor", headers: ["Step"] })
@@ -693,4 +679,13 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
       },
     })
   }
+
+  sheet.setBands([
+    { lanes: [{ tables: [revPxGrid] }, { tables: [revGrowthPx] }] },
+    { lanes: [{ tables: [revEvGrid] }, { tables: [revGrowthEv] }] },
+    { lanes: [{ tables: [bisect] }, { tables: [bnd] }] },
+    { lanes: [{ tables: [marginHelper] }, { tables: [waccHelper] }] },
+    dfMatrix,
+    cwDf,
+  ])
 }

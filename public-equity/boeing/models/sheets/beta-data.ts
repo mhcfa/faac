@@ -1,4 +1,4 @@
-import type { Sheet } from "f8-engine"
+import type { Sheet, Table } from "f8-engine"
 import {
   ALL_BETA_ENTITIES,
   type BetaEntity,
@@ -33,9 +33,8 @@ function addBetaStatsTable(
   prefix: "5Y" | "2Y",
   subtitle: readonly string[],
   returnsId: string,
-  nDates: number,
-  placement?: { readonly rightOf: string; readonly gap: number }
-): string {
+  nDates: number
+): Table {
   const statsId = `BetaStats${prefix}`
   const firstRetRow = "r_001"
   const lastRetRow = `r_${String(nDates - 1).padStart(3, "0")}`
@@ -45,7 +44,6 @@ function addBetaStatsTable(
     `${prefix === "5Y" ? "5-Year Monthly" : "2-Year Weekly"} OLS Beta Regression vs. S&P 500`,
     {
       subtitle,
-      ...placement,
     }
   )
   stats.addColumn("metric", { role: "descriptor", headers: ["Statistic"] })
@@ -124,15 +122,14 @@ function addBetaStatsTable(
     style: "bold",
   })
 
-  return statsId
+  return stats
 }
 
-function addBetaSeriesBand(
+function addBetaSeriesTables(
   sheet: Sheet,
   prefix: "5Y" | "2Y",
-  series: PriceSeriesData,
-  belowTableId: string
-): string {
+  series: PriceSeriesData
+): readonly [Table, Table] {
   const pricesId = `BetaPrices${prefix}`
   const returnsId = `BetaReturns${prefix}`
   const nDates = series.dates.length
@@ -145,8 +142,6 @@ function addBetaSeriesBand(
         `Local currency adjusted close (${series.dates[0]} to ${series.dates[nDates - 1]})`,
         "S&P 500 index level; Source: Yahoo Finance",
       ],
-      below: belowTableId,
-      gap: 2,
     }
   )
   prices.addColumn("obs_date", { role: "descriptor", headers: ["Date"] })
@@ -176,8 +171,6 @@ function addBetaSeriesBand(
         "Simple periodic returns from adjusted close prices",
         `Basis for ${prefix === "5Y" ? "5-year monthly" : "2-year weekly"} OLS regression statistics`,
       ],
-      rightOf: pricesId,
-      gap: 1,
     }
   )
   returns.addColumn("obs_date", { role: "descriptor", headers: ["Date"] })
@@ -198,12 +191,11 @@ function addBetaSeriesBand(
     })
   }
 
-  return pricesId
+  return [prices, returns]
 }
 
 export function buildBetaDataSheet(sheet: Sheet, kg: BoeingKgData): void {
-  // Band 1: 5Y Monthly and 2Y Weekly OLS Stats side-by-side (aligned across narrow gutter Col L)
-  const stats5yId = addBetaStatsTable(
+  const stats5y = addBetaStatsTable(
     sheet,
     "5Y",
     [
@@ -213,7 +205,7 @@ export function buildBetaDataSheet(sheet: Sheet, kg: BoeingKgData): void {
     "BetaReturns5Y",
     kg.prices5yMonthly.dates.length
   )
-  addBetaStatsTable(
+  const stats2y = addBetaStatsTable(
     sheet,
     "2Y",
     [
@@ -221,18 +213,23 @@ export function buildBetaDataSheet(sheet: Sheet, kg: BoeingKgData): void {
       "Source: Yahoo Finance market close history",
     ],
     "BetaReturns2Y",
-    kg.prices2yWeekly.dates.length,
-    { rightOf: stats5yId, gap: 1 }
+    kg.prices2yWeekly.dates.length
   )
 
-  // Band 2: 5Y Monthly Adjusted Close Prices | Periodic Returns
-  const prices5yId = addBetaSeriesBand(
+  const [prices5y, returns5y] = addBetaSeriesTables(
     sheet,
     "5Y",
-    kg.prices5yMonthly,
-    stats5yId
+    kg.prices5yMonthly
+  )
+  const [prices2y, returns2y] = addBetaSeriesTables(
+    sheet,
+    "2Y",
+    kg.prices2yWeekly
   )
 
-  // Band 3: 2Y Weekly Adjusted Close Prices | Periodic Returns
-  addBetaSeriesBand(sheet, "2Y", kg.prices2yWeekly, prices5yId)
+  sheet.setBands([
+    { lanes: [{ tables: [stats5y] }, { tables: [stats2y] }] },
+    { lanes: [{ tables: [prices5y] }, { tables: [returns5y] }] },
+    { lanes: [{ tables: [prices2y] }, { tables: [returns2y] }] },
+  ])
 }

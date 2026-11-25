@@ -1,12 +1,5 @@
 import fs from "node:fs"
 import path from "node:path"
-import {
-  DatabaseSync,
-  constants as sqliteConstants,
-  type SQLInputValue,
-  type SQLOutputValue,
-} from "node:sqlite"
-import { fileURLToPath } from "node:url"
 
 export type DocType =
   | "sec_filing"
@@ -28,8 +21,6 @@ export interface KgDocumentSummary {
   readonly schedule_ids: readonly string[]
   readonly has_restatement: boolean
 }
-
-export type SqlRow = Readonly<Record<string, SQLOutputValue>>
 
 export type AccountingBasis =
   | "gaap"
@@ -152,6 +143,8 @@ export interface CitationQueryOptions {
   readonly unit?: string | undefined
 }
 
+export type BreakdownAxis = "dimension" | "entity" | "basis"
+
 export interface PanelQueryOptions {
   readonly rows?: readonly string[] | undefined
   readonly periods?: readonly string[] | undefined
@@ -159,6 +152,16 @@ export interface PanelQueryOptions {
   readonly entity?: string | null | undefined
   readonly dimension?: string | null | undefined
   readonly unit?: string | undefined
+  readonly divisors?: UnitDisplayDivisors | undefined
+}
+
+export interface BreakdownQueryOptions {
+  readonly by: BreakdownAxis
+  readonly periods?: readonly string[] | undefined
+  readonly basis?: AccountingBasis | readonly AccountingBasis[] | undefined
+  readonly unit?: string | undefined
+  readonly entity?: string | null | undefined
+  readonly dimension?: string | null | undefined
   readonly divisors?: UnitDisplayDivisors | undefined
 }
 
@@ -212,6 +215,25 @@ export interface SchedulePanel {
   readonly title: string
   readonly periods: readonly string[]
   readonly rows: readonly PanelRow[]
+}
+
+export interface BreakdownGroup {
+  readonly key: string | null
+  readonly unit: string
+  readonly unit_kind: ObservationUnitKind
+  readonly dimension: string | null
+  readonly entity: string | null
+  readonly values: Readonly<Record<string, number | null>>
+  readonly cells: Readonly<Record<string, PanelCellProvenance | null>>
+}
+
+export interface RowBreakdown {
+  readonly schedule_id: string
+  readonly row_id: string
+  readonly label: string
+  readonly by: BreakdownAxis
+  readonly periods: readonly string[]
+  readonly groups: readonly BreakdownGroup[]
 }
 
 export interface ScheduleCellRecord {
@@ -536,11 +558,41 @@ function classifyUnitKind(unit: string): ObservationUnitKind | null {
   return null
 }
 
+const VALID_BREAKDOWN_AXES: readonly BreakdownAxis[] = [
+  "dimension",
+  "entity",
+  "basis",
+]
+
+function isBreakdownAxis(value: unknown): value is BreakdownAxis {
+  return value === "dimension" || value === "entity" || value === "basis"
+}
+
+function formatGrainVal(val: string | null | undefined): string {
+  if (val === null || val === undefined) {
+    return "null"
+  }
+  return `'${val}'`
+}
+
+function validateDivisors(divisors: UnitDisplayDivisors | undefined): void {
+  if (divisors === undefined) return
+  for (const [kind, value] of Object.entries<unknown>(divisors)) {
+    if (value === undefined) continue
+    if (typeof value !== "number" || !Number.isFinite(value) || value <= 0) {
+      throw new Error(
+        `Invalid display divisor for '${kind}': expected a positive finite number, got ${JSON.stringify(value)}`
+      )
+    }
+  }
+}
+
 function scaleValue(
   normNum: number,
   unit: string | null,
   divisors?: UnitDisplayDivisors
 ): number {
+  validateDivisors(divisors)
   if (!divisors || !unit) return normNum
   const kind = classifyUnitKind(unit)
   if (!kind) return normNum
@@ -786,23 +838,13 @@ function toScheduleCellRecord(c: ResolvedCellRecord): ScheduleCellRecord {
   })
 }
 
-const ALLOWED_SQL_AUTHORIZER_ACTIONS: ReadonlySet<number> = new Set([
-  sqliteConstants.SQLITE_SELECT,
-  sqliteConstants.SQLITE_READ,
-  sqliteConstants.SQLITE_FUNCTION,
-  sqliteConstants.SQLITE_RECURSIVE,
-])
-
 export class KgRegistry {
   readonly #docTitles = new Map<string, string>()
   readonly #documents: KgDocumentSummary[] = []
-  readonly #docSortKeys = new Map<string, string>()
   readonly #allCells: ResolvedCellRecord[] = []
   readonly #primaryCells: ResolvedCellRecord[] = []
   readonly #rowsMeta: StoredRowMeta[] = []
   readonly #tablesMeta: StoredTableMeta[] = []
-  #sqlDb: DatabaseSync | null = null
-  #closed = false
 
   constructor(bundles: readonly RawBundle[]) {
     const decorated = bundles
@@ -840,7 +882,6 @@ export class KgRegistry {
       const docId = bundle.document.doc_id
       const title = bundle.document.title?.trim()
       this.#docTitles.set(docId, title && title.length > 0 ? title : docId)
-      this.#docSortKeys.set(docId, sortKey)
       const docScheduleIds: string[] = []
       let docHasRestatement = false
 
@@ -1098,179 +1139,6 @@ export class KgRegistry {
 
   documents(): KgDocumentSummary[] {
     return [...this.#documents]
-  }
-
-  #ensureSqlDb(): DatabaseSync {
-    if (this.#closed) {
-      throw new Error("KgRegistry is closed")
-    }
-    if (this.#sqlDb !== null) {
-      return this.#sqlDb
-    }
-    const db = new DatabaseSync(":memory:")
-    db.exec(`
-      CREATE TABLE documents (
-        doc_id TEXT PRIMARY KEY,
-        file_path TEXT NOT NULL,
-        sha256 TEXT NOT NULL,
-        doc_type TEXT NOT NULL,
-        size_bytes INTEGER NOT NULL,
-        doc_title TEXT,
-        report_date TEXT,
-        filing_date TEXT,
-        doc_sort_key TEXT NOT NULL
-      );
-      CREATE TABLE tables (
-        doc_id TEXT NOT NULL,
-        schedule_id TEXT NOT NULL,
-        table_title TEXT NOT NULL,
-        source_entity TEXT,
-        PRIMARY KEY (doc_id, schedule_id)
-      );
-      CREATE TABLE table_rows (
-        doc_id TEXT NOT NULL,
-        schedule_id TEXT NOT NULL,
-        row_id TEXT NOT NULL,
-        row_index INTEGER NOT NULL,
-        row_label TEXT NOT NULL,
-        raw_row_label TEXT,
-        row_category TEXT,
-        row_entity TEXT,
-        PRIMARY KEY (doc_id, schedule_id, row_id)
-      );
-      CREATE TABLE cells (
-        seq INTEGER PRIMARY KEY,
-        doc_id TEXT NOT NULL,
-        schedule_id TEXT NOT NULL,
-        row_id TEXT NOT NULL,
-        col_id TEXT NOT NULL,
-        data_type TEXT NOT NULL,
-        dimension TEXT,
-        entity TEXT,
-        period_key TEXT,
-        period_sort_key TEXT,
-        basis TEXT,
-        unit TEXT,
-        scale REAL,
-        as_of_date TEXT,
-        value_num REAL,
-        value_str TEXT,
-        normalized_num REAL,
-        raw_text TEXT,
-        note TEXT,
-        origin TEXT NOT NULL,
-        exemption TEXT,
-        restatement TEXT,
-        status TEXT NOT NULL,
-        superseded_by_seq INTEGER
-      );
-    `)
-    const insDoc = db.prepare(
-      "INSERT INTO documents (doc_id, file_path, sha256, doc_type, size_bytes, doc_title, report_date, filing_date, doc_sort_key) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)"
-    )
-    for (const d of this.#documents) {
-      insDoc.run(
-        d.doc_id,
-        d.file_path,
-        d.sha256,
-        d.doc_type,
-        d.size_bytes,
-        d.title,
-        d.report_date,
-        d.filing_date,
-        this.#docSortKeys.get(d.doc_id) ?? ""
-      )
-    }
-    const insTable = db.prepare(
-      "INSERT INTO tables (doc_id, schedule_id, table_title, source_entity) VALUES (?, ?, ?, ?)"
-    )
-    for (const t of this.#tablesMeta) {
-      insTable.run(t.docId, t.scheduleId, t.title, t.entity)
-    }
-    const insRow = db.prepare(
-      "INSERT INTO table_rows (doc_id, schedule_id, row_id, row_index, row_label, raw_row_label, row_category, row_entity) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-    )
-    for (const r of this.#rowsMeta) {
-      insRow.run(
-        r.docId,
-        r.scheduleId,
-        r.rowId,
-        r.rowIndex,
-        r.label,
-        r.rawLabel,
-        r.category,
-        r.entity
-      )
-    }
-    const insCell = db.prepare(
-      `INSERT INTO cells (
-        seq, doc_id, schedule_id, row_id, col_id, data_type, dimension, entity,
-        period_key, period_sort_key, basis, unit, scale, as_of_date,
-        value_num, value_str, normalized_num, raw_text, note, origin,
-        exemption, restatement, status, superseded_by_seq
-      ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`
-    )
-    for (const c of this.#allCells) {
-      insCell.run(
-        c.seq,
-        c.docId,
-        c.scheduleId,
-        c.rowId,
-        c.colId,
-        c.dataType,
-        c.dimension,
-        c.entity,
-        c.periodKey,
-        c.periodKey !== null ? c.periodSortKey : null,
-        c.basis,
-        c.unit,
-        c.scale,
-        c.asOfDate,
-        c.valueNum,
-        c.valueStr,
-        c.normalizedNum,
-        c.rawText,
-        c.note,
-        c.origin,
-        c.exemption,
-        c.restatement,
-        c.status,
-        c.supersededBySeq
-      )
-    }
-    this.#sqlDb = db
-    return db
-  }
-
-  sql(query: string, params?: readonly SQLInputValue[]): SqlRow[] {
-    const db = this.#ensureSqlDb()
-    const trimmed = query.trim()
-    if (trimmed.length === 0) {
-      throw new Error("sql() requires a non-empty SQL query string")
-    }
-    const authState = { forbiddenAction: false }
-    db.setAuthorizer((actionCode) => {
-      if (!ALLOWED_SQL_AUTHORIZER_ACTIONS.has(actionCode)) {
-        authState.forbiddenAction = true
-        return sqliteConstants.SQLITE_DENY
-      }
-      return sqliteConstants.SQLITE_OK
-    })
-    try {
-      const stmt = db.prepare(trimmed)
-      const rows = stmt.all(...(params ?? []))
-      return rows.map((row) => Object.freeze({ ...row }))
-    } catch (err) {
-      if (authState.forbiddenAction) {
-        throw new Error(
-          "Read-only SQL violation: only SELECT queries are permitted; write, schema, PRAGMA, ATTACH/DETACH, and transaction statements are blocked.",
-          { cause: err }
-        )
-      }
-      throw err
-    } finally {
-      db.setAuthorizer(null)
-    }
   }
 
   val(
@@ -1548,17 +1416,7 @@ export class KgRegistry {
             win.unit,
             options?.divisors
           )
-          const docTitle = this.#docTitles.get(win.docId) ?? win.docId
-          cellsObj[pk] = Object.freeze({
-            doc_id: win.docId,
-            col_id: win.colId,
-            basis: win.basis ?? "unadjusted",
-            citation: `${docTitle}, ${formatLocatorCitation(win.locator)}`,
-            note: win.note,
-            origin: win.origin,
-            exemption: win.exemption,
-            restatement: win.restatement,
-          })
+          cellsObj[pk] = this.#toPanelCellProvenance(win)
         } else {
           valuesObj[pk] = null
           cellsObj[pk] = null
@@ -1585,6 +1443,363 @@ export class KgRegistry {
       title,
       periods,
       rows: Object.freeze(panelRows),
+    })
+  }
+
+  #toPanelCellProvenance(win: ResolvedCellRecord): PanelCellProvenance {
+    const docTitle = this.#docTitles.get(win.docId) ?? win.docId
+    return Object.freeze({
+      doc_id: win.docId,
+      col_id: win.colId,
+      basis: win.basis ?? "unadjusted",
+      citation: `${docTitle}, ${formatLocatorCitation(win.locator)}`,
+      note: win.note,
+      origin: win.origin,
+      exemption: win.exemption,
+      restatement: win.restatement,
+    })
+  }
+
+  breakdown(
+    scheduleId: string,
+    rowId: string,
+    options: BreakdownQueryOptions
+  ): RowBreakdown {
+    const cleanScheduleId = scheduleId.trim()
+    if (cleanScheduleId.length === 0) {
+      throw new Error("breakdown() requires a non-empty schedule_id")
+    }
+    const cleanRowId = rowId.trim()
+    if (cleanRowId.length === 0) {
+      throw new Error("breakdown() requires a non-empty row_id")
+    }
+    const rawOptions: unknown = options
+    if (
+      rawOptions === null ||
+      rawOptions === undefined ||
+      typeof rawOptions !== "object"
+    ) {
+      throw new Error("breakdown() requires an options object with 'by'")
+    }
+    if (!isBreakdownAxis(options.by)) {
+      throw new Error(
+        `Invalid breakdown axis ${JSON.stringify(options.by)}; expected one of (${VALID_BREAKDOWN_AXES.join(", ")})`
+      )
+    }
+    const by: BreakdownAxis = options.by
+    validateDivisors(options.divisors)
+
+    const hasSchedule = this.#tablesMeta.some(
+      (t) => t.scheduleId === cleanScheduleId
+    )
+    if (!hasSchedule) {
+      throw new Error(`Unknown schedule '${cleanScheduleId}'`)
+    }
+    const matchingRowMeta = this.#rowsMeta.filter(
+      (r) => r.scheduleId === cleanScheduleId && r.rowId === cleanRowId
+    )
+    if (matchingRowMeta.length === 0) {
+      throw new Error(
+        `Unknown row_id '${cleanRowId}' in schedule '${cleanScheduleId}'`
+      )
+    }
+
+    const docsWithEntityCell =
+      options.entity !== undefined
+        ? new Set(
+            this.#allCells
+              .filter(
+                (c) =>
+                  c.scheduleId === cleanScheduleId &&
+                  c.rowId === cleanRowId &&
+                  c.entity === options.entity
+              )
+              .map((c) => c.docId)
+          )
+        : null
+
+    const sortedRowMeta = [...matchingRowMeta].sort((a, b) => {
+      if (options.entity !== undefined && docsWithEntityCell !== null) {
+        const aMatch =
+          a.entity === options.entity || docsWithEntityCell.has(a.docId) ? 0 : 1
+        const bMatch =
+          b.entity === options.entity || docsWithEntityCell.has(b.docId) ? 0 : 1
+        if (aMatch !== bMatch) return aMatch - bMatch
+      }
+      return compareStrings(b.docSortKey, a.docSortKey)
+    })
+    const rowLabel = sortedRowMeta[0]?.label ?? cleanRowId
+
+    const requestedPeriods = options.periods
+      ? options.periods.map((p) => p.trim())
+      : null
+    const requestedPeriodSet =
+      requestedPeriods !== null ? new Set(requestedPeriods) : null
+    const basisList: readonly AccountingBasis[] | null =
+      options.basis !== undefined
+        ? Array.isArray(options.basis)
+          ? options.basis
+          : [options.basis]
+        : null
+    const basisRankMap: ReadonlyMap<string, number> | null =
+      basisList !== null
+        ? new Map<string, number>(
+            basisList.map((b, idx): [string, number] => [b, idx])
+          )
+        : null
+
+    interface RankedBreakdownCandidate {
+      readonly cell: ResolvedCellRecord
+      readonly rank: number
+    }
+
+    const matchingCells = this.#primaryCells
+      .filter((c) => {
+        if (!c.isNumeric || c.normalizedNum === null || c.periodKey === null) {
+          return false
+        }
+        if (c.scheduleId !== cleanScheduleId || c.rowId !== cleanRowId) {
+          return false
+        }
+        if (
+          requestedPeriodSet !== null &&
+          !requestedPeriodSet.has(c.periodKey)
+        ) {
+          return false
+        }
+        if (options.entity !== undefined && c.entity !== options.entity) {
+          return false
+        }
+        if (
+          options.dimension !== undefined &&
+          c.dimension !== options.dimension
+        ) {
+          return false
+        }
+        if (options.unit !== undefined && c.unit !== options.unit) {
+          return false
+        }
+        if (
+          basisRankMap !== null &&
+          (c.basis === null || !basisRankMap.has(c.basis))
+        ) {
+          return false
+        }
+        return true
+      })
+      .sort((a, b) => {
+        const pCmp = compareStrings(a.periodSortKey, b.periodSortKey)
+        if (pCmp !== 0) return pCmp
+        return a.seq - b.seq
+      })
+
+    const groupsMap = new Map<
+      string | null,
+      Map<string, RankedBreakdownCandidate[]>
+    >()
+
+    for (const cell of matchingCells) {
+      if (cell.periodKey === null) continue
+      let groupKey: string | null
+      switch (by) {
+        case "dimension":
+          groupKey = cell.dimension
+          break
+        case "entity":
+          groupKey = cell.entity
+          break
+        case "basis":
+          groupKey = cell.basis
+          break
+      }
+      const rank =
+        by === "basis" || basisRankMap === null
+          ? 0
+          : cell.basis !== null
+            ? (basisRankMap.get(cell.basis) ?? Number.POSITIVE_INFINITY)
+            : Number.POSITIVE_INFINITY
+
+      let periodMap = groupsMap.get(groupKey)
+      if (periodMap === undefined) {
+        periodMap = new Map<string, RankedBreakdownCandidate[]>()
+        groupsMap.set(groupKey, periodMap)
+      }
+      let list = periodMap.get(cell.periodKey)
+      if (list === undefined) {
+        list = []
+        periodMap.set(cell.periodKey, list)
+      }
+      list.push({ cell, rank })
+    }
+
+    const orderedGroupKeys = [...groupsMap.keys()].sort((a, b) => {
+      if (
+        by === "basis" &&
+        Array.isArray(options.basis) &&
+        basisRankMap !== null
+      ) {
+        const rA =
+          a !== null
+            ? (basisRankMap.get(a) ?? Number.POSITIVE_INFINITY)
+            : Number.POSITIVE_INFINITY
+        const rB =
+          b !== null
+            ? (basisRankMap.get(b) ?? Number.POSITIVE_INFINITY)
+            : Number.POSITIVE_INFINITY
+        if (rA !== rB) {
+          return rA - rB
+        }
+      }
+      if (a === null && b === null) return 0
+      if (a === null) return 1
+      if (b === null) return -1
+      return compareStrings(a, b)
+    })
+
+    const unionPeriods = new Set<string>()
+    const requireUniformBasis = by !== "basis" && basisList === null
+
+    const resolvedGroups: {
+      readonly key: string | null
+      readonly winnersByPeriod: ReadonlyMap<string, ResolvedCellRecord>
+      readonly refCell: ResolvedCellRecord
+    }[] = []
+
+    for (const groupKey of orderedGroupKeys) {
+      const periodMap = groupsMap.get(groupKey)
+      if (periodMap === undefined) continue
+
+      const scopeContext = `'${cleanScheduleId}', '${cleanRowId}', ${by}=${formatGrainVal(groupKey)}`
+      const checkGrainMatch = (
+        ref: ResolvedCellRecord,
+        cur: ResolvedCellRecord,
+        periodScope: string
+      ): void => {
+        if (ref.dimension !== cur.dimension) {
+          throw new Error(
+            `Multiple dimensions (${formatGrainVal(ref.dimension)}, ${formatGrainVal(cur.dimension)}) found for (${scopeContext}, ${periodScope}). Specify dimension=... explicitly.`
+          )
+        }
+        if (requireUniformBasis && ref.basis !== cur.basis) {
+          throw new Error(
+            `Multiple bases (${formatGrainVal(ref.basis)}, ${formatGrainVal(cur.basis)}) found for (${scopeContext}, ${periodScope}). Specify basis=... explicitly.`
+          )
+        }
+        if (ref.unit !== cur.unit) {
+          throw new Error(
+            `Multiple units (${formatGrainVal(ref.unit)}, ${formatGrainVal(cur.unit)}) found for (${scopeContext}, ${periodScope}). Specify unit=... explicitly.`
+          )
+        }
+        if (ref.entity !== cur.entity) {
+          throw new Error(
+            `Multiple entities (${formatGrainVal(ref.entity)}, ${formatGrainVal(cur.entity)}) found for (${scopeContext}, ${periodScope}). Specify entity=... explicitly.`
+          )
+        }
+      }
+
+      const winnersByPeriod = new Map<string, ResolvedCellRecord>()
+      let resolvedRef: {
+        readonly pk: string
+        readonly cell: ResolvedCellRecord
+      } | null = null
+
+      for (const [pk, candidates] of periodMap.entries()) {
+        let bestRank = Number.POSITIVE_INFINITY
+        for (const c of candidates) {
+          if (c.rank < bestRank) {
+            bestRank = c.rank
+          }
+        }
+        const winners = candidates.filter((c) => c.rank === bestRank)
+        const firstWin = winners[0]?.cell
+        if (firstWin === undefined) continue
+
+        for (let i = 1; i < winners.length; i += 1) {
+          const other = winners[i]?.cell
+          if (other !== undefined) {
+            checkGrainMatch(firstWin, other, `period='${pk}'`)
+          }
+        }
+
+        if (resolvedRef !== null) {
+          checkGrainMatch(
+            resolvedRef.cell,
+            firstWin,
+            `periods '${resolvedRef.pk}' and '${pk}'`
+          )
+        } else {
+          resolvedRef = { pk, cell: firstWin }
+        }
+
+        winnersByPeriod.set(pk, firstWin)
+        unionPeriods.add(pk)
+      }
+
+      if (resolvedRef !== null) {
+        resolvedGroups.push({
+          key: groupKey,
+          winnersByPeriod,
+          refCell: resolvedRef.cell,
+        })
+      }
+    }
+
+    const periods: readonly string[] =
+      requestedPeriods !== null
+        ? Object.freeze([...requestedPeriods])
+        : Object.freeze(
+            [...unionPeriods].sort((a, b) =>
+              compareStrings(periodKeySortString(a), periodKeySortString(b))
+            )
+          )
+
+    const groups: BreakdownGroup[] = resolvedGroups.map((item) => {
+      const unit = item.refCell.unit
+      if (unit === null) {
+        throw new Error(
+          `Missing observation unit for breakdown group (${cleanScheduleId}, ${cleanRowId}, ${by}=${formatGrainVal(item.key)})`
+        )
+      }
+      const unitKind = classifyUnitKind(unit)
+      if (unitKind === null) {
+        throw new Error(
+          `Unknown observation unit '${unit}' for breakdown group (${cleanScheduleId}, ${cleanRowId}, ${by}=${formatGrainVal(item.key)})`
+        )
+      }
+      const valuesObj: Record<string, number | null> = {}
+      const cellsObj: Record<string, PanelCellProvenance | null> = {}
+      for (const pk of periods) {
+        const win = item.winnersByPeriod.get(pk)
+        if (win !== undefined && win.normalizedNum !== null) {
+          valuesObj[pk] = scaleValue(
+            win.normalizedNum,
+            win.unit,
+            options.divisors
+          )
+          cellsObj[pk] = this.#toPanelCellProvenance(win)
+        } else {
+          valuesObj[pk] = null
+          cellsObj[pk] = null
+        }
+      }
+      return Object.freeze({
+        key: item.key,
+        unit,
+        unit_kind: unitKind,
+        dimension: item.refCell.dimension,
+        entity: item.refCell.entity,
+        values: Object.freeze(valuesObj),
+        cells: Object.freeze(cellsObj),
+      })
+    })
+
+    return Object.freeze({
+      schedule_id: cleanScheduleId,
+      row_id: cleanRowId,
+      label: rowLabel,
+      by,
+      periods,
+      groups: Object.freeze(groups),
     })
   }
 
@@ -1845,11 +2060,7 @@ export class KgRegistry {
   }
 
   close(): void {
-    if (this.#sqlDb !== null) {
-      this.#sqlDb.close()
-      this.#sqlDb = null
-    }
-    this.#closed = true
+    // No-op for pure in-memory reader
   }
 
   [Symbol.dispose](): void {
@@ -1858,14 +2069,7 @@ export class KgRegistry {
 }
 
 export function compileKgFromDir(dirPath = "data/audited"): KgRegistry {
-  let resolvedDir = path.resolve(process.cwd(), dirPath)
-  if (!fs.existsSync(resolvedDir)) {
-    const pkgRoot = path.resolve(
-      path.dirname(fileURLToPath(import.meta.url)),
-      ".."
-    )
-    resolvedDir = path.resolve(pkgRoot, dirPath)
-  }
+  const resolvedDir = path.resolve(process.cwd(), dirPath)
   const files = fs
     .readdirSync(resolvedDir)
     .filter((f) => f.endsWith(".json"))

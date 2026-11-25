@@ -170,13 +170,11 @@ function buildPeriodDriverTable(
   title: string,
   subtitle: readonly string[],
   bundle: ScenarioDriverBundle,
-  mode: "active" | "base" | "diff",
-  belowTarget?: Table
+  mode: "active" | "base" | "diff"
 ): Table {
   const table = sheet.addTable(id, title, {
     subtitle,
     currency: "USD",
-    ...(belowTarget ? { below: belowTarget } : {}),
   })
   table.addColumn("line_item", {
     role: "descriptor",
@@ -254,7 +252,7 @@ function buildPeriodDriverTable(
   return table
 }
 
-function buildScalarDriverTable(sheet: Sheet, belowTarget: Table): Table {
+function buildScalarDriverTable(sheet: Sheet): Table {
   const table = sheet.addTable(
     "ScalarAssumptionsActive",
     "Operating, Balance-Sheet & Valuation Assumptions",
@@ -264,7 +262,6 @@ function buildScalarDriverTable(sheet: Sheet, belowTarget: Table): Table {
         "Basis and source citations listed alongside each parameter",
       ],
       currency: "USD",
-      below: belowTarget,
     }
   )
   table.addColumn("line_item", {
@@ -327,14 +324,21 @@ function buildScalarDriverTable(sheet: Sheet, belowTarget: Table): Table {
   return table
 }
 
-export function buildAssumptionsSheet(
+export function buildAssumptionsTables(
   sheet: Sheet,
   kg: CostcoKnowledgeData,
   activeScenario: ScenarioName
-): void {
+): {
+  readonly framingTable: Table
+  readonly scalarActive: Table
+  readonly anchors: Table
+  readonly periodActive: Table
+  readonly periodScenarios: readonly Table[]
+  readonly debtTable: Table
+} {
   const activeBundle = ALL_SCENARIO_DRIVERS[activeScenario]
 
-  // 1. Scenario Framing Overview (top full-width band)
+  // Scenario framing overview
   const framingTable = sheet.addTable(
     "ScenarioFraming",
     "Scenario Operating Regimes & Flexed Assumptions",
@@ -383,8 +387,8 @@ export function buildAssumptionsSheet(
     })
   }
 
-  // 2. Band 2: Scalar Assumptions (left) + Audited Market & Opening Anchors (right)
-  const scalarActive = buildScalarDriverTable(sheet, framingTable)
+  // Scalar assumptions & audited market/opening anchors
+  const scalarActive = buildScalarDriverTable(sheet)
 
   const anchors = sheet.addTable(
     "MarketAnchors",
@@ -395,7 +399,6 @@ export function buildAssumptionsSheet(
         kg.citations.equityQuotes,
       ],
       currency: "USD",
-      rightOf: scalarActive,
     }
   )
   anchors.addColumn("line_item", {
@@ -866,7 +869,7 @@ export function buildAssumptionsSheet(
     },
   })
 
-  // 3. Band 3–6: Active & Scenario Time-Series Forecast Assumptions
+  // Active & scenario time-series forecast assumptions
   const periodActive = buildPeriodDriverTable(
     sheet,
     "PeriodAssumptionsActive",
@@ -876,35 +879,35 @@ export function buildAssumptionsSheet(
       "Recalculates dynamically from the three scenario schedules below based on active case selection",
     ],
     activeBundle,
-    "active",
-    scalarActive
+    "active"
   )
 
-  let prevPeriod: Table = periodActive
   const periodScenarioIds: Readonly<Record<ScenarioName, string>> = {
     Downside: "PeriodAssumptionsDownside",
     Base: "PeriodAssumptionsBase",
     Upside: "PeriodAssumptionsUpside",
   }
+  const periodScenarios: Table[] = []
   for (const sc of SCENARIOS) {
     const b = ALL_SCENARIO_DRIVERS[sc]
-    prevPeriod = buildPeriodDriverTable(
-      sheet,
-      periodScenarioIds[sc],
-      `${sc} Case — Multi-Year Operating Assumptions (FY27E–FY36E)`,
-      [
-        b.framing,
-        sc === "Base"
-          ? "Grounded baseline anchored to FY22–FY26 historicals and FY27E management guidance"
-          : `Scenario flex schedule vs. Base case (notes flag flexed lines only)`,
-      ],
-      b,
-      sc === "Base" ? "base" : "diff",
-      prevPeriod
+    periodScenarios.push(
+      buildPeriodDriverTable(
+        sheet,
+        periodScenarioIds[sc],
+        `${sc} Case — Multi-Year Operating Assumptions (FY27E–FY36E)`,
+        [
+          b.framing,
+          sc === "Base"
+            ? "Grounded baseline anchored to FY22–FY26 historicals and FY27E management guidance"
+            : `Scenario flex schedule vs. Base case (notes flag flexed lines only)`,
+        ],
+        b,
+        sc === "Base" ? "base" : "diff"
+      )
     )
   }
 
-  // 4. Band 7: Debt Tranches Registry
+  // Debt tranches registry
   const tranches = buildDebtTranches(kg)
   const debtTable = sheet.addTable(
     "DebtTranches",
@@ -915,7 +918,6 @@ export function buildAssumptionsSheet(
         `Source: ${kg.citations.debtLeases}`,
       ],
       currency: "USD",
-      below: prevPeriod,
     }
   )
   debtTable.addColumn("line_item", {
@@ -998,4 +1000,13 @@ export function buildAssumptionsSheet(
       notes: "Weighted coupon & maturities",
     },
   })
+
+  return {
+    framingTable,
+    scalarActive,
+    anchors,
+    periodActive,
+    periodScenarios,
+    debtTable,
+  }
 }

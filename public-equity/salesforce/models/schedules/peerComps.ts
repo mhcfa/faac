@@ -403,7 +403,6 @@ export function buildPeerCompsSheet(
         `($ in Millions, except per-share and multiples) | Market prices as of Nov 18, 2026 (${audited.citations.marketPricesAll}); EV excludes ASC 842 operating leases; Oracle negative cash flow multiples omitted from summaries`,
         220
       ),
-      below: peerLtmBridge,
     }
   )
   tradingComps.addColumn("item", { role: "descriptor", header: "Company" })
@@ -776,7 +775,6 @@ export function buildPeerCompsSheet(
         "($ in Millions, except multiples and per-share) | Applies live peer multiples to standalone LTM Q2 FY27 metrics bridged via Q2 net debt & post-ASR shares",
         116
       ),
-      below: tradingComps,
     }
   )
   compsImpliedValuation.addColumn("item", {

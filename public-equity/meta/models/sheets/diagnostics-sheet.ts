@@ -150,7 +150,6 @@ export function buildDiagnosticsSheet(
         SCALE_NOTE_USD_M,
         "Operating-side IC reconciles identically to financing-side IC ($0.00 variance) across all periods",
       ],
-      below: qoe,
     }
   )
   ic.addColumn("label", {
@@ -501,7 +500,6 @@ export function buildDiagnosticsSheet(
         SCALE_NOTE_USD_M,
         "Tracks operating cash flow allocation across AI CapEx, RSU tax withholding, buybacks, dividends & debt raises",
       ],
-      below: ic,
     }
   )
   dep.addColumn("label", { role: "descriptor", header: "Cash Deployment Line" })
@@ -605,7 +603,7 @@ export function buildDiagnosticsSheet(
 
   // =========================================================================
   // Band 4 Left (Cols B..J): Pro Forma Leverage & Shareholder Capital Returns
-  // (Gap Col K = Regime Gutter 1, width 3)
+  // (laneGap Col K = Regime Gutter 1, width 2)
   // =========================================================================
   const pfCap = sheet.addTable(
     "ProFormaCapitalSummary",
@@ -616,7 +614,6 @@ export function buildDiagnosticsSheet(
         "Bridges Nov 20, 2026 pro forma cash vs. net debt tiers",
         "and 5-year equity cash outflows vs. net diluted share change",
       ],
-      below: dep,
     }
   )
   pfCap.addColumn("label", {
@@ -750,7 +747,7 @@ export function buildDiagnosticsSheet(
   })
 
   // =========================================================================
-  // Band 4 Right (Cols L..V; Col P = Regime Gutter 2, width 3; Flush at Col V):
+  // Band 4 Right (Cols L..V; Col P = Regime Gutter 2, width 2; Flush at Col V):
   // Off-Balance-Sheet Commitments, Leases & Litigation Tail Exposure
   // =========================================================================
   const obs = sheet.addTable(
@@ -761,8 +758,6 @@ export function buildDiagnosticsSheet(
         SCALE_NOTE_USD_M,
         "Meta Platforms Q3 2026 Form 10-Q (Notes 4, 5, 8, 10, 12) & FY2025 Form 10-K (Note 7)",
       ],
-      rightOf: pfCap,
-      gap: 1,
     }
   )
   obs.addColumn("label", {
@@ -912,4 +907,6 @@ export function buildDiagnosticsSheet(
     "Combined gross off-BS infrastructure exposure",
     "total"
   )
+
+  sheet.setBands([qoe, ic, dep, { lanes: [pfCap, obs] }])
 }

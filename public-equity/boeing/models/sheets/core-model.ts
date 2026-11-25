@@ -391,8 +391,6 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     "Consolidated Statements of Operations & QoE Earnings Bridge",
     {
       subtitle: `($ in millions, except per-share data) | Sources: ${citations.incomeStatement}`,
-      below: "SegmentOperatingBuild",
-      gap: 2,
     }
   )
   addFlowTimelineColumns(is)
@@ -817,8 +815,6 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     "Consolidated Statements of Financial Position",
     {
       subtitle: `($ in millions) | Sources: ${citations.balanceSheet}`,
-      below: "IncomeStatement",
-      gap: 2,
     }
   )
   addSnapshotTimelineColumns(bs)
@@ -1282,8 +1278,6 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     "Consolidated Statements of Cash Flows (Headline & Economic FCF)",
     {
       subtitle: `($ in millions) | Sources: ${citations.cashFlowStatement}; non-recurring historical items zeroed in clean forecast`,
-      below: "BalanceSheet",
-      gap: 2,
     }
   )
   addFlowTimelineColumns(cf)

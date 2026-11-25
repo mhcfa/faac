@@ -1,12 +1,7 @@
 import type { Sheet, Table } from "f8-engine"
-import type { CostcoKnowledgeData } from "../kg.ts"
 import { rowFormatOptions } from "../timeline.ts"
 
-export function buildWaccSchedule(
-  sheet: Sheet,
-  _kg: CostcoKnowledgeData,
-  belowTarget?: Table
-): Table {
+export function buildWaccSchedule(sheet: Sheet): Table {
   const table = sheet.addTable(
     "WaccSchedule",
     "Weighted Average Cost of Capital (WACC)",
@@ -16,7 +11,6 @@ export function buildWaccSchedule(
         "U.S. Treasury H.15 par curve & ICE BofA AA OAS (2026-11-13)",
       ],
       currency: "USD",
-      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   table.addColumn("line_item", {

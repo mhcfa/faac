@@ -7,7 +7,7 @@ import {
   rowFormatOptions,
 } from "../timeline.ts"
 
-export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
+export function buildRoicSchedule(sheet: Sheet): Table {
   const table = sheet.addTable(
     "InvestedCapitalROIC",
     "Two-Sided Invested Capital, NOPAT, Unlevered FCFF & ROIC ($M)",
@@ -17,7 +17,6 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
         "Unlevered FCFF = NOPAT minus net reinvestment (operating leases netted symmetrically; SBC retained inside EBIT and NOPAT)",
       ],
       currency: "USD",
-      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(table, {

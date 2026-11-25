@@ -413,7 +413,6 @@ export function buildCompsSheet(
         "Weighs Meta's faster LTM growth and higher EBIT margin against heavier CapEx intensity",
         "and absence of external cloud monetization relative to Alphabet, Microsoft & Amazon",
       ],
-      below: comps,
     }
   )
   xchk.addColumn("label", {

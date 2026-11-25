@@ -47,8 +47,6 @@ export function buildNotesSheet(
         "US GAAP operating-rent and 25.0% tax-rate consistency, dilution and NOL treatment,",
         "Airbus IFRS-to-US-GAAP parity adjustments, and 2026 Proxy compensation review",
       ],
-      below: "ScenarioFraming",
-      gap: 2,
     }
   )
   ag.addColumn("topic", { role: "descriptor", headers: ["Topic"] })
@@ -120,8 +118,6 @@ export function buildNotesSheet(
         "Operational and strategic developments realized or emerging in 2026 alongside quantified",
         "off-balance-sheet, contingent, and downside liquidity exposures",
       ],
-      below: "AccountingGovernanceNotes",
-      gap: 2,
     }
   )
   ctr.addColumn("category", { role: "descriptor", headers: ["Category"] })
@@ -171,8 +167,6 @@ export function buildNotesSheet(
     {
       subtitle:
         "Operational, regulatory, labor, and balance-sheet milestones governing scenario divergence (2026–2028)",
-      below: "CatalystsAndTailRisks",
-      gap: 2,
     }
   )
   rm.addColumn("milestone", {

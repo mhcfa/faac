@@ -11,8 +11,7 @@ import {
 
 export function buildDebtLeasesSchedule(
   sheet: Sheet,
-  kg: CostcoKnowledgeData,
-  belowTarget?: Table
+  kg: CostcoKnowledgeData
 ): Table {
   const table = sheet.addTable(
     "DebtLeasesSchedule",
@@ -23,7 +22,6 @@ export function buildDebtLeasesSchedule(
         `Source: ${kg.citations.debtLeases}`,
       ],
       currency: "USD",
-      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(table, {
