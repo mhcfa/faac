@@ -1,0 +1,16 @@
+{
+  "name": "@faac/public-equity-boeing",
+  "version": "0.1.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build-model.ts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@faac/audited-reader": "workspace:*",
+    "f8-engine": "^0.7.0"
+  }
+}

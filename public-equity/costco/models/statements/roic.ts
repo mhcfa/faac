@@ -3,73 +3,71 @@ import {
   FORECAST_PERIODS,
   HISTORICAL_PERIODS,
   addTimeSeriesColumns,
+  notedNull,
   rowFormatOptions,
 } from "../timeline.ts"
 
 export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   const table = sheet.addTable(
     "InvestedCapitalROIC",
-    "Two-Sided Invested Capital, NOPAT, Unlevered FCFF & ROIC / RONIC ($M)",
+    "Two-Sided Invested Capital, NOPAT, Unlevered FCFF & ROIC ($M)",
     {
       subtitle: [
-        "Exact two-sided Operating IC = Financing IC identity across all 15 years (FY22–FY36E, $M)",
-        "Unlevered FCFF = NOPAT - Net Reinvestment (SBC retained as an operating cost inside GAAP EBIT & NOPAT)",
+        "Ex-operating-lease basis: Operating Invested Capital equals Financing Invested Capital across FY22A–FY36E ($M / %)",
+        "Unlevered FCFF = NOPAT minus net reinvestment (operating leases netted symmetrically; SBC retained inside EBIT and NOPAT)",
       ],
       currency: "USD",
       ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(table, {
-    descriptorLabel: "Invested Capital / Return Metric ($M / %)",
+    descriptorLabel: "Invested capital & ROIC ($M)",
   })
 
-  table.addSectionHeader("1. Operating Invested Capital (Asset Side)")
+  table.addSectionHeader("Operating invested capital (asset side)")
   table.addRow("op_nwc", {
     ...rowFormatOptions("currency", 0),
     expr: 'WorkingCapitalPPE["op_nwc", @col]',
-    cells: { line_item: "Net Operating Working Capital (OpNWC)" },
+    cells: { line_item: "Net operating working capital" },
   })
   table.addRow("ppe_net", {
     ...rowFormatOptions("currency", 0),
     expr: 'BalanceSheet["ppe_net", @col]',
     cells: { line_item: "Property and equipment, net" },
   })
-  table.addRow("op_lease_rou_assets", {
+  table.addRow("net_op_lease_assets", {
     ...rowFormatOptions("currency", 0),
-    expr: 'BalanceSheet["operating_lease_rou_assets", @col]',
-    cells: { line_item: "Operating lease right-of-use assets" },
+    expr: 'BalanceSheet["operating_lease_rou_assets", @col] - DebtLeasesSchedule["total_op_lease_liab", @col]',
+    cells: { line_item: "Net op. lease assets (ROU − liab.)" },
   })
   table.addRow("net_other_lt_op_assets", {
     ...rowFormatOptions("currency", 0),
     expr: 'WorkingCapitalPPE["net_other_lt_op_assets", @col]',
-    cells: {
-      line_item: "Other LT assets less non-lease LT operating liabilities",
-    },
+    cells: { line_item: "Net other LT operating assets" },
   })
   table.addRow("operating_ic", {
     ...rowFormatOptions("currency", 0),
     style: "total",
     expr: 'SUM(@table["op_nwc".."net_other_lt_op_assets", @col])',
-    cells: { line_item: "Operating Invested Capital (Asset Side)" },
+    cells: { line_item: "Operating invested capital" },
+  })
+  table.addRow("non_ppe_ic", {
+    ...rowFormatOptions("currency", 0),
+    expr: '@table["operating_ic", @col] - @table["ppe_net", @col]',
+    cells: { line_item: "Memo: Non-PP&E operating IC" },
   })
 
-  table.addSectionHeader("2. Financing Invested Capital (Capital Side)")
+  table.addRowGutter()
+  table.addSectionHeader("Financing invested capital (capital side)")
   table.addRow("total_debt_incl_current", {
     ...rowFormatOptions("currency", 0),
     expr: 'DebtLeasesSchedule["total_lt_debt_carrying", @col] + DebtLeasesSchedule["revolver_end", @col]',
-    cells: {
-      line_item: "Total Debt (current + LT carrying + ST revolver)",
-    },
+    cells: { line_item: "Total carrying financial debt" },
   })
   table.addRow("finance_lease_liabilities", {
     ...rowFormatOptions("currency", 0),
     expr: 'DebtLeasesSchedule["total_fin_lease_liab", @col]',
-    cells: { line_item: "Finance lease liabilities (current + LT)" },
-  })
-  table.addRow("operating_lease_liabilities", {
-    ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["total_op_lease_liab", @col]',
-    cells: { line_item: "Operating lease liabilities (current + LT)" },
+    cells: { line_item: "Finance lease liabilities" },
   })
   table.addRow("total_equity", {
     ...rowFormatOptions("currency", 0),
@@ -79,30 +77,28 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   table.addRow("less_cash_and_sti", {
     ...rowFormatOptions("currency", 0),
     expr: '-(BalanceSheet["cash_and_equivalents", @col] + BalanceSheet["short_term_investments", @col])',
-    cells: {
-      line_item: "Less: Cash, cash equivalents & short-term investments",
-    },
+    cells: { line_item: "(−) Cash and short-term inv." },
   })
   table.addRow("financing_ic", {
     ...rowFormatOptions("currency", 0),
     style: "total",
     expr: 'SUM(@table["total_debt_incl_current".."less_cash_and_sti", @col])',
-    cells: { line_item: "Financing Invested Capital (Capital Side)" },
+    cells: { line_item: "Financing invested capital" },
   })
   table.addRow("ic_tie_out_check", {
     ...rowFormatOptions("currency", 4),
+    style: "bold",
     highlight: true,
     expr: '@table["operating_ic", @col] - @table["financing_ic", @col]',
-    cells: {
-      line_item: "Two-Sided IC Check (Operating IC - Financing IC = 0)",
-    },
+    cells: { line_item: "IC tie-out (Operating − Fin.)" },
   })
 
-  table.addSectionHeader("3. NOPAT, Net Reinvestment, Unlevered FCFF & ROIC")
+  table.addRowGutter()
+  table.addSectionHeader("NOPAT, net reinvestment, unlevered FCFF and ROIC")
   table.addRow("ebit", {
     ...rowFormatOptions("currency", 0),
     expr: 'IncomeStatement["operating_income", @col]',
-    cells: { line_item: "Operating Income (EBIT, post-SBC)" },
+    cells: { line_item: "Operating income (EBIT)" },
   })
   table.addRow("tax_rate_applied", {
     ...rowFormatOptions("percentage", 1),
@@ -126,13 +122,12 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["ebit", @col] * (1 - @table["tax_rate_applied", @col])',
-    cells: { line_item: "Net Operating Profit After Tax (NOPAT)" },
+    cells: { line_item: "NOPAT" },
   })
   table.addRow("net_reinvestment", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item:
-        "Net Reinvestment = CapEx - D&A + dOpNWC + dOpROU + dNetLTAssets (= dOperating IC)",
+      line_item: "Net reinvestment (change in IC)",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -148,7 +143,7 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
     ...rowFormatOptions("currency", 0),
     style: "total",
     cells: {
-      line_item: "Unlevered Free Cash Flow (FCFF = NOPAT - Net Reinvestment)",
+      line_item: "Unlevered free cash flow (FCFF)",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -161,12 +156,12 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   table.addRow("sbc_after_tax_memo", {
     ...rowFormatOptions("currency", 0),
     expr: 'OperatingSchedule["sbc_expense", @col] * (1 - @table["tax_rate_applied", @col])',
-    cells: { line_item: "Memo: After-tax SBC expense inside EBIT/NOPAT" },
+    cells: { line_item: "Memo: After-tax SBC in NOPAT" },
   })
   table.addRow("unlevered_fcff_ex_sbc_memo", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Memo: Unlevered FCFF ex-SBC (non-GAAP sensitivity)",
+      line_item: "Memo: Unlevered FCFF ex-SBC",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -181,7 +176,7 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   table.addRow("avg_invested_capital", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Average Invested Capital",
+      line_item: "Average invested capital",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -195,9 +190,9 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   })
   table.addRow("roic", {
     ...rowFormatOptions("percentage", 1),
-    style: "subtotal",
+    style: "bold",
     cells: {
-      line_item: "Return on Invested Capital (ROIC = NOPAT / Avg IC)",
+      line_item: "ROIC (NOPAT / avg. IC)",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -212,13 +207,21 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   table.addRow("reinvestment_rate", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: "Reinvestment Rate (Net Reinvestment / NOPAT)",
+      line_item: "Reinvestment rate (dIC / NOPAT)",
       FY22: null,
       ...Object.fromEntries(
-        [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
+        HISTORICAL_PERIODS.slice(1).map((p) => [
           p,
           {
             expr: '@table["net_reinvestment", @col] / @table["nopat", @col]',
+          },
+        ])
+      ),
+      ...Object.fromEntries(
+        FORECAST_PERIODS.map((p) => [
+          p,
+          {
+            expr: 'IF(@table["nopat", @col] > 0, @table["net_reinvestment", @col] / @table["nopat", @col], NA())',
           },
         ])
       ),
@@ -226,20 +229,27 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   })
   table.addRow("ronic", {
     ...rowFormatOptions("percentage", 1),
+    style: "bold",
     cells: {
-      line_item: {
-        value:
-          "Incremental ROIC (RONIC = dNOPAT / Prior-Year Net Reinvestment)",
-        note: "FY24 omitted as non-meaningful due to FY23 negative reinvestment (-$144M post-COVID inventory draw & charter shipping impairment).",
-      },
+      line_item: "Incremental ROIC (RONIC)",
       FY22: null,
       FY23: null,
-      FY24: null,
+      FY24: notedNull(
+        "Omitted as non-meaningful due to negative FY23 net reinvestment (-$69M inventory draw and charter shipping impairment)."
+      ),
       ...Object.fromEntries(
-        [...HISTORICAL_PERIODS.slice(3), ...FORECAST_PERIODS].map((p) => [
+        HISTORICAL_PERIODS.slice(3).map((p) => [
           p,
           {
             expr: '(@table["nopat", @col] - @table["nopat", col.prev]) / @table["net_reinvestment", col.prev]',
+          },
+        ])
+      ),
+      ...Object.fromEntries(
+        FORECAST_PERIODS.map((p) => [
+          p,
+          {
+            expr: 'IF(@table["net_reinvestment", col.prev] > 0, (@table["nopat", @col] - @table["nopat", col.prev]) / @table["net_reinvestment", col.prev], NA())',
           },
         ])
       ),
@@ -247,14 +257,23 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   })
   table.addRow("fcff_ebitda_conversion", {
     ...rowFormatOptions("percentage", 1),
+    style: "bold",
     cells: {
-      line_item: "Unlevered Cash Conversion (FCFF / EBITDA)",
+      line_item: "Cash conversion (FCFF / EBITDA)",
       FY22: null,
       ...Object.fromEntries(
-        [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
+        HISTORICAL_PERIODS.slice(1).map((p) => [
           p,
           {
             expr: '@table["unlevered_fcff", @col] / IncomeStatement["ebitda", @col]',
+          },
+        ])
+      ),
+      ...Object.fromEntries(
+        FORECAST_PERIODS.map((p) => [
+          p,
+          {
+            expr: 'IF(IncomeStatement["ebitda", @col] > 0, @table["unlevered_fcff", @col] / IncomeStatement["ebitda", @col], NA())',
           },
         ])
       ),
@@ -262,8 +281,9 @@ export function buildRoicSchedule(sheet: Sheet, belowTarget?: Table): Table {
   })
   table.addRow("roic_wacc_spread", {
     ...rowFormatOptions("percentage", 1),
+    style: "bold",
     cells: {
-      line_item: "Economic Value Spread (ROIC - Active WACC)",
+      line_item: "Economic spread (ROIC − WACC)",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [

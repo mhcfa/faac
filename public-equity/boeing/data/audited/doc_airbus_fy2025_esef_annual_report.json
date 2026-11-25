@@ -1,0 +1,5525 @@
+{
+  "document": {
+    "doc_id": "doc_airbus_fy2025_esef_annual_report",
+    "file_path": "data/raw/airbus/airbus_fy2025_esef_annual_report.html",
+    "sha256": "9a47af1db1e41cf41ce7f4b509aee62391ee3d52c4450464aad090eb76400d79",
+    "doc_type": "html_document",
+    "size_bytes": 16683285,
+    "title": "Airbus SE Annual Financial Report FY2025 (Official AFM ESEF iXBRL Filing)",
+    "report_date": "2025-12-31",
+    "filing_date": "2026-02-19",
+    "source_meta": {
+      "entity": "Airbus SE",
+      "ticker": "AIR.PA",
+      "lei": "MINO79WLOO247M1IL051",
+      "period": "FY 2025",
+      "regulator": "AFM (Netherlands)",
+      "fxo_id": "MINO79WLOO247M1IL051-2025-12-31-ESEF-NL-0",
+      "source": "afm_esef",
+      "source_url": "https://filings.xbrl.org/MINO79WLOO247M1IL051/2025-12-31/ESEF/NL/0/MINO79WLOO247M1IL051-2025-12-31-1-en/reports/MINO79WLOO247M1IL051-2025-12-31-1-en.xhtml",
+      "retrieved_at": "2026-11-23T19:51:33.804Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "income_statement",
+      "title": "Consolidated Income Statement (IFRS, FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_esef_annual_report",
+        "entity": "AIR.PA",
+        "basis": "ifrs"
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "revenue_total",
+          "label": "Revenues",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 73420,
+              "raw_text": "73,420",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-1']"
+              }
+            },
+            "fy24": {
+              "value": 69230,
+              "raw_text": "69,230",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-2']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cost_of_sales",
+          "label": "Cost of sales",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 62453,
+              "raw_text": "62,453",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-3']"
+              }
+            },
+            "fy24": {
+              "value": 58555,
+              "raw_text": "58,555",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-4']"
+              }
+            }
+          }
+        },
+        {
+          "id": "gross_profit",
+          "label": "Gross margin",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 10967,
+              "raw_text": "10,967",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-5']"
+              }
+            },
+            "fy24": {
+              "value": 10675,
+              "raw_text": "10,675",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-6']"
+              }
+            }
+          }
+        },
+        {
+          "id": "selling_expense",
+          "label": "Selling expenses",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 856,
+              "raw_text": "856",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-7']"
+              }
+            },
+            "fy24": {
+              "value": 877,
+              "raw_text": "877",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-8']"
+              }
+            }
+          }
+        },
+        {
+          "id": "admin_expense",
+          "label": "Administrative expenses",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 1722,
+              "raw_text": "1,722",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-9']"
+              }
+            },
+            "fy24": {
+              "value": 1744,
+              "raw_text": "1,744",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-10']"
+              }
+            }
+          }
+        },
+        {
+          "id": "rd_expense",
+          "label": "Research and development expenses",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 3153,
+              "raw_text": "3,153",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-11']"
+              }
+            },
+            "fy24": {
+              "value": 3250,
+              "raw_text": "3,250",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-12']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_income",
+          "label": "Other income",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 979,
+              "raw_text": "979",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-13']"
+              }
+            },
+            "fy24": {
+              "value": 303,
+              "raw_text": "303",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-14']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_expense",
+          "label": "Other expenses",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 488,
+              "raw_text": "488",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-15']"
+              }
+            },
+            "fy24": {
+              "value": 197,
+              "raw_text": "197",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-16']"
+              }
+            }
+          }
+        },
+        {
+          "id": "equity_method_income",
+          "label": "Share of profit from investments accounted for under the equity method",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 305,
+              "raw_text": "305",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-17']"
+              }
+            },
+            "fy24": {
+              "value": 350,
+              "raw_text": "350",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-18']"
+              }
+            }
+          }
+        },
+        {
+          "id": "investment_income",
+          "label": "Other income from investments",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 50,
+              "raw_text": "50",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-19']"
+              }
+            },
+            "fy24": {
+              "value": 44,
+              "raw_text": "44",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-20']"
+              }
+            }
+          }
+        },
+        {
+          "id": "operating_income",
+          "label": "Profit before financial result and income taxes (EBIT)",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 6082,
+              "raw_text": "6,082",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-21']"
+              }
+            },
+            "fy24": {
+              "value": 5304,
+              "raw_text": "5,304",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-22']"
+              }
+            }
+          }
+        },
+        {
+          "id": "interest_income",
+          "label": "Interest income",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 710,
+              "raw_text": "710",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-23']"
+              }
+            },
+            "fy24": {
+              "value": 802,
+              "raw_text": "802",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-24']"
+              }
+            }
+          }
+        },
+        {
+          "id": "interest_expense",
+          "label": "Interest expenses",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 770,
+              "raw_text": "770",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-25']"
+              }
+            },
+            "fy24": {
+              "value": 900,
+              "raw_text": "900",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-26']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_finance_net",
+          "label": "Other financial result",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 328,
+              "raw_text": "328",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-27']"
+              }
+            },
+            "fy24": {
+              "value": 219,
+              "raw_text": "219",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-28']"
+              }
+            }
+          }
+        },
+        {
+          "id": "finance_result",
+          "label": "Total financial result",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 268,
+              "raw_text": "268",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-29']"
+              }
+            },
+            "fy24": {
+              "value": 121,
+              "raw_text": "121",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-30']"
+              }
+            }
+          }
+        },
+        {
+          "id": "income_tax_expense",
+          "label": "Income taxes",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 1390,
+              "raw_text": "1,390",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-31']"
+              }
+            },
+            "fy24": {
+              "value": 1347,
+              "raw_text": "1,347",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-32']"
+              }
+            }
+          }
+        },
+        {
+          "id": "net_income",
+          "label": "Profit for the period",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 4960,
+              "raw_text": "4,960",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-33']"
+              }
+            },
+            "fy24": {
+              "value": 4078,
+              "raw_text": "4,078",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-34']"
+              }
+            }
+          }
+        },
+        {
+          "id": "net_income_common",
+          "label": "Profit attributable to equity owners of the parent (Net income)",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": 5221,
+              "raw_text": "5,221",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-35']"
+              }
+            },
+            "fy24": {
+              "value": 4232,
+              "raw_text": "4,232",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-36']"
+              }
+            }
+          }
+        },
+        {
+          "id": "net_income_nci",
+          "label": "Profit (loss) attributable to non-controlling interests",
+          "unit": "EUR",
+          "scale": 1000000,
+          "cells": {
+            "fy25": {
+              "value": -261,
+              "raw_text": "261",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-37']"
+              }
+            },
+            "fy24": {
+              "value": -154,
+              "raw_text": "154",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-38']"
+              }
+            }
+          }
+        },
+        {
+          "id": "eps_basic",
+          "label": "Basic earnings per share",
+          "exemption": "non_additive_metric",
+          "unit": "EUR_per_share",
+          "scale": 1,
+          "cells": {
+            "fy25": {
+              "value": 6.61,
+              "raw_text": "6.61",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-39']"
+              }
+            },
+            "fy24": {
+              "value": 5.36,
+              "raw_text": "5.36",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-40']"
+              }
+            }
+          }
+        },
+        {
+          "id": "eps_diluted",
+          "label": "Diluted earnings per share",
+          "exemption": "non_additive_metric",
+          "unit": "EUR_per_share",
+          "scale": 1,
+          "cells": {
+            "fy25": {
+              "value": 6.6,
+              "raw_text": "6.60",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-41']"
+              }
+            },
+            "fy24": {
+              "value": 5.35,
+              "raw_text": "5.35",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-42']"
+              }
+            }
+          }
+        },
+        {
+          "id": "dps_proposed",
+          "label": "Proposed dividend per share",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR_per_share",
+          "scale": 1,
+          "cells": {
+            "fy25": {
+              "value": 3.2,
+              "raw_text": "3.20",
+              "note": "Board proposal for FY2025 AGM on 15 April 2026 (payment 23 April 2026)",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-574']"
+              }
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "gross_profit",
+          "components": [
+            {
+              "id": "revenue_total",
+              "sign": 1
+            },
+            {
+              "id": "cost_of_sales",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "operating_income",
+          "components": [
+            {
+              "id": "gross_profit",
+              "sign": 1
+            },
+            {
+              "id": "other_income",
+              "sign": 1
+            },
+            {
+              "id": "equity_method_income",
+              "sign": 1
+            },
+            {
+              "id": "investment_income",
+              "sign": 1
+            },
+            {
+              "id": "selling_expense",
+              "sign": -1
+            },
+            {
+              "id": "admin_expense",
+              "sign": -1
+            },
+            {
+              "id": "rd_expense",
+              "sign": -1
+            },
+            {
+              "id": "other_expense",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "finance_result",
+          "components": [
+            {
+              "id": "interest_income",
+              "sign": 1
+            },
+            {
+              "id": "other_finance_net",
+              "sign": 1
+            },
+            {
+              "id": "interest_expense",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income",
+          "components": [
+            {
+              "id": "operating_income",
+              "sign": 1
+            },
+            {
+              "id": "finance_result",
+              "sign": 1
+            },
+            {
+              "id": "income_tax_expense",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income_common",
+          "components": [
+            {
+              "id": "net_income",
+              "sign": 1
+            },
+            {
+              "id": "net_income_nci",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "balance_sheet",
+      "title": "Consolidated Statement of Financial Position (IFRS, YE2025-YE2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_esef_annual_report",
+        "entity": "AIR.PA",
+        "basis": "ifrs"
+      },
+      "columns": [
+        {
+          "id": "ye25",
+          "label": "31 Dec 2025",
+          "period_key": "2025-12-31",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "ye24",
+          "label": "31 Dec 2024",
+          "period_key": "2024-12-31",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "intangibles_and_goodwill",
+          "label": "Intangible assets",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 16847,
+              "raw_text": "16,847",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-75']"
+              }
+            },
+            "ye24": {
+              "value": 17179,
+              "raw_text": "17,179",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-76']"
+              }
+            }
+          }
+        },
+        {
+          "id": "ppe_and_rou_net",
+          "label": "Property, plant & equipment",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 20893,
+              "raw_text": "20,893",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-77']"
+              }
+            },
+            "ye24": {
+              "value": 19112,
+              "raw_text": "19,112",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-78']"
+              }
+            }
+          }
+        },
+        {
+          "id": "investment_property",
+          "label": "Investment property",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 68,
+              "raw_text": "68",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-79']"
+              }
+            },
+            "ye24": {
+              "value": 35,
+              "raw_text": "35",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-80']"
+              }
+            }
+          }
+        },
+        {
+          "id": "equity_method_investments",
+          "label": "Investments accounted for under the equity method",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 2360,
+              "raw_text": "2,360",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-81']"
+              }
+            },
+            "ye24": {
+              "value": 2433,
+              "raw_text": "2,433",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-82']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_investments_lt_fin_assets",
+          "label": "Other investments & other long-term financial assets",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 5470,
+              "raw_text": "5,470",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-83']"
+              }
+            },
+            "ye24": {
+              "value": 5077,
+              "raw_text": "5,077",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-84']"
+              }
+            }
+          }
+        },
+        {
+          "id": "noncurrent_contract_assets",
+          "label": "Non-current contract assets",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 17,
+              "raw_text": "17",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-85']"
+              }
+            },
+            "ye24": {
+              "value": 61,
+              "raw_text": "61",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-86']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_fin_assets",
+          "label": "Non-current other financial assets",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 1070,
+              "raw_text": "1,070",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-87']"
+              }
+            },
+            "ye24": {
+              "value": 697,
+              "raw_text": "697",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-88']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_assets",
+          "label": "Non-current other assets",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 2762,
+              "raw_text": "2,762",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-89']"
+              }
+            },
+            "ye24": {
+              "value": 2650,
+              "raw_text": "2,650",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-90']"
+              }
+            }
+          }
+        },
+        {
+          "id": "deferred_tax_assets",
+          "label": "Deferred tax assets",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 1808,
+              "raw_text": "1,808",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-91']"
+              }
+            },
+            "ye24": {
+              "value": 3505,
+              "raw_text": "3,505",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-92']"
+              }
+            }
+          }
+        },
+        {
+          "id": "noncurrent_securities",
+          "label": "Non-current securities",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 9997,
+              "raw_text": "9,997",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-93']"
+              }
+            },
+            "ye24": {
+              "value": 9032,
+              "raw_text": "9,032",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-94']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_noncurrent_assets",
+          "label": "Non-current assets",
+          "category": "noncurrent_assets",
+          "cells": {
+            "ye25": {
+              "value": 61292,
+              "raw_text": "61,292",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-95']"
+              }
+            },
+            "ye24": {
+              "value": 59781,
+              "raw_text": "59,781",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-96']"
+              }
+            }
+          }
+        },
+        {
+          "id": "inventories",
+          "label": "Inventories",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 41676,
+              "raw_text": "41,676",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-97']"
+              }
+            },
+            "ye24": {
+              "value": 37745,
+              "raw_text": "37,745",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-98']"
+              }
+            }
+          }
+        },
+        {
+          "id": "trade_receivables",
+          "label": "Trade receivables",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 5454,
+              "raw_text": "5,454",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-99']"
+              }
+            },
+            "ye24": {
+              "value": 5293,
+              "raw_text": "5,293",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-100']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_portion_lt_fin_assets",
+          "label": "Current portion of other long-term financial assets",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 734,
+              "raw_text": "734",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-101']"
+              }
+            },
+            "ye24": {
+              "value": 897,
+              "raw_text": "897",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-102']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_contract_assets",
+          "label": "Current contract assets",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 1639,
+              "raw_text": "1,639",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-103']"
+              }
+            },
+            "ye24": {
+              "value": 1474,
+              "raw_text": "1,474",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-104']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_current_fin_assets",
+          "label": "Current other financial assets",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 2557,
+              "raw_text": "2,557",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-105']"
+              }
+            },
+            "ye24": {
+              "value": 2004,
+              "raw_text": "2,004",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-106']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_current_assets",
+          "label": "Current other assets",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 3760,
+              "raw_text": "3,760",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-107']"
+              }
+            },
+            "ye24": {
+              "value": 3463,
+              "raw_text": "3,463",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-108']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_tax_assets",
+          "label": "Current tax assets",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 543,
+              "raw_text": "543",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-109']"
+              }
+            },
+            "ye24": {
+              "value": 663,
+              "raw_text": "663",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-110']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_securities",
+          "label": "Current securities",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 3093,
+              "raw_text": "3,093",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-111']"
+              }
+            },
+            "ye24": {
+              "value": 2829,
+              "raw_text": "2,829",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-112']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cash_and_equivalents",
+          "label": "Cash and cash equivalents",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 14128,
+              "raw_text": "14,128",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-113']"
+              }
+            },
+            "ye24": {
+              "value": 15003,
+              "raw_text": "15,003",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-114']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_current_assets",
+          "label": "Current assets",
+          "category": "current_assets",
+          "cells": {
+            "ye25": {
+              "value": 73584,
+              "raw_text": "73,584",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-115']"
+              }
+            },
+            "ye24": {
+              "value": 69371,
+              "raw_text": "69,371",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-116']"
+              }
+            }
+          }
+        },
+        {
+          "id": "assets_held_for_sale",
+          "label": "Assets and disposal group of assets classified as held for sale",
+          "category": "assets",
+          "cells": {
+            "ye25": {
+              "value": 63,
+              "raw_text": "63",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-117']"
+              }
+            },
+            "ye24": {
+              "value": 61,
+              "raw_text": "61",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-118']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_assets",
+          "label": "Total assets",
+          "category": "assets",
+          "cells": {
+            "ye25": {
+              "value": 134939,
+              "raw_text": "134,939",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-119']"
+              }
+            },
+            "ye24": {
+              "value": 129213,
+              "raw_text": "129,213",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-120']"
+              }
+            }
+          }
+        },
+        {
+          "id": "capital_stock",
+          "label": "Capital stock",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": 793,
+              "raw_text": "793",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-121']"
+              }
+            },
+            "ye24": {
+              "value": 793,
+              "raw_text": "793",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-122']"
+              }
+            }
+          }
+        },
+        {
+          "id": "share_premium",
+          "label": "Share premium",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": 4002,
+              "raw_text": "4,002",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-123']"
+              }
+            },
+            "ye24": {
+              "value": 4002,
+              "raw_text": "4,002",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-124']"
+              }
+            }
+          }
+        },
+        {
+          "id": "retained_earnings",
+          "label": "Retained earnings",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": 22334,
+              "raw_text": "22,334",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-125']"
+              }
+            },
+            "ye24": {
+              "value": 18687,
+              "raw_text": "18,687",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-126']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_equity_components",
+          "label": "Other components of equity",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": -70,
+              "raw_text": "70",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-127']"
+              }
+            },
+            "ye24": {
+              "value": -3286,
+              "raw_text": "3,286",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-128']"
+              }
+            }
+          }
+        },
+        {
+          "id": "treasury_stock",
+          "label": "Treasury shares",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": 955,
+              "raw_text": "955",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-129']"
+              }
+            },
+            "ye24": {
+              "value": 590,
+              "raw_text": "590",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-130']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_shareholders_equity",
+          "label": "Equity attributable to owners of the parent",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": 26104,
+              "raw_text": "26,104",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-131']"
+              }
+            },
+            "ye24": {
+              "value": 19606,
+              "raw_text": "19,606",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-132']"
+              }
+            }
+          }
+        },
+        {
+          "id": "noncontrolling_interest",
+          "label": "Non-controlling interests",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": 80,
+              "raw_text": "80",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-133']"
+              }
+            },
+            "ye24": {
+              "value": 90,
+              "raw_text": "90",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-134']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_equity",
+          "label": "Total equity",
+          "category": "equity",
+          "cells": {
+            "ye25": {
+              "value": 26184,
+              "raw_text": "26,184",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-135']"
+              }
+            },
+            "ye24": {
+              "value": 19696,
+              "raw_text": "19,696",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-136']"
+              }
+            }
+          }
+        },
+        {
+          "id": "noncurrent_provisions",
+          "label": "Non-current provisions",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 3976,
+              "raw_text": "3,976",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-137']"
+              }
+            },
+            "ye24": {
+              "value": 4630,
+              "raw_text": "4,630",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-138']"
+              }
+            }
+          }
+        },
+        {
+          "id": "long_term_financing_liabilities",
+          "label": "Long-term financing liabilities",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 9063,
+              "raw_text": "9,063",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-139']"
+              }
+            },
+            "ye24": {
+              "value": 10355,
+              "raw_text": "10,355",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-140']"
+              }
+            }
+          }
+        },
+        {
+          "id": "noncurrent_contract_liabilities",
+          "label": "Non-current contract liabilities",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 26484,
+              "raw_text": "26,484",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-141']"
+              }
+            },
+            "ye24": {
+              "value": 25572,
+              "raw_text": "25,572",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-142']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_fin_liabilities",
+          "label": "Non-current other financial liabilities",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 4809,
+              "raw_text": "4,809",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-143']"
+              }
+            },
+            "ye24": {
+              "value": 7576,
+              "raw_text": "7,576",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-144']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_liabilities",
+          "label": "Non-current other liabilities",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 477,
+              "raw_text": "477",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-145']"
+              }
+            },
+            "ye24": {
+              "value": 463,
+              "raw_text": "463",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-146']"
+              }
+            }
+          }
+        },
+        {
+          "id": "deferred_tax_liabilities",
+          "label": "Deferred tax liabilities",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 428,
+              "raw_text": "428",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-147']"
+              }
+            },
+            "ye24": {
+              "value": 271,
+              "raw_text": "271",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-148']"
+              }
+            }
+          }
+        },
+        {
+          "id": "noncurrent_deferred_income",
+          "label": "Non-current deferred income",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 7,
+              "raw_text": "7",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-149']"
+              }
+            },
+            "ye24": {
+              "value": 27,
+              "raw_text": "27",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-150']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_noncurrent_liabilities",
+          "label": "Non-current liabilities",
+          "category": "noncurrent_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 45244,
+              "raw_text": "45,244",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-151']"
+              }
+            },
+            "ye24": {
+              "value": 48894,
+              "raw_text": "48,894",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-152']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_provisions",
+          "label": "Current provisions",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 4369,
+              "raw_text": "4,369",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-153']"
+              }
+            },
+            "ye24": {
+              "value": 4307,
+              "raw_text": "4,307",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-154']"
+              }
+            }
+          }
+        },
+        {
+          "id": "short_term_financing_liabilities",
+          "label": "Short-term financing liabilities",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 5186,
+              "raw_text": "5,186",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-155']"
+              }
+            },
+            "ye24": {
+              "value": 3924,
+              "raw_text": "3,924",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-156']"
+              }
+            }
+          }
+        },
+        {
+          "id": "trade_payables",
+          "label": "Trade liabilities",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 15878,
+              "raw_text": "15,878",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-157']"
+              }
+            },
+            "ye24": {
+              "value": 13791,
+              "raw_text": "13,791",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-158']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_contract_liabilities",
+          "label": "Current contract liabilities",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 32112,
+              "raw_text": "32,112",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-159']"
+              }
+            },
+            "ye24": {
+              "value": 30136,
+              "raw_text": "30,136",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-160']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_current_fin_liabilities",
+          "label": "Current other financial liabilities",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 1000,
+              "raw_text": "1,000",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-161']"
+              }
+            },
+            "ye24": {
+              "value": 3050,
+              "raw_text": "3,050",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-162']"
+              }
+            }
+          }
+        },
+        {
+          "id": "other_current_liabilities",
+          "label": "Current other liabilities",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 4223,
+              "raw_text": "4,223",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-163']"
+              }
+            },
+            "ye24": {
+              "value": 4022,
+              "raw_text": "4,022",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-164']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_tax_liabilities",
+          "label": "Current tax liabilities",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 133,
+              "raw_text": "133",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-165']"
+              }
+            },
+            "ye24": {
+              "value": 593,
+              "raw_text": "593",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-166']"
+              }
+            }
+          }
+        },
+        {
+          "id": "current_deferred_income",
+          "label": "Current deferred income",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 528,
+              "raw_text": "528",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-167']"
+              }
+            },
+            "ye24": {
+              "value": 725,
+              "raw_text": "725",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-168']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_current_liabilities",
+          "label": "Current liabilities",
+          "category": "current_liabilities",
+          "cells": {
+            "ye25": {
+              "value": 63429,
+              "raw_text": "63,429",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-169']"
+              }
+            },
+            "ye24": {
+              "value": 60548,
+              "raw_text": "60,548",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-170']"
+              }
+            }
+          }
+        },
+        {
+          "id": "liabilities_held_for_sale",
+          "label": "Disposal group of liabilities classified as held for sale",
+          "category": "liabilities",
+          "cells": {
+            "ye25": {
+              "value": 82,
+              "raw_text": "82",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-171']"
+              }
+            },
+            "ye24": {
+              "value": 75,
+              "raw_text": "75",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-172']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_liabilities",
+          "label": "Total liabilities",
+          "category": "liabilities",
+          "cells": {
+            "ye25": {
+              "value": 108755,
+              "raw_text": "108,755",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-173']"
+              }
+            },
+            "ye24": {
+              "value": 109517,
+              "raw_text": "109,517",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-174']"
+              }
+            }
+          }
+        },
+        {
+          "id": "total_liabilities_and_equity",
+          "label": "Total equity and liabilities",
+          "category": "liabilities_and_equity",
+          "cells": {
+            "ye25": {
+              "value": 134939,
+              "raw_text": "134,939",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-175']"
+              }
+            },
+            "ye24": {
+              "value": 129213,
+              "raw_text": "129,213",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-176']"
+              }
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_noncurrent_assets",
+          "components": [
+            {
+              "id": "intangibles_and_goodwill",
+              "sign": 1
+            },
+            {
+              "id": "ppe_and_rou_net",
+              "sign": 1
+            },
+            {
+              "id": "investment_property",
+              "sign": 1
+            },
+            {
+              "id": "equity_method_investments",
+              "sign": 1
+            },
+            {
+              "id": "other_investments_lt_fin_assets",
+              "sign": 1
+            },
+            {
+              "id": "noncurrent_contract_assets",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_fin_assets",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_assets",
+              "sign": 1
+            },
+            {
+              "id": "deferred_tax_assets",
+              "sign": 1
+            },
+            {
+              "id": "noncurrent_securities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_current_assets",
+          "components": [
+            {
+              "id": "inventories",
+              "sign": 1
+            },
+            {
+              "id": "trade_receivables",
+              "sign": 1
+            },
+            {
+              "id": "current_portion_lt_fin_assets",
+              "sign": 1
+            },
+            {
+              "id": "current_contract_assets",
+              "sign": 1
+            },
+            {
+              "id": "other_current_fin_assets",
+              "sign": 1
+            },
+            {
+              "id": "other_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "current_tax_assets",
+              "sign": 1
+            },
+            {
+              "id": "current_securities",
+              "sign": 1
+            },
+            {
+              "id": "cash_and_equivalents",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_noncurrent_assets",
+              "sign": 1
+            },
+            {
+              "id": "total_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "assets_held_for_sale",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_shareholders_equity",
+          "components": [
+            {
+              "id": "capital_stock",
+              "sign": 1
+            },
+            {
+              "id": "share_premium",
+              "sign": 1
+            },
+            {
+              "id": "retained_earnings",
+              "sign": 1
+            },
+            {
+              "id": "other_equity_components",
+              "sign": 1
+            },
+            {
+              "id": "treasury_stock",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_equity",
+          "components": [
+            {
+              "id": "total_shareholders_equity",
+              "sign": 1
+            },
+            {
+              "id": "noncontrolling_interest",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_noncurrent_liabilities",
+          "components": [
+            {
+              "id": "noncurrent_provisions",
+              "sign": 1
+            },
+            {
+              "id": "long_term_financing_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "noncurrent_contract_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_fin_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "deferred_tax_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "noncurrent_deferred_income",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_current_liabilities",
+          "components": [
+            {
+              "id": "current_provisions",
+              "sign": 1
+            },
+            {
+              "id": "short_term_financing_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "trade_payables",
+              "sign": 1
+            },
+            {
+              "id": "current_contract_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "other_current_fin_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "other_current_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "current_tax_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "current_deferred_income",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities",
+          "components": [
+            {
+              "id": "total_noncurrent_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "total_current_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "liabilities_held_for_sale",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_equity",
+              "sign": 1
+            },
+            {
+              "id": "total_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "cash_flow_statement",
+      "title": "Consolidated Statement of Cash Flows (IFRS, FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_esef_annual_report",
+        "entity": "AIR.PA",
+        "basis": "ifrs"
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "cf_net_income_common",
+          "label": "Profit for the period attributable to equity owners of the parent (Net income)",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 5221,
+              "raw_text": "5,221",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-177']"
+              }
+            },
+            "fy24": {
+              "value": 4232,
+              "raw_text": "4,232",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-178']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_net_income_nci",
+          "label": "Loss for the period attributable to non-controlling interests",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": -261,
+              "raw_text": "261",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-179']"
+              }
+            },
+            "fy24": {
+              "value": -154,
+              "raw_text": "154",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-180']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_adj_interest_income",
+          "label": "Adjustments for interest income",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": -710,
+              "raw_text": "710",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-181']"
+              }
+            },
+            "fy24": {
+              "value": -802,
+              "raw_text": "802",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-182']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_adj_interest_expense",
+          "label": "Adjustments for interest expense",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 770,
+              "raw_text": "770",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-183']"
+              }
+            },
+            "fy24": {
+              "value": 900,
+              "raw_text": "900",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-184']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_interest_received",
+          "label": "Interest received",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 607,
+              "raw_text": "607",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-185']"
+              }
+            },
+            "fy24": {
+              "value": 681,
+              "raw_text": "681",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-186']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_interest_paid",
+          "label": "Interest paid",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": -651,
+              "raw_text": "651",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-187']"
+              }
+            },
+            "fy24": {
+              "value": -786,
+              "raw_text": "786",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-188']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_adj_income_tax_expense",
+          "label": "Adjustments for income tax expense",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 1390,
+              "raw_text": "1,390",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-189']"
+              }
+            },
+            "fy24": {
+              "value": 1347,
+              "raw_text": "1,347",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-190']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_income_tax_paid",
+          "label": "Income tax paid",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": -965,
+              "raw_text": "965",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-191']"
+              }
+            },
+            "fy24": {
+              "value": -947,
+              "raw_text": "947",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-192']"
+              }
+            }
+          }
+        },
+        {
+          "id": "da_total",
+          "label": "Depreciation and amortisation",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 3133,
+              "raw_text": "3,133",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-193']"
+              }
+            },
+            "fy24": {
+              "value": 2853,
+              "raw_text": "2,853",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-194']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_valuation_adjustments",
+          "label": "Valuation adjustments",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": -393,
+              "raw_text": "393",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-195']"
+              }
+            },
+            "fy24": {
+              "value": -640,
+              "raw_text": "640",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-196']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_disposals_noncurrent_result",
+          "label": "Results on disposals of non-current assets",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 17,
+              "raw_text": "17",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-197']"
+              }
+            },
+            "fy24": {
+              "value": 70,
+              "raw_text": "70",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-198']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_equity_method_result",
+          "label": "Results of investments accounted for under the equity method",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": -305,
+              "raw_text": "305",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-199']"
+              }
+            },
+            "fy24": {
+              "value": -350,
+              "raw_text": "350",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-200']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_change_provisions",
+          "label": "Change in current and non-current provisions",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 314,
+              "raw_text": "314",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-201']"
+              }
+            },
+            "fy24": {
+              "value": 166,
+              "raw_text": "166",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-202']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_contribution_plan_assets",
+          "label": "Contribution to plan assets",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": -272,
+              "raw_text": "272",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-203']"
+              }
+            },
+            "fy24": {
+              "value": -505,
+              "raw_text": "505",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-204']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_change_other_op_assets_liab",
+          "label": "Change in other operating assets and liabilities",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 100,
+              "raw_text": "100",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-205']"
+              }
+            },
+            "fy24": {
+              "value": 1337,
+              "raw_text": "1,337",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-206']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_wc_inventories",
+          "label": "Change in inventories",
+          "category": "working_capital",
+          "cells": {
+            "fy25": {
+              "value": -3989,
+              "raw_text": "3,989",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-207']"
+              }
+            },
+            "fy24": {
+              "value": -3522,
+              "raw_text": "3,522",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-208']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_wc_trade_receivables",
+          "label": "Change in trade receivables",
+          "category": "working_capital",
+          "cells": {
+            "fy25": {
+              "value": -707,
+              "raw_text": "707",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-209']"
+              }
+            },
+            "fy24": {
+              "value": -105,
+              "raw_text": "105",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-210']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_wc_contract_assets_liab",
+          "label": "Change in contract assets and liabilities",
+          "category": "working_capital",
+          "cells": {
+            "fy25": {
+              "value": 3250,
+              "raw_text": "3,250",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-211']"
+              }
+            },
+            "fy24": {
+              "value": 7135,
+              "raw_text": "7,135",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-212']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_wc_trade_payables",
+          "label": "Change in trade liabilities",
+          "category": "working_capital",
+          "cells": {
+            "fy25": {
+              "value": 2791,
+              "raw_text": "2,791",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-213']"
+              }
+            },
+            "fy24": {
+              "value": -1182,
+              "raw_text": "1,182",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-214']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cf_wc_other",
+          "label": "Change in other assets and liabilities",
+          "category": "working_capital",
+          "cells": {
+            "fy25": {
+              "value": -1245,
+              "raw_text": "1,245",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-215']"
+              }
+            },
+            "fy24": {
+              "value": -989,
+              "raw_text": "989",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-216']"
+              }
+            }
+          }
+        },
+        {
+          "id": "ocf_continuing",
+          "label": "Cash provided by operating activities",
+          "category": "operating",
+          "cells": {
+            "fy25": {
+              "value": 7995,
+              "raw_text": "7,995",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-217']"
+              }
+            },
+            "fy24": {
+              "value": 7402,
+              "raw_text": "7,402",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-218']"
+              }
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Purchases of intangible assets, property, plant and equipment, investment property",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": -3964,
+              "raw_text": "3,964",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-219']"
+              }
+            },
+            "fy24": {
+              "value": -3669,
+              "raw_text": "3,669",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-220']"
+              }
+            }
+          }
+        },
+        {
+          "id": "disposals_proceeds",
+          "label": "Proceeds from disposals of intangible assets, property, plant and equipment and investment property",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": 69,
+              "raw_text": "69",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-221']"
+              }
+            },
+            "fy24": {
+              "value": 98,
+              "raw_text": "98",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-222']"
+              }
+            }
+          }
+        },
+        {
+          "id": "acquisitions_net",
+          "label": "Acquisitions of subsidiaries and businesses (net of cash acquired) and joint ventures",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": 122,
+              "raw_text": "122",
+              "note": "Positive cash inflow of EUR 122M in FY2025 from Spirit AeroSystems work-package acquisition net of cash received",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-223']"
+              }
+            },
+            "fy24": {
+              "value": -246,
+              "raw_text": "246",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-224']"
+              }
+            }
+          }
+        },
+        {
+          "id": "disposals_subsidiaries_proceeds",
+          "label": "Proceeds from disposals of subsidiaries (net of cash)",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": 27,
+              "raw_text": "27",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-225']"
+              }
+            },
+            "fy24": {
+              "value": 0,
+              "raw_text": "0",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-226']"
+              }
+            }
+          }
+        },
+        {
+          "id": "payments_investments_lt_fin",
+          "label": "Payments for investments accounted for under the equity method, other investments and other long-term financial assets",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": -879,
+              "raw_text": "879",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-227']"
+              }
+            },
+            "fy24": {
+              "value": -871,
+              "raw_text": "871",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-228']"
+              }
+            }
+          }
+        },
+        {
+          "id": "proceeds_investments_lt_fin",
+          "label": "Proceeds from disposals of investments accounted for under the equity method, other investments and other long-term financial assets",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": 1083,
+              "raw_text": "1,083",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-229']"
+              }
+            },
+            "fy24": {
+              "value": 530,
+              "raw_text": "530",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-230']"
+              }
+            }
+          }
+        },
+        {
+          "id": "dividends_from_associates",
+          "label": "Dividends paid by companies accounted for under the equity method",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": 387,
+              "raw_text": "387",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-231']"
+              }
+            },
+            "fy24": {
+              "value": 196,
+              "raw_text": "196",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-232']"
+              }
+            }
+          }
+        },
+        {
+          "id": "proceeds_hfs_disposal",
+          "label": "Proceeds from disposal of assets classified as held for sale",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": 0,
+              "raw_text": "0",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-233']"
+              }
+            },
+            "fy24": {
+              "value": 0,
+              "raw_text": "0",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-234']"
+              }
+            }
+          }
+        },
+        {
+          "id": "payments_securities",
+          "label": "Payments for investments in securities",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": -5205,
+              "raw_text": "5,205",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-235']"
+              }
+            },
+            "fy24": {
+              "value": -4460,
+              "raw_text": "4,460",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-236']"
+              }
+            }
+          }
+        },
+        {
+          "id": "proceeds_securities",
+          "label": "Proceeds from disposals of securities",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": 3678,
+              "raw_text": "3,678",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-237']"
+              }
+            },
+            "fy24": {
+              "value": 1769,
+              "raw_text": "1,769",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-238']"
+              }
+            }
+          }
+        },
+        {
+          "id": "investing_cf",
+          "label": "Cash (used for) investing activities",
+          "category": "investing",
+          "cells": {
+            "fy25": {
+              "value": -4682,
+              "raw_text": "4,682",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-239']"
+              }
+            },
+            "fy24": {
+              "value": -6653,
+              "raw_text": "6,653",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-240']"
+              }
+            }
+          }
+        },
+        {
+          "id": "financing_liabilities_increase",
+          "label": "Increase in financing liabilities",
+          "category": "financing",
+          "cells": {
+            "fy25": {
+              "value": 244,
+              "raw_text": "244",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-241']"
+              }
+            },
+            "fy24": {
+              "value": 851,
+              "raw_text": "851",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-242']"
+              }
+            }
+          }
+        },
+        {
+          "id": "financing_liabilities_repayment",
+          "label": "Repayment of financing liabilities",
+          "category": "financing",
+          "cells": {
+            "fy25": {
+              "value": -858,
+              "raw_text": "858",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-243']"
+              }
+            },
+            "fy24": {
+              "value": -1283,
+              "raw_text": "1,283",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-244']"
+              }
+            }
+          }
+        },
+        {
+          "id": "dividends_paid",
+          "label": "Cash distribution to Airbus SE shareholders",
+          "category": "financing",
+          "cells": {
+            "fy25": {
+              "value": -2372,
+              "raw_text": "2,372",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-245']"
+              }
+            },
+            "fy24": {
+              "value": -2215,
+              "raw_text": "2,215",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-246']"
+              }
+            }
+          }
+        },
+        {
+          "id": "dividends_paid_nci",
+          "label": "Dividends paid to non-controlling interests",
+          "category": "financing",
+          "cells": {
+            "fy25": {
+              "value": -2,
+              "raw_text": "2",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-247']"
+              }
+            },
+            "fy24": {
+              "value": -1,
+              "raw_text": "1",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-248']"
+              }
+            }
+          }
+        },
+        {
+          "id": "changes_capital_nci",
+          "label": "Changes in capital and non-controlling interests",
+          "category": "financing",
+          "cells": {
+            "fy25": {
+              "value": 82,
+              "raw_text": "82",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-249']"
+              }
+            },
+            "fy24": {
+              "value": 354,
+              "raw_text": "354",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-250']"
+              }
+            }
+          }
+        },
+        {
+          "id": "share_repurchases",
+          "label": "Change in treasury shares",
+          "category": "financing",
+          "cells": {
+            "fy25": {
+              "value": -565,
+              "raw_text": "565",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-251']"
+              }
+            },
+            "fy24": {
+              "value": -276,
+              "raw_text": "276",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-252']"
+              }
+            }
+          }
+        },
+        {
+          "id": "financing_cf",
+          "label": "Cash (used for) financing activities",
+          "category": "financing",
+          "cells": {
+            "fy25": {
+              "value": -3471,
+              "raw_text": "3,471",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-253']"
+              }
+            },
+            "fy24": {
+              "value": -2570,
+              "raw_text": "2,570",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-254']"
+              }
+            }
+          }
+        },
+        {
+          "id": "fx_effect_cash",
+          "label": "Effect of foreign exchange rate changes on cash and cash equivalents",
+          "category": "cash_bridge",
+          "cells": {
+            "fy25": {
+              "value": -712,
+              "raw_text": "712",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-255']"
+              }
+            },
+            "fy24": {
+              "value": 358,
+              "raw_text": "358",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-256']"
+              }
+            }
+          }
+        },
+        {
+          "id": "net_change_in_cash",
+          "label": "Net (decrease) in cash and cash equivalents",
+          "category": "cash_bridge",
+          "cells": {
+            "fy25": {
+              "value": -870,
+              "raw_text": "870",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-257']"
+              }
+            },
+            "fy24": {
+              "value": -1463,
+              "raw_text": "1,463",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-258']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cash_beginning_total",
+          "label": "Cash and cash equivalents at beginning of period",
+          "category": "cash_bridge",
+          "cells": {
+            "fy25": {
+              "value": 15010,
+              "raw_text": "15,010",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-259']"
+              }
+            },
+            "fy24": {
+              "value": 16473,
+              "raw_text": "16,473",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-260']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cash_ending_total",
+          "label": "Cash and cash equivalents at end of period",
+          "category": "cash_bridge",
+          "cells": {
+            "fy25": {
+              "value": 14140,
+              "raw_text": "14,140",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-261']"
+              }
+            },
+            "fy24": {
+              "value": 15010,
+              "raw_text": "15,010",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-262']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cash_ending_bs",
+          "label": "thereof presented as cash and cash equivalents",
+          "category": "cash_bridge",
+          "cells": {
+            "fy25": {
+              "value": 14128,
+              "raw_text": "14,128",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-263']"
+              }
+            },
+            "fy24": {
+              "value": 15003,
+              "raw_text": "15,003",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-264']"
+              }
+            }
+          }
+        },
+        {
+          "id": "cash_ending_hfs",
+          "label": "thereof presented as part of disposal groups classified as held for sale",
+          "category": "cash_bridge",
+          "cells": {
+            "fy25": {
+              "value": 12,
+              "raw_text": "12",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-265']"
+              }
+            },
+            "fy24": {
+              "value": 7,
+              "raw_text": "7",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-266']"
+              }
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "cf_change_other_op_assets_liab",
+          "components": [
+            {
+              "id": "cf_wc_inventories",
+              "sign": 1
+            },
+            {
+              "id": "cf_wc_trade_receivables",
+              "sign": 1
+            },
+            {
+              "id": "cf_wc_contract_assets_liab",
+              "sign": 1
+            },
+            {
+              "id": "cf_wc_trade_payables",
+              "sign": 1
+            },
+            {
+              "id": "cf_wc_other",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ocf_continuing",
+          "components": [
+            {
+              "id": "cf_net_income_common",
+              "sign": 1
+            },
+            {
+              "id": "cf_net_income_nci",
+              "sign": 1
+            },
+            {
+              "id": "cf_adj_interest_income",
+              "sign": 1
+            },
+            {
+              "id": "cf_adj_interest_expense",
+              "sign": 1
+            },
+            {
+              "id": "cf_interest_received",
+              "sign": 1
+            },
+            {
+              "id": "cf_interest_paid",
+              "sign": 1
+            },
+            {
+              "id": "cf_adj_income_tax_expense",
+              "sign": 1
+            },
+            {
+              "id": "cf_income_tax_paid",
+              "sign": 1
+            },
+            {
+              "id": "da_total",
+              "sign": 1
+            },
+            {
+              "id": "cf_valuation_adjustments",
+              "sign": 1
+            },
+            {
+              "id": "cf_disposals_noncurrent_result",
+              "sign": 1
+            },
+            {
+              "id": "cf_equity_method_result",
+              "sign": 1
+            },
+            {
+              "id": "cf_change_provisions",
+              "sign": 1
+            },
+            {
+              "id": "cf_contribution_plan_assets",
+              "sign": 1
+            },
+            {
+              "id": "cf_change_other_op_assets_liab",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "investing_cf",
+          "components": [
+            {
+              "id": "capex",
+              "sign": 1
+            },
+            {
+              "id": "disposals_proceeds",
+              "sign": 1
+            },
+            {
+              "id": "acquisitions_net",
+              "sign": 1
+            },
+            {
+              "id": "disposals_subsidiaries_proceeds",
+              "sign": 1
+            },
+            {
+              "id": "payments_investments_lt_fin",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_investments_lt_fin",
+              "sign": 1
+            },
+            {
+              "id": "dividends_from_associates",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_hfs_disposal",
+              "sign": 1
+            },
+            {
+              "id": "payments_securities",
+              "sign": 1
+            },
+            {
+              "id": "proceeds_securities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "financing_cf",
+          "components": [
+            {
+              "id": "financing_liabilities_increase",
+              "sign": 1
+            },
+            {
+              "id": "financing_liabilities_repayment",
+              "sign": 1
+            },
+            {
+              "id": "dividends_paid",
+              "sign": 1
+            },
+            {
+              "id": "dividends_paid_nci",
+              "sign": 1
+            },
+            {
+              "id": "changes_capital_nci",
+              "sign": 1
+            },
+            {
+              "id": "share_repurchases",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_change_in_cash",
+          "components": [
+            {
+              "id": "ocf_continuing",
+              "sign": 1
+            },
+            {
+              "id": "investing_cf",
+              "sign": 1
+            },
+            {
+              "id": "financing_cf",
+              "sign": 1
+            },
+            {
+              "id": "fx_effect_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "cash_ending_total",
+          "components": [
+            {
+              "id": "cash_beginning_total",
+              "sign": 1
+            },
+            {
+              "id": "net_change_in_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "cash_ending_bs",
+          "components": [
+            {
+              "id": "cash_ending_total",
+              "sign": 1
+            },
+            {
+              "id": "cash_ending_hfs",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "airbus_ifrs_adjustments",
+      "title": "IFRS-to-US GAAP Adjustment Roll-Forwards (IAS 38 R&D & IFRS 16 Leases, FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_esef_annual_report",
+        "origin": "prose",
+        "entity": "AIR.PA",
+        "basis": "ifrs"
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "cap_dev_opening",
+          "label": "Capitalised development costs NBV — opening balance",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 1631,
+              "raw_text": "1,631"
+            },
+            "fy24": {
+              "value": 1706,
+              "raw_text": "1,706"
+            }
+          }
+        },
+        {
+          "id": "cap_dev_fx",
+          "label": "Capitalised development costs — exchange differences",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -19,
+              "raw_text": "(19)"
+            },
+            "fy24": {
+              "value": 21,
+              "raw_text": "21"
+            }
+          }
+        },
+        {
+          "id": "cap_dev_additions",
+          "label": "Capitalised development costs — additions",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 356,
+              "raw_text": "356"
+            },
+            "fy24": {
+              "value": 450,
+              "raw_text": "450"
+            }
+          }
+        },
+        {
+          "id": "cap_dev_scope",
+          "label": "Capitalised development costs — changes in consolidation scope",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "fy24": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        },
+        {
+          "id": "cap_dev_reclass",
+          "label": "Capitalised development costs — reclassification",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -10,
+              "raw_text": "(10)"
+            },
+            "fy24": {
+              "value": 11,
+              "raw_text": "11"
+            }
+          }
+        },
+        {
+          "id": "cap_dev_disposals",
+          "label": "Capitalised development costs — disposals",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "fy24": {
+              "value": -1,
+              "raw_text": "(1)"
+            }
+          }
+        },
+        {
+          "id": "cap_dev_amort_impairment",
+          "label": "Capitalised development costs — amortisation and impairment",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -168,
+              "raw_text": "(168)"
+            },
+            "fy24": {
+              "value": -556,
+              "raw_text": "(556)"
+            }
+          }
+        },
+        {
+          "id": "cap_dev_ending",
+          "label": "Capitalised development costs NBV — ending balance",
+          "category": "ias38_capitalised_dev",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-485']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 1790,
+              "raw_text": "1,790"
+            },
+            "fy24": {
+              "value": 1631,
+              "raw_text": "1,631"
+            }
+          }
+        },
+        {
+          "id": "rou_opening",
+          "label": "Right-of-use assets NBV — opening balance",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 2020,
+              "raw_text": "2,020"
+            },
+            "fy24": {
+              "value": 1641,
+              "raw_text": "1,641"
+            }
+          }
+        },
+        {
+          "id": "rou_fx",
+          "label": "Right-of-use assets — exchange differences",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -128,
+              "raw_text": "(128)"
+            },
+            "fy24": {
+              "value": 52,
+              "raw_text": "52"
+            }
+          }
+        },
+        {
+          "id": "rou_additions",
+          "label": "Right-of-use assets — additions",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 942,
+              "raw_text": "942"
+            },
+            "fy24": {
+              "value": 438,
+              "raw_text": "438"
+            }
+          }
+        },
+        {
+          "id": "rou_scope",
+          "label": "Right-of-use assets — changes in consolidation scope",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 19,
+              "raw_text": "19"
+            },
+            "fy24": {
+              "value": 45,
+              "raw_text": "45"
+            }
+          }
+        },
+        {
+          "id": "rou_reclass",
+          "label": "Right-of-use assets — reclassification",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -18,
+              "raw_text": "(18)"
+            },
+            "fy24": {
+              "value": 191,
+              "raw_text": "191"
+            }
+          }
+        },
+        {
+          "id": "rou_disposals",
+          "label": "Right-of-use assets — disposals",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -29,
+              "raw_text": "(29)"
+            },
+            "fy24": {
+              "value": -117,
+              "raw_text": "(117)"
+            }
+          }
+        },
+        {
+          "id": "rou_depreciation_impairment",
+          "label": "Right-of-use assets — depreciation and impairment",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -254,
+              "raw_text": "(254)"
+            },
+            "fy24": {
+              "value": -230,
+              "raw_text": "(230)"
+            }
+          }
+        },
+        {
+          "id": "rou_ending",
+          "label": "Right-of-use assets NBV — ending balance",
+          "category": "ifrs16_rou_assets",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-477']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 2552,
+              "raw_text": "2,552"
+            },
+            "fy24": {
+              "value": 2020,
+              "raw_text": "2,020"
+            }
+          }
+        },
+        {
+          "id": "lease_liab_opening",
+          "label": "Finance lease liabilities — opening balance",
+          "category": "ifrs16_lease_liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-581']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 1949,
+              "raw_text": "1,949"
+            },
+            "fy24": {
+              "value": 1617,
+              "raw_text": "1,617"
+            }
+          }
+        },
+        {
+          "id": "lease_liab_cash_repayment",
+          "label": "Finance lease liabilities — cash flows (principal repayment)",
+          "category": "ifrs16_lease_liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-581']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -300,
+              "raw_text": "(300)"
+            },
+            "fy24": {
+              "value": -324,
+              "raw_text": "(324)"
+            }
+          }
+        },
+        {
+          "id": "lease_liab_scope",
+          "label": "Finance lease liabilities — changes in scope",
+          "category": "ifrs16_lease_liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-581']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "fy24": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        },
+        {
+          "id": "lease_liab_fx",
+          "label": "Finance lease liabilities — foreign exchange movements",
+          "category": "ifrs16_lease_liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-581']"
+          },
+          "cells": {
+            "fy25": {
+              "value": -126,
+              "raw_text": "(126)"
+            },
+            "fy24": {
+              "value": 48,
+              "raw_text": "48"
+            }
+          }
+        },
+        {
+          "id": "lease_liab_additions_other",
+          "label": "Finance lease liabilities — additions and other non-cash movements",
+          "category": "ifrs16_lease_liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-581']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 857,
+              "raw_text": "857"
+            },
+            "fy24": {
+              "value": 608,
+              "raw_text": "608"
+            }
+          }
+        },
+        {
+          "id": "lease_liab_ending",
+          "label": "Finance lease liabilities — ending balance",
+          "category": "ifrs16_lease_liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-581']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 2380,
+              "raw_text": "2,380",
+              "note": "IFRS 16 lease interest expense in FY2025 was EUR 80M (Note 20 / reg-ix-486); Mobile FAL lease US$939M entered service"
+            },
+            "fy24": {
+              "value": 1949,
+              "raw_text": "1,949"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "cap_dev_ending",
+          "components": [
+            {
+              "id": "cap_dev_opening",
+              "sign": 1
+            },
+            {
+              "id": "cap_dev_fx",
+              "sign": 1
+            },
+            {
+              "id": "cap_dev_additions",
+              "sign": 1
+            },
+            {
+              "id": "cap_dev_scope",
+              "sign": 1
+            },
+            {
+              "id": "cap_dev_reclass",
+              "sign": 1
+            },
+            {
+              "id": "cap_dev_disposals",
+              "sign": 1
+            },
+            {
+              "id": "cap_dev_amort_impairment",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "rou_ending",
+          "components": [
+            {
+              "id": "rou_opening",
+              "sign": 1
+            },
+            {
+              "id": "rou_fx",
+              "sign": 1
+            },
+            {
+              "id": "rou_additions",
+              "sign": 1
+            },
+            {
+              "id": "rou_scope",
+              "sign": 1
+            },
+            {
+              "id": "rou_reclass",
+              "sign": 1
+            },
+            {
+              "id": "rou_disposals",
+              "sign": 1
+            },
+            {
+              "id": "rou_depreciation_impairment",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "lease_liab_ending",
+          "components": [
+            {
+              "id": "lease_liab_opening",
+              "sign": 1
+            },
+            {
+              "id": "lease_liab_cash_repayment",
+              "sign": 1
+            },
+            {
+              "id": "lease_liab_scope",
+              "sign": 1
+            },
+            {
+              "id": "lease_liab_fx",
+              "sign": 1
+            },
+            {
+              "id": "lease_liab_additions_other",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "segment_results",
+      "title": "Business Segment Information (IFRS Note 11, FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_esef_annual_report",
+        "origin": "prose",
+        "entity": "AIR.PA",
+        "basis": "ifrs",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//ix:nonNumeric[@id='reg-ix-514']"
+        }
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "gross_revenue_airbus",
+          "label": "Airbus — total segment revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 52577,
+              "raw_text": "52,577"
+            },
+            "fy24": {
+              "value": 50646,
+              "raw_text": "50,646"
+            }
+          }
+        },
+        {
+          "id": "gross_revenue_helicopters",
+          "label": "Airbus Helicopters — total segment revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 8972,
+              "raw_text": "8,972"
+            },
+            "fy24": {
+              "value": 7941,
+              "raw_text": "7,941"
+            }
+          }
+        },
+        {
+          "id": "gross_revenue_ds",
+          "label": "Airbus Defence and Space — total segment revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 13405,
+              "raw_text": "13,405"
+            },
+            "fy24": {
+              "value": 12082,
+              "raw_text": "12,082"
+            }
+          }
+        },
+        {
+          "id": "gross_revenue_total",
+          "label": "Consolidated total segment revenue (before eliminations)",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 74954,
+              "raw_text": "74,954"
+            },
+            "fy24": {
+              "value": 70669,
+              "raw_text": "70,669"
+            }
+          }
+        },
+        {
+          "id": "intersegment_revenue_airbus",
+          "label": "Airbus — inter-segment revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": -1111,
+              "raw_text": "(1,111)"
+            },
+            "fy24": {
+              "value": -1007,
+              "raw_text": "(1,007)"
+            }
+          }
+        },
+        {
+          "id": "intersegment_revenue_helicopters",
+          "label": "Airbus Helicopters — inter-segment revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": -353,
+              "raw_text": "(353)"
+            },
+            "fy24": {
+              "value": -345,
+              "raw_text": "(345)"
+            }
+          }
+        },
+        {
+          "id": "intersegment_revenue_ds",
+          "label": "Airbus Defence and Space — inter-segment revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": -70,
+              "raw_text": "(70)"
+            },
+            "fy24": {
+              "value": -87,
+              "raw_text": "(87)"
+            }
+          }
+        },
+        {
+          "id": "intersegment_revenue_total",
+          "label": "Consolidated inter-segment revenue eliminations",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": -1534,
+              "raw_text": "(1,534)"
+            },
+            "fy24": {
+              "value": -1439,
+              "raw_text": "(1,439)"
+            }
+          }
+        },
+        {
+          "id": "revenue_airbus",
+          "label": "Airbus — external revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 51466,
+              "raw_text": "51,466"
+            },
+            "fy24": {
+              "value": 49639,
+              "raw_text": "49,639"
+            }
+          }
+        },
+        {
+          "id": "revenue_helicopters",
+          "label": "Airbus Helicopters — external revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 8619,
+              "raw_text": "8,619"
+            },
+            "fy24": {
+              "value": 7596,
+              "raw_text": "7,596"
+            }
+          }
+        },
+        {
+          "id": "revenue_ds",
+          "label": "Airbus Defence and Space — external revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 13335,
+              "raw_text": "13,335"
+            },
+            "fy24": {
+              "value": 11995,
+              "raw_text": "11,995"
+            }
+          }
+        },
+        {
+          "id": "revenue_total",
+          "label": "Consolidated revenue",
+          "category": "revenue",
+          "cells": {
+            "fy25": {
+              "value": 73420,
+              "raw_text": "73,420"
+            },
+            "fy24": {
+              "value": 69230,
+              "raw_text": "69,230"
+            }
+          }
+        },
+        {
+          "id": "ebit_airbus",
+          "label": "Airbus — EBIT (reported)",
+          "category": "ebit",
+          "cells": {
+            "fy25": {
+              "value": 4555,
+              "raw_text": "4,555"
+            },
+            "fy24": {
+              "value": 5133,
+              "raw_text": "5,133"
+            }
+          }
+        },
+        {
+          "id": "ebit_helicopters",
+          "label": "Airbus Helicopters — EBIT (reported)",
+          "category": "ebit",
+          "cells": {
+            "fy25": {
+              "value": 953,
+              "raw_text": "953"
+            },
+            "fy24": {
+              "value": 818,
+              "raw_text": "818"
+            }
+          }
+        },
+        {
+          "id": "ebit_ds",
+          "label": "Airbus Defence and Space — EBIT (reported)",
+          "category": "ebit",
+          "cells": {
+            "fy25": {
+              "value": 639,
+              "raw_text": "639"
+            },
+            "fy24": {
+              "value": -656,
+              "raw_text": "(656)"
+            }
+          }
+        },
+        {
+          "id": "ebit_eliminations",
+          "label": "Eliminations — EBIT (reported)",
+          "category": "ebit",
+          "cells": {
+            "fy25": {
+              "value": -65,
+              "raw_text": "(65)"
+            },
+            "fy24": {
+              "value": 9,
+              "raw_text": "9"
+            }
+          }
+        },
+        {
+          "id": "ebit_total",
+          "label": "Consolidated EBIT (reported)",
+          "category": "ebit",
+          "cells": {
+            "fy25": {
+              "value": 6082,
+              "raw_text": "6,082"
+            },
+            "fy24": {
+              "value": 5304,
+              "raw_text": "5,304"
+            }
+          }
+        },
+        {
+          "id": "da_airbus",
+          "label": "Airbus — depreciation and amortisation",
+          "category": "da",
+          "cells": {
+            "fy25": {
+              "value": 2443,
+              "raw_text": "(2,443)"
+            },
+            "fy24": {
+              "value": 1640,
+              "raw_text": "(1,640)"
+            }
+          }
+        },
+        {
+          "id": "da_helicopters",
+          "label": "Airbus Helicopters — depreciation and amortisation",
+          "category": "da",
+          "cells": {
+            "fy25": {
+              "value": 251,
+              "raw_text": "(251)"
+            },
+            "fy24": {
+              "value": 215,
+              "raw_text": "(215)"
+            }
+          }
+        },
+        {
+          "id": "da_ds",
+          "label": "Airbus Defence and Space — depreciation and amortisation",
+          "category": "da",
+          "cells": {
+            "fy25": {
+              "value": 481,
+              "raw_text": "(481)"
+            },
+            "fy24": {
+              "value": 998,
+              "raw_text": "(998)"
+            }
+          }
+        },
+        {
+          "id": "da_eliminations",
+          "label": "Eliminations — depreciation and amortisation",
+          "category": "da",
+          "cells": {
+            "fy25": {
+              "value": -42,
+              "raw_text": "42"
+            },
+            "fy24": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        },
+        {
+          "id": "da_total",
+          "label": "Consolidated depreciation and amortisation",
+          "category": "da",
+          "cells": {
+            "fy25": {
+              "value": 3133,
+              "raw_text": "(3,133)"
+            },
+            "fy24": {
+              "value": 2853,
+              "raw_text": "(2,853)"
+            }
+          }
+        },
+        {
+          "id": "rd_airbus",
+          "label": "Airbus — research and development expenses",
+          "category": "rd",
+          "cells": {
+            "fy25": {
+              "value": 2537,
+              "raw_text": "(2,537)"
+            },
+            "fy24": {
+              "value": 2676,
+              "raw_text": "(2,676)"
+            }
+          }
+        },
+        {
+          "id": "rd_helicopters",
+          "label": "Airbus Helicopters — research and development expenses",
+          "category": "rd",
+          "cells": {
+            "fy25": {
+              "value": 346,
+              "raw_text": "(346)"
+            },
+            "fy24": {
+              "value": 338,
+              "raw_text": "(338)"
+            }
+          }
+        },
+        {
+          "id": "rd_ds",
+          "label": "Airbus Defence and Space — research and development expenses",
+          "category": "rd",
+          "cells": {
+            "fy25": {
+              "value": 269,
+              "raw_text": "(269)"
+            },
+            "fy24": {
+              "value": 276,
+              "raw_text": "(276)"
+            }
+          }
+        },
+        {
+          "id": "rd_eliminations",
+          "label": "Eliminations — research and development expenses",
+          "category": "rd",
+          "cells": {
+            "fy25": {
+              "value": 1,
+              "raw_text": "(1)"
+            },
+            "fy24": {
+              "value": -40,
+              "raw_text": "40"
+            }
+          }
+        },
+        {
+          "id": "rd_total",
+          "label": "Consolidated research and development expenses",
+          "category": "rd",
+          "cells": {
+            "fy25": {
+              "value": 3153,
+              "raw_text": "(3,153)"
+            },
+            "fy24": {
+              "value": 3250,
+              "raw_text": "(3,250)"
+            }
+          }
+        },
+        {
+          "id": "capex_airbus",
+          "label": "Airbus — capital expenditure (excl. leased assets)",
+          "category": "capex",
+          "cells": {
+            "fy25": {
+              "value": 3037,
+              "raw_text": "3,037"
+            },
+            "fy24": {
+              "value": 2737,
+              "raw_text": "2,737"
+            }
+          }
+        },
+        {
+          "id": "capex_helicopters",
+          "label": "Airbus Helicopters — capital expenditure (excl. leased assets)",
+          "category": "capex",
+          "cells": {
+            "fy25": {
+              "value": 297,
+              "raw_text": "297"
+            },
+            "fy24": {
+              "value": 269,
+              "raw_text": "269"
+            }
+          }
+        },
+        {
+          "id": "capex_ds",
+          "label": "Airbus Defence and Space — capital expenditure (excl. leased assets)",
+          "category": "capex",
+          "cells": {
+            "fy25": {
+              "value": 630,
+              "raw_text": "630"
+            },
+            "fy24": {
+              "value": 663,
+              "raw_text": "663"
+            }
+          }
+        },
+        {
+          "id": "capex_eliminations",
+          "label": "Eliminations — capital expenditure",
+          "category": "capex",
+          "cells": {
+            "fy25": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "fy24": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        },
+        {
+          "id": "capex_total",
+          "label": "Total segment capital expenditure (excl. leased assets)",
+          "category": "capex",
+          "cells": {
+            "fy25": {
+              "value": 3964,
+              "raw_text": "3,964"
+            },
+            "fy24": {
+              "value": 3669,
+              "raw_text": "3,669"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "gross_revenue_total",
+          "components": [
+            {
+              "id": "gross_revenue_airbus",
+              "sign": 1
+            },
+            {
+              "id": "gross_revenue_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "gross_revenue_ds",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "intersegment_revenue_total",
+          "components": [
+            {
+              "id": "intersegment_revenue_airbus",
+              "sign": 1
+            },
+            {
+              "id": "intersegment_revenue_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "intersegment_revenue_ds",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "revenue_airbus",
+          "components": [
+            {
+              "id": "gross_revenue_airbus",
+              "sign": 1
+            },
+            {
+              "id": "intersegment_revenue_airbus",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "revenue_helicopters",
+          "components": [
+            {
+              "id": "gross_revenue_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "intersegment_revenue_helicopters",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "revenue_ds",
+          "components": [
+            {
+              "id": "gross_revenue_ds",
+              "sign": 1
+            },
+            {
+              "id": "intersegment_revenue_ds",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "revenue_total",
+          "components": [
+            {
+              "id": "revenue_airbus",
+              "sign": 1
+            },
+            {
+              "id": "revenue_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "revenue_ds",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ebit_total",
+          "components": [
+            {
+              "id": "ebit_airbus",
+              "sign": 1
+            },
+            {
+              "id": "ebit_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "ebit_ds",
+              "sign": 1
+            },
+            {
+              "id": "ebit_eliminations",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "da_total",
+          "components": [
+            {
+              "id": "da_airbus",
+              "sign": 1
+            },
+            {
+              "id": "da_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "da_ds",
+              "sign": 1
+            },
+            {
+              "id": "da_eliminations",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "rd_total",
+          "components": [
+            {
+              "id": "rd_airbus",
+              "sign": 1
+            },
+            {
+              "id": "rd_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "rd_ds",
+              "sign": 1
+            },
+            {
+              "id": "rd_eliminations",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "capex_total",
+          "components": [
+            {
+              "id": "capex_airbus",
+              "sign": 1
+            },
+            {
+              "id": "capex_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "capex_ds",
+              "sign": 1
+            },
+            {
+              "id": "capex_eliminations",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "eps_shares",
+      "title": "Weighted-Average & Ending Ordinary Shares (IFRS Notes 18 & 34.1, FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_esef_annual_report",
+        "origin": "prose",
+        "entity": "AIR.PA",
+        "basis": "ifrs"
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "unit": "shares",
+          "scale": 1,
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "unit": "shares",
+          "scale": 1,
+          "data_type": "number"
+        },
+        {
+          "id": "ye25",
+          "label": "31 Dec 2025",
+          "period_key": "2025-12-31",
+          "unit": "shares",
+          "scale": 1,
+          "data_type": "number"
+        },
+        {
+          "id": "ye24",
+          "label": "31 Dec 2024",
+          "period_key": "2024-12-31",
+          "unit": "shares",
+          "scale": 1,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "wa_shares_basic",
+          "label": "Weighted average number of ordinary shares (basic)",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-530']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 789573213,
+              "raw_text": "789,573,213"
+            },
+            "fy24": {
+              "value": 789961671,
+              "raw_text": "789,961,671",
+              "note": "FY2024 dilutive increment not separately printed in Note 18",
+              "exemption": "standalone_disclosure"
+            }
+          }
+        },
+        {
+          "id": "dilutive_performance_shares",
+          "label": "Dilutive equity-settled performance shares (LTIP)",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-530']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 1318915,
+              "raw_text": "1,318,915"
+            }
+          }
+        },
+        {
+          "id": "wa_shares_diluted",
+          "label": "Weighted average number of ordinary shares (diluted)",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-530']"
+          },
+          "cells": {
+            "fy25": {
+              "value": 790892128,
+              "raw_text": "790,892,128"
+            },
+            "fy24": {
+              "value": 790991077,
+              "raw_text": "790,991,077",
+              "note": "FY2024 dilutive increment not separately printed in Note 18",
+              "exemption": "standalone_disclosure"
+            }
+          }
+        },
+        {
+          "id": "shares_issued_opening",
+          "label": "Ordinary shares issued as at 1 January",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-570']"
+          },
+          "cells": {
+            "ye25": {
+              "value": 792283683,
+              "raw_text": "792,283,683"
+            },
+            "ye24": {
+              "value": 790459434,
+              "raw_text": "790,459,434"
+            }
+          }
+        },
+        {
+          "id": "shares_issued_esop",
+          "label": "Ordinary shares issued for ESOP",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-570']"
+          },
+          "cells": {
+            "ye25": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "ye24": {
+              "value": 1824249,
+              "raw_text": "1,824,249"
+            }
+          }
+        },
+        {
+          "id": "shares_issued_ending",
+          "label": "Ordinary shares issued as at end of period",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-570']"
+          },
+          "cells": {
+            "ye25": {
+              "value": 792283683,
+              "raw_text": "792,283,683"
+            },
+            "ye24": {
+              "value": 792283683,
+              "raw_text": "792,283,683"
+            }
+          }
+        },
+        {
+          "id": "treasury_shares_count",
+          "label": "Treasury shares held as at end of period",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-570']"
+          },
+          "cells": {
+            "ye25": {
+              "value": 5055938,
+              "raw_text": "(5,055,938)"
+            },
+            "ye24": {
+              "value": 4327432,
+              "raw_text": "(4,327,432)"
+            }
+          }
+        },
+        {
+          "id": "shares_outstanding_cover",
+          "label": "Ordinary shares outstanding as at end of period",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonNumeric[@id='reg-ix-570']"
+          },
+          "cells": {
+            "ye25": {
+              "value": 787227745,
+              "raw_text": "787,227,745"
+            },
+            "ye24": {
+              "value": 787956251,
+              "raw_text": "787,956,251"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "wa_shares_diluted",
+          "components": [
+            {
+              "id": "wa_shares_basic",
+              "sign": 1
+            },
+            {
+              "id": "dilutive_performance_shares",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "fy25"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "shares_issued_ending",
+          "components": [
+            {
+              "id": "shares_issued_opening",
+              "sign": 1
+            },
+            {
+              "id": "shares_issued_esop",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "ye25",
+            "ye24"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "shares_outstanding_cover",
+          "components": [
+            {
+              "id": "shares_issued_ending",
+              "sign": 1
+            },
+            {
+              "id": "treasury_shares_count",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "ye25",
+            "ye24"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "ev_bridge_supplemental",
+      "title": "Supplemental Valuation & Equity Items (IFRS SOCE, FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_esef_annual_report",
+        "exemption": "standalone_disclosure",
+        "entity": "AIR.PA",
+        "basis": "ifrs"
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "sbc",
+          "label": "Share-based payment (Consolidated Statement of Changes in Equity, Total Equity)",
+          "cells": {
+            "fy25": {
+              "value": 335,
+              "raw_text": "335",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-416']"
+              }
+            },
+            "fy24": {
+              "value": 310,
+              "raw_text": "310",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='reg-ix-326']"
+              }
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": [
+    {
+      "name": "cf_to_is_net_income_common_fy25",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "cf_net_income_common",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_common",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cf_to_is_net_income_common_fy24",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "cf_net_income_common",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_common",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cf_to_is_net_income_nci_fy25",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "cf_net_income_nci",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_nci",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cf_to_is_net_income_nci_fy24",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "cf_net_income_nci",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_nci",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_to_cf_cash_fy25",
+      "target": {
+        "table_id": "balance_sheet",
+        "row_id": "cash_and_equivalents",
+        "col_id": "ye25"
+      },
+      "components": [
+        {
+          "table_id": "cash_flow_statement",
+          "row_id": "cash_ending_bs",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "bs_to_cf_cash_fy24",
+      "target": {
+        "table_id": "balance_sheet",
+        "row_id": "cash_and_equivalents",
+        "col_id": "ye24"
+      },
+      "components": [
+        {
+          "table_id": "cash_flow_statement",
+          "row_id": "cash_ending_bs",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "is_to_seg_revenue_fy25",
+      "target": {
+        "table_id": "income_statement",
+        "row_id": "revenue_total",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "revenue_total",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "is_to_seg_revenue_fy24",
+      "target": {
+        "table_id": "income_statement",
+        "row_id": "revenue_total",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "revenue_total",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "is_to_seg_rd_fy25",
+      "target": {
+        "table_id": "income_statement",
+        "row_id": "rd_expense",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "rd_total",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "is_to_seg_rd_fy24",
+      "target": {
+        "table_id": "income_statement",
+        "row_id": "rd_expense",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "rd_total",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cf_to_seg_da_fy25",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "da_total",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "da_total",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cf_to_seg_da_fy24",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "da_total",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "da_total",
+          "col_id": "fy24",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cf_to_seg_capex_fy25",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "capex",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "capex_total",
+          "col_id": "fy25",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cf_to_seg_capex_fy24",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "capex",
+        "col_id": "fy24"
+      },
+      "components": [
+        {
+          "table_id": "segment_results",
+          "row_id": "capex_total",
+          "col_id": "fy24",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    }
+  ]
+}

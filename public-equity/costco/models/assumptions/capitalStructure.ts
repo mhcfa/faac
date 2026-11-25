@@ -17,9 +17,11 @@ export interface CapitalStructureDrivers {
   readonly minCashBuffer: Driver<number>
   readonly revolverSpreadOverRf: Driver<number>
   readonly japanDebtCouponRate: Driver<number>
+  readonly japanPostFy36Principal: Driver<number>
   readonly unamortizedDiscountAmortAnnual: Driver<number>
   readonly specialDivFyAbsentWeight: Driver<number>
   readonly scheduledDebtFyAbsentWeight: Driver<number>
+  readonly aprMaturityFyAbsentWeight: Driver<number>
   readonly specialDividendPerShareFy27: Driver<number>
   readonly regularDpsGrowth: Driver<number>
   readonly annualBuybackDollars: Driver<PeriodVector>
@@ -30,7 +32,9 @@ export interface CapitalStructureDrivers {
   readonly rsuTaxWithholdingPctSbc: Driver<number>
   readonly dilutiveRsuShares: Driver<number>
   readonly finLeasePctSales: Driver<number>
+  readonly finLeasePrincipalPct: Driver<number>
   readonly finLeaseInterestRate: Driver<number>
+  readonly finLeaseIntInGaapIntPct: Driver<number>
   readonly opLeaseLiabToRouRatio: Driver<number>
   readonly opLeaseCurrentShare: Driver<number>
   readonly finLeaseCurrentShare: Driver<number>
@@ -45,7 +49,7 @@ export function buildDebtTranches(
   const japan2029 = dl.maturities2029
   const japan2031 = dl.maturities2031
   const japanAnnualTailExpr = Object.freeze({
-    expr: '(MarketAnchors["maturities_thereafter", "val"] - @table["tranche_apr32", "fy26_principal"]) / 5',
+    expr: '(MarketAnchors["maturities_thereafter", "val"] - @table["tranche_apr32", "fy26_principal"] - ScalarAssumptionsActive["japan_post_fy36_principal", "val"]) / 5',
   })
 
   return Object.freeze([
@@ -70,7 +74,7 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Matures May 2027 (FY27E) per 10-K Note 4 (Debt); repaid strictly from cash reserves without refinancing.",
+      note: "Cash-funded maturity (10-K Note 4)",
     }),
     Object.freeze({
       id: "tranche_jun27",
@@ -93,7 +97,7 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Matures Jun 2027 (FY27E) per 10-K Note 4 (Debt); together with May 2027 notes comprises $2,250M FY27E maturities.",
+      note: "Cash-funded maturity (10-K Note 4)",
     }),
     Object.freeze({
       id: "tranche_apr30",
@@ -116,7 +120,7 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Matures Apr 2030 (FY30E) per 10-K Note 4 (Debt); cash-funded redemption from organic cash generation.",
+      note: "Cash-funded maturity (10-K Note 4)",
     }),
     Object.freeze({
       id: "tranche_apr32",
@@ -139,16 +143,16 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Matures Apr 2032 (FY32E) per 10-K Note 4 (Debt); cash-funded redemption.",
+      note: "Cash-funded maturity (10-K Note 4)",
     }),
     Object.freeze({
       id: "tranche_japan",
-      label: tm.japanLabel,
+      label: "Japan Guaranteed Senior Notes",
       couponCell: Object.freeze({
         kind: "expr" as const,
         expr: 'ScalarAssumptionsActive["japan_debt_coupon_rate", "val"]',
       }),
-      maturityDate: "2029-2036",
+      maturityDate: "2029-2041",
       fy26Principal: japanFy26,
       repayments: Object.freeze({
         FY27E: 0,
@@ -162,7 +166,7 @@ export function buildDebtTranches(
         FY35E: japanAnnualTailExpr,
         FY36E: japanAnnualTailExpr,
       }),
-      note: "Exact FY29E ($136M) and FY31E ($161M) maturities per 10-K Note 4 (Debt); remaining $878M principal amortizes evenly across FY32E–FY36E ($175.6M/yr) at the blended Japan senior note coupon.",
+      note: "FY29/31 exact; $500M due FY41",
     }),
   ])
 }
@@ -170,319 +174,375 @@ export function buildDebtTranches(
 export function baseCapitalStructureDrivers(): CapitalStructureDrivers {
   return Object.freeze({
     effectiveTaxRate: periodDriver(flatVec(0.25), {
-      label: "Normalized effective income tax rate (ETR)",
+      label: "Effective income tax rate",
       format: "percentage",
       decimals: 1,
-      category: "Tax & Non-Operating Income",
+      category: "Tax and non-operating",
       rationale:
-        "Historical FY22-FY26 GAAP ETR ranged 24.4%-25.9% aided by discrete RSU windfall & R&D tax credits; 25.0% reflects normalized US statutory (21%) + state/foreign mix.",
-      basis: "Normalized run-rate excl. discrete windfalls",
-      source: "FY26 Form 10-K, Note 8 (Income Taxes)",
+        "Normalized U.S. federal, state, and international statutory tax blend excluding recurring discrete equity-award windfalls.",
+      basis: "Normalized ex-discrete ETR",
+      source: "FY26 10-K, Note 8",
       gapId: "GAP-009",
     }),
     cashInterestYield: scalarDriver(0.035, {
-      label: "Interest yield on opening cash & STI",
+      label: "Opening cash and STI yield",
       format: "percentage",
       decimals: 2,
-      category: "Tax & Non-Operating Income",
+      category: "Tax and non-operating",
       rationale:
-        "Reflects blended global operating cash/STI return (FY24 3.50%, FY26 3.93% including IEEPA refund interest) as short rates ease from current 4.1%-4.7% T-bill levels.",
-      basis: "Historical yield + rate curve normalization",
-      source: "FY26 Form 10-K, Item 8; U.S. Treasury H.15 (2026-11-13)",
+        "Blended global treasury and money-market return moderating gradually from current short-term Treasury curve levels.",
+      basis: "Curve-normalized cash yield",
+      source: "FY26 10-K; U.S. Treasury H.15",
       gapId: "GAP-009",
     }),
     fxOtherNonOp: scalarDriver(0, {
-      label: "FX transaction gains & other non-operating, net ($M)",
+      label: "FX and other non-op., net ($M)",
       format: "currency",
       decimals: 0,
-      category: "Tax & Non-Operating Income",
+      category: "Tax and non-operating",
       rationale:
-        "Foreign-currency transaction gains and miscellaneous non-operating items cannot be forecast reliably and normalize to zero.",
+        "Foreign-currency transaction swings and miscellaneous non-operating items normalize to zero in clean forecasts.",
       basis: "Zero speculative FX",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     stiNetMaturityFy27: scalarDriver(0, {
-      label: "Net short-term investment maturities / (purchases) FY27E ($M)",
+      label: "Net STI maturities FY27E ($M)",
       format: "currency",
       decimals: 0,
-      category: "Liquidity & Debt Mechanics",
+      category: "Liquidity and debt",
       rationale:
-        "Cash & equivalents alone ($20.2B opening + FY27E CFO) comfortably funds the $13.3B special dividend and $2.25B debt maturities while maintaining >$8B cash; STI held steady at $1,094M.",
-      basis: "Excess cash buffer sufficiency",
-      source: "FY26 Form 10-K, Item 8",
+        "Opening cash and operating cash flow comfortably cover the declared special dividend and scheduled bond maturities without liquidating short-term investments.",
+      basis: "Cash reserve sufficiency",
+      source: "FY26 10-K, Item 8",
     }),
     minCashBuffer: scalarDriver(2000, {
-      label: "Minimum operating cash buffer ($M)",
+      label: "Minimum cash floor ($M)",
       format: "currency",
       decimals: 0,
-      category: "Liquidity & Debt Mechanics",
+      category: "Liquidity and debt",
       rationale:
-        "Floor below which automated short-term credit facility draws trigger (backstopped by $2,118M bank facilities); matches global working-capital clearing buffer.",
+        "Global operating liquidity threshold backstopped by committed bank credit facilities.",
       basis: "Operating liquidity floor",
-      source: "FY26 Form 10-K, Note 4 (Debt)",
+      source: "FY26 10-K, Note 4",
     }),
     revolverSpreadOverRf: scalarDriver(0.0064, {
-      label: "Short-term facility spread over 10Y UST (AA OAS)",
+      label: "Credit facility spread (AA OAS)",
       format: "basis_points",
-      category: "Liquidity & Debt Mechanics",
+      category: "Liquidity and debt",
       rationale:
-        "Benchmarked to 2026-11-13 ICE BofA AA Corporate OAS (64 bps) matching Costco's AA S&P/Fitch rating.",
+        "Anchored to the ICE BofA AA U.S. Corporate OAS matching Costco's AA credit ratings.",
       basis: "Market AA OAS spread",
-      source: "ICE BofA AA U.S. Corporate Index OAS (2026-11-13)",
+      source: "ICE BofA AA OAS (2026-11-13)",
     }),
     japanDebtCouponRate: scalarDriver(0.0235, {
-      label: "Japan Guaranteed Senior Notes blended coupon rate",
+      label: "Japan notes blended coupon",
       format: "percentage",
       decimals: 2,
-      category: "Liquidity & Debt Mechanics",
+      category: "Liquidity and debt",
       rationale:
-        "Weighted blended coupon across FY24 ($500M at 1.400%-2.120%) and FY26 ($500M at 2.620%-3.680%) Japan Guaranteed Senior Notes where 10-K Note 4 (Debt) discloses rate bands rather than a single blended coupon.",
-      basis: "Blended tranche-band midpoint",
-      source: "FY26 Form 10-K, Note 4 (Debt)",
+        "Principal-weighted midpoint across disclosed FY24 and FY26 Japan Guaranteed Senior Note interest-rate bands.",
+      basis: "Blended tranche midpoint",
+      source: "FY26 10-K, Note 4",
       gapId: "GAP-010",
     }),
+    japanPostFy36Principal: scalarDriver(500, {
+      label: "Japan notes due post-FY36E ($M)",
+      format: "currency",
+      decimals: 0,
+      category: "Liquidity and debt",
+      rationale:
+        "FY26 Japan Guaranteed Senior Notes mature through June 2041, leaving this principal tranche outstanding beyond the explicit FY36E horizon.",
+      basis: "2041 maturity tranche",
+      source: "FY26 10-K, Note 4",
+    }),
     unamortizedDiscountAmortAnnual: scalarDriver(2.0, {
-      label: "Annual unamortized debt discount amortization ($M/yr)",
+      label: "Annual debt disc. amort. ($M)",
       format: "currency",
       decimals: 1,
-      category: "Liquidity & Debt Mechanics",
+      category: "Liquidity and debt",
       rationale:
-        "Reflects FY23-FY26 historical unamortized debt discount amortization tapering ($33M -> $13M) as the $2,250M 2027 senior notes retire.",
-      basis: "Historical discount amortization taper",
-      source: "FY26 Form 10-K, Note 4 (Debt)",
+        "Non-cash issuance discount amortization tapering as near-term senior notes mature.",
+      basis: "Historical amortization run-rate",
+      source: "FY26 10-K, Note 4",
       gapId: "GAP-010",
     }),
     specialDivFyAbsentWeight: scalarDriver(0.737, {
-      label: "Special dividend FY absent cash-interest weight",
+      label: "Special div. FY absent weight",
       format: "percentage",
       decimals: 1,
-      category: "Liquidity & Debt Mechanics",
+      category: "Liquidity and debt",
       rationale:
-        "Special $30.00/sh dividend pays Dec 4, 2026 (96 days into FY27E), leaving 73.7% of the fiscal year without those cash balances earning interest.",
-      basis: "Dec 4, 2026 payout day-count",
-      source: "Form 8-K Ex. 99.1 (Nov 10, 2026)",
+        "Share of FY27E remaining after the December 2026 special dividend payout date when distributed cash no longer earns interest.",
+      basis: "Dec 4 payout day-count",
+      source: "Form 8-K (Nov 10, 2026)",
     }),
     scheduledDebtFyAbsentWeight: scalarDriver(0.23, {
-      label: "Scheduled debt maturity FY absent cash-interest weight",
+      label: "May/Jun maturity absent weight",
       format: "percentage",
       decimals: 1,
-      category: "Liquidity & Debt Mechanics",
+      category: "Liquidity and debt",
       rationale:
-        "Principal-weighted fraction of fiscal year absent following scheduled May/Jun 2027 senior note redemptions ($1,000M May + $1,250M Jun).",
-      basis: "Maturity-month principal weighting",
-      source: "FY26 Form 10-K, Note 4 (Debt)",
+        "Principal-weighted share of FY27E remaining following scheduled May and June 2027 senior note redemptions.",
+      basis: "FY27E maturity weighting",
+      source: "FY26 10-K, Note 4",
+    }),
+    aprMaturityFyAbsentWeight: scalarDriver(0.37, {
+      label: "Apr maturity FY absent weight",
+      format: "percentage",
+      decimals: 1,
+      category: "Liquidity and debt",
+      rationale:
+        "Share of the fiscal year remaining after scheduled April 2030 and April 2032 senior note maturities.",
+      basis: "Apr maturity day-count",
+      source: "FY26 10-K, Note 4",
     }),
     specialDividendPerShareFy27: scalarDriver(30, {
-      label: "FY27E Special cash dividend per share ($/sh)",
+      label: "FY27E special dividend ($/sh)",
       format: "currency",
       decimals: 2,
-      category: "Capital Returns & Share Mechanics",
+      category: "Capital returns and shares",
       rationale:
-        "Declared Nov 10, 2026 ($30.00/sh, ex-date Nov 24, pay Dec 4, 2026); $0 modeled in FY28E-FY36E.",
-      basis: "Declared 8-K Ex. 99.1 event",
-      source: "Form 8-K Ex. 99.1 (Nov 10, 2026)",
+        "Board-declared one-time special cash dividend payable in December 2026, with no additional special dividends modeled thereafter.",
+      basis: "Declared Nov 2026 event",
+      source: "Form 8-K (Nov 10, 2026)",
     }),
     regularDpsGrowth: scalarDriver(0.08, {
-      label: "Regular annual DPS growth rate (from $5.88/sh)",
+      label: "Regular annual DPS growth",
       format: "percentage",
       decimals: 1,
-      category: "Capital Returns & Share Mechanics",
+      category: "Capital returns and shares",
       rationale:
-        "Starts from Oct 2026 annualized $5.88/sh ($1.47/qtr); 8% growth tracks long-run dividend compounding discipline.",
-      basis: "Historical payout compounding",
-      source: "Oct 14, 2026 dividend release; FY26 Form 10-K, Item 8",
+        "Compounds from the current annualized regular quarterly dividend in line with long-run payout discipline.",
+      basis: "Historical payout cadence",
+      source: "Oct 2026 dividend release",
     }),
     annualBuybackDollars: periodDriver(
       vecFromTuple([850, 900, 950, 1000, 1050, 1100, 1150, 1200, 1250, 1300]),
       {
-        label: "Baseline annual share repurchases ($M)",
+        label: "Baseline share buybacks ($M)",
         format: "currency",
         decimals: 0,
-        category: "Capital Returns & Share Mechanics",
+        category: "Capital returns and shares",
         rationale:
-          "Consistent with FY25-FY26 anti-dilutive pace ($847M-$903M/yr) under the reauthorized $4B Nov 2030 repurchase program, before excess-cash sweep.",
+          "Anti-dilutive repurchase pace aligned with recent historical activity under the reauthorized buyback program prior to excess-cash sweeps.",
         basis: "Anti-dilutive run-rate",
-        source: "FY26 Form 10-K, Note 6 & Note 9",
+        source: "FY26 10-K, Notes 6 & 9",
       }
     ),
     targetOperatingCashBuffer: scalarDriver(12000, {
-      label: "Target operating cash & STI liquidity buffer ($M)",
+      label: "Target cash & STI buffer ($M)",
       format: "currency",
       decimals: 0,
-      category: "Capital Returns & Share Mechanics",
+      category: "Capital returns and shares",
       rationale:
-        "Matches FY22-FY25 pre-special-dividend Cash & STI liquidity band (~$11B-$15B); opening cash net of scheduled debt and special dividends above this buffer funds automated buyback sweeps.",
-      basis: "FY22-FY25 operating liquidity band",
-      source: "FY26 Form 10-K, Item 8",
+        "Reflects pre-special-dividend multi-year operating cash and short-term investment liquidity band above which excess cash sweeps to buybacks.",
+      basis: "FY22–FY25 liquidity band",
+      source: "FY26 10-K, Item 8",
     }),
     excessCashBuybackSweepPct: scalarDriver(0.4, {
-      label: "Opening excess cash buyback sweep (%)",
+      label: "Excess cash buyback sweep (%)",
       format: "percentage",
       decimals: 0,
-      category: "Capital Returns & Share Mechanics",
+      category: "Capital returns and shares",
       rationale:
-        "Sweeps 40% of opening Cash & STI above the $12B target buffer (net of scheduled debt maturities and special dividends) into incremental repurchases, preventing unrealistic idle cash accumulation.",
-      basis: "Capital allocation excess-cash sweep",
-      source: "Form 8-K (Nov 10, 2026); FY26 Form 10-K, Item 8",
+        "Sweeps a portion of opening cash above the target liquidity buffer into incremental buybacks to prevent unrealistic idle cash build.",
+      basis: "Capital-return sweep policy",
+      source: "Form 8-K (Nov 10, 2026)",
     }),
     buybackPriceGrowth: scalarDriver(0.05, {
-      label: "Assumed share repurchase price escalation (%/yr)",
+      label: "Buyback price growth (%/yr)",
       format: "percentage",
       decimals: 1,
-      category: "Capital Returns & Share Mechanics",
+      category: "Capital returns and shares",
       rationale:
-        "Escalates from FY26 ex-dividend market price to derive share count reduction without creating a circular link to intrinsic DCF price.",
-      basis: "Non-circular share-price scalar",
-      source: "NASDAQ close (2026-11-13); FY26 Form 10-K, Note 9",
+        "Exogenous annual share-price escalation anchored to ex-dividend spot price to compute repurchase share retirement independently of intrinsic valuation.",
+      basis: "Ex-div spot escalation",
+      source: "Market close (2026-11-13)",
     }),
     rsuVestedShares: periodDriver(
       vecFromTuple([0.9, 0.9, 0.88, 0.88, 0.86, 0.86, 0.85, 0.85, 0.85, 0.85]),
       {
-        label: "RSU vested & net shares delivered (M shares)",
+        label: "Net RSU shares delivered (M)",
         format: "number",
         decimals: 3,
-        category: "Capital Returns & Share Mechanics",
+        category: "Capital returns and shares",
         rationale:
-          "Tracks FY26 actual net RSU share delivery (0.920M) after employee tax withholding.",
-        basis: "FY26 dilution cadence",
-        source: "FY26 Form 10-K, Item 8 & Note 7",
+          "Tracks recent net employee RSU share issuance after statutory tax withholdings.",
+        basis: "FY26 net delivery pace",
+        source: "FY26 10-K, Note 7",
       }
     ),
     rsuTaxWithholdingPctSbc: scalarDriver(0.391, {
-      label: "RSU tax withholding cash outflow (% of SBC expense)",
+      label: "RSU tax withholding (% SBC)",
       format: "percentage",
       decimals: 1,
-      category: "Capital Returns & Share Mechanics",
+      category: "Capital returns and shares",
       rationale:
-        "Matches FY26 actual ratio ($361M / $924M = 39.1%) reflecting net-share settlement of employee RSUs.",
-      basis: "FY26 actual settlement ratio",
-      source: "FY26 Form 10-K, Item 8 & Note 7",
+        "Matches empirical cash tax-withholding outflow as a share of annual stock-based compensation expense.",
+      basis: "FY26 settlement ratio",
+      source: "FY26 10-K, Note 7",
     }),
     dilutiveRsuShares: scalarDriver(0.474, {
-      label: "Incremental dilutive RSU shares (TSM, M shares)",
+      label: "Dilutive RSU overhang (M)",
       format: "number",
       decimals: 3,
-      category: "Capital Returns & Share Mechanics",
+      category: "Capital returns and shares",
       rationale:
-        "Held at FY26 treasury-stock-method incremental RSU overhang (0.474M shares).",
-      basis: "FY26 diluted EPS spread",
-      source: "FY26 Form 10-K, Note 9",
+        "Held at FY26 treasury-stock-method incremental dilutive RSU share count.",
+      basis: "FY26 diluted share spread",
+      source: "FY26 10-K, Note 9",
     }),
     finLeasePctSales: scalarDriver(0.00475, {
-      label: "Total finance lease liabilities (% of net sales)",
+      label: "Finance leases (% net sales)",
       format: "percentage",
       decimals: 2,
-      category: "Lease Parameters",
+      category: "Lease parameters",
       rationale:
-        "Scales modestly with logistics/depot fleet expansion at FY26 balance intensity (0.48% of net sales).",
-      basis: "FY26 ratio",
-      source: "FY26 Form 10-K, Note 5 (Leases)",
+        "Scales modestly with logistics fleet and depot expansion at recent balance-sheet intensity.",
+      basis: "FY26 balance ratio",
+      source: "FY26 10-K, Note 5",
+    }),
+    finLeasePrincipalPct: scalarDriver(0.0602, {
+      label: "Fin. lease princ. pay (% beg.)",
+      format: "percentage",
+      decimals: 2,
+      category: "Lease parameters",
+      rationale:
+        "Annual contractual finance-lease principal cash outflow in financing activities, anchored to FY26 cash paid over beginning finance-lease liabilities.",
+      basis: "FY26 CFF / beg. balance",
+      source: "FY26 10-K, Note 5",
     }),
     finLeaseInterestRate: scalarDriver(0.0472, {
-      label: "Finance lease weighted-average discount rate",
+      label: "Finance lease discount rate",
       format: "percentage",
       decimals: 2,
-      category: "Lease Parameters",
+      category: "Lease parameters",
       rationale:
-        "Anchored directly to FY26 disclosed weighted-average finance lease discount rate (4.72%).",
-      basis: "FY26 10-K Note 5 WADR",
-      source: "FY26 Form 10-K, Note 5 (Leases)",
+        "Anchored directly to the disclosed FY26 weighted-average finance lease discount rate.",
+      basis: "FY26 Note 5 rate",
+      source: "FY26 10-K, Note 5",
+    }),
+    finLeaseIntInGaapIntPct: scalarDriver(0.38, {
+      label: "Fin. lease int. in IS (%)",
+      format: "percentage",
+      decimals: 0,
+      category: "Lease parameters",
+      rationale:
+        "Portion of disclosed finance-lease interest recognized inside GAAP interest expense rather than capitalized or recorded in operating costs, reconciling to the FY26 GAAP baseline.",
+      basis: "FY26 GAAP reconciliation",
+      source: "FY26 10-K, Items 8 & Note 5",
     }),
     opLeaseLiabToRouRatio: scalarDriver(0.9663, {
-      label: "Operating lease liabilities / ROU asset ratio",
+      label: "Op. lease liab. / ROU ratio",
       format: "percentage",
       decimals: 2,
-      category: "Lease Parameters",
+      category: "Lease parameters",
       rationale:
-        "Preserves FY26 GAAP ratio (2,606 / 2,697 = 96.63%) separating prepaid/initial lease incentives from lease obligations.",
-      basis: "FY26 10-K Note 5 ratio",
-      source: "FY26 Form 10-K, Note 5 (Leases)",
+        "Preserves the FY26 GAAP ratio between operating lease liabilities and right-of-use assets reflecting prepaid rent and incentives.",
+      basis: "FY26 GAAP ratio",
+      source: "FY26 10-K, Note 5",
     }),
     opLeaseCurrentShare: scalarDriver(0.0737, {
-      label: "Current share of total operating lease liabilities",
+      label: "Op. lease current share (%)",
       format: "percentage",
       decimals: 2,
-      category: "Lease Parameters",
+      category: "Lease parameters",
       rationale:
-        "Anchored to FY26 current/total operating lease split (192 / 2,606 = 7.37%).",
+        "Anchored to the FY26 current-to-total operating lease maturity distribution.",
       basis: "FY26 maturity split",
-      source: "FY26 Form 10-K, Note 5 (Leases)",
+      source: "FY26 10-K, Note 5",
     }),
     finLeaseCurrentShare: scalarDriver(0.0665, {
-      label: "Current share of total finance lease liabilities",
+      label: "Fin. lease current share (%)",
       format: "percentage",
       decimals: 2,
-      category: "Lease Parameters",
+      category: "Lease parameters",
       rationale:
-        "Anchored to FY26 current/total finance lease split (94 / 1,413 = 6.65%).",
+        "Anchored to the FY26 current-to-total finance lease maturity distribution.",
       basis: "FY26 maturity split",
-      source: "FY26 Form 10-K, Note 5 (Leases)",
+      source: "FY26 10-K, Note 5",
     }),
   })
 }
 
-export function bullCapitalStructureDrivers(): CapitalStructureDrivers {
+export function upsideCapitalStructureDrivers(): CapitalStructureDrivers {
   const base = baseCapitalStructureDrivers()
   return Object.freeze({
     ...base,
     effectiveTaxRate: periodDriver(flatVec(0.245), {
       ...base.effectiveTaxRate.meta,
       rationale:
-        "Continued R&D credits and favorable foreign mix keep effective tax rate near FY26 GAAP average (24.5%).",
+        "Ongoing tax credits and favorable geographic mix keep the effective tax rate near recent GAAP lows.",
+      basis: "Favorable mix & credits",
     }),
     cashInterestYield: scalarDriver(0.0375, {
       ...base.cashInterestYield.meta,
-      rationale: "Higher cash sweep yields 3.75% across forecast.",
+      rationale:
+        "Stronger short-term reinvestment rates lift yield on operating cash reserves.",
+      basis: "Higher cash sweep yield",
     }),
     regularDpsGrowth: scalarDriver(0.1, {
       ...base.regularDpsGrowth.meta,
-      rationale: "Stronger FCF supports 10% annual regular dividend growth.",
+      rationale:
+        "Higher free cash flow supports faster annual regular dividend compounding.",
+      basis: "Faster dividend growth",
     }),
     annualBuybackDollars: periodDriver(
       vecFromTuple([
-        1000, 1100, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900,
+        1300, 1200, 1300, 1400, 1500, 1600, 1700, 1800, 1900, 2000,
       ]),
       {
         ...base.annualBuybackDollars.meta,
-        rationale: "Higher cash generation funds accelerated buybacks.",
+        rationale:
+          "Stronger organic cash generation funds accelerated baseline share repurchases.",
+        basis: "Accelerated buybacks",
       }
     ),
     excessCashBuybackSweepPct: scalarDriver(0.5, {
       ...base.excessCashBuybackSweepPct.meta,
       rationale:
-        "Higher cash visibility accelerates excess cash sweep to 50% above target buffer.",
+        "Higher cash-flow visibility increases excess-cash distribution into buybacks.",
+      basis: "Higher cash sweep share",
     }),
   })
 }
 
-export function bearCapitalStructureDrivers(): CapitalStructureDrivers {
+export function downsideCapitalStructureDrivers(): CapitalStructureDrivers {
   const base = baseCapitalStructureDrivers()
   return Object.freeze({
     ...base,
     effectiveTaxRate: periodDriver(flatVec(0.255), {
       ...base.effectiveTaxRate.meta,
       rationale:
-        "Reduced discrete stock-comp windfalls and higher international statutory taxes lift ETR to 25.5%.",
+        "Lower equity-award tax benefits and higher international statutory mix lift the effective tax rate.",
+      basis: "Reduced discrete credits",
     }),
     cashInterestYield: scalarDriver(0.0325, {
       ...base.cashInterestYield.meta,
-      rationale: "Lower short-term deposit rates trim cash yield to 3.25%.",
+      rationale:
+        "Lower deposit rates trim interest earned on cash and short-term investments.",
+      basis: "Lower deposit yield",
     }),
     regularDpsGrowth: scalarDriver(0.05, {
       ...base.regularDpsGrowth.meta,
-      rationale: "Slower earnings growth tempers dividend growth to 5%/yr.",
+      rationale:
+        "Slower earnings growth moderates regular annual dividend expansion.",
+      basis: "Moderated payout growth",
     }),
     annualBuybackDollars: periodDriver(
       vecFromTuple([600, 650, 700, 700, 750, 750, 800, 800, 850, 850]),
       {
         ...base.annualBuybackDollars.meta,
-        rationale: "Elevated CapEx preserves cash over discretionary buybacks.",
+        rationale:
+          "Elevated CapEx and softer cash conversion restrain discretionary share repurchases.",
+        basis: "Conservative buybacks",
       }
     ),
     excessCashBuybackSweepPct: scalarDriver(0.25, {
       ...base.excessCashBuybackSweepPct.meta,
       rationale:
-        "Conservative capital retention limits excess cash buyback sweep to 25%.",
+        "Higher liquidity retention limits excess cash deployed into share repurchases.",
+      basis: "Lower cash sweep share",
     }),
   })
 }

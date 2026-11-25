@@ -1,0 +1,860 @@
+{
+  "document": {
+    "doc_id": "doc_yf_gspc_5y_1mo",
+    "file_path": "data/raw/market/yf/yf_gspc_5y_1mo.json",
+    "sha256": "0917d65fd739c54b7c271bea7858677dd13abac82600c37509bc2431a122cabe",
+    "doc_type": "structured_data",
+    "size_bytes": 7466,
+    "title": "Yahoo Finance Chart ^GSPC (5y, 1mo)",
+    "report_date": "2026-11-20",
+    "source_meta": {
+      "symbol": "^GSPC",
+      "range": "5y",
+      "interval": "1mo",
+      "currency": "USD",
+      "exchange": "SNP",
+      "regular_market_price": 6910.39,
+      "regular_market_time": 1795210554,
+      "bar_count": 61,
+      "source": "yahoo_finance",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/%5EGSPC?range=5y&interval=1mo",
+      "retrieved_at": "2026-11-22T19:24:08.056Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "market_spot_prices",
+      "title": "Equity and Index Market Spot Prices & 52-Week Range",
+      "source": {
+        "doc_id": "doc_yf_gspc_5y_1mo",
+        "origin": "structured_data",
+        "exemption": "standalone_disclosure",
+        "entity": "GSPC",
+        "basis": "market",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 1
+        },
+        "as_of_date": "2026-11-20"
+      },
+      "columns": [
+        {
+          "id": "d_2026_11_20",
+          "label": "2026-11-20",
+          "raw_label": "2026-11-20",
+          "period_key": "2026-11-20",
+          "as_of_date": "2026-11-20",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "spot_price",
+          "label": "Spot Market Price",
+          "raw_label": "regularMarketPrice",
+          "unit": "index",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 6910.39,
+              "raw_text": "6910.39"
+            }
+          }
+        },
+        {
+          "id": "fifty_two_week_low",
+          "label": "52-Week Low",
+          "raw_label": "fiftyTwoWeekLow",
+          "unit": "index",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 6316.91,
+              "raw_text": "6316.91"
+            }
+          }
+        },
+        {
+          "id": "fifty_two_week_high",
+          "label": "52-Week High",
+          "raw_label": "fiftyTwoWeekHigh",
+          "unit": "index",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 7844.52,
+              "raw_text": "7844.52"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    },
+    {
+      "table_id": "monthly_adj_close",
+      "title": "Monthly Adjusted Close Price History (5Y)",
+      "source": {
+        "doc_id": "doc_yf_gspc_5y_1mo",
+        "origin": "structured_data",
+        "exemption": "standalone_disclosure",
+        "entity": "GSPC",
+        "basis": "market",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 1
+        },
+        "as_of_date": "2026-11-20"
+      },
+      "columns": [
+        {
+          "id": "d_2021_12_01",
+          "label": "2021-12-01",
+          "raw_label": "2021-12-01",
+          "period_key": "2021-12-01",
+          "as_of_date": "2021-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_01_01",
+          "label": "2022-01-01",
+          "raw_label": "2022-01-01",
+          "period_key": "2022-01-01",
+          "as_of_date": "2022-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_02_01",
+          "label": "2022-02-01",
+          "raw_label": "2022-02-01",
+          "period_key": "2022-02-01",
+          "as_of_date": "2022-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_03_01",
+          "label": "2022-03-01",
+          "raw_label": "2022-03-01",
+          "period_key": "2022-03-01",
+          "as_of_date": "2022-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_04_01",
+          "label": "2022-04-01",
+          "raw_label": "2022-04-01",
+          "period_key": "2022-04-01",
+          "as_of_date": "2022-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_05_01",
+          "label": "2022-05-01",
+          "raw_label": "2022-05-01",
+          "period_key": "2022-05-01",
+          "as_of_date": "2022-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_06_01",
+          "label": "2022-06-01",
+          "raw_label": "2022-06-01",
+          "period_key": "2022-06-01",
+          "as_of_date": "2022-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_07_01",
+          "label": "2022-07-01",
+          "raw_label": "2022-07-01",
+          "period_key": "2022-07-01",
+          "as_of_date": "2022-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_08_01",
+          "label": "2022-08-01",
+          "raw_label": "2022-08-01",
+          "period_key": "2022-08-01",
+          "as_of_date": "2022-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_09_01",
+          "label": "2022-09-01",
+          "raw_label": "2022-09-01",
+          "period_key": "2022-09-01",
+          "as_of_date": "2022-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_10_01",
+          "label": "2022-10-01",
+          "raw_label": "2022-10-01",
+          "period_key": "2022-10-01",
+          "as_of_date": "2022-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_11_01",
+          "label": "2022-11-01",
+          "raw_label": "2022-11-01",
+          "period_key": "2022-11-01",
+          "as_of_date": "2022-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_12_01",
+          "label": "2022-12-01",
+          "raw_label": "2022-12-01",
+          "period_key": "2022-12-01",
+          "as_of_date": "2022-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_01_01",
+          "label": "2023-01-01",
+          "raw_label": "2023-01-01",
+          "period_key": "2023-01-01",
+          "as_of_date": "2023-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_02_01",
+          "label": "2023-02-01",
+          "raw_label": "2023-02-01",
+          "period_key": "2023-02-01",
+          "as_of_date": "2023-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_03_01",
+          "label": "2023-03-01",
+          "raw_label": "2023-03-01",
+          "period_key": "2023-03-01",
+          "as_of_date": "2023-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_04_01",
+          "label": "2023-04-01",
+          "raw_label": "2023-04-01",
+          "period_key": "2023-04-01",
+          "as_of_date": "2023-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_05_01",
+          "label": "2023-05-01",
+          "raw_label": "2023-05-01",
+          "period_key": "2023-05-01",
+          "as_of_date": "2023-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_06_01",
+          "label": "2023-06-01",
+          "raw_label": "2023-06-01",
+          "period_key": "2023-06-01",
+          "as_of_date": "2023-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_07_01",
+          "label": "2023-07-01",
+          "raw_label": "2023-07-01",
+          "period_key": "2023-07-01",
+          "as_of_date": "2023-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_08_01",
+          "label": "2023-08-01",
+          "raw_label": "2023-08-01",
+          "period_key": "2023-08-01",
+          "as_of_date": "2023-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_09_01",
+          "label": "2023-09-01",
+          "raw_label": "2023-09-01",
+          "period_key": "2023-09-01",
+          "as_of_date": "2023-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_10_01",
+          "label": "2023-10-01",
+          "raw_label": "2023-10-01",
+          "period_key": "2023-10-01",
+          "as_of_date": "2023-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_11_01",
+          "label": "2023-11-01",
+          "raw_label": "2023-11-01",
+          "period_key": "2023-11-01",
+          "as_of_date": "2023-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_12_01",
+          "label": "2023-12-01",
+          "raw_label": "2023-12-01",
+          "period_key": "2023-12-01",
+          "as_of_date": "2023-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_01_01",
+          "label": "2024-01-01",
+          "raw_label": "2024-01-01",
+          "period_key": "2024-01-01",
+          "as_of_date": "2024-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_02_01",
+          "label": "2024-02-01",
+          "raw_label": "2024-02-01",
+          "period_key": "2024-02-01",
+          "as_of_date": "2024-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_03_01",
+          "label": "2024-03-01",
+          "raw_label": "2024-03-01",
+          "period_key": "2024-03-01",
+          "as_of_date": "2024-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_04_01",
+          "label": "2024-04-01",
+          "raw_label": "2024-04-01",
+          "period_key": "2024-04-01",
+          "as_of_date": "2024-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_05_01",
+          "label": "2024-05-01",
+          "raw_label": "2024-05-01",
+          "period_key": "2024-05-01",
+          "as_of_date": "2024-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_06_01",
+          "label": "2024-06-01",
+          "raw_label": "2024-06-01",
+          "period_key": "2024-06-01",
+          "as_of_date": "2024-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_07_01",
+          "label": "2024-07-01",
+          "raw_label": "2024-07-01",
+          "period_key": "2024-07-01",
+          "as_of_date": "2024-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_08_01",
+          "label": "2024-08-01",
+          "raw_label": "2024-08-01",
+          "period_key": "2024-08-01",
+          "as_of_date": "2024-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_09_01",
+          "label": "2024-09-01",
+          "raw_label": "2024-09-01",
+          "period_key": "2024-09-01",
+          "as_of_date": "2024-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_10_01",
+          "label": "2024-10-01",
+          "raw_label": "2024-10-01",
+          "period_key": "2024-10-01",
+          "as_of_date": "2024-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_11_01",
+          "label": "2024-11-01",
+          "raw_label": "2024-11-01",
+          "period_key": "2024-11-01",
+          "as_of_date": "2024-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_12_01",
+          "label": "2024-12-01",
+          "raw_label": "2024-12-01",
+          "period_key": "2024-12-01",
+          "as_of_date": "2024-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_01_01",
+          "label": "2025-01-01",
+          "raw_label": "2025-01-01",
+          "period_key": "2025-01-01",
+          "as_of_date": "2025-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_02_01",
+          "label": "2025-02-01",
+          "raw_label": "2025-02-01",
+          "period_key": "2025-02-01",
+          "as_of_date": "2025-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_03_01",
+          "label": "2025-03-01",
+          "raw_label": "2025-03-01",
+          "period_key": "2025-03-01",
+          "as_of_date": "2025-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_04_01",
+          "label": "2025-04-01",
+          "raw_label": "2025-04-01",
+          "period_key": "2025-04-01",
+          "as_of_date": "2025-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_05_01",
+          "label": "2025-05-01",
+          "raw_label": "2025-05-01",
+          "period_key": "2025-05-01",
+          "as_of_date": "2025-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_06_01",
+          "label": "2025-06-01",
+          "raw_label": "2025-06-01",
+          "period_key": "2025-06-01",
+          "as_of_date": "2025-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_07_01",
+          "label": "2025-07-01",
+          "raw_label": "2025-07-01",
+          "period_key": "2025-07-01",
+          "as_of_date": "2025-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_08_01",
+          "label": "2025-08-01",
+          "raw_label": "2025-08-01",
+          "period_key": "2025-08-01",
+          "as_of_date": "2025-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_09_01",
+          "label": "2025-09-01",
+          "raw_label": "2025-09-01",
+          "period_key": "2025-09-01",
+          "as_of_date": "2025-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_10_01",
+          "label": "2025-10-01",
+          "raw_label": "2025-10-01",
+          "period_key": "2025-10-01",
+          "as_of_date": "2025-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_11_01",
+          "label": "2025-11-01",
+          "raw_label": "2025-11-01",
+          "period_key": "2025-11-01",
+          "as_of_date": "2025-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_12_01",
+          "label": "2025-12-01",
+          "raw_label": "2025-12-01",
+          "period_key": "2025-12-01",
+          "as_of_date": "2025-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_01_01",
+          "label": "2026-01-01",
+          "raw_label": "2026-01-01",
+          "period_key": "2026-01-01",
+          "as_of_date": "2026-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_02_01",
+          "label": "2026-02-01",
+          "raw_label": "2026-02-01",
+          "period_key": "2026-02-01",
+          "as_of_date": "2026-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_03_01",
+          "label": "2026-03-01",
+          "raw_label": "2026-03-01",
+          "period_key": "2026-03-01",
+          "as_of_date": "2026-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_04_01",
+          "label": "2026-04-01",
+          "raw_label": "2026-04-01",
+          "period_key": "2026-04-01",
+          "as_of_date": "2026-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_05_01",
+          "label": "2026-05-01",
+          "raw_label": "2026-05-01",
+          "period_key": "2026-05-01",
+          "as_of_date": "2026-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_06_01",
+          "label": "2026-06-01",
+          "raw_label": "2026-06-01",
+          "period_key": "2026-06-01",
+          "as_of_date": "2026-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_07_01",
+          "label": "2026-07-01",
+          "raw_label": "2026-07-01",
+          "period_key": "2026-07-01",
+          "as_of_date": "2026-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_08_01",
+          "label": "2026-08-01",
+          "raw_label": "2026-08-01",
+          "period_key": "2026-08-01",
+          "as_of_date": "2026-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_09_01",
+          "label": "2026-09-01",
+          "raw_label": "2026-09-01",
+          "period_key": "2026-09-01",
+          "as_of_date": "2026-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_10_01",
+          "label": "2026-10-01",
+          "raw_label": "2026-10-01",
+          "period_key": "2026-10-01",
+          "as_of_date": "2026-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_01",
+          "label": "2026-11-01",
+          "raw_label": "2026-11-01",
+          "period_key": "2026-11-01",
+          "as_of_date": "2026-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_20",
+          "label": "2026-11-20",
+          "raw_label": "2026-11-20",
+          "period_key": "2026-11-20",
+          "as_of_date": "2026-11-20",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "adj_close",
+          "label": "Adjusted Close",
+          "raw_label": "adjclose",
+          "unit": "index",
+          "scale": 1,
+          "cells": {
+            "d_2021_12_01": {
+              "value": 4766.18017578125,
+              "raw_text": "4766.18017578125"
+            },
+            "d_2022_01_01": {
+              "value": 4515.5498046875,
+              "raw_text": "4515.5498046875"
+            },
+            "d_2022_02_01": {
+              "value": 4373.93994140625,
+              "raw_text": "4373.93994140625"
+            },
+            "d_2022_03_01": {
+              "value": 4530.41015625,
+              "raw_text": "4530.41015625"
+            },
+            "d_2022_04_01": {
+              "value": 4131.93017578125,
+              "raw_text": "4131.93017578125"
+            },
+            "d_2022_05_01": {
+              "value": 4132.14990234375,
+              "raw_text": "4132.14990234375"
+            },
+            "d_2022_06_01": {
+              "value": 3785.3798828125,
+              "raw_text": "3785.3798828125"
+            },
+            "d_2022_07_01": {
+              "value": 4130.2900390625,
+              "raw_text": "4130.2900390625"
+            },
+            "d_2022_08_01": {
+              "value": 3955,
+              "raw_text": "3955"
+            },
+            "d_2022_09_01": {
+              "value": 3585.6201171875,
+              "raw_text": "3585.6201171875"
+            },
+            "d_2022_10_01": {
+              "value": 3871.97998046875,
+              "raw_text": "3871.97998046875"
+            },
+            "d_2022_11_01": {
+              "value": 4080.110107421875,
+              "raw_text": "4080.110107421875"
+            },
+            "d_2022_12_01": {
+              "value": 3839.5,
+              "raw_text": "3839.5"
+            },
+            "d_2023_01_01": {
+              "value": 4076.60009765625,
+              "raw_text": "4076.60009765625"
+            },
+            "d_2023_02_01": {
+              "value": 3970.14990234375,
+              "raw_text": "3970.14990234375"
+            },
+            "d_2023_03_01": {
+              "value": 4109.31005859375,
+              "raw_text": "4109.31005859375"
+            },
+            "d_2023_04_01": {
+              "value": 4169.47998046875,
+              "raw_text": "4169.47998046875"
+            },
+            "d_2023_05_01": {
+              "value": 4179.830078125,
+              "raw_text": "4179.830078125"
+            },
+            "d_2023_06_01": {
+              "value": 4450.3798828125,
+              "raw_text": "4450.3798828125"
+            },
+            "d_2023_07_01": {
+              "value": 4588.9599609375,
+              "raw_text": "4588.9599609375"
+            },
+            "d_2023_08_01": {
+              "value": 4507.66015625,
+              "raw_text": "4507.66015625"
+            },
+            "d_2023_09_01": {
+              "value": 4288.0498046875,
+              "raw_text": "4288.0498046875"
+            },
+            "d_2023_10_01": {
+              "value": 4193.7998046875,
+              "raw_text": "4193.7998046875"
+            },
+            "d_2023_11_01": {
+              "value": 4567.7998046875,
+              "raw_text": "4567.7998046875"
+            },
+            "d_2023_12_01": {
+              "value": 4769.830078125,
+              "raw_text": "4769.830078125"
+            },
+            "d_2024_01_01": {
+              "value": 4845.64990234375,
+              "raw_text": "4845.64990234375"
+            },
+            "d_2024_02_01": {
+              "value": 5096.27001953125,
+              "raw_text": "5096.27001953125"
+            },
+            "d_2024_03_01": {
+              "value": 5254.35009765625,
+              "raw_text": "5254.35009765625"
+            },
+            "d_2024_04_01": {
+              "value": 5035.68994140625,
+              "raw_text": "5035.68994140625"
+            },
+            "d_2024_05_01": {
+              "value": 5277.509765625,
+              "raw_text": "5277.509765625"
+            },
+            "d_2024_06_01": {
+              "value": 5460.47998046875,
+              "raw_text": "5460.47998046875"
+            },
+            "d_2024_07_01": {
+              "value": 5522.2998046875,
+              "raw_text": "5522.2998046875"
+            },
+            "d_2024_08_01": {
+              "value": 5648.39990234375,
+              "raw_text": "5648.39990234375"
+            },
+            "d_2024_09_01": {
+              "value": 5762.47998046875,
+              "raw_text": "5762.47998046875"
+            },
+            "d_2024_10_01": {
+              "value": 5705.4501953125,
+              "raw_text": "5705.4501953125"
+            },
+            "d_2024_11_01": {
+              "value": 6032.3798828125,
+              "raw_text": "6032.3798828125"
+            },
+            "d_2024_12_01": {
+              "value": 5881.6298828125,
+              "raw_text": "5881.6298828125"
+            },
+            "d_2025_01_01": {
+              "value": 6040.52978515625,
+              "raw_text": "6040.52978515625"
+            },
+            "d_2025_02_01": {
+              "value": 5954.5,
+              "raw_text": "5954.5"
+            },
+            "d_2025_03_01": {
+              "value": 5611.85009765625,
+              "raw_text": "5611.85009765625"
+            },
+            "d_2025_04_01": {
+              "value": 5569.06005859375,
+              "raw_text": "5569.06005859375"
+            },
+            "d_2025_05_01": {
+              "value": 5911.68994140625,
+              "raw_text": "5911.68994140625"
+            },
+            "d_2025_06_01": {
+              "value": 6204.9501953125,
+              "raw_text": "6204.9501953125"
+            },
+            "d_2025_07_01": {
+              "value": 6339.39013671875,
+              "raw_text": "6339.39013671875"
+            },
+            "d_2025_08_01": {
+              "value": 6460.259765625,
+              "raw_text": "6460.259765625"
+            },
+            "d_2025_09_01": {
+              "value": 6688.4599609375,
+              "raw_text": "6688.4599609375"
+            },
+            "d_2025_10_01": {
+              "value": 6840.2001953125,
+              "raw_text": "6840.2001953125"
+            },
+            "d_2025_11_01": {
+              "value": 6849.08984375,
+              "raw_text": "6849.08984375"
+            },
+            "d_2025_12_01": {
+              "value": 6845.5,
+              "raw_text": "6845.5"
+            },
+            "d_2026_01_01": {
+              "value": 6939.02978515625,
+              "raw_text": "6939.02978515625"
+            },
+            "d_2026_02_01": {
+              "value": 6878.8798828125,
+              "raw_text": "6878.8798828125"
+            },
+            "d_2026_03_01": {
+              "value": 6528.52001953125,
+              "raw_text": "6528.52001953125"
+            },
+            "d_2026_04_01": {
+              "value": 7209.009765625,
+              "raw_text": "7209.009765625"
+            },
+            "d_2026_05_01": {
+              "value": 7580.06005859375,
+              "raw_text": "7580.06005859375"
+            },
+            "d_2026_06_01": {
+              "value": 7499.35986328125,
+              "raw_text": "7499.35986328125"
+            },
+            "d_2026_07_01": {
+              "value": 7489.72021484375,
+              "raw_text": "7489.72021484375"
+            },
+            "d_2026_08_01": {
+              "value": 7686.14013671875,
+              "raw_text": "7686.14013671875"
+            },
+            "d_2026_09_01": {
+              "value": 7651.5400390625,
+              "raw_text": "7651.5400390625"
+            },
+            "d_2026_10_01": {
+              "value": 7580.06982421875,
+              "raw_text": "7580.06982421875"
+            },
+            "d_2026_11_01": {
+              "value": 6910.39013671875,
+              "raw_text": "6910.39013671875"
+            },
+            "d_2026_11_20": {
+              "value": 6910.39013671875,
+              "raw_text": "6910.39013671875",
+              "note": "Trailing month-to-date market-close bar duplicating the in-progress 2026-11-01 monthly bar."
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

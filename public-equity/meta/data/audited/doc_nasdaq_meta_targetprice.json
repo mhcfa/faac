@@ -1,0 +1,507 @@
+{
+  "document": {
+    "doc_id": "doc_nasdaq_meta_targetprice",
+    "file_path": "data/raw/market/nasdaq/nasdaq_meta_targetprice.json",
+    "sha256": "fdf621af17797164c3feceacf1b97b0c8bec92763ed63d4b4bd4f37a2c029463",
+    "doc_type": "structured_data",
+    "size_bytes": 1756,
+    "title": "Nasdaq Analyst Target Price — META",
+    "report_date": "2026-11-20",
+    "source_meta": {
+      "symbol": "META",
+      "endpoint": "targetprice",
+      "source": "nasdaq_analyst",
+      "source_url": "https://api.nasdaq.com/api/analyst/META/targetprice",
+      "retrieved_at": "2026-11-22T19:24:18.287Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "consensus_target_price",
+      "title": "Wall Street Consensus 12-Month Price Targets & Ratings",
+      "source": {
+        "doc_id": "doc_nasdaq_meta_targetprice",
+        "origin": "structured_data",
+        "entity": "META",
+        "basis": "consensus",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 1
+        },
+        "as_of_date": "2026-11-20"
+      },
+      "columns": [
+        {
+          "id": "d_2026_11_20",
+          "label": "2026-11-20",
+          "raw_label": "2026-11-20",
+          "period_key": "2026-11-20",
+          "as_of_date": "2026-11-20",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "target_price_mean",
+          "label": "Mean Consensus Price Target",
+          "raw_label": "priceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 857.24,
+              "raw_text": "857.24"
+            }
+          }
+        },
+        {
+          "id": "target_price_low",
+          "label": "Low Consensus Price Target",
+          "raw_label": "lowPriceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 580,
+              "raw_text": "580"
+            }
+          }
+        },
+        {
+          "id": "target_price_high",
+          "label": "High Consensus Price Target",
+          "raw_label": "highPriceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 1000,
+              "raw_text": "1000"
+            }
+          }
+        },
+        {
+          "id": "ratings_buy",
+          "label": "Analyst Buy Ratings",
+          "raw_label": "buy",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 37,
+              "raw_text": "37"
+            }
+          }
+        },
+        {
+          "id": "ratings_hold",
+          "label": "Analyst Hold Ratings",
+          "raw_label": "hold",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 6,
+              "raw_text": "6"
+            }
+          }
+        },
+        {
+          "id": "ratings_sell",
+          "label": "Analyst Sell Ratings",
+          "raw_label": "sell",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    },
+    {
+      "table_id": "meta_target_history",
+      "title": "Meta Platforms Monthly Consensus Price Target & Rating History",
+      "source": {
+        "doc_id": "doc_nasdaq_meta_targetprice",
+        "origin": "structured_data",
+        "entity": "META",
+        "basis": "consensus",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 1
+        },
+        "as_of_date": "2026-11-20"
+      },
+      "columns": [
+        {
+          "id": "d_2025_11_01",
+          "label": "2025-11-01",
+          "raw_label": "11/01/2025",
+          "period_key": "2025-11-01",
+          "as_of_date": "2025-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_12_01",
+          "label": "2025-12-01",
+          "raw_label": "12/01/2025",
+          "period_key": "2025-12-01",
+          "as_of_date": "2025-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_01_01",
+          "label": "2026-01-01",
+          "raw_label": "01/01/2026",
+          "period_key": "2026-01-01",
+          "as_of_date": "2026-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_02_01",
+          "label": "2026-02-01",
+          "raw_label": "02/01/2026",
+          "period_key": "2026-02-01",
+          "as_of_date": "2026-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_03_01",
+          "label": "2026-03-01",
+          "raw_label": "03/01/2026",
+          "period_key": "2026-03-01",
+          "as_of_date": "2026-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_04_01",
+          "label": "2026-04-01",
+          "raw_label": "04/01/2026",
+          "period_key": "2026-04-01",
+          "as_of_date": "2026-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_05_01",
+          "label": "2026-05-01",
+          "raw_label": "05/01/2026",
+          "period_key": "2026-05-01",
+          "as_of_date": "2026-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_06_01",
+          "label": "2026-06-01",
+          "raw_label": "06/01/2026",
+          "period_key": "2026-06-01",
+          "as_of_date": "2026-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_07_01",
+          "label": "2026-07-01",
+          "raw_label": "07/01/2026",
+          "period_key": "2026-07-01",
+          "as_of_date": "2026-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_08_01",
+          "label": "2026-08-01",
+          "raw_label": "08/01/2026",
+          "period_key": "2026-08-01",
+          "as_of_date": "2026-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_09_01",
+          "label": "2026-09-01",
+          "raw_label": "09/01/2026",
+          "period_key": "2026-09-01",
+          "as_of_date": "2026-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_10_01",
+          "label": "2026-10-01",
+          "raw_label": "10/01/2026",
+          "period_key": "2026-10-01",
+          "as_of_date": "2026-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_01",
+          "label": "2026-11-01",
+          "raw_label": "11/01/2026",
+          "period_key": "2026-11-01",
+          "as_of_date": "2026-11-01",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "target_price_mean",
+          "label": "Consensus Price Target",
+          "raw_label": "y",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2025_11_01": {
+              "value": 648.35,
+              "raw_text": "648.35"
+            },
+            "d_2025_12_01": {
+              "value": 640.87,
+              "raw_text": "640.87"
+            },
+            "d_2026_01_01": {
+              "value": 660.09,
+              "raw_text": "660.09"
+            },
+            "d_2026_02_01": {
+              "value": 716.5,
+              "raw_text": "716.5"
+            },
+            "d_2026_03_01": {
+              "value": 648.18,
+              "raw_text": "648.18"
+            },
+            "d_2026_04_01": {
+              "value": 579.23,
+              "raw_text": "579.23"
+            },
+            "d_2026_05_01": {
+              "value": 608.745,
+              "raw_text": "608.745"
+            },
+            "d_2026_06_01": {
+              "value": 600.47,
+              "raw_text": "600.47"
+            },
+            "d_2026_07_01": {
+              "value": 612.91,
+              "raw_text": "612.91"
+            },
+            "d_2026_08_01": {
+              "value": 556.71,
+              "raw_text": "556.71"
+            },
+            "d_2026_09_01": {
+              "value": 578.54,
+              "raw_text": "578.54"
+            },
+            "d_2026_10_01": {
+              "value": 725.93,
+              "raw_text": "725.93"
+            },
+            "d_2026_11_01": {
+              "value": 857.24,
+              "raw_text": "857.24"
+            }
+          }
+        },
+        {
+          "id": "ratings_buy",
+          "label": "Analyst Buy Ratings",
+          "raw_label": "buy",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2025_11_01": {
+              "value": 33,
+              "raw_text": "33"
+            },
+            "d_2025_12_01": {
+              "value": 34,
+              "raw_text": "34"
+            },
+            "d_2026_01_01": {
+              "value": 35,
+              "raw_text": "35"
+            },
+            "d_2026_02_01": {
+              "value": 35,
+              "raw_text": "35"
+            },
+            "d_2026_03_01": {
+              "value": 36,
+              "raw_text": "36"
+            },
+            "d_2026_04_01": {
+              "value": 36,
+              "raw_text": "36"
+            },
+            "d_2026_05_01": {
+              "value": 30,
+              "raw_text": "30"
+            },
+            "d_2026_06_01": {
+              "value": 32,
+              "raw_text": "32"
+            },
+            "d_2026_07_01": {
+              "value": 32,
+              "raw_text": "32"
+            },
+            "d_2026_08_01": {
+              "value": 37,
+              "raw_text": "37"
+            },
+            "d_2026_09_01": {
+              "value": 36,
+              "raw_text": "36"
+            },
+            "d_2026_10_01": {
+              "value": 39,
+              "raw_text": "39"
+            },
+            "d_2026_11_01": {
+              "value": 37,
+              "raw_text": "37"
+            }
+          }
+        },
+        {
+          "id": "ratings_hold",
+          "label": "Analyst Hold Ratings",
+          "raw_label": "hold",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2025_11_01": {
+              "value": 7,
+              "raw_text": "7"
+            },
+            "d_2025_12_01": {
+              "value": 6,
+              "raw_text": "6"
+            },
+            "d_2026_01_01": {
+              "value": 6,
+              "raw_text": "6"
+            },
+            "d_2026_02_01": {
+              "value": 5,
+              "raw_text": "5"
+            },
+            "d_2026_03_01": {
+              "value": 5,
+              "raw_text": "5"
+            },
+            "d_2026_04_01": {
+              "value": 6,
+              "raw_text": "6"
+            },
+            "d_2026_05_01": {
+              "value": 7,
+              "raw_text": "7"
+            },
+            "d_2026_06_01": {
+              "value": 6,
+              "raw_text": "6"
+            },
+            "d_2026_07_01": {
+              "value": 5,
+              "raw_text": "5"
+            },
+            "d_2026_08_01": {
+              "value": 5,
+              "raw_text": "5"
+            },
+            "d_2026_09_01": {
+              "value": 6,
+              "raw_text": "6"
+            },
+            "d_2026_10_01": {
+              "value": 6,
+              "raw_text": "6"
+            },
+            "d_2026_11_01": {
+              "value": 6,
+              "raw_text": "6"
+            }
+          }
+        },
+        {
+          "id": "ratings_sell",
+          "label": "Analyst Sell Ratings",
+          "raw_label": "sell",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2025_11_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2025_12_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_01_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_02_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_03_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_04_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_05_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_06_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_07_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_08_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_09_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_10_01": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "d_2026_11_01": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

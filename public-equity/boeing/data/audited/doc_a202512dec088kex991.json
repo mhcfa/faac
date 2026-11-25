@@ -1,0 +1,127 @@
+{
+  "document": {
+    "doc_id": "doc_a202512dec088kex991",
+    "file_path": "data/raw/sec/0000012927/0001628280-25-055825/a202512dec088kex991.htm",
+    "sha256": "e26c955ed83ccee463d2db4ff6288cc9a725dea3c8a052cb75db256c7e401f62",
+    "doc_type": "sec_filing",
+    "size_bytes": 32635,
+    "title": "The Boeing Company Spirit AeroSystems Acquisition Closing Release (Form 8-K Exhibit 99.1)",
+    "report_date": "2025-12-08",
+    "filing_date": "2025-12-08",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000012927",
+      "company_name": "BOEING CO",
+      "tickers": "BA,BA-PA",
+      "form": "8-K",
+      "accession_number": "0001628280-25-055825",
+      "filing_date": "2025-12-08",
+      "is_inline_xbrl": false,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/12927/000162828025055825/a202512dec088kex991.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "spirit_perimeter_qual",
+      "title": "Spirit AeroSystems Acquisition Closing Perimeter and Segment Integration",
+      "source": {
+        "doc_id": "doc_a202512dec088kex991",
+        "origin": "prose",
+        "entity": "BA",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//body"
+        },
+        "as_of_date": "2025-12-08"
+      },
+      "columns": [
+        {
+          "id": "dimension_topic",
+          "label": "Perimeter / Integration Dimension",
+          "data_type": "text"
+        },
+        {
+          "id": "disclosure",
+          "label": "Closing Release Disclosure",
+          "data_type": "text"
+        }
+      ],
+      "rows": [
+        {
+          "id": "effective_close_date",
+          "label": "Transaction Completion Date",
+          "cells": {
+            "dimension_topic": {
+              "value": "Effective Close Date"
+            },
+            "disclosure": {
+              "value": "Boeing completed its acquisition of Spirit AeroSystems Holdings, Inc. (NYSE: SPR) effective December 8, 2025."
+            }
+          }
+        },
+        {
+          "id": "bca_commercial_mapping",
+          "label": "Commercial Airplanes (BCA) Integration",
+          "cells": {
+            "dimension_topic": {
+              "value": "BCA Segment Mapping"
+            },
+            "disclosure": {
+              "value": "All of Spirit's Boeing-related commercial operations integrate under Commercial Airplanes (BCA), including 737 fuselages, major structures for 767, 777, and 787 Dreamliner, and commercially procured fuselages for P-8 and KC-46."
+            }
+          }
+        },
+        {
+          "id": "bgs_aftermarket_mapping",
+          "label": "Global Services (BGS) Aftermarket Integration",
+          "cells": {
+            "dimension_topic": {
+              "value": "BGS Segment Mapping"
+            },
+            "disclosure": {
+              "value": "Spirit's aftermarket businesses align under Boeing Global Services (BGS), bringing Boeing's largest spare parts supplier in-house, expanding global MRO footprint, and adding to BGS's rotable, lease, and exchange portfolio."
+            }
+          }
+        },
+        {
+          "id": "bds_spirit_defense",
+          "label": "Spirit Defense Subsidiary (BDS)",
+          "cells": {
+            "dimension_topic": {
+              "value": "BDS Segment Mapping — Spirit Defense"
+            },
+            "disclosure": {
+              "value": "Spirit Defense established as a non-integrated subsidiary of Boeing Defense, Space & Security (BDS); aligns with BDS for financial reporting and select enterprise functional/site support while maintaining independent governance and operations as an independent supplier to U.S. defense and space programs."
+            }
+          }
+        },
+        {
+          "id": "short_brothers_belfast",
+          "label": "Short Brothers (Belfast, Northern Ireland)",
+          "cells": {
+            "dimension_topic": {
+              "value": "Belfast Operations — Short Brothers"
+            },
+            "disclosure": {
+              "value": "Acquired portions of Spirit AeroSystems' operations in Belfast, Northern Ireland operate as an independent subsidiary branded as Short Brothers, a Boeing Company."
+            }
+          }
+        },
+        {
+          "id": "sites_and_workforce",
+          "label": "Acquired Sites and Workforce Integration",
+          "cells": {
+            "dimension_topic": {
+              "value": "Workforce & Site Integration"
+            },
+            "disclosure": {
+              "value": "Commercial and aftermarket operations in Wichita (Kansas), Dallas (Texas), Tulsa (Oklahoma), and Spirit's Aerospace Innovation Center in Prestwick (Scotland) begin integrating into Boeing alongside Belfast; approximately 15,000 teammates across the five sites join Boeing."
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

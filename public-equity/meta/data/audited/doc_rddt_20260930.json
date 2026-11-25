@@ -1,0 +1,1723 @@
+{
+  "document": {
+    "doc_id": "doc_rddt_20260930",
+    "file_path": "data/raw/sec/0001713445/0001713445-26-000116/rddt-20260930.htm",
+    "sha256": "667bad1d0041df3e678adb8b8bc9d7316b445addddd064d383fb4648d8f2aa91",
+    "doc_type": "sec_filing",
+    "size_bytes": 1701372,
+    "title": "Reddit, Inc. Q3 2026 Form 10-Q",
+    "report_date": "2026-09-30",
+    "filing_date": "2026-10-30",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001713445",
+      "company_name": "Reddit, Inc.",
+      "tickers": "RDDT",
+      "form": "10-Q",
+      "accession_number": "0001713445-26-000116",
+      "filing_date": "2026-10-30",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1713445/000171344526000116/rddt-20260930.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "peer_income_statement",
+      "title": "Reddit Condensed Consolidated Statements of Operations (Q3 2026 10-Q)",
+      "source": {
+        "doc_id": "doc_rddt_20260930",
+        "origin": "html_table",
+        "entity": "RDDT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[9]",
+          "table_index": 9
+        }
+      },
+      "columns": [
+        {
+          "id": "ytd_q3_26",
+          "label": "9M 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_25",
+          "label": "9M 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3-YTD",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "revenue",
+          "label": "Revenue",
+          "raw_label": "Revenue",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 2363273,
+              "raw_text": "$2,363,273",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1476899,
+              "raw_text": "$1,476,899",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cost_of_revenue",
+          "label": "Cost of revenue",
+          "raw_label": "Cost of revenue",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 202362,
+              "raw_text": "202,362",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 135498,
+              "raw_text": "135,498",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "research_and_development",
+          "label": "Research and development",
+          "raw_label": "Research and development",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 702053,
+              "raw_text": "702,053",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 584260,
+              "raw_text": "584,260",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "sales_and_marketing",
+          "label": "Sales and marketing",
+          "raw_label": "Sales and marketing",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 556760,
+              "raw_text": "556,760",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 340011,
+              "raw_text": "340,011",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "general_and_administrative",
+          "label": "General and administrative",
+          "raw_label": "General and administrative",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 225884,
+              "raw_text": "225,884",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 206974,
+              "raw_text": "206,974",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_costs_and_expenses",
+          "label": "Total costs and expenses",
+          "raw_label": "Total costs and expenses",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 1687059,
+              "raw_text": "1,687,059",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1266743,
+              "raw_text": "1,266,743",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "operating_income",
+          "label": "Income from operations",
+          "raw_label": "Income from operations",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 676214,
+              "raw_text": "676,214",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 210156,
+              "raw_text": "210,156",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_income_expense_net",
+          "label": "Other income (expense), net",
+          "raw_label": "Other income (expense), net",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 75398,
+              "raw_text": "75,398",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 63716,
+              "raw_text": "63,716",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pretax_income",
+          "label": "Income before income taxes",
+          "raw_label": "Income before income taxes",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 751612,
+              "raw_text": "751,612",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 273872,
+              "raw_text": "273,872",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "tax_provision",
+          "label": "Income tax expense (benefit)",
+          "raw_label": "Income tax expense (benefit)",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 11519,
+              "raw_text": "11,519",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -4246,
+              "raw_text": "(4,246)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "net_income",
+          "label": "Net income",
+          "raw_label": "Net income",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 740093,
+              "raw_text": "$740,093",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 278118,
+              "raw_text": "$278,118",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "eps_basic",
+          "label": "Net income per share, basic",
+          "raw_label": "Basic",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 3.85,
+              "raw_text": "$3.85",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1.5,
+              "raw_text": "$1.50",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "eps_diluted",
+          "label": "Net income per share, diluted",
+          "raw_label": "Diluted",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 3.66,
+              "raw_text": "$3.66",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1.38,
+              "raw_text": "$1.38",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "shares_basic",
+          "label": "Weighted-average shares, basic",
+          "raw_label": "Basic",
+          "exemption": "non_additive_metric",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 192155485,
+              "raw_text": "192,155,485",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 185178360,
+              "raw_text": "185,178,360",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "shares_diluted",
+          "label": "Weighted-average shares, diluted",
+          "raw_label": "Diluted",
+          "exemption": "non_additive_metric",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 202186014,
+              "raw_text": "202,186,014",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 201659094,
+              "raw_text": "201,659,094",
+              "origin": "ixbrl_fact"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_costs_and_expenses",
+          "components": [
+            {
+              "id": "cost_of_revenue",
+              "sign": 1
+            },
+            {
+              "id": "research_and_development",
+              "sign": 1
+            },
+            {
+              "id": "sales_and_marketing",
+              "sign": 1
+            },
+            {
+              "id": "general_and_administrative",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "operating_income",
+          "components": [
+            {
+              "id": "revenue",
+              "sign": 1
+            },
+            {
+              "id": "total_costs_and_expenses",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "pretax_income",
+          "components": [
+            {
+              "id": "operating_income",
+              "sign": 1
+            },
+            {
+              "id": "other_income_expense_net",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income",
+          "components": [
+            {
+              "id": "pretax_income",
+              "sign": 1
+            },
+            {
+              "id": "tax_provision",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "peer_cash_flow",
+      "title": "Reddit Condensed Consolidated Statements of Cash Flows (Q3 2026 10-Q)",
+      "source": {
+        "doc_id": "doc_rddt_20260930",
+        "origin": "html_table",
+        "entity": "RDDT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[14]",
+          "table_index": 14
+        }
+      },
+      "columns": [
+        {
+          "id": "ytd_q3_26",
+          "label": "9M 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_25",
+          "label": "9M 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3-YTD",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_income",
+          "label": "Net income",
+          "raw_label": "Net income",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 740093,
+              "raw_text": "$740,093",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 278118,
+              "raw_text": "$278,118",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "depreciation_and_amortization",
+          "label": "Depreciation and amortization",
+          "raw_label": "Depreciation and amortization",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 12728,
+              "raw_text": "12,728",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 11797,
+              "raw_text": "11,797",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "amortization_investment_premium_discount",
+          "label": "Amortization of premium (accretion of discount) on marketable securities, net",
+          "raw_label": "Amortization of premium (accretion of discount) on marketable securities, net",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -10165,
+              "raw_text": "(10,165)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -22354,
+              "raw_text": "(22,354)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "share_based_compensation",
+          "label": "Stock-based compensation expense",
+          "raw_label": "Stock-based compensation expense",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 300594,
+              "raw_text": "300,594",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 258002,
+              "raw_text": "258,002",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_operating_noncash",
+          "label": "Other adjustments",
+          "raw_label": "Other adjustments",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 4787,
+              "raw_text": "4,787",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 5187,
+              "raw_text": "5,187",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_accounts_receivable",
+          "label": "Change in accounts receivable",
+          "raw_label": "Accounts receivable",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -139278,
+              "raw_text": "(139,278)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -138754,
+              "raw_text": "(138,754)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_prepaid_and_other_assets",
+          "label": "Change in prepaid expenses and other assets",
+          "raw_label": "Prepaid expenses and other assets",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -26020,
+              "raw_text": "(26,020)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -23424,
+              "raw_text": "(23,424)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_operating_lease_assets_and_liabilities",
+          "label": "Change in operating lease right-of-use assets and liabilities",
+          "raw_label": "Operating lease right-of-use assets and liabilities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -4388,
+              "raw_text": "(4,388)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -5407,
+              "raw_text": "(5,407)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_accounts_payable",
+          "label": "Change in accounts payable",
+          "raw_label": "Accounts payable",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 44964,
+              "raw_text": "44,964",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 26940,
+              "raw_text": "26,940",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_accrued_and_other_liabilities",
+          "label": "Change in accrued expenses and other liabilities",
+          "raw_label": "Accrued expenses and other liabilities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 14611,
+              "raw_text": "14,611",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 33963,
+              "raw_text": "33,963",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cfo",
+          "label": "Net cash provided by (used in) operating activities",
+          "raw_label": "Net cash provided by (used in) operating activities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 937926,
+              "raw_text": "$937,926",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 424068,
+              "raw_text": "$424,068",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "capex_ppe",
+          "label": "Purchases of property and equipment",
+          "raw_label": "Purchases of property and equipment",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -3453,
+              "raw_text": "(3,453)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -3542,
+              "raw_text": "(3,542)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "purchases_of_marketable_securities",
+          "label": "Purchases of marketable securities",
+          "raw_label": "Purchases of marketable securities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -1273009,
+              "raw_text": "(1,273,009)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -1605404,
+              "raw_text": "(1,605,404)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "maturities_of_marketable_securities",
+          "label": "Maturities of marketable securities",
+          "raw_label": "Maturities of marketable securities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 1093164,
+              "raw_text": "1,093,164",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1581054,
+              "raw_text": "1,581,054",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "sales_of_marketable_securities",
+          "label": "Proceeds from sale of marketable securities",
+          "raw_label": "Proceeds from sale of marketable securities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 22934,
+              "raw_text": "22,934",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 12372,
+              "raw_text": "12,372",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_investing_activities",
+          "label": "Other investing activities",
+          "raw_label": "Other investing activities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -3930,
+              "raw_text": "(3,930)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 2455,
+              "raw_text": "2,455",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cfi",
+          "label": "Net cash provided by (used in) investing activities",
+          "raw_label": "Net cash provided by (used in) investing activities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -164294,
+              "raw_text": "$(164,294)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -13065,
+              "raw_text": "$(13,065)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "proceeds_from_stock_options",
+          "label": "Proceeds from exercise of employee stock options",
+          "raw_label": "Proceeds from exercise of employee stock options",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 15332,
+              "raw_text": "15,332",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 20500,
+              "raw_text": "20,500",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "rsu_tax_withholding_payments",
+          "label": "Taxes paid related to net share settlement of restricted stock units",
+          "raw_label": "Taxes paid related to net share settlement of restricted stock units",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -44991,
+              "raw_text": "(44,991)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -80495,
+              "raw_text": "(80,495)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "share_repurchases",
+          "label": "Repurchases of Class A common stock",
+          "raw_label": "Repurchases of Class A common stock",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -339959,
+              "raw_text": "(339,959)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_financing_activities",
+          "label": "Other financing activities",
+          "raw_label": "Other financing activities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_25": {
+              "value": -1497,
+              "raw_text": "(1,497)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cff",
+          "label": "Net cash provided by (used in) financing activities",
+          "raw_label": "Net cash provided by (used in) financing activities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": -369618,
+              "raw_text": "$(369,618)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -61492,
+              "raw_text": "$(61,492)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "net_change_in_cash",
+          "label": "Net increase (decrease) in cash and cash equivalents",
+          "raw_label": "Net increase (decrease) in cash and cash equivalents",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 404014,
+              "raw_text": "404,014",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 349511,
+              "raw_text": "349,511",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cash_beginning_of_period",
+          "label": "Cash and cash equivalents at the beginning of the period",
+          "raw_label": "Cash and cash equivalents at the beginning of the period",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 953569,
+              "raw_text": "953,569",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 562142,
+              "raw_text": "562,142",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cash_end_of_period",
+          "label": "Cash and cash equivalents at the end of the period",
+          "raw_label": "Cash and cash equivalents at the end of the period",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "ytd_q3_26": {
+              "value": 1357583,
+              "raw_text": "$1,357,583",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 911653,
+              "raw_text": "$911,653",
+              "origin": "ixbrl_fact"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "cfo",
+          "components": [
+            {
+              "id": "net_income",
+              "sign": 1
+            },
+            {
+              "id": "depreciation_and_amortization",
+              "sign": 1
+            },
+            {
+              "id": "amortization_investment_premium_discount",
+              "sign": 1
+            },
+            {
+              "id": "share_based_compensation",
+              "sign": 1
+            },
+            {
+              "id": "other_operating_noncash",
+              "sign": 1
+            },
+            {
+              "id": "chg_accounts_receivable",
+              "sign": 1
+            },
+            {
+              "id": "chg_prepaid_and_other_assets",
+              "sign": 1
+            },
+            {
+              "id": "chg_operating_lease_assets_and_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "chg_accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "chg_accrued_and_other_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "cfi",
+          "components": [
+            {
+              "id": "capex_ppe",
+              "sign": 1
+            },
+            {
+              "id": "purchases_of_marketable_securities",
+              "sign": 1
+            },
+            {
+              "id": "maturities_of_marketable_securities",
+              "sign": 1
+            },
+            {
+              "id": "sales_of_marketable_securities",
+              "sign": 1
+            },
+            {
+              "id": "other_investing_activities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "cff",
+          "components": [
+            {
+              "id": "proceeds_from_stock_options",
+              "sign": 1
+            },
+            {
+              "id": "rsu_tax_withholding_payments",
+              "sign": 1
+            },
+            {
+              "id": "share_repurchases",
+              "sign": 1
+            },
+            {
+              "id": "other_financing_activities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "net_change_in_cash",
+          "components": [
+            {
+              "id": "cfo",
+              "sign": 1
+            },
+            {
+              "id": "cfi",
+              "sign": 1
+            },
+            {
+              "id": "cff",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "cash_end_of_period",
+          "components": [
+            {
+              "id": "cash_beginning_of_period",
+              "sign": 1
+            },
+            {
+              "id": "net_change_in_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "peer_balance_sheet",
+      "title": "Reddit Condensed Consolidated Balance Sheets (Q3 2026 10-Q)",
+      "source": {
+        "doc_id": "doc_rddt_20260930",
+        "origin": "html_table",
+        "entity": "RDDT",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[10]",
+          "table_index": 10
+        },
+        "as_of_date": "2026-09-30"
+      },
+      "columns": [
+        {
+          "id": "q3_26",
+          "label": "Q3 2026",
+          "raw_label": "September 30,2026",
+          "period_key": "2026-Q3",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "cash_and_equivalents",
+          "label": "Cash and cash equivalents",
+          "raw_label": "Cash and cash equivalents",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 1357583,
+              "raw_text": "$1,357,583",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "marketable_securities",
+          "label": "Marketable securities",
+          "raw_label": "Marketable securities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 1675849,
+              "raw_text": "1,675,849",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "accounts_receivable_net",
+          "label": "Accounts receivable, net",
+          "raw_label": "Accounts receivable, net",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 730083,
+              "raw_text": "730,083",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "prepaid_and_other_current_assets",
+          "label": "Prepaid expenses and other current assets",
+          "raw_label": "Prepaid expenses and other current assets",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 93009,
+              "raw_text": "93,009",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_current_assets",
+          "label": "Total current assets",
+          "raw_label": "Total current assets",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 3856524,
+              "raw_text": "3,856,524",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "ppe_net",
+          "label": "Property and equipment, net",
+          "raw_label": "Property and equipment, net",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 11489,
+              "raw_text": "11,489",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "operating_lease_rou_assets",
+          "label": "Operating lease right-of-use assets, net",
+          "raw_label": "Operating lease right-of-use assets, net",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 28030,
+              "raw_text": "28,030",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "intangible_assets_net",
+          "label": "Intangible assets, net",
+          "raw_label": "Intangible assets, net",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 10086,
+              "raw_text": "10,086",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "goodwill",
+          "label": "Goodwill",
+          "raw_label": "Goodwill",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 42174,
+              "raw_text": "42,174",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_assets",
+          "label": "Other noncurrent assets",
+          "raw_label": "Other noncurrent assets",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 13726,
+              "raw_text": "13,726",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_assets",
+          "label": "Total assets",
+          "raw_label": "Total assets",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 3962029,
+              "raw_text": "$3,962,029",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "accounts_payable",
+          "label": "Accounts payable",
+          "raw_label": "Accounts payable",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 110246,
+              "raw_text": "$110,246",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "operating_lease_liabilities_current",
+          "label": "Operating lease liabilities, current",
+          "raw_label": "Operating lease liabilities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 8364,
+              "raw_text": "8,364",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "accrued_expenses_and_other_current_liabilities",
+          "label": "Accrued expenses and other current liabilities",
+          "raw_label": "Accrued expenses and other current liabilities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 238598,
+              "raw_text": "238,598",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_current_liabilities",
+          "label": "Total current liabilities",
+          "raw_label": "Total current liabilities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 357208,
+              "raw_text": "357,208",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "operating_lease_liabilities_noncurrent",
+          "label": "Operating lease liabilities, noncurrent",
+          "raw_label": "Operating lease liabilities, noncurrent",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 23045,
+              "raw_text": "23,045",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_liabilities",
+          "label": "Other noncurrent liabilities",
+          "raw_label": "Other noncurrent liabilities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 68,
+              "raw_text": "68",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_liabilities",
+          "label": "Total liabilities",
+          "raw_label": "Total liabilities",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 380321,
+              "raw_text": "380,321",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "class_a_common_stock",
+          "label": "Class A common stock",
+          "raw_label": "Class A common stock, par value $0.0001 per share; 2,000,000,000 shares authorized as of September 30, 2026 and December 31, 2025; 146,964,730 and 139,218,373 shares issued and outstanding as of September 30, 2026 and December 31, 2025, respectively",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 14,
+              "raw_text": "14",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "class_b_common_stock",
+          "label": "Class B common stock",
+          "raw_label": "Class B common stock, par value $0.0001 per share; 140,000,000 shares authorized as of September 30, 2026 and December 31, 2025; 46,151,604 and 51,673,735 shares issued and outstanding as of September 30, 2026 and December 31, 2025, respectively",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 5,
+              "raw_text": "5",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "additional_paid_in_capital",
+          "label": "Additional paid-in capital",
+          "raw_label": "Additional paid-in capital",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 3526748,
+              "raw_text": "3,526,748",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "aoci",
+          "label": "Accumulated other comprehensive income (loss)",
+          "raw_label": "Accumulated other comprehensive income (loss)",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": -14035,
+              "raw_text": "(14,035)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "retained_earnings",
+          "label": "Retained earnings (accumulated deficit)",
+          "raw_label": "Retained earnings (accumulated deficit)",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 68976,
+              "raw_text": "68,976",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_stockholders_equity",
+          "label": "Total stockholders' equity",
+          "raw_label": "Total stockholders’ equity",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 3581708,
+              "raw_text": "3,581,708",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_liabilities_and_equity",
+          "label": "Total liabilities and stockholders' equity",
+          "raw_label": "Total liabilities and stockholders’ equity",
+          "unit": "USD",
+          "scale": 1000,
+          "cells": {
+            "q3_26": {
+              "value": 3962029,
+              "raw_text": "$3,962,029",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "class_a_shares_outstanding",
+          "label": "Class A common shares outstanding (cover page)",
+          "raw_label": "Class A common shares outstanding (cover page)",
+          "origin": "ixbrl_fact",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonFraction[@id='f-26']"
+          },
+          "as_of_date": "2026-10-28",
+          "cells": {
+            "q3_26": {
+              "value": 146942127,
+              "raw_text": "146,942,127"
+            }
+          }
+        },
+        {
+          "id": "class_b_shares_outstanding",
+          "label": "Class B common shares outstanding (cover page)",
+          "raw_label": "Class B common shares outstanding (cover page)",
+          "origin": "ixbrl_fact",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonFraction[@id='f-27']"
+          },
+          "as_of_date": "2026-10-28",
+          "cells": {
+            "q3_26": {
+              "value": 46151604,
+              "raw_text": "46,151,604"
+            }
+          }
+        },
+        {
+          "id": "class_c_shares_outstanding",
+          "label": "Class C common shares outstanding (cover page)",
+          "raw_label": "Class C common shares outstanding (cover page)",
+          "origin": "ixbrl_fact",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonFraction[@id='f-28']"
+          },
+          "as_of_date": "2026-10-28",
+          "cells": {
+            "q3_26": {
+              "value": 0,
+              "raw_text": "no"
+            }
+          }
+        },
+        {
+          "id": "common_shares_outstanding",
+          "label": "Total common shares outstanding (all classes, cover page)",
+          "raw_label": "Common shares outstanding (cover page sum)",
+          "origin": "prose",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//ix:nonFraction[@id='f-26']"
+          },
+          "as_of_date": "2026-10-28",
+          "cells": {
+            "q3_26": {
+              "value": 193093731,
+              "raw_text": "193,093,731",
+              "note": "Sum of all common stock classes reported on Form 10-Q cover page as of 2026-10-28"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_current_assets",
+          "components": [
+            {
+              "id": "cash_and_equivalents",
+              "sign": 1
+            },
+            {
+              "id": "marketable_securities",
+              "sign": 1
+            },
+            {
+              "id": "accounts_receivable_net",
+              "sign": 1
+            },
+            {
+              "id": "prepaid_and_other_current_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "ppe_net",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_rou_assets",
+              "sign": 1
+            },
+            {
+              "id": "intangible_assets_net",
+              "sign": 1
+            },
+            {
+              "id": "goodwill",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_current_liabilities",
+          "components": [
+            {
+              "id": "accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_liabilities_current",
+              "sign": 1
+            },
+            {
+              "id": "accrued_expenses_and_other_current_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities",
+          "components": [
+            {
+              "id": "total_current_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "operating_lease_liabilities_noncurrent",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_stockholders_equity",
+          "components": [
+            {
+              "id": "class_a_common_stock",
+              "sign": 1
+            },
+            {
+              "id": "class_b_common_stock",
+              "sign": 1
+            },
+            {
+              "id": "additional_paid_in_capital",
+              "sign": 1
+            },
+            {
+              "id": "aoci",
+              "sign": 1
+            },
+            {
+              "id": "retained_earnings",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "total_stockholders_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "common_shares_outstanding",
+          "components": [
+            {
+              "id": "class_a_shares_outstanding",
+              "sign": 1
+            },
+            {
+              "id": "class_b_shares_outstanding",
+              "sign": 1
+            },
+            {
+              "id": "class_c_shares_outstanding",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": [
+    {
+      "name": "cfs_net_income_tie_ytd_q3_26",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income",
+        "col_id": "ytd_q3_26"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income",
+          "col_id": "ytd_q3_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "cfs_net_income_tie_ytd_q3_25",
+      "target": {
+        "table_id": "peer_cash_flow",
+        "row_id": "net_income",
+        "col_id": "ytd_q3_25"
+      },
+      "components": [
+        {
+          "table_id": "peer_income_statement",
+          "row_id": "net_income",
+          "col_id": "ytd_q3_25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    }
+  ]
+}

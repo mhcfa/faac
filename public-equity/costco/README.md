@@ -1,4 +1,4 @@
-# Costco — Financial Model & Valuation
+# Costco Wholesale Corp. (`COST`) — Financial Model & Valuation
 
 Financial model built with [`f8-engine`](https://github.com/mhcfa/f8) autonomously by AI agents.
 
@@ -20,4 +20,4 @@ pnpm typecheck
 pnpm build
 ```
 
-Read more about this: [autonomous-costco-equity-research](https://mhcfa.github.io/blog/autonomous-costco-equity-research/)
+Read more about this: [Autonomous Costco Equity Research](https://mhcfa.github.io/blog/autonomous-costco-equity-research/)

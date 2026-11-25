@@ -1,0 +1,156 @@
+{
+  "document": {
+    "doc_id": "doc_fred_dgs30",
+    "file_path": "data/raw/macro/fred_dgs30.csv",
+    "sha256": "83723eedce5aab9193cdf4b7bfe26b6e4e64fd732f0c56eddc0bd9afd455112f",
+    "doc_type": "structured_data",
+    "size_bytes": 207065,
+    "title": "FRED Market Yield on U.S. Treasury Securities at 30-Year Constant Maturity (DGS30)",
+    "report_date": "2026-11-19",
+    "source_meta": {
+      "series_id": "DGS30",
+      "latest_observation_date": "2026-11-19",
+      "latest_value": 5.4,
+      "observation_count": 12436,
+      "source": "fred",
+      "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS30",
+      "retrieved_at": "2026-11-22T19:24:04.348Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "macro_rates",
+      "title": "U.S. Benchmark Interest Rates, Credit Spreads, and Spot FX",
+      "source": {
+        "doc_id": "doc_fred_dgs30",
+        "origin": "structured_data",
+        "exemption": "non_additive_metric",
+        "entity": "US",
+        "basis": "market",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 12984
+        },
+        "as_of_date": "2026-11-19"
+      },
+      "columns": [
+        {
+          "id": "d_2021_12_31",
+          "label": "2021-12-31",
+          "raw_label": "2021-12-31",
+          "period_key": "2021-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 11710,
+            "line_end": 11710
+          },
+          "as_of_date": "2021-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_12_30",
+          "label": "2022-12-30",
+          "raw_label": "2022-12-30",
+          "period_key": "2022-12-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 11970,
+            "line_end": 11970
+          },
+          "as_of_date": "2022-12-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_12_29",
+          "label": "2023-12-29",
+          "raw_label": "2023-12-29",
+          "period_key": "2023-12-29",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12230,
+            "line_end": 12230
+          },
+          "as_of_date": "2023-12-29",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_12_31",
+          "label": "2024-12-31",
+          "raw_label": "2024-12-31",
+          "period_key": "2024-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12492,
+            "line_end": 12492
+          },
+          "as_of_date": "2024-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_12_31",
+          "label": "2025-12-31",
+          "raw_label": "2025-12-31",
+          "period_key": "2025-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12753,
+            "line_end": 12753
+          },
+          "as_of_date": "2025-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_19",
+          "label": "2026-11-19",
+          "raw_label": "2026-11-19",
+          "period_key": "2026-11-19",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12984,
+            "line_end": 12984
+          },
+          "as_of_date": "2026-11-19",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "dgs30",
+          "label": "U.S. 30-Year Treasury Constant Maturity Yield (DGS30)",
+          "raw_label": "DGS30",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "d_2021_12_31": {
+              "value": 1.9,
+              "raw_text": "1.90"
+            },
+            "d_2022_12_30": {
+              "value": 3.97,
+              "raw_text": "3.97"
+            },
+            "d_2023_12_29": {
+              "value": 4.03,
+              "raw_text": "4.03"
+            },
+            "d_2024_12_31": {
+              "value": 4.78,
+              "raw_text": "4.78"
+            },
+            "d_2025_12_31": {
+              "value": 4.84,
+              "raw_text": "4.84"
+            },
+            "d_2026_11_19": {
+              "value": 5.4,
+              "raw_text": "5.40"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

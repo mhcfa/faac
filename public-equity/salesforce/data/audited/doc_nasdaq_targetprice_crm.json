@@ -1,0 +1,173 @@
+{
+  "document": {
+    "doc_id": "doc_nasdaq_targetprice_crm",
+    "file_path": "data/raw/market/nasdaq-targetprice-crm.json",
+    "sha256": "a3c639d30f09c57cf201660ee1ac0f347cf36bdbe10e8aa52d70a2c39ca79500",
+    "doc_type": "other",
+    "size_bytes": 1756,
+    "title": "Nasdaq Analyst Consensus Target Price — CRM (2026-11-18)",
+    "report_date": "2026-11-18",
+    "source_meta": {
+      "ticker": "CRM",
+      "endpoint": "analyst/targetprice",
+      "mean_target": 279.88,
+      "low_target": 195,
+      "high_target": 400,
+      "historical_points": 13,
+      "source": "nasdaq",
+      "source_url": "https://api.nasdaq.com/api/analyst/CRM/targetprice",
+      "retrieved_at": "2026-11-19T17:34:23.943Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "consensus_targets",
+      "title": "Nasdaq Analyst Consensus Target Price & Ratings",
+      "source": {
+        "doc_id": "doc_nasdaq_targetprice_crm",
+        "origin": "structured_data",
+        "entity": "CRM",
+        "basis": "forecast",
+        "period_key": "2026-11-18",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1
+        },
+        "as_of_date": "2026-11-18"
+      },
+      "columns": [
+        {
+          "id": "as_of_2026_11_18",
+          "label": "As of 2026-11-18",
+          "raw_label": "consensusOverview",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "mean_target_price",
+          "label": "Mean Target Price",
+          "raw_label": "priceTarget",
+          "category": "target_price",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_11_18": {
+              "value": 279.88,
+              "raw_text": "279.88"
+            }
+          }
+        },
+        {
+          "id": "low_target_price",
+          "label": "Low Target Price",
+          "raw_label": "lowPriceTarget",
+          "category": "target_price",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_11_18": {
+              "value": 195,
+              "raw_text": "195"
+            }
+          }
+        },
+        {
+          "id": "high_target_price",
+          "label": "High Target Price",
+          "raw_label": "highPriceTarget",
+          "category": "target_price",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_11_18": {
+              "value": 400,
+              "raw_text": "400"
+            }
+          }
+        },
+        {
+          "id": "buy_count",
+          "label": "Buy Ratings",
+          "raw_label": "buy",
+          "category": "analyst_ratings",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_11_18": {
+              "value": 30,
+              "raw_text": "30"
+            }
+          }
+        },
+        {
+          "id": "hold_count",
+          "label": "Hold Ratings",
+          "raw_label": "hold",
+          "category": "analyst_ratings",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_11_18": {
+              "value": 9,
+              "raw_text": "9"
+            }
+          }
+        },
+        {
+          "id": "sell_count",
+          "label": "Sell Ratings",
+          "raw_label": "sell",
+          "category": "analyst_ratings",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_11_18": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        },
+        {
+          "id": "total_ratings",
+          "label": "Total Ratings",
+          "category": "analyst_ratings",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_11_18": {
+              "value": 39,
+              "note": "Sum of buy, hold, and sell analyst ratings from consensusOverview"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_ratings",
+          "components": [
+            {
+              "id": "buy_count",
+              "sign": 1
+            },
+            {
+              "id": "hold_count",
+              "sign": 1
+            },
+            {
+              "id": "sell_count",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": []
+}

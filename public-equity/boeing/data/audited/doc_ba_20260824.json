@@ -1,0 +1,215 @@
+{
+  "document": {
+    "doc_id": "doc_ba_20260824",
+    "file_path": "data/raw/sec/0000012927/0001628280-26-059427/ba-20260824.htm",
+    "sha256": "047a9ba9981f6b0eb79303ea24eb0c2f6cfa702ab6a24a131b2ad70ebdb2a7f8",
+    "doc_type": "sec_filing",
+    "size_bytes": 47563,
+    "title": "The Boeing Company Form 8-K (August 24, 2026 Revolving Credit Agreements)",
+    "report_date": "2026-08-24",
+    "filing_date": "2026-08-28",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000012927",
+      "company_name": "BOEING CO",
+      "tickers": "BA,BA-PA",
+      "form": "8-K",
+      "accession_number": "0001628280-26-059427",
+      "filing_date": "2026-08-28",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/12927/000162828026059427/ba-20260824.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "credit_facilities",
+      "title": "Revolving Credit Facility Commitments (Item 1.01)",
+      "source": {
+        "doc_id": "doc_ba_20260824",
+        "origin": "prose",
+        "entity": "BA",
+        "basis": "covenant",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//div[contains(., 'Entry into a Material Definitive Agreement')]/following-sibling::div"
+        }
+      },
+      "columns": [
+        {
+          "id": "2026_08_24",
+          "label": "Commitments as of Aug 24, 2026",
+          "period_key": "2026-08-24",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "termination_date",
+          "label": "Scheduled Termination Date",
+          "data_type": "text"
+        },
+        {
+          "id": "facility_terms",
+          "label": "Facility Description",
+          "data_type": "text"
+        }
+      ],
+      "rows": [
+        {
+          "id": "revolver_364d_2027",
+          "label": "364-Day Revolving Credit Agreement (2026)",
+          "cells": {
+            "2026_08_24": {
+              "value": 3000,
+              "raw_text": "$3.0 billion",
+              "exemption": "standalone_disclosure"
+            },
+            "termination_date": {
+              "value": "2027-08-23"
+            },
+            "facility_terms": {
+              "value": "Replaces prior $3.0B 364-day facility expiring Aug 24, 2026; 1-year term-out option (with additional fees) and 364-day extension request right; Citibank N.A. administrative agent, JPMorgan Chase Bank N.A. syndication agent."
+            }
+          }
+        },
+        {
+          "id": "revolver_5yr_2029",
+          "label": "2023 Five-Year Revolving Credit Agreement (Amended)",
+          "cells": {
+            "2026_08_24": {
+              "value": 3000,
+              "raw_text": "$3.0 billion",
+              "exemption": "standalone_disclosure"
+            },
+            "termination_date": {
+              "value": "2029-08-24"
+            },
+            "facility_terms": {
+              "value": "Originally dated Aug 24, 2023; amended Aug 24, 2026 via Amendment No. 1 to extend term by 365 days and add $5.0B minimum liquidity covenant."
+            }
+          }
+        },
+        {
+          "id": "revolver_5yr_2030",
+          "label": "2024 Five-Year Revolving Credit Agreement (Amended)",
+          "cells": {
+            "2026_08_24": {
+              "value": 4000,
+              "raw_text": "$4.0 billion",
+              "exemption": "standalone_disclosure"
+            },
+            "termination_date": {
+              "value": "2030-05-15"
+            },
+            "facility_terms": {
+              "value": "Originally dated May 15, 2024; amended Aug 24, 2026 via Amendment No. 1 to extend term by 365 days and add $5.0B minimum liquidity covenant."
+            }
+          }
+        }
+      ],
+      "checksums": []
+    },
+    {
+      "table_id": "credit_covenants",
+      "title": "Revolving Credit Facility Covenants, Pricing and Maturities",
+      "source": {
+        "doc_id": "doc_ba_20260824",
+        "origin": "prose",
+        "entity": "BA",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//div[contains(., 'Entry into a Material Definitive Agreement')]/following-sibling::div"
+        },
+        "as_of_date": "2026-08-24"
+      },
+      "columns": [
+        {
+          "id": "covenant_topic",
+          "label": "Term / Covenant",
+          "data_type": "text"
+        },
+        {
+          "id": "disclosure",
+          "label": "Disclosed Provision",
+          "data_type": "text"
+        }
+      ],
+      "rows": [
+        {
+          "id": "max_debt_to_total_capital",
+          "label": "Maximum Consolidated Debt / Total Capital",
+          "cells": {
+            "covenant_topic": {
+              "value": "Financial Leverage Covenant"
+            },
+            "disclosure": {
+              "value": "Restricts consolidated debt (as defined in the credit agreements) to not exceed 60% of Boeing's total capital (as defined in the agreements)."
+            }
+          }
+        },
+        {
+          "id": "minimum_liquidity",
+          "label": "Minimum Liquidity Covenant",
+          "cells": {
+            "covenant_topic": {
+              "value": "Minimum Liquidity Covenant"
+            },
+            "disclosure": {
+              "value": "Requires Boeing to maintain liquidity (as defined in each agreement) of at least $5.0 billion; included in the new 364-Day Credit Agreement and added on August 24, 2026 via Amendment No. 1 to both the 2023 and 2024 Five-Year Credit Agreements."
+            }
+          }
+        },
+        {
+          "id": "sofr_pricing_margin",
+          "label": "SOFR Borrowing Margin and Base Rate",
+          "cells": {
+            "covenant_topic": {
+              "value": "Interest Rate & Pricing Grid"
+            },
+            "disclosure": {
+              "value": "364-Day Credit Agreement SOFR borrowings bear interest at Term SOFR + 1.250% to 1.700% (125 to 170 bps) per annum depending on Boeing's credit rating. Non-SOFR borrowings bear interest at highest of (1) Citibank base rate, (2) Federal Funds rate + 0.50%, or (3) 1-month Term SOFR + 1.00%, plus 0.250% to 0.700% depending on credit rating."
+            }
+          }
+        },
+        {
+          "id": "commitment_fee",
+          "label": "Undrawn Commitment Fee",
+          "cells": {
+            "covenant_topic": {
+              "value": "Commitment Fee"
+            },
+            "disclosure": {
+              "value": "0.125% to 0.300% (12.5 to 30.0 bps) per annum on aggregate commitments under the 364-Day Credit Agreement, depending on Boeing's credit rating."
+            }
+          }
+        },
+        {
+          "id": "maturity_schedule",
+          "label": "Facility Maturity Schedule",
+          "cells": {
+            "covenant_topic": {
+              "value": "Maturity Dates & Extension Options"
+            },
+            "disclosure": {
+              "value": "364-Day Credit Agreement ($3.0B): terminates Aug 23, 2027 (with 1-year term-out option and 364-day extension request right). 2023 Five-Year Credit Agreement ($3.0B): extended 365 days to Aug 24, 2029. 2024 Five-Year Credit Agreement ($4.0B): extended 365 days to May 15, 2030."
+            }
+          }
+        },
+        {
+          "id": "negative_covenants_and_eod",
+          "label": "Negative Covenants and Events of Default",
+          "cells": {
+            "covenant_topic": {
+              "value": "Negative Covenants & Events of Default"
+            },
+            "disclosure": {
+              "value": "Customary restrictions on liens and mergers/consolidations. Events of default include: (1) 5-business-day payment default on principal/interest, (2) materially incorrect representation/warranty, (3) 30-day uncured covenant breach after notice, (4) certain debt cross-defaults, (5) specified ERISA liabilities, and (6) bankruptcy/insolvency."
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

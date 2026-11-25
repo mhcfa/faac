@@ -6,28 +6,30 @@ import {
   addTimeSeriesColumns,
   buildHistoricalCellMap,
   rowFormatOptions,
+  zeroForecastCells,
 } from "../timeline.ts"
 
-export function buildBalanceSheetAndEquity(
+export function buildBalanceSheet(
   sheet: Sheet,
-  kg: CostcoKnowledgeData
-): { readonly balanceSheet: Table; readonly shareEquity: Table } {
+  kg: CostcoKnowledgeData,
+  belowTarget?: Table
+): Table {
   const bs = kg.cost.balanceSheet
-  const eq = kg.cost.equityAndShares
 
   const balanceSheet = sheet.addTable(
     "BalanceSheet",
     "Consolidated Balance Sheets ($M)",
     {
       subtitle: [
-        "FY22–FY26 audited GAAP historicals; FY27E–FY36E 100% formula-linked across Cash Flow, Working Capital/PP&E, Debt/Leases & Equity with zero plugs ($M)",
+        "FY22A–FY26A audited GAAP historicals; FY27E–FY36E integrated with cash flow, working capital, fixed assets, debt, and equity ($M)",
         `Source: ${kg.citations.balanceSheet}`,
       ],
       currency: "USD",
+      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(balanceSheet, {
-    descriptorLabel: "Balance Sheet Line ($M)",
+    descriptorLabel: "Balance sheet ($M)",
   })
 
   balanceSheet.addSectionHeader("Assets")
@@ -86,7 +88,7 @@ export function buildBalanceSheetAndEquity(
   balanceSheet.addRow("operating_lease_rou_assets", {
     ...rowFormatOptions("currency", 0),
     expr: 'WorkingCapitalPPE["op_lease_rou_assets", @col]',
-    cells: { line_item: "Operating lease right-of-use assets" },
+    cells: { line_item: "Operating lease ROU assets" },
   })
   balanceSheet.addRow("other_long_term_assets", {
     ...rowFormatOptions("currency", 0),
@@ -100,7 +102,8 @@ export function buildBalanceSheetAndEquity(
     cells: { line_item: "Total assets" },
   })
 
-  balanceSheet.addSectionHeader("Liabilities & Stockholders' Equity")
+  balanceSheet.addRowGutter()
+  balanceSheet.addSectionHeader("Liabilities and stockholders' equity")
   balanceSheet.addRow("accounts_payable", {
     ...rowFormatOptions("currency", 0),
     expr: 'WorkingCapitalPPE["accounts_payable", @col]',
@@ -125,24 +128,23 @@ export function buildBalanceSheetAndEquity(
     ...rowFormatOptions("currency", 0),
     expr: 'DebtLeasesSchedule["current_portion_lt_debt_bs", @col]',
     cells: {
-      line_item: {
-        value: "Current portion of long-term debt",
-        note: "FY24 $103M folded inside Other Current Liabilities per FY25 10-K BS; restored FY25-FY26.",
+      line_item: "Current portion of LT debt",
+      FY24: {
+        expr: 'DebtLeasesSchedule["current_portion_lt_debt_bs", "FY24"]',
+        note: "FY24 $103M current debt folded into other current liabilities on FY25 10-K comparative balance sheet; separate line restored in FY25–FY26.",
       },
     },
   })
   balanceSheet.addRow("short_term_borrowings", {
     ...rowFormatOptions("currency", 0),
     expr: 'DebtLeasesSchedule["revolver_end", @col]',
-    cells: {
-      line_item: "Short-term / revolver borrowings (zero in Base/Bull/Bear)",
-    },
+    cells: { line_item: "Short-term borrowings" },
   })
   balanceSheet.addRow("other_current_liabilities", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Other current liabilities (incl. current op/fin leases & FY24 debt reclass)",
+        "Other current liabilities",
         bs.otherCurrentLiabilities
       ),
       ...Object.fromEntries(
@@ -164,18 +166,18 @@ export function buildBalanceSheetAndEquity(
   balanceSheet.addRow("long_term_debt", {
     ...rowFormatOptions("currency", 0),
     expr: 'DebtLeasesSchedule["long_term_debt_excl_current", @col]',
-    cells: { line_item: "Long-term debt, excluding current portion" },
+    cells: { line_item: "Long-term debt, excl. current" },
   })
   balanceSheet.addRow("long_term_operating_lease_liabilities", {
     ...rowFormatOptions("currency", 0),
     expr: 'DebtLeasesSchedule["lt_op_lease_liab", @col]',
-    cells: { line_item: "Long-term operating lease liabilities" },
+    cells: { line_item: "LT operating lease liabilities" },
   })
   balanceSheet.addRow("other_long_term_liabilities", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Other long-term liabilities (incl. LT finance leases)",
+        "Other long-term liabilities",
         bs.otherLongTermLiabilities
       ),
       ...Object.fromEntries(
@@ -198,12 +200,12 @@ export function buildBalanceSheetAndEquity(
   balanceSheet.addRow("common_stock_and_apic", {
     ...rowFormatOptions("currency", 0),
     expr: 'ShareEquitySchedule["common_stock_and_apic", @col]',
-    cells: { line_item: "Common stock & additional paid-in capital" },
+    cells: { line_item: "Common stock and APIC" },
   })
   balanceSheet.addRow("aoci", {
     ...rowFormatOptions("currency", 0),
     expr: 'ShareEquitySchedule["aoci", @col]',
-    cells: { line_item: "Accumulated other comprehensive loss" },
+    cells: { line_item: "Accumulated other comp. loss" },
   })
   balanceSheet.addRow("retained_earnings", {
     ...rowFormatOptions("currency", 0),
@@ -229,39 +231,48 @@ export function buildBalanceSheetAndEquity(
   })
   balanceSheet.addRow("balance_check", {
     ...rowFormatOptions("currency", 4),
+    style: "bold",
     highlight: true,
     expr: '@table["total_assets", @col] - @table["total_liabilities_and_equity", @col]',
-    cells: {
-      line_item: {
-        value: "Balance Sheet Tie-Out Check (Assets - L&E = 0)",
-        note: "Zero-plug identity check across all 15 periods and all 3 scenarios.",
-      },
-    },
+    cells: { line_item: "Balance check (Assets − L&E)" },
   })
 
-  // Share Count & Equity Roll-Forward Table
+  return balanceSheet
+}
+
+export function buildShareEquitySchedule(
+  sheet: Sheet,
+  kg: CostcoKnowledgeData,
+  belowTarget?: Table
+): Table {
+  const bs = kg.cost.balanceSheet
+  const eq = kg.cost.equityAndShares
+
   const shareEquity = sheet.addTable(
     "ShareEquitySchedule",
-    "Share Count, Capital Return & Stockholders' Equity Roll-Forward ($M / M Shares)",
+    "Share Count, Capital Returns & Equity Roll-Forward ($M / M Shares)",
     {
       subtitle: [
-        "FY22–FY26 audited; FY27E includes $13,294M special dividend ($30.00/sh x 443.129M SEC shares) plus non-circular excess-cash buyback sweep ($M / M shares)",
-        `Source: ${kg.citations.balanceSheet}`,
+        "FY22A–FY26A audited; FY27E includes declared special dividend plus excess-cash buyback sweep ($M / M shares)",
+        `Source: ${kg.citations.balanceSheet}; ${kg.citations.guidanceCapitalReturn}`,
       ],
       currency: "USD",
-      below: balanceSheet,
+      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(shareEquity, {
-    descriptorLabel: "Equity / Share Line ($M / M Shares)",
+    descriptorLabel: "Shares and equity ($M / M)",
   })
 
-  shareEquity.addSectionHeader("1. Common & Diluted Share Roll-Forward (M)")
+  shareEquity.addSectionHeader("Common and diluted share roll-forward (M)")
   shareEquity.addRow("beg_shares", {
     ...rowFormatOptions("number", 3),
     cells: {
-      line_item: "Beginning common shares outstanding (M)",
-      FY22: { expr: 'MarketAnchors["fy21_ending_shares", "val"]' },
+      line_item: "Beginning common shares (M)",
+      FY22: {
+        expr: 'MarketAnchors["fy21_ending_shares", "val"]',
+        note: "FY21 ending common shares per FY22 Form 10-K.",
+      },
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
           p,
@@ -273,7 +284,7 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("rsu_shares_delivered", {
     ...rowFormatOptions("number", 3),
     cells: buildHistoricalCellMap(
-      "(+) RSUs vested & net delivered (M)",
+      "(+) Net RSU shares delivered (M)",
       eq.rsuVestedDeliveredMillions
     ),
     expr: 'PeriodAssumptionsActive["rsu_vested_shares", @col]',
@@ -281,15 +292,13 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("assumed_repurchase_price", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: {
-        value: "Assumed share repurchase price ($/sh, ex-div anchor)",
-        note: "FY27E anchors to 2026-11-13 ex-$30 special dividend market price, compounding independently of intrinsic DCF without circularity.",
-      },
+      line_item: "Assumed buyback price ($/sh)",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [p, eq.repurchaseAvgPrice[p]])
       ),
       FY27E: {
-        expr: '(MarketAnchors["cost_close_price", "val"] - ScalarAssumptionsActive["special_dividend_ps_fy27", "val"]) * (1 + ScalarAssumptionsActive["buyback_price_growth", "val"])',
+        expr: '(MarketAnchors["cost_close_price", "val"] - ScalarAssumptionsActive["special_dividend_ps_fy27", "val"]) * ((1 + ScalarAssumptionsActive["buyback_price_growth", "val"]) ^ DcfSchedule["discount_years", "FY27E"])',
+        note: "Anchored to 2026-11-13 ex-special-dividend share price, pro-rated to FY27E cash-flow midpoint.",
       },
       ...Object.fromEntries(
         FORECAST_PERIODS.slice(1).map((p) => [
@@ -312,10 +321,7 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("excess_cash_buyback_sweep", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "(+) Opening excess cash buyback sweep ($M)",
-        note: "Non-circular sweep of excess opening Cash & STI (net of scheduled debt maturities & exogenous special dividend) above target operating cash buffer.",
-      },
+      line_item: "(+) Excess cash buyback sweep",
       ...Object.fromEntries(HISTORICAL_PERIODS.map((p) => [p, 0])),
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
@@ -331,18 +337,13 @@ export function buildBalanceSheetAndEquity(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: 'MIN(@table["baseline_buyback_dollars", @col] + @table["excess_cash_buyback_sweep", @col], MAX(0, (@table["beg_shares", @col] + @table["rsu_shares_delivered", @col] - 1) * @table["assumed_repurchase_price", @col]))',
-    cells: {
-      line_item: {
-        value: "Total share repurchases (baseline + excess cash sweep, $M)",
-        note: "Sum of baseline buybacks + excess-cash sweep, floored at >=1.0M remaining shares so extreme low-price stress cannot drive share count negative (non-binding in Base/Bull/Bear).",
-      },
-    },
+    cells: { line_item: "Total share repurchases ($M)" },
   })
   shareEquity.addRow("shares_repurchased_10k", {
     ...rowFormatOptions("number", 3),
     cells: {
       ...buildHistoricalCellMap(
-        "Memo: Shares repurchased (10-K positive count, M)",
+        "Memo: Shares repurchased (10-K)",
         eq.sharesRepurchasedMillions
       ),
       ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, null])),
@@ -351,7 +352,7 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("shares_repurchased", {
     ...rowFormatOptions("number", 3),
     cells: {
-      line_item: "(-) Shares repurchased (M)",
+      line_item: "(−) Shares repurchased (M)",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -362,7 +363,7 @@ export function buildBalanceSheetAndEquity(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '-@table["buyback_dollars", @col] / @table["assumed_repurchase_price", @col]',
+            expr: 'IF(@table["assumed_repurchase_price", @col] > 0, -@table["buyback_dollars", @col] / @table["assumed_repurchase_price", @col], 0)',
           },
         ])
       ),
@@ -372,7 +373,7 @@ export function buildBalanceSheetAndEquity(
     ...rowFormatOptions("number", 3),
     style: "subtotal",
     cells: buildHistoricalCellMap(
-      "Ending common shares outstanding (M)",
+      "Ending common shares (M)",
       eq.endingSharesMillions
     ),
     expr: '@table["beg_shares", @col] + @table["rsu_shares_delivered", @col] + @table["shares_repurchased", @col]',
@@ -380,7 +381,7 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("wavg_basic_shares", {
     ...rowFormatOptions("number", 3),
     cells: buildHistoricalCellMap(
-      "Weighted-average basic shares (M)",
+      "Weighted-avg. basic shares (M)",
       eq.wavgBasicSharesMillions
     ),
     expr: '(@table["beg_shares", @col] + @table["ending_shares", @col]) / 2',
@@ -397,18 +398,19 @@ export function buildBalanceSheetAndEquity(
     ...rowFormatOptions("number", 3),
     style: "total",
     cells: buildHistoricalCellMap(
-      "Weighted-average diluted shares (M)",
+      "Weighted-avg. diluted shares (M)",
       eq.wavgDilutedSharesMillions
     ),
     expr: '@table["wavg_basic_shares", @col] + @table["dilutive_rsus", @col]',
   })
 
-  shareEquity.addSectionHeader("2. Dividend & Equity Roll-Forward ($M)")
+  shareEquity.addRowGutter()
+  shareEquity.addSectionHeader("Dividend and equity roll-forward ($M)")
   shareEquity.addRow("cash_dividends_declared_hist", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Memo: Cash dividends declared (10-K equity statement, $M)",
+        "Memo: Dividends declared (10-K)",
         eq.cashDividendsDeclared
       ),
       ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, null])),
@@ -418,7 +420,7 @@ export function buildBalanceSheetAndEquity(
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Memo: Total cash dividend payments (10-K CF statement, $M)",
+        "Memo: Dividends paid (CF stmt)",
         kg.cost.cashFlow.cashDividendPayments
       ),
       ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, null])),
@@ -449,17 +451,18 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("special_dividend_paid", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "Special cash dividend ($M)",
-        note: "FY24 = $15.00/sh ($6,655M); FY27E = $30.00/sh x 443.129M SEC shares = $13,294M (paid Dec 4, 2026).",
-      },
+      line_item: "Special cash dividend ($M)",
       FY22: 0,
       FY23: 0,
-      FY24: kg.cost.qoe.fy24SpecialDivTotal,
+      FY24: {
+        value: kg.cost.qoe.fy24SpecialDivTotal,
+        note: "FY24 $15.00/sh special dividend paid January 2024.",
+      },
       FY25: 0,
       FY26: 0,
       FY27E: {
         expr: 'ScalarAssumptionsActive["special_dividend_ps_fy27", "val"] * MarketAnchors["cost_sec_shares", "val"]',
+        note: "Declared special cash dividend across SEC shares (ex-date Nov 24, payable Dec 4, 2026).",
       },
       ...Object.fromEntries(FORECAST_PERIODS.slice(1).map((p) => [p, 0])),
     },
@@ -467,7 +470,7 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("rsu_tax_withholdings", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "RSU tax withholdings paid in cash ($M)",
+      line_item: "RSU tax withholdings paid ($M)",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -487,10 +490,7 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("common_stock_hist", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      ...buildHistoricalCellMap(
-        "Memo: Common stock par value ($M)",
-        bs.commonStock
-      ),
+      ...buildHistoricalCellMap("Memo: Common stock par value", bs.commonStock),
       ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, null])),
     },
   })
@@ -498,7 +498,7 @@ export function buildBalanceSheetAndEquity(
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Memo: Additional paid-in capital ($M)",
+        "Memo: Additional paid-in capital",
         bs.additionalPaidInCapital
       ),
       ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, null])),
@@ -507,7 +507,7 @@ export function buildBalanceSheetAndEquity(
   shareEquity.addRow("common_stock_and_apic", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Common stock & APIC ending balance ($M)",
+      line_item: "Common stock & APIC ending",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -528,10 +528,7 @@ export function buildBalanceSheetAndEquity(
   })
   shareEquity.addRow("aoci", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Accumulated other comprehensive income (loss)",
-      bs.aoci
-    ),
+    cells: buildHistoricalCellMap("Accumulated other comp. loss", bs.aoci),
     expr: '@table["aoci", col.prev]',
   })
   shareEquity.addRow("retained_earnings", {
@@ -541,12 +538,16 @@ export function buildBalanceSheetAndEquity(
   })
   shareEquity.addRow("nci", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Noncontrolling interests",
-      bs.noncontrollingInterests
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Noncontrolling interests",
+        bs.noncontrollingInterests
+      ),
+      ...zeroForecastCells(
+        "Zero noncontrolling interest following FY22 Taiwan JV buyout."
+      ),
+    },
   })
 
-  return { balanceSheet, shareEquity }
+  return shareEquity
 }

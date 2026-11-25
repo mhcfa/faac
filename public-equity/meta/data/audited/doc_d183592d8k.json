@@ -1,0 +1,312 @@
+{
+  "document": {
+    "doc_id": "doc_d183592d8k",
+    "file_path": "data/raw/sec/0001326801/0001193125-26-438017/d183592d8k.htm",
+    "sha256": "454eab8c8240543c140d602c49c08c0f01c1a9909218841fe1c8e2070aecd836",
+    "doc_type": "sec_filing",
+    "size_bytes": 56440,
+    "title": "Meta Platforms, Inc. Form 8-K — Series A Mandatory Convertible Preferred & Forward Common Stock Sale (Oct 26/29, 2026)",
+    "report_date": "2026-10-26",
+    "filing_date": "2026-10-29",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001326801",
+      "company_name": "Meta Platforms, Inc.",
+      "tickers": "META,METAM",
+      "form": "8-K",
+      "accession_number": "0001193125-26-438017",
+      "filing_date": "2026-10-29",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526438017/d183592d8k.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "meta_post_q3_financings",
+      "title": "Meta Platforms Post-Q3 2026 Capital Structure & Financing Events",
+      "source": {
+        "doc_id": "doc_d183592d8k",
+        "origin": "prose",
+        "entity": "META",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//p[contains(., 'Mandatory Convertible Preferred Stock Offering')]"
+        },
+        "as_of_date": "2026-10-29"
+      },
+      "columns": [
+        {
+          "id": "event_2026_10_29",
+          "label": "Oct 29, 2026 Mandatory Convertible Preferred & Forward Equity",
+          "period_key": "2026-10-29",
+          "as_of_date": "2026-10-29",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "mcp_base_depositary_shares",
+          "label": "Series A 6.50% Mandatory Convertible Preferred (METAM) — base depositary shares",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '250,000,000 Series A depositary shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 250000000,
+              "raw_text": "250,000,000 Series A depositary shares",
+              "note": "Closed Oct 29, 2026; each depositary share represents a 1/20th interest in one share of Series A Mandatory Convertible Preferred Stock."
+            }
+          }
+        },
+        {
+          "id": "mcp_base_liquidation_preference",
+          "label": "Series A 6.50% Mandatory Convertible Preferred (METAM) — base liquidation preference",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '250,000,000 Series A depositary shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 12500000000,
+              "raw_text": "250,000,000 Depositary Shares × 1/20 × $1,000.00/sh",
+              "note": "Exact contractual aggregate liquidation preference: 250,000,000 depositary shares × (1/20 preferred share) × $1,000.00 liquidation preference = $12,500,000,000 ($12,500M)."
+            }
+          }
+        },
+        {
+          "id": "mcp_greenshoe_depositary_shares",
+          "label": "Series A 6.50% Mandatory Convertible Preferred (METAM) — greenshoe depositary shares option",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'additional 37,500,000 Depositary Shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 37500000,
+              "raw_text": "37,500,000 Depositary Shares",
+              "note": "30-day underwriter over-allotment option granted Oct 26, 2026; no exercise disclosed in SEC filings through Nov 12, 2026."
+            }
+          }
+        },
+        {
+          "id": "mcp_greenshoe_liquidation_preference",
+          "label": "Series A 6.50% Mandatory Convertible Preferred (METAM) — greenshoe liquidation preference",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'additional 37,500,000 Depositary Shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 1875000000,
+              "raw_text": "37,500,000 Depositary Shares × 1/20 × $1,000.00/sh",
+              "note": "Exact contractual over-allotment option liquidation preference: 37,500,000 depositary shares × (1/20) × $1,000.00 = $1,875,000,000 ($1,875M)."
+            }
+          }
+        },
+        {
+          "id": "mcp_liq_pref_per_preferred_share",
+          "label": "Series A Mandatory Convertible Preferred — liquidation preference per preferred share",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '250,000,000 Series A depositary shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 1000,
+              "raw_text": "$1,000.00 per share",
+              "note": "Equivalent to $50.00 liquidation preference per depositary share (1/20th interest)."
+            }
+          }
+        },
+        {
+          "id": "mcp_dividend_rate",
+          "label": "Series A Mandatory Convertible Preferred — annual cumulative dividend rate",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'rate per annum equal to 6.50%')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 6.5,
+              "raw_text": "6.50%",
+              "note": "Payable quarterly Feb 15, May 15, Aug 15, Nov 15 from Feb 15, 2027 through Aug 15, 2029 in cash and/or Class A (or Class C post-recap) shares."
+            }
+          }
+        },
+        {
+          "id": "mcp_min_conversion_rate_preferred",
+          "label": "Series A Mandatory Convertible Preferred — minimum conversion rate per $1,000 share",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'between 1.3620 and 1.6000 shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 1.362,
+              "raw_text": "1.3620",
+              "note": "Mandatory conversion settlement on or about Aug 15, 2029 into Class A (or Class C post-recap) common stock."
+            }
+          }
+        },
+        {
+          "id": "mcp_max_conversion_rate_preferred",
+          "label": "Series A Mandatory Convertible Preferred — maximum conversion rate per $1,000 share",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'between 1.3620 and 1.6000 shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 1.6,
+              "raw_text": "1.6000"
+            }
+          }
+        },
+        {
+          "id": "mcp_min_conversion_rate_depositary",
+          "label": "Series A Mandatory Convertible Preferred — minimum conversion rate per depositary share",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'between 1.3620 and 1.6000 shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 0.0681,
+              "raw_text": "0.0681",
+              "note": "1/20th of preferred share minimum conversion rate (1.3620 / 20 = 0.0681)."
+            }
+          }
+        },
+        {
+          "id": "mcp_max_conversion_rate_depositary",
+          "label": "Series A Mandatory Convertible Preferred — maximum conversion rate per depositary share",
+          "category": "mandatory_convertible_preferred",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'between 1.3620 and 1.6000 shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 0.08,
+              "raw_text": "0.0800",
+              "note": "1/20th of preferred share maximum conversion rate (1.6000 / 20 = 0.0800)."
+            }
+          }
+        },
+        {
+          "id": "fwd_common_initial_shares",
+          "label": "Forward common stock sale — initial Class A shares contracted",
+          "category": "forward_common_sale",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'aggregate of 40,000,000 shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 40000000,
+              "raw_text": "40,000,000 shares",
+              "note": "Forward Sale Agreements entered Oct 26, 2026 with Morgan Stanley and Goldman Sachs; no initial cash proceeds received; settles on or prior to Nov 19, 2027 (option to settle in Class C post-recap)."
+            }
+          }
+        },
+        {
+          "id": "fwd_common_greenshoe_option_shares",
+          "label": "Forward common stock sale — underwriter greenshoe option shares granted",
+          "category": "forward_common_sale",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'aggregate of 40,000,000 shares')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 6000000,
+              "raw_text": "6,000,000 shares",
+              "note": "30-day option granted Oct 26, 2026; subsequently exercised in full on Nov 4, 2026."
+            }
+          }
+        },
+        {
+          "id": "fwd_common_initial_price",
+          "label": "Forward common stock sale — initial forward sale price per share",
+          "category": "forward_common_sale",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'forward sale price is initially $622.91875')]"
+          },
+          "cells": {
+            "event_2026_10_29": {
+              "value": 622.91875,
+              "raw_text": "$622.91875 per share",
+              "note": "Subject to daily OBFR-less-spread adjustment, scheduled dividend reductions, and potential Class A/C spread adjustment if settled in Class C."
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

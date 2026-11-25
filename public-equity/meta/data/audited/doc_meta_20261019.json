@@ -1,0 +1,172 @@
+{
+  "document": {
+    "doc_id": "doc_meta_20261019",
+    "file_path": "data/raw/sec/0001326801/0001628280-26-066700/meta-20261019.htm",
+    "sha256": "22029d17710c293b9d2ae70189750bc612d3c4f5e22926e91a9c3d65a2b2c76e",
+    "doc_type": "sec_filing",
+    "size_bytes": 50015,
+    "title": "Meta Platforms, Inc. Form 8-K — Class C Recapitalization & Founder Alignment Agreement (Oct 19, 2026)",
+    "report_date": "2026-10-19",
+    "filing_date": "2026-10-21",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001326801",
+      "company_name": "Meta Platforms, Inc.",
+      "tickers": "META,METAM",
+      "form": "8-K",
+      "accession_number": "0001628280-26-066700",
+      "filing_date": "2026-10-21",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066700/meta-20261019.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "meta_post_q3_financings",
+      "title": "Meta Platforms Post-Q3 2026 Capital Structure & Financing Events",
+      "source": {
+        "doc_id": "doc_meta_20261019",
+        "origin": "prose",
+        "entity": "META",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//div[contains(., 'Item 1.01. Entry into a Material Definitive Agreement')]"
+        },
+        "as_of_date": "2026-10-19"
+      },
+      "columns": [
+        {
+          "id": "event_2026_10_19",
+          "label": "Oct 19, 2026 Class C Recapitalization",
+          "period_key": "2026-10-19",
+          "as_of_date": "2026-10-19",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "class_c_stock_dividend_ratio",
+          "label": "Class C one-time stock dividend ratio (Class C shares per Class A/B share)",
+          "category": "class_c_recapitalization",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'one-time stock dividend of one share')]"
+          },
+          "cells": {
+            "event_2026_10_19": {
+              "value": 1,
+              "raw_text": "one share of Class C common stock for each share (1:1)",
+              "note": "Restated Charter effective Jan 19, 2027; stock dividend payable within 5 business days after effectiveness."
+            }
+          }
+        },
+        {
+          "id": "class_c_doubling_ref_price",
+          "label": "Class C Doubling Event reference price (Sept 10, 2026 Class A baseline)",
+          "category": "class_c_recapitalization",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., '$580.60 per share')]"
+          },
+          "cells": {
+            "event_2026_10_19": {
+              "value": 580.6,
+              "raw_text": "$580.60 per share",
+              "note": "Successive 2x, 4x, 8x doublings of 30-day VWAP (equitably adjusted for the 1:1 Stock Dividend) trigger additional 1:1 Class C dividends subject to TSR hurdle."
+            }
+          }
+        },
+        {
+          "id": "class_c_founder_stapled_pct",
+          "label": "Founder Alignment Agreement — stapled Class C share proportion",
+          "category": "class_c_recapitalization",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., '20% of the shares of Class C')]"
+          },
+          "cells": {
+            "event_2026_10_19": {
+              "value": 80,
+              "raw_text": "80%",
+              "note": "Subject to Stapling Condition requiring matching Class A/B sale or Class B conversion upon sale."
+            }
+          }
+        },
+        {
+          "id": "class_c_founder_unstapled_pct",
+          "label": "Founder Alignment Agreement — freely saleable (unstapled) Class C proportion",
+          "category": "class_c_recapitalization",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., '20% of the shares of Class C')]"
+          },
+          "cells": {
+            "event_2026_10_19": {
+              "value": 20,
+              "raw_text": "20%"
+            }
+          }
+        },
+        {
+          "id": "class_c_quarterly_release_rate",
+          "label": "Founder Alignment Agreement — quarterly stapling release rate",
+          "category": "class_c_recapitalization",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'equal to 2.5% of the shares')]"
+          },
+          "cells": {
+            "event_2026_10_19": {
+              "value": 2.5,
+              "raw_text": "2.5%",
+              "note": "Released each full calendar quarter while Mark Zuckerberg satisfies Continued Leadership Condition; full release after 32 qualifying quarters (8 years)."
+            }
+          }
+        },
+        {
+          "id": "class_c_additional_dividend_tsr_hurdle",
+          "label": "Class C Additional Dividend — minimum compound annualized TSR hurdle",
+          "category": "class_c_recapitalization",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., '$580.60 per share')]"
+          },
+          "cells": {
+            "event_2026_10_19": {
+              "value": 10,
+              "raw_text": "10%",
+              "note": "Measured from Sept 10, 2026 on 30-day VWAP including reinvested cash dividends and distributions."
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

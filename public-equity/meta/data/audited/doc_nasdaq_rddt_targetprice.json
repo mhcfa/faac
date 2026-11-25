@@ -1,0 +1,134 @@
+{
+  "document": {
+    "doc_id": "doc_nasdaq_rddt_targetprice",
+    "file_path": "data/raw/market/nasdaq/nasdaq_rddt_targetprice.json",
+    "sha256": "977d3c3b9bc75adbb234609fac76d54a3dfbf47f78a939c2c2e58458ff04a40a",
+    "doc_type": "structured_data",
+    "size_bytes": 1755,
+    "title": "Nasdaq Analyst Target Price — RDDT",
+    "report_date": "2026-11-20",
+    "source_meta": {
+      "symbol": "RDDT",
+      "endpoint": "targetprice",
+      "source": "nasdaq_analyst",
+      "source_url": "https://api.nasdaq.com/api/analyst/RDDT/targetprice",
+      "retrieved_at": "2026-11-22T19:24:27.501Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "consensus_target_price",
+      "title": "Wall Street Consensus 12-Month Price Targets & Ratings",
+      "source": {
+        "doc_id": "doc_nasdaq_rddt_targetprice",
+        "origin": "structured_data",
+        "entity": "RDDT",
+        "basis": "consensus",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 1
+        },
+        "as_of_date": "2026-11-20"
+      },
+      "columns": [
+        {
+          "id": "d_2026_11_20",
+          "label": "2026-11-20",
+          "raw_label": "2026-11-20",
+          "period_key": "2026-11-20",
+          "as_of_date": "2026-11-20",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "target_price_mean",
+          "label": "Mean Consensus Price Target",
+          "raw_label": "priceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 155.52,
+              "raw_text": "155.52"
+            }
+          }
+        },
+        {
+          "id": "target_price_low",
+          "label": "Low Consensus Price Target",
+          "raw_label": "lowPriceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 100,
+              "raw_text": "100"
+            }
+          }
+        },
+        {
+          "id": "target_price_high",
+          "label": "High Consensus Price Target",
+          "raw_label": "highPriceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 275,
+              "raw_text": "275"
+            }
+          }
+        },
+        {
+          "id": "ratings_buy",
+          "label": "Analyst Buy Ratings",
+          "raw_label": "buy",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 11,
+              "raw_text": "11"
+            }
+          }
+        },
+        {
+          "id": "ratings_hold",
+          "label": "Analyst Hold Ratings",
+          "raw_label": "hold",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 13,
+              "raw_text": "13"
+            }
+          }
+        },
+        {
+          "id": "ratings_sell",
+          "label": "Analyst Sell Ratings",
+          "raw_label": "sell",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

@@ -25,114 +25,114 @@ export interface WorkingCapitalDrivers {
 export function baseWorkingCapitalDrivers(): WorkingCapitalDrivers {
   return Object.freeze({
     dsoDays: scalarDriver(4.8, {
-      label: "Receivables days (DSO, on net sales)",
+      label: "Receivables days (DSO)",
       format: "number",
       decimals: 1,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Held near FY26 level (4.85d), reflecting vendor rebates and third-party co-brand card receivables.",
+        "Held near recent steady state, reflecting vendor rebate timing and co-brand card receivables.",
       basis: "FY26 steady state",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     dioDays: scalarDriver(27.0, {
-      label: "Inventory days (DIO, on merchandise costs)",
+      label: "Inventory days (DIO)",
       format: "number",
       decimals: 1,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Normalized slightly above FY26 trough (26.6d) to reflect expanding non-foods/international supply chains (5Y median 29.1d).",
+        "Modestly above recent trough to accommodate non-foods mix and international supply-chain lead times.",
       basis: "Normalized cycle midpoint",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     dpoDays: scalarDriver(31.2, {
-      label: "Accounts payable days (DPO, on merchandise costs)",
+      label: "Accounts payable days (DPO)",
       format: "number",
       decimals: 1,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Sustains negative working capital float near FY26 actual (31.1d) given high inventory velocity.",
+        "Sustains negative working capital float supported by rapid merchandise inventory velocity.",
       basis: "FY26 run-rate",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     accruedSalariesDays: scalarDriver(7.0, {
-      label: "Accrued salaries & benefits (days of net sales)",
+      label: "Accrued salaries (days sales)",
       format: "number",
       decimals: 1,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Consistent with FY24-FY26 empirical payroll accrual cadence (6.91d-7.02d).",
+        "Matches empirical multi-year payroll accrual cadence relative to net sales.",
       basis: "3Y historical average",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     otherCurrentAssetsPctSales: scalarDriver(0.0067, {
-      label: "Other current assets (% of net sales)",
+      label: "Other current assets (% sales)",
       format: "percentage",
       decimals: 2,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Matches FY26 actual prepaid & other current asset intensity (0.67%).",
+        "Tracks recent prepaid and miscellaneous operating current asset intensity.",
       basis: "FY26 ratio",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     otherCurrentLiabOpPctSales: scalarDriver(0.024, {
-      label: "Other current operating liabilities (% of net sales)",
+      label: "Other curr. op. liab. (% sales)",
       format: "percentage",
       decimals: 2,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Excludes current operating/finance lease liabilities (tracked separately on lease schedule); matches FY26 operating OCL ratio (2.40%).",
+        "Reflects operating accruals excluding current lease liabilities tracked separately on the debt and lease schedule.",
       basis: "FY26 ex-lease ratio",
-      source: "FY26 Form 10-K, Item 8 & Note 5 (Leases)",
+      source: "FY26 10-K, Note 5",
     }),
     accruedRewardsPctSales: scalarDriver(0.0102, {
-      label: "Accrued member rewards (% of net sales)",
+      label: "Accrued member rewards (%)",
       format: "percentage",
       decimals: 2,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Tied to Executive 2% reward liability intensity (FY26 1.02%), rising gradually over time only if penetration increases.",
+        "Anchored to Executive reward accrual intensity relative to net merchandise sales.",
       basis: "FY26 actual ratio",
-      source: "FY26 Form 10-K, Item 7 & Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     deferredMfiPctMfi: scalarDriver(0.509, {
-      label: "Deferred membership fees (% of annual MFI)",
+      label: "Deferred MFI (% annual MFI)",
       format: "percentage",
       decimals: 1,
-      category: "Working Capital Efficiency",
+      category: "Working capital",
       rationale:
-        "Annual memberships recognize ratably over 12 months, structurally holding year-end deferred MFI near 50.9% of annual MFI (FY26: 50.89%).",
+        "Annual memberships amortize ratably over twelve months, holding deferred fees near half of annual fee revenue.",
       basis: "FY26 accrual ratio",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     opLeaseRouPctSales: scalarDriver(0.0091, {
-      label: "Operating lease ROU assets (% of net sales)",
+      label: "Op. lease ROU assets (% sales)",
       format: "percentage",
       decimals: 2,
-      category: "Fixed Assets & Leases",
+      category: "Fixed assets and leases",
       rationale:
-        "Majority-owned warehouse real estate (~80% owned) holds operating lease ROU footprint stable near 0.91% of net sales.",
+        "Predominantly owned warehouse real estate keeps operating lease ROU footprint low relative to sales.",
       basis: "FY26 ownership structure",
-      source: "FY26 Form 10-K, Item 1 & Item 8",
+      source: "FY26 10-K, Item 1",
     }),
     otherLtOpAssetsPctSales: scalarDriver(0.0139, {
-      label: "Other long-term assets (% of net sales)",
+      label: "Other LT assets (% sales)",
       format: "percentage",
       decimals: 2,
-      category: "Fixed Assets & Leases",
+      category: "Fixed assets and leases",
       rationale:
-        "Matches FY26 intensity (1.39%, inclusive of finance lease ROU assets and deferred tax/other assets).",
+        "Tracks recent long-term operating asset intensity, including finance lease ROU and deferred tax assets.",
       basis: "FY26 ratio",
-      source: "FY26 Form 10-K, Item 8",
+      source: "FY26 10-K, Item 8",
     }),
     otherLtOpLiabPctSales: scalarDriver(0.0055, {
-      label: "Other LT operating liabilities ex-fin lease (% of net sales)",
+      label: "Other LT op. liab. (% sales)",
       format: "percentage",
       decimals: 2,
-      category: "Fixed Assets & Leases",
+      category: "Fixed assets and leases",
       rationale:
-        "Excludes LT finance lease obligations (tracked in Debt & Leases); matches FY26 non-lease LT operating liability intensity (0.55%).",
+        "Measures non-lease long-term operating liabilities after isolating long-term finance lease obligations.",
       basis: "FY26 ex-lease ratio",
-      source: "FY26 Form 10-K, Item 8 & Note 5 (Leases)",
+      source: "FY26 10-K, Note 5",
     }),
     capexPctNetSales: periodDriver(
       vecFromTuple([
@@ -140,40 +140,43 @@ export function baseWorkingCapitalDrivers(): WorkingCapitalDrivers {
         0.017,
       ]),
       {
-        label: "CapEx (% of net sales)",
+        label: "CapEx (% net sales)",
         format: "percentage",
         decimals: 2,
-        category: "Fixed Assets & Leases",
+        category: "Fixed assets and leases",
         rationale:
-          "FY27E reflects $7.5B guided CapEx surge (~2.32% sales) for owned-club builds, logistics hubs, and fresh depots, moderating toward 1.70% steady state as openings slow.",
-        basis: "Guided FY27E step-up -> steady state",
-        source: "Q4 FY26 earnings call; FY26 Form 10-K, Item 8",
+          "Reflects guided near-term CapEx step-up for owned-club builds, logistics hubs, and fresh depots before moderating as openings taper.",
+        basis: "Guided FY27E -> steady state",
+        source: "Q4 FY26 call; FY26 10-K",
       }
     ),
     daPctBegPpe: scalarDriver(0.0838, {
-      label: "D&A (% of beginning net PP&E)",
+      label: "D&A (% beginning net PP&E)",
       format: "percentage",
       decimals: 2,
-      category: "Fixed Assets & Leases",
+      category: "Fixed assets and leases",
       rationale:
-        "Tightly clustered across FY24-FY26 (8.38%, 8.36%, 8.38%), reflecting ~12-year blended useful life across owned buildings and fixtures.",
-      basis: "FY24-FY26 empirical average",
-      source: "FY26 Form 10-K, Item 8",
+        "Consistent with multi-year empirical depreciation intensity across owned warehouse buildings and fixtures.",
+      basis: "FY24–FY26 average",
+      source: "FY26 10-K, Item 8",
     }),
   })
 }
 
-export function bullWorkingCapitalDrivers(): WorkingCapitalDrivers {
+export function upsideWorkingCapitalDrivers(): WorkingCapitalDrivers {
   const base = baseWorkingCapitalDrivers()
   return Object.freeze({
     ...base,
     dioDays: scalarDriver(26.5, {
       ...base.dioDays.meta,
-      rationale: "Faster inventory turns sustain 26.5d DIO.",
+      rationale:
+        "Faster warehouse inventory velocity trims merchandise days on hand.",
+      basis: "Faster inventory turns",
     }),
     dpoDays: scalarDriver(31.5, {
       ...base.dpoDays.meta,
-      rationale: "Modest vendor terms leverage expands float to 31.5d.",
+      rationale: "Incremental supplier scale expands payables float modestly.",
+      basis: "Supplier scale float",
     }),
     capexPctNetSales: periodDriver(
       vecFromTuple([
@@ -183,24 +186,28 @@ export function bullWorkingCapitalDrivers(): WorkingCapitalDrivers {
       {
         ...base.capexPctNetSales.meta,
         rationale:
-          "Higher sales denominator and depot scale bring CapEx intensity down to 1.65% by FY35E-FY36E.",
+          "Stronger sales density and depot scale moderate capital intensity over the decade.",
+        basis: "Higher depot utilization",
       }
     ),
   })
 }
 
-export function bearWorkingCapitalDrivers(): WorkingCapitalDrivers {
+export function downsideWorkingCapitalDrivers(): WorkingCapitalDrivers {
   const base = baseWorkingCapitalDrivers()
   return Object.freeze({
     ...base,
     dioDays: scalarDriver(28.0, {
       ...base.dioDays.meta,
       rationale:
-        "Slower sell-through and higher e-commerce SKU buffer push DIO up to 28.0d.",
+        "Slower sell-through and expanded e-commerce inventory buffers lengthen days on hand.",
+      basis: "Higher SKU buffer",
     }),
     dpoDays: scalarDriver(30.5, {
       ...base.dpoDays.meta,
-      rationale: "Slower inventory turn reduces negative WC float to 30.5d.",
+      rationale:
+        "Slower inventory turnover narrows negative working capital float.",
+      basis: "Narrower payables float",
     }),
     capexPctNetSales: periodDriver(
       vecFromTuple([
@@ -209,7 +216,8 @@ export function bearWorkingCapitalDrivers(): WorkingCapitalDrivers {
       {
         ...base.capexPctNetSales.meta,
         rationale:
-          "Higher store-remodel, cold-chain, and IT automation capex keeps intensity at 1.90%-2.40% despite slower openings.",
+          "Higher remodel, cold-chain, and warehouse automation spending sustains elevated CapEx intensity.",
+        basis: "Elevated remodel & IT CapEx",
       }
     ),
   })

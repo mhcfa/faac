@@ -1,0 +1,4466 @@
+{
+  "document": {
+    "doc_id": "doc_market_prices_5y_monthly",
+    "file_path": "data/raw/market/market_prices_5y_monthly.csv",
+    "sha256": "4561cfec4fd64c7eeeaf293e0ed0c700a0f7b7f85b6914c1039f6ae7dfe206c0",
+    "doc_type": "structured_data",
+    "size_bytes": 6051,
+    "title": "5-Year Monthly Adjusted Close Series for Beta Estimation (Oct 2021 – Nov 2026, through 2026-11-20)",
+    "report_date": "2026-11-20",
+    "filing_date": "2026-11-20",
+    "source_meta": {
+      "tickers": "BA,AIR.PA,GE,RTX,LMT,NOC,GD,^GSPC",
+      "interval": "1mo",
+      "observations": 62,
+      "period1_epoch": 1633046400,
+      "period2_epoch": 1795219200,
+      "cutoff_date": "2026-11-20",
+      "source": "yahoo_finance_v8_chart",
+      "source_url": "https://query1.finance.yahoo.com/v8/finance/chart/BA?period1=1633046400&period2=1795219200&interval=1mo&includeAdjustedClose=true",
+      "retrieved_at": "2026-11-23T19:50:12.559Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "market_prices_5y_monthly",
+      "title": "5-Year Monthly Adjusted Close Prices (Equity & S&P 500)",
+      "source": {
+        "doc_id": "doc_market_prices_5y_monthly",
+        "origin": "structured_data",
+        "exemption": "standalone_disclosure",
+        "basis": "market",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 63
+        }
+      },
+      "columns": [
+        {
+          "id": "d_2021_10_01",
+          "label": "2021-10-01",
+          "period_key": "2021-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2021_11_01",
+          "label": "2021-11-01",
+          "period_key": "2021-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2021_12_01",
+          "label": "2021-12-01",
+          "period_key": "2021-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_01_01",
+          "label": "2022-01-01",
+          "period_key": "2022-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_02_01",
+          "label": "2022-02-01",
+          "period_key": "2022-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_03_01",
+          "label": "2022-03-01",
+          "period_key": "2022-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_04_01",
+          "label": "2022-04-01",
+          "period_key": "2022-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_05_01",
+          "label": "2022-05-01",
+          "period_key": "2022-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_06_01",
+          "label": "2022-06-01",
+          "period_key": "2022-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_07_01",
+          "label": "2022-07-01",
+          "period_key": "2022-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_08_01",
+          "label": "2022-08-01",
+          "period_key": "2022-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_09_01",
+          "label": "2022-09-01",
+          "period_key": "2022-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_10_01",
+          "label": "2022-10-01",
+          "period_key": "2022-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_11_01",
+          "label": "2022-11-01",
+          "period_key": "2022-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2022_12_01",
+          "label": "2022-12-01",
+          "period_key": "2022-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_01_01",
+          "label": "2023-01-01",
+          "period_key": "2023-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_02_01",
+          "label": "2023-02-01",
+          "period_key": "2023-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_03_01",
+          "label": "2023-03-01",
+          "period_key": "2023-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_04_01",
+          "label": "2023-04-01",
+          "period_key": "2023-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_05_01",
+          "label": "2023-05-01",
+          "period_key": "2023-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_06_01",
+          "label": "2023-06-01",
+          "period_key": "2023-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_07_01",
+          "label": "2023-07-01",
+          "period_key": "2023-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_08_01",
+          "label": "2023-08-01",
+          "period_key": "2023-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_09_01",
+          "label": "2023-09-01",
+          "period_key": "2023-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_10_01",
+          "label": "2023-10-01",
+          "period_key": "2023-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_11_01",
+          "label": "2023-11-01",
+          "period_key": "2023-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_12_01",
+          "label": "2023-12-01",
+          "period_key": "2023-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_01_01",
+          "label": "2024-01-01",
+          "period_key": "2024-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_02_01",
+          "label": "2024-02-01",
+          "period_key": "2024-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_03_01",
+          "label": "2024-03-01",
+          "period_key": "2024-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_04_01",
+          "label": "2024-04-01",
+          "period_key": "2024-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_05_01",
+          "label": "2024-05-01",
+          "period_key": "2024-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_06_01",
+          "label": "2024-06-01",
+          "period_key": "2024-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_07_01",
+          "label": "2024-07-01",
+          "period_key": "2024-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_08_01",
+          "label": "2024-08-01",
+          "period_key": "2024-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_09_01",
+          "label": "2024-09-01",
+          "period_key": "2024-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_10_01",
+          "label": "2024-10-01",
+          "period_key": "2024-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_11_01",
+          "label": "2024-11-01",
+          "period_key": "2024-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_12_01",
+          "label": "2024-12-01",
+          "period_key": "2024-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_01_01",
+          "label": "2025-01-01",
+          "period_key": "2025-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_02_01",
+          "label": "2025-02-01",
+          "period_key": "2025-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_03_01",
+          "label": "2025-03-01",
+          "period_key": "2025-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_04_01",
+          "label": "2025-04-01",
+          "period_key": "2025-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_05_01",
+          "label": "2025-05-01",
+          "period_key": "2025-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_06_01",
+          "label": "2025-06-01",
+          "period_key": "2025-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_07_01",
+          "label": "2025-07-01",
+          "period_key": "2025-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_08_01",
+          "label": "2025-08-01",
+          "period_key": "2025-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_09_01",
+          "label": "2025-09-01",
+          "period_key": "2025-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_10_01",
+          "label": "2025-10-01",
+          "period_key": "2025-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_11_01",
+          "label": "2025-11-01",
+          "period_key": "2025-11-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_12_01",
+          "label": "2025-12-01",
+          "period_key": "2025-12-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_01_01",
+          "label": "2026-01-01",
+          "period_key": "2026-01-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_02_01",
+          "label": "2026-02-01",
+          "period_key": "2026-02-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_03_01",
+          "label": "2026-03-01",
+          "period_key": "2026-03-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_04_01",
+          "label": "2026-04-01",
+          "period_key": "2026-04-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_05_01",
+          "label": "2026-05-01",
+          "period_key": "2026-05-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_06_01",
+          "label": "2026-06-01",
+          "period_key": "2026-06-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_07_01",
+          "label": "2026-07-01",
+          "period_key": "2026-07-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_08_01",
+          "label": "2026-08-01",
+          "period_key": "2026-08-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_09_01",
+          "label": "2026-09-01",
+          "period_key": "2026-09-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_10_01",
+          "label": "2026-10-01",
+          "period_key": "2026-10-01",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_01",
+          "label": "2026-11-01",
+          "period_key": "2026-11-01",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "ba_adj_close",
+          "label": "Boeing (BA) Adjusted Close",
+          "raw_label": "BA",
+          "entity": "BA",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 207.029999,
+              "raw_text": "207.029999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 197.850006,
+              "raw_text": "197.850006",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 201.320007,
+              "raw_text": "201.320007",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 200.240005,
+              "raw_text": "200.240005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 205.339996,
+              "raw_text": "205.339996",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 191.5,
+              "raw_text": "191.5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 148.839996,
+              "raw_text": "148.839996",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 131.399994,
+              "raw_text": "131.399994",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 136.720001,
+              "raw_text": "136.720001",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 159.309998,
+              "raw_text": "159.309998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 160.25,
+              "raw_text": "160.25",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 121.080002,
+              "raw_text": "121.080002",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 142.509995,
+              "raw_text": "142.509995",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 178.880005,
+              "raw_text": "178.880005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 190.490005,
+              "raw_text": "190.490005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 213,
+              "raw_text": "213",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 201.550003,
+              "raw_text": "201.550003",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 212.429993,
+              "raw_text": "212.429993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 206.779999,
+              "raw_text": "206.779999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 205.699997,
+              "raw_text": "205.699997",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 211.160004,
+              "raw_text": "211.160004",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 238.850006,
+              "raw_text": "238.850006",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 224.029999,
+              "raw_text": "224.029999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 191.679993,
+              "raw_text": "191.679993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 186.820007,
+              "raw_text": "186.820007",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 231.630005,
+              "raw_text": "231.630005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 260.660004,
+              "raw_text": "260.660004",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 211.039993,
+              "raw_text": "211.039993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 203.720001,
+              "raw_text": "203.720001",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 192.990005,
+              "raw_text": "192.990005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 167.839996,
+              "raw_text": "167.839996",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 177.610001,
+              "raw_text": "177.610001",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 182.009995,
+              "raw_text": "182.009995",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 190.600006,
+              "raw_text": "190.600006",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 173.740005,
+              "raw_text": "173.740005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 152.039993,
+              "raw_text": "152.039993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 149.309998,
+              "raw_text": "149.309998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 155.440002,
+              "raw_text": "155.440002",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 177,
+              "raw_text": "177",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 176.520004,
+              "raw_text": "176.520004",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 174.630005,
+              "raw_text": "174.630005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 170.550003,
+              "raw_text": "170.550003",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 183.240005,
+              "raw_text": "183.240005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 207.320007,
+              "raw_text": "207.320007",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 209.529999,
+              "raw_text": "209.529999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 221.839996,
+              "raw_text": "221.839996",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 234.679993,
+              "raw_text": "234.679993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 215.830002,
+              "raw_text": "215.830002",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 201.020004,
+              "raw_text": "201.020004",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 189,
+              "raw_text": "189",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 217.119995,
+              "raw_text": "217.119995",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 233.720001,
+              "raw_text": "233.720001",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 227.529999,
+              "raw_text": "227.529999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 199.029999,
+              "raw_text": "199.029999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 229.029999,
+              "raw_text": "229.029999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 231.149994,
+              "raw_text": "231.149994",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 216.470001,
+              "raw_text": "216.470001",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 216.139999,
+              "raw_text": "216.139999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 207.779999,
+              "raw_text": "207.779999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 186.050003,
+              "raw_text": "186.050003",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 171.550003,
+              "raw_text": "171.550003",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 155.889999,
+              "raw_text": "155.889999",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        },
+        {
+          "id": "air_pa_adj_close",
+          "label": "Airbus SE (AIR.PA) Adjusted Close",
+          "raw_label": "AIR.PA",
+          "entity": "AIR.PA",
+          "unit": "EUR_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 101.468315,
+              "raw_text": "101.468315",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 90.569199,
+              "raw_text": "90.569199",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 103.083008,
+              "raw_text": "103.083008",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 102.862823,
+              "raw_text": "102.862823",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 105.4133,
+              "raw_text": "105.4133",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 101.248146,
+              "raw_text": "101.248146",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 98.214355,
+              "raw_text": "98.214355",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 101.229462,
+              "raw_text": "101.229462",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 86.032944,
+              "raw_text": "86.032944",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 97.600166,
+              "raw_text": "97.600166",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 91.095345,
+              "raw_text": "91.095345",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 82.720047,
+              "raw_text": "82.720047",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 101.973938,
+              "raw_text": "101.973938",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 101.6203,
+              "raw_text": "101.6203",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 103.31398,
+              "raw_text": "103.31398",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 106.86882,
+              "raw_text": "106.86882",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 115.411629,
+              "raw_text": "115.411629",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 114.722992,
+              "raw_text": "114.722992",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 119.999405,
+              "raw_text": "119.999405",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 115.657761,
+              "raw_text": "115.657761",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 124.926224,
+              "raw_text": "124.926224",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 126.455246,
+              "raw_text": "126.455246",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 127.776634,
+              "raw_text": "127.776634",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 119.848396,
+              "raw_text": "119.848396",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 119.187706,
+              "raw_text": "119.187706",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 128.550568,
+              "raw_text": "128.550568",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 131.929504,
+              "raw_text": "131.929504",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 139.499084,
+              "raw_text": "139.499084",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 144.350403,
+              "raw_text": "144.350403",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 161.131821,
+              "raw_text": "161.131821",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 148.534821,
+              "raw_text": "148.534821",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 149.706375,
+              "raw_text": "149.706375",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 123.164452,
+              "raw_text": "123.164452",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 134.399643,
+              "raw_text": "134.399643",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 133.304932,
+              "raw_text": "133.304932",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 126.006859,
+              "raw_text": "126.006859",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 134.59169,
+              "raw_text": "134.59169",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 141.697708,
+              "raw_text": "141.697708",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 148.630859,
+              "raw_text": "148.630859",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 160.480606,
+              "raw_text": "160.480606",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 159.11702,
+              "raw_text": "159.11702",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 156.313034,
+              "raw_text": "156.313034",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 144.47049,
+              "raw_text": "144.47049",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 159.13945,
+              "raw_text": "159.13945",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 174.044037,
+              "raw_text": "174.044037",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 172.846161,
+              "raw_text": "172.846161",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 175.811371,
+              "raw_text": "175.811371",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 193.818634,
+              "raw_text": "193.818634",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 209.528351,
+              "raw_text": "209.528351",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 200.740738,
+              "raw_text": "200.740738",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 194.800491,
+              "raw_text": "194.800491",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 189.891205,
+              "raw_text": "189.891205",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 180.8974,
+              "raw_text": "180.8974",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 157.902313,
+              "raw_text": "157.902313",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 174.880005,
+              "raw_text": "174.880005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 179.699997,
+              "raw_text": "179.699997",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 194.539993,
+              "raw_text": "194.539993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 202.199997,
+              "raw_text": "202.199997",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 197.240005,
+              "raw_text": "197.240005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 190.619995,
+              "raw_text": "190.619995",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 192.399994,
+              "raw_text": "192.399994",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 189.960007,
+              "raw_text": "189.960007",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        },
+        {
+          "id": "ge_adj_close",
+          "label": "GE Aerospace (GE) Adjusted Close",
+          "raw_label": "GE",
+          "entity": "GE",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 63.744019,
+              "raw_text": "63.744019",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 57.738567,
+              "raw_text": "57.738567",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 57.472767,
+              "raw_text": "57.472767",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 57.478851,
+              "raw_text": "57.478851",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 58.10548,
+              "raw_text": "58.10548",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 55.715912,
+              "raw_text": "55.715912",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 45.394779,
+              "raw_text": "45.394779",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 47.672119,
+              "raw_text": "47.672119",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 38.81604,
+              "raw_text": "38.81604",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 45.058796,
+              "raw_text": "45.058796",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 44.772266,
+              "raw_text": "44.772266",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 37.789906,
+              "raw_text": "37.789906",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 47.495266,
+              "raw_text": "47.495266",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 52.476147,
+              "raw_text": "52.476147",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 51.194885,
+              "raw_text": "51.194885",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 62.989975,
+              "raw_text": "62.989975",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 66.300705,
+              "raw_text": "66.300705",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 74.893433,
+              "raw_text": "74.893433",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 77.533508,
+              "raw_text": "77.533508",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 79.539017,
+              "raw_text": "79.539017",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 86.056961,
+              "raw_text": "86.056961",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 89.562279,
+              "raw_text": "89.562279",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 89.734756,
+              "raw_text": "89.734756",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 86.731743,
+              "raw_text": "86.731743",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 85.225418,
+              "raw_text": "85.225418",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 95.557915,
+              "raw_text": "95.557915",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 100.19471,
+              "raw_text": "100.19471",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 103.955048,
+              "raw_text": "103.955048",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 123.164993,
+              "raw_text": "123.164993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 137.798141,
+              "raw_text": "137.798141",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 159.458298,
+              "raw_text": "159.458298",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 162.729843,
+              "raw_text": "162.729843",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 156.649902,
+              "raw_text": "156.649902",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 167.999878,
+              "raw_text": "167.999878",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 172.362732,
+              "raw_text": "172.362732",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 186.417984,
+              "raw_text": "186.417984",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 169.810608,
+              "raw_text": "169.810608",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 180.071609,
+              "raw_text": "180.071609",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 165.146408,
+              "raw_text": "165.146408",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 201.56398,
+              "raw_text": "201.56398",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 204.940353,
+              "raw_text": "204.940353",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 198.546371,
+              "raw_text": "198.546371",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 199.925262,
+              "raw_text": "199.925262",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 243.939758,
+              "raw_text": "243.939758",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 255.327805,
+              "raw_text": "255.327805",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 269.300812,
+              "raw_text": "269.300812",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 273.393768,
+              "raw_text": "273.393768",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 299.210785,
+              "raw_text": "299.210785",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 307.297272,
+              "raw_text": "307.297272",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 296.853485,
+              "raw_text": "296.853485",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 306.732574,
+              "raw_text": "306.732574",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 305.497833,
+              "raw_text": "305.497833",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 340.81842,
+              "raw_text": "340.81842",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 282.986389,
+              "raw_text": "282.986389",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 289.129364,
+              "raw_text": "289.129364",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 322.865967,
+              "raw_text": "322.865967",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 372.697998,
+              "raw_text": "372.697998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 359.523315,
+              "raw_text": "359.523315",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 335.200287,
+              "raw_text": "335.200287",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 311.815857,
+              "raw_text": "311.815857",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 301.799988,
+              "raw_text": "301.799988",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 309.619995,
+              "raw_text": "309.619995",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        },
+        {
+          "id": "rtx_adj_close",
+          "label": "RTX Corporation (RTX) Adjusted Close",
+          "raw_label": "RTX",
+          "entity": "RTX",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 79.510948,
+              "raw_text": "79.510948",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 72.831055,
+              "raw_text": "72.831055",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 77.45723,
+              "raw_text": "77.45723",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 81.174393,
+              "raw_text": "81.174393",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 92.947784,
+              "raw_text": "92.947784",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 89.662491,
+              "raw_text": "89.662491",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 85.897491,
+              "raw_text": "85.897491",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 86.601875,
+              "raw_text": "86.601875",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 87.503212,
+              "raw_text": "87.503212",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 84.862923,
+              "raw_text": "84.862923",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 82.18866,
+              "raw_text": "82.18866",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 74.963371,
+              "raw_text": "74.963371",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 86.831512,
+              "raw_text": "86.831512",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 90.933022,
+              "raw_text": "90.933022",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 92.95948,
+              "raw_text": "92.95948",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 91.973869,
+              "raw_text": "91.973869",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 90.849838,
+              "raw_text": "90.849838",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 90.701675,
+              "raw_text": "90.701675",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 92.526237,
+              "raw_text": "92.526237",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 85.863602,
+              "raw_text": "85.863602",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 91.287163,
+              "raw_text": "91.287163",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 81.940392,
+              "raw_text": "81.940392",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 80.738617,
+              "raw_text": "80.738617",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 67.535553,
+              "raw_text": "67.535553",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 76.375145,
+              "raw_text": "76.375145",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 77.023209,
+              "raw_text": "77.023209",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 79.537704,
+              "raw_text": "79.537704",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 86.135925,
+              "raw_text": "86.135925",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 85.323273,
+              "raw_text": "85.323273",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 92.802254,
+              "raw_text": "92.802254",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 96.598831,
+              "raw_text": "96.598831",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 103.20108,
+              "raw_text": "103.20108",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 96.098297,
+              "raw_text": "96.098297",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 112.467247,
+              "raw_text": "112.467247",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 118.698975,
+              "raw_text": "118.698975",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 116.601006,
+              "raw_text": "116.601006",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 116.437408,
+              "raw_text": "116.437408",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 117.870239,
+              "raw_text": "117.870239",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 111.958824,
+              "raw_text": "111.958824",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 124.758804,
+              "raw_text": "124.758804",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 129.31871,
+              "raw_text": "129.31871",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 128.803329,
+              "raw_text": "128.803329",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 122.648064,
+              "raw_text": "122.648064",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 133.388901,
+              "raw_text": "133.388901",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 142.71283,
+              "raw_text": "142.71283",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 154.001236,
+              "raw_text": "154.001236",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 155.690598,
+              "raw_text": "155.690598",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 164.260437,
+              "raw_text": "164.260437",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 175.22554,
+              "raw_text": "175.22554",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 172.380005,
+              "raw_text": "172.380005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 180.747192,
+              "raw_text": "180.747192",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 198.023636,
+              "raw_text": "198.023636",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 200.352448,
+              "raw_text": "200.352448",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 190.741226,
+              "raw_text": "190.741226",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 174.099594,
+              "raw_text": "174.099594",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 178.389404,
+              "raw_text": "178.389404",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 188.388168,
+              "raw_text": "188.388168",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 213.697906,
+              "raw_text": "213.697906",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 206.94606,
+              "raw_text": "206.94606",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 184.949387,
+              "raw_text": "184.949387",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 199.04599,
+              "raw_text": "199.04599",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 190.169998,
+              "raw_text": "190.169998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        },
+        {
+          "id": "lmt_adj_close",
+          "label": "Lockheed Martin (LMT) Adjusted Close",
+          "raw_label": "LMT",
+          "entity": "LMT",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 290.71524,
+              "raw_text": "290.71524",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 294.002472,
+              "raw_text": "294.002472",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 313.486877,
+              "raw_text": "313.486877",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 343.229309,
+              "raw_text": "343.229309",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 385.264465,
+              "raw_text": "385.264465",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 392.014191,
+              "raw_text": "392.014191",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 383.77243,
+              "raw_text": "383.77243",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 393.312775,
+              "raw_text": "393.312775",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 384.242035,
+              "raw_text": "384.242035",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 369.809174,
+              "raw_text": "369.809174",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 377.928558,
+              "raw_text": "377.928558",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 347.504333,
+              "raw_text": "347.504333",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 437.814575,
+              "raw_text": "437.814575",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 439.195923,
+              "raw_text": "439.195923",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 440.372742,
+              "raw_text": "440.372742",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 419.344818,
+              "raw_text": "419.344818",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 432.005005,
+              "raw_text": "432.005005",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 430.611359,
+              "raw_text": "430.611359",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 423.069,
+              "raw_text": "423.069",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 407.176971,
+              "raw_text": "407.176971",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 422.188995,
+              "raw_text": "422.188995",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 409.341278,
+              "raw_text": "409.341278",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 413.901581,
+              "raw_text": "413.901581",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 377.538025,
+              "raw_text": "377.538025",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 419.708282,
+              "raw_text": "419.708282",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 416.312988,
+              "raw_text": "416.312988",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 421.398743,
+              "raw_text": "421.398743",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 399.242889,
+              "raw_text": "399.242889",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 401.076324,
+              "raw_text": "401.076324",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 426.01712,
+              "raw_text": "426.01712",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 435.438995,
+              "raw_text": "435.438995",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 440.50589,
+              "raw_text": "440.50589",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 440.421021,
+              "raw_text": "440.421021",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 510.96759,
+              "raw_text": "510.96759",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 535.652222,
+              "raw_text": "535.652222",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 554.2453,
+              "raw_text": "554.2453",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 517.732422,
+              "raw_text": "517.732422",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 501.955322,
+              "raw_text": "501.955322",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 463.629608,
+              "raw_text": "463.629608",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 441.695099,
+              "raw_text": "441.695099",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 429.692688,
+              "raw_text": "429.692688",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 429.346649,
+              "raw_text": "429.346649",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 459.180176,
+              "raw_text": "459.180176",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 463.630219,
+              "raw_text": "463.630219",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 448.204254,
+              "raw_text": "448.204254",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 407.40387,
+              "raw_text": "407.40387",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 440.936432,
+              "raw_text": "440.936432",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 486.63559,
+              "raw_text": "486.63559",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 479.490234,
+              "raw_text": "479.490234",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 446.327087,
+              "raw_text": "446.327087",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 475.066711,
+              "raw_text": "475.066711",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 622.938721,
+              "raw_text": "622.938721",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 646.37439,
+              "raw_text": "646.37439",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 596.767944,
+              "raw_text": "596.767944",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 511.437775,
+              "raw_text": "511.437775",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 523.760437,
+              "raw_text": "523.760437",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 506.328247,
+              "raw_text": "506.328247",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 579.157776,
+              "raw_text": "579.157776",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 557.779968,
+              "raw_text": "557.779968",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 509.25,
+              "raw_text": "509.25",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 636.950012,
+              "raw_text": "636.950012",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 565.5,
+              "raw_text": "565.5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        },
+        {
+          "id": "noc_adj_close",
+          "label": "Northrop Grumman (NOC) Adjusted Close",
+          "raw_label": "NOC",
+          "entity": "NOC",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 329.374359,
+              "raw_text": "329.374359",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 323.01416,
+              "raw_text": "323.01416",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 358.454926,
+              "raw_text": "358.454926",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 342.554199,
+              "raw_text": "342.554199",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 411.085632,
+              "raw_text": "411.085632",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 415.808807,
+              "raw_text": "415.808807",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 408.538116,
+              "raw_text": "408.538116",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 436.717743,
+              "raw_text": "436.717743",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 446.609802,
+              "raw_text": "446.609802",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 446.917847,
+              "raw_text": "446.917847",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 447.634674,
+              "raw_text": "447.634674",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 440.451874,
+              "raw_text": "440.451874",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 514.144653,
+              "raw_text": "514.144653",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 501.082367,
+              "raw_text": "501.082367",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 512.658264,
+              "raw_text": "512.658264",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 420.981049,
+              "raw_text": "420.981049",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 437.670319,
+              "raw_text": "437.670319",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 435.416443,
+              "raw_text": "435.416443",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 434.992096,
+              "raw_text": "434.992096",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 412.45993,
+              "raw_text": "412.45993",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 431.695953,
+              "raw_text": "431.695953",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 421.467041,
+              "raw_text": "421.467041",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 411.969421,
+              "raw_text": "411.969421",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 418.723175,
+              "raw_text": "418.723175",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 448.439697,
+              "raw_text": "448.439697",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 453.78775,
+              "raw_text": "453.78775",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 447.083496,
+              "raw_text": "447.083496",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 426.665192,
+              "raw_text": "426.665192",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 442.092468,
+              "raw_text": "442.092468",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 459.008301,
+              "raw_text": "459.008301",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 465.116821,
+              "raw_text": "465.116821",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 434.177704,
+              "raw_text": "434.177704",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 419.903229,
+              "raw_text": "419.903229",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 466.492767,
+              "raw_text": "466.492767",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 503.951355,
+              "raw_text": "503.951355",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 510.642944,
+              "raw_text": "510.642944",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 492.221619,
+              "raw_text": "492.221619",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 473.490845,
+              "raw_text": "473.490845",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 455.720001,
+              "raw_text": "455.720001",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 473.180054,
+              "raw_text": "473.180054",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 448.388275,
+              "raw_text": "448.388275",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 499.432892,
+              "raw_text": "499.432892",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 474.5495,
+              "raw_text": "474.5495",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 472.862,
+              "raw_text": "472.862",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 490.033417,
+              "raw_text": "490.033417",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 565.138977,
+              "raw_text": "565.138977",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 578.301758,
+              "raw_text": "578.301758",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 599.545532,
+              "raw_text": "599.545532",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 574.090515,
+              "raw_text": "574.090515",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 563.070129,
+              "raw_text": "563.070129",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 563.336914,
+              "raw_text": "563.336914",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 683.915771,
+              "raw_text": "683.915771",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 717.940674,
+              "raw_text": "717.940674",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 676.175293,
+              "raw_text": "676.175293",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 574.328735,
+              "raw_text": "574.328735",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 558.669189,
+              "raw_text": "558.669189",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 507.00415,
+              "raw_text": "507.00415",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 540.023987,
+              "raw_text": "540.023987",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 539.700012,
+              "raw_text": "539.700012",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 483.480011,
+              "raw_text": "483.480011",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 557.539978,
+              "raw_text": "557.539978",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 534.309998,
+              "raw_text": "534.309998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        },
+        {
+          "id": "gd_adj_close",
+          "label": "General Dynamics (GD) Adjusted Close",
+          "raw_label": "GD",
+          "entity": "GD",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 182.763168,
+              "raw_text": "182.763168",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 170.341537,
+              "raw_text": "170.341537",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 187.91925,
+              "raw_text": "187.91925",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 192.271027,
+              "raw_text": "192.271027",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 212.531509,
+              "raw_text": "212.531509",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 218.632355,
+              "raw_text": "218.632355",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 215.54512,
+              "raw_text": "215.54512",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 204.95607,
+              "raw_text": "204.95607",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 202.78598,
+              "raw_text": "202.78598",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 207.753693,
+              "raw_text": "207.753693",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 209.825043,
+              "raw_text": "209.825043",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 194.463745,
+              "raw_text": "194.463745",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 230.233139,
+              "raw_text": "230.233139",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 232.620239,
+              "raw_text": "232.620239",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 228.675552,
+              "raw_text": "228.675552",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 215.952499,
+              "raw_text": "215.952499",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 211.180481,
+              "raw_text": "211.180481",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 211.458511,
+              "raw_text": "211.458511",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 203.484695,
+              "raw_text": "203.484695",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 190.288101,
+              "raw_text": "190.288101",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 200.511749,
+              "raw_text": "200.511749",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 209.654236,
+              "raw_text": "209.654236",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 212.523605,
+              "raw_text": "212.523605",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 207.206772,
+              "raw_text": "207.206772",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 227.649979,
+              "raw_text": "227.649979",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 232.989578,
+              "raw_text": "232.989578",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 244.970642,
+              "raw_text": "244.970642",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 251.316574,
+              "raw_text": "251.316574",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 259.150391,
+              "raw_text": "259.150391",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 267.913635,
+              "raw_text": "267.913635",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 273.615906,
+              "raw_text": "273.615906",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 285.700653,
+              "raw_text": "285.700653",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 276.522675,
+              "raw_text": "276.522675",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 286.116577,
+              "raw_text": "286.116577",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 286.739227,
+              "raw_text": "286.739227",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 289.459503,
+              "raw_text": "289.459503",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 280.66214,
+              "raw_text": "280.66214",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 273.347504,
+              "raw_text": "273.347504",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 253.59787,
+              "raw_text": "253.59787",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 248.64566,
+              "raw_text": "248.64566",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 244.4077,
+              "raw_text": "244.4077",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 263.739685,
+              "raw_text": "263.739685",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 264.755646,
+              "raw_text": "264.755646",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 270.953247,
+              "raw_text": "270.953247",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 283.766846,
+              "raw_text": "283.766846",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 304.732086,
+              "raw_text": "304.732086",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 317.406097,
+              "raw_text": "317.406097",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 333.473389,
+              "raw_text": "333.473389",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 338.769836,
+              "raw_text": "338.769836",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 335.557953,
+              "raw_text": "335.557953",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 330.67627,
+              "raw_text": "330.67627",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 346.258545,
+              "raw_text": "346.258545",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 352.136505,
+              "raw_text": "352.136505",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 338.496826,
+              "raw_text": "338.496826",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 341.139191,
+              "raw_text": "341.139191",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 343.636078,
+              "raw_text": "343.636078",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 350.987946,
+              "raw_text": "350.987946",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 381.572083,
+              "raw_text": "381.572083",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 369.560242,
+              "raw_text": "369.560242",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 330.230682,
+              "raw_text": "330.230682",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 372.589996,
+              "raw_text": "372.589996",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 341.5,
+              "raw_text": "341.5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        },
+        {
+          "id": "gspc_adj_close",
+          "label": "S&P 500 Index (^GSPC) Adjusted Close",
+          "raw_label": "^GSPC",
+          "entity": "^GSPC",
+          "unit": "index",
+          "scale": 1,
+          "cells": {
+            "d_2021_10_01": {
+              "value": 4605.379883,
+              "raw_text": "4605.379883",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 2
+              }
+            },
+            "d_2021_11_01": {
+              "value": 4567,
+              "raw_text": "4567",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 3
+              }
+            },
+            "d_2021_12_01": {
+              "value": 4766.180176,
+              "raw_text": "4766.180176",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 4
+              }
+            },
+            "d_2022_01_01": {
+              "value": 4515.549805,
+              "raw_text": "4515.549805",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 5
+              }
+            },
+            "d_2022_02_01": {
+              "value": 4373.939941,
+              "raw_text": "4373.939941",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 6
+              }
+            },
+            "d_2022_03_01": {
+              "value": 4530.410156,
+              "raw_text": "4530.410156",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 7
+              }
+            },
+            "d_2022_04_01": {
+              "value": 4131.930176,
+              "raw_text": "4131.930176",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 8
+              }
+            },
+            "d_2022_05_01": {
+              "value": 4132.149902,
+              "raw_text": "4132.149902",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 9
+              }
+            },
+            "d_2022_06_01": {
+              "value": 3785.379883,
+              "raw_text": "3785.379883",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 10
+              }
+            },
+            "d_2022_07_01": {
+              "value": 4130.290039,
+              "raw_text": "4130.290039",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 11
+              }
+            },
+            "d_2022_08_01": {
+              "value": 3955,
+              "raw_text": "3955",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12
+              }
+            },
+            "d_2022_09_01": {
+              "value": 3585.620117,
+              "raw_text": "3585.620117",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13
+              }
+            },
+            "d_2022_10_01": {
+              "value": 3871.97998,
+              "raw_text": "3871.97998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 14
+              }
+            },
+            "d_2022_11_01": {
+              "value": 4080.110107,
+              "raw_text": "4080.110107",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 15
+              }
+            },
+            "d_2022_12_01": {
+              "value": 3839.5,
+              "raw_text": "3839.5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 16
+              }
+            },
+            "d_2023_01_01": {
+              "value": 4076.600098,
+              "raw_text": "4076.600098",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 17
+              }
+            },
+            "d_2023_02_01": {
+              "value": 3970.149902,
+              "raw_text": "3970.149902",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 18
+              }
+            },
+            "d_2023_03_01": {
+              "value": 4109.310059,
+              "raw_text": "4109.310059",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 19
+              }
+            },
+            "d_2023_04_01": {
+              "value": 4169.47998,
+              "raw_text": "4169.47998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 20
+              }
+            },
+            "d_2023_05_01": {
+              "value": 4179.830078,
+              "raw_text": "4179.830078",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 21
+              }
+            },
+            "d_2023_06_01": {
+              "value": 4450.379883,
+              "raw_text": "4450.379883",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 22
+              }
+            },
+            "d_2023_07_01": {
+              "value": 4588.959961,
+              "raw_text": "4588.959961",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 23
+              }
+            },
+            "d_2023_08_01": {
+              "value": 4507.660156,
+              "raw_text": "4507.660156",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 24
+              }
+            },
+            "d_2023_09_01": {
+              "value": 4288.049805,
+              "raw_text": "4288.049805",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 25
+              }
+            },
+            "d_2023_10_01": {
+              "value": 4193.799805,
+              "raw_text": "4193.799805",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 26
+              }
+            },
+            "d_2023_11_01": {
+              "value": 4567.799805,
+              "raw_text": "4567.799805",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 27
+              }
+            },
+            "d_2023_12_01": {
+              "value": 4769.830078,
+              "raw_text": "4769.830078",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 28
+              }
+            },
+            "d_2024_01_01": {
+              "value": 4845.649902,
+              "raw_text": "4845.649902",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 29
+              }
+            },
+            "d_2024_02_01": {
+              "value": 5096.27002,
+              "raw_text": "5096.27002",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 30
+              }
+            },
+            "d_2024_03_01": {
+              "value": 5254.350098,
+              "raw_text": "5254.350098",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 31
+              }
+            },
+            "d_2024_04_01": {
+              "value": 5035.689941,
+              "raw_text": "5035.689941",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 32
+              }
+            },
+            "d_2024_05_01": {
+              "value": 5277.509766,
+              "raw_text": "5277.509766",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 33
+              }
+            },
+            "d_2024_06_01": {
+              "value": 5460.47998,
+              "raw_text": "5460.47998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 34
+              }
+            },
+            "d_2024_07_01": {
+              "value": 5522.299805,
+              "raw_text": "5522.299805",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 35
+              }
+            },
+            "d_2024_08_01": {
+              "value": 5648.399902,
+              "raw_text": "5648.399902",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 36
+              }
+            },
+            "d_2024_09_01": {
+              "value": 5762.47998,
+              "raw_text": "5762.47998",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 37
+              }
+            },
+            "d_2024_10_01": {
+              "value": 5705.450195,
+              "raw_text": "5705.450195",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 38
+              }
+            },
+            "d_2024_11_01": {
+              "value": 6032.379883,
+              "raw_text": "6032.379883",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 39
+              }
+            },
+            "d_2024_12_01": {
+              "value": 5881.629883,
+              "raw_text": "5881.629883",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 40
+              }
+            },
+            "d_2025_01_01": {
+              "value": 6040.529785,
+              "raw_text": "6040.529785",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 41
+              }
+            },
+            "d_2025_02_01": {
+              "value": 5954.5,
+              "raw_text": "5954.5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 42
+              }
+            },
+            "d_2025_03_01": {
+              "value": 5611.850098,
+              "raw_text": "5611.850098",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 43
+              }
+            },
+            "d_2025_04_01": {
+              "value": 5569.060059,
+              "raw_text": "5569.060059",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 44
+              }
+            },
+            "d_2025_05_01": {
+              "value": 5911.689941,
+              "raw_text": "5911.689941",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 45
+              }
+            },
+            "d_2025_06_01": {
+              "value": 6204.950195,
+              "raw_text": "6204.950195",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 46
+              }
+            },
+            "d_2025_07_01": {
+              "value": 6339.390137,
+              "raw_text": "6339.390137",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 47
+              }
+            },
+            "d_2025_08_01": {
+              "value": 6460.259766,
+              "raw_text": "6460.259766",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 48
+              }
+            },
+            "d_2025_09_01": {
+              "value": 6688.459961,
+              "raw_text": "6688.459961",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 49
+              }
+            },
+            "d_2025_10_01": {
+              "value": 6840.200195,
+              "raw_text": "6840.200195",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 50
+              }
+            },
+            "d_2025_11_01": {
+              "value": 6849.089844,
+              "raw_text": "6849.089844",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 51
+              }
+            },
+            "d_2025_12_01": {
+              "value": 6845.5,
+              "raw_text": "6845.5",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 52
+              }
+            },
+            "d_2026_01_01": {
+              "value": 6939.029785,
+              "raw_text": "6939.029785",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 53
+              }
+            },
+            "d_2026_02_01": {
+              "value": 6878.879883,
+              "raw_text": "6878.879883",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 54
+              }
+            },
+            "d_2026_03_01": {
+              "value": 6528.52002,
+              "raw_text": "6528.52002",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 55
+              }
+            },
+            "d_2026_04_01": {
+              "value": 7209.009766,
+              "raw_text": "7209.009766",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 56
+              }
+            },
+            "d_2026_05_01": {
+              "value": 7580.060059,
+              "raw_text": "7580.060059",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 57
+              }
+            },
+            "d_2026_06_01": {
+              "value": 7499.359863,
+              "raw_text": "7499.359863",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 58
+              }
+            },
+            "d_2026_07_01": {
+              "value": 7489.720215,
+              "raw_text": "7489.720215",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 59
+              }
+            },
+            "d_2026_08_01": {
+              "value": 7686.140137,
+              "raw_text": "7686.140137",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 60
+              }
+            },
+            "d_2026_09_01": {
+              "value": 7651.540039,
+              "raw_text": "7651.540039",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 61
+              }
+            },
+            "d_2026_10_01": {
+              "value": 7580.069824,
+              "raw_text": "7580.069824",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 62
+              }
+            },
+            "d_2026_11_01": {
+              "value": 6910.390137,
+              "raw_text": "6910.390137",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 63
+              }
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

@@ -1,0 +1,675 @@
+{
+  "document": {
+    "doc_id": "doc_meta_09302026xexhibit991",
+    "file_path": "data/raw/sec/0001326801/0001628280-26-066700/meta-09302026xexhibit991.htm",
+    "sha256": "679115dad04209324d839d3afdf7acbb77a764d301e97d304acf1b86584632d9",
+    "doc_type": "sec_filing",
+    "size_bytes": 287681,
+    "title": "Meta Platforms, Inc. Q3 2026 Earnings Release (Form 8-K Exhibit 99.1)",
+    "report_date": "2026-10-19",
+    "filing_date": "2026-10-21",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001326801",
+      "company_name": "Meta Platforms, Inc.",
+      "tickers": "META,METAM",
+      "form": "8-K",
+      "accession_number": "0001628280-26-066700",
+      "filing_date": "2026-10-21",
+      "is_inline_xbrl": false,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026066700/meta-09302026xexhibit991.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "meta_nongaap_fcf",
+      "title": "Meta Platforms Non-GAAP Free Cash Flow & Q3 2026 Ex-Legal Reconciliation",
+      "source": {
+        "doc_id": "doc_meta_09302026xexhibit991",
+        "origin": "html_table",
+        "entity": "META",
+        "basis": "non_gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[6]",
+          "table_index": 6
+        }
+      },
+      "columns": [
+        {
+          "id": "q3_2026",
+          "label": "Q3 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "q3_2025",
+          "label": "Q3 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_2026",
+          "label": "9M 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_2025",
+          "label": "9M 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3-YTD",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "cfo",
+          "label": "Net cash provided by operating activities",
+          "raw_label": "Net cash provided by operating activities",
+          "category": "free_cash_flow",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_2026": {
+              "value": 32786,
+              "raw_text": "$32,786"
+            },
+            "q3_2025": {
+              "value": 29999,
+              "raw_text": "$29,999"
+            },
+            "ytd_q3_2026": {
+              "value": 96873,
+              "raw_text": "$96,873"
+            },
+            "ytd_q3_2025": {
+              "value": 79586,
+              "raw_text": "$79,586"
+            }
+          }
+        },
+        {
+          "id": "capex_ppe",
+          "label": "Purchases of property and equipment",
+          "raw_label": "Purchases of property and equipment",
+          "category": "free_cash_flow",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_2026": {
+              "value": -33942,
+              "raw_text": "(33,942)"
+            },
+            "q3_2025": {
+              "value": -18829,
+              "raw_text": "(18,829)"
+            },
+            "ytd_q3_2026": {
+              "value": -83055,
+              "raw_text": "(83,055)"
+            },
+            "ytd_q3_2025": {
+              "value": -48308,
+              "raw_text": "(48,308)"
+            }
+          }
+        },
+        {
+          "id": "finance_lease_principal",
+          "label": "Principal payments on finance leases",
+          "raw_label": "Principal payments on finance leases",
+          "category": "free_cash_flow",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_2026": {
+              "value": -964,
+              "raw_text": "(964)"
+            },
+            "q3_2025": {
+              "value": -545,
+              "raw_text": "(545)"
+            },
+            "ytd_q3_2026": {
+              "value": -2769,
+              "raw_text": "(2,769)"
+            },
+            "ytd_q3_2025": {
+              "value": -1770,
+              "raw_text": "(1,770)"
+            }
+          }
+        },
+        {
+          "id": "free_cash_flow",
+          "label": "Free cash flow",
+          "raw_label": "Free cash flow",
+          "category": "free_cash_flow",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_2026": {
+              "value": -2120,
+              "raw_text": "$(2,120)"
+            },
+            "q3_2025": {
+              "value": 10625,
+              "raw_text": "$10,625"
+            },
+            "ytd_q3_2026": {
+              "value": 11049,
+              "raw_text": "$11,049"
+            },
+            "ytd_q3_2025": {
+              "value": 29508,
+              "raw_text": "$29,508"
+            }
+          }
+        },
+        {
+          "id": "opinc_reported",
+          "label": "Income from operations (reported, rounded to $B)",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Income from operations of $12.99 billion')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 12.99,
+              "raw_text": "$12.99 billion",
+              "note": "Exact GAAP income from operations in Table 2 is $12,988M; printed as $12.99 billion in Q3 2026 AG litigation reconciliation."
+            }
+          }
+        },
+        {
+          "id": "ag_legal_charge",
+          "label": "U.S. State Attorneys General litigation charge add-back",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Income from operations of $12.99 billion')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 9.89,
+              "raw_text": "$9.89 billion",
+              "note": "Q3 2026 G&A charge for Aug 2026 agreement with 52 U.S. State Attorneys General (aggregate payments up to approx. $18.59B)."
+            }
+          }
+        },
+        {
+          "id": "opinc_ex_legal",
+          "label": "Income from operations excluding AG legal charge",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Income from operations of $12.99 billion')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 22.88,
+              "raw_text": "$22.88 billion"
+            }
+          }
+        },
+        {
+          "id": "eps_diluted_reported",
+          "label": "Diluted EPS (reported)",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Diluted EPS of $3.83')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 3.83,
+              "raw_text": "$3.83"
+            }
+          }
+        },
+        {
+          "id": "ag_legal_eps_impact",
+          "label": "AG legal charge diluted EPS add-back",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Diluted EPS of $3.83')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 3.57,
+              "raw_text": "$3.57"
+            }
+          }
+        },
+        {
+          "id": "eps_diluted_ex_legal",
+          "label": "Diluted EPS excluding AG legal charge",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Diluted EPS of $3.83')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 7.4,
+              "raw_text": "$7.40"
+            }
+          }
+        },
+        {
+          "id": "etr_reported",
+          "label": "Effective tax rate (reported)",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Effective tax rate of 24%')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 24,
+              "raw_text": "24%"
+            }
+          }
+        },
+        {
+          "id": "ag_legal_etr_impact",
+          "label": "AG legal charge effective tax rate impact (percentage points)",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Effective tax rate of 24%')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": -7,
+              "raw_text": "decreased by 7 percentage points",
+              "note": "Excluding the Q3 2026 AG legal charge reduces effective tax rate by 7 percentage points (24% to 17%)."
+            }
+          }
+        },
+        {
+          "id": "etr_ex_legal",
+          "label": "Effective tax rate excluding AG legal charge",
+          "category": "ex_legal_reconciliation",
+          "origin": "prose",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Effective tax rate of 24%')]"
+          },
+          "cells": {
+            "q3_2026": {
+              "value": 17,
+              "raw_text": "17%"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "free_cash_flow",
+          "components": [
+            {
+              "id": "cfo",
+              "sign": 1
+            },
+            {
+              "id": "capex_ppe",
+              "sign": 1
+            },
+            {
+              "id": "finance_lease_principal",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "opinc_ex_legal",
+          "components": [
+            {
+              "id": "opinc_reported",
+              "sign": 1
+            },
+            {
+              "id": "ag_legal_charge",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "q3_2026"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "eps_diluted_ex_legal",
+          "components": [
+            {
+              "id": "eps_diluted_reported",
+              "sign": 1
+            },
+            {
+              "id": "ag_legal_eps_impact",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "q3_2026"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "etr_ex_legal",
+          "components": [
+            {
+              "id": "etr_reported",
+              "sign": 1
+            },
+            {
+              "id": "ag_legal_etr_impact",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "q3_2026"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "meta_guidance",
+      "title": "Meta Platforms CFO Outlook Commentary — Management Guidance (Oct 21, 2026)",
+      "source": {
+        "doc_id": "doc_meta_09302026xexhibit991",
+        "origin": "prose",
+        "entity": "META",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//div[contains(., 'CFO Outlook Commentary')]"
+        },
+        "as_of_date": "2026-10-21"
+      },
+      "columns": [
+        {
+          "id": "q4_2026",
+          "label": "Q4 2026 Guidance",
+          "period_key": "2026-Q4",
+          "data_type": "number"
+        },
+        {
+          "id": "fy_2026",
+          "label": "FY 2026 Guidance",
+          "period_key": "2026-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy_2027",
+          "label": "FY 2027 Outlook",
+          "period_key": "2027-FY",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "revenue_guidance_low",
+          "label": "Total revenue guidance — low",
+          "category": "revenue",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'fourth quarter 2026 total revenue')]"
+          },
+          "cells": {
+            "q4_2026": {
+              "value": 73,
+              "raw_text": "$73-76 billion",
+              "note": "Assumes ~1% FX headwind to YoY total revenue growth based on exchange rates as of Oct 21, 2026."
+            }
+          }
+        },
+        {
+          "id": "revenue_guidance_high",
+          "label": "Total revenue guidance — high",
+          "category": "revenue",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'fourth quarter 2026 total revenue')]"
+          },
+          "cells": {
+            "q4_2026": {
+              "value": 76,
+              "raw_text": "$73-76 billion"
+            }
+          }
+        },
+        {
+          "id": "total_expenses_guidance_low",
+          "label": "Total expenses guidance — low",
+          "category": "expenses",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'full year 2026 total expenses')]"
+          },
+          "cells": {
+            "fy_2026": {
+              "value": 175,
+              "raw_text": "$175-179 billion",
+              "note": "Raised to incorporate the $9.9B Q3 2026 AG legal proceedings charge."
+            }
+          }
+        },
+        {
+          "id": "total_expenses_guidance_high",
+          "label": "Total expenses guidance — high",
+          "category": "expenses",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'full year 2026 total expenses')]"
+          },
+          "cells": {
+            "fy_2026": {
+              "value": 179,
+              "raw_text": "$175-179 billion"
+            }
+          }
+        },
+        {
+          "id": "rl_operating_loss_guidance_low",
+          "label": "Reality Labs operating loss guidance — low (magnitude)",
+          "category": "segment_outlook",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Reality Labs losses to decline')]"
+          },
+          "cells": {
+            "fy_2026": {
+              "value": 18,
+              "raw_text": "$18-19 billion",
+              "note": "Positive magnitude representing guided Reality Labs operating loss range."
+            }
+          }
+        },
+        {
+          "id": "rl_operating_loss_guidance_high",
+          "label": "Reality Labs operating loss guidance — high (magnitude)",
+          "category": "segment_outlook",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'Reality Labs losses to decline')]"
+          },
+          "cells": {
+            "fy_2026": {
+              "value": 19,
+              "raw_text": "$18-19 billion",
+              "note": "Positive magnitude representing guided Reality Labs operating loss range."
+            }
+          }
+        },
+        {
+          "id": "rl_operating_loss_target",
+          "label": "Reality Labs operating loss outlook — target (magnitude)",
+          "category": "segment_outlook",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'narrow next year to around $15 billion')]"
+          },
+          "cells": {
+            "fy_2027": {
+              "value": 15,
+              "raw_text": "around $15 billion",
+              "note": "Positive magnitude representing expected FY2027 Reality Labs operating loss narrowing as spend reallocates toward AI."
+            }
+          }
+        },
+        {
+          "id": "capex_guidance_low",
+          "label": "Capital expenditures (incl. finance lease principal) guidance — low",
+          "category": "capex",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., '2026 capital expenditures, including principal payments')]"
+          },
+          "cells": {
+            "fy_2026": {
+              "value": 135,
+              "raw_text": "$135-145 billion",
+              "note": "Includes principal payments on finance leases; narrowed from prior $130-145B outlook."
+            }
+          }
+        },
+        {
+          "id": "capex_guidance_high",
+          "label": "Capital expenditures (incl. finance lease principal) guidance — high",
+          "category": "capex",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., '2026 capital expenditures, including principal payments')]"
+          },
+          "cells": {
+            "fy_2026": {
+              "value": 145,
+              "raw_text": "$135-145 billion",
+              "note": "Includes principal payments on finance leases."
+            }
+          }
+        },
+        {
+          "id": "etr_guidance_low",
+          "label": "Effective tax rate guidance — low",
+          "category": "tax",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'fourth quarter 2026 tax rate')]"
+          },
+          "cells": {
+            "q4_2026": {
+              "value": 15,
+              "raw_text": "15-17%"
+            }
+          }
+        },
+        {
+          "id": "etr_guidance_high",
+          "label": "Effective tax rate guidance — high",
+          "category": "tax",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//div[contains(., 'fourth quarter 2026 tax rate')]"
+          },
+          "cells": {
+            "q4_2026": {
+              "value": 17,
+              "raw_text": "15-17%"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

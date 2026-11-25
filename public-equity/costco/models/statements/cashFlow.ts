@@ -6,6 +6,7 @@ import {
   addTimeSeriesColumns,
   buildHistoricalCellMap,
   rowFormatOptions,
+  zeroForecastCells,
 } from "../timeline.ts"
 
 export function buildCashFlowStatement(
@@ -18,7 +19,7 @@ export function buildCashFlowStatement(
     "Consolidated Statements of Cash Flows ($M)",
     {
       subtitle: [
-        "FY22–FY26 audited GAAP historicals; FY27E–FY36E reconciles working capital, CapEx, STI maturities & capital returns with zero plugs ($M)",
+        "FY22A–FY26A audited GAAP historicals; FY27E–FY36E reconciles working capital, CapEx, debt maturities, and capital returns ($M)",
         `Source: ${kg.citations.cashFlow}`,
       ],
       currency: "USD",
@@ -26,16 +27,16 @@ export function buildCashFlowStatement(
     }
   )
   addTimeSeriesColumns(table, {
-    descriptorLabel: "Cash Flow Line ($M)",
+    descriptorLabel: "Cash flow ($M)",
   })
 
   const cf = kg.cost.cashFlow
 
-  table.addSectionHeader("Operating Activities (CFO)")
+  table.addSectionHeader("Operating activities (CFO)")
   table.addRow("net_income_incl_nci", {
     ...rowFormatOptions("currency", 0),
     expr: 'IncomeStatement["net_income_incl_nci", @col]',
-    cells: { line_item: "Net income including noncontrolling interests" },
+    cells: { line_item: "Net income incl. NCI" },
   })
   table.addRow("depreciation_and_amortization", {
     ...rowFormatOptions("currency", 0),
@@ -45,31 +46,37 @@ export function buildCashFlowStatement(
   table.addRow("stock_based_compensation", {
     ...rowFormatOptions("currency", 0),
     expr: 'OperatingSchedule["sbc_expense", @col]',
-    cells: {
-      line_item: "Stock-based compensation (non-cash addback inside CFO)",
-    },
+    cells: { line_item: "Stock-based compensation" },
   })
   table.addRow("non_cash_lease_expense", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Non-cash lease expense",
-      cf.nonCashLeaseExpense
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Non-cash lease expense",
+        cf.nonCashLeaseExpense
+      ),
+      ...zeroForecastCells(
+        "Forecast operating lease cash effects captured net on the operating lease line below."
+      ),
+    },
   })
   table.addRow("deferred_income_taxes", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Deferred income taxes",
-      cf.deferredIncomeTaxes
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Deferred income taxes",
+        cf.deferredIncomeTaxes
+      ),
+      ...zeroForecastCells(
+        "Forecast deferred tax timing differences assumed zero."
+      ),
+    },
   })
   table.addRow("other_non_cash_operating", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Other non-cash operating activities & debt disc. amort.",
+        "Other non-cash operating & amort.",
         cf.otherNonCashOperating
       ),
       ...Object.fromEntries(
@@ -82,25 +89,30 @@ export function buildCashFlowStatement(
   })
   table.addRow("change_inventories", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Change in merchandise inventories",
-      cf.changeInventories
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap("Change in inventories", cf.changeInventories),
+      ...zeroForecastCells(
+        "Forecast working capital changes consolidated on the net operating NWC line below."
+      ),
+    },
   })
   table.addRow("change_accounts_payable", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Change in accounts payable",
-      cf.changeAccountsPayable
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Change in accounts payable",
+        cf.changeAccountsPayable
+      ),
+      ...zeroForecastCells(
+        "Forecast payables changes consolidated on the net operating NWC line below."
+      ),
+    },
   })
   table.addRow("change_other_op_assets_liab", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Change in other operating assets and liabilities, net",
+        "Change in other op. working cap.",
         cf.changeOtherOpAssetsLiab
       ),
       ...Object.fromEntries(
@@ -114,13 +126,13 @@ export function buildCashFlowStatement(
   table.addRow("change_op_leases_and_lt_net", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Net change in operating lease ROU/liab & other LT op. items",
+      line_item: "Change in op. leases & LT items",
       ...Object.fromEntries(HISTORICAL_PERIODS.map((p) => [p, 0])),
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '(DebtLeasesSchedule["total_op_lease_liab", @col] - DebtLeasesSchedule["total_op_lease_liab", col.prev]) - (WorkingCapitalPPE["op_lease_rou_assets", @col] - WorkingCapitalPPE["op_lease_rou_assets", col.prev]) - (WorkingCapitalPPE["net_other_lt_op_assets", @col] - WorkingCapitalPPE["net_other_lt_op_assets", col.prev])',
+            expr: '(DebtLeasesSchedule["total_op_lease_liab", @col] - DebtLeasesSchedule["total_op_lease_liab", col.prev]) - (WorkingCapitalPPE["op_lease_rou_assets", @col] - WorkingCapitalPPE["op_lease_rou_assets", col.prev]) - (WorkingCapitalPPE["net_other_lt_op_assets", @col] - WorkingCapitalPPE["net_other_lt_op_assets", col.prev] - DebtLeasesSchedule["new_fin_lease_additions", @col])',
           },
         ])
       ),
@@ -130,17 +142,15 @@ export function buildCashFlowStatement(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: 'SUM(@table["net_income_incl_nci".."change_op_leases_and_lt_net", @col])',
-    cells: { line_item: "Net cash provided by operating activities (CFO)" },
+    cells: { line_item: "Operating cash flow (CFO)" },
   })
 
-  table.addSectionHeader("Investing Activities (CFI)")
+  table.addRowGutter()
+  table.addSectionHeader("Investing activities (CFI)")
   table.addRow("capex", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      ...buildHistoricalCellMap(
-        "Additions to property and equipment (CapEx)",
-        cf.capex
-      ),
+      ...buildHistoricalCellMap("Additions to PP&E (CapEx)", cf.capex),
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
           p,
@@ -152,7 +162,7 @@ export function buildCashFlowStatement(
   table.addRow("purchases_sti", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Purchases of short-term investments",
+      line_item: "Purchases of STI",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [p, cf.purchasesSti[p]])
       ),
@@ -169,7 +179,7 @@ export function buildCashFlowStatement(
   table.addRow("maturities_sti", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Maturities and sales of short-term investments",
+      line_item: "Maturities and sales of STI",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [p, cf.maturitiesSti[p]])
       ),
@@ -185,20 +195,25 @@ export function buildCashFlowStatement(
   })
   table.addRow("other_investing", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Other investing activities, net",
-      cf.otherInvesting
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Other investing activities, net",
+        cf.otherInvesting
+      ),
+      ...zeroForecastCells(
+        "No unannounced M&A or other investing outflows modeled."
+      ),
+    },
   })
   table.addRow("cfi", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: 'SUM(@table["capex".."other_investing", @col])',
-    cells: { line_item: "Net cash used in investing activities (CFI)" },
+    cells: { line_item: "Investing cash flow (CFI)" },
   })
 
-  table.addSectionHeader("Financing Activities (CFF)")
+  table.addRowGutter()
+  table.addSectionHeader("Financing activities (CFF)")
   table.addRow("repayments_lt_debt", {
     ...rowFormatOptions("currency", 0),
     cells: {
@@ -216,17 +231,21 @@ export function buildCashFlowStatement(
   })
   table.addRow("proceeds_lt_debt", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Proceeds from issuance of long-term debt",
-      cf.proceedsLtDebt
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Proceeds from long-term debt",
+        cf.proceedsLtDebt
+      ),
+      ...zeroForecastCells(
+        "Contractual maturities retired from operating cash without new bond issuance."
+      ),
+    },
   })
   table.addRow("tax_withholdings_sbc", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Tax withholdings on stock-based awards",
+        "Tax withholdings on SBC",
         cf.taxWithholdingsSbc
       ),
       ...Object.fromEntries(
@@ -255,15 +274,20 @@ export function buildCashFlowStatement(
   table.addRow("regular_cash_dividends", {
     ...rowFormatOptions("currency", 0),
     expr: '-ShareEquitySchedule["regular_dividends_paid", @col]',
-    cells: { line_item: "Regular cash dividend payments" },
+    cells: { line_item: "Regular cash dividends" },
   })
   table.addRow("special_cash_dividend", {
     ...rowFormatOptions("currency", 0),
     expr: '-ShareEquitySchedule["special_dividend_paid", @col]',
     cells: {
-      line_item: {
-        value: "Special cash dividend payment",
-        note: "FY24 $6,655M ($15.00/sh); FY27E $13,294M ($30.00/sh x 443.129M SEC shares, paid Dec 4, 2026).",
+      line_item: "Special cash dividend",
+      FY24: {
+        expr: '-ShareEquitySchedule["special_dividend_paid", "FY24"]',
+        note: "FY24 $15.00/sh special dividend ($6,655M paid Jan 2024).",
+      },
+      FY27E: {
+        expr: '-ShareEquitySchedule["special_dividend_paid", "FY27E"]',
+        note: "Declared special cash dividend payable Dec 4, 2026.",
       },
     },
   })
@@ -271,14 +295,14 @@ export function buildCashFlowStatement(
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Financing lease payments and other financing activities, net",
+        "Finance leases and other, net",
         cf.financingLeaseAndOther
       ),
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'DebtLeasesSchedule["total_fin_lease_liab", @col] - DebtLeasesSchedule["total_fin_lease_liab", col.prev]',
+            expr: '-DebtLeasesSchedule["fin_lease_principal_repayments", @col]',
           },
         ])
       ),
@@ -286,48 +310,52 @@ export function buildCashFlowStatement(
   })
   table.addRow("dividend_to_nci", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Cash dividend to noncontrolling interest",
-      cf.dividendToNci
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap("Cash dividend to NCI", cf.dividendToNci),
+      ...zeroForecastCells("Zero NCI following FY22 Taiwan JV buyout."),
+    },
   })
   table.addRow("acquisition_of_nci", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Acquisition of noncontrolling interest",
-      cf.acquisitionOfNci
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap("Acquisition of NCI", cf.acquisitionOfNci),
+      ...zeroForecastCells("Completed FY22 Taiwan JV acquisition."),
+    },
   })
   table.addRow("proceeds_st_borrowings", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Proceeds from short-term borrowings",
-      cf.proceedsStBorrowings
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Proceeds from ST borrowings",
+        cf.proceedsStBorrowings
+      ),
+      ...zeroForecastCells(
+        "Forecast liquidity facility draws tracked on revolver line below."
+      ),
+    },
   })
   table.addRow("repayments_st_borrowings", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Repayments of short-term borrowings",
-      cf.repaymentsStBorrowings
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap(
+        "Repayments of ST borrowings",
+        cf.repaymentsStBorrowings
+      ),
+      ...zeroForecastCells(
+        "Forecast liquidity facility repayments tracked on revolver line below."
+      ),
+    },
   })
   table.addRow("cff_ex_revolver", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: 'SUM(@table["repayments_lt_debt".."repayments_st_borrowings", @col])',
-    cells: {
-      line_item: "Pre-revolver financing cash flows",
-    },
+    cells: { line_item: "Pre-revolver financing cash flow" },
   })
   table.addRow("net_revolver_borrowings", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Automated short-term revolver draws / (repayments)",
+      line_item: "Credit facility draws / (repays)",
       ...Object.fromEntries(HISTORICAL_PERIODS.map((p) => [p, 0])),
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
@@ -343,29 +371,32 @@ export function buildCashFlowStatement(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["cff_ex_revolver", @col] + @table["net_revolver_borrowings", @col]',
-    cells: { line_item: "Net cash used in financing activities (CFF)" },
+    cells: { line_item: "Financing cash flow (CFF)" },
   })
 
-  table.addSectionHeader("Cash Reconciliation & Free Cash Flow Memo")
+  table.addRowGutter()
+  table.addSectionHeader("Cash reconciliation and free cash flow")
   table.addRow("fx_effect_on_cash", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Effect of exchange rate changes on cash",
-      cf.fxEffectOnCash
-    ),
-    expr: "0",
+    cells: {
+      ...buildHistoricalCellMap("FX effect on cash", cf.fxEffectOnCash),
+      ...zeroForecastCells("Zero forecast FX translation effect on cash."),
+    },
   })
   table.addRow("net_change_in_cash", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["cfo", @col] + @table["cfi", @col] + @table["cff", @col] + @table["fx_effect_on_cash", @col]',
-    cells: { line_item: "Net change in cash and cash equivalents" },
+    cells: { line_item: "Net change in cash" },
   })
   table.addRow("cash_beginning", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Cash and cash equivalents, beginning of year",
-      FY22: cf.cashBeginning.FY22,
+      line_item: "Cash, beginning of year",
+      FY22: {
+        value: cf.cashBeginning.FY22,
+        note: "FY21 ending cash per FY22 Form 10-K.",
+      },
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
           p,
@@ -378,27 +409,25 @@ export function buildCashFlowStatement(
     ...rowFormatOptions("currency", 0),
     style: "total",
     expr: '@table["cash_beginning", @col] + @table["net_change_in_cash", @col]',
-    cells: { line_item: "Cash and cash equivalents, end of year" },
+    cells: { line_item: "Cash, end of year" },
   })
   table.addRow("cash_tie_out_check", {
     ...rowFormatOptions("currency", 4),
+    style: "bold",
     highlight: true,
     expr: '@table["cash_ending", @col] - BalanceSheet["cash_and_equivalents", @col]',
-    cells: {
-      line_item: "CF Ending Cash - BS Cash Tie-Out Check (= 0)",
-    },
+    cells: { line_item: "Cash tie-out (CF − BS cash)" },
   })
   table.addRow("levered_fcf", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["cfo", @col] + @table["capex", @col]',
-    cells: { line_item: "Memo: Levered Free Cash Flow (GAAP CFO - CapEx)" },
+    cells: { line_item: "Memo: Levered FCF (CFO − CapEx)" },
   })
   table.addRow("unlevered_fcff", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item:
-        "Memo: Unlevered Free Cash Flow (FCFF, SBC retained in EBIT/NOPAT)",
+      line_item: "Memo: Unlevered FCFF (post-SBC)",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -411,15 +440,19 @@ export function buildCashFlowStatement(
   table.addRow("unlevered_fcff_ex_sbc_memo", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "Memo: Unlevered FCFF ex-SBC (sensitivity delta only)",
-        note: "Adds back after-tax SBC purely as memo to quantify SBC cash cost; excluded from primary DCF.",
-      },
+      line_item: "Memo: Unlevered FCFF ex-SBC",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
           p,
-          { expr: 'InvestedCapitalROIC["unlevered_fcff_ex_sbc_memo", @col]' },
+          p === "FY27E"
+            ? {
+                expr: 'InvestedCapitalROIC["unlevered_fcff_ex_sbc_memo", @col]',
+                note: "Reference sensitivity adding back after-tax SBC; primary DCF retains SBC as a cash operating cost.",
+              }
+            : {
+                expr: 'InvestedCapitalROIC["unlevered_fcff_ex_sbc_memo", @col]',
+              },
         ])
       ),
     },

@@ -1,0 +1,352 @@
+{
+  "document": {
+    "doc_id": "doc_nasdaq_eps_forecast_now",
+    "file_path": "data/raw/market/nasdaq-eps-forecast-now.json",
+    "sha256": "a7bf38b158c88359fbff8048e10a27fa4920a9b215cd538d7f2a280867e45399",
+    "doc_type": "other",
+    "size_bytes": 2022,
+    "title": "Nasdaq Analyst Consensus Earnings Forecast — NOW (2026-11-18)",
+    "report_date": "2026-11-18",
+    "source_meta": {
+      "ticker": "NOW",
+      "endpoint": "analyst/earnings-forecast",
+      "yearly_rows": 4,
+      "quarterly_rows": 5,
+      "source": "nasdaq",
+      "source_url": "https://api.nasdaq.com/api/analyst/NOW/earnings-forecast",
+      "retrieved_at": "2026-11-19T17:34:25.378Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "consensus_eps",
+      "title": "Nasdaq Analyst Consensus Annual EPS Forecast",
+      "source": {
+        "doc_id": "doc_nasdaq_eps_forecast_now",
+        "origin": "structured_data",
+        "exemption": "non_additive_metric",
+        "entity": "NOW",
+        "basis": "forecast",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1
+        },
+        "as_of_date": "2026-11-18"
+      },
+      "columns": [
+        {
+          "id": "fy2026",
+          "label": "FY2026",
+          "raw_label": "Dec 2026",
+          "period_key": "2026-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy2027",
+          "label": "FY2027",
+          "raw_label": "Dec 2027",
+          "period_key": "2027-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy2028",
+          "label": "FY2028",
+          "raw_label": "Dec 2028",
+          "period_key": "2028-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy2029",
+          "label": "FY2029",
+          "raw_label": "Dec 2029",
+          "period_key": "2029-FY",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "consensus_eps",
+          "label": "Consensus EPS Forecast",
+          "raw_label": "Consensus EPS* Forecast",
+          "category": "consensus_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy2026": {
+              "value": 2.12,
+              "raw_text": "2.12"
+            },
+            "fy2027": {
+              "value": 2.71,
+              "raw_text": "2.71"
+            },
+            "fy2028": {
+              "value": 3.57,
+              "raw_text": "3.57"
+            },
+            "fy2029": {
+              "value": 4.92,
+              "raw_text": "4.92"
+            }
+          }
+        },
+        {
+          "id": "high_eps",
+          "label": "High EPS Forecast",
+          "raw_label": "High EPS* Forecast",
+          "category": "consensus_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy2026": {
+              "value": 2.36,
+              "raw_text": "2.36"
+            },
+            "fy2027": {
+              "value": 3.04,
+              "raw_text": "3.04"
+            },
+            "fy2028": {
+              "value": 3.9,
+              "raw_text": "3.9"
+            },
+            "fy2029": {
+              "value": 4.92,
+              "raw_text": "4.92"
+            }
+          }
+        },
+        {
+          "id": "low_eps",
+          "label": "Low EPS Forecast",
+          "raw_label": "Low EPS* Forecast",
+          "category": "consensus_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy2026": {
+              "value": 2.01,
+              "raw_text": "2.01"
+            },
+            "fy2027": {
+              "value": 2.18,
+              "raw_text": "2.18"
+            },
+            "fy2028": {
+              "value": 3.32,
+              "raw_text": "3.32"
+            },
+            "fy2029": {
+              "value": 4.92,
+              "raw_text": "4.92"
+            }
+          }
+        },
+        {
+          "id": "num_estimates",
+          "label": "Number of Estimates",
+          "raw_label": "Number of Estimates",
+          "category": "analyst_coverage",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "fy2026": {
+              "value": 19,
+              "raw_text": "19"
+            },
+            "fy2027": {
+              "value": 19,
+              "raw_text": "19"
+            },
+            "fy2028": {
+              "value": 4,
+              "raw_text": "4"
+            },
+            "fy2029": {
+              "value": 1,
+              "raw_text": "1"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    },
+    {
+      "table_id": "consensus_eps_quarterly",
+      "title": "Nasdaq Analyst Consensus Quarterly EPS Forecast",
+      "source": {
+        "doc_id": "doc_nasdaq_eps_forecast_now",
+        "origin": "structured_data",
+        "exemption": "non_additive_metric",
+        "entity": "NOW",
+        "basis": "forecast",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1
+        },
+        "as_of_date": "2026-11-18"
+      },
+      "columns": [
+        {
+          "id": "fy2026_q4",
+          "label": "Q4 FY2026",
+          "raw_label": "Dec 2026",
+          "period_key": "2026-Q4",
+          "data_type": "number"
+        },
+        {
+          "id": "fy2027_q1",
+          "label": "Q1 FY2027",
+          "raw_label": "Mar 2027",
+          "period_key": "2027-Q1",
+          "data_type": "number"
+        },
+        {
+          "id": "fy2027_q2",
+          "label": "Q2 FY2027",
+          "raw_label": "Jun 2027",
+          "period_key": "2027-Q2",
+          "data_type": "number"
+        },
+        {
+          "id": "fy2027_q3",
+          "label": "Q3 FY2027",
+          "raw_label": "Sep 2027",
+          "period_key": "2027-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "fy2027_q4",
+          "label": "Q4 FY2027",
+          "raw_label": "Dec 2027",
+          "period_key": "2027-Q4",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "consensus_eps",
+          "label": "Consensus EPS Forecast",
+          "raw_label": "Consensus EPS* Forecast",
+          "category": "consensus_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy2026_q4": {
+              "value": 0.63,
+              "raw_text": "0.63"
+            },
+            "fy2027_q1": {
+              "value": 0.59,
+              "raw_text": "0.59"
+            },
+            "fy2027_q2": {
+              "value": 0.6,
+              "raw_text": "0.6"
+            },
+            "fy2027_q3": {
+              "value": 0.71,
+              "raw_text": "0.71"
+            },
+            "fy2027_q4": {
+              "value": 0.79,
+              "raw_text": "0.79"
+            }
+          }
+        },
+        {
+          "id": "high_eps",
+          "label": "High EPS Forecast",
+          "raw_label": "High EPS* Forecast",
+          "category": "consensus_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy2026_q4": {
+              "value": 0.75,
+              "raw_text": "0.75"
+            },
+            "fy2027_q1": {
+              "value": 0.71,
+              "raw_text": "0.71"
+            },
+            "fy2027_q2": {
+              "value": 0.73,
+              "raw_text": "0.73"
+            },
+            "fy2027_q3": {
+              "value": 0.8,
+              "raw_text": "0.8"
+            },
+            "fy2027_q4": {
+              "value": 0.93,
+              "raw_text": "0.93"
+            }
+          }
+        },
+        {
+          "id": "low_eps",
+          "label": "Low EPS Forecast",
+          "raw_label": "Low EPS* Forecast",
+          "category": "consensus_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy2026_q4": {
+              "value": 0.54,
+              "raw_text": "0.54"
+            },
+            "fy2027_q1": {
+              "value": 0.43,
+              "raw_text": "0.43"
+            },
+            "fy2027_q2": {
+              "value": 0.52,
+              "raw_text": "0.52"
+            },
+            "fy2027_q3": {
+              "value": 0.57,
+              "raw_text": "0.57"
+            },
+            "fy2027_q4": {
+              "value": 0.67,
+              "raw_text": "0.67"
+            }
+          }
+        },
+        {
+          "id": "num_estimates",
+          "label": "Number of Estimates",
+          "raw_label": "Number of Estimates",
+          "category": "analyst_coverage",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "fy2026_q4": {
+              "value": 14,
+              "raw_text": "14"
+            },
+            "fy2027_q1": {
+              "value": 11,
+              "raw_text": "11"
+            },
+            "fy2027_q2": {
+              "value": 11,
+              "raw_text": "11"
+            },
+            "fy2027_q3": {
+              "value": 11,
+              "raw_text": "11"
+            },
+            "fy2027_q4": {
+              "value": 11,
+              "raw_text": "11"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

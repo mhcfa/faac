@@ -1,32 +1,39 @@
 import type { ScenarioName } from "../timeline.ts"
 import {
   baseCapitalStructureDrivers,
-  bearCapitalStructureDrivers,
-  bullCapitalStructureDrivers,
+  downsideCapitalStructureDrivers,
+  upsideCapitalStructureDrivers,
   type CapitalStructureDrivers,
 } from "./capitalStructure.ts"
 import {
   baseOperatingDrivers,
-  bearOperatingDrivers,
-  bullOperatingDrivers,
+  downsideOperatingDrivers,
+  upsideOperatingDrivers,
   type OperatingDrivers,
 } from "./operating.ts"
 import {
   baseValuationDrivers,
-  bearValuationDrivers,
-  bullValuationDrivers,
+  downsideValuationDrivers,
+  upsideValuationDrivers,
   type ValuationDrivers,
 } from "./valuation.ts"
 import {
   baseWorkingCapitalDrivers,
-  bearWorkingCapitalDrivers,
-  bullWorkingCapitalDrivers,
+  downsideWorkingCapitalDrivers,
+  upsideWorkingCapitalDrivers,
   type WorkingCapitalDrivers,
 } from "./workingCapital.ts"
 
+export interface ScenarioFramingColumns {
+  readonly growth: string
+  readonly marginCapital: string
+  readonly valuation: string
+}
+
 export interface ScenarioDriverBundle {
   readonly scenario: ScenarioName
-  readonly thesis: string
+  readonly framing: string
+  readonly framingColumns: ScenarioFramingColumns
   readonly operating: OperatingDrivers
   readonly workingCapital: WorkingCapitalDrivers
   readonly capitalStructure: CapitalStructureDrivers
@@ -37,35 +44,53 @@ export function getScenarioDrivers(
   scenario: ScenarioName
 ): ScenarioDriverBundle {
   switch (scenario) {
+    case "Downside":
+      return Object.freeze({
+        scenario: "Downside",
+        framing:
+          "Slower openings, competitive comp deceleration, wage and tariff margin pressure, higher ERP, and lower multiples",
+        framingColumns: Object.freeze({
+          growth: "Slower net club openings and competitive comp deceleration",
+          marginCapital:
+            "Wage and tariff margin drag with elevated depot CapEx",
+          valuation: "Higher equity risk premium and peer-converging multiples",
+        }),
+        operating: downsideOperatingDrivers(),
+        workingCapital: downsideWorkingCapitalDrivers(),
+        capitalStructure: downsideCapitalStructureDrivers(),
+        valuation: downsideValuationDrivers(),
+      })
     case "Base":
       return Object.freeze({
         scenario: "Base",
-        thesis:
-          "Consensus-aligned club expansion, maturing US comps & post-hike MFI reset; FY27E CapEx build & $13.3B special dividend test cash yield vs. 10Y UST",
+        framing:
+          "Guided openings, moderating comps, post-hike fee normalization, near-term CapEx step-up, and cycle-average WACC",
+        framingColumns: Object.freeze({
+          growth: "Guided club rollout with moderating core comparable sales",
+          marginCapital:
+            "Post-hike MFI normalization and near-term CapEx step-up",
+          valuation: "Cycle-average WACC and ROIC-calibrated trading multiples",
+        }),
         operating: baseOperatingDrivers(),
         workingCapital: baseWorkingCapitalDrivers(),
         capitalStructure: baseCapitalStructureDrivers(),
         valuation: baseValuationDrivers(),
       })
-    case "Bull":
+    case "Upside":
       return Object.freeze({
-        scenario: "Bull",
-        thesis:
-          "Sustained global club rollout, resilient US comps & retail-media GM expansion; SG&A leverage, lower 4.25% ERP & premium exit multiples test upside ceiling",
-        operating: bullOperatingDrivers(),
-        workingCapital: bullWorkingCapitalDrivers(),
-        capitalStructure: bullCapitalStructureDrivers(),
-        valuation: bullValuationDrivers(),
-      })
-    case "Bear":
-      return Object.freeze({
-        scenario: "Bear",
-        thesis:
-          "Post-fee-hike member saturation, club competition & wage/tariff margin pressure; Higher 4.75% ERP & multiple compression toward mature retail valuation norms",
-        operating: bearOperatingDrivers(),
-        workingCapital: bearWorkingCapitalDrivers(),
-        capitalStructure: bearCapitalStructureDrivers(),
-        valuation: bearValuationDrivers(),
+        scenario: "Upside",
+        framing:
+          "Sustained global rollout, resilient comps, private-label margin lift, cash SG&A leverage, lower ERP, and sustained multiples",
+        framingColumns: Object.freeze({
+          growth: "Accelerated global club rollout and resilient core comps",
+          marginCapital:
+            "Private-label margin lift with cash SG&A leverage discipline",
+          valuation: "Lower equity risk premium and sustained spot multiples",
+        }),
+        operating: upsideOperatingDrivers(),
+        workingCapital: upsideWorkingCapitalDrivers(),
+        capitalStructure: upsideCapitalStructureDrivers(),
+        valuation: upsideValuationDrivers(),
       })
   }
 }
@@ -73,9 +98,9 @@ export function getScenarioDrivers(
 export const ALL_SCENARIO_DRIVERS: Readonly<
   Record<ScenarioName, ScenarioDriverBundle>
 > = Object.freeze({
+  Downside: getScenarioDrivers("Downside"),
   Base: getScenarioDrivers("Base"),
-  Bull: getScenarioDrivers("Bull"),
-  Bear: getScenarioDrivers("Bear"),
+  Upside: getScenarioDrivers("Upside"),
 })
 
 export * from "./types.ts"

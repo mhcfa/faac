@@ -8,6 +8,7 @@ import {
   addTimeSeriesColumns,
   buildHistoricalCellMap,
   dateFormula,
+  notedNull,
   rowFormatOptions,
 } from "../timeline.ts"
 
@@ -17,25 +18,23 @@ export function buildOperatingSchedule(
 ): Table {
   const table = sheet.addTable(
     "OperatingSchedule",
-    "Operating Build: Warehouses, Comps, MFI & Operating Profit ($M)",
+    "Operating Build: Warehouses, Comparable Sales, MFI & Operating Profit ($M)",
     {
       subtitle: [
-        "FY22–FY26 audited historicals; FY27E–FY36E driven by active scenario regional warehouse openings, core comps & MFI yield ($M except counts/per-member)",
-        `Source: ${kg.citations.warehouseMembership}`,
-        `Source: ${kg.citations.incomeStatement}`,
+        "FY22A–FY26A audited historicals; FY27E–FY36E forecast by regional openings, core comps, and membership yield ($M except counts and per-member)",
+        `Source: ${kg.citations.warehouseMembership}; ${kg.citations.incomeStatement}`,
       ],
       currency: "USD",
     }
   )
   addTimeSeriesColumns(table, {
-    descriptorLabel: "Operating Driver / Metric ($M except counts/per-member)",
+    descriptorLabel: "Operating metric ($M / counts)",
   })
 
   const kpis = kg.cost.operatingKpis
   const is = kg.cost.incomeStatement
 
-  // Calendar metadata rows for exact-date discounting downstream
-  table.addSectionHeader("Fiscal Calendar Metadata")
+  table.addSectionHeader("Fiscal calendar")
   table.addRow("period_start_date", {
     ...rowFormatOptions("date"),
     cells: {
@@ -63,29 +62,37 @@ export function buildOperatingSchedule(
   table.addRow("fiscal_days", {
     ...rowFormatOptions("integer"),
     cells: {
-      line_item: {
-        value: "Fiscal days in period (52W = 364d; 53W = 371d)",
-        note: "FY23 is 53W (371d); normalized 52W (364d) used for forecast working-capital ratios.",
-      },
+      line_item: "Fiscal days in period",
       ...Object.fromEntries(
-        ALL_PERIODS.map((p) => [
-          p,
-          PERIOD_METADATA[p].isHistorical ? PERIOD_METADATA[p].fiscalDays : 364,
-        ])
+        ALL_PERIODS.map((p) => {
+          const val = PERIOD_METADATA[p].fiscalDays
+          if (val === 371) {
+            return [
+              p,
+              {
+                value: val,
+                note:
+                  p === "FY23"
+                    ? "53-week fiscal year (371 days, ended 2023-09-03)."
+                    : "53-week fiscal year (371 days); forecast net sales and MFI scale by 371/364 and revert cleanly the following 52-week year.",
+              },
+            ]
+          }
+          return [p, val]
+        })
       ),
     },
   })
 
-  // Section 1: Regional Warehouse Footprint
-  table.addSectionHeader("1. Regional Warehouse Expansion")
+  table.addRowGutter()
+  table.addSectionHeader("Regional warehouse expansion")
   table.addRow("net_openings_us", {
     ...rowFormatOptions("integer"),
     cells: {
-      line_item: {
-        value: "Net warehouse openings — U.S.",
-        note: "FY22 regional split not disaggregated vs prior year (total company net openings = 23).",
-      },
-      FY22: null,
+      line_item: "Net warehouse openings — U.S.",
+      FY22: notedNull(
+        "FY22 regional opening split not disclosed separately; consolidated net openings totaled 23."
+      ),
       FY23: {
         expr: '@table["warehouses_us", @col] - @table["warehouses_us", col.prev]',
       },
@@ -134,7 +141,7 @@ export function buildOperatingSchedule(
   table.addRow("net_openings_other_intl", {
     ...rowFormatOptions("integer"),
     cells: {
-      line_item: "Net warehouse openings — Other Intl",
+      line_item: "Net openings — Other Intl",
       FY22: null,
       FY23: {
         expr: '@table["warehouses_other_intl", @col] - @table["warehouses_other_intl", col.prev]',
@@ -251,11 +258,12 @@ export function buildOperatingSchedule(
   })
   table.addRow("avg_warehouses_total", {
     ...rowFormatOptions("number", 1),
-    style: "subtotal",
+    style: "bold",
     cells: {
       line_item: "Average total warehouses",
       FY22: {
         expr: '(MarketAnchors["fy21_warehouses_total", "val"] + @table["warehouses_total", @col]) / 2',
+        note: "Opening FY21 warehouse count per FY22 Form 10-K.",
       },
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -268,12 +276,12 @@ export function buildOperatingSchedule(
     },
   })
 
-  // Section 2: Comparable Sales & Net Sales Revenue Engine
-  table.addSectionHeader("2. Comparable Sales & Merchandise Net Sales Build")
+  table.addRowGutter()
+  table.addSectionHeader("Comparable sales and net sales build")
   table.addRow("core_comp_us", {
     ...rowFormatOptions("percentage", 1),
     cells: buildHistoricalCellMap(
-      "Core comp sales growth (ex-gas/FX) — U.S.",
+      "Core comp growth (ex-gas/FX) — U.S.",
       kpis.compExGasFxUs
     ),
     expr: 'PeriodAssumptionsActive["core_comp_us", @col]',
@@ -281,7 +289,7 @@ export function buildOperatingSchedule(
   table.addRow("core_comp_canada", {
     ...rowFormatOptions("percentage", 1),
     cells: buildHistoricalCellMap(
-      "Core comp sales growth (ex-gas/FX) — Canada",
+      "Core comp growth — Canada",
       kpis.compExGasFxCanada
     ),
     expr: 'PeriodAssumptionsActive["core_comp_canada", @col]',
@@ -289,7 +297,7 @@ export function buildOperatingSchedule(
   table.addRow("core_comp_other_intl", {
     ...rowFormatOptions("percentage", 1),
     cells: buildHistoricalCellMap(
-      "Core comp sales growth (ex-gas/FX) — Other Intl",
+      "Core comp growth — Other Intl",
       kpis.compExGasFxOtherIntl
     ),
     expr: 'PeriodAssumptionsActive["core_comp_other_intl", @col]',
@@ -298,20 +306,21 @@ export function buildOperatingSchedule(
     ...rowFormatOptions("percentage", 1),
     cells: {
       ...buildHistoricalCellMap(
-        "Reported total comp sales growth (incl. gas & FX)",
-        kpis.compReportedTotal,
-        "10-K historical reported total comp sales growth; forecast modeled directly via regional core comp + gas/FX impact below."
+        "Reported total comp sales growth",
+        kpis.compReportedTotal
       ),
-      ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, null])),
+      FY27E: notedNull(
+        "Forecast net sales build from regional core comps and fuel/FX impact below."
+      ),
+      ...Object.fromEntries(FORECAST_PERIODS.slice(1).map((p) => [p, null])),
     },
   })
   table.addRow("comp_ex_gas_fx_total", {
     ...rowFormatOptions("percentage", 1),
     cells: {
       ...buildHistoricalCellMap(
-        "Core total comp sales growth (ex-gas & FX)",
-        kpis.compExGasFxTotal,
-        "10-K historical consolidated comp sales growth ex-gas/FX."
+        "Core total comp sales (ex-gas/FX)",
+        kpis.compExGasFxTotal
       ),
       ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, null])),
     },
@@ -319,10 +328,7 @@ export function buildOperatingSchedule(
   table.addRow("gas_fx_comp_impact", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: {
-        value: "Gasoline & FX comp sales impact (reported vs. core)",
-        note: "Historical spread = reported comp - ex-gas/FX comp; FY27E reflects Sept/Oct 2026 fuel inflation.",
-      },
+      line_item: "Gasoline and FX comp impact",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -374,7 +380,7 @@ export function buildOperatingSchedule(
   table.addRow("wh_growth_other_intl", {
     ...rowFormatOptions("percentage", 2),
     cells: {
-      line_item: "Average warehouse growth — Other Intl",
+      line_item: "Average club growth — Other Intl",
       FY22: null,
       FY23: null,
       ...Object.fromEntries(
@@ -388,7 +394,6 @@ export function buildOperatingSchedule(
     },
   })
 
-  // Contiguous 3-row regional growth rates & contiguous 3-row segment revenue for clean SUMPRODUCT
   table.addRow("sales_growth_us", {
     ...rowFormatOptions("percentage", 2),
     cells: {
@@ -406,7 +411,7 @@ export function buildOperatingSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '(1 + @table["core_comp_us", @col] + @table["gas_fx_comp_impact", @col]) * (1 + @table["wh_growth_us", @col] * ScalarAssumptionsActive["new_club_productivity", "val"]) - 1',
+            expr: '(1 + @table["core_comp_us", @col] + @table["gas_fx_comp_impact", @col]) * (1 + @table["wh_growth_us", @col] * ScalarAssumptionsActive["new_club_productivity", "val"]) * (@table["fiscal_days", @col] / @table["fiscal_days", col.prev]) - 1',
           },
         ])
       ),
@@ -429,7 +434,7 @@ export function buildOperatingSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '(1 + @table["core_comp_canada", @col] + @table["gas_fx_comp_impact", @col]) * (1 + @table["wh_growth_canada", @col] * ScalarAssumptionsActive["new_club_productivity", "val"]) - 1',
+            expr: '(1 + @table["core_comp_canada", @col] + @table["gas_fx_comp_impact", @col]) * (1 + @table["wh_growth_canada", @col] * ScalarAssumptionsActive["new_club_productivity", "val"]) * (@table["fiscal_days", @col] / @table["fiscal_days", col.prev]) - 1',
           },
         ])
       ),
@@ -452,7 +457,7 @@ export function buildOperatingSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '(1 + @table["core_comp_other_intl", @col] + @table["gas_fx_comp_impact", @col]) * (1 + @table["wh_growth_other_intl", @col] * ScalarAssumptionsActive["new_club_productivity", "val"]) - 1',
+            expr: '(1 + @table["core_comp_other_intl", @col] + @table["gas_fx_comp_impact", @col]) * (1 + @table["wh_growth_other_intl", @col] * ScalarAssumptionsActive["new_club_productivity", "val"]) * (@table["fiscal_days", @col] / @table["fiscal_days", col.prev]) - 1',
           },
         ])
       ),
@@ -462,7 +467,7 @@ export function buildOperatingSchedule(
   table.addRow("seg_rev_us", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
-      "Segment revenue — U.S. (10-K Note 11)",
+      "Segment revenue — U.S.",
       kpis.segmentsRevenue.us
     ),
     expr: '@table["seg_rev_us", col.prev] * (1 + @table["sales_growth_us", @col])',
@@ -470,7 +475,7 @@ export function buildOperatingSchedule(
   table.addRow("seg_rev_canada", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
-      "Segment revenue — Canada (10-K Note 11)",
+      "Segment revenue — Canada",
       kpis.segmentsRevenue.canada
     ),
     expr: '@table["seg_rev_canada", col.prev] * (1 + @table["sales_growth_canada", @col])',
@@ -478,7 +483,7 @@ export function buildOperatingSchedule(
   table.addRow("seg_rev_other_intl", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
-      "Segment revenue — Other Intl (10-K Note 11)",
+      "Segment revenue — Other Intl",
       kpis.segmentsRevenue.otherIntl
     ),
     expr: '@table["seg_rev_other_intl", col.prev] * (1 + @table["sales_growth_other_intl", @col])',
@@ -487,13 +492,14 @@ export function buildOperatingSchedule(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: 'SUM(@table["seg_rev_us".."seg_rev_other_intl", @col])',
-    cells: { line_item: "Total Segment Revenue (prior-share weighting base)" },
+    cells: { line_item: "Total segment revenue" },
   })
 
   table.addRow("blended_net_sales_growth", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     cells: {
-      line_item: "Consolidated Net Sales YoY growth",
+      line_item: "Net sales YoY growth (%)",
       FY22: null,
       ...Object.fromEntries(
         HISTORICAL_PERIODS.slice(1).map((p) => [
@@ -516,16 +522,16 @@ export function buildOperatingSchedule(
   table.addRow("net_sales", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
-    cells: buildHistoricalCellMap("Consolidated Net Sales", is.netSales),
+    cells: buildHistoricalCellMap("Consolidated net sales", is.netSales),
     expr: '@table["net_sales", col.prev] * (1 + @table["blended_net_sales_growth", @col])',
   })
 
-  // Section 3: Membership Fee Income (MFI) Engine
-  table.addSectionHeader("3. Membership Fee Income (MFI) Build")
+  table.addRowGutter()
+  table.addSectionHeader("Membership fee income (MFI) build")
   table.addRow("members_per_warehouse_k", {
     ...rowFormatOptions("number", 2),
     cells: {
-      line_item: "Paid members per ending warehouse (k members)",
+      line_item: "Paid members per warehouse (k)",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -549,7 +555,9 @@ export function buildOperatingSchedule(
     cells: buildHistoricalCellMap(
       "Ending paid memberships (M)",
       kpis.paidMembersMillions,
-      "Consolidated paid households (FY26 10-K dropped Gold Star/Business sub-split)."
+      {
+        FY26: "FY26 Form 10-K reports consolidated paid memberships without Gold Star/Business sub-split.",
+      }
     ),
     expr: '@table["members_per_warehouse_k", @col] * @table["warehouses_total", @col] / 1000',
   })
@@ -559,6 +567,7 @@ export function buildOperatingSchedule(
       line_item: "Average paid memberships (M)",
       FY22: {
         expr: '(MarketAnchors["fy21_paid_members", "val"] + @table["paid_members_m", @col]) / 2',
+        note: "Opening FY21 paid memberships per FY22 Form 10-K.",
       },
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -573,7 +582,7 @@ export function buildOperatingSchedule(
   table.addRow("fee_per_avg_member", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: "Annual MFI yield per avg paid member ($/member)",
+      line_item: "Annual MFI per avg. member ($)",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -596,15 +605,16 @@ export function buildOperatingSchedule(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     cells: buildHistoricalCellMap(
-      "Membership Fee Income (MFI)",
+      "Membership fee income (MFI)",
       is.membershipFees
     ),
-    expr: '@table["avg_paid_members_m", @col] * @table["fee_per_avg_member", @col]',
+    expr: '@table["avg_paid_members_m", @col] * @table["fee_per_avg_member", @col] * (@table["fiscal_days", @col] / 364)',
   })
   table.addRow("mfi_yoy_growth", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     cells: {
-      line_item: "MFI YoY growth",
+      line_item: "MFI YoY growth (%)",
       FY22: null,
       ...Object.fromEntries(
         [...HISTORICAL_PERIODS.slice(1), ...FORECAST_PERIODS].map((p) => [
@@ -617,13 +627,13 @@ export function buildOperatingSchedule(
     },
   })
 
-  // Section 4: Revenue, Gross Margin, SG&A & Operating Profit
-  table.addSectionHeader("4. Revenue, Gross Margin & Operating Profit")
+  table.addRowGutter()
+  table.addSectionHeader("Revenue, gross margin and operating profit")
   table.addRow("total_revenue", {
     ...rowFormatOptions("currency", 0),
     style: "total",
     expr: '@table["net_sales", @col] + @table["membership_fees", @col]',
-    cells: { line_item: "Total Revenue (Net Sales + MFI)" },
+    cells: { line_item: "Total revenue" },
   })
   table.addRow("merchandise_costs", {
     ...rowFormatOptions("currency", 0),
@@ -634,73 +644,93 @@ export function buildOperatingSchedule(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["net_sales", @col] - @table["merchandise_costs", @col]',
-    cells: { line_item: "Merchandise Gross Profit" },
+    cells: { line_item: "Merchandise gross profit" },
   })
   table.addRow("merch_gm_pct", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     expr: '@table["merch_gross_profit", @col] / @table["net_sales", @col]',
-    cells: { line_item: "Merchandise Gross Margin (% of Net Sales)" },
+    cells: { line_item: "Merchandise gross margin (%)" },
   })
-  table.addRow("sga", {
+  table.addRow("cash_sga", {
     ...rowFormatOptions("currency", 0),
-    cells: buildHistoricalCellMap(
-      "Selling, general and administrative (incl. SBC)",
-      is.sga
-    ),
-    expr: '@table["net_sales", @col] * PeriodAssumptionsActive["sga_pct_net_sales", @col]',
+    cells: {
+      line_item: "Cash SG&A (ex-D&A, incl. SBC)",
+      ...Object.fromEntries(
+        HISTORICAL_PERIODS.map((p) => [
+          p,
+          { expr: '@table["sga", @col] - @table["da", @col]' },
+        ])
+      ),
+      ...Object.fromEntries(
+        FORECAST_PERIODS.map((p) => [
+          p,
+          {
+            expr: '@table["net_sales", @col] * PeriodAssumptionsActive["cash_sga_pct_net_sales", @col]',
+          },
+        ])
+      ),
+    },
   })
-  table.addRow("sga_pct_net_sales", {
+  table.addRow("cash_sga_pct_net_sales", {
     ...rowFormatOptions("percentage", 2),
-    expr: '@table["sga", @col] / @table["net_sales", @col]',
-    cells: { line_item: "SG&A (% of Net Sales)" },
-  })
-  table.addRow("ebit", {
-    ...rowFormatOptions("currency", 0),
-    style: "total",
-    expr: '@table["merch_gross_profit", @col] + @table["membership_fees", @col] - @table["sga", @col]',
-    cells: { line_item: "Operating Income (EBIT)" },
-  })
-  table.addRow("ebit_margin_pct", {
-    ...rowFormatOptions("percentage", 2),
-    expr: '@table["ebit", @col] / @table["total_revenue", @col]',
-    cells: { line_item: "Operating Margin (% of Total Revenue)" },
+    expr: '@table["cash_sga", @col] / @table["net_sales", @col]',
+    cells: { line_item: "Cash SG&A (% of net sales)" },
   })
   table.addRow("da", {
     ...rowFormatOptions("currency", 0),
     expr: 'WorkingCapitalPPE["da", @col]',
-    cells: {
-      line_item: "Depreciation & Amortization (from Cash Flow / PP&E)",
-    },
+    cells: { line_item: "Depreciation and amortization" },
+  })
+  table.addRow("sga", {
+    ...rowFormatOptions("currency", 0),
+    cells: buildHistoricalCellMap("GAAP SG&A (incl. D&A & SBC)", is.sga),
+    expr: '@table["cash_sga", @col] + @table["da", @col]',
+  })
+  table.addRow("sga_pct_net_sales", {
+    ...rowFormatOptions("percentage", 2),
+    expr: '@table["sga", @col] / @table["net_sales", @col]',
+    cells: { line_item: "GAAP SG&A (% of net sales)" },
   })
   table.addRow("ebitda", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
-    expr: '@table["ebit", @col] + @table["da", @col]',
-    cells: { line_item: "EBITDA (Operating Income + D&A)" },
+    expr: '@table["merch_gross_profit", @col] + @table["membership_fees", @col] - @table["cash_sga", @col]',
+    cells: { line_item: "EBITDA" },
   })
   table.addRow("ebitda_margin_pct", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     expr: '@table["ebitda", @col] / @table["total_revenue", @col]',
-    cells: { line_item: "EBITDA Margin (% of Total Revenue)" },
+    cells: { line_item: "EBITDA margin (%)" },
+  })
+  table.addRow("ebit", {
+    ...rowFormatOptions("currency", 0),
+    style: "total",
+    expr: '@table["ebitda", @col] - @table["da", @col]',
+    cells: { line_item: "Operating income (EBIT)" },
+  })
+  table.addRow("ebit_margin_pct", {
+    ...rowFormatOptions("percentage", 2),
+    style: "bold",
+    expr: '@table["ebit", @col] / @table["total_revenue", @col]',
+    cells: { line_item: "Operating margin (%)" },
   })
   table.addRow("sbc_expense", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
-      "Memo: Stock-Based Compensation (inside SG&A/EBIT)",
+      "Memo: Stock-based compensation",
       kg.cost.cashFlow.stockBasedCompensation,
-      "Economic employee compensation cost retained inside GAAP EBIT & NOPAT (no SBC add-back in primary DCF)."
+      {
+        FY26: "Retained inside GAAP SG&A, EBIT, and NOPAT as an ongoing compensation expense.",
+      }
     ),
     expr: '@table["net_sales", @col] * PeriodAssumptionsActive["sbc_pct_net_sales", @col]',
   })
   table.addRow("ebit_ex_sbc_memo", {
     ...rowFormatOptions("currency", 0),
     expr: '@table["ebit", @col] + @table["sbc_expense", @col]',
-    cells: {
-      line_item: {
-        value: "Memo: EBIT ex-SBC (non-GAAP sensitivity only)",
-        note: "Shown strictly as memo for ex-SBC FCFF sensitivity; never used in primary valuation.",
-      },
-    },
+    cells: { line_item: "Memo: EBIT ex-SBC (reference)" },
   })
 
   return table

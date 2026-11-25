@@ -86,16 +86,12 @@ export function periodDriver(
   })
 }
 
-export function formatDriverNote(meta: DriverMeta): string {
-  const parts: string[] = []
-  if (meta.basis) {
-    parts.push(`[${meta.basis}]`)
+export function formatDriverBasisSource(meta: DriverMeta): string {
+  if (meta.basis && meta.source) {
+    const combined = `${meta.basis}; ${meta.source}`
+    return combined.length <= 35 ? combined : meta.basis
   }
-  parts.push(meta.rationale)
-  if (meta.source) {
-    parts.push(`(Source: ${meta.source})`)
-  }
-  return parts.join(" ")
+  return meta.basis ?? meta.source ?? ""
 }
 
 export function vecFromTuple(

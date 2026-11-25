@@ -19,7 +19,7 @@ export interface OperatingDrivers {
   readonly membersPerWhGrowth: Driver<PeriodVector>
   readonly feePerMemberGrowth: Driver<PeriodVector>
   readonly merchGrossMarginPct: Driver<PeriodVector>
-  readonly sgaPctNetSales: Driver<PeriodVector>
+  readonly cashSgaPctNetSales: Driver<PeriodVector>
   readonly sbcPctNetSales: Driver<PeriodVector>
 }
 
@@ -28,37 +28,37 @@ export function baseOperatingDrivers(): OperatingDrivers {
     netOpeningsUs: periodDriver(
       vecFromTuple([18, 17, 16, 16, 15, 14, 14, 13, 13, 12]),
       {
-        label: "Net warehouse openings — U.S.",
+        label: "Net openings — U.S.",
         format: "integer",
-        category: "Warehouse Expansion",
+        category: "Warehouse expansion",
         rationale:
-          "FY27E reflects management guidance (18 net US openings), tapering as domestic club density matures toward infill opportunities.",
+          "Anchored to management opening guidance, tapering gradually as domestic warehouse density matures toward infill sites.",
         basis: "Guided FY27E + density fade",
-        source: "Q4 FY26 earnings call; FY26 Form 10-K, Item 1",
+        source: "Q4 FY26 call; FY26 10-K",
       }
     ),
     netOpeningsCanada: periodDriver(
       vecFromTuple([5, 4, 4, 4, 4, 3, 3, 3, 3, 3]),
       {
-        label: "Net warehouse openings — Canada",
+        label: "Net openings — Canada",
         format: "integer",
-        category: "Warehouse Expansion",
+        category: "Warehouse expansion",
         rationale:
-          "Reflects FY27E guided 5 openings followed by steady 3-4/yr provincial infill given already high per-capita penetration.",
-        basis: "Guided FY27E + mature cadence",
-        source: "Q4 FY26 earnings call; FY26 Form 10-K, Item 1",
+          "Starts from near-term opening guidance before settling into steady provincial infill given high per-capita penetration.",
+        basis: "Guided FY27E + mature pace",
+        source: "Q4 FY26 call; FY26 10-K",
       }
     ),
     netOpeningsOtherIntl: periodDriver(
       vecFromTuple([5, 6, 6, 6, 6, 5, 5, 5, 5, 5]),
       {
-        label: "Net warehouse openings — Other Intl",
+        label: "Net openings — Other Intl",
         format: "integer",
-        category: "Warehouse Expansion",
+        category: "Warehouse expansion",
         rationale:
-          "Starts at FY27E guidance (5) and expands modestly across Asia/Europe pipelines before stabilizing as permitting limits scale.",
-        basis: "Guided FY27E + international pipeline",
-        source: "Q4 FY26 earnings call; FY26 Form 10-K, Item 1",
+          "Follows near-term pipeline across Asia and Europe before stabilizing as local permitting and site acquisition pace scale.",
+        basis: "Guided FY27E + intl pipeline",
+        source: "Q4 FY26 call; FY26 10-K",
       }
     ),
     coreCompUs: periodDriver(
@@ -66,15 +66,14 @@ export function baseOperatingDrivers(): OperatingDrivers {
         0.061, 0.052, 0.046, 0.042, 0.039, 0.037, 0.035, 0.034, 0.033, 0.033,
       ]),
       {
-        label: "Core comp sales growth (ex-gas/FX) — U.S.",
+        label: "Core comp growth — U.S.",
         format: "percentage",
         decimals: 1,
-        category: "Comparable Sales & Productivity",
+        category: "Comparable sales",
         rationale:
-          "Anchored to Q1 FY27 YTD traffic-led momentum before normalizing post-cycle toward real household spend plus 2.2% breakeven inflation minus infill cannibalization.",
-        basis: "Q1 FY27 run-rate taper",
-        source:
-          "FY26 Form 10-K, Item 7; Q1 FY27 monthly sales releases; FRED T10YIE",
+          "Anchored to traffic-led YTD momentum, tapering toward real household spend plus breakeven inflation less infill cannibalization.",
+        basis: "YTD run-rate taper",
+        source: "FY26 10-K; Q1 FY27 sales",
       }
     ),
     coreCompCanada: periodDriver(
@@ -82,14 +81,14 @@ export function baseOperatingDrivers(): OperatingDrivers {
         0.05, 0.046, 0.042, 0.038, 0.036, 0.035, 0.033, 0.032, 0.031, 0.031,
       ]),
       {
-        label: "Core comp sales growth (ex-gas/FX) — Canada",
+        label: "Core comp growth — Canada",
         format: "percentage",
         decimals: 1,
-        category: "Comparable Sales & Productivity",
+        category: "Comparable sales",
         rationale:
-          "Reflects Sept/Oct 2026 deceleration in Canadian ex-gas/FX comps (3.5%-4.9%) converging toward mature GDP-linked ticket and frequency growth.",
+          "Reflects observed Canadian ex-gas/FX deceleration converging toward mature ticket and trip-frequency growth.",
         basis: "Monthly run-rate taper",
-        source: "FY26 Form 10-K, Item 7; Q1 FY27 monthly sales releases",
+        source: "FY26 10-K; Q1 FY27 sales",
       }
     ),
     coreCompOtherIntl: periodDriver(
@@ -97,52 +96,52 @@ export function baseOperatingDrivers(): OperatingDrivers {
         0.058, 0.052, 0.048, 0.044, 0.041, 0.039, 0.037, 0.036, 0.035, 0.035,
       ]),
       {
-        label: "Core comp sales growth (ex-gas/FX) — Other Intl",
+        label: "Core comp growth — Other Intl",
         format: "percentage",
         decimals: 1,
-        category: "Comparable Sales & Productivity",
+        category: "Comparable sales",
         rationale:
-          "Higher international club ramp and digital adoption sustain a ~30 bps premium over U.S. core comps, moderating as newer Asian cohorts season.",
+          "Younger international club cohorts and digital adoption sustain a modest spread over domestic comps as stores season.",
         basis: "Cohort ramp fade",
-        source: "FY26 Form 10-K, Item 7; Q1 FY27 monthly sales releases",
+        source: "FY26 10-K; Q1 FY27 sales",
       }
     ),
     gasFxCompImpact: periodDriver(
       vecFromTuple([0.012, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
       {
-        label: "Gasoline & FX comp sales tailwind / (drag)",
+        label: "Gasoline and FX comp impact",
         format: "percentage",
         decimals: 1,
-        category: "Comparable Sales & Productivity",
+        category: "Comparable sales",
         rationale:
-          "Captures verified Q1 FY27 gasoline price inflation (+32.8% YoY in Sept/Oct adding ~3.7% to reported comps) tapering across FY27E, with zero speculative fuel/FX prediction beyond FY27E.",
-        basis: "Observed Q1 FY27 gas pass-through",
-        source: "Q1 FY27 monthly sales releases (Sept–Oct 2026)",
+          "Captures observed Q1 FY27 retail fuel-price pass-through tapering across the year, with zero speculative fuel or FX forecast thereafter.",
+        basis: "Q1 FY27 fuel pass-through",
+        source: "Sep–Oct 2026 sales releases",
       }
     ),
     newClubProductivity: scalarDriver(0.58, {
-      label: "New warehouse Year-1 sales productivity vs. mature avg",
+      label: "New club Year-1 sales yield",
       format: "percentage",
       decimals: 1,
-      category: "Comparable Sales & Productivity",
+      category: "Comparable sales",
       rationale:
-        "New clubs open mid-year on average and ramp from ~50-65% of mature warehouse volume in Year 1; calibrated against FY22-FY26 net sales vs. comp/warehouse spreads.",
-      basis: "Historical ramp regression",
-      source: "FY26 Form 10-K, Note 11 & Item 7",
+        "New warehouses open mid-year on average and ramp below mature club volume in Year 1 based on multi-year sales-to-comp spreads.",
+      basis: "Historical ramp calibration",
+      source: "FY26 10-K, Note 11",
     }),
     membersPerWhGrowth: periodDriver(
       vecFromTuple([
         0.014, 0.012, 0.01, 0.008, 0.007, 0.006, 0.005, 0.004, 0.003, 0.003,
       ]),
       {
-        label: "Paid members per ending warehouse growth",
+        label: "Members per club growth",
         format: "percentage",
         decimals: 1,
-        category: "Membership Fee Engine",
+        category: "Membership fees",
         rationale:
-          "Paid members per warehouse rose ~3.5% annually in FY23-FY25 before slowing to +1.1% in FY26 (89.6k/club); fades asymptotically as mature club capacity saturates.",
+          "Paid member density slowed sharply in FY26 after multi-year post-pandemic gains and tapers asymptotically as club capacity matures.",
         basis: "FY26 density deceleration",
-        source: "FY26 Form 10-K, Item 7; Q4 FY26 earnings release",
+        source: "FY26 10-K, Item 7",
       }
     ),
     feePerMemberGrowth: periodDriver(
@@ -150,14 +149,14 @@ export function baseOperatingDrivers(): OperatingDrivers {
         0.015, 0.008, 0.008, 0.025, 0.025, 0.008, 0.007, 0.006, 0.006, 0.006,
       ]),
       {
-        label: "Annual fee yield per avg paid member growth",
+        label: "Fee yield per member growth",
         format: "percentage",
         decimals: 1,
-        category: "Membership Fee Engine",
+        category: "Membership fees",
         rationale:
-          "Sep 2024 fee hike tailwind ended (<1% in Q4 FY26); FY27E-FY29E reflects Executive upgrade mix shift alone before modeling a modest 5-6 yr fee cycle step-up in FY30E-FY31E.",
-        basis: "Post-hike normalization + Executive mix",
-        source: "Q4 FY26 earnings call; FY26 Form 10-K, Item 7",
+          "Prior fee-increase tailwinds fully lapped in Q4 FY26; near-term growth reflects Executive mix shift ahead of the next scheduled fee cycle.",
+        basis: "Post-hike mix + cycle step",
+        source: "Q4 FY26 call; FY26 10-K",
       }
     ),
     merchGrossMarginPct: periodDriver(
@@ -166,64 +165,65 @@ export function baseOperatingDrivers(): OperatingDrivers {
         0.1125,
       ]),
       {
-        label: "Merchandise gross margin (% of net sales)",
+        label: "Merchandise gross margin (%)",
         format: "percentage",
         decimals: 2,
-        category: "Operating Margins & Expense",
+        category: "Operating margins",
         rationale:
-          "Strips Q4 FY26 net IEEPA tariff benefit (~3 bps FY26 lift) and models steady Kirkland Signature / scale mix gains largely reinvested in member pricing per Costco's ~11.1-11.3% ceiling.",
-        basis: "QoE-adjusted FY26 + disciplined ceiling",
-        source: "FY26 Form 10-K, Item 8; Q4 FY26 earnings call",
+          "Removes non-recurring Q4 FY26 tariff refund lift and models gradual private-label mix gains largely reinvested into member pricing.",
+        basis: "Normalized FY26 + ceiling",
+        source: "FY26 10-K; Q4 FY26 call",
       }
     ),
-    sgaPctNetSales: periodDriver(
+    cashSgaPctNetSales: periodDriver(
       vecFromTuple([
-        0.0912, 0.091, 0.0908, 0.0906, 0.0904, 0.0902, 0.09, 0.0898, 0.0896,
-        0.0895,
+        0.0823, 0.0821, 0.0819, 0.0817, 0.0815, 0.0813, 0.0811, 0.0809, 0.0807,
+        0.0805,
       ]),
       {
-        label: "SG&A expense (% of net sales)",
+        label: "Cash SG&A ex-D&A (% sales)",
         format: "percentage",
         decimals: 2,
-        category: "Operating Margins & Expense",
+        category: "Operating margins",
         rationale:
-          "Modest fixed-cost leverage from 9.15% FY26 toward 8.95% as sales scale, constrained by recurring warehouse hourly wage hikes and higher e-commerce/last-mile fulfillment costs.",
-        basis: "Scale leverage net of wage/digital drag",
-        source: "FY26 Form 10-K, Item 7 & Item 8",
+          "Ex-D&A cash operating expenses anchored to FY26 actual intensity, with gradual fixed-cost leverage net of recurring wage increases and digital fulfillment costs; GAAP SG&A adds D&A from the PP&E schedule.",
+        basis: "FY26 ex-D&A + wage drag",
+        source: "FY26 10-K, Items 7 & 8",
       }
     ),
     sbcPctNetSales: periodDriver(flatVec(0.0031), {
-      label: "Stock-based compensation (% of net sales)",
+      label: "Stock-based comp (% sales)",
       format: "percentage",
       decimals: 2,
-      category: "Operating Margins & Expense",
+      category: "Operating margins",
       rationale:
-        "Held at FY26 actual intensity (0.31% of net sales); retained strictly inside GAAP SG&A/EBIT/FCFF as a real ongoing employee compensation cost.",
-      basis: "FY26 run-rate (no add-back)",
-      source: "FY26 Form 10-K, Note 7 & Item 8",
+        "Held at FY26 intensity and retained inside GAAP SG&A, EBIT, and unlevered cash flow as an ongoing employee compensation expense.",
+      basis: "FY26 run-rate (in EBIT)",
+      source: "FY26 10-K, Note 7",
     }),
   })
 }
 
-export function bullOperatingDrivers(): OperatingDrivers {
+export function upsideOperatingDrivers(): OperatingDrivers {
   const base = baseOperatingDrivers()
   return Object.freeze({
     ...base,
     netOpeningsUs: periodDriver(
-      vecFromTuple([19, 18, 18, 17, 17, 16, 16, 15, 15, 15]),
+      vecFromTuple([20, 20, 20, 19, 18, 17, 17, 16, 16, 16]),
       {
         ...base.netOpeningsUs.meta,
         rationale:
-          "Successful small-market and infill formats sustain ~15-19 net US club additions annually.",
-        basis: "Upside rollout cadence",
+          "Smaller-market and infill club formats sustain higher annual U.S. expansion across the forecast horizon.",
+        basis: "Faster infill rollout",
       }
     ),
     netOpeningsCanada: periodDriver(
-      vecFromTuple([5, 5, 5, 4, 4, 4, 4, 4, 4, 4]),
+      vecFromTuple([5, 5, 5, 5, 4, 4, 4, 4, 4, 4]),
       {
         ...base.netOpeningsCanada.meta,
-        rationale: "Maintains 4-5 annual openings in Canada.",
-        basis: "Upside rollout cadence",
+        rationale:
+          "Higher provincial infill capacity sustains elevated Canadian club additions.",
+        basis: "Higher infill cadence",
       }
     ),
     netOpeningsOtherIntl: periodDriver(
@@ -231,101 +231,108 @@ export function bullOperatingDrivers(): OperatingDrivers {
       {
         ...base.netOpeningsOtherIntl.meta,
         rationale:
-          "Accelerated permitting across China, Japan, Korea, and Europe supports 7 net international clubs/yr.",
-        basis: "Accelerated international expansion",
+          "Faster permitting across Asia and Europe supports a sustained step-up in annual international openings.",
+        basis: "Accelerated intl pipeline",
       }
     ),
     coreCompUs: periodDriver(
       vecFromTuple([
-        0.068, 0.06, 0.055, 0.05, 0.047, 0.045, 0.043, 0.041, 0.04, 0.04,
+        0.083, 0.065, 0.058, 0.052, 0.048, 0.045, 0.043, 0.041, 0.04, 0.04,
       ]),
       {
         ...base.coreCompUs.meta,
         rationale:
-          "Continued traffic share gains from grocery/mass-retail peers sustain ~4.0-6.8% core US comps.",
-        basis: "Share-gain upside path",
+          "Sustains early-FY27 traffic share gains from grocery and mass-retail competitors before tapering above long-run trend.",
+        basis: "Sustained share gains",
       }
     ),
     coreCompCanada: periodDriver(
       vecFromTuple([
-        0.056, 0.052, 0.048, 0.045, 0.042, 0.04, 0.038, 0.037, 0.036, 0.036,
+        0.07, 0.056, 0.05, 0.046, 0.043, 0.04, 0.038, 0.037, 0.036, 0.036,
       ]),
       {
         ...base.coreCompCanada.meta,
         rationale:
-          "Resilient membership spending supports higher Canadian comps.",
-        basis: "Share-gain upside path",
+          "Resilient household spending and high renewal rates support stronger Canadian comparable sales.",
+        basis: "Resilient member spend",
       }
     ),
     coreCompOtherIntl: periodDriver(
       vecFromTuple([
-        0.065, 0.06, 0.056, 0.052, 0.049, 0.047, 0.045, 0.043, 0.042, 0.042,
+        0.078, 0.062, 0.056, 0.052, 0.049, 0.047, 0.045, 0.043, 0.042, 0.042,
       ]),
       {
         ...base.coreCompOtherIntl.meta,
-        rationale: "Stronger Asian warehouse ramp sustains >4% long-run comps.",
-        basis: "International upside path",
+        rationale:
+          "Stronger Asian and European warehouse maturity curves sustain elevated international comparable sales.",
+        basis: "Stronger intl cohort ramp",
       }
     ),
     gasFxCompImpact: periodDriver(
-      vecFromTuple([0.015, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
+      vecFromTuple([0.021, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
       {
         ...base.gasFxCompImpact.meta,
-        rationale: "Higher sustained FY27E fuel/FX tailwind.",
+        rationale:
+          "Extended near-term retail fuel and currency tailwind lifts reported FY27E sales.",
+        basis: "Extended FY27E fuel/FX lift",
       }
     ),
-    newClubProductivity: scalarDriver(0.65, {
+    newClubProductivity: scalarDriver(0.7, {
       ...base.newClubProductivity.meta,
       rationale:
-        "Larger opening day member cohorts lift Year-1 new club sales yield toward 65% of mature clubs.",
-      basis: "High-cohort ramp",
+        "Larger opening member sign-up cohorts lift Year-1 sales productivity at newly opened clubs.",
+      basis: "Higher opening cohorts",
     }),
     membersPerWhGrowth: periodDriver(
       vecFromTuple([
-        0.02, 0.018, 0.015, 0.012, 0.01, 0.009, 0.008, 0.008, 0.007, 0.007,
+        0.022, 0.018, 0.015, 0.012, 0.01, 0.009, 0.008, 0.008, 0.007, 0.007,
       ]),
       {
         ...base.membersPerWhGrowth.meta,
         rationale:
-          "Stronger digital sign-up retention lifts club member density.",
+          "Stronger digital sign-up retention increases active member density across existing clubs.",
+        basis: "Stronger digital retention",
       }
     ),
     feePerMemberGrowth: periodDriver(
       vecFromTuple([
-        0.02, 0.012, 0.012, 0.032, 0.03, 0.012, 0.01, 0.01, 0.01, 0.01,
+        0.022, 0.014, 0.012, 0.032, 0.03, 0.012, 0.01, 0.01, 0.01, 0.01,
       ]),
       {
         ...base.feePerMemberGrowth.meta,
         rationale:
-          "Faster Executive tier migration (~55%+) and full pricing power on next fee cycle.",
+          "Faster Executive tier migration and intact pricing power expand realized membership fee yield.",
+        basis: "Faster Executive upgrade",
       }
     ),
     merchGrossMarginPct: periodDriver(
       vecFromTuple([
-        0.112, 0.1125, 0.113, 0.1135, 0.114, 0.1144, 0.1148, 0.115, 0.1152,
-        0.1155,
+        0.1124, 0.1129, 0.1134, 0.1139, 0.1144, 0.1148, 0.1152, 0.1155, 0.1158,
+        0.116,
       ]),
       {
         ...base.merchGrossMarginPct.meta,
         rationale:
-          "Kirkland Signature penetration and retail media monetization expand merchandise margin toward 11.55%.",
+          "Private-label penetration and retail-media monetization expand merchandise gross margin beyond historical norms.",
+        basis: "Private-label + media mix",
       }
     ),
-    sgaPctNetSales: periodDriver(
+    cashSgaPctNetSales: periodDriver(
       vecFromTuple([
-        0.0906, 0.0902, 0.0898, 0.0894, 0.089, 0.0885, 0.088, 0.0875, 0.087,
-        0.0865,
+        0.0812, 0.0806, 0.08, 0.0794, 0.0789, 0.0784, 0.0779, 0.0774, 0.077,
+        0.0766,
       ]),
       {
-        ...base.sgaPctNetSales.meta,
+        ...base.cashSgaPctNetSales.meta,
         rationale:
-          "Stronger volume leverage drives SG&A down 50 bps over the forecast decade.",
+          "Higher warehouse volume and checkout automation generate sustained cash SG&A operating leverage.",
+        basis: "Volume + tech leverage",
       }
     ),
   })
 }
 
-export function bearOperatingDrivers(): OperatingDrivers {
+export function downsideOperatingDrivers(): OperatingDrivers {
   const base = baseOperatingDrivers()
   return Object.freeze({
     ...base,
@@ -334,8 +341,8 @@ export function bearOperatingDrivers(): OperatingDrivers {
       {
         ...base.netOpeningsUs.meta,
         rationale:
-          "Zoning bottlenecks and site saturation compress net US openings toward 9/yr by FY36E.",
-        basis: "Site saturation downside",
+          "Zoning constraints and domestic site saturation compress annual U.S. warehouse openings.",
+        basis: "Site saturation slowdown",
       }
     ),
     netOpeningsCanada: periodDriver(
@@ -343,8 +350,8 @@ export function bearOperatingDrivers(): OperatingDrivers {
       {
         ...base.netOpeningsCanada.meta,
         rationale:
-          "Near-full Canadian market saturation slows annual additions.",
-        basis: "Saturation downside",
+          "High regional club saturation limits incremental Canadian warehouse additions.",
+        basis: "Mature market saturation",
       }
     ),
     netOpeningsOtherIntl: periodDriver(
@@ -352,53 +359,57 @@ export function bearOperatingDrivers(): OperatingDrivers {
       {
         ...base.netOpeningsOtherIntl.meta,
         rationale:
-          "Slower international permitting and heightened Sam's/local rivalry.",
-        basis: "Execution slowdown",
+          "Slower international permitting and local club rivalry temper overseas store growth.",
+        basis: "Permitting & rivalry drag",
       }
     ),
     coreCompUs: periodDriver(
       vecFromTuple([
-        0.05, 0.042, 0.036, 0.032, 0.03, 0.028, 0.027, 0.026, 0.025, 0.025,
+        0.044, 0.04, 0.036, 0.032, 0.03, 0.028, 0.027, 0.026, 0.025, 0.025,
       ]),
       {
         ...base.coreCompUs.meta,
         rationale:
-          "Disinflation, Sam's Club digital competition (Scan & Go), and discretionary ticket softness compress US core comps toward 2.5%.",
-        basis: "Competitive & macro deceleration",
+          "Food disinflation, club-peer digital competition, and softer discretionary demand compress domestic comparable sales.",
+        basis: "Competitive & macro fade",
       }
     ),
     coreCompCanada: periodDriver(
       vecFromTuple([
-        0.04, 0.036, 0.032, 0.029, 0.027, 0.026, 0.025, 0.024, 0.024, 0.024,
+        0.036, 0.034, 0.032, 0.029, 0.027, 0.026, 0.025, 0.024, 0.024, 0.024,
       ]),
       {
         ...base.coreCompCanada.meta,
-        rationale: "Canadian consumer leverage curbs real ticket growth.",
-        basis: "Macro slowdown",
+        rationale:
+          "Household debt burdens curb real basket expansion across Canadian clubs.",
+        basis: "Consumer spend slowdown",
       }
     ),
     coreCompOtherIntl: periodDriver(
       vecFromTuple([
-        0.045, 0.041, 0.037, 0.034, 0.032, 0.03, 0.029, 0.028, 0.028, 0.028,
+        0.04, 0.039, 0.037, 0.034, 0.032, 0.03, 0.029, 0.028, 0.028, 0.028,
       ]),
       {
         ...base.coreCompOtherIntl.meta,
-        rationale: "Slower discretionary absorption in international clubs.",
-        basis: "Macro slowdown",
+        rationale:
+          "Slower discretionary spending moderates international warehouse ramp and ticket growth.",
+        basis: "International macro fade",
       }
     ),
     gasFxCompImpact: periodDriver(
-      vecFromTuple([0.006, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
+      vecFromTuple([0.004, 0, 0, 0, 0, 0, 0, 0, 0, 0]),
       {
         ...base.gasFxCompImpact.meta,
-        rationale: "Early oil/gas mean reversion limits FY27E fuel tailwind.",
+        rationale:
+          "Earlier retail fuel price normalization trims near-term reported comp benefit.",
+        basis: "Earlier fuel normalization",
       }
     ),
     newClubProductivity: scalarDriver(0.5, {
       ...base.newClubProductivity.meta,
       rationale:
-        "Cannibalization from infill locations reduces Year-1 incremental sales productivity to 50%.",
-      basis: "Cannibalization stress",
+        "Infill cannibalization reduces Year-1 incremental sales productivity at newly opened warehouses.",
+      basis: "Infill cannibalization",
     }),
     membersPerWhGrowth: periodDriver(
       vecFromTuple([
@@ -407,7 +418,8 @@ export function bearOperatingDrivers(): OperatingDrivers {
       {
         ...base.membersPerWhGrowth.meta,
         rationale:
-          "Younger digital-promo cohorts renew below historical averages as Sam's and BJ's discount memberships.",
+          "Promotional digital sign-up cohorts renew below legacy averages amid discounted rival club offers.",
+        basis: "Lower cohort retention",
       }
     ),
     feePerMemberGrowth: periodDriver(
@@ -417,7 +429,8 @@ export function bearOperatingDrivers(): OperatingDrivers {
       {
         ...base.feePerMemberGrowth.meta,
         rationale:
-          "Competitive pressure from Sam's ($50/$110) and BJ's ($60/$120) constrains Executive mix and future fee increases.",
+          "Discounted competitor membership tiers limit Executive upgrades and constrain future fee increases.",
+        basis: "Peer fee competition",
       }
     ),
     merchGrossMarginPct: periodDriver(
@@ -428,18 +441,20 @@ export function bearOperatingDrivers(): OperatingDrivers {
       {
         ...base.merchGrossMarginPct.meta,
         rationale:
-          "Tariff absorption, fresh shrinkage, and aggressive price investment pull merchandise GM back toward 10.85%.",
+          "Tariff absorption, fresh-food shrink, and defensive price investment compress merchandise gross margin.",
+        basis: "Tariff & price investment",
       }
     ),
-    sgaPctNetSales: periodDriver(
+    cashSgaPctNetSales: periodDriver(
       vecFromTuple([
-        0.092, 0.0922, 0.0922, 0.0922, 0.0922, 0.0921, 0.0921, 0.092, 0.092,
-        0.092,
+        0.0832, 0.0834, 0.0835, 0.0835, 0.0835, 0.0835, 0.0834, 0.0834, 0.0834,
+        0.0834,
       ]),
       {
-        ...base.sgaPctNetSales.meta,
+        ...base.cashSgaPctNetSales.meta,
         rationale:
-          "Hourly wage inflation and low-margin e-commerce delivery deleverage SG&A on slower comps.",
+          "Hourly wage inflation and fulfillment delivery costs deleverage cash SG&A against slower comparable sales.",
+        basis: "Wage & fulfillment drag",
       }
     ),
   })

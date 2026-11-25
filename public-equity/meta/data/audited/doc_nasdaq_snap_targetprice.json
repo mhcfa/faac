@@ -1,0 +1,134 @@
+{
+  "document": {
+    "doc_id": "doc_nasdaq_snap_targetprice",
+    "file_path": "data/raw/market/nasdaq/nasdaq_snap_targetprice.json",
+    "sha256": "db201719c09915e6bfb882b6f5be209a7f15dddee025d3f8479f838eb569ce23",
+    "doc_type": "structured_data",
+    "size_bytes": 1767,
+    "title": "Nasdaq Analyst Target Price — SNAP",
+    "report_date": "2026-11-20",
+    "source_meta": {
+      "symbol": "SNAP",
+      "endpoint": "targetprice",
+      "source": "nasdaq_analyst",
+      "source_url": "https://api.nasdaq.com/api/analyst/SNAP/targetprice",
+      "retrieved_at": "2026-11-22T19:24:25.863Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "consensus_target_price",
+      "title": "Wall Street Consensus 12-Month Price Targets & Ratings",
+      "source": {
+        "doc_id": "doc_nasdaq_snap_targetprice",
+        "origin": "structured_data",
+        "entity": "SNAP",
+        "basis": "consensus",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 1
+        },
+        "as_of_date": "2026-11-20"
+      },
+      "columns": [
+        {
+          "id": "d_2026_11_20",
+          "label": "2026-11-20",
+          "raw_label": "2026-11-20",
+          "period_key": "2026-11-20",
+          "as_of_date": "2026-11-20",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "target_price_mean",
+          "label": "Mean Consensus Price Target",
+          "raw_label": "priceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 6.54,
+              "raw_text": "6.54"
+            }
+          }
+        },
+        {
+          "id": "target_price_low",
+          "label": "Low Consensus Price Target",
+          "raw_label": "lowPriceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 5,
+              "raw_text": "5"
+            }
+          }
+        },
+        {
+          "id": "target_price_high",
+          "label": "High Consensus Price Target",
+          "raw_label": "highPriceTarget",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 8,
+              "raw_text": "8"
+            }
+          }
+        },
+        {
+          "id": "ratings_buy",
+          "label": "Analyst Buy Ratings",
+          "raw_label": "buy",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 2,
+              "raw_text": "2"
+            }
+          }
+        },
+        {
+          "id": "ratings_hold",
+          "label": "Analyst Hold Ratings",
+          "raw_label": "hold",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 18,
+              "raw_text": "18"
+            }
+          }
+        },
+        {
+          "id": "ratings_sell",
+          "label": "Analyst Sell Ratings",
+          "raw_label": "sell",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_20": {
+              "value": 1,
+              "raw_text": "1"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

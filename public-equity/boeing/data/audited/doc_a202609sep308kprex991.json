@@ -1,0 +1,168 @@
+{
+  "document": {
+    "doc_id": "doc_a202609sep308kprex991",
+    "file_path": "data/raw/sec/0000012927/0001628280-26-067411/a202609sep308kprex991.htm",
+    "sha256": "b64b96ae3b2f501fcd1320a61836f49dd2be4803c5f49f6bc5feb6d972056b0d",
+    "doc_type": "sec_filing",
+    "size_bytes": 508533,
+    "title": "The Boeing Company Q3 2026 Earnings Release (Form 8-K Exhibit 99.1)",
+    "report_date": "2026-10-27",
+    "filing_date": "2026-10-27",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000012927",
+      "company_name": "BOEING CO",
+      "tickers": "BA,BA-PA",
+      "form": "8-K",
+      "accession_number": "0001628280-26-067411",
+      "filing_date": "2026-10-27",
+      "is_inline_xbrl": false,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/12927/000162828026067411/a202609sep308kprex991.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "non_gaap_fcf",
+      "title": "Non-GAAP Free Cash Flow Reconciliation (Table 2)",
+      "source": {
+        "doc_id": "doc_a202609sep308kprex991",
+        "origin": "html_table",
+        "entity": "BA",
+        "basis": "non_gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[2]",
+          "table_index": 2
+        }
+      },
+      "columns": [
+        {
+          "id": "2026_q3",
+          "label": "Q3 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "2025_q3",
+          "label": "Q3 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "2026_q3_ytd",
+          "label": "9M 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3-YTD",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "2025_q3_ytd",
+          "label": "9M 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3-YTD",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "ocf",
+          "label": "Operating cash flow",
+          "raw_label": "Operating cash flow",
+          "cells": {
+            "2026_q3": {
+              "value": 1496,
+              "raw_text": "$1,496"
+            },
+            "2025_q3": {
+              "value": 1123,
+              "raw_text": "$1,123"
+            },
+            "2026_q3_ytd": {
+              "value": 2681,
+              "raw_text": "$2,681"
+            },
+            "2025_q3_ytd": {
+              "value": -266,
+              "raw_text": "($266)"
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Less additions to property, plant & equipment",
+          "raw_label": "Less additions to property, plant & equipment",
+          "cells": {
+            "2026_q3": {
+              "value": -1032,
+              "raw_text": "($1,032)"
+            },
+            "2025_q3": {
+              "value": -885,
+              "raw_text": "($885)"
+            },
+            "2026_q3_ytd": {
+              "value": -3040,
+              "raw_text": "($3,040)"
+            },
+            "2025_q3_ytd": {
+              "value": -1986,
+              "raw_text": "($1,986)"
+            }
+          }
+        },
+        {
+          "id": "free_cash_flow",
+          "label": "Free cash flow (non-GAAP)",
+          "raw_label": "Free cash flow*",
+          "cells": {
+            "2026_q3": {
+              "value": 464,
+              "raw_text": "$464"
+            },
+            "2025_q3": {
+              "value": 238,
+              "raw_text": "$238"
+            },
+            "2026_q3_ytd": {
+              "value": -359,
+              "raw_text": "($359)"
+            },
+            "2025_q3_ytd": {
+              "value": -2252,
+              "raw_text": "($2,252)"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "free_cash_flow",
+          "components": [
+            {
+              "id": "ocf",
+              "sign": 1
+            },
+            {
+              "id": "capex",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": []
+}

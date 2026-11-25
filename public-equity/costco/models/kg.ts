@@ -1,5 +1,5 @@
-import { compileKgFromDir, type KgRegistry } from "./audited-reader.ts"
-import type { AccountingBasis } from "./audited-reader.ts"
+import { compileKgFromDir, type KgRegistry } from "@faac/audited-reader"
+import type { AccountingBasis } from "@faac/audited-reader"
 import {
   DISPLAY_SCALE_MILLIONS,
   HISTORICAL_PERIODS,
@@ -90,6 +90,7 @@ export interface CostHistoricalData {
     readonly noncontrollingInterests: HistSeries
     readonly totalEquity: HistSeries
     readonly totalLiabilitiesAndEquity: HistSeries
+    readonly ccReceivablesInCashFy26: number
   }
   readonly cashFlow: {
     readonly netIncomeInclNci: HistSeries
@@ -144,6 +145,8 @@ export interface CostHistoricalData {
     readonly financeLeaseRouAssets: HistSeries
     readonly financeLeaseInterest: HistSeries
     readonly operatingLeaseCost: HistSeries
+    readonly cashPaidFinanceLeasesCff: HistSeries
+    readonly fairValueOfLongTermDebtFy26: number
     readonly maturities2027: number
     readonly maturities2028: number
     readonly maturities2029: number
@@ -206,6 +209,7 @@ export interface CostHistoricalData {
     readonly fy26LifoCharge: number
     readonly fy23CharterShippingImpairment: number
     readonly fy24SpecialDivTotal: number
+    readonly fy24SpecialDivEsopTaxBenefit: number
     readonly fy24SpecialDivPs: number
     readonly fy27GuidedGrossOpenings: number
     readonly fy27GuidedRelocations: number
@@ -233,6 +237,7 @@ export interface EquityQuoteSnapshot {
   readonly mrqNetCash: number
   readonly evSecMrq: number
   readonly beta5yMonthly: number
+  readonly beta2yWeekly: number
   readonly regularAnnualDps: number
   readonly specialDividendPs: number
   readonly peLtm: number
@@ -259,6 +264,25 @@ export interface ConsensusSnapshot {
   readonly ptMedian: number
   readonly ptHigh: number
   readonly analystCount27: number
+}
+
+export interface CostConsensusDetail {
+  readonly rev29: number
+  readonly ebitda29: number
+  readonly ebit29: number
+  readonly epsHeadline29: number
+  readonly dps27: number
+  readonly dps28: number
+  readonly revLow27: number
+  readonly revHigh27: number
+  readonly epsLow27: number
+  readonly epsHigh27: number
+  readonly ratingsStrongBuy: number
+  readonly ratingsBuy: number
+  readonly ratingsHold: number
+  readonly ratingsSell: number
+  readonly ratingsStrongSell: number
+  readonly ratingsTotal: number
 }
 
 export interface PeerPeriodTriplet {
@@ -307,6 +331,7 @@ export interface PeerRawData {
     readonly operatingLeaseLiabH127: number
     readonly financeLeaseLiabFy26: number
     readonly ltFinancingObligationsFy26: number
+    readonly totalEquityH127: number
   }
   readonly psmt: {
     readonly netSalesFy26: number
@@ -328,7 +353,9 @@ export interface PeerRawData {
     readonly cashFy26: number
     readonly stiFy26: number
     readonly carryingFinancialDebtFy26: number
-    readonly totalLeaseLiabFy26: number
+    readonly financeLeaseLiabFy26: number
+    readonly operatingLeaseLiabFy26: number
+    readonly totalEquityFy26: number
   }
   readonly wmt: {
     readonly rev: PeerPeriodTriplet
@@ -348,10 +375,15 @@ export interface PeerRawData {
     readonly financialDebtExclLeasesH127: number
     readonly financeLeaseLiabH127: number
     readonly operatingLeaseLiabH127: number
+    readonly nonredeemableNciH127: number
+    readonly redeemableNciH127: number
+    readonly totalEquityH127: number
   }
   readonly tgt: {
     readonly rev: PeerPeriodTriplet
     readonly ebit: PeerPeriodTriplet
+    readonly ebt: PeerPeriodTriplet
+    readonly tax: PeerPeriodTriplet
     readonly ni: PeerPeriodTriplet
     readonly da: PeerPeriodTriplet
     readonly cfo: PeerPeriodTriplet
@@ -364,10 +396,13 @@ export interface PeerRawData {
     readonly cashH127: number
     readonly debtAndFinLeasesBsH127: number
     readonly operatingLeaseLiabH127: number
+    readonly totalEquityH127: number
   }
   readonly kr: {
     readonly rev: PeerPeriodTriplet
     readonly ebit: PeerPeriodTriplet
+    readonly ebt: PeerPeriodTriplet
+    readonly tax: PeerPeriodTriplet
     readonly ni: PeerPeriodTriplet
     readonly da: PeerPeriodTriplet
     readonly cfo: PeerPeriodTriplet
@@ -377,6 +412,8 @@ export interface PeerRawData {
     readonly cashH127: number
     readonly debtAndFinLeasesBsH127: number
     readonly operatingLeaseLiabH127: number
+    readonly nonredeemableNciH127: number
+    readonly totalEquityH127: number
   }
 }
 
@@ -455,6 +492,7 @@ export interface MarketMacroData {
   readonly oasIgMaster: number
   readonly quotes: Readonly<Record<AllCompTicker, EquityQuoteSnapshot>>
   readonly consensus: Readonly<Record<AllCompTicker, ConsensusSnapshot>>
+  readonly costConsensus: CostConsensusDetail
   readonly peers: PeerRawData
   readonly clubUnitEconRaw: ClubUnitEconRawData
 }
@@ -897,6 +935,13 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "cost_balance_sheet",
         "total_liabilities_and_equity"
       ),
+      ccReceivablesInCashFy26: mustVal(
+        kg,
+        "cost_balance_sheet",
+        "memo_cc_receivables_in_cash",
+        "2026-FY",
+        costOpts
+      ),
     },
     cashFlow: {
       netIncomeInclNci: costSeries(kg, "cost_cash_flow", "net_income_incl_nci"),
@@ -1116,6 +1161,18 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         kg,
         "cost_lease_summary",
         "operating_lease_cost"
+      ),
+      cashPaidFinanceLeasesCff: costSeries(
+        kg,
+        "cost_lease_summary",
+        "cash_paid_finance_leases_cff"
+      ),
+      fairValueOfLongTermDebtFy26: mustVal(
+        kg,
+        "cost_debt_schedule",
+        "fair_value_of_long_term_debt",
+        "2026-FY",
+        costOpts
       ),
       maturities2027: mustVal(
         kg,
@@ -1403,6 +1460,13 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "2024-FY",
         costOpts
       ),
+      fy24SpecialDivEsopTaxBenefit: mustVal(
+        kg,
+        "cost_qoe_items",
+        "discrete_tax_benefit_special_div_401k",
+        "2024-FY",
+        costOpts
+      ),
       fy24SpecialDivPs: mustVal(
         kg,
         "cost_qoe_items",
@@ -1581,6 +1645,13 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "2026-11-13",
         qOpts
       ),
+      beta2yWeekly: mustVal(
+        kg,
+        "mkt_equity_quotes",
+        "beta_2y_weekly",
+        "2026-11-13",
+        qOpts
+      ),
       regularAnnualDps:
         optVal(
           kg,
@@ -1720,6 +1791,103 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
     }
   }
 
+  const costConsensus: CostConsensusDetail = Object.freeze({
+    rev29: mustVal(
+      kg,
+      "mkt_consensus_estimates",
+      "revenue",
+      "2029-FY",
+      costOpts
+    ),
+    ebitda29: mustVal(
+      kg,
+      "mkt_consensus_estimates",
+      "ebitda",
+      "2029-FY",
+      costOpts
+    ),
+    ebit29: mustVal(kg, "mkt_consensus_estimates", "ebit", "2029-FY", costOpts),
+    epsHeadline29: mustVal(
+      kg,
+      "mkt_consensus_estimates",
+      "eps_headline",
+      "2029-FY",
+      costOpts
+    ),
+    dps27: mustVal(kg, "mkt_consensus_estimates", "dps", "2027-FY", costOpts),
+    dps28: mustVal(kg, "mkt_consensus_estimates", "dps", "2028-FY", costOpts),
+    revLow27: mustVal(
+      kg,
+      "mkt_consensus_estimates",
+      "sa_revenue_low",
+      "2027-FY",
+      costOpts
+    ),
+    revHigh27: mustVal(
+      kg,
+      "mkt_consensus_estimates",
+      "sa_revenue_high",
+      "2027-FY",
+      costOpts
+    ),
+    epsLow27: mustVal(
+      kg,
+      "mkt_consensus_estimates",
+      "sa_eps_low",
+      "2027-FY",
+      costOpts
+    ),
+    epsHigh27: mustVal(
+      kg,
+      "mkt_consensus_estimates",
+      "sa_eps_high",
+      "2027-FY",
+      costOpts
+    ),
+    ratingsStrongBuy: mustVal(
+      kg,
+      "mkt_price_targets",
+      "ratings_strong_buy",
+      "2026-11-13",
+      costRawOpts
+    ),
+    ratingsBuy: mustVal(
+      kg,
+      "mkt_price_targets",
+      "ratings_buy",
+      "2026-11-13",
+      costRawOpts
+    ),
+    ratingsHold: mustVal(
+      kg,
+      "mkt_price_targets",
+      "ratings_hold",
+      "2026-11-13",
+      costRawOpts
+    ),
+    ratingsSell: mustVal(
+      kg,
+      "mkt_price_targets",
+      "ratings_sell",
+      "2026-11-13",
+      costRawOpts
+    ),
+    ratingsStrongSell: mustVal(
+      kg,
+      "mkt_price_targets",
+      "ratings_strong_sell",
+      "2026-11-13",
+      costRawOpts
+    ),
+    ratingsTotal: mustVal(
+      kg,
+      "mkt_price_targets",
+      "ratings_total",
+      "2026-11-13",
+      costRawOpts
+    ),
+  })
+
   const psmtOpts = { entity: "PSMT", divisors: KG_DIVISORS } as const
   const samsOpts = { entity: "WMT_SAMS", divisors: KG_DIVISORS } as const
   const samsRawOpts = { entity: "WMT_SAMS" } as const
@@ -1750,7 +1918,7 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         peerGroup: "Pure-Play Club",
         fiscalWindowLabel: "FY26 (12M end 2026-08-31)",
         qoeNote:
-          "Adjusts $3.8M asset disposal loss / -$0.6M JV gain (taxed at FY26 ETR); excludes non-operating $29.7M FX reval/conversion cost from EBITDA (kept below EBIT).",
+          "Adjusts $3.8M asset disposal loss / -$0.6M JV gain (taxed at FY26 ETR); recurring $29.7M non-operating FX conversion/revaluation drag sits below EBIT; average-cost inventory vs. COST LIFO.",
       }),
       WMT: Object.freeze({
         ticker: "WMT",
@@ -1758,7 +1926,7 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         peerGroup: "Omni / Mass Retail",
         fiscalWindowLabel: "LTM Q2 FY27 (end 2026-07-31)",
         qoeNote:
-          "Deducts -$2,900M H1 FY27 IEEPA tariff refunds, adds +$700M FY26 PhonePe SBC mod. (0% tax shield per FY26 10-K MD&A p. 39), removes equity investment swings & -$500M tax-interest / -$400M direct tax uncertain-tax benefits (H1 FY26 $400M legal charge already rolled off LTM); BS cash excludes restricted cash.",
+          "Deducts -$2,900M H1 FY27 gross IEEPA tariff refunds (10-Q omits unquantified price reinvestment vs. COST net -$74M), adds +$700M FY26 PhonePe SBC mod. (0% tax shield), removes equity investment swings & -$500M tax-interest / -$400M direct tax uncertain-tax benefits; EV includes $6,561M NCI ($6,268M nonredeemable + $293M redeemable); BS cash excludes restricted cash.",
       }),
       TGT: Object.freeze({
         ticker: "TGT",
@@ -1872,6 +2040,13 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "2026-FY",
         { entity: "BJ", divisors: KG_DIVISORS }
       ),
+      totalEquityH127: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "total_equity",
+        "2027-H1",
+        { entity: "BJ", divisors: KG_DIVISORS }
+      ),
     }),
     psmt: Object.freeze({
       netSalesFy26: mustVal(
@@ -1983,10 +2158,24 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "2026-FY",
         psmtOpts
       ),
-      totalLeaseLiabFy26: mustVal(
+      financeLeaseLiabFy26: mustVal(
         kg,
         "peer_debt_leases",
-        "total_lease_liabilities",
+        "total_finance_lease_liabilities",
+        "2026-FY",
+        psmtOpts
+      ),
+      operatingLeaseLiabFy26: mustVal(
+        kg,
+        "peer_debt_leases",
+        "total_operating_lease_liabilities",
+        "2026-FY",
+        psmtOpts
+      ),
+      totalEquityFy26: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "total_equity",
         "2026-FY",
         psmtOpts
       ),
@@ -2078,6 +2267,27 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "2027-H1",
         { entity: "WMT", divisors: KG_DIVISORS }
       ),
+      nonredeemableNciH127: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "nonredeemable_nci",
+        "2027-H1",
+        { entity: "WMT", divisors: KG_DIVISORS }
+      ),
+      redeemableNciH127: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "redeemable_noncontrolling_interest",
+        "2027-H1",
+        { entity: "WMT", divisors: KG_DIVISORS }
+      ),
+      totalEquityH127: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "total_equity",
+        "2027-H1",
+        { entity: "WMT", divisors: KG_DIVISORS }
+      ),
     }),
     tgt: Object.freeze({
       rev: janPeerTriplet(kg, "peer_income_statement", "net_sales", "TGT"),
@@ -2087,6 +2297,8 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "operating_income",
         "TGT"
       ),
+      ebt: janPeerTriplet(kg, "peer_income_statement", "pretax_income", "TGT"),
+      tax: janPeerTriplet(kg, "peer_income_statement", "tax_provision", "TGT"),
       ni: janPeerTriplet(
         kg,
         "peer_income_statement",
@@ -2157,6 +2369,13 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "2027-H1",
         { entity: "TGT", divisors: KG_DIVISORS }
       ),
+      totalEquityH127: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "total_parent_equity",
+        "2027-H1",
+        { entity: "TGT", divisors: KG_DIVISORS }
+      ),
     }),
     kr: Object.freeze({
       rev: janPeerTriplet(kg, "peer_income_statement", "net_sales", "KR"),
@@ -2166,6 +2385,8 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         "operating_income",
         "KR"
       ),
+      ebt: janPeerTriplet(kg, "peer_income_statement", "pretax_income", "KR"),
+      tax: janPeerTriplet(kg, "peer_income_statement", "tax_provision", "KR"),
       ni: janPeerTriplet(
         kg,
         "peer_income_statement",
@@ -2212,6 +2433,20 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
         kg,
         "peer_debt_leases",
         "total_operating_lease_liabilities",
+        "2027-H1",
+        { entity: "KR", divisors: KG_DIVISORS }
+      ),
+      nonredeemableNciH127: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "nonredeemable_nci",
+        "2027-H1",
+        { entity: "KR", divisors: KG_DIVISORS }
+      ),
+      totalEquityH127: mustVal(
+        kg,
+        "peer_balance_sheet",
+        "total_equity",
         "2027-H1",
         { entity: "KR", divisors: KG_DIVISORS }
       ),
@@ -2589,37 +2824,51 @@ export function loadCostcoKnowledgeData(): CostcoKnowledgeData {
     consensus: Object.freeze(
       consensus as Record<AllCompTicker, ConsensusSnapshot>
     ),
+    costConsensus,
     peers,
     clubUnitEconRaw,
   }
+
+  const cleanCite = (raw: string): string =>
+    raw
+      .replace(/,\s*xpath\s+\S+/gi, "")
+      .replace(/,\s*line\s+\d+/gi, "")
+      .replace(/\s*\(market\/[^)]+\)/gi, "")
+      .trim()
 
   return Object.freeze({
     cost,
     market,
     citations: Object.freeze({
-      incomeStatement: kg.scheduleCitation("cost_income_statement", {
-        entity: "COST",
-      }),
-      balanceSheet: kg.scheduleCitation("cost_balance_sheet", {
-        entity: "COST",
-      }),
-      cashFlow: kg.scheduleCitation("cost_cash_flow", { entity: "COST" }),
-      debtLeases: `${kg.scheduleCitation("cost_debt_schedule", { entity: "COST" })}; ${kg.scheduleCitation("cost_lease_summary", { entity: "COST" })}`,
-      warehouseMembership: `${kg.scheduleCitation("cost_warehouse_kpis", { entity: "COST" })}; ${kg.scheduleCitation("cost_membership_kpis", { entity: "COST" })}`,
-      guidanceCapitalReturn: `${kg.scheduleCitation("cost_fy27_guidance", { entity: "COST" })}; ${kg.scheduleCitation("cost_capital_return_events", { entity: "COST" })}`,
-      equityQuotes: kg.scheduleCitation("mkt_equity_quotes"),
-      consensusEstimates: kg.scheduleCitation("mkt_consensus_estimates"),
-      priceTargets: kg.scheduleCitation("mkt_price_targets"),
-      treasuryPar: kg.scheduleCitation("mkt_treasury_par_curve"),
-      treasuryReal: kg.scheduleCitation("mkt_treasury_real_curve"),
-      creditOas: kg.scheduleCitation("mkt_credit_oas"),
-      inflationFedFunds: kg.scheduleCitation("mkt_inflation_fedfunds"),
-      peerFinancials: `${kg.scheduleCitation("peer_income_statement")}; ${kg.scheduleCitation("peer_qoe_items")}`,
-      peerIncomeStatement: kg.scheduleCitation("peer_income_statement"),
-      peerQoe: kg.scheduleCitation("peer_qoe_items"),
-      samsClub: kg.scheduleCitation("sams_club_segment", {
-        entity: "WMT_SAMS",
-      }),
+      incomeStatement: cleanCite(
+        kg.scheduleCitation("cost_income_statement", { entity: "COST" })
+      ),
+      balanceSheet: cleanCite(
+        kg.scheduleCitation("cost_balance_sheet", { entity: "COST" })
+      ),
+      cashFlow: cleanCite(
+        kg.scheduleCitation("cost_cash_flow", { entity: "COST" })
+      ),
+      debtLeases: `${cleanCite(kg.scheduleCitation("cost_debt_schedule", { entity: "COST" }))}; Note 5 (Leases)`,
+      warehouseMembership: `${cleanCite(kg.scheduleCitation("cost_warehouse_kpis", { entity: "COST" }))}; Membership KPIs`,
+      guidanceCapitalReturn:
+        "Costco Wholesale Corp. Form 8-K (Nov 10, 2026) & Q4 FY26 Earnings Release",
+      equityQuotes: "Market Quotes, Share Counts & Betas (2026-11-13 Close)",
+      consensusEstimates: "Street Consensus Estimates FY27E–FY29E (2026-11-13)",
+      priceTargets: "Street Analyst Price Targets & Ratings (2026-11-13)",
+      treasuryPar: "U.S. Treasury Daily Par Yield Curve (2026-11-13)",
+      treasuryReal: "U.S. Treasury Daily Real TIPS Yield Curve (2026-11-13)",
+      creditOas: "ICE BofA AA U.S. Corporate OAS (2026-11-13)",
+      inflationFedFunds:
+        "FRED 10Y Breakeven Inflation & Fed Funds Rate (Nov 2026)",
+      peerFinancials:
+        "SEC Form 10-K & Q2 Form 10-Q filings (COST, BJ, PSMT, WMT, TGT, KR)",
+      peerIncomeStatement:
+        "SEC Form 10-K & Q2 Form 10-Q filings (BJ, PSMT, WMT, TGT, KR)",
+      peerQoe: "Company earnings releases & SEC 10-K/10-Q reconciliations",
+      samsClub: cleanCite(
+        kg.scheduleCitation("sams_club_segment", { entity: "WMT_SAMS" })
+      ),
     }),
   })
 }

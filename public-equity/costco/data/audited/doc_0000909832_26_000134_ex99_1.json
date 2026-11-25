@@ -23,13 +23,13 @@
       "title": "Post-FY26 Capital Return Events (Special Dividend & Buyback Reauthorization)",
       "source": {
         "doc_id": "doc_0000909832_26_000134_ex99_1",
+        "origin": "prose",
         "entity": "COST",
         "basis": "mgmt",
         "locator": {
           "locator_type": "html_xpath",
           "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
-        },
-        "is_restatement": false
+        }
       },
       "columns": [
         {
@@ -37,32 +37,27 @@
           "label": "Nov 10, 2026 Event Value",
           "period_key": "2026-11-10",
           "as_of_date": "2026-11-10",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         },
         {
           "id": "cap_ret_2026_11_10_decl_date",
           "label": "Declaration Date",
-          "data_type": "date",
-          "is_restatement": false
+          "data_type": "date"
         },
         {
           "id": "cap_ret_2026_11_10_rec_date",
           "label": "Record Date",
-          "data_type": "date",
-          "is_restatement": false
+          "data_type": "date"
         },
         {
           "id": "cap_ret_2026_11_10_pay_date",
           "label": "Payable Date",
-          "data_type": "date",
-          "is_restatement": false
+          "data_type": "date"
         },
         {
           "id": "cap_ret_2026_11_10_notes",
           "label": "Terms & Notes",
-          "data_type": "text",
-          "is_restatement": false
+          "data_type": "text"
         }
       ],
       "rows": [
@@ -76,12 +71,11 @@
             "locator_type": "html_xpath",
             "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
           },
-          "is_restatement": false,
           "cells": {
             "cap_ret_2026_11_10_val": {
               "value": 30,
               "raw_text": "$30",
-              "is_restatement": false
+              "exemption": "non_additive_metric"
             },
             "cap_ret_2026_11_10_decl_date": {
               "value": "2026-11-10",
@@ -89,22 +83,18 @@
               "locator": {
                 "locator_type": "html_xpath",
                 "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
-              },
-              "is_restatement": false
+              }
             },
             "cap_ret_2026_11_10_rec_date": {
               "value": "2026-11-24",
-              "raw_text": "November 24, 2026",
-              "is_restatement": false
+              "raw_text": "November 24, 2026"
             },
             "cap_ret_2026_11_10_pay_date": {
               "value": "2026-12-04",
-              "raw_text": "December 4, 2026",
-              "is_restatement": false
+              "raw_text": "December 4, 2026"
             },
             "cap_ret_2026_11_10_notes": {
-              "value": "$30.00/sh special cash dividend declared Nov 10, 2026, record Nov 24, 2026, payable Dec 4, 2026",
-              "is_restatement": false
+              "value": "$30.00/sh special cash dividend declared Nov 10, 2026, record Nov 24, 2026, payable Dec 4, 2026"
             }
           }
         },
@@ -118,16 +108,14 @@
             "locator_type": "html_xpath",
             "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
           },
-          "is_restatement": false,
           "cells": {
             "cap_ret_2026_11_10_val": {
               "value": 13300,
               "raw_text": "$13.3 billion",
-              "is_restatement": false
+              "exemption": "standalone_disclosure"
             },
             "cap_ret_2026_11_10_notes": {
-              "value": "Approximate aggregate cash payout (~$13.3 billion)",
-              "is_restatement": false
+              "value": "Approximate aggregate cash payout (~$13.3 billion)"
             }
           }
         },
@@ -141,12 +129,11 @@
             "locator_type": "html_xpath",
             "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[5]/font[1]"
           },
-          "is_restatement": false,
           "cells": {
             "cap_ret_2026_11_10_val": {
               "value": 4000,
               "raw_text": "$4 billion",
-              "is_restatement": false
+              "exemption": "standalone_disclosure"
             },
             "cap_ret_2026_11_10_decl_date": {
               "value": "2026-11-10",
@@ -154,12 +141,10 @@
               "locator": {
                 "locator_type": "html_xpath",
                 "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[4]/font[1]"
-              },
-              "is_restatement": false
+              }
             },
             "cap_ret_2026_11_10_notes": {
-              "value": "Up to $4 billion expiring November 2030; replaces Jan 2023 $4B program (due Jan 2027)",
-              "is_restatement": false
+              "value": "Up to $4 billion expiring November 2030; replaces Jan 2023 $4B program (due Jan 2027)"
             }
           }
         },
@@ -173,36 +158,32 @@
             "locator_type": "html_xpath",
             "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[5]/font[1]"
           },
-          "is_restatement": false,
           "cells": {
             "cap_ret_2026_11_10_val": {
               "value": 3100,
               "raw_text": "$3.1 billion",
-              "is_restatement": false
+              "exemption": "standalone_disclosure"
             },
             "cap_ret_2026_11_10_notes": {
-              "value": "$3.1 billion repurchased under 2023 $4B program prior to replacement",
-              "is_restatement": false
+              "value": "$3.1 billion repurchased under 2023 $4B program prior to replacement"
             }
           }
         }
       ],
-      "checksums": [],
-      "checksum_exemption": "Mixed-unit capital return event schedule (per-share dividend, aggregate payout, repurchase authorization, and dates)",
-      "is_restatement": false
+      "checksums": []
     },
     {
       "table_id": "cost_warehouse_kpis",
       "title": "Warehouse Count Snapshot (Nov 10, 2026)",
       "source": {
         "doc_id": "doc_0000909832_26_000134_ex99_1",
+        "origin": "prose",
         "entity": "COST",
         "basis": "mgmt",
         "locator": {
           "locator_type": "html_xpath",
           "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[6]/font[1]"
-        },
-        "is_restatement": false
+        }
       },
       "columns": [
         {
@@ -210,8 +191,7 @@
           "label": "As of Nov 10, 2026",
           "period_key": "2026-11-10",
           "as_of_date": "2026-11-10",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         }
       ],
       "rows": [
@@ -221,12 +201,10 @@
           "category": "warehouse_geo",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_11_10": {
               "value": 653,
-              "raw_text": "653",
-              "is_restatement": false
+              "raw_text": "653"
             }
           }
         },
@@ -236,12 +214,10 @@
           "category": "warehouse_geo",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_11_10": {
               "value": 115,
-              "raw_text": "115",
-              "is_restatement": false
+              "raw_text": "115"
             }
           }
         },
@@ -251,12 +227,10 @@
           "category": "warehouse_geo",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_11_10": {
               "value": 177,
-              "note": "Sum of 12 disclosed Other International country counts: MX 43, JP 37, UK 29, KR 20, AU 15, TW 14, CN 7, ES 5, FR 3, SE 2, IS 1, NZ 1",
-              "is_restatement": false
+              "note": "Sum of 12 disclosed Other International country counts: MX 43, JP 37, UK 29, KR 20, AU 15, TW 14, CN 7, ES 5, FR 3, SE 2, IS 1, NZ 1"
             }
           }
         },
@@ -266,12 +240,10 @@
           "category": "warehouse_total",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_11_10": {
               "value": 945,
-              "raw_text": "945",
-              "is_restatement": false
+              "raw_text": "945"
             }
           }
         }
@@ -297,8 +269,7 @@
           "tolerance": 0,
           "missing_components": "error"
         }
-      ],
-      "is_restatement": false
+      ]
     }
   ],
   "cross_checksums": []

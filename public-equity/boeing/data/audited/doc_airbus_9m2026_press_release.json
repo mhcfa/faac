@@ -1,0 +1,829 @@
+{
+  "document": {
+    "doc_id": "doc_airbus_9m2026_press_release",
+    "file_path": "data/raw/airbus/airbus_9m2026_press_release.pdf",
+    "sha256": "8495999a43506f2a6caad63f2e807f74bcc666b24f626abdefa08d8272cf028c",
+    "doc_type": "pdf_document",
+    "size_bytes": 289675,
+    "title": "Airbus reports Nine-Month (9m) 2026 results - Press Release",
+    "report_date": "2026-09-30",
+    "filing_date": "2026-10-28",
+    "source_meta": {
+      "entity": "Airbus SE",
+      "ticker": "AIR.PA",
+      "lei": "MINO79WLOO247M1IL051",
+      "period": "9M 2026",
+      "source": "airbus_ir",
+      "source_url": "https://mediaassets.airbus.com/pm_38_942_942888-eyfb5ynik9.pdf?fileName=airbus-nine-month-9m-2026-press-release.pdf",
+      "retrieved_at": "2026-11-23T19:51:33.804Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "airbus_ebit_adjusted_recon",
+      "title": "EBIT (Reported) to EBIT Adjusted Reconciliation & Segment EBIT Adjusted (9M2026 & Q3 2026)",
+      "source": {
+        "doc_id": "doc_airbus_9m2026_press_release",
+        "origin": "pdf_table",
+        "entity": "AIR.PA",
+        "basis": "non_gaap"
+      },
+      "columns": [
+        {
+          "id": "m9_26",
+          "label": "9M 2026",
+          "period_key": "2026-Q3-YTD",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "m9_25",
+          "label": "9M 2025",
+          "period_key": "2025-Q3-YTD",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "q3_26",
+          "label": "Q3 2026",
+          "period_key": "2026-Q3",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "q3_25",
+          "label": "Q3 2025",
+          "period_key": "2025-Q3",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "ebit_reported",
+          "label": "EBIT (reported)",
+          "cells": {
+            "m9_26": {
+              "value": 4550,
+              "raw_text": "4,550",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 8
+              }
+            },
+            "q3_26": {
+              "value": 1805,
+              "raw_text": "1,805",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            },
+            "q3_25": {
+              "value": 1748,
+              "raw_text": "1,748",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            }
+          }
+        },
+        {
+          "id": "adj_dollar_wc_mismatch",
+          "label": "$ working capital mismatch and balance sheet revaluation",
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 8
+          },
+          "cells": {
+            "m9_26": {
+              "value": 270,
+              "raw_text": "+270"
+            }
+          }
+        },
+        {
+          "id": "adj_spirit_integration",
+          "label": "Former Spirit AeroSystems work packages integration",
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 8
+          },
+          "cells": {
+            "m9_26": {
+              "value": -235,
+              "raw_text": "-235"
+            }
+          }
+        },
+        {
+          "id": "adj_ds_workforce_plan",
+          "label": "Airbus Defence and Space workforce adaptation plan",
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 8
+          },
+          "cells": {
+            "m9_26": {
+              "value": 60,
+              "raw_text": "+60"
+            }
+          }
+        },
+        {
+          "id": "adj_other",
+          "label": "Others",
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 8
+          },
+          "cells": {
+            "m9_26": {
+              "value": -40,
+              "raw_text": "-40"
+            }
+          }
+        },
+        {
+          "id": "adj_total",
+          "label": "Total net EBIT Adjustments (included in reported EBIT)",
+          "origin": "prose",
+          "cells": {
+            "m9_26": {
+              "value": 55,
+              "raw_text": "+55",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 2
+              }
+            },
+            "q3_26": {
+              "value": 37,
+              "raw_text": "+37",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 8
+              }
+            },
+            "q3_25": {
+              "value": -194,
+              "raw_text": "-194",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 8
+              }
+            }
+          }
+        },
+        {
+          "id": "ebit_adjusted_airbus",
+          "label": "Airbus — EBIT Adjusted",
+          "cells": {
+            "m9_26": {
+              "value": 3362,
+              "raw_text": "3,362",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "m9_25": {
+              "value": 3270,
+              "raw_text": "3,270",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "q3_26": {
+              "value": 1375,
+              "raw_text": "1,375",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            },
+            "q3_25": {
+              "value": 1556,
+              "raw_text": "1,556",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            }
+          }
+        },
+        {
+          "id": "ebit_adjusted_helicopters",
+          "label": "Airbus Helicopters — EBIT Adjusted",
+          "cells": {
+            "m9_26": {
+              "value": 445,
+              "raw_text": "445",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "m9_25": {
+              "value": 495,
+              "raw_text": "495",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "q3_26": {
+              "value": 205,
+              "raw_text": "205",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            },
+            "q3_25": {
+              "value": 246,
+              "raw_text": "246",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            }
+          }
+        },
+        {
+          "id": "ebit_adjusted_ds",
+          "label": "Airbus Defence and Space — EBIT Adjusted",
+          "cells": {
+            "m9_26": {
+              "value": 672,
+              "raw_text": "672",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "m9_25": {
+              "value": 420,
+              "raw_text": "420",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "q3_26": {
+              "value": 185,
+              "raw_text": "185",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            },
+            "q3_25": {
+              "value": 155,
+              "raw_text": "155",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            }
+          }
+        },
+        {
+          "id": "ebit_adjusted_eliminations",
+          "label": "Eliminations — EBIT Adjusted",
+          "cells": {
+            "m9_26": {
+              "value": 16,
+              "raw_text": "16",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "m9_25": {
+              "value": -39,
+              "raw_text": "-39",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "q3_26": {
+              "value": 3,
+              "raw_text": "3",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            },
+            "q3_25": {
+              "value": -15,
+              "raw_text": "-15",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            }
+          }
+        },
+        {
+          "id": "ebit_adjusted",
+          "label": "EBIT Adjusted",
+          "cells": {
+            "m9_26": {
+              "value": 4495,
+              "raw_text": "4,495",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "m9_25": {
+              "value": 4146,
+              "raw_text": "4,146",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 6
+              }
+            },
+            "q3_26": {
+              "value": 1768,
+              "raw_text": "1,768",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            },
+            "q3_25": {
+              "value": 1942,
+              "raw_text": "1,942",
+              "locator": {
+                "locator_type": "pdf_page",
+                "page": 7
+              }
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "ebit_adjusted",
+          "components": [
+            {
+              "id": "ebit_adjusted_airbus",
+              "sign": 1
+            },
+            {
+              "id": "ebit_adjusted_helicopters",
+              "sign": 1
+            },
+            {
+              "id": "ebit_adjusted_ds",
+              "sign": 1
+            },
+            {
+              "id": "ebit_adjusted_eliminations",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "adj_total",
+          "components": [
+            {
+              "id": "adj_dollar_wc_mismatch",
+              "sign": 1
+            },
+            {
+              "id": "adj_spirit_integration",
+              "sign": 1
+            },
+            {
+              "id": "adj_ds_workforce_plan",
+              "sign": 1
+            },
+            {
+              "id": "adj_other",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "m9_26"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ebit_reported",
+          "components": [
+            {
+              "id": "ebit_adjusted",
+              "sign": 1
+            },
+            {
+              "id": "adj_total",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "m9_26",
+            "q3_26",
+            "q3_25"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "airbus_fcf_bridge",
+      "title": "Free Cash Flow & FCF before Customer Financing (9M2026-9M2025)",
+      "source": {
+        "doc_id": "doc_airbus_9m2026_press_release",
+        "origin": "pdf_table",
+        "exemption": "standalone_disclosure",
+        "entity": "AIR.PA",
+        "basis": "non_gaap",
+        "locator": {
+          "locator_type": "pdf_page",
+          "page": 5
+        }
+      },
+      "columns": [
+        {
+          "id": "m9_26",
+          "label": "9M 2026",
+          "period_key": "2026-Q3-YTD",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "m9_25",
+          "label": "9M 2025",
+          "period_key": "2025-Q3-YTD",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "fcf",
+          "label": "Free Cash Flow (FCF)",
+          "cells": {
+            "m9_26": {
+              "value": -1108,
+              "raw_text": "-1,108"
+            },
+            "m9_25": {
+              "value": -778,
+              "raw_text": "-778"
+            }
+          }
+        },
+        {
+          "id": "fcf_before_customer_financing",
+          "label": "Free Cash Flow before Customer Financing",
+          "cells": {
+            "m9_26": {
+              "value": -1268,
+              "raw_text": "-1,268",
+              "note": "Customer financing component not separately printed in 9M2026 press release (implied EUR +160M)"
+            },
+            "m9_25": {
+              "value": -914,
+              "raw_text": "-914",
+              "note": "Customer financing component not separately printed in 9M2026 press release (implied EUR +136M)"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    },
+    {
+      "table_id": "airbus_orders_deliveries",
+      "title": "Order Intake, Order Book & Deliveries (9M2026-9M2025)",
+      "source": {
+        "doc_id": "doc_airbus_9m2026_press_release",
+        "entity": "AIR.PA",
+        "basis": "mgmt"
+      },
+      "columns": [
+        {
+          "id": "m9_26",
+          "label": "9M 2026",
+          "period_key": "2026-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "m9_25",
+          "label": "9M 2025",
+          "period_key": "2025-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "q3_26",
+          "label": "30 Sep 2026",
+          "period_key": "2026-09-30",
+          "data_type": "number"
+        },
+        {
+          "id": "q3_25",
+          "label": "30 Sep 2025",
+          "period_key": "2025-09-30",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "deliveries_a220",
+          "label": "Commercial aircraft deliveries — A220",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 1
+          },
+          "cells": {
+            "m9_26": {
+              "value": 68,
+              "raw_text": "68"
+            }
+          }
+        },
+        {
+          "id": "deliveries_a320",
+          "label": "Commercial aircraft deliveries — A320 Family",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 1
+          },
+          "cells": {
+            "m9_26": {
+              "value": 428,
+              "raw_text": "428"
+            }
+          }
+        },
+        {
+          "id": "deliveries_a330",
+          "label": "Commercial aircraft deliveries — A330",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 1
+          },
+          "cells": {
+            "m9_26": {
+              "value": 13,
+              "raw_text": "13"
+            }
+          }
+        },
+        {
+          "id": "deliveries_a350",
+          "label": "Commercial aircraft deliveries — A350",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 1
+          },
+          "cells": {
+            "m9_26": {
+              "value": 38,
+              "raw_text": "38"
+            }
+          }
+        },
+        {
+          "id": "deliveries_commercial_total",
+          "label": "Commercial aircraft deliveries — total",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 1
+          },
+          "cells": {
+            "m9_26": {
+              "value": 547,
+              "raw_text": "547"
+            },
+            "m9_25": {
+              "value": 507,
+              "raw_text": "507",
+              "note": "9M2025 per-family delivery mix not printed in 9M2026 press release",
+              "exemption": "standalone_disclosure"
+            }
+          }
+        },
+        {
+          "id": "deliveries_heli_total",
+          "label": "Helicopter deliveries — total",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 1
+          },
+          "cells": {
+            "m9_26": {
+              "value": 226,
+              "raw_text": "226"
+            },
+            "m9_25": {
+              "value": 218,
+              "raw_text": "218"
+            }
+          }
+        },
+        {
+          "id": "orders_gross_commercial",
+          "label": "Commercial aircraft gross orders (units)",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 1
+          },
+          "cells": {
+            "m9_26": {
+              "value": 1174,
+              "raw_text": "1,174"
+            },
+            "m9_25": {
+              "value": 610,
+              "raw_text": "610"
+            }
+          }
+        },
+        {
+          "id": "order_intake_units_commercial",
+          "label": "Airbus commercial aircraft net order intake (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 6
+          },
+          "cells": {
+            "m9_26": {
+              "value": 1105,
+              "raw_text": "1,105"
+            },
+            "m9_25": {
+              "value": 514,
+              "raw_text": "514"
+            }
+          }
+        },
+        {
+          "id": "order_book_units_commercial",
+          "label": "Airbus commercial aircraft order book (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 6
+          },
+          "cells": {
+            "q3_26": {
+              "value": 9310,
+              "raw_text": "9,310",
+              "note": "Footnote 1 (p. 10): Reflects 2 A330s previously delivered on operating lease (YE25 8,754 + 1,105 - 547 - 2 = 9,310)"
+            },
+            "q3_25": {
+              "value": 8665,
+              "raw_text": "8,665"
+            }
+          }
+        },
+        {
+          "id": "order_intake_units_heli",
+          "label": "Airbus Helicopters net order intake (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 6
+          },
+          "cells": {
+            "m9_26": {
+              "value": 311,
+              "raw_text": "311"
+            },
+            "m9_25": {
+              "value": 306,
+              "raw_text": "306"
+            }
+          }
+        },
+        {
+          "id": "order_book_units_heli",
+          "label": "Airbus Helicopters order book (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 6
+          },
+          "cells": {
+            "q3_26": {
+              "value": 1122,
+              "raw_text": "1,122"
+            },
+            "q3_25": {
+              "value": 981,
+              "raw_text": "981"
+            }
+          }
+        },
+        {
+          "id": "order_intake_eur_ds",
+          "label": "Airbus Defence and Space order intake (EUR M)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 6
+          },
+          "cells": {
+            "m9_26": {
+              "value": 11474,
+              "raw_text": "11,474"
+            },
+            "m9_25": {
+              "value": 6753,
+              "raw_text": "6,753"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "deliveries_commercial_total",
+          "components": [
+            {
+              "id": "deliveries_a220",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_a320",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_a330",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_a350",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "m9_26"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": []
+}

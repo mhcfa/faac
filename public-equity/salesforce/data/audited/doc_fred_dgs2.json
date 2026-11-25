@@ -1,0 +1,978 @@
+{
+  "document": {
+    "doc_id": "doc_fred_dgs2",
+    "file_path": "data/raw/macro/fred-dgs2.csv",
+    "sha256": "f9c7e43e5f8dbada05d9b2392257581bc5c1bb5a3b50d9e83a6f29342d7061c2",
+    "doc_type": "other",
+    "size_bytes": 209612,
+    "title": "FRED DGS2 — US 2-Year Treasury Constant Maturity Yield",
+    "report_date": "2026-11-17",
+    "source_meta": {
+      "series_id": "DGS2",
+      "date_column": "observation_date",
+      "value_column": "DGS2",
+      "total_rows": 13166,
+      "valid_observations": 12612,
+      "first_date": "1976-06-01",
+      "latest_date": "2026-11-17",
+      "latest_value": 4.8,
+      "source": "fred",
+      "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DGS2",
+      "retrieved_at": "2026-11-19T17:34:14.260Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "macro_rates",
+      "title": "FRED US Treasury Constant-Maturity Yields & ICE BofA Corporate OAS",
+      "source": {
+        "doc_id": "doc_fred_dgs2",
+        "origin": "structured_data",
+        "exemption": "non_additive_metric",
+        "entity": "US_MACRO",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 13167
+        }
+      },
+      "columns": [
+        {
+          "id": "d_2023_11_30",
+          "label": "2023-11-30",
+          "raw_label": "2023-11-30",
+          "period_key": "2023-11-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12394
+          },
+          "as_of_date": "2023-11-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2023_12_29",
+          "label": "2023-12-29",
+          "raw_label": "2023-12-29",
+          "period_key": "2023-12-29",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12415
+          },
+          "as_of_date": "2023-12-29",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_01_31",
+          "label": "2024-01-31",
+          "raw_label": "2024-01-31",
+          "period_key": "2024-01-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12438
+          },
+          "as_of_date": "2024-01-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_02_29",
+          "label": "2024-02-29",
+          "raw_label": "2024-02-29",
+          "period_key": "2024-02-29",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12459
+          },
+          "as_of_date": "2024-02-29",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_03_28",
+          "label": "2024-03-28",
+          "raw_label": "2024-03-28",
+          "period_key": "2024-03-28",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12479
+          },
+          "as_of_date": "2024-03-28",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_04_30",
+          "label": "2024-04-30",
+          "raw_label": "2024-04-30",
+          "period_key": "2024-04-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12502
+          },
+          "as_of_date": "2024-04-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_05_31",
+          "label": "2024-05-31",
+          "raw_label": "2024-05-31",
+          "period_key": "2024-05-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12525
+          },
+          "as_of_date": "2024-05-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_06_28",
+          "label": "2024-06-28",
+          "raw_label": "2024-06-28",
+          "period_key": "2024-06-28",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12545
+          },
+          "as_of_date": "2024-06-28",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_07_31",
+          "label": "2024-07-31",
+          "raw_label": "2024-07-31",
+          "period_key": "2024-07-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12568
+          },
+          "as_of_date": "2024-07-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_08_30",
+          "label": "2024-08-30",
+          "raw_label": "2024-08-30",
+          "period_key": "2024-08-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12590
+          },
+          "as_of_date": "2024-08-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_09_30",
+          "label": "2024-09-30",
+          "raw_label": "2024-09-30",
+          "period_key": "2024-09-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12611
+          },
+          "as_of_date": "2024-09-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_10_31",
+          "label": "2024-10-31",
+          "raw_label": "2024-10-31",
+          "period_key": "2024-10-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12634
+          },
+          "as_of_date": "2024-10-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_11_29",
+          "label": "2024-11-29",
+          "raw_label": "2024-11-29",
+          "period_key": "2024-11-29",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12655
+          },
+          "as_of_date": "2024-11-29",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_12_31",
+          "label": "2024-12-31",
+          "raw_label": "2024-12-31",
+          "period_key": "2024-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12677
+          },
+          "as_of_date": "2024-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_01_31",
+          "label": "2025-01-31",
+          "raw_label": "2025-01-31",
+          "period_key": "2025-01-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12700
+          },
+          "as_of_date": "2025-01-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_02_28",
+          "label": "2025-02-28",
+          "raw_label": "2025-02-28",
+          "period_key": "2025-02-28",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12720
+          },
+          "as_of_date": "2025-02-28",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_03_31",
+          "label": "2025-03-31",
+          "raw_label": "2025-03-31",
+          "period_key": "2025-03-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12741
+          },
+          "as_of_date": "2025-03-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_04_30",
+          "label": "2025-04-30",
+          "raw_label": "2025-04-30",
+          "period_key": "2025-04-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12763
+          },
+          "as_of_date": "2025-04-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_05_30",
+          "label": "2025-05-30",
+          "raw_label": "2025-05-30",
+          "period_key": "2025-05-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12785
+          },
+          "as_of_date": "2025-05-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_06_30",
+          "label": "2025-06-30",
+          "raw_label": "2025-06-30",
+          "period_key": "2025-06-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12806
+          },
+          "as_of_date": "2025-06-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_07_31",
+          "label": "2025-07-31",
+          "raw_label": "2025-07-31",
+          "period_key": "2025-07-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12829
+          },
+          "as_of_date": "2025-07-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_08_29",
+          "label": "2025-08-29",
+          "raw_label": "2025-08-29",
+          "period_key": "2025-08-29",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12850
+          },
+          "as_of_date": "2025-08-29",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_09_30",
+          "label": "2025-09-30",
+          "raw_label": "2025-09-30",
+          "period_key": "2025-09-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12872
+          },
+          "as_of_date": "2025-09-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_10_31",
+          "label": "2025-10-31",
+          "raw_label": "2025-10-31",
+          "period_key": "2025-10-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12895
+          },
+          "as_of_date": "2025-10-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_11_28",
+          "label": "2025-11-28",
+          "raw_label": "2025-11-28",
+          "period_key": "2025-11-28",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12915
+          },
+          "as_of_date": "2025-11-28",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_12_31",
+          "label": "2025-12-31",
+          "raw_label": "2025-12-31",
+          "period_key": "2025-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12938
+          },
+          "as_of_date": "2025-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_01_30",
+          "label": "2026-01-30",
+          "raw_label": "2026-01-30",
+          "period_key": "2026-01-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12960
+          },
+          "as_of_date": "2026-01-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_02_27",
+          "label": "2026-02-27",
+          "raw_label": "2026-02-27",
+          "period_key": "2026-02-27",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 12980
+          },
+          "as_of_date": "2026-02-27",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_03_31",
+          "label": "2026-03-31",
+          "raw_label": "2026-03-31",
+          "period_key": "2026-03-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13002
+          },
+          "as_of_date": "2026-03-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_04_30",
+          "label": "2026-04-30",
+          "raw_label": "2026-04-30",
+          "period_key": "2026-04-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13024
+          },
+          "as_of_date": "2026-04-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_05_29",
+          "label": "2026-05-29",
+          "raw_label": "2026-05-29",
+          "period_key": "2026-05-29",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13045
+          },
+          "as_of_date": "2026-05-29",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_06_30",
+          "label": "2026-06-30",
+          "raw_label": "2026-06-30",
+          "period_key": "2026-06-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13067
+          },
+          "as_of_date": "2026-06-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_07_31",
+          "label": "2026-07-31",
+          "raw_label": "2026-07-31",
+          "period_key": "2026-07-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13090
+          },
+          "as_of_date": "2026-07-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_08_31",
+          "label": "2026-08-31",
+          "raw_label": "2026-08-31",
+          "period_key": "2026-08-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13111
+          },
+          "as_of_date": "2026-08-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_09_30",
+          "label": "2026-09-30",
+          "raw_label": "2026-09-30",
+          "period_key": "2026-09-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13133
+          },
+          "as_of_date": "2026-09-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_10_30",
+          "label": "2026-10-30",
+          "raw_label": "2026-10-30",
+          "period_key": "2026-10-30",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13155
+          },
+          "as_of_date": "2026-10-30",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_03",
+          "label": "2026-11-03",
+          "raw_label": "2026-11-03",
+          "period_key": "2026-11-03",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13157
+          },
+          "as_of_date": "2026-11-03",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_04",
+          "label": "2026-11-04",
+          "raw_label": "2026-11-04",
+          "period_key": "2026-11-04",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13158
+          },
+          "as_of_date": "2026-11-04",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_05",
+          "label": "2026-11-05",
+          "raw_label": "2026-11-05",
+          "period_key": "2026-11-05",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13159
+          },
+          "as_of_date": "2026-11-05",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_06",
+          "label": "2026-11-06",
+          "raw_label": "2026-11-06",
+          "period_key": "2026-11-06",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13160
+          },
+          "as_of_date": "2026-11-06",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_09",
+          "label": "2026-11-09",
+          "raw_label": "2026-11-09",
+          "period_key": "2026-11-09",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13161
+          },
+          "as_of_date": "2026-11-09",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_10",
+          "label": "2026-11-10",
+          "raw_label": "2026-11-10",
+          "period_key": "2026-11-10",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13162
+          },
+          "as_of_date": "2026-11-10",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_12",
+          "label": "2026-11-12",
+          "raw_label": "2026-11-12",
+          "period_key": "2026-11-12",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13164
+          },
+          "as_of_date": "2026-11-12",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_13",
+          "label": "2026-11-13",
+          "raw_label": "2026-11-13",
+          "period_key": "2026-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13165
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_16",
+          "label": "2026-11-16",
+          "raw_label": "2026-11-16",
+          "period_key": "2026-11-16",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13166
+          },
+          "as_of_date": "2026-11-16",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_17",
+          "label": "2026-11-17",
+          "raw_label": "2026-11-17",
+          "period_key": "2026-11-17",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 13167
+          },
+          "as_of_date": "2026-11-17",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "dgs2",
+          "label": "2-Year US Treasury Constant Maturity Yield",
+          "raw_label": "DGS2",
+          "category": "treasury_yield",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "d_2023_11_30": {
+              "value": 4.73,
+              "raw_text": "4.73",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12394
+              }
+            },
+            "d_2023_12_29": {
+              "value": 4.23,
+              "raw_text": "4.23",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12415
+              }
+            },
+            "d_2024_01_31": {
+              "value": 4.27,
+              "raw_text": "4.27",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12438
+              }
+            },
+            "d_2024_02_29": {
+              "value": 4.64,
+              "raw_text": "4.64",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12459
+              }
+            },
+            "d_2024_03_28": {
+              "value": 4.59,
+              "raw_text": "4.59",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12479
+              }
+            },
+            "d_2024_04_30": {
+              "value": 5.04,
+              "raw_text": "5.04",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12502
+              }
+            },
+            "d_2024_05_31": {
+              "value": 4.89,
+              "raw_text": "4.89",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12525
+              }
+            },
+            "d_2024_06_28": {
+              "value": 4.71,
+              "raw_text": "4.71",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12545
+              }
+            },
+            "d_2024_07_31": {
+              "value": 4.29,
+              "raw_text": "4.29",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12568
+              }
+            },
+            "d_2024_08_30": {
+              "value": 3.91,
+              "raw_text": "3.91",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12590
+              }
+            },
+            "d_2024_09_30": {
+              "value": 3.66,
+              "raw_text": "3.66",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12611
+              }
+            },
+            "d_2024_10_31": {
+              "value": 4.16,
+              "raw_text": "4.16",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12634
+              }
+            },
+            "d_2024_11_29": {
+              "value": 4.13,
+              "raw_text": "4.13",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12655
+              }
+            },
+            "d_2024_12_31": {
+              "value": 4.25,
+              "raw_text": "4.25",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12677
+              }
+            },
+            "d_2025_01_31": {
+              "value": 4.22,
+              "raw_text": "4.22",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12700
+              }
+            },
+            "d_2025_02_28": {
+              "value": 3.99,
+              "raw_text": "3.99",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12720
+              }
+            },
+            "d_2025_03_31": {
+              "value": 3.89,
+              "raw_text": "3.89",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12741
+              }
+            },
+            "d_2025_04_30": {
+              "value": 3.6,
+              "raw_text": "3.60",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12763
+              }
+            },
+            "d_2025_05_30": {
+              "value": 3.89,
+              "raw_text": "3.89",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12785
+              }
+            },
+            "d_2025_06_30": {
+              "value": 3.72,
+              "raw_text": "3.72",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12806
+              }
+            },
+            "d_2025_07_31": {
+              "value": 3.94,
+              "raw_text": "3.94",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12829
+              }
+            },
+            "d_2025_08_29": {
+              "value": 3.59,
+              "raw_text": "3.59",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12850
+              }
+            },
+            "d_2025_09_30": {
+              "value": 3.6,
+              "raw_text": "3.60",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12872
+              }
+            },
+            "d_2025_10_31": {
+              "value": 3.6,
+              "raw_text": "3.60",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12895
+              }
+            },
+            "d_2025_11_28": {
+              "value": 3.47,
+              "raw_text": "3.47",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12915
+              }
+            },
+            "d_2025_12_31": {
+              "value": 3.47,
+              "raw_text": "3.47",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12938
+              }
+            },
+            "d_2026_01_30": {
+              "value": 3.52,
+              "raw_text": "3.52",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12960
+              }
+            },
+            "d_2026_02_27": {
+              "value": 3.38,
+              "raw_text": "3.38",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 12980
+              }
+            },
+            "d_2026_03_31": {
+              "value": 3.79,
+              "raw_text": "3.79",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13002
+              }
+            },
+            "d_2026_04_30": {
+              "value": 3.88,
+              "raw_text": "3.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13024
+              }
+            },
+            "d_2026_05_29": {
+              "value": 3.98,
+              "raw_text": "3.98",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13045
+              }
+            },
+            "d_2026_06_30": {
+              "value": 4.14,
+              "raw_text": "4.14",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13067
+              }
+            },
+            "d_2026_07_31": {
+              "value": 4.28,
+              "raw_text": "4.28",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13090
+              }
+            },
+            "d_2026_08_31": {
+              "value": 4.34,
+              "raw_text": "4.34",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13111
+              }
+            },
+            "d_2026_09_30": {
+              "value": 4.88,
+              "raw_text": "4.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13133
+              }
+            },
+            "d_2026_10_30": {
+              "value": 4.56,
+              "raw_text": "4.56",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13155
+              }
+            },
+            "d_2026_11_03": {
+              "value": 4.61,
+              "raw_text": "4.61",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13157
+              }
+            },
+            "d_2026_11_04": {
+              "value": 4.58,
+              "raw_text": "4.58",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13158
+              }
+            },
+            "d_2026_11_05": {
+              "value": 4.46,
+              "raw_text": "4.46",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13159
+              }
+            },
+            "d_2026_11_06": {
+              "value": 4.51,
+              "raw_text": "4.51",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13160
+              }
+            },
+            "d_2026_11_09": {
+              "value": 4.56,
+              "raw_text": "4.56",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13161
+              }
+            },
+            "d_2026_11_10": {
+              "value": 4.73,
+              "raw_text": "4.73",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13162
+              }
+            },
+            "d_2026_11_12": {
+              "value": 4.86,
+              "raw_text": "4.86",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13164
+              }
+            },
+            "d_2026_11_13": {
+              "value": 4.88,
+              "raw_text": "4.88",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13165
+              }
+            },
+            "d_2026_11_16": {
+              "value": 4.83,
+              "raw_text": "4.83",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13166
+              }
+            },
+            "d_2026_11_17": {
+              "value": 4.8,
+              "raw_text": "4.80",
+              "locator": {
+                "locator_type": "text_line",
+                "line_start": 13167
+              }
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

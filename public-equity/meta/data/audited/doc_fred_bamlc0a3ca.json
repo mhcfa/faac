@@ -1,0 +1,122 @@
+{
+  "document": {
+    "doc_id": "doc_fred_bamlc0a3ca",
+    "file_path": "data/raw/macro/fred_bamlc0a3ca.csv",
+    "sha256": "5b26ebb8b6f3d98783e181a3ae1fc5ad3ff7148000103b4484ab93c8ee67f382",
+    "doc_type": "structured_data",
+    "size_bytes": 12700,
+    "title": "FRED ICE BofA Single-A US Corporate Index Option-Adjusted Spread (BAMLC0A3CA)",
+    "report_date": "2026-11-19",
+    "source_meta": {
+      "series_id": "BAMLC0A3CA",
+      "latest_observation_date": "2026-11-19",
+      "latest_value": 0.78,
+      "observation_count": 786,
+      "source": "fred",
+      "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=BAMLC0A3CA",
+      "retrieved_at": "2026-11-22T19:24:05.283Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "macro_rates",
+      "title": "U.S. Benchmark Interest Rates, Credit Spreads, and Spot FX",
+      "source": {
+        "doc_id": "doc_fred_bamlc0a3ca",
+        "origin": "structured_data",
+        "exemption": "non_additive_metric",
+        "entity": "US",
+        "basis": "market",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 795
+        },
+        "as_of_date": "2026-11-19"
+      },
+      "columns": [
+        {
+          "id": "d_2023_12_31",
+          "label": "2023-12-31",
+          "raw_label": "2023-12-31",
+          "period_key": "2023-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 31,
+            "line_end": 31
+          },
+          "as_of_date": "2023-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2024_12_31",
+          "label": "2024-12-31",
+          "raw_label": "2024-12-31",
+          "period_key": "2024-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 297,
+            "line_end": 297
+          },
+          "as_of_date": "2024-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2025_12_31",
+          "label": "2025-12-31",
+          "raw_label": "2025-12-31",
+          "period_key": "2025-12-31",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 561,
+            "line_end": 561
+          },
+          "as_of_date": "2025-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_19",
+          "label": "2026-11-19",
+          "raw_label": "2026-11-19",
+          "period_key": "2026-11-19",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 795,
+            "line_end": 795
+          },
+          "as_of_date": "2026-11-19",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "a_oas",
+          "label": "ICE BofA Single-A U.S. Corporate Index OAS (BAMLC0A3CA)",
+          "raw_label": "BAMLC0A3CA",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "d_2023_12_31": {
+              "value": 0.88,
+              "raw_text": "0.88"
+            },
+            "d_2024_12_31": {
+              "value": 0.69,
+              "raw_text": "0.69"
+            },
+            "d_2025_12_31": {
+              "value": 0.65,
+              "raw_text": "0.65"
+            },
+            "d_2026_11_19": {
+              "value": 0.78,
+              "raw_text": "0.78"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

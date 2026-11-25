@@ -1,0 +1,3005 @@
+{
+  "document": {
+    "doc_id": "doc_rtx_20260930",
+    "file_path": "data/raw/sec/0000101829/0000101829-26-000031/rtx-20260930.htm",
+    "sha256": "0878c74b2da0acc68a5b00059d97cfba09716628ccc70330ab1d69ee8ebbdca0",
+    "doc_type": "sec_filing",
+    "size_bytes": 2416401,
+    "title": "RTX Corp 10-Q (2026-09-30)",
+    "report_date": "2026-09-30",
+    "filing_date": "2026-10-20",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000101829",
+      "company_name": "RTX Corp",
+      "tickers": "RTX",
+      "form": "10-Q",
+      "accession_number": "0000101829-26-000031",
+      "filing_date": "2026-10-20",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/101829/000010182926000031/rtx-20260930.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "income_statement",
+      "title": "RTX Condensed Consolidated Statements of Operations (Q3 2026 Form 10-Q)",
+      "source": {
+        "doc_id": "doc_rtx_20260930",
+        "origin": "html_table",
+        "entity": "RTX",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[9]",
+          "table_index": 9
+        }
+      },
+      "columns": [
+        {
+          "id": "q3_26",
+          "label": "Q3 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "q3_25",
+          "label": "Q3 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_26",
+          "label": "9M 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_25",
+          "label": "9M 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3-YTD",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "revenue_products",
+          "label": "Products sales",
+          "raw_label": "Products sales",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 18258,
+              "raw_text": "$18,258",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 16264,
+              "raw_text": "$16,264",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 51967,
+              "raw_text": "$51,967",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 46406,
+              "raw_text": "$46,406",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "revenue_services",
+          "label": "Services sales",
+          "raw_label": "Services sales",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 6707,
+              "raw_text": "6,707",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 6214,
+              "raw_text": "6,214",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 19782,
+              "raw_text": "19,782",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 17959,
+              "raw_text": "17,959",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "revenue_total",
+          "label": "Total net sales",
+          "raw_label": "Total net sales",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 24965,
+              "raw_text": "24,965",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 22478,
+              "raw_text": "22,478",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 71749,
+              "raw_text": "71,749",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 64365,
+              "raw_text": "64,365",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cogs_products",
+          "label": "Cost of sales - products",
+          "raw_label": "Cost of sales - products",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 14484,
+              "raw_text": "14,484",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 13593,
+              "raw_text": "13,593",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 42286,
+              "raw_text": "42,286",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 38865,
+              "raw_text": "38,865",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "cogs_services",
+          "label": "Cost of sales - services",
+          "raw_label": "Cost of sales - services",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 4676,
+              "raw_text": "4,676",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 4305,
+              "raw_text": "4,305",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 13931,
+              "raw_text": "13,931",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 12428,
+              "raw_text": "12,428",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "rd_expense",
+          "label": "Research and development",
+          "raw_label": "Research and development",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 711,
+              "raw_text": "711",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 684,
+              "raw_text": "684",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 2064,
+              "raw_text": "2,064",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 2018,
+              "raw_text": "2,018",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "sga_expense",
+          "label": "Selling, general, and administrative",
+          "raw_label": "Selling, general, and administrative",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 1918,
+              "raw_text": "1,918",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 1436,
+              "raw_text": "1,436",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 5052,
+              "raw_text": "5,052",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 4457,
+              "raw_text": "4,457",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_costs_and_expenses",
+          "label": "Total costs and expenses",
+          "raw_label": "Total costs and expenses",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 21789,
+              "raw_text": "21,789",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 20018,
+              "raw_text": "20,018",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 63333,
+              "raw_text": "63,333",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 57768,
+              "raw_text": "57,768",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_operating_income_net",
+          "label": "Other income, net",
+          "raw_label": "Other income, net",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 161,
+              "raw_text": "161",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 63,
+              "raw_text": "63",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 287,
+              "raw_text": "287",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 107,
+              "raw_text": "107",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "operating_income",
+          "label": "Operating profit",
+          "raw_label": "Operating profit",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 3337,
+              "raw_text": "3,337",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 2523,
+              "raw_text": "2,523",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 8703,
+              "raw_text": "8,703",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 6704,
+              "raw_text": "6,704",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "non_service_pension_expense_income",
+          "label": "Non-service pension income",
+          "raw_label": "Non-service pension income",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": -345,
+              "raw_text": "(345)",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": -364,
+              "raw_text": "(364)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": -1048,
+              "raw_text": "(1,048)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -1081,
+              "raw_text": "(1,081)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "interest_expense_net",
+          "label": "Interest expense, net",
+          "raw_label": "Interest expense, net",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 381,
+              "raw_text": "381",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 449,
+              "raw_text": "449",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 1188,
+              "raw_text": "1,188",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1349,
+              "raw_text": "1,349",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "non_operating_expense_net",
+          "label": "Total non-operating expense, net",
+          "raw_label": "Total non-operating expense, net",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 36,
+              "raw_text": "36",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 85,
+              "raw_text": "85",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 140,
+              "raw_text": "140",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 268,
+              "raw_text": "268",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pretax_income",
+          "label": "Income before income taxes",
+          "raw_label": "Income before income taxes",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 3301,
+              "raw_text": "3,301",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 2438,
+              "raw_text": "2,438",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 8563,
+              "raw_text": "8,563",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 6436,
+              "raw_text": "6,436",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "income_tax_expense",
+          "label": "Income tax expense",
+          "raw_label": "Income tax expense",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 593,
+              "raw_text": "593",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 432,
+              "raw_text": "432",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 1449,
+              "raw_text": "1,449",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1080,
+              "raw_text": "1,080",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "net_income",
+          "label": "Net income",
+          "raw_label": "Net income",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 2708,
+              "raw_text": "2,708",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 2006,
+              "raw_text": "2,006",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 7114,
+              "raw_text": "7,114",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 5356,
+              "raw_text": "5,356",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "net_income_nci",
+          "label": "Noncontrolling interest in subsidiaries' earnings",
+          "raw_label": "Less: Noncontrolling interest in subsidiaries’ earnings",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 125,
+              "raw_text": "125",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 88,
+              "raw_text": "88",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 333,
+              "raw_text": "333",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 246,
+              "raw_text": "246",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "net_income_common",
+          "label": "Net income attributable to common shareowners",
+          "raw_label": "Net income attributable to common shareowners",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 2583,
+              "raw_text": "$2,583",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 1918,
+              "raw_text": "$1,918",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 6781,
+              "raw_text": "$6,781",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 5110,
+              "raw_text": "$5,110",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "eps_basic",
+          "label": "Basic earnings per share",
+          "raw_label": "Basic",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "q3_26": {
+              "value": 1.91,
+              "raw_text": "$1.91",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 1.43,
+              "raw_text": "$1.43",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 5.02,
+              "raw_text": "$5.02",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 3.81,
+              "raw_text": "$3.81",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "eps_diluted",
+          "label": "Diluted earnings per share",
+          "raw_label": "Diluted",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "q3_26": {
+              "value": 1.89,
+              "raw_text": "1.89",
+              "origin": "ixbrl_fact"
+            },
+            "q3_25": {
+              "value": 1.41,
+              "raw_text": "1.41",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_26": {
+              "value": 4.96,
+              "raw_text": "4.96",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 3.77,
+              "raw_text": "3.77",
+              "origin": "ixbrl_fact"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "revenue_total",
+          "components": [
+            {
+              "id": "revenue_products",
+              "sign": 1
+            },
+            {
+              "id": "revenue_services",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_costs_and_expenses",
+          "components": [
+            {
+              "id": "cogs_products",
+              "sign": 1
+            },
+            {
+              "id": "cogs_services",
+              "sign": 1
+            },
+            {
+              "id": "rd_expense",
+              "sign": 1
+            },
+            {
+              "id": "sga_expense",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "operating_income",
+          "components": [
+            {
+              "id": "revenue_total",
+              "sign": 1
+            },
+            {
+              "id": "other_operating_income_net",
+              "sign": 1
+            },
+            {
+              "id": "total_costs_and_expenses",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "non_operating_expense_net",
+          "components": [
+            {
+              "id": "non_service_pension_expense_income",
+              "sign": 1
+            },
+            {
+              "id": "interest_expense_net",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "pretax_income",
+          "components": [
+            {
+              "id": "operating_income",
+              "sign": 1
+            },
+            {
+              "id": "non_operating_expense_net",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income",
+          "components": [
+            {
+              "id": "pretax_income",
+              "sign": 1
+            },
+            {
+              "id": "income_tax_expense",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_income_common",
+          "components": [
+            {
+              "id": "net_income",
+              "sign": 1
+            },
+            {
+              "id": "net_income_nci",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "balance_sheet",
+      "title": "RTX Condensed Consolidated Balance Sheets (Q3 2026 Form 10-Q)",
+      "source": {
+        "doc_id": "doc_rtx_20260930",
+        "origin": "html_table",
+        "entity": "RTX",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[11]",
+          "table_index": 11
+        }
+      },
+      "columns": [
+        {
+          "id": "q3_26",
+          "label": "2026-09-30",
+          "raw_label": "September 30, 2026",
+          "period_key": "2026-09-30",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy25",
+          "label": "2025-12-31",
+          "raw_label": "December 31, 2025",
+          "period_key": "2025-12-31",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "cash_and_equivalents",
+          "label": "Cash and cash equivalents",
+          "raw_label": "Cash and cash equivalents",
+          "cells": {
+            "q3_26": {
+              "value": 9173,
+              "raw_text": "$9,173",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 7435,
+              "raw_text": "$7,435",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "accounts_receivable_net",
+          "label": "Accounts receivable, net",
+          "raw_label": "Accounts receivable, net",
+          "cells": {
+            "q3_26": {
+              "value": 14681,
+              "raw_text": "14,681",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 14701,
+              "raw_text": "14,701",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "contract_assets_net",
+          "label": "Contract assets, net",
+          "raw_label": "Contract assets, net",
+          "cells": {
+            "q3_26": {
+              "value": 18701,
+              "raw_text": "18,701",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 17092,
+              "raw_text": "17,092",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "inventory_net",
+          "label": "Inventory, net",
+          "raw_label": "Inventory, net",
+          "cells": {
+            "q3_26": {
+              "value": 14953,
+              "raw_text": "14,953",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 13364,
+              "raw_text": "13,364",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_current_assets",
+          "label": "Other assets, current",
+          "raw_label": "Other assets, current",
+          "cells": {
+            "q3_26": {
+              "value": 8561,
+              "raw_text": "8,561",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 7740,
+              "raw_text": "7,740",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_current_assets",
+          "label": "Total current assets",
+          "raw_label": "Total current assets",
+          "cells": {
+            "q3_26": {
+              "value": 66069,
+              "raw_text": "66,069",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 60332,
+              "raw_text": "60,332",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "customer_financing_assets",
+          "label": "Customer financing assets",
+          "raw_label": "Customer financing assets",
+          "cells": {
+            "q3_26": {
+              "value": 1880,
+              "raw_text": "1,880",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 2132,
+              "raw_text": "2,132",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "ppe_gross",
+          "label": "Fixed assets",
+          "raw_label": "Fixed assets",
+          "cells": {
+            "q3_26": {
+              "value": 36725,
+              "raw_text": "36,725",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 35335,
+              "raw_text": "35,335",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "accumulated_depreciation",
+          "label": "Accumulated depreciation",
+          "raw_label": "Accumulated depreciation",
+          "cells": {
+            "q3_26": {
+              "value": 19490,
+              "raw_text": "(19,490)",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 18467,
+              "raw_text": "(18,467)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "ppe_net",
+          "label": "Fixed assets, net",
+          "raw_label": "Fixed assets, net",
+          "cells": {
+            "q3_26": {
+              "value": 17235,
+              "raw_text": "17,235",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 16868,
+              "raw_text": "16,868",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "op_lease_rou_assets",
+          "label": "Operating lease right-of-use assets",
+          "raw_label": "Operating lease right-of-use assets",
+          "cells": {
+            "q3_26": {
+              "value": 1770,
+              "raw_text": "1,770",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 1887,
+              "raw_text": "1,887",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "goodwill",
+          "label": "Goodwill",
+          "raw_label": "Goodwill",
+          "cells": {
+            "q3_26": {
+              "value": 52969,
+              "raw_text": "52,969",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 53343,
+              "raw_text": "53,343",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "intangibles_net",
+          "label": "Intangible assets, net",
+          "raw_label": "Intangible assets, net",
+          "cells": {
+            "q3_26": {
+              "value": 30652,
+              "raw_text": "30,652",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 31845,
+              "raw_text": "31,845",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_assets",
+          "label": "Other assets",
+          "raw_label": "Other assets",
+          "cells": {
+            "q3_26": {
+              "value": 6021,
+              "raw_text": "6,021",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 4672,
+              "raw_text": "4,672",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_assets",
+          "label": "Total assets",
+          "raw_label": "Total assets",
+          "cells": {
+            "q3_26": {
+              "value": 176596,
+              "raw_text": "$176,596",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 171079,
+              "raw_text": "$171,079",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "short_term_borrowings",
+          "label": "Short-term borrowings",
+          "raw_label": "Short-term borrowings",
+          "cells": {
+            "q3_26": {
+              "value": 210,
+              "raw_text": "$210",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 204,
+              "raw_text": "$204",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "accounts_payable",
+          "label": "Accounts payable",
+          "raw_label": "Accounts payable",
+          "cells": {
+            "q3_26": {
+              "value": 17803,
+              "raw_text": "17,803",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 15895,
+              "raw_text": "15,895",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "accrued_employee_comp",
+          "label": "Accrued employee compensation",
+          "raw_label": "Accrued employee compensation",
+          "cells": {
+            "q3_26": {
+              "value": 3155,
+              "raw_text": "3,155",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 3308,
+              "raw_text": "3,308",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_accrued_liabilities",
+          "label": "Other accrued liabilities",
+          "raw_label": "Other accrued liabilities",
+          "cells": {
+            "q3_26": {
+              "value": 14801,
+              "raw_text": "14,801",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 14350,
+              "raw_text": "14,350",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "contract_liabilities",
+          "label": "Contract liabilities",
+          "raw_label": "Contract liabilities",
+          "cells": {
+            "q3_26": {
+              "value": 21550,
+              "raw_text": "21,550",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 21615,
+              "raw_text": "21,615",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "current_portion_lt_debt",
+          "label": "Long-term debt currently due",
+          "raw_label": "Long-term debt currently due",
+          "cells": {
+            "q3_26": {
+              "value": 5679,
+              "raw_text": "5,679",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 3412,
+              "raw_text": "3,412",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_current_liabilities",
+          "label": "Total current liabilities",
+          "raw_label": "Total current liabilities",
+          "cells": {
+            "q3_26": {
+              "value": 63198,
+              "raw_text": "63,198",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 58784,
+              "raw_text": "58,784",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "long_term_debt",
+          "label": "Long-term debt",
+          "raw_label": "Long-term debt",
+          "cells": {
+            "q3_26": {
+              "value": 31490,
+              "raw_text": "31,490",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 34288,
+              "raw_text": "34,288",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "op_lease_liab_noncurrent",
+          "label": "Operating lease liabilities, non-current",
+          "raw_label": "Operating lease liabilities, non-current",
+          "cells": {
+            "q3_26": {
+              "value": 1495,
+              "raw_text": "1,495",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 1602,
+              "raw_text": "1,602",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pension_prb_liabilities_noncurrent",
+          "label": "Future pension and postretirement benefit obligations",
+          "raw_label": "Future pension and postretirement benefit obligations",
+          "cells": {
+            "q3_26": {
+              "value": 1913,
+              "raw_text": "1,913",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 2067,
+              "raw_text": "2,067",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_noncurrent_liabilities",
+          "label": "Other long-term liabilities",
+          "raw_label": "Other long-term liabilities",
+          "cells": {
+            "q3_26": {
+              "value": 7508,
+              "raw_text": "7,508",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 7200,
+              "raw_text": "7,200",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_liabilities",
+          "label": "Total liabilities",
+          "raw_label": "Total liabilities",
+          "cells": {
+            "q3_26": {
+              "value": 105604,
+              "raw_text": "105,604",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 103941,
+              "raw_text": "103,941",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "redeemable_nci",
+          "label": "Redeemable noncontrolling interest",
+          "raw_label": "Redeemable noncontrolling interest",
+          "cells": {
+            "q3_26": {
+              "value": 28,
+              "raw_text": "28",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 36,
+              "raw_text": "36",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "common_stock",
+          "label": "Common stock",
+          "raw_label": "Common stock",
+          "cells": {
+            "q3_26": {
+              "value": 38673,
+              "raw_text": "38,673",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 38126,
+              "raw_text": "38,126",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "treasury_stock",
+          "label": "Treasury stock",
+          "raw_label": "Treasury stock",
+          "cells": {
+            "q3_26": {
+              "value": 26712,
+              "raw_text": "(26,712)",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 26881,
+              "raw_text": "(26,881)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "retained_earnings",
+          "label": "Retained earnings",
+          "raw_label": "Retained earnings",
+          "cells": {
+            "q3_26": {
+              "value": 60597,
+              "raw_text": "60,597",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 56718,
+              "raw_text": "56,718",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "aoci",
+          "label": "Accumulated other comprehensive loss",
+          "raw_label": "Accumulated other comprehensive loss",
+          "cells": {
+            "q3_26": {
+              "value": -3308,
+              "raw_text": "(3,308)",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": -2718,
+              "raw_text": "(2,718)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_shareholders_equity",
+          "label": "Total shareowners' equity",
+          "raw_label": "Total shareowners’ equity",
+          "cells": {
+            "q3_26": {
+              "value": 69250,
+              "raw_text": "69,250",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 65245,
+              "raw_text": "65,245",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "noncontrolling_interest",
+          "label": "Noncontrolling interest",
+          "raw_label": "Noncontrolling interest",
+          "cells": {
+            "q3_26": {
+              "value": 1714,
+              "raw_text": "1,714",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 1857,
+              "raw_text": "1,857",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_equity",
+          "label": "Total equity",
+          "raw_label": "Total equity",
+          "cells": {
+            "q3_26": {
+              "value": 70964,
+              "raw_text": "70,964",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 67102,
+              "raw_text": "67,102",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "total_liabilities_and_equity",
+          "label": "Total liabilities, redeemable noncontrolling interest, and equity",
+          "raw_label": "Total liabilities, redeemable noncontrolling interest, and equity",
+          "cells": {
+            "q3_26": {
+              "value": 176596,
+              "raw_text": "$176,596",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 171079,
+              "raw_text": "$171,079",
+              "origin": "ixbrl_fact"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_current_assets",
+          "components": [
+            {
+              "id": "cash_and_equivalents",
+              "sign": 1
+            },
+            {
+              "id": "accounts_receivable_net",
+              "sign": 1
+            },
+            {
+              "id": "contract_assets_net",
+              "sign": 1
+            },
+            {
+              "id": "inventory_net",
+              "sign": 1
+            },
+            {
+              "id": "other_current_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ppe_net",
+          "components": [
+            {
+              "id": "ppe_gross",
+              "sign": 1
+            },
+            {
+              "id": "accumulated_depreciation",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_assets",
+          "components": [
+            {
+              "id": "total_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "customer_financing_assets",
+              "sign": 1
+            },
+            {
+              "id": "ppe_net",
+              "sign": 1
+            },
+            {
+              "id": "op_lease_rou_assets",
+              "sign": 1
+            },
+            {
+              "id": "goodwill",
+              "sign": 1
+            },
+            {
+              "id": "intangibles_net",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_current_liabilities",
+          "components": [
+            {
+              "id": "short_term_borrowings",
+              "sign": 1
+            },
+            {
+              "id": "accounts_payable",
+              "sign": 1
+            },
+            {
+              "id": "accrued_employee_comp",
+              "sign": 1
+            },
+            {
+              "id": "other_accrued_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "contract_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "current_portion_lt_debt",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities",
+          "components": [
+            {
+              "id": "total_current_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "long_term_debt",
+              "sign": 1
+            },
+            {
+              "id": "op_lease_liab_noncurrent",
+              "sign": 1
+            },
+            {
+              "id": "pension_prb_liabilities_noncurrent",
+              "sign": 1
+            },
+            {
+              "id": "other_noncurrent_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_shareholders_equity",
+          "components": [
+            {
+              "id": "common_stock",
+              "sign": 1
+            },
+            {
+              "id": "retained_earnings",
+              "sign": 1
+            },
+            {
+              "id": "aoci",
+              "sign": 1
+            },
+            {
+              "id": "treasury_stock",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_equity",
+          "components": [
+            {
+              "id": "total_shareholders_equity",
+              "sign": 1
+            },
+            {
+              "id": "noncontrolling_interest",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "redeemable_nci",
+              "sign": 1
+            },
+            {
+              "id": "total_equity",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_liabilities_and_equity",
+          "components": [
+            {
+              "id": "total_assets",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "cash_flow_statement",
+      "title": "RTX Condensed Consolidated Statements of Cash Flows (Q3 2026 Form 10-Q)",
+      "source": {
+        "doc_id": "doc_rtx_20260930",
+        "origin": "html_table",
+        "entity": "RTX",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[12]",
+          "table_index": 12
+        }
+      },
+      "columns": [
+        {
+          "id": "ytd_q3_26",
+          "label": "9M 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3-YTD",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_25",
+          "label": "9M 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3-YTD",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_income_cf",
+          "label": "Net income",
+          "raw_label": "Net income",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 7114,
+              "raw_text": "$7,114",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 5356,
+              "raw_text": "$5,356",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "da_total",
+          "label": "Depreciation and amortization",
+          "raw_label": "Depreciation and amortization",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 3218,
+              "raw_text": "3,218",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 3219,
+              "raw_text": "3,219",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "deferred_taxes_cf",
+          "label": "Deferred income tax provision",
+          "raw_label": "Deferred income tax provision",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 60,
+              "raw_text": "60",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 598,
+              "raw_text": "598",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "sbc",
+          "label": "Stock compensation cost",
+          "raw_label": "Stock compensation cost",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 455,
+              "raw_text": "455",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 337,
+              "raw_text": "337",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pension_prb_income_cf",
+          "label": "Net periodic pension and other postretirement income",
+          "raw_label": "Net periodic pension and other postretirement income",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -920,
+              "raw_text": "(920)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -956,
+              "raw_text": "(956)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "share_based_401k_match",
+          "label": "Share-based 401(k) matching contributions",
+          "raw_label": "Share-based 401(k) matching contributions",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 474,
+              "raw_text": "474",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 435,
+              "raw_text": "435",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_accounts_receivable",
+          "label": "Change in accounts receivable",
+          "raw_label": "Accounts receivable",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 377,
+              "raw_text": "377",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -1488,
+              "raw_text": "(1,488)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_contract_assets",
+          "label": "Change in contract assets",
+          "raw_label": "Contract assets",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -2184,
+              "raw_text": "(2,184)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -2124,
+              "raw_text": "(2,124)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_inventory",
+          "label": "Change in inventory",
+          "raw_label": "Inventory",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -1686,
+              "raw_text": "(1,686)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -1015,
+              "raw_text": "(1,015)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_other_current_assets",
+          "label": "Change in other current assets",
+          "raw_label": "Other current assets",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -974,
+              "raw_text": "(974)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -979,
+              "raw_text": "(979)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_ap_and_accrued_liab",
+          "label": "Change in accounts payable and accrued liabilities",
+          "raw_label": "Accounts payable and accrued liabilities",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 2753,
+              "raw_text": "2,753",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 2096,
+              "raw_text": "2,096",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "chg_contract_liabilities",
+          "label": "Change in contract liabilities",
+          "raw_label": "Contract liabilities",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -688,
+              "raw_text": "(688)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 1329,
+              "raw_text": "1,329",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_operating_cf",
+          "label": "Other operating activities, net",
+          "raw_label": "Other operating activities, net",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 271,
+              "raw_text": "271",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -406,
+              "raw_text": "(406)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "ocf_continuing",
+          "label": "Net cash flows provided by operating activities",
+          "raw_label": "Net cash flows provided by operating activities",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 8270,
+              "raw_text": "8,270",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 6402,
+              "raw_text": "6,402",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Capital expenditures",
+          "raw_label": "Capital expenditures",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -1964,
+              "raw_text": "(1,964)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -1657,
+              "raw_text": "(1,657)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "business_dispositions_cf",
+          "label": "Dispositions of businesses, net of cash transferred",
+          "raw_label": "Dispositions of businesses, net of cash transferred",
+          "cells": {
+            "ytd_q3_25": {
+              "value": 1188,
+              "raw_text": "1,188",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "intangibles_additions_cf",
+          "label": "Increase in other intangible assets",
+          "raw_label": "Increase in other intangible assets",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -229,
+              "raw_text": "(229)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -347,
+              "raw_text": "(347)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "derivative_settlements_cf",
+          "label": "Receipts from settlements of derivative contracts, net",
+          "raw_label": "Receipts from settlements of derivative contracts, net",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 8,
+              "raw_text": "8",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 187,
+              "raw_text": "187",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_investing_cf",
+          "label": "Other investing activities, net",
+          "raw_label": "Other investing activities, net",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -224,
+              "raw_text": "(224)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -87,
+              "raw_text": "(87)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "investing_cf",
+          "label": "Net cash flows used in investing activities",
+          "raw_label": "Net cash flows used in investing activities",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -2409,
+              "raw_text": "(2,409)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -716,
+              "raw_text": "(716)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "lt_debt_repayments",
+          "label": "Repayment of long-term debt",
+          "raw_label": "Repayment of long-term debt",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -526,
+              "raw_text": "(526)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -2289,
+              "raw_text": "(2,289)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "dividends_paid",
+          "label": "Dividends paid",
+          "raw_label": "Dividends paid",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -2882,
+              "raw_text": "(2,882)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -2660,
+              "raw_text": "(2,660)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "share_repurchases",
+          "label": "Repurchase of common stock",
+          "raw_label": "Repurchase of common stock",
+          "cells": {
+            "ytd_q3_25": {
+              "value": -50,
+              "raw_text": "(50)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "other_financing_cf",
+          "label": "Other financing activities, net",
+          "raw_label": "Other financing activities, net",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -677,
+              "raw_text": "(677)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -333,
+              "raw_text": "(333)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "financing_cf",
+          "label": "Net cash flows used in financing activities",
+          "raw_label": "Net cash flows used in financing activities",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -4085,
+              "raw_text": "(4,085)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": -5332,
+              "raw_text": "(5,332)",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "fx_effect_cash",
+          "label": "Effect of foreign exchange rate changes on cash and cash equivalents",
+          "raw_label": "Effect of foreign exchange rate changes on cash and cash equivalents",
+          "cells": {
+            "ytd_q3_26": {
+              "value": -16,
+              "raw_text": "(16)",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 44,
+              "raw_text": "44",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "net_change_cash_and_restricted",
+          "label": "Net increase in cash, cash equivalents, and restricted cash",
+          "raw_label": "Net increase in cash, cash equivalents, and restricted cash",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 1760,
+              "raw_text": "1,760",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 398,
+              "raw_text": "398",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "beginning_cash_and_restricted",
+          "label": "Cash, cash equivalents, and restricted cash, beginning of period",
+          "raw_label": "Cash, cash equivalents, and restricted cash, beginning of period",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 7470,
+              "raw_text": "7,470",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 5606,
+              "raw_text": "5,606",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "ending_cash_and_restricted",
+          "label": "Cash, cash equivalents, and restricted cash, end of period",
+          "raw_label": "Cash, cash equivalents, and restricted cash, end of period",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 9230,
+              "raw_text": "9,230",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 6004,
+              "raw_text": "6,004",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "restricted_cash_ending",
+          "label": "Restricted cash, end of period",
+          "raw_label": "Less: Restricted cash, included in Other assets, current and Other assets",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 57,
+              "raw_text": "57",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 38,
+              "raw_text": "38",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "ending_cash",
+          "label": "Cash and cash equivalents, end of period",
+          "raw_label": "Cash and cash equivalents, end of period",
+          "cells": {
+            "ytd_q3_26": {
+              "value": 9173,
+              "raw_text": "$9,173",
+              "origin": "ixbrl_fact"
+            },
+            "ytd_q3_25": {
+              "value": 5966,
+              "raw_text": "$5,966",
+              "origin": "ixbrl_fact"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "ocf_continuing",
+          "components": [
+            {
+              "id": "net_income_cf",
+              "sign": 1
+            },
+            {
+              "id": "da_total",
+              "sign": 1
+            },
+            {
+              "id": "deferred_taxes_cf",
+              "sign": 1
+            },
+            {
+              "id": "sbc",
+              "sign": 1
+            },
+            {
+              "id": "pension_prb_income_cf",
+              "sign": 1
+            },
+            {
+              "id": "share_based_401k_match",
+              "sign": 1
+            },
+            {
+              "id": "chg_accounts_receivable",
+              "sign": 1
+            },
+            {
+              "id": "chg_contract_assets",
+              "sign": 1
+            },
+            {
+              "id": "chg_inventory",
+              "sign": 1
+            },
+            {
+              "id": "chg_other_current_assets",
+              "sign": 1
+            },
+            {
+              "id": "chg_ap_and_accrued_liab",
+              "sign": 1
+            },
+            {
+              "id": "chg_contract_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "other_operating_cf",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "investing_cf",
+          "components": [
+            {
+              "id": "capex",
+              "sign": 1
+            },
+            {
+              "id": "business_dispositions_cf",
+              "sign": 1
+            },
+            {
+              "id": "intangibles_additions_cf",
+              "sign": 1
+            },
+            {
+              "id": "derivative_settlements_cf",
+              "sign": 1
+            },
+            {
+              "id": "other_investing_cf",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "financing_cf",
+          "components": [
+            {
+              "id": "lt_debt_repayments",
+              "sign": 1
+            },
+            {
+              "id": "dividends_paid",
+              "sign": 1
+            },
+            {
+              "id": "share_repurchases",
+              "sign": 1
+            },
+            {
+              "id": "other_financing_cf",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        },
+        {
+          "target_id": "net_change_cash_and_restricted",
+          "components": [
+            {
+              "id": "ocf_continuing",
+              "sign": 1
+            },
+            {
+              "id": "investing_cf",
+              "sign": 1
+            },
+            {
+              "id": "financing_cf",
+              "sign": 1
+            },
+            {
+              "id": "fx_effect_cash",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ending_cash_and_restricted",
+          "components": [
+            {
+              "id": "beginning_cash_and_restricted",
+              "sign": 1
+            },
+            {
+              "id": "net_change_cash_and_restricted",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "ending_cash",
+          "components": [
+            {
+              "id": "ending_cash_and_restricted",
+              "sign": 1
+            },
+            {
+              "id": "restricted_cash_ending",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "eps_shares",
+      "title": "RTX Earnings Per Share & Share Counts (Q3 2026 Form 10-Q)",
+      "source": {
+        "doc_id": "doc_rtx_20260930",
+        "origin": "html_table",
+        "entity": "RTX",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[17]",
+          "table_index": 17
+        }
+      },
+      "columns": [
+        {
+          "id": "q3_26",
+          "label": "Q3 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "q3_25",
+          "label": "Q3 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_26",
+          "label": "9M 2026",
+          "raw_label": "2026",
+          "period_key": "2026-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "ytd_q3_25",
+          "label": "9M 2025",
+          "raw_label": "2025",
+          "period_key": "2025-Q3-YTD",
+          "data_type": "number"
+        },
+        {
+          "id": "cover_q3_26",
+          "label": "Cover (2026-09-30)",
+          "period_key": "2026-09-30",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "net_income_common",
+          "label": "Net income attributable to common shareowners",
+          "raw_label": "Net income attributable to common shareowners",
+          "unit": "USD",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 2583,
+              "raw_text": "$2,583",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "q3_25": {
+              "value": 1918,
+              "raw_text": "$1,918",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_26": {
+              "value": 6781,
+              "raw_text": "$6,781",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_25": {
+              "value": 5110,
+              "raw_text": "$5,110",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            }
+          }
+        },
+        {
+          "id": "wa_shares_basic",
+          "label": "Basic weighted average number of shares outstanding",
+          "raw_label": "Basic weighted average number of shares outstanding",
+          "unit": "shares",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 1352.2,
+              "raw_text": "1,352.2",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "q3_25": {
+              "value": 1343.1,
+              "raw_text": "1,343.1",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_26": {
+              "value": 1350.2,
+              "raw_text": "1,350.2",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_25": {
+              "value": 1340.2,
+              "raw_text": "1,340.2",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            }
+          }
+        },
+        {
+          "id": "dilutive_awards_shares",
+          "label": "Stock awards and equity units (share equivalent)",
+          "raw_label": "Stock awards and equity units (share equivalent)",
+          "unit": "shares",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 15.9,
+              "raw_text": "15.9",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "q3_25": {
+              "value": 15.3,
+              "raw_text": "15.3",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_26": {
+              "value": 15.6,
+              "raw_text": "15.6",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_25": {
+              "value": 14.5,
+              "raw_text": "14.5",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            }
+          }
+        },
+        {
+          "id": "wa_shares_diluted",
+          "label": "Diluted weighted average number of shares outstanding",
+          "raw_label": "Diluted weighted average number of shares outstanding",
+          "unit": "shares",
+          "scale": 1000000,
+          "cells": {
+            "q3_26": {
+              "value": 1368.1,
+              "raw_text": "1,368.1",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "q3_25": {
+              "value": 1358.4,
+              "raw_text": "1,358.4",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_26": {
+              "value": 1365.8,
+              "raw_text": "1,365.8",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            },
+            "ytd_q3_25": {
+              "value": 1354.7,
+              "raw_text": "1,354.7",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[17]",
+                "table_index": 17
+              }
+            }
+          }
+        },
+        {
+          "id": "shares_outstanding_cover",
+          "label": "Common stock shares outstanding (10-Q cover)",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "cover_q3_26": {
+              "value": 1349440548,
+              "raw_text": "1,349,440,548",
+              "origin": "ixbrl_fact",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//ix:nonFraction[@id='f-27']"
+              }
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "wa_shares_diluted",
+          "components": [
+            {
+              "id": "wa_shares_basic",
+              "sign": 1
+            },
+            {
+              "id": "dilutive_awards_shares",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "q3_26",
+            "q3_25",
+            "ytd_q3_26",
+            "ytd_q3_25"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "ev_bridge_supplemental",
+      "title": "RTX EV Bridge Supplemental — Pension & PRB Balance Sheet Components (Q3 2026 Form 10-Q)",
+      "source": {
+        "doc_id": "doc_rtx_20260930",
+        "origin": "html_table",
+        "entity": "RTX",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[26]",
+          "table_index": 26
+        }
+      },
+      "columns": [
+        {
+          "id": "q3_26",
+          "label": "2026-09-30",
+          "raw_label": "September 30, 2026",
+          "period_key": "2026-09-30",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy25",
+          "label": "2025-12-31",
+          "raw_label": "December 31, 2025",
+          "period_key": "2025-12-31",
+          "unit": "USD",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "pension_noncurrent_assets",
+          "label": "Non-current pension assets (included in Other assets)",
+          "raw_label": "Non-current pension assets (included in Other assets)",
+          "exemption": "standalone_disclosure",
+          "cells": {
+            "q3_26": {
+              "value": 3216,
+              "raw_text": "$3,216",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 2339,
+              "raw_text": "$2,339",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pension_prb_liab_current",
+          "label": "Current pension and PRB liabilities (included in Accrued employee compensation)",
+          "raw_label": "Current pension and PRB liabilities (included in Accrued employee compensation)",
+          "exemption": "standalone_disclosure",
+          "cells": {
+            "q3_26": {
+              "value": 227,
+              "raw_text": "227",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 228,
+              "raw_text": "228",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pension_liab_noncurrent",
+          "label": "Non-current pension liabilities",
+          "raw_label": "Non-current pension liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[27]",
+            "table_index": 27
+          },
+          "cells": {
+            "q3_26": {
+              "value": 1389,
+              "raw_text": "$1,389",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 1510,
+              "raw_text": "$1,510",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "prb_liab_noncurrent",
+          "label": "Non-current PRB liabilities",
+          "raw_label": "Non-current PRB liabilities",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[27]",
+            "table_index": 27
+          },
+          "cells": {
+            "q3_26": {
+              "value": 454,
+              "raw_text": "454",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 501,
+              "raw_text": "501",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pension_prb_other_noncurrent",
+          "label": "Other pension and PRB related items",
+          "raw_label": "Other pension and PRB related items",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[27]",
+            "table_index": 27
+          },
+          "cells": {
+            "q3_26": {
+              "value": 70,
+              "raw_text": "70",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 56,
+              "raw_text": "56",
+              "origin": "ixbrl_fact"
+            }
+          }
+        },
+        {
+          "id": "pension_prb_liabilities_noncurrent",
+          "label": "Future pension and postretirement benefit obligations",
+          "raw_label": "Future pension and postretirement benefit obligations",
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[27]",
+            "table_index": 27
+          },
+          "cells": {
+            "q3_26": {
+              "value": 1913,
+              "raw_text": "$1,913",
+              "origin": "ixbrl_fact"
+            },
+            "fy25": {
+              "value": 2067,
+              "raw_text": "$2,067",
+              "origin": "ixbrl_fact"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "pension_prb_liabilities_noncurrent",
+          "components": [
+            {
+              "id": "pension_liab_noncurrent",
+              "sign": 1
+            },
+            {
+              "id": "prb_liab_noncurrent",
+              "sign": 1
+            },
+            {
+              "id": "pension_prb_other_noncurrent",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": [
+    {
+      "name": "rtx_10q_cf_ni_tie_ytd_q3_26",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "net_income_cf",
+        "col_id": "ytd_q3_26"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income",
+          "col_id": "ytd_q3_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_cf_ni_tie_ytd_q3_25",
+      "target": {
+        "table_id": "cash_flow_statement",
+        "row_id": "net_income_cf",
+        "col_id": "ytd_q3_25"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income",
+          "col_id": "ytd_q3_25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_bs_cash_tie",
+      "target": {
+        "table_id": "balance_sheet",
+        "row_id": "cash_and_equivalents",
+        "col_id": "q3_26"
+      },
+      "components": [
+        {
+          "table_id": "cash_flow_statement",
+          "row_id": "ending_cash",
+          "col_id": "ytd_q3_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_eps_ni_common_tie_q3_26",
+      "target": {
+        "table_id": "eps_shares",
+        "row_id": "net_income_common",
+        "col_id": "q3_26"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_common",
+          "col_id": "q3_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_eps_ni_common_tie_q3_25",
+      "target": {
+        "table_id": "eps_shares",
+        "row_id": "net_income_common",
+        "col_id": "q3_25"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_common",
+          "col_id": "q3_25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_eps_ni_common_tie_ytd_q3_26",
+      "target": {
+        "table_id": "eps_shares",
+        "row_id": "net_income_common",
+        "col_id": "ytd_q3_26"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_common",
+          "col_id": "ytd_q3_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_eps_ni_common_tie_ytd_q3_25",
+      "target": {
+        "table_id": "eps_shares",
+        "row_id": "net_income_common",
+        "col_id": "ytd_q3_25"
+      },
+      "components": [
+        {
+          "table_id": "income_statement",
+          "row_id": "net_income_common",
+          "col_id": "ytd_q3_25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_bs_pension_nc_tie_q3_26",
+      "target": {
+        "table_id": "balance_sheet",
+        "row_id": "pension_prb_liabilities_noncurrent",
+        "col_id": "q3_26"
+      },
+      "components": [
+        {
+          "table_id": "ev_bridge_supplemental",
+          "row_id": "pension_prb_liabilities_noncurrent",
+          "col_id": "q3_26",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "rtx_10q_bs_pension_nc_tie_fy25",
+      "target": {
+        "table_id": "balance_sheet",
+        "row_id": "pension_prb_liabilities_noncurrent",
+        "col_id": "fy25"
+      },
+      "components": [
+        {
+          "table_id": "ev_bridge_supplemental",
+          "row_id": "pension_prb_liabilities_noncurrent",
+          "col_id": "fy25",
+          "sign": 1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    }
+  ]
+}

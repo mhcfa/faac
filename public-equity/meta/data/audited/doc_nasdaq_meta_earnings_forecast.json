@@ -1,0 +1,381 @@
+{
+  "document": {
+    "doc_id": "doc_nasdaq_meta_earnings_forecast",
+    "file_path": "data/raw/market/nasdaq/nasdaq_meta_earnings_forecast.json",
+    "sha256": "5343edba71073309abfda063dbf6a6396ebd1c660691357a814b36bbcc993cee",
+    "doc_type": "structured_data",
+    "size_bytes": 2031,
+    "title": "Nasdaq Analyst Earnings Forecast — META",
+    "report_date": "2026-11-20",
+    "source_meta": {
+      "symbol": "META",
+      "endpoint": "earnings-forecast",
+      "source": "nasdaq_analyst",
+      "source_url": "https://api.nasdaq.com/api/analyst/META/earnings-forecast",
+      "retrieved_at": "2026-11-22T19:24:17.876Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "consensus_eps",
+      "title": "Wall Street Consensus EPS Forecasts & 4-Week Revisions",
+      "source": {
+        "doc_id": "doc_nasdaq_meta_earnings_forecast",
+        "origin": "structured_data",
+        "entity": "META",
+        "basis": "consensus",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 1
+        },
+        "as_of_date": "2026-11-20"
+      },
+      "columns": [
+        {
+          "id": "fy_2026",
+          "label": "FY2026 (Dec 2026)",
+          "raw_label": "Dec 2026",
+          "period_key": "2026-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy_2027",
+          "label": "FY2027 (Dec 2027)",
+          "raw_label": "Dec 2027",
+          "period_key": "2027-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy_2028",
+          "label": "FY2028 (Dec 2028)",
+          "raw_label": "Dec 2028",
+          "period_key": "2028-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy_2029",
+          "label": "FY2029 (Dec 2029)",
+          "raw_label": "Dec 2029",
+          "period_key": "2029-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "q4_2026",
+          "label": "Q4 FY2026 (Dec 2026)",
+          "raw_label": "Dec 2026",
+          "period_key": "2026-Q4",
+          "data_type": "number"
+        },
+        {
+          "id": "q1_2027",
+          "label": "Q1 FY2027 (Mar 2027)",
+          "raw_label": "Mar 2027",
+          "period_key": "2027-Q1",
+          "data_type": "number"
+        },
+        {
+          "id": "q2_2027",
+          "label": "Q2 FY2027 (Jun 2027)",
+          "raw_label": "Jun 2027",
+          "period_key": "2027-Q2",
+          "data_type": "number"
+        },
+        {
+          "id": "q3_2027",
+          "label": "Q3 FY2027 (Sep 2027)",
+          "raw_label": "Sep 2027",
+          "period_key": "2027-Q3",
+          "data_type": "number"
+        },
+        {
+          "id": "q4_2027",
+          "label": "Q4 FY2027 (Dec 2027)",
+          "raw_label": "Dec 2027",
+          "period_key": "2027-Q4",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "consensus_eps",
+          "label": "Consensus EPS Forecast",
+          "raw_label": "consensusEPSForecast",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy_2026": {
+              "value": 29.01,
+              "raw_text": "29.01"
+            },
+            "fy_2027": {
+              "value": 33.92,
+              "raw_text": "33.92"
+            },
+            "fy_2028": {
+              "value": 39.44,
+              "raw_text": "39.44"
+            },
+            "fy_2029": {
+              "value": 52.4,
+              "raw_text": "52.4"
+            },
+            "q4_2026": {
+              "value": 8.16,
+              "raw_text": "8.16"
+            },
+            "q1_2027": {
+              "value": 7.35,
+              "raw_text": "7.35"
+            },
+            "q2_2027": {
+              "value": 7.69,
+              "raw_text": "7.69"
+            },
+            "q3_2027": {
+              "value": 7.98,
+              "raw_text": "7.98"
+            },
+            "q4_2027": {
+              "value": 9.64,
+              "raw_text": "9.64"
+            }
+          }
+        },
+        {
+          "id": "high_eps",
+          "label": "High EPS Forecast",
+          "raw_label": "highEPSForecast",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy_2026": {
+              "value": 30.11,
+              "raw_text": "30.11"
+            },
+            "fy_2027": {
+              "value": 39.94,
+              "raw_text": "39.94"
+            },
+            "fy_2028": {
+              "value": 45.25,
+              "raw_text": "45.25"
+            },
+            "fy_2029": {
+              "value": 56.9,
+              "raw_text": "56.9"
+            },
+            "q4_2026": {
+              "value": 8.55,
+              "raw_text": "8.55"
+            },
+            "q1_2027": {
+              "value": 8.24,
+              "raw_text": "8.24"
+            },
+            "q2_2027": {
+              "value": 8.85,
+              "raw_text": "8.85"
+            },
+            "q3_2027": {
+              "value": 8.44,
+              "raw_text": "8.44"
+            },
+            "q4_2027": {
+              "value": 10.62,
+              "raw_text": "10.62"
+            }
+          }
+        },
+        {
+          "id": "low_eps",
+          "label": "Low EPS Forecast",
+          "raw_label": "lowEPSForecast",
+          "exemption": "non_additive_metric",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "fy_2026": {
+              "value": 28.33,
+              "raw_text": "28.33"
+            },
+            "fy_2027": {
+              "value": 29.32,
+              "raw_text": "29.32"
+            },
+            "fy_2028": {
+              "value": 33.79,
+              "raw_text": "33.79"
+            },
+            "fy_2029": {
+              "value": 47.79,
+              "raw_text": "47.79"
+            },
+            "q4_2026": {
+              "value": 7.85,
+              "raw_text": "7.85"
+            },
+            "q1_2027": {
+              "value": 6.26,
+              "raw_text": "6.26"
+            },
+            "q2_2027": {
+              "value": 6.55,
+              "raw_text": "6.55"
+            },
+            "q3_2027": {
+              "value": 7.35,
+              "raw_text": "7.35"
+            },
+            "q4_2027": {
+              "value": 8.73,
+              "raw_text": "8.73"
+            }
+          }
+        },
+        {
+          "id": "num_estimates",
+          "label": "Number of Analyst Estimates",
+          "raw_label": "noOfEstimates",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "fy_2026": {
+              "value": 10,
+              "raw_text": "10"
+            },
+            "fy_2027": {
+              "value": 17,
+              "raw_text": "17"
+            },
+            "fy_2028": {
+              "value": 10,
+              "raw_text": "10"
+            },
+            "fy_2029": {
+              "value": 4,
+              "raw_text": "4"
+            },
+            "q4_2026": {
+              "value": 11,
+              "raw_text": "11"
+            },
+            "q1_2027": {
+              "value": 8,
+              "raw_text": "8"
+            },
+            "q2_2027": {
+              "value": 8,
+              "raw_text": "8"
+            },
+            "q3_2027": {
+              "value": 8,
+              "raw_text": "8"
+            },
+            "q4_2027": {
+              "value": 8,
+              "raw_text": "8"
+            }
+          }
+        },
+        {
+          "id": "revisions_up_4w",
+          "label": "Upward EPS Revisions (4 Weeks)",
+          "raw_label": "up",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "fy_2026": {
+              "value": 4,
+              "raw_text": "4"
+            },
+            "fy_2027": {
+              "value": 7,
+              "raw_text": "7"
+            },
+            "fy_2028": {
+              "value": 3,
+              "raw_text": "3"
+            },
+            "fy_2029": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "q4_2026": {
+              "value": 5,
+              "raw_text": "5"
+            },
+            "q1_2027": {
+              "value": 3,
+              "raw_text": "3"
+            },
+            "q2_2027": {
+              "value": 2,
+              "raw_text": "2"
+            },
+            "q3_2027": {
+              "value": 4,
+              "raw_text": "4"
+            },
+            "q4_2027": {
+              "value": 4,
+              "raw_text": "4"
+            }
+          }
+        },
+        {
+          "id": "revisions_down_4w",
+          "label": "Downward EPS Revisions (4 Weeks)",
+          "raw_label": "down",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "cells": {
+            "fy_2026": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "fy_2027": {
+              "value": 6,
+              "raw_text": "6"
+            },
+            "fy_2028": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "fy_2029": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "q4_2026": {
+              "value": 4,
+              "raw_text": "4"
+            },
+            "q1_2027": {
+              "value": 3,
+              "raw_text": "3"
+            },
+            "q2_2027": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "q3_2027": {
+              "value": 0,
+              "raw_text": "0"
+            },
+            "q4_2027": {
+              "value": 0,
+              "raw_text": "0"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

@@ -26,13 +26,14 @@
       "title": "Post-FY26 Capital Return Events (Quarterly Cash Dividend)",
       "source": {
         "doc_id": "doc_cost_20261014",
+        "origin": "prose",
+        "exemption": "non_additive_metric",
         "entity": "COST",
         "basis": "mgmt",
         "locator": {
           "locator_type": "html_xpath",
           "xpath": "/html/body[1]/div[47]/span[1]"
-        },
-        "is_restatement": false
+        }
       },
       "columns": [
         {
@@ -40,32 +41,27 @@
           "label": "Oct 14, 2026 Event Value",
           "period_key": "2026-10-14",
           "as_of_date": "2026-10-14",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         },
         {
           "id": "cap_ret_2026_10_14_decl_date",
           "label": "Declaration Date",
-          "data_type": "date",
-          "is_restatement": false
+          "data_type": "date"
         },
         {
           "id": "cap_ret_2026_10_14_rec_date",
           "label": "Record Date",
-          "data_type": "date",
-          "is_restatement": false
+          "data_type": "date"
         },
         {
           "id": "cap_ret_2026_10_14_pay_date",
           "label": "Payable Date",
-          "data_type": "date",
-          "is_restatement": false
+          "data_type": "date"
         },
         {
           "id": "cap_ret_2026_10_14_notes",
           "label": "Terms & Notes",
-          "data_type": "text",
-          "is_restatement": false
+          "data_type": "text"
         }
       ],
       "rows": [
@@ -79,38 +75,30 @@
             "locator_type": "html_xpath",
             "xpath": "/html/body[1]/div[47]/span[1]"
           },
-          "is_restatement": false,
           "cells": {
             "cap_ret_2026_10_14_val": {
               "value": 1.47,
-              "raw_text": "$1.47",
-              "is_restatement": false
+              "raw_text": "$1.47"
             },
             "cap_ret_2026_10_14_decl_date": {
               "value": "2026-10-14",
-              "raw_text": "October 14, 2026",
-              "is_restatement": false
+              "raw_text": "October 14, 2026"
             },
             "cap_ret_2026_10_14_rec_date": {
               "value": "2026-10-30",
-              "raw_text": "October 30, 2026",
-              "is_restatement": false
+              "raw_text": "October 30, 2026"
             },
             "cap_ret_2026_10_14_pay_date": {
               "value": "2026-11-13",
-              "raw_text": "November 13, 2026",
-              "is_restatement": false
+              "raw_text": "November 13, 2026"
             },
             "cap_ret_2026_10_14_notes": {
-              "value": "Quarterly cash dividend of $1.47/sh declared Oct 14, 2026, record Oct 30, 2026, payable Nov 13, 2026",
-              "is_restatement": false
+              "value": "Quarterly cash dividend of $1.47/sh declared Oct 14, 2026, record Oct 30, 2026, payable Nov 13, 2026"
             }
           }
         }
       ],
-      "checksums": [],
-      "checksum_exemption": "Regular quarterly dividend event metadata (per-share dividend rate and declaration/record/payable dates)",
-      "is_restatement": false
+      "checksums": []
     }
   ],
   "cross_checksums": []

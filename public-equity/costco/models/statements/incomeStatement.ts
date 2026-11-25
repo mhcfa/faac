@@ -6,30 +6,33 @@ import {
   addTimeSeriesColumns,
   buildHistoricalCellMap,
   rowFormatOptions,
+  zeroForecastCells,
 } from "../timeline.ts"
 
 export function buildIncomeStatement(
   sheet: Sheet,
-  kg: CostcoKnowledgeData
+  kg: CostcoKnowledgeData,
+  belowTarget?: Table
 ): Table {
   const table = sheet.addTable(
     "IncomeStatement",
     "Consolidated Statements of Income ($M except per-share)",
     {
       subtitle: [
-        "FY22–FY26 audited GAAP historicals; FY27E–FY36E linked to Operating, Debt & Leases, and Share & Equity schedules ($M except per-share)",
+        "FY22A–FY26A audited GAAP historicals; FY27E–FY36E integrated operating, interest, tax, and share projections ($M except per-share)",
         `Source: ${kg.citations.incomeStatement}`,
       ],
       currency: "USD",
+      ...(belowTarget ? { below: belowTarget } : {}),
     }
   )
   addTimeSeriesColumns(table, {
-    descriptorLabel: "Income Statement Line ($M except EPS/DPS)",
+    descriptorLabel: "Income statement ($M / $/sh)",
   })
 
   const is = kg.cost.incomeStatement
 
-  table.addSectionHeader("Revenue & Operating Income")
+  table.addSectionHeader("Revenue and operating income")
   table.addRow("net_sales", {
     ...rowFormatOptions("currency", 0),
     expr: 'OperatingSchedule["net_sales", @col]',
@@ -59,7 +62,7 @@ export function buildIncomeStatement(
   table.addRow("sga", {
     ...rowFormatOptions("currency", 0),
     expr: 'OperatingSchedule["sga", @col]',
-    cells: { line_item: "Selling, general and administrative" },
+    cells: { line_item: "Selling, general & admin." },
   })
   table.addRow("operating_income", {
     ...rowFormatOptions("currency", 0),
@@ -69,11 +72,13 @@ export function buildIncomeStatement(
   })
   table.addRow("operating_margin_pct", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     expr: '@table["operating_income", @col] / @table["total_revenue", @col]',
     cells: { line_item: "Operating margin (%)" },
   })
 
-  table.addSectionHeader("Non-Operating Items, Taxes & Net Income")
+  table.addRowGutter()
+  table.addSectionHeader("Non-operating items, taxes and net income")
   table.addRow("interest_expense", {
     ...rowFormatOptions("currency", 0),
     expr: 'DebtLeasesSchedule["total_interest_expense", @col]',
@@ -88,28 +93,27 @@ export function buildIncomeStatement(
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Foreign-currency transaction gains (losses), net",
-        is.fxGainsNet,
-        "10-K Note 1 non-operating FX transaction gains/losses; forecast combined on fx_and_other_non_op."
+        "FX transaction gains (losses), net",
+        is.fxGainsNet
       ),
-      ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, 0])),
+      ...zeroForecastCells(
+        "Forecast foreign-currency and miscellaneous non-operating items combined on the net line below."
+      ),
     },
   })
   table.addRow("other_non_op_net", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      ...buildHistoricalCellMap(
-        "Other non-operating income (expense), net",
-        is.otherNonOpNet,
-        "10-K Note 1 miscellaneous non-operating items; forecast combined on fx_and_other_non_op."
+      ...buildHistoricalCellMap("Other non-operating, net", is.otherNonOpNet),
+      ...zeroForecastCells(
+        "Forecast miscellaneous non-operating items combined on the net line below."
       ),
-      ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, 0])),
     },
   })
   table.addRow("fx_and_other_non_op", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "FX transaction gains & other non-operating, net",
+      line_item: "FX and other non-operating, net",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -135,7 +139,26 @@ export function buildIncomeStatement(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["operating_income", @col] - @table["interest_expense", @col] + @table["interest_income_and_other_net", @col]',
-    cells: { line_item: "Income before income taxes (EBT)" },
+    cells: { line_item: "Income before income taxes" },
+  })
+  table.addRow("esop_special_div_tax_benefit", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Memo: ESOP spec.-div. tax shield",
+      FY22: 0,
+      FY23: 0,
+      FY24: {
+        expr: 'MarketAnchors["fy24_esop_tax_benefit", "val"]',
+        note: "FY24 discrete 401(k)/ESOP tax benefit on $15/sh special dividend (embedded in FY24 GAAP tax provision).",
+      },
+      FY25: 0,
+      FY26: 0,
+      FY27E: {
+        expr: '(MarketAnchors["fy24_esop_tax_benefit", "val"] / MarketAnchors["fy24_special_div_total", "val"]) * ShareEquitySchedule["special_dividend_paid", "FY27E"]',
+        note: "One-time IRC Sec. 404(k) ESOP tax shield on FY27E special dividend; applied to GAAP tax/CFO only (excluded from unlevered NOPAT and FCFF).",
+      },
+      ...Object.fromEntries(FORECAST_PERIODS.slice(1).map((p) => [p, 0])),
+    },
   })
   table.addRow("tax_provision", {
     ...rowFormatOptions("currency", 0),
@@ -145,7 +168,7 @@ export function buildIncomeStatement(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'MAX(0, @table["ebt", @col] * PeriodAssumptionsActive["effective_tax_rate", @col])',
+            expr: 'MAX(0, @table["ebt", @col] * PeriodAssumptionsActive["effective_tax_rate", @col] - @table["esop_special_div_tax_benefit", @col])',
           },
         ])
       ),
@@ -160,17 +183,18 @@ export function buildIncomeStatement(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["ebt", @col] - @table["tax_provision", @col]',
-    cells: { line_item: "Net income including noncontrolling interests" },
+    cells: { line_item: "Net income incl. NCI" },
   })
   table.addRow("net_income_attr_nci", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Less: Net income attributable to noncontrolling interests",
-        is.netIncomeAttrNci,
-        "Taiwan JV buyout completed Jun 2022; zero NCI from FY23 onward."
+        "Less: Net income attr. to NCI",
+        is.netIncomeAttrNci
       ),
-      ...Object.fromEntries(FORECAST_PERIODS.map((p) => [p, 0])),
+      ...zeroForecastCells(
+        "Taiwan joint venture buyout completed in June 2022; zero noncontrolling interest thereafter."
+      ),
     },
   })
   table.addRow("net_income_attr_costco", {
@@ -180,29 +204,23 @@ export function buildIncomeStatement(
     cells: { line_item: "Net income attributable to Costco" },
   })
 
-  table.addSectionHeader("Per-Share & EBITDA Memo")
+  table.addRowGutter()
+  table.addSectionHeader("Per-share and EBITDA memo")
   table.addRow("wavg_diluted_shares", {
     ...rowFormatOptions("number", 3),
     expr: 'ShareEquitySchedule["wavg_diluted_shares", @col]',
-    cells: { line_item: "Weighted-average diluted shares (M)" },
+    cells: { line_item: "Weighted-avg. diluted shares (M)" },
   })
   table.addRow("diluted_eps", {
     ...rowFormatOptions("currency", 2),
+    style: "bold",
     expr: '@table["net_income_attr_costco", @col] / @table["wavg_diluted_shares", @col]',
-    cells: {
-      line_item: {
-        value: "Diluted EPS (computed NI / wavg diluted shares)",
-        note: "Historical 10-K rounded EPS: FY22 $13.14, FY23 $14.16, FY24 $16.56, FY25 $18.21, FY26 $20.76.",
-      },
-    },
+    cells: { line_item: "Diluted EPS ($/sh)" },
   })
   table.addRow("regular_dps", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: {
-        value: "Regular annual dividend declared per share ($/sh)",
-        note: "FY22–FY26 derived via live formula from audited cash dividends declared (excl. FY24 $6,655M special div) / wavg basic shares; FY27E anchored to Oct 2026 $1.47/qtr ($5.88 annualized).",
-      },
+      line_item: "Regular annual DPS ($/sh)",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -211,7 +229,10 @@ export function buildIncomeStatement(
           },
         ])
       ),
-      FY27E: { expr: 'MarketAnchors["cost_reg_dps_annualized", "val"]' },
+      FY27E: {
+        expr: 'MarketAnchors["cost_reg_dps_annualized", "val"]',
+        note: "Anchored to Oct 14, 2026 regular quarterly dividend annualized over four quarters.",
+      },
       ...Object.fromEntries(
         FORECAST_PERIODS.slice(1).map((p) => [
           p,
@@ -225,14 +246,18 @@ export function buildIncomeStatement(
   table.addRow("special_dps", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: "Special cash dividend per share ($/sh)",
+      line_item: "Special cash dividend ($/sh)",
       FY22: 0,
       FY23: 0,
-      FY24: kg.cost.qoe.fy24SpecialDivPs,
+      FY24: {
+        value: kg.cost.qoe.fy24SpecialDivPs,
+        note: "FY24 special cash dividend ($15.00/sh paid Jan 2024).",
+      },
       FY25: 0,
       FY26: 0,
       FY27E: {
         expr: 'ScalarAssumptionsActive["special_dividend_ps_fy27", "val"]',
+        note: "Declared Nov 10, 2026 special cash dividend (ex-date Nov 24, payable Dec 4, 2026).",
       },
       ...Object.fromEntries(FORECAST_PERIODS.slice(1).map((p) => [p, 0])),
     },
@@ -240,7 +265,7 @@ export function buildIncomeStatement(
   table.addRow("da_memo", {
     ...rowFormatOptions("currency", 0),
     expr: 'OperatingSchedule["da", @col]',
-    cells: { line_item: "Memo: Depreciation & Amortization" },
+    cells: { line_item: "Memo: D&A" },
   })
   table.addRow("ebitda", {
     ...rowFormatOptions("currency", 0),
@@ -250,6 +275,7 @@ export function buildIncomeStatement(
   })
   table.addRow("ebitda_margin_pct", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     expr: '@table["ebitda", @col] / @table["total_revenue", @col]',
     cells: { line_item: "Memo: EBITDA margin (%)" },
   })

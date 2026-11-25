@@ -1,0 +1,393 @@
+{
+  "document": {
+    "doc_id": "doc_meta_20260416",
+    "file_path": "data/raw/sec/0001326801/0001628280-26-025532/meta-20260416.htm",
+    "sha256": "47badf5318be0cf421341ed096f85acb191ed36aa36516c2f642a7c8e339d684",
+    "doc_type": "sec_filing",
+    "size_bytes": 1296890,
+    "title": "Meta Platforms, Inc. 2026 Proxy Statement (DEF 14A)",
+    "report_date": "2025-12-31",
+    "filing_date": "2026-04-16",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001326801",
+      "company_name": "Meta Platforms, Inc.",
+      "tickers": "META,METAM",
+      "form": "DEF 14A",
+      "accession_number": "0001628280-26-025532",
+      "filing_date": "2026-04-16",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000162828026025532/meta-20260416.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "meta_governance_ownership",
+      "title": "Meta Platforms Governance — Beneficial Ownership (Apr 1, 2026) & CEO Summary Compensation (FY23-FY25)",
+      "source": {
+        "doc_id": "doc_meta_20260416",
+        "origin": "html_table",
+        "entity": "META",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[133]",
+          "table_index": 133
+        }
+      },
+      "columns": [
+        {
+          "id": "fy_2023",
+          "label": "FY 2023",
+          "period_key": "2023-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy_2024",
+          "label": "FY 2024",
+          "period_key": "2024-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy_2025",
+          "label": "FY 2025",
+          "period_key": "2025-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "as_of_2026_04_01",
+          "label": "As of April 1, 2026",
+          "period_key": "2026-04-01",
+          "as_of_date": "2026-04-01",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "zuckerberg_class_a_shares",
+          "label": "Mark Zuckerberg — Class A shares beneficially owned",
+          "raw_label": "Mark Zuckerberg(2)",
+          "category": "beneficial_ownership",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 639347,
+              "raw_text": "639,347",
+              "note": "Held of record by Chan Zuckerberg Biohub, Inc. (no pecuniary interest); Class A ownership <1% (printed as '*')."
+            }
+          }
+        },
+        {
+          "id": "zuckerberg_class_b_shares",
+          "label": "Mark Zuckerberg — Class B shares beneficially owned",
+          "raw_label": "Mark Zuckerberg(2)",
+          "category": "beneficial_ownership",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 341823978,
+              "raw_text": "341,823,978",
+              "note": "Includes 12,000,000 Class B shares held via CZI Holdings I, LLC pledged as collateral (~3.5% of Zuckerberg's holdings, ~2.1% of total voting power)."
+            }
+          }
+        },
+        {
+          "id": "zuckerberg_class_b_pct",
+          "label": "Mark Zuckerberg — % of Class B common stock",
+          "raw_label": "Mark Zuckerberg(2)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 99.8,
+              "raw_text": "99.8"
+            }
+          }
+        },
+        {
+          "id": "zuckerberg_voting_power_pct",
+          "label": "Mark Zuckerberg — % of total voting power",
+          "raw_label": "Mark Zuckerberg(2)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 60.8,
+              "raw_text": "60.8",
+              "note": "Class B carries 10 votes/share vs 1 vote/share for Class A; based on 2,196,045,588 Class A and 342,377,716 Class B shares outstanding as of April 1, 2026."
+            }
+          }
+        },
+        {
+          "id": "directors_exec_class_a_shares",
+          "label": "All current executive officers and directors (20 persons) — Class A shares",
+          "raw_label": "All current executive officers and directors as a group (20 persons)(20)",
+          "category": "beneficial_ownership",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 1555951,
+              "raw_text": "1,555,951",
+              "note": "Consists of 1,462,958 Class A shares plus 92,993 Class A RSUs releasable within 60 days of April 1, 2026; Class A ownership <1% (printed as '*')."
+            }
+          }
+        },
+        {
+          "id": "directors_exec_class_b_shares",
+          "label": "All current executive officers and directors (20 persons) — Class B shares",
+          "raw_label": "All current executive officers and directors as a group (20 persons)(20)",
+          "category": "beneficial_ownership",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 341823978,
+              "raw_text": "341,823,978"
+            }
+          }
+        },
+        {
+          "id": "directors_exec_class_b_pct",
+          "label": "All current executive officers and directors (20 persons) — % of Class B",
+          "raw_label": "All current executive officers and directors as a group (20 persons)(20)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 99.8,
+              "raw_text": "99.8"
+            }
+          }
+        },
+        {
+          "id": "directors_exec_voting_power_pct",
+          "label": "All current executive officers and directors (20 persons) — % of total voting power",
+          "raw_label": "All current executive officers and directors as a group (20 persons)(20)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 60.9,
+              "raw_text": "60.9"
+            }
+          }
+        },
+        {
+          "id": "blackrock_class_a_shares",
+          "label": "Entities affiliated with BlackRock (>5% holder) — Class A shares",
+          "raw_label": "Entities affiliated with BlackRock(22)",
+          "category": "beneficial_ownership",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 157849942,
+              "raw_text": "157,849,942",
+              "note": "Per Schedule 13G/A filed Feb 12, 2024; sole voting power over 142,976,542 shares. Vanguard reported 0 beneficial ownership as of Mar 13, 2026 following internal disaggregation realignment (Footnote 21)."
+            }
+          }
+        },
+        {
+          "id": "blackrock_class_a_pct",
+          "label": "Entities affiliated with BlackRock (>5% holder) — % of Class A",
+          "raw_label": "Entities affiliated with BlackRock(22)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 7.2,
+              "raw_text": "7.2"
+            }
+          }
+        },
+        {
+          "id": "blackrock_voting_power_pct",
+          "label": "Entities affiliated with BlackRock (>5% holder) — % of total voting power",
+          "raw_label": "Entities affiliated with BlackRock(22)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 2.8,
+              "raw_text": "2.8"
+            }
+          }
+        },
+        {
+          "id": "fmr_class_a_shares",
+          "label": "Entities affiliated with FMR LLC (>5% holder) — Class A shares",
+          "raw_label": "Entities affiliated with FMR LLC(23)",
+          "category": "beneficial_ownership",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 134555687,
+              "raw_text": "134,555,687",
+              "note": "Per Schedule 13G/A filed Apr 7, 2025; sole voting power over 128,222,257 shares."
+            }
+          }
+        },
+        {
+          "id": "fmr_class_a_pct",
+          "label": "Entities affiliated with FMR LLC (>5% holder) — % of Class A",
+          "raw_label": "Entities affiliated with FMR LLC(23)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 6.1,
+              "raw_text": "6.1"
+            }
+          }
+        },
+        {
+          "id": "fmr_voting_power_pct",
+          "label": "Entities affiliated with FMR LLC (>5% holder) — % of total voting power",
+          "raw_label": "Entities affiliated with FMR LLC(23)",
+          "category": "beneficial_ownership",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "as_of_2026_04_01": {
+              "value": 2.4,
+              "raw_text": "2.4"
+            }
+          }
+        },
+        {
+          "id": "ceo_salary",
+          "label": "CEO Mark Zuckerberg — base salary",
+          "raw_label": "Salary ($)(1)",
+          "category": "ceo_compensation",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[107]",
+            "table_index": 107
+          },
+          "cells": {
+            "fy_2025": {
+              "value": 1,
+              "raw_text": "1"
+            },
+            "fy_2024": {
+              "value": 1,
+              "raw_text": "1"
+            },
+            "fy_2023": {
+              "value": 1,
+              "raw_text": "1"
+            }
+          }
+        },
+        {
+          "id": "ceo_all_other_comp",
+          "label": "CEO Mark Zuckerberg — all other compensation (security & private aircraft)",
+          "raw_label": "All Other Compensation ($)",
+          "category": "ceo_compensation",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[107]",
+            "table_index": 107
+          },
+          "cells": {
+            "fy_2023": {
+              "value": 24399967,
+              "raw_text": "24,399,967(4)",
+              "note": "Includes $14.0M annual pre-tax security allowance, $9.43M personal security program costs, and $0.97M private aircraft usage (Footnote 4)."
+            },
+            "fy_2024": {
+              "value": 27219873,
+              "raw_text": "27,219,873(4)",
+              "note": "Includes $14.0M annual pre-tax security allowance, $10.43M personal security program costs, $2.59M private aircraft usage, and $0.20M facilities improvements (Footnote 4)."
+            },
+            "fy_2025": {
+              "value": 25125903,
+              "raw_text": "25,125,903(4)",
+              "note": "Includes $14.0M annual pre-tax security allowance, $8.50M personal security program costs, $2.47M private aircraft usage, and $0.16M facilities improvements (Footnote 4)."
+            }
+          }
+        },
+        {
+          "id": "ceo_total_comp",
+          "label": "CEO Mark Zuckerberg — total summary compensation",
+          "raw_label": "Total ($)",
+          "category": "ceo_compensation",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[107]",
+            "table_index": 107
+          },
+          "cells": {
+            "fy_2025": {
+              "value": 25125904,
+              "raw_text": "25,125,904"
+            },
+            "fy_2024": {
+              "value": 27219874,
+              "raw_text": "27,219,874"
+            },
+            "fy_2023": {
+              "value": 24399968,
+              "raw_text": "24,399,968"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "ceo_total_comp",
+          "components": [
+            {
+              "id": "ceo_salary",
+              "sign": 1
+            },
+            {
+              "id": "ceo_all_other_comp",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "fy_2023",
+            "fy_2024",
+            "fy_2025"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": []
+}

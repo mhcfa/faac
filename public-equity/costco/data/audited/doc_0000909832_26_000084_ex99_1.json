@@ -23,14 +23,14 @@
       "title": "Q4 FY2026 & Q4 FY2025 (16 Weeks Ended) Condensed Income Statement",
       "source": {
         "doc_id": "doc_0000909832_26_000084_ex99_1",
+        "origin": "html_table",
         "entity": "COST",
         "basis": "gaap",
         "locator": {
           "locator_type": "html_xpath",
           "xpath": "//table[5]",
           "table_index": 5
-        },
-        "is_restatement": false
+        }
       },
       "columns": [
         {
@@ -39,8 +39,7 @@
           "raw_label": "August 30,2026",
           "period_key": "2026-Q4",
           "as_of_date": "2026-08-30",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         },
         {
           "id": "q4_2025",
@@ -48,8 +47,7 @@
           "raw_label": "August 31,2025",
           "period_key": "2025-Q4",
           "as_of_date": "2025-08-31",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         }
       ],
       "rows": [
@@ -60,17 +58,14 @@
           "category": "revenue",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 93873,
-              "raw_text": "$93,873",
-              "is_restatement": false
+              "raw_text": "$93,873"
             },
             "q4_2025": {
               "value": 84432,
-              "raw_text": "$84,432",
-              "is_restatement": false
+              "raw_text": "$84,432"
             }
           }
         },
@@ -81,17 +76,14 @@
           "category": "revenue",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 1850,
-              "raw_text": "1,850",
-              "is_restatement": false
+              "raw_text": "1,850"
             },
             "q4_2025": {
               "value": 1724,
-              "raw_text": "1,724",
-              "is_restatement": false
+              "raw_text": "1,724"
             }
           }
         },
@@ -102,17 +94,14 @@
           "category": "revenue",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 95723,
-              "raw_text": "95,723",
-              "is_restatement": false
+              "raw_text": "95,723"
             },
             "q4_2025": {
               "value": 86156,
-              "raw_text": "86,156",
-              "is_restatement": false
+              "raw_text": "86,156"
             }
           }
         },
@@ -123,17 +112,14 @@
           "category": "operating_expense",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 83531,
-              "raw_text": "83,531",
-              "is_restatement": false
+              "raw_text": "83,531"
             },
             "q4_2025": {
               "value": 75037,
-              "raw_text": "75,037",
-              "is_restatement": false
+              "raw_text": "75,037"
             }
           }
         },
@@ -144,17 +130,14 @@
           "category": "operating_expense",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 8391,
-              "raw_text": "8,391",
-              "is_restatement": false
+              "raw_text": "8,391"
             },
             "q4_2025": {
               "value": 7778,
-              "raw_text": "7,778",
-              "is_restatement": false
+              "raw_text": "7,778"
             }
           }
         },
@@ -165,17 +148,14 @@
           "category": "operating_income",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 3801,
-              "raw_text": "3,801",
-              "is_restatement": false
+              "raw_text": "3,801"
             },
             "q4_2025": {
               "value": 3341,
-              "raw_text": "3,341",
-              "is_restatement": false
+              "raw_text": "3,341"
             }
           }
         },
@@ -186,17 +166,14 @@
           "category": "other_income_expense",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 45,
-              "raw_text": "(45)",
-              "is_restatement": false
+              "raw_text": "(45)"
             },
             "q4_2025": {
               "value": 46,
-              "raw_text": "(46)",
-              "is_restatement": false
+              "raw_text": "(46)"
             }
           }
         },
@@ -207,17 +184,14 @@
           "category": "other_income_expense",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 253,
-              "raw_text": "253",
-              "is_restatement": false
+              "raw_text": "253"
             },
             "q4_2025": {
               "value": 215,
-              "raw_text": "215",
-              "is_restatement": false
+              "raw_text": "215"
             }
           }
         },
@@ -228,17 +202,14 @@
           "category": "pretax_income",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 4009,
-              "raw_text": "4,009",
-              "is_restatement": false
+              "raw_text": "4,009"
             },
             "q4_2025": {
               "value": 3510,
-              "raw_text": "3,510",
-              "is_restatement": false
+              "raw_text": "3,510"
             }
           }
         },
@@ -249,17 +220,14 @@
           "category": "income_tax",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 1011,
-              "raw_text": "1,011",
-              "is_restatement": false
+              "raw_text": "1,011"
             },
             "q4_2025": {
               "value": 900,
-              "raw_text": "900",
-              "is_restatement": false
+              "raw_text": "900"
             }
           }
         },
@@ -270,17 +238,14 @@
           "category": "net_income",
           "unit": "USD",
           "scale": 1000000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 2998,
-              "raw_text": "$2,998",
-              "is_restatement": false
+              "raw_text": "$2,998"
             },
             "q4_2025": {
               "value": 2610,
-              "raw_text": "$2,610",
-              "is_restatement": false
+              "raw_text": "$2,610"
             }
           }
         },
@@ -289,19 +254,17 @@
           "label": "Basic net income per common share",
           "raw_label": "Basic",
           "category": "per_share",
+          "exemption": "non_additive_metric",
           "unit": "USD_per_share",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 6.75,
-              "raw_text": "$6.75",
-              "is_restatement": false
+              "raw_text": "$6.75"
             },
             "q4_2025": {
               "value": 5.88,
-              "raw_text": "$5.88",
-              "is_restatement": false
+              "raw_text": "$5.88"
             }
           }
         },
@@ -310,19 +273,17 @@
           "label": "Diluted net income per common share",
           "raw_label": "Diluted",
           "category": "per_share",
+          "exemption": "non_additive_metric",
           "unit": "USD_per_share",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 6.75,
-              "raw_text": "$6.75",
-              "is_restatement": false
+              "raw_text": "$6.75"
             },
             "q4_2025": {
               "value": 5.87,
-              "raw_text": "$5.87",
-              "is_restatement": false
+              "raw_text": "$5.87"
             }
           }
         },
@@ -331,19 +292,17 @@
           "label": "Weighted-average basic shares",
           "raw_label": "Basic",
           "category": "share_counts",
+          "exemption": "standalone_disclosure",
           "unit": "shares",
           "scale": 1000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 443975,
-              "raw_text": "443,975",
-              "is_restatement": false
+              "raw_text": "443,975"
             },
             "q4_2025": {
               "value": 444007,
-              "raw_text": "444,007",
-              "is_restatement": false
+              "raw_text": "444,007"
             }
           }
         },
@@ -352,19 +311,17 @@
           "label": "Weighted-average diluted shares",
           "raw_label": "Diluted",
           "category": "share_counts",
+          "exemption": "standalone_disclosure",
           "unit": "shares",
           "scale": 1000,
-          "is_restatement": false,
           "cells": {
             "q4_2026": {
               "value": 444364,
-              "raw_text": "444,364",
-              "is_restatement": false
+              "raw_text": "444,364"
             },
             "q4_2025": {
               "value": 444706,
-              "raw_text": "444,706",
-              "is_restatement": false
+              "raw_text": "444,706"
             }
           }
         }
@@ -442,22 +399,22 @@
           "tolerance": 0,
           "missing_components": "error"
         }
-      ],
-      "is_restatement": false
+      ]
     },
     {
       "table_id": "cost_q4_comp_sales",
       "title": "Q4 (16 Weeks) & FY2026 (52 Weeks) Comparable Sales Summary",
       "source": {
         "doc_id": "doc_0000909832_26_000084_ex99_1",
+        "origin": "html_table",
+        "exemption": "non_additive_metric",
         "entity": "COST",
         "basis": "mgmt",
         "locator": {
           "locator_type": "html_xpath",
           "xpath": "//table[2]",
           "table_index": 2
-        },
-        "is_restatement": false
+        }
       },
       "columns": [
         {
@@ -468,8 +425,7 @@
           "unit": "ratio",
           "scale": 0.01,
           "as_of_date": "2026-08-30",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         },
         {
           "id": "q4_2026_ex_gas_fx",
@@ -480,8 +436,7 @@
           "unit": "ratio",
           "scale": 0.01,
           "as_of_date": "2026-08-30",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         },
         {
           "id": "fy_2026_reported",
@@ -491,8 +446,7 @@
           "unit": "ratio",
           "scale": 0.01,
           "as_of_date": "2026-08-30",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         },
         {
           "id": "fy_2026_ex_gas_fx",
@@ -503,8 +457,7 @@
           "unit": "ratio",
           "scale": 0.01,
           "as_of_date": "2026-08-30",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         }
       ],
       "rows": [
@@ -513,27 +466,22 @@
           "label": "U.S.",
           "raw_label": "U.S.",
           "category": "geo_comp",
-          "is_restatement": false,
           "cells": {
             "q4_2026_reported": {
               "value": 10.7,
-              "raw_text": "10.7%",
-              "is_restatement": false
+              "raw_text": "10.7%"
             },
             "q4_2026_ex_gas_fx": {
               "value": 7.2,
-              "raw_text": "7.2%",
-              "is_restatement": false
+              "raw_text": "7.2%"
             },
             "fy_2026_reported": {
               "value": 8.2,
-              "raw_text": "8.2%",
-              "is_restatement": false
+              "raw_text": "8.2%"
             },
             "fy_2026_ex_gas_fx": {
               "value": 6.6,
-              "raw_text": "6.6%",
-              "is_restatement": false
+              "raw_text": "6.6%"
             }
           }
         },
@@ -542,27 +490,22 @@
           "label": "Canada",
           "raw_label": "Canada",
           "category": "geo_comp",
-          "is_restatement": false,
           "cells": {
             "q4_2026_reported": {
               "value": 5,
-              "raw_text": "5.0%",
-              "is_restatement": false
+              "raw_text": "5.0%"
             },
             "q4_2026_ex_gas_fx": {
               "value": 4.6,
-              "raw_text": "4.6%",
-              "is_restatement": false
+              "raw_text": "4.6%"
             },
             "fy_2026_reported": {
               "value": 7.8,
-              "raw_text": "7.8%",
-              "is_restatement": false
+              "raw_text": "7.8%"
             },
             "fy_2026_ex_gas_fx": {
               "value": 6.7,
-              "raw_text": "6.7%",
-              "is_restatement": false
+              "raw_text": "6.7%"
             }
           }
         },
@@ -571,27 +514,22 @@
           "label": "Other International",
           "raw_label": "Other International",
           "category": "geo_comp",
-          "is_restatement": false,
           "cells": {
             "q4_2026_reported": {
               "value": 7,
-              "raw_text": "7.0%",
-              "is_restatement": false
+              "raw_text": "7.0%"
             },
             "q4_2026_ex_gas_fx": {
               "value": 6.2,
-              "raw_text": "6.2%",
-              "is_restatement": false
+              "raw_text": "6.2%"
             },
             "fy_2026_reported": {
               "value": 9.8,
-              "raw_text": "9.8%",
-              "is_restatement": false
+              "raw_text": "9.8%"
             },
             "fy_2026_ex_gas_fx": {
               "value": 6.5,
-              "raw_text": "6.5%",
-              "is_restatement": false
+              "raw_text": "6.5%"
             }
           }
         },
@@ -600,27 +538,22 @@
           "label": "Total Company",
           "raw_label": "Total Company",
           "category": "total_comp",
-          "is_restatement": false,
           "cells": {
             "q4_2026_reported": {
               "value": 9.4,
-              "raw_text": "9.4%",
-              "is_restatement": false
+              "raw_text": "9.4%"
             },
             "q4_2026_ex_gas_fx": {
               "value": 6.7,
-              "raw_text": "6.7%",
-              "is_restatement": false
+              "raw_text": "6.7%"
             },
             "fy_2026_reported": {
               "value": 8.4,
-              "raw_text": "8.4%",
-              "is_restatement": false
+              "raw_text": "8.4%"
             },
             "fy_2026_ex_gas_fx": {
               "value": 6.6,
-              "raw_text": "6.6%",
-              "is_restatement": false
+              "raw_text": "6.6%"
             }
           }
         },
@@ -629,34 +562,27 @@
           "label": "Digitally-Enabled",
           "raw_label": "Digitally-Enabled",
           "category": "channel_comp",
-          "is_restatement": false,
           "cells": {
             "q4_2026_reported": {
               "value": 19.5,
-              "raw_text": "19.5%",
-              "is_restatement": false
+              "raw_text": "19.5%"
             },
             "q4_2026_ex_gas_fx": {
               "value": 19.8,
-              "raw_text": "19.8%",
-              "is_restatement": false
+              "raw_text": "19.8%"
             },
             "fy_2026_reported": {
               "value": 20.9,
-              "raw_text": "20.9%",
-              "is_restatement": false
+              "raw_text": "20.9%"
             },
             "fy_2026_ex_gas_fx": {
               "value": 20.7,
-              "raw_text": "20.7%",
-              "is_restatement": false
+              "raw_text": "20.7%"
             }
           }
         }
       ],
-      "checksums": [],
-      "checksum_exemption": "Comparable sales growth percentages are non-additive ratio rates",
-      "is_restatement": false
+      "checksums": []
     },
     {
       "table_id": "cost_qoe_items",
@@ -664,8 +590,7 @@
       "source": {
         "doc_id": "doc_0000909832_26_000084_ex99_1",
         "entity": "COST",
-        "basis": "qoe",
-        "is_restatement": false
+        "basis": "qoe"
       },
       "columns": [
         {
@@ -674,8 +599,7 @@
           "period_key": "2026-Q4",
           "basis": "qoe",
           "as_of_date": "2026-08-30",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         }
       ],
       "rows": [
@@ -685,37 +609,35 @@
           "category": "ieepa_tariffs",
           "unit": "USD_per_share",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "2026_Q4": {
               "value": 0.15,
               "raw_text": "$0.15",
               "note": "IEEPA tariff refunds received in Q4 FY26 less partial reinvestment in increased member values (Ex. 99.1 p. 1)",
+              "origin": "prose",
+              "exemption": "non_additive_metric",
               "locator": {
                 "locator_type": "html_xpath",
                 "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[9]/font[1]"
-              },
-              "is_restatement": false
+              }
             }
           }
         }
       ],
-      "checksums": [],
-      "checksum_exemption": "Mixed-unit QoE register (LIFO, IEEPA tariff refunds, discrete tax items, special dividends, impairments, fiscal week counts)",
-      "is_restatement": false
+      "checksums": []
     },
     {
       "table_id": "cost_warehouse_kpis",
       "title": "Warehouse Count Snapshot (Sep 24, 2026)",
       "source": {
         "doc_id": "doc_0000909832_26_000084_ex99_1",
+        "origin": "prose",
         "entity": "COST",
         "basis": "mgmt",
         "locator": {
           "locator_type": "html_xpath",
           "xpath": "/document/type[1]/sequence[1]/filename[1]/description[1]/text[1]/html[1]/body[1]/div[10]/font[1]"
-        },
-        "is_restatement": false
+        }
       },
       "columns": [
         {
@@ -723,8 +645,7 @@
           "label": "As of Sep 24, 2026",
           "period_key": "2026-09-24",
           "as_of_date": "2026-09-24",
-          "data_type": "number",
-          "is_restatement": false
+          "data_type": "number"
         }
       ],
       "rows": [
@@ -734,12 +655,10 @@
           "category": "warehouse_geo",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_09_24": {
               "value": 647,
-              "raw_text": "647",
-              "is_restatement": false
+              "raw_text": "647"
             }
           }
         },
@@ -749,12 +668,10 @@
           "category": "warehouse_geo",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_09_24": {
               "value": 115,
-              "raw_text": "115",
-              "is_restatement": false
+              "raw_text": "115"
             }
           }
         },
@@ -764,12 +681,10 @@
           "category": "warehouse_geo",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_09_24": {
               "value": 177,
-              "note": "Sum of 12 disclosed Other International country counts: MX 43, JP 37, UK 29, KR 20, AU 15, TW 14, CN 7, ES 5, FR 3, SE 2, IS 1, NZ 1",
-              "is_restatement": false
+              "note": "Sum of 12 disclosed Other International country counts: MX 43, JP 37, UK 29, KR 20, AU 15, TW 14, CN 7, ES 5, FR 3, SE 2, IS 1, NZ 1"
             }
           }
         },
@@ -779,12 +694,10 @@
           "category": "warehouse_total",
           "unit": "count",
           "scale": 1,
-          "is_restatement": false,
           "cells": {
             "as_of_2026_09_24": {
               "value": 939,
-              "raw_text": "939",
-              "is_restatement": false
+              "raw_text": "939"
             }
           }
         }
@@ -810,8 +723,7 @@
           "tolerance": 0,
           "missing_components": "error"
         }
-      ],
-      "is_restatement": false
+      ]
     }
   ],
   "cross_checksums": []

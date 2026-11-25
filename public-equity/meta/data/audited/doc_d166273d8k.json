@@ -1,0 +1,306 @@
+{
+  "document": {
+    "doc_id": "doc_d166273d8k",
+    "file_path": "data/raw/sec/0001326801/0001193125-26-450074/d166273d8k.htm",
+    "sha256": "26579da1682f41376bcfbe8eb2b520f65f7b996051bd7076aa00519d7069c398",
+    "doc_type": "sec_filing",
+    "size_bytes": 38635,
+    "title": "Meta Platforms, Inc. Form 8-K — $15.0B USD Senior Notes Offering & 6M Forward Common Greenshoe Exercise (Nov 5, 2026)",
+    "report_date": "2026-11-03",
+    "filing_date": "2026-11-05",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001326801",
+      "company_name": "Meta Platforms, Inc.",
+      "tickers": "META,METAM",
+      "form": "8-K",
+      "accession_number": "0001193125-26-450074",
+      "filing_date": "2026-11-05",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526450074/d166273d8k.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "meta_post_q3_financings",
+      "title": "Meta Platforms Post-Q3 2026 Capital Structure & Financing Events",
+      "source": {
+        "doc_id": "doc_d166273d8k",
+        "origin": "prose",
+        "entity": "META",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+        },
+        "as_of_date": "2026-11-05"
+      },
+      "columns": [
+        {
+          "id": "event_2026_11_05",
+          "label": "Nov 5, 2026 USD Senior Notes & Forward Greenshoe Exercise",
+          "period_key": "2026-11-05",
+          "as_of_date": "2026-11-05",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "fwd_common_greenshoe_exercised_shares",
+          "label": "Forward common stock sale — greenshoe shares exercised (Nov 4, 2026)",
+          "category": "forward_common_sale",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'exercised in full their option to purchase the additional 6,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 6000000,
+              "raw_text": "6,000,000 shares",
+              "note": "Full exercise of underwriter over-allotment option on Nov 4, 2026 via Additional Forward Sale Agreements; brings cumulative forward sale shares to 46,000,000 (40M initial + 6M greenshoe)."
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2031_principal",
+          "label": "Nov 2026 USD Senior Notes due 2031 (5.850%) — principal",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 3250000000,
+              "raw_text": "$3,250,000,000"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2033_principal",
+          "label": "Nov 2026 USD Senior Notes due 2033 (6.250%) — principal",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 3250000000,
+              "raw_text": "$3,250,000,000"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2036_principal",
+          "label": "Nov 2026 USD Senior Notes due 2036 (6.550%) — principal",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 4000000000,
+              "raw_text": "$4,000,000,000"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2046_principal",
+          "label": "Nov 2026 USD Senior Notes due 2046 (7.350%) — principal",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 1750000000,
+              "raw_text": "$1,750,000,000"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2056_principal",
+          "label": "Nov 2026 USD Senior Notes due 2056 (7.500%) — principal",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 2750000000,
+              "raw_text": "$2,750,000,000"
+            }
+          }
+        },
+        {
+          "id": "total_usd_notes_nov26",
+          "label": "Total Nov 5, 2026 USD Senior Notes principal (5 tranches)",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "unit": "USD",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 15000000000,
+              "raw_text": "Sum of 5 USD senior note tranches ($15,000,000,000)",
+              "note": "Exact sum of the five printed Nov 5, 2026 USD Senior Notes tranches ($3,250M + $3,250M + $4,000M + $1,750M + $2,750M = $15,000M); aggregate total not separately printed in Form 8-K."
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2031_coupon",
+          "label": "Nov 2026 USD Senior Notes due 2031 — coupon rate",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 5.85,
+              "raw_text": "5.850%"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2033_coupon",
+          "label": "Nov 2026 USD Senior Notes due 2033 — coupon rate",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 6.25,
+              "raw_text": "6.250%"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2036_coupon",
+          "label": "Nov 2026 USD Senior Notes due 2036 — coupon rate",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 6.55,
+              "raw_text": "6.550%"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2046_coupon",
+          "label": "Nov 2026 USD Senior Notes due 2046 — coupon rate",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 7.35,
+              "raw_text": "7.350%"
+            }
+          }
+        },
+        {
+          "id": "usd_notes_2056_coupon",
+          "label": "Nov 2026 USD Senior Notes due 2056 — coupon rate",
+          "category": "usd_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., 'completed an offering of $3,250,000,000')]"
+          },
+          "cells": {
+            "event_2026_11_05": {
+              "value": 7.5,
+              "raw_text": "7.500%"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_usd_notes_nov26",
+          "components": [
+            {
+              "id": "usd_notes_2031_principal",
+              "sign": 1
+            },
+            {
+              "id": "usd_notes_2033_principal",
+              "sign": 1
+            },
+            {
+              "id": "usd_notes_2036_principal",
+              "sign": 1
+            },
+            {
+              "id": "usd_notes_2046_principal",
+              "sign": 1
+            },
+            {
+              "id": "usd_notes_2056_principal",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": []
+}

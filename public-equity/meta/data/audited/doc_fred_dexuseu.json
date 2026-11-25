@@ -1,0 +1,88 @@
+{
+  "document": {
+    "doc_id": "doc_fred_dexuseu",
+    "file_path": "data/raw/macro/fred_dexuseu.csv",
+    "sha256": "cabc808213f550bb92e70ce8742fe476127f0eae52c5063c4ca3b6419d87301b",
+    "doc_type": "structured_data",
+    "size_bytes": 129193,
+    "title": "FRED U.S. Dollars to One Euro Spot Exchange Rate (DEXUSEU)",
+    "report_date": "2026-11-13",
+    "source_meta": {
+      "series_id": "DEXUSEU",
+      "latest_observation_date": "2026-11-13",
+      "latest_value": 1.1034,
+      "observation_count": 6988,
+      "source": "fred",
+      "source_url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=DEXUSEU",
+      "retrieved_at": "2026-11-22T19:28:15.702Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "macro_rates",
+      "title": "U.S. Benchmark Interest Rates, Credit Spreads, and Spot FX",
+      "source": {
+        "doc_id": "doc_fred_dexuseu",
+        "origin": "structured_data",
+        "exemption": "non_additive_metric",
+        "entity": "US",
+        "basis": "market",
+        "locator": {
+          "locator_type": "text_line",
+          "line_start": 1,
+          "line_end": 7271
+        },
+        "as_of_date": "2026-11-13"
+      },
+      "columns": [
+        {
+          "id": "d_2026_11_12",
+          "label": "2026-11-12",
+          "raw_label": "2026-11-12",
+          "period_key": "2026-11-12",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 7270,
+            "line_end": 7270
+          },
+          "as_of_date": "2026-11-12",
+          "data_type": "number"
+        },
+        {
+          "id": "d_2026_11_13",
+          "label": "2026-11-13",
+          "raw_label": "2026-11-13",
+          "period_key": "2026-11-13",
+          "locator": {
+            "locator_type": "text_line",
+            "line_start": 7271,
+            "line_end": 7271
+          },
+          "as_of_date": "2026-11-13",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "eur_usd",
+          "label": "U.S. Dollars per Euro Spot Exchange Rate (DEXUSEU)",
+          "raw_label": "DEXUSEU",
+          "unit": "custom:usd_per_eur",
+          "scale": 1,
+          "cells": {
+            "d_2026_11_12": {
+              "value": 1.1056,
+              "raw_text": "1.1056"
+            },
+            "d_2026_11_13": {
+              "value": 1.1034,
+              "raw_text": "1.1034"
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

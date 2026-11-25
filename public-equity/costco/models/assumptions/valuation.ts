@@ -2,6 +2,7 @@ import { scalarDriver, type Driver } from "./types.ts"
 
 export interface ValuationDrivers {
   readonly equityRiskPremium: Driver<number>
+  readonly rfStressRate: Driver<number>
   readonly terminalGrowthRate: Driver<number>
   readonly exitEvToEbitda: Driver<number>
   readonly calibratedCompsEvEbitda: Driver<number>
@@ -19,7 +20,7 @@ function validateValuationWeights(v: ValuationDrivers): ValuationDrivers {
   const compsWeight = 1 - v.weightPerpDcf.value - v.weightExitDcf.value
   if (compsWeight < -1e-9 || compsWeight > 1 + 1e-9) {
     throw new Error(
-      `Invalid Football Field weights: perp=${v.weightPerpDcf.value}, exit=${v.weightExitDcf.value}`
+      `Invalid valuation blend weights: perp=${v.weightPerpDcf.value}, exit=${v.weightExitDcf.value}`
     )
   }
   return Object.freeze(v)
@@ -28,168 +29,191 @@ function validateValuationWeights(v: ValuationDrivers): ValuationDrivers {
 export function baseValuationDrivers(): ValuationDrivers {
   return validateValuationWeights({
     equityRiskPremium: scalarDriver(0.045, {
-      label: "U.S. Equity Risk Premium (ERP)",
+      label: "U.S. equity risk premium (ERP)",
       format: "percentage",
       decimals: 2,
-      category: "WACC & Discounting",
+      category: "Discounting and rates",
       rationale:
-        "Institutional 4.50% ERP consistent with 5.15% 10Y UST nominal / 2.91% 10Y TIPS real regime.",
+        "Institutional U.S. equity risk premium benchmark calibrated to the current nominal Treasury and real TIPS rate regime.",
       basis: "Institutional ERP convention",
-      source: "U.S. Treasury H.15 Par & TIPS Curves (2026-11-13)",
+      source: "U.S. Treasury curves (2026-11-13)",
       gapId: "GAP-007",
     }),
-    terminalGrowthRate: scalarDriver(0.035, {
-      label: "Terminal perpetuity growth rate (g)",
+    rfStressRate: scalarDriver(0.04, {
+      label: "Risk-free rate stress benchmark",
       format: "percentage",
       decimals: 2,
-      category: "Terminal Value & Multiples",
+      category: "Discounting and rates",
       rationale:
-        "Bounded below ~3.7% long-run US nominal GDP ceiling (2.24% T10YIE breakeven inflation + ~1.5% mature real GDP) while reflecting Costco's durable club scale.",
-      basis: "Nominal GDP ceiling discipline",
-      source: "FRED 10Y Breakeven Inflation (T10YIE, 2026-11-13)",
+        "Evaluates intrinsic valuation sensitivity under a lower sovereign yield environment relative to the spot 10-year Treasury curve.",
+      basis: "Lower-rate regime check",
+      source: "U.S. Treasury H.15 benchmark",
+    }),
+    terminalGrowthRate: scalarDriver(0.035, {
+      label: "Terminal growth rate (g)",
+      format: "percentage",
+      decimals: 2,
+      category: "Terminal value and multiples",
+      rationale:
+        "Bounded below long-run U.S. nominal GDP growth (breakeven inflation plus mature real output) while reflecting durable club scale.",
+      basis: "Nominal GDP ceiling bound",
+      source: "FRED T10YIE (2026-11-13)",
       gapId: "GAP-008",
     }),
     exitEvToEbitda: scalarDriver(22.0, {
-      label: "Terminal Exit EV / FY36E EBITDA cross-check multiple",
+      label: "Exit EV / FY36E EBITDA",
       format: "multiple",
       decimals: 1,
-      category: "Terminal Value & Multiples",
+      category: "Terminal value and multiples",
       rationale:
-        "Reflects terminal quality premium over pure-play club peers (~13-14x) and aligns with Walmart FY27E (21.9x) despite implying >6% perpetuity growth at 8.88% WACC.",
-      basis: "Peer-anchored mature premium",
-      source: "NASDAQ/NYSE market close & Street consensus (2026-11-13)",
+        "Cross-check terminal multiple awarding a quality premium over pure-play club peers and aligning with scaled omnichannel retail benchmarks.",
+      basis: "Peer-anchored exit check",
+      source: "Market close & consensus",
       gapId: "GAP-008",
     }),
     calibratedCompsEvEbitda: scalarDriver(24.0, {
-      label: "Quality-calibrated FY27E EV / EBITDA target multiple",
+      label: "Target EV / EBITDA multiple",
       format: "multiple",
       decimals: 1,
-      category: "Terminal Value & Multiples",
+      category: "Terminal value and multiples",
       rationale:
-        "Awards a +2.1x premium over WMT (21.9x) and +10.5x over BJ/PSMT (~13.0-13.5x) for Costco's ~30% ROIC and 92.3% renewal moat, compressing from current 29.6x peak.",
-      basis: "ROIC & moat quality-calibrated multiple",
-      source: "Street consensus estimates (2026-11-13)",
+        "Awards a structural premium over Walmart and pure-play warehouse clubs for superior ROIC and membership renewal stability.",
+      basis: "ROIC-calibrated target",
+      source: "Street consensus (2026-11-13)",
       gapId: "GAP-008",
     }),
     midYearConventionFlag: scalarDriver(1, {
-      label: "Mid-year cash flow discounting flag (1=Mid-Year, 0=Year-End)",
+      label: "Mid-year discounting (1=Yes)",
       format: "integer",
-      category: "WACC & Discounting",
+      category: "Discounting and rates",
       rationale:
-        "Live structural toggle (1 = cash flows earned evenly mid-year; 0 = end-of-period discounting) evaluated dynamically via YEARFRAC formulas.",
-      basis: "Standard DCF timing convention",
+        "Applies mid-year cash-flow timing to reflect continuous retail cash generation across the fiscal year (zero applies year-end discounting).",
+      basis: "Mid-year cash flow timing",
     }),
     weightPerpDcf: scalarDriver(0.5, {
-      label: "Football Field weight — Perpetuity-Growth DCF",
+      label: "Weight — Perpetuity DCF",
       format: "percentage",
       decimals: 0,
-      category: "Blended Target Weights",
+      category: "Valuation weights",
       rationale:
-        "Primary intrinsic method anchored to fundamental reinvestment economics (50%); Comps weight derived as 1 - Perp - Exit = 25%.",
-      basis: "Intrinsic primary weighting",
+        "Primary intrinsic weighting anchored to explicit multi-year reinvestment and steady-state capital productivity.",
+      basis: "Primary intrinsic method",
     }),
-    weightExitDcf: scalarDriver(0.25, {
-      label: "Football Field weight — Exit-Multiple DCF",
+    weightExitDcf: scalarDriver(0.0, {
+      label: "Weight — Exit-Multiple DCF",
       format: "percentage",
       decimals: 0,
-      category: "Blended Target Weights",
+      category: "Valuation weights",
       rationale:
-        "Secondary intrinsic cross-check weight (25%); remaining 25% allocated residually to Calibrated Comps.",
-      basis: "Cross-check weighting",
+        "Retained strictly as an explicit market-multiple cross-check; assigned zero weight in the headline blend so terminal multiples above nominal GDP growth do not distort intrinsic value.",
+      basis: "Cross-check (0% weight)",
     }),
     waccStepSensitivity: scalarDriver(0.005, {
-      label: "Sensitivity grid step — WACC",
+      label: "Sensitivity step — WACC",
       format: "percentage",
       decimals: 2,
-      category: "Sensitivity Grid Axes",
-      rationale: "+/- 100 bps total WACC range in 50 bps increments.",
-      basis: "Grid axis step",
+      category: "Sensitivity steps",
+      rationale:
+        "Defines symmetric discount-rate grid intervals across the valuation sensitivity matrices.",
+      basis: "Grid axis interval",
     }),
     termGrowthStepSensitivity: scalarDriver(0.0025, {
-      label: "Sensitivity grid step — Terminal growth (g)",
+      label: "Sensitivity step — Terminal g",
       format: "percentage",
       decimals: 2,
-      category: "Sensitivity Grid Axes",
-      rationale: "+/- 50 bps terminal growth range in 25 bps increments.",
-      basis: "Grid axis step",
+      category: "Sensitivity steps",
+      rationale:
+        "Defines symmetric perpetual growth intervals around the active terminal growth rate.",
+      basis: "Grid axis interval",
     }),
     exitMultipleStepSensitivity: scalarDriver(2.0, {
-      label: "Sensitivity grid step — Exit EV / EBITDA",
+      label: "Sensitivity step — Exit mult.",
       format: "multiple",
       decimals: 1,
-      category: "Sensitivity Grid Axes",
-      rationale: "+/- 4.0x exit multiple range in 2.0x increments.",
-      basis: "Grid axis step",
+      category: "Sensitivity steps",
+      rationale:
+        "Defines symmetric terminal EBITDA multiple intervals across the exit-multiple sensitivity grid.",
+      basis: "Grid axis interval",
     }),
     ebitMarginStepSensitivity: scalarDriver(0.0025, {
-      label: "Sensitivity grid step — Terminal EBIT margin",
+      label: "Sensitivity step — EBIT margin",
       format: "percentage",
       decimals: 2,
-      category: "Sensitivity Grid Axes",
-      rationale: "+/- 50 bps terminal operating margin sensitivity.",
-      basis: "Grid axis step",
+      category: "Sensitivity steps",
+      rationale:
+        "Defines parallel operating-margin shift intervals across the explicit forecast period.",
+      basis: "Grid axis interval",
     }),
     compGrowthStepSensitivity: scalarDriver(0.005, {
-      label: "Sensitivity grid step — Terminal revenue growth",
+      label: "Sensitivity step — Rev. growth",
       format: "percentage",
       decimals: 2,
-      category: "Sensitivity Grid Axes",
-      rationale: "+/- 100 bps terminal operating growth sensitivity.",
-      basis: "Grid axis step",
+      category: "Sensitivity steps",
+      rationale:
+        "Defines annual revenue growth shift intervals scaling both NOPAT and required operating capital.",
+      basis: "Grid axis interval",
     }),
   })
 }
 
-export function bullValuationDrivers(): ValuationDrivers {
+export function upsideValuationDrivers(): ValuationDrivers {
   const base = baseValuationDrivers()
   return validateValuationWeights({
     ...base,
     equityRiskPremium: scalarDriver(0.0425, {
       ...base.equityRiskPremium.meta,
       rationale:
-        "Lower market equity risk premium (4.25%) in benign risk-on regime.",
+        "Lower equity risk premium consistent with constructive equity risk appetite.",
+      basis: "Benign risk regime",
     }),
-    terminalGrowthRate: scalarDriver(0.038, {
+    terminalGrowthRate: scalarDriver(0.037, {
       ...base.terminalGrowthRate.meta,
       rationale:
-        "Upper nominal GDP bound (3.80%) reflecting sustained international compounding.",
+        "Upper nominal GDP growth ceiling supported by sustained international club expansion without breaching long-run macro bounds.",
+      basis: "Nominal GDP ceiling",
     }),
     exitEvToEbitda: scalarDriver(25.0, {
       ...base.exitEvToEbitda.meta,
       rationale:
-        "Sustained scarcity premium preserves 25.0x terminal EBITDA multiple.",
+        "Sustained scarcity premium supports a higher mature terminal EBITDA multiple cross-check.",
+      basis: "Sustained scarcity premium",
     }),
-    calibratedCompsEvEbitda: scalarDriver(27.0, {
+    calibratedCompsEvEbitda: scalarDriver(29.5, {
       ...base.calibratedCompsEvEbitda.meta,
       rationale:
-        "Modest multiple compression from 29.6x to 27.0x FY27E EBITDA in constructive tape.",
+        "Sustains Costco's spot forward multiple in a constructive defensive-quality market regime.",
+      basis: "Sustained spot multiple",
     }),
   })
 }
 
-export function bearValuationDrivers(): ValuationDrivers {
+export function downsideValuationDrivers(): ValuationDrivers {
   const base = baseValuationDrivers()
   return validateValuationWeights({
     ...base,
     equityRiskPremium: scalarDriver(0.0475, {
       ...base.equityRiskPremium.meta,
       rationale:
-        "Elevated risk-off ERP (4.75%) amid higher-for-longer Treasury yields.",
+        "Higher equity risk premium reflecting tighter financial conditions and risk aversion.",
+      basis: "Tighter risk regime",
     }),
     terminalGrowthRate: scalarDriver(0.03, {
       ...base.terminalGrowthRate.meta,
       rationale:
-        "Mature retail growth converges to 3.00% long-run nominal pace.",
+        "Long-run growth converges conservatively toward mature retail nominal expansion.",
+      basis: "Conservative GDP pace",
     }),
     exitEvToEbitda: scalarDriver(18.0, {
       ...base.exitEvToEbitda.meta,
       rationale:
-        "Multiple derates toward mature wide-moat staple/omni-retail peers (18.0x).",
+        "Terminal valuation derates toward mature omnichannel retail and staple norms.",
+      basis: "Mature retail multiple",
     }),
     calibratedCompsEvEbitda: scalarDriver(20.0, {
       ...base.calibratedCompsEvEbitda.meta,
       rationale:
-        "Post-special-dividend multiple reset below Walmart toward 20.0x FY27E EBITDA.",
+        "Multiple resets below Walmart toward mature omnichannel and club peer averages.",
+      basis: "Peer-convergence reset",
     }),
   })
 }

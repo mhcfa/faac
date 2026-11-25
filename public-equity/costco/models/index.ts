@@ -1,7 +1,10 @@
 import { Model, type CompiledModel } from "f8-engine"
 import { loadCostcoKnowledgeData, type CostcoKnowledgeData } from "./kg.ts"
 import { buildAssumptionsSheet } from "./statements/assumptionsSheet.ts"
-import { buildBalanceSheetAndEquity } from "./statements/balanceSheet.ts"
+import {
+  buildBalanceSheet,
+  buildShareEquitySchedule,
+} from "./statements/balanceSheet.ts"
 import { buildCashFlowStatement } from "./statements/cashFlow.ts"
 import { buildDebtLeasesSchedule } from "./statements/debtLeases.ts"
 import { buildIncomeStatement } from "./statements/incomeStatement.ts"
@@ -14,10 +17,14 @@ import {
   type ScenarioSnapshot,
 } from "./valuation/bridges.ts"
 import { buildCompsSchedules } from "./valuation/comps.ts"
-import { buildDcfSchedules } from "./valuation/dcf.ts"
+import { buildDcfAndWaccSheet } from "./valuation/dcf.ts"
 import { buildExecutiveSummarySheet } from "./valuation/executiveSummary.ts"
 import { buildUnitEconomicsSchedule } from "./valuation/unitEconomics.ts"
-import { buildWaccSchedule } from "./valuation/wacc.ts"
+
+const GRID_SHEET_OPTS = {
+  layout: "grid" as const,
+  colWidth: 12,
+}
 
 function buildCostcoModelSpec(
   kg: CostcoKnowledgeData,
@@ -30,51 +37,63 @@ function buildCostcoModelSpec(
   })
 
   const execSheet = model.addSheet("Exec Summary", {
+    ...GRID_SHEET_OPTS,
     tabColor: "#1E3A8A",
   })
   const assumptionsSheet = model.addSheet("Assumptions", {
+    ...GRID_SHEET_OPTS,
     tabColor: "#0F766E",
   })
-  const operatingSheet = model.addSheet("Operating", {
-    tabColor: "#1D4ED8",
-  })
-  const isCfSheet = model.addSheet("Income & Cash Flow", {
+  const statementsSheet = model.addSheet("3-Statement Model", {
+    ...GRID_SHEET_OPTS,
     tabColor: "#15803D",
   })
-  const bsRoicSheet = model.addSheet("Balance Sheet & ROIC", {
+  const schedulesSheet = model.addSheet("Schedules & ROIC", {
+    ...GRID_SHEET_OPTS,
     tabColor: "#4338CA",
   })
-  const wcDebtSheet = model.addSheet("WC, PPE & Debt", {
-    tabColor: "#7C3AED",
-  })
   const dcfSheet = model.addSheet("DCF & WACC", {
+    ...GRID_SHEET_OPTS,
     tabColor: "#B91C1C",
   })
   const compsSheet = model.addSheet("Trading Comps", {
+    ...GRID_SHEET_OPTS,
     tabColor: "#C2410C",
   })
   const unitEconSheet = model.addSheet("Unit Economics", {
+    ...GRID_SHEET_OPTS,
     tabColor: "#0369A1",
   })
 
-  // Assemble tables across worksheets
+  // Tab 1: Executive Summary
   buildExecutiveSummarySheet(execSheet, kg, activeScenario, snapshots)
+
+  // Tab 2: Assumptions & Anchors
   buildAssumptionsSheet(assumptionsSheet, kg, activeScenario)
-  buildOperatingSchedule(operatingSheet, kg)
 
-  const incomeStatement = buildIncomeStatement(isCfSheet, kg)
-  buildCashFlowStatement(isCfSheet, kg, incomeStatement)
+  // Tab 3: Core 3-Statement Model (vertical 15Y stack)
+  const operatingSchedule = buildOperatingSchedule(statementsSheet, kg)
+  const incomeStatement = buildIncomeStatement(
+    statementsSheet,
+    kg,
+    operatingSchedule
+  )
+  const balanceSheet = buildBalanceSheet(statementsSheet, kg, incomeStatement)
+  buildCashFlowStatement(statementsSheet, kg, balanceSheet)
 
-  const { shareEquity } = buildBalanceSheetAndEquity(bsRoicSheet, kg)
-  buildRoicSchedule(bsRoicSheet, shareEquity)
+  // Tab 4: Supporting Schedules & ROIC (vertical 15Y stack)
+  const wcPpe = buildWorkingCapitalPpeSchedule(schedulesSheet, kg)
+  const debtLeases = buildDebtLeasesSchedule(schedulesSheet, kg, wcPpe)
+  const shareEquity = buildShareEquitySchedule(schedulesSheet, kg, debtLeases)
+  buildRoicSchedule(schedulesSheet, shareEquity)
 
-  const wcPpe = buildWorkingCapitalPpeSchedule(wcDebtSheet, kg)
-  buildDebtLeasesSchedule(wcDebtSheet, kg, wcPpe)
+  // Tab 5: DCF, WACC, Implied Expectations & Sensitivities
+  buildDcfAndWaccSheet(dcfSheet, kg, snapshots)
 
-  const waccSchedule = buildWaccSchedule(dcfSheet, kg)
-  buildDcfSchedules(dcfSheet, waccSchedule)
-
+  // Tab 6: Trading Comparables & Bridges
   buildCompsSchedules(compsSheet, kg)
+
+  // Tab 7: Club Unit Economics
   buildUnitEconomicsSchedule(unitEconSheet, kg)
 
   return model

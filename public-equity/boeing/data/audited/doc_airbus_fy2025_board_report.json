@@ -1,0 +1,1428 @@
+{
+  "document": {
+    "doc_id": "doc_airbus_fy2025_board_report",
+    "file_path": "data/raw/airbus/airbus_fy2025_board_report.pdf",
+    "sha256": "d4cc7508b471bc8929803a56c2d656c2bc30052f3c988c412a6680919ef14133",
+    "doc_type": "pdf_document",
+    "size_bytes": 7038001,
+    "title": "Airbus SE Report of the Board of Directors 2025",
+    "report_date": "2025-12-31",
+    "filing_date": "2026-02-19",
+    "source_meta": {
+      "entity": "Airbus SE",
+      "ticker": "AIR.PA",
+      "lei": "MINO79WLOO247M1IL051",
+      "period": "FY 2025",
+      "issued_date": "2026-02-18",
+      "source": "airbus_ir",
+      "source_url": "https://mediaassets.airbus.com/pm_38_937_937269-0jjx26umr0.pdf?fileName=airbus-report-of-the-board-of-directors-2025.pdf",
+      "retrieved_at": "2026-11-23T19:51:33.804Z"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "airbus_ebit_adjusted_recon",
+      "title": "EBIT (Reported) to EBIT Adjusted Reconciliation (FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_board_report",
+        "origin": "pdf_table",
+        "entity": "AIR.PA",
+        "basis": "non_gaap",
+        "locator": {
+          "locator_type": "pdf_page",
+          "page": 127
+        }
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "ebit_reported",
+          "label": "EBIT (reported)",
+          "cells": {
+            "fy25": {
+              "value": 6082,
+              "raw_text": "6,082"
+            },
+            "fy24": {
+              "value": 5304,
+              "raw_text": "5,304"
+            }
+          }
+        },
+        {
+          "id": "adj_dollar_wc_mismatch",
+          "label": "Dollar working capital mismatch and balance sheet revaluation",
+          "cells": {
+            "fy25": {
+              "value": -624,
+              "raw_text": "(624)"
+            },
+            "fy24": {
+              "value": 101,
+              "raw_text": "+101"
+            }
+          }
+        },
+        {
+          "id": "adj_spirit_integration",
+          "label": "Spirit AeroSystems acquisition and integration",
+          "cells": {
+            "fy25": {
+              "value": -188,
+              "raw_text": "(188)"
+            }
+          }
+        },
+        {
+          "id": "adj_ds_workforce_plan",
+          "label": "Airbus Defence and Space workforce adaptation plan",
+          "cells": {
+            "fy25": {
+              "value": -105,
+              "raw_text": "(105)"
+            }
+          }
+        },
+        {
+          "id": "adj_a400m",
+          "label": "A400M charge",
+          "cells": {
+            "fy25": {
+              "value": -73,
+              "raw_text": "(73)"
+            },
+            "fy24": {
+              "value": -121,
+              "raw_text": "(121)"
+            }
+          }
+        },
+        {
+          "id": "adj_oneweb",
+          "label": "Airbus OneWeb Satellite",
+          "cells": {
+            "fy24": {
+              "value": 51,
+              "raw_text": "+51"
+            }
+          }
+        },
+        {
+          "id": "adj_other",
+          "label": "Others",
+          "cells": {
+            "fy25": {
+              "value": -56,
+              "raw_text": "(56)"
+            },
+            "fy24": {
+              "value": -81,
+              "raw_text": "(81)"
+            }
+          }
+        },
+        {
+          "id": "ebit_adjusted",
+          "label": "EBIT Adjusted",
+          "cells": {
+            "fy25": {
+              "value": 7128,
+              "raw_text": "7,128"
+            },
+            "fy24": {
+              "value": 5354,
+              "raw_text": "5,354"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "ebit_adjusted",
+          "components": [
+            {
+              "id": "ebit_reported",
+              "sign": 1
+            },
+            {
+              "id": "adj_dollar_wc_mismatch",
+              "sign": -1
+            },
+            {
+              "id": "adj_spirit_integration",
+              "sign": -1
+            },
+            {
+              "id": "adj_ds_workforce_plan",
+              "sign": -1
+            },
+            {
+              "id": "adj_a400m",
+              "sign": -1
+            },
+            {
+              "id": "adj_oneweb",
+              "sign": -1
+            },
+            {
+              "id": "adj_other",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "zero"
+        }
+      ]
+    },
+    {
+      "table_id": "airbus_fcf_bridge",
+      "title": "Free Cash Flow & FCF before Customer Financing Bridge (FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_board_report",
+        "origin": "pdf_table",
+        "entity": "AIR.PA",
+        "basis": "non_gaap",
+        "locator": {
+          "locator_type": "pdf_page",
+          "page": 129
+        }
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "gross_cf_operations",
+          "label": "Gross Cash Flow from Operations",
+          "cells": {
+            "fy25": {
+              "value": 8167,
+              "raw_text": "8,167"
+            },
+            "fy24": {
+              "value": 6570,
+              "raw_text": "6,570"
+            }
+          }
+        },
+        {
+          "id": "working_capital_change",
+          "label": "Change in working capital",
+          "cells": {
+            "fy25": {
+              "value": 94,
+              "raw_text": "94"
+            },
+            "fy24": {
+              "value": 1266,
+              "raw_text": "1,266"
+            }
+          }
+        },
+        {
+          "id": "net_capex_and_assoc_dividends",
+          "label": "Investments in intangible and fixed assets (net) & Dividends paid by companies valued at equity",
+          "cells": {
+            "fy25": {
+              "value": -3508,
+              "raw_text": "(3,508)"
+            },
+            "fy24": {
+              "value": -3375,
+              "raw_text": "(3,375)"
+            }
+          }
+        },
+        {
+          "id": "industrial_capex",
+          "label": "of which Industrial CapEx (additions)",
+          "exemption": "standalone_disclosure",
+          "cells": {
+            "fy25": {
+              "value": -3964,
+              "raw_text": "(3,964)",
+              "note": "Memo line within net_capex_and_assoc_dividends; equals ESEF cash_flow_statement.capex"
+            },
+            "fy24": {
+              "value": -3669,
+              "raw_text": "(3,669)",
+              "note": "Memo line within net_capex_and_assoc_dividends; equals ESEF cash_flow_statement.capex"
+            }
+          }
+        },
+        {
+          "id": "fcf",
+          "label": "Free Cash Flow",
+          "cells": {
+            "fy25": {
+              "value": 4753,
+              "raw_text": "4,753"
+            },
+            "fy24": {
+              "value": 4461,
+              "raw_text": "4,461"
+            }
+          }
+        },
+        {
+          "id": "customer_financing",
+          "label": "of which Customer Financing",
+          "cells": {
+            "fy25": {
+              "value": 179,
+              "raw_text": "179"
+            },
+            "fy24": {
+              "value": -2,
+              "raw_text": "(2)"
+            }
+          }
+        },
+        {
+          "id": "fcf_before_customer_financing",
+          "label": "Free Cash Flow before Customer Financing",
+          "cells": {
+            "fy25": {
+              "value": 4574,
+              "raw_text": "4,574"
+            },
+            "fy24": {
+              "value": 4463,
+              "raw_text": "4,463"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "fcf",
+          "components": [
+            {
+              "id": "gross_cf_operations",
+              "sign": 1
+            },
+            {
+              "id": "working_capital_change",
+              "sign": 1
+            },
+            {
+              "id": "net_capex_and_assoc_dividends",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "fcf_before_customer_financing",
+          "components": [
+            {
+              "id": "fcf",
+              "sign": 1
+            },
+            {
+              "id": "customer_financing",
+              "sign": -1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "airbus_net_cash",
+      "title": "Consolidated Net Cash Position (YE2025-YE2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_board_report",
+        "origin": "pdf_table",
+        "entity": "AIR.PA",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "pdf_page",
+          "page": 128
+        }
+      },
+      "columns": [
+        {
+          "id": "ye25",
+          "label": "31 Dec 2025",
+          "period_key": "2025-12-31",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "ye24",
+          "label": "31 Dec 2024",
+          "period_key": "2024-12-31",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "cash_and_equivalents",
+          "label": "Cash and cash equivalents",
+          "cells": {
+            "ye25": {
+              "value": 14128,
+              "raw_text": "14,128"
+            },
+            "ye24": {
+              "value": 15003,
+              "raw_text": "15,003"
+            }
+          }
+        },
+        {
+          "id": "current_securities",
+          "label": "Current securities",
+          "cells": {
+            "ye25": {
+              "value": 3093,
+              "raw_text": "3,093"
+            },
+            "ye24": {
+              "value": 2829,
+              "raw_text": "2,829"
+            }
+          }
+        },
+        {
+          "id": "noncurrent_securities",
+          "label": "Non-current securities",
+          "cells": {
+            "ye25": {
+              "value": 9997,
+              "raw_text": "9,997"
+            },
+            "ye24": {
+              "value": 9032,
+              "raw_text": "9,032"
+            }
+          }
+        },
+        {
+          "id": "gross_cash",
+          "label": "Gross cash position",
+          "cells": {
+            "ye25": {
+              "value": 27218,
+              "raw_text": "27,218"
+            },
+            "ye24": {
+              "value": 26864,
+              "raw_text": "26,864"
+            }
+          }
+        },
+        {
+          "id": "short_term_financing_liabilities",
+          "label": "Short-term financing liabilities",
+          "cells": {
+            "ye25": {
+              "value": -5186,
+              "raw_text": "(5,186)"
+            },
+            "ye24": {
+              "value": -3924,
+              "raw_text": "(3,924)"
+            }
+          }
+        },
+        {
+          "id": "long_term_financing_liabilities",
+          "label": "Long-term financing liabilities",
+          "cells": {
+            "ye25": {
+              "value": -9063,
+              "raw_text": "(9,063)"
+            },
+            "ye24": {
+              "value": -10355,
+              "raw_text": "(10,355)"
+            }
+          }
+        },
+        {
+          "id": "interest_rate_contracts",
+          "label": "Interest rate contracts",
+          "cells": {
+            "ye25": {
+              "value": -798,
+              "raw_text": "(798)"
+            },
+            "ye24": {
+              "value": -832,
+              "raw_text": "(832)"
+            }
+          }
+        },
+        {
+          "id": "net_cash",
+          "label": "Net cash position",
+          "cells": {
+            "ye25": {
+              "value": 12171,
+              "raw_text": "12,171"
+            },
+            "ye24": {
+              "value": 11753,
+              "raw_text": "11,753"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "gross_cash",
+          "components": [
+            {
+              "id": "cash_and_equivalents",
+              "sign": 1
+            },
+            {
+              "id": "current_securities",
+              "sign": 1
+            },
+            {
+              "id": "noncurrent_securities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "net_cash",
+          "components": [
+            {
+              "id": "gross_cash",
+              "sign": 1
+            },
+            {
+              "id": "short_term_financing_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "long_term_financing_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "interest_rate_contracts",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "airbus_financing_liabilities",
+      "title": "Financing Liabilities Breakdown (YE2025-YE2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_board_report",
+        "origin": "pdf_table",
+        "entity": "AIR.PA",
+        "basis": "mgmt",
+        "locator": {
+          "locator_type": "pdf_page",
+          "page": 129
+        }
+      },
+      "columns": [
+        {
+          "id": "ye25",
+          "label": "31 Dec 2025",
+          "period_key": "2025-12-31",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        },
+        {
+          "id": "ye24",
+          "label": "31 Dec 2024",
+          "period_key": "2024-12-31",
+          "unit": "EUR",
+          "scale": 1000000,
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "lt_bonds_cp",
+          "label": "Long-term bonds and commercial papers",
+          "category": "long_term",
+          "cells": {
+            "ye25": {
+              "value": 6286,
+              "raw_text": "6,286"
+            },
+            "ye24": {
+              "value": 7986,
+              "raw_text": "7,986"
+            }
+          }
+        },
+        {
+          "id": "lt_financial_institutions",
+          "label": "Long-term liabilities to financial institutions",
+          "category": "long_term",
+          "cells": {
+            "ye25": {
+              "value": 329,
+              "raw_text": "329"
+            },
+            "ye24": {
+              "value": 382,
+              "raw_text": "382"
+            }
+          }
+        },
+        {
+          "id": "lt_loans",
+          "label": "Long-term loans",
+          "category": "long_term",
+          "cells": {
+            "ye25": {
+              "value": 395,
+              "raw_text": "395"
+            },
+            "ye24": {
+              "value": 291,
+              "raw_text": "291"
+            }
+          }
+        },
+        {
+          "id": "lt_lease_liabilities",
+          "label": "Long-term lease liabilities",
+          "category": "long_term",
+          "cells": {
+            "ye25": {
+              "value": 2053,
+              "raw_text": "2,053"
+            },
+            "ye24": {
+              "value": 1696,
+              "raw_text": "1,696"
+            }
+          }
+        },
+        {
+          "id": "long_term_financing_liabilities",
+          "label": "Total long-term financing liabilities",
+          "category": "long_term",
+          "cells": {
+            "ye25": {
+              "value": 9063,
+              "raw_text": "9,063"
+            },
+            "ye24": {
+              "value": 10355,
+              "raw_text": "10,355"
+            }
+          }
+        },
+        {
+          "id": "st_bonds_cp",
+          "label": "Short-term bonds and commercial papers",
+          "category": "short_term",
+          "cells": {
+            "ye25": {
+              "value": 1479,
+              "raw_text": "1,479"
+            },
+            "ye24": {
+              "value": 556,
+              "raw_text": "556"
+            }
+          }
+        },
+        {
+          "id": "st_financial_institutions",
+          "label": "Short-term liabilities to financial institutions",
+          "category": "short_term",
+          "cells": {
+            "ye25": {
+              "value": 25,
+              "raw_text": "25"
+            },
+            "ye24": {
+              "value": 26,
+              "raw_text": "26"
+            }
+          }
+        },
+        {
+          "id": "st_loans",
+          "label": "Short-term loans",
+          "category": "short_term",
+          "cells": {
+            "ye25": {
+              "value": 129,
+              "raw_text": "129"
+            },
+            "ye24": {
+              "value": 85,
+              "raw_text": "85"
+            }
+          }
+        },
+        {
+          "id": "st_lease_liabilities",
+          "label": "Short-term lease liabilities",
+          "category": "short_term",
+          "cells": {
+            "ye25": {
+              "value": 327,
+              "raw_text": "327"
+            },
+            "ye24": {
+              "value": 253,
+              "raw_text": "253"
+            }
+          }
+        },
+        {
+          "id": "st_others",
+          "label": "Short-term others (incl. financing liabilities to joint ventures)",
+          "category": "short_term",
+          "cells": {
+            "ye25": {
+              "value": 3226,
+              "raw_text": "3,226"
+            },
+            "ye24": {
+              "value": 3004,
+              "raw_text": "3,004"
+            }
+          }
+        },
+        {
+          "id": "short_term_financing_liabilities",
+          "label": "Total short-term financing liabilities",
+          "category": "short_term",
+          "cells": {
+            "ye25": {
+              "value": 5186,
+              "raw_text": "5,186"
+            },
+            "ye24": {
+              "value": 3924,
+              "raw_text": "3,924"
+            }
+          }
+        },
+        {
+          "id": "total_financing_liabilities",
+          "label": "Total financing liabilities",
+          "category": "total",
+          "cells": {
+            "ye25": {
+              "value": 14249,
+              "raw_text": "14,249"
+            },
+            "ye24": {
+              "value": 14279,
+              "raw_text": "14,279"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "long_term_financing_liabilities",
+          "components": [
+            {
+              "id": "lt_bonds_cp",
+              "sign": 1
+            },
+            {
+              "id": "lt_financial_institutions",
+              "sign": 1
+            },
+            {
+              "id": "lt_loans",
+              "sign": 1
+            },
+            {
+              "id": "lt_lease_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "short_term_financing_liabilities",
+          "components": [
+            {
+              "id": "st_bonds_cp",
+              "sign": 1
+            },
+            {
+              "id": "st_financial_institutions",
+              "sign": 1
+            },
+            {
+              "id": "st_loans",
+              "sign": 1
+            },
+            {
+              "id": "st_lease_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "st_others",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "total_financing_liabilities",
+          "components": [
+            {
+              "id": "long_term_financing_liabilities",
+              "sign": 1
+            },
+            {
+              "id": "short_term_financing_liabilities",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "airbus_orders_deliveries",
+      "title": "Order Intake, Order Book & Deliveries (FY2025-FY2024)",
+      "source": {
+        "doc_id": "doc_airbus_fy2025_board_report",
+        "entity": "AIR.PA",
+        "basis": "mgmt"
+      },
+      "columns": [
+        {
+          "id": "fy25",
+          "label": "FY2025",
+          "period_key": "2025-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "fy24",
+          "label": "FY2024",
+          "period_key": "2024-FY",
+          "data_type": "number"
+        },
+        {
+          "id": "ye25",
+          "label": "31 Dec 2025",
+          "period_key": "2025-12-31",
+          "data_type": "number"
+        },
+        {
+          "id": "ye24",
+          "label": "31 Dec 2024",
+          "period_key": "2024-12-31",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "deliveries_a220",
+          "label": "Commercial aircraft deliveries — A220",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 126
+          },
+          "cells": {
+            "fy25": {
+              "value": 93,
+              "raw_text": "93"
+            }
+          }
+        },
+        {
+          "id": "deliveries_a320",
+          "label": "Commercial aircraft deliveries — A320 Family",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 126
+          },
+          "cells": {
+            "fy25": {
+              "value": 607,
+              "raw_text": "607"
+            }
+          }
+        },
+        {
+          "id": "deliveries_a330",
+          "label": "Commercial aircraft deliveries — A330",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 126
+          },
+          "cells": {
+            "fy25": {
+              "value": 36,
+              "raw_text": "36"
+            }
+          }
+        },
+        {
+          "id": "deliveries_a350",
+          "label": "Commercial aircraft deliveries — A350",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 126
+          },
+          "cells": {
+            "fy25": {
+              "value": 57,
+              "raw_text": "57"
+            }
+          }
+        },
+        {
+          "id": "deliveries_commercial_total",
+          "label": "Commercial aircraft deliveries — total",
+          "origin": "prose",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 126
+          },
+          "cells": {
+            "fy25": {
+              "value": 793,
+              "raw_text": "793"
+            },
+            "fy24": {
+              "value": 766,
+              "raw_text": "766",
+              "note": "FY2024 per-family delivery mix not printed in FY2025 Board Report",
+              "exemption": "standalone_disclosure"
+            }
+          }
+        },
+        {
+          "id": "deliveries_heli_light",
+          "label": "Helicopter deliveries — Light",
+          "origin": "pdf_table",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 4
+          },
+          "cells": {
+            "fy25": {
+              "value": 183,
+              "raw_text": "183"
+            },
+            "fy24": {
+              "value": 170,
+              "raw_text": "170"
+            }
+          }
+        },
+        {
+          "id": "deliveries_heli_medium",
+          "label": "Helicopter deliveries — Medium",
+          "origin": "pdf_table",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 4
+          },
+          "cells": {
+            "fy25": {
+              "value": 178,
+              "raw_text": "178"
+            },
+            "fy24": {
+              "value": 165,
+              "raw_text": "165"
+            }
+          }
+        },
+        {
+          "id": "deliveries_heli_heavy",
+          "label": "Helicopter deliveries — Heavy",
+          "origin": "pdf_table",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 4
+          },
+          "cells": {
+            "fy25": {
+              "value": 31,
+              "raw_text": "31"
+            },
+            "fy24": {
+              "value": 26,
+              "raw_text": "26"
+            }
+          }
+        },
+        {
+          "id": "deliveries_heli_total",
+          "label": "Helicopter deliveries — total",
+          "origin": "pdf_table",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 4
+          },
+          "cells": {
+            "fy25": {
+              "value": 392,
+              "raw_text": "392"
+            },
+            "fy24": {
+              "value": 361,
+              "raw_text": "361"
+            }
+          }
+        },
+        {
+          "id": "orders_gross_commercial",
+          "label": "Commercial aircraft gross orders (units)",
+          "origin": "prose",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "fy25": {
+              "value": 1000,
+              "raw_text": "1,000"
+            },
+            "fy24": {
+              "value": 878,
+              "raw_text": "878"
+            }
+          }
+        },
+        {
+          "id": "order_intake_units_commercial",
+          "label": "Airbus commercial aircraft net order intake (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "fy25": {
+              "value": 889,
+              "raw_text": "889"
+            },
+            "fy24": {
+              "value": 826,
+              "raw_text": "826"
+            }
+          }
+        },
+        {
+          "id": "order_book_units_commercial",
+          "label": "Airbus commercial aircraft order book (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "ye25": {
+              "value": 8754,
+              "raw_text": "8,754",
+              "note": "Exact roll-forward check: YE24 8,658 + FY25 net orders 889 - deliveries 793 = 8,754"
+            },
+            "ye24": {
+              "value": 8658,
+              "raw_text": "8,658"
+            }
+          }
+        },
+        {
+          "id": "order_intake_units_heli",
+          "label": "Airbus Helicopters net order intake (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "fy25": {
+              "value": 536,
+              "raw_text": "536"
+            },
+            "fy24": {
+              "value": 450,
+              "raw_text": "450"
+            }
+          }
+        },
+        {
+          "id": "order_book_units_heli",
+          "label": "Airbus Helicopters order book (units)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "count",
+          "scale": 1,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "ye25": {
+              "value": 1037,
+              "raw_text": "1,037",
+              "note": "Exact roll-forward check: YE24 893 + FY25 net orders 536 - deliveries 392 = 1,037"
+            },
+            "ye24": {
+              "value": 893,
+              "raw_text": "893"
+            }
+          }
+        },
+        {
+          "id": "order_intake_eur_airbus",
+          "label": "Airbus commercial order intake (EUR M, pre-elimination)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "fy25": {
+              "value": 92320,
+              "raw_text": "92,320"
+            },
+            "fy24": {
+              "value": 77413,
+              "raw_text": "77,413"
+            }
+          }
+        },
+        {
+          "id": "order_intake_eur_heli",
+          "label": "Airbus Helicopters order intake (EUR M, pre-elimination)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "fy25": {
+              "value": 13707,
+              "raw_text": "13,707"
+            },
+            "fy24": {
+              "value": 10071,
+              "raw_text": "10,071"
+            }
+          }
+        },
+        {
+          "id": "order_intake_eur_ds",
+          "label": "Airbus Defence and Space order intake (EUR M, pre-elimination)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "fy25": {
+              "value": 17729,
+              "raw_text": "17,729"
+            },
+            "fy24": {
+              "value": 16710,
+              "raw_text": "16,710"
+            }
+          }
+        },
+        {
+          "id": "order_book_eur_airbus",
+          "label": "Airbus commercial order book (EUR M, pre-elimination)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "ye25": {
+              "value": 539693,
+              "raw_text": "539,693"
+            },
+            "ye24": {
+              "value": 558925,
+              "raw_text": "558,925"
+            }
+          }
+        },
+        {
+          "id": "order_book_eur_heli",
+          "label": "Airbus Helicopters order book (EUR M, pre-elimination)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "ye25": {
+              "value": 29028,
+              "raw_text": "29,028"
+            },
+            "ye24": {
+              "value": 24064,
+              "raw_text": "24,064"
+            }
+          }
+        },
+        {
+          "id": "order_book_eur_ds",
+          "label": "Airbus Defence and Space order book (EUR M, pre-elimination)",
+          "origin": "pdf_table",
+          "exemption": "standalone_disclosure",
+          "unit": "EUR",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "pdf_page",
+            "page": 130
+          },
+          "cells": {
+            "ye25": {
+              "value": 50771,
+              "raw_text": "50,771"
+            },
+            "ye24": {
+              "value": 46803,
+              "raw_text": "46,803"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "deliveries_commercial_total",
+          "components": [
+            {
+              "id": "deliveries_a220",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_a320",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_a330",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_a350",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "fy25"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "deliveries_heli_total",
+          "components": [
+            {
+              "id": "deliveries_heli_light",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_heli_medium",
+              "sign": 1
+            },
+            {
+              "id": "deliveries_heli_heavy",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "fy25",
+            "fy24"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": [
+    {
+      "name": "net_cash_to_fin_liab_lt_ye25",
+      "target": {
+        "table_id": "airbus_net_cash",
+        "row_id": "long_term_financing_liabilities",
+        "col_id": "ye25"
+      },
+      "components": [
+        {
+          "table_id": "airbus_financing_liabilities",
+          "row_id": "long_term_financing_liabilities",
+          "col_id": "ye25",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "net_cash_to_fin_liab_lt_ye24",
+      "target": {
+        "table_id": "airbus_net_cash",
+        "row_id": "long_term_financing_liabilities",
+        "col_id": "ye24"
+      },
+      "components": [
+        {
+          "table_id": "airbus_financing_liabilities",
+          "row_id": "long_term_financing_liabilities",
+          "col_id": "ye24",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "net_cash_to_fin_liab_st_ye25",
+      "target": {
+        "table_id": "airbus_net_cash",
+        "row_id": "short_term_financing_liabilities",
+        "col_id": "ye25"
+      },
+      "components": [
+        {
+          "table_id": "airbus_financing_liabilities",
+          "row_id": "short_term_financing_liabilities",
+          "col_id": "ye25",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    },
+    {
+      "name": "net_cash_to_fin_liab_st_ye24",
+      "target": {
+        "table_id": "airbus_net_cash",
+        "row_id": "short_term_financing_liabilities",
+        "col_id": "ye24"
+      },
+      "components": [
+        {
+          "table_id": "airbus_financing_liabilities",
+          "row_id": "short_term_financing_liabilities",
+          "col_id": "ye24",
+          "sign": -1
+        }
+      ],
+      "tolerance": 0,
+      "missing_components": "error"
+    }
+  ]
+}

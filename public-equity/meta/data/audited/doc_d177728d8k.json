@@ -1,0 +1,327 @@
+{
+  "document": {
+    "doc_id": "doc_d177728d8k",
+    "file_path": "data/raw/sec/0001326801/0001193125-26-458525/d177728d8k.htm",
+    "sha256": "fc8749fdaf81a2c61a165c1bf847be0ba3061633c77d834d07b49d9568d4a21b",
+    "doc_type": "sec_filing",
+    "size_bytes": 34880,
+    "title": "Meta Platforms, Inc. Form 8-K — EUR 9.0B Senior Notes Offering (Nov 12, 2026)",
+    "report_date": "2026-11-12",
+    "filing_date": "2026-11-12",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001326801",
+      "company_name": "Meta Platforms, Inc.",
+      "tickers": "META,METAM",
+      "form": "8-K",
+      "accession_number": "0001193125-26-458525",
+      "filing_date": "2026-11-12",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1326801/000119312526458525/d177728d8k.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "meta_post_q3_financings",
+      "title": "Meta Platforms Post-Q3 2026 Capital Structure & Financing Events",
+      "source": {
+        "doc_id": "doc_d177728d8k",
+        "origin": "prose",
+        "entity": "META",
+        "basis": "unadjusted",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+        },
+        "as_of_date": "2026-11-12"
+      },
+      "columns": [
+        {
+          "id": "event_2026_11_12",
+          "label": "Nov 12, 2026 EUR Senior Notes",
+          "period_key": "2026-11-12",
+          "as_of_date": "2026-11-12",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "eur_notes_2031_principal",
+          "label": "Nov 2026 EUR Senior Notes due 2031 (4.300%) — principal",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "unit": "EUR",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 1750000000,
+              "raw_text": "€1,750,000,000"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2033_principal",
+          "label": "Nov 2026 EUR Senior Notes due 2033 (4.650%) — principal",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "unit": "EUR",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 1250000000,
+              "raw_text": "€1,250,000,000"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2035_principal",
+          "label": "Nov 2026 EUR Senior Notes due 2035 (4.900%) — principal",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "unit": "EUR",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 1000000000,
+              "raw_text": "€1,000,000,000"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2038_principal",
+          "label": "Nov 2026 EUR Senior Notes due 2038 (5.400%) — principal",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "unit": "EUR",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 1750000000,
+              "raw_text": "€1,750,000,000"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2044_principal",
+          "label": "Nov 2026 EUR Senior Notes due 2044 (6.050%) — principal",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "unit": "EUR",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 1750000000,
+              "raw_text": "€1,750,000,000"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2065_principal",
+          "label": "Nov 2026 EUR Senior Notes due 2065 (6.400%) — principal",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "unit": "EUR",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 1500000000,
+              "raw_text": "€1,500,000,000"
+            }
+          }
+        },
+        {
+          "id": "total_eur_notes_nov26",
+          "label": "Total Nov 12, 2026 EUR Senior Notes principal (6 tranches)",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "unit": "EUR",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 9000000000,
+              "raw_text": "Sum of 6 EUR senior note tranches (€9,000,000,000)",
+              "note": "Exact sum of the six printed Nov 12, 2026 EUR Senior Notes tranches (€1,750M + €1,250M + €1,000M + €1,750M + €1,750M + €1,500M = €9,000M); aggregate total not separately printed in Form 8-K."
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2031_coupon",
+          "label": "Nov 2026 EUR Senior Notes due 2031 — coupon rate",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 4.3,
+              "raw_text": "4.300%"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2033_coupon",
+          "label": "Nov 2026 EUR Senior Notes due 2033 — coupon rate",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 4.65,
+              "raw_text": "4.650%"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2035_coupon",
+          "label": "Nov 2026 EUR Senior Notes due 2035 — coupon rate",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 4.9,
+              "raw_text": "4.900%"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2038_coupon",
+          "label": "Nov 2026 EUR Senior Notes due 2038 — coupon rate",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 5.4,
+              "raw_text": "5.400%"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2044_coupon",
+          "label": "Nov 2026 EUR Senior Notes due 2044 — coupon rate",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 6.05,
+              "raw_text": "6.050%"
+            }
+          }
+        },
+        {
+          "id": "eur_notes_2065_coupon",
+          "label": "Nov 2026 EUR Senior Notes due 2065 — coupon rate",
+          "category": "eur_senior_notes",
+          "origin": "prose",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//p[contains(., '1,750,000,000 aggregate principal amount of its 4.300%')]"
+          },
+          "cells": {
+            "event_2026_11_12": {
+              "value": 6.4,
+              "raw_text": "6.400%"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_eur_notes_nov26",
+          "components": [
+            {
+              "id": "eur_notes_2031_principal",
+              "sign": 1
+            },
+            {
+              "id": "eur_notes_2033_principal",
+              "sign": 1
+            },
+            {
+              "id": "eur_notes_2035_principal",
+              "sign": 1
+            },
+            {
+              "id": "eur_notes_2038_principal",
+              "sign": 1
+            },
+            {
+              "id": "eur_notes_2044_principal",
+              "sign": 1
+            },
+            {
+              "id": "eur_notes_2065_principal",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": []
+}

@@ -1,0 +1,127 @@
+{
+  "document": {
+    "doc_id": "doc_d39411ddef14a",
+    "file_path": "data/raw/sec/0000012927/0001193125-26-096787/d39411ddef14a.htm",
+    "sha256": "3d5223b7105c593b62f5cebf7ef36d097d03e00d5e09972048c8a59dc293e68d",
+    "doc_type": "sec_filing",
+    "size_bytes": 2166097,
+    "title": "The Boeing Company 2026 Proxy Statement (DEF 14A)",
+    "report_date": "2026-04-17",
+    "filing_date": "2026-03-06",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0000012927",
+      "company_name": "BOEING CO",
+      "tickers": "BA,BA-PA",
+      "form": "DEF 14A",
+      "accession_number": "0001193125-26-096787",
+      "filing_date": "2026-03-06",
+      "is_inline_xbrl": true,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/12927/000119312526096787/d39411ddef14a.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "exec_comp_governance",
+      "title": "Executive Compensation Structure, Incentive Overhaul and Governance Summary",
+      "source": {
+        "doc_id": "doc_d39411ddef14a",
+        "origin": "prose",
+        "entity": "BA",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//body"
+        },
+        "as_of_date": "2026-03-06"
+      },
+      "columns": [
+        {
+          "id": "governance_topic",
+          "label": "Compensation / Governance Area",
+          "data_type": "text"
+        },
+        {
+          "id": "disclosure",
+          "label": "2026 Proxy Statement Disclosure (CD&A)",
+          "data_type": "text"
+        }
+      ],
+      "rows": [
+        {
+          "id": "ceo_ortberg_pay",
+          "label": "CEO Kelly Ortberg Pay Structure",
+          "cells": {
+            "governance_topic": {
+              "value": "CEO Compensation (Robert Kelly Ortberg)"
+            },
+            "disclosure": {
+              "value": "2025 Target Total Direct Compensation of $22.0M (approximating market median): $1.5M base salary, 200% ($3.0M) Annual Incentive Plan target (actual 2025 payout $3.93M at 131% One Company Score x 100% individual score), and $17.5M LTI target (55% PPSOs at 120% strike [$9.625M GDFV, 121,023 options at $221.44] / 45% 3-yr ratable RSUs [$7.875M GDFV, 42,675 units]). 2025 Summary Compensation Table total $23.58M ($31.92M SEC CAP)."
+            }
+          }
+        },
+        {
+          "id": "cfo_malave_pay",
+          "label": "CFO Jay Malave Pay Structure & New-Hire Package",
+          "cells": {
+            "governance_topic": {
+              "value": "CFO Compensation (Jesus 'Jay' Malave, Jr.)"
+            },
+            "disclosure": {
+              "value": "Appointed EVP & CFO effective Aug 15, 2025 (succeeding Brian West): $1.05M annual base salary, 120% ($1.26M) full-year unprorated 2025 AIP target (actual payout $1.651M at 131%), no 2025 annual LTI grant. Received $18.0M non-recurring make-whole new-hire package: $8.5M cash ($1.5M forfeited unvested equity offset + $7.0M prior-employer clawback offset, subject to 2-yr full repayment upon voluntary departure), $5.0M 2-yr ratable RSUs (21,373 units), and $4.5M 3-yr cliff PPSOs at 120% strike ($280.73, 44,321 options). Boeing also paid $2.0M to former employer Lockheed Martin for release of claims. 2025 SCT total $20.18M."
+            }
+          }
+        },
+        {
+          "id": "aip_2025_2026_scorecard",
+          "label": "2025 & 2026 Annual Incentive Plan (One Company Score)",
+          "cells": {
+            "governance_topic": {
+              "value": "Annual Incentive Plan (80% Financial / 20% Safety & Quality)"
+            },
+            "disclosure": {
+              "value": "2025 shifted from separate business-unit scores to a single enterprise-wide One Company Score covering NEOs and >100,000 employees: 80% financial metrics (Free Cash Flow, Core EPS, Revenue; 0–200% curve) and 20% Safety & Execution Operational Scorecard (FAA-aligned Safety & Quality Plan KPIs: employee proficiency, notice-of-escape rework hours, supplier shortages, rework hours/airplane [cut 60% in 2025], travelers). 2025 score achieved 131% of target (with 100% individual scores for all NEOs; limited M&A adjustments for DAS divestiture and Spirit close moved FCF -$1.9B to -$0.5B, Core EPS +$1.19 to -$10.72, Rev $89.5B to $89.8B). Identical 80%/20% structure retained for 2026."
+            }
+          }
+        },
+        {
+          "id": "lti_2026_overhaul",
+          "label": "Early 2026 Long-Term Incentive Program Overhaul",
+          "cells": {
+            "governance_topic": {
+              "value": "2026 LTI Mix Overhaul (Removing PPSOs)"
+            },
+            "disclosure": {
+              "value": "In early 2026, Compensation Committee removed 2025's interim Premium-Priced Stock Options (55% PPSOs / 45% ratable RSUs) and established a three-vehicle mix: (1) 30% 2026–2028 PSUs split 50% on 3-yr cumulative FCF targets (0–200% payout) and 50% on 3-yr relative TSR vs S&P 500 (0–200% payout, capped at 100% target if absolute TSR is negative); (2) 20% RSUs with 3-yr cliff vesting plus mandatory 2-yr post-vesting holding period; and (3) 50% RSUs with 3-yr ratable vesting (33%/33%/34%)."
+            }
+          }
+        },
+        {
+          "id": "psu_2023_2025_zero_payout",
+          "label": "2023–2025 FCF PSU Zero Payout",
+          "cells": {
+            "governance_topic": {
+              "value": "2023–2025 Long-Term PSU Outcome (0% Payout)"
+            },
+            "disclosure": {
+              "value": "Three-year cumulative Free Cash Flow PSUs granted in 2023 (55% of 2023 LTI for legacy NEOs Pope, Gerry, West; vested Feb 17, 2026) paid out at 0% due to below-threshold cumulative FCF following the 737-9 door plug slowdown, 2024 IAM work stoppage, and fixed-price defense development challenges. Compensation Committee made zero discretionary upward adjustments. 2024–2026 PSUs were also tracking below threshold as of Dec 31, 2025."
+            }
+          }
+        },
+        {
+          "id": "governance_policies_and_board",
+          "label": "Board Refreshment, Clawbacks, Peer Group & Say-on-Pay",
+          "cells": {
+            "governance_topic": {
+              "value": "Governance Safeguards & Peer Group"
+            },
+            "disclosure": {
+              "value": "92% independent Board (11 of 12 nominees, independent Chair Steven Mollenkopf; 10 new independent directors since 2019 including former Alaska Air CEO Brad Tilden in Dec 2025); 85% 2025 Say-on-Pay approval; Dodd-Frank financial restatement clawback plus standalone safety/misconduct recoupment policy; no employment contracts, no change-in-control golden parachutes, no hedging/pledging, no option repricing; 2026 19-company compensation peer group updated to remove 3M and add GE Aerospace; Committee monitoring emerging U.S. government guidance on defense contractor executive pay."
+            }
+          }
+        }
+      ],
+      "checksums": []
+    }
+  ],
+  "cross_checksums": []
+}

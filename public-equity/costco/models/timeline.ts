@@ -33,13 +33,13 @@ export type HistoricalPeriod = (typeof HISTORICAL_PERIODS)[number]
 export type ForecastPeriod = (typeof FORECAST_PERIODS)[number]
 export type ModelPeriod = (typeof ALL_PERIODS)[number]
 
-export const SCENARIOS = ["Base", "Bull", "Bear"] as const
+export const SCENARIOS = ["Downside", "Base", "Upside"] as const
 export type ScenarioName = (typeof SCENARIOS)[number]
 
 export const SCENARIO_INDEX: Readonly<Record<ScenarioName, 1 | 2 | 3>> = {
-  Base: 1,
-  Bull: 2,
-  Bear: 3,
+  Downside: 1,
+  Base: 2,
+  Upside: 3,
 }
 
 export interface PeriodMetadata {
@@ -207,24 +207,24 @@ export function addTimeSeriesColumns(
   const includeHistoricals = options?.includeHistoricals ?? true
   table.addColumn("line_item", {
     role: "descriptor",
-    header:
-      options?.descriptorLabel ?? "Line Item ($M except per-share/counts)",
+    header: options?.descriptorLabel ?? "Line item ($M)",
   })
 
   if (includeHistoricals) {
     for (const p of HISTORICAL_PERIODS) {
       table.addColumn(p, {
         role: "measure",
-        group: "Historical (52/53W)",
+        group: "Historical",
         header: PERIOD_METADATA[p].header,
       })
     }
+    table.addColumnGutter()
   }
 
   for (const p of FORECAST_PERIODS) {
     table.addColumn(p, {
       role: "measure",
-      group: "Forecast (10Y)",
+      group: "Forecast",
       header: PERIOD_METADATA[p].header,
     })
   }
@@ -246,13 +246,30 @@ export function rowFormatOptions(
 export function buildHistoricalCellMap<T extends number | string>(
   label: string,
   valuesByPeriod: Readonly<Record<HistoricalPeriod, T>>,
-  note?: string
+  measureNotes?: Readonly<Partial<Record<HistoricalPeriod, string>>>
 ): Record<string, CellInputValue> {
   const cells: Record<string, CellInputValue> = {
-    line_item: note ? { value: label, note } : label,
+    line_item: label,
   }
   for (const p of HISTORICAL_PERIODS) {
-    cells[p] = valuesByPeriod[p]
+    const note = measureNotes?.[p]
+    cells[p] = note ? { value: valuesByPeriod[p], note } : valuesByPeriod[p]
+  }
+  return cells
+}
+
+export function notedNull(note: string): CellInputValue {
+  return { value: null, note }
+}
+
+export function zeroForecastCells(
+  firstForecastNote?: string
+): Record<string, CellInputValue> {
+  const cells: Record<string, CellInputValue> = {}
+  for (let i = 0; i < FORECAST_PERIODS.length; i++) {
+    const p = FORECAST_PERIODS[i]!
+    cells[p] =
+      i === 0 && firstForecastNote ? { value: 0, note: firstForecastNote } : 0
   }
   return cells
 }

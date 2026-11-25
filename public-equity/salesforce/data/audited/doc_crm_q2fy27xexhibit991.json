@@ -1,0 +1,1914 @@
+{
+  "document": {
+    "doc_id": "doc_crm_q2fy27xexhibit991",
+    "file_path": "data/raw/sec/0001108524/0001108524-26-000187/crm-q2fy27xexhibit991.htm",
+    "sha256": "5898d1c1f6422433358b43f79aacd4814fdea335a24848352d00c25c95aa80cd",
+    "doc_type": "sec_filing",
+    "size_bytes": 594238,
+    "title": "Salesforce, Inc. 8-K (2026-08-26)",
+    "report_date": "2026-08-26",
+    "filing_date": "2026-08-26",
+    "source_meta": {
+      "source": "sec_edgar",
+      "cik": "0001108524",
+      "company_name": "Salesforce, Inc.",
+      "tickers": "CRM",
+      "form": "8-K",
+      "accession_number": "0001108524-26-000187",
+      "filing_date": "2026-08-26",
+      "is_inline_xbrl": false,
+      "source_url": "https://www.sec.gov/Archives/edgar/data/1108524/000110852426000187/crm-q2fy27xexhibit991.htm"
+    }
+  },
+  "tables": [
+    {
+      "table_id": "crm_nongaap_recon",
+      "title": "GAAP to Non-GAAP Reconciliations: Operating Income, Net Income, Diluted EPS, and Free Cash Flow",
+      "source": {
+        "doc_id": "doc_crm_q2fy27xexhibit991",
+        "origin": "html_table",
+        "entity": "CRM",
+        "basis": "non_gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[20]",
+          "table_index": 20
+        }
+      },
+      "columns": [
+        {
+          "id": "q2_fy27",
+          "label": "Q2 FY2027",
+          "period_key": "2027-Q2",
+          "as_of_date": "2026-07-31",
+          "data_type": "number"
+        },
+        {
+          "id": "q2_fy26",
+          "label": "Q2 FY2026",
+          "period_key": "2026-Q2",
+          "as_of_date": "2025-07-31",
+          "data_type": "number"
+        },
+        {
+          "id": "h1_fy27",
+          "label": "H1 FY2027",
+          "period_key": "2027-Q2-YTD",
+          "as_of_date": "2026-07-31",
+          "data_type": "number"
+        },
+        {
+          "id": "h1_fy26",
+          "label": "H1 FY2026",
+          "period_key": "2026-Q2-YTD",
+          "as_of_date": "2025-07-31",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "gaap_operating_income",
+          "label": "GAAP income from operations",
+          "raw_label": "GAAP income from operations",
+          "category": "operating_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 2331,
+              "raw_text": "$2,331"
+            },
+            "q2_fy26": {
+              "value": 2332,
+              "raw_text": "$2,332"
+            },
+            "h1_fy27": {
+              "value": 4678,
+              "raw_text": "$4,678"
+            },
+            "h1_fy26": {
+              "value": 4274,
+              "raw_text": "$4,274"
+            }
+          }
+        },
+        {
+          "id": "adj_amort_purchased_intangibles",
+          "label": "Amortization of purchased intangibles",
+          "raw_label": "Amortization of purchased intangibles (1)",
+          "category": "operating_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 522,
+              "raw_text": "522"
+            },
+            "q2_fy26": {
+              "value": 380,
+              "raw_text": "380"
+            },
+            "h1_fy27": {
+              "value": 1083,
+              "raw_text": "1,083"
+            },
+            "h1_fy26": {
+              "value": 775,
+              "raw_text": "775"
+            }
+          }
+        },
+        {
+          "id": "adj_sbc_excl_restructuring",
+          "label": "Stock-based compensation expense (excl. restructuring)",
+          "raw_label": "Stock-based compensation expense (2)(3)",
+          "category": "operating_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 904,
+              "raw_text": "904"
+            },
+            "q2_fy26": {
+              "value": 793,
+              "raw_text": "793"
+            },
+            "h1_fy27": {
+              "value": 1774,
+              "raw_text": "1,774"
+            },
+            "h1_fy26": {
+              "value": 1592,
+              "raw_text": "1,592"
+            }
+          }
+        },
+        {
+          "id": "adj_restructuring_and_acq",
+          "label": "Restructuring and acquisition-related costs",
+          "raw_label": "Restructuring and acquisition-related costs",
+          "category": "operating_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 115,
+              "raw_text": "115"
+            },
+            "q2_fy26": {
+              "value": 4,
+              "raw_text": "4"
+            },
+            "h1_fy27": {
+              "value": 211,
+              "raw_text": "211"
+            },
+            "h1_fy26": {
+              "value": 40,
+              "raw_text": "40"
+            }
+          }
+        },
+        {
+          "id": "nongaap_operating_income",
+          "label": "Non-GAAP income from operations",
+          "raw_label": "Non-GAAP income from operations",
+          "category": "operating_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 3872,
+              "raw_text": "$3,872"
+            },
+            "q2_fy26": {
+              "value": 3509,
+              "raw_text": "$3,509"
+            },
+            "h1_fy27": {
+              "value": 7746,
+              "raw_text": "$7,746"
+            },
+            "h1_fy26": {
+              "value": 6681,
+              "raw_text": "$6,681"
+            }
+          }
+        },
+        {
+          "id": "total_revenue",
+          "label": "Total revenues",
+          "raw_label": "Total revenues",
+          "category": "operating_margin",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 11345,
+              "raw_text": "$11,345"
+            },
+            "q2_fy26": {
+              "value": 10236,
+              "raw_text": "$10,236"
+            },
+            "h1_fy27": {
+              "value": 22478,
+              "raw_text": "$22,478"
+            },
+            "h1_fy26": {
+              "value": 20065,
+              "raw_text": "$20,065"
+            }
+          }
+        },
+        {
+          "id": "gaap_operating_margin",
+          "label": "GAAP operating margin",
+          "raw_label": "GAAP operating margin (4)",
+          "category": "operating_margin",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 20.5,
+              "raw_text": "20.5%"
+            },
+            "q2_fy26": {
+              "value": 22.8,
+              "raw_text": "22.8%"
+            },
+            "h1_fy27": {
+              "value": 20.8,
+              "raw_text": "20.8%"
+            },
+            "h1_fy26": {
+              "value": 21.3,
+              "raw_text": "21.3%"
+            }
+          }
+        },
+        {
+          "id": "nongaap_operating_margin",
+          "label": "Non-GAAP operating margin",
+          "raw_label": "Non-GAAP operating margin (4)",
+          "category": "operating_margin",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 34.1,
+              "raw_text": "34.1%"
+            },
+            "q2_fy26": {
+              "value": 34.3,
+              "raw_text": "34.3%"
+            },
+            "h1_fy27": {
+              "value": 34.5,
+              "raw_text": "34.5%"
+            },
+            "h1_fy26": {
+              "value": 33.3,
+              "raw_text": "33.3%"
+            }
+          }
+        },
+        {
+          "id": "gaap_net_income",
+          "label": "GAAP net income",
+          "raw_label": "GAAP net income",
+          "category": "net_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 3526,
+              "raw_text": "$3,526"
+            },
+            "q2_fy26": {
+              "value": 1887,
+              "raw_text": "$1,887"
+            },
+            "h1_fy27": {
+              "value": 5633,
+              "raw_text": "$5,633"
+            },
+            "h1_fy26": {
+              "value": 3428,
+              "raw_text": "$3,428"
+            }
+          }
+        },
+        {
+          "id": "adj_income_tax_effects",
+          "label": "Income tax effects and adjustments",
+          "raw_label": "Income tax effects and adjustments",
+          "category": "net_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": -223,
+              "raw_text": "(223)"
+            },
+            "q2_fy26": {
+              "value": -269,
+              "raw_text": "(269)"
+            },
+            "h1_fy27": {
+              "value": -480,
+              "raw_text": "(480)"
+            },
+            "h1_fy26": {
+              "value": -541,
+              "raw_text": "(541)"
+            }
+          }
+        },
+        {
+          "id": "nongaap_net_income",
+          "label": "Non-GAAP net income",
+          "raw_label": "Non-GAAP net income",
+          "category": "net_income",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[20]",
+            "table_index": 20
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 4844,
+              "raw_text": "$4,844"
+            },
+            "q2_fy26": {
+              "value": 2795,
+              "raw_text": "$2,795"
+            },
+            "h1_fy27": {
+              "value": 8221,
+              "raw_text": "$8,221"
+            },
+            "h1_fy26": {
+              "value": 5294,
+              "raw_text": "$5,294"
+            }
+          }
+        },
+        {
+          "id": "gaap_diluted_eps",
+          "label": "GAAP diluted net income per share",
+          "raw_label": "GAAP diluted net income per share",
+          "category": "diluted_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 4.29,
+              "raw_text": "$4.29"
+            },
+            "q2_fy26": {
+              "value": 1.96,
+              "raw_text": "$1.96"
+            },
+            "h1_fy27": {
+              "value": 6.67,
+              "raw_text": "$6.67"
+            },
+            "h1_fy26": {
+              "value": 3.55,
+              "raw_text": "$3.55"
+            }
+          }
+        },
+        {
+          "id": "adj_amort_per_share",
+          "label": "Amortization of purchased intangibles per share",
+          "raw_label": "Amortization of purchased intangibles (1)",
+          "category": "diluted_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 0.64,
+              "raw_text": "0.64"
+            },
+            "q2_fy26": {
+              "value": 0.4,
+              "raw_text": "0.40"
+            },
+            "h1_fy27": {
+              "value": 1.28,
+              "raw_text": "1.28"
+            },
+            "h1_fy26": {
+              "value": 0.8,
+              "raw_text": "0.80"
+            }
+          }
+        },
+        {
+          "id": "adj_sbc_per_share",
+          "label": "Stock-based compensation expense per share (excl. restructuring)",
+          "raw_label": "Stock-based compensation expense (2)(3)",
+          "category": "diluted_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 1.1,
+              "raw_text": "1.10"
+            },
+            "q2_fy26": {
+              "value": 0.82,
+              "raw_text": "0.82"
+            },
+            "h1_fy27": {
+              "value": 2.1,
+              "raw_text": "2.10"
+            },
+            "h1_fy26": {
+              "value": 1.65,
+              "raw_text": "1.65"
+            }
+          }
+        },
+        {
+          "id": "adj_restructuring_and_acq_per_share",
+          "label": "Restructuring and acquisition-related costs per share",
+          "raw_label": "Restructuring and acquisition-related costs",
+          "category": "diluted_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 0.14,
+              "raw_text": "0.14"
+            },
+            "q2_fy26": {
+              "value": 0,
+              "raw_text": "0.00"
+            },
+            "h1_fy27": {
+              "value": 0.25,
+              "raw_text": "0.25"
+            },
+            "h1_fy26": {
+              "value": 0.04,
+              "raw_text": "0.04"
+            }
+          }
+        },
+        {
+          "id": "adj_tax_effects_per_share",
+          "label": "Income tax effects and adjustments per share",
+          "raw_label": "Income tax effects and adjustments",
+          "category": "diluted_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": -0.27,
+              "raw_text": "(0.27)"
+            },
+            "q2_fy26": {
+              "value": -0.27,
+              "raw_text": "(0.27)"
+            },
+            "h1_fy27": {
+              "value": -0.57,
+              "raw_text": "(0.57)"
+            },
+            "h1_fy26": {
+              "value": -0.56,
+              "raw_text": "(0.56)"
+            }
+          }
+        },
+        {
+          "id": "nongaap_diluted_eps",
+          "label": "Non-GAAP diluted net income per share",
+          "raw_label": "Non-GAAP diluted net income per share",
+          "category": "diluted_eps",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 5.9,
+              "raw_text": "$5.90"
+            },
+            "q2_fy26": {
+              "value": 2.91,
+              "raw_text": "$2.91"
+            },
+            "h1_fy27": {
+              "value": 9.73,
+              "raw_text": "$9.73"
+            },
+            "h1_fy26": {
+              "value": 5.48,
+              "raw_text": "$5.48"
+            }
+          }
+        },
+        {
+          "id": "nongaap_diluted_shares",
+          "label": "Shares used in computing non-GAAP diluted net income per share",
+          "raw_label": "Shares used in computing non-GAAP diluted net income per share",
+          "category": "diluted_eps",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[21]",
+            "table_index": 21
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 821,
+              "raw_text": "821"
+            },
+            "q2_fy26": {
+              "value": 962,
+              "raw_text": "962"
+            },
+            "h1_fy27": {
+              "value": 845,
+              "raw_text": "845"
+            },
+            "h1_fy26": {
+              "value": 966,
+              "raw_text": "966"
+            }
+          }
+        },
+        {
+          "id": "amort_cor",
+          "label": "Amortization of purchased intangibles - Cost of revenues",
+          "raw_label": "Cost of revenues",
+          "category": "amort_breakdown",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[22]",
+            "table_index": 22
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 234,
+              "raw_text": "$234"
+            },
+            "q2_fy26": {
+              "value": 150,
+              "raw_text": "$150"
+            },
+            "h1_fy27": {
+              "value": 478,
+              "raw_text": "$478"
+            },
+            "h1_fy26": {
+              "value": 312,
+              "raw_text": "$312"
+            }
+          }
+        },
+        {
+          "id": "amort_sm",
+          "label": "Amortization of purchased intangibles - Sales and marketing",
+          "raw_label": "Sales and marketing",
+          "category": "amort_breakdown",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[22]",
+            "table_index": 22
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 288,
+              "raw_text": "288"
+            },
+            "q2_fy26": {
+              "value": 230,
+              "raw_text": "230"
+            },
+            "h1_fy27": {
+              "value": 605,
+              "raw_text": "605"
+            },
+            "h1_fy26": {
+              "value": 463,
+              "raw_text": "463"
+            }
+          }
+        },
+        {
+          "id": "sbc_cor",
+          "label": "Stock-based compensation - Cost of revenues",
+          "raw_label": "Cost of revenues",
+          "category": "sbc_breakdown",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[23]",
+            "table_index": 23
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 147,
+              "raw_text": "$147"
+            },
+            "q2_fy26": {
+              "value": 126,
+              "raw_text": "$126"
+            },
+            "h1_fy27": {
+              "value": 285,
+              "raw_text": "$285"
+            },
+            "h1_fy26": {
+              "value": 277,
+              "raw_text": "$277"
+            }
+          }
+        },
+        {
+          "id": "sbc_rd",
+          "label": "Stock-based compensation - Research and development",
+          "raw_label": "Research and development",
+          "category": "sbc_breakdown",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[23]",
+            "table_index": 23
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 301,
+              "raw_text": "301"
+            },
+            "q2_fy26": {
+              "value": 280,
+              "raw_text": "280"
+            },
+            "h1_fy27": {
+              "value": 611,
+              "raw_text": "611"
+            },
+            "h1_fy26": {
+              "value": 555,
+              "raw_text": "555"
+            }
+          }
+        },
+        {
+          "id": "sbc_sm",
+          "label": "Stock-based compensation - Sales and marketing",
+          "raw_label": "Sales and marketing",
+          "category": "sbc_breakdown",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[23]",
+            "table_index": 23
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 345,
+              "raw_text": "345"
+            },
+            "q2_fy26": {
+              "value": 293,
+              "raw_text": "293"
+            },
+            "h1_fy27": {
+              "value": 665,
+              "raw_text": "665"
+            },
+            "h1_fy26": {
+              "value": 578,
+              "raw_text": "578"
+            }
+          }
+        },
+        {
+          "id": "sbc_ga",
+          "label": "Stock-based compensation - General and administrative",
+          "raw_label": "General and administrative",
+          "category": "sbc_breakdown",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[23]",
+            "table_index": 23
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 111,
+              "raw_text": "111"
+            },
+            "q2_fy26": {
+              "value": 94,
+              "raw_text": "94"
+            },
+            "h1_fy27": {
+              "value": 213,
+              "raw_text": "213"
+            },
+            "h1_fy26": {
+              "value": 182,
+              "raw_text": "182"
+            }
+          }
+        },
+        {
+          "id": "gaap_ocf",
+          "label": "GAAP net cash provided by operating activities",
+          "raw_label": "GAAP net cash provided by operating activities",
+          "category": "free_cash_flow",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[25]",
+            "table_index": 25
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 1269,
+              "raw_text": "$1,269"
+            },
+            "q2_fy26": {
+              "value": 740,
+              "raw_text": "$740"
+            },
+            "h1_fy27": {
+              "value": 7970,
+              "raw_text": "$7,970"
+            },
+            "h1_fy26": {
+              "value": 7216,
+              "raw_text": "$7,216"
+            }
+          }
+        },
+        {
+          "id": "capex",
+          "label": "Capital expenditures",
+          "raw_label": "Capital expenditures",
+          "category": "free_cash_flow",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[25]",
+            "table_index": 25
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": -171,
+              "raw_text": "(171)"
+            },
+            "q2_fy26": {
+              "value": -135,
+              "raw_text": "(135)"
+            },
+            "h1_fy27": {
+              "value": -316,
+              "raw_text": "(316)"
+            },
+            "h1_fy26": {
+              "value": -314,
+              "raw_text": "(314)"
+            }
+          }
+        },
+        {
+          "id": "free_cash_flow",
+          "label": "Free cash flow",
+          "raw_label": "Free cash flow",
+          "category": "free_cash_flow",
+          "unit": "USD",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[25]",
+            "table_index": 25
+          },
+          "cells": {
+            "q2_fy27": {
+              "value": 1098,
+              "raw_text": "$1,098"
+            },
+            "q2_fy26": {
+              "value": 605,
+              "raw_text": "$605"
+            },
+            "h1_fy27": {
+              "value": 7654,
+              "raw_text": "$7,654"
+            },
+            "h1_fy26": {
+              "value": 6902,
+              "raw_text": "$6,902"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "adj_amort_purchased_intangibles",
+          "components": [
+            {
+              "id": "amort_cor",
+              "sign": 1
+            },
+            {
+              "id": "amort_sm",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "adj_sbc_excl_restructuring",
+          "components": [
+            {
+              "id": "sbc_cor",
+              "sign": 1
+            },
+            {
+              "id": "sbc_rd",
+              "sign": 1
+            },
+            {
+              "id": "sbc_sm",
+              "sign": 1
+            },
+            {
+              "id": "sbc_ga",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "nongaap_operating_income",
+          "components": [
+            {
+              "id": "gaap_operating_income",
+              "sign": 1
+            },
+            {
+              "id": "adj_amort_purchased_intangibles",
+              "sign": 1
+            },
+            {
+              "id": "adj_sbc_excl_restructuring",
+              "sign": 1
+            },
+            {
+              "id": "adj_restructuring_and_acq",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "nongaap_net_income",
+          "components": [
+            {
+              "id": "gaap_net_income",
+              "sign": 1
+            },
+            {
+              "id": "adj_amort_purchased_intangibles",
+              "sign": 1
+            },
+            {
+              "id": "adj_sbc_excl_restructuring",
+              "sign": 1
+            },
+            {
+              "id": "adj_restructuring_and_acq",
+              "sign": 1
+            },
+            {
+              "id": "adj_income_tax_effects",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "nongaap_diluted_eps",
+          "components": [
+            {
+              "id": "gaap_diluted_eps",
+              "sign": 1
+            },
+            {
+              "id": "adj_amort_per_share",
+              "sign": 1
+            },
+            {
+              "id": "adj_sbc_per_share",
+              "sign": 1
+            },
+            {
+              "id": "adj_restructuring_and_acq_per_share",
+              "sign": 1
+            },
+            {
+              "id": "adj_tax_effects_per_share",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        },
+        {
+          "target_id": "free_cash_flow",
+          "components": [
+            {
+              "id": "gaap_ocf",
+              "sign": 1
+            },
+            {
+              "id": "capex",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "crm_guidance",
+      "title": "Management Q3 FY27 and Full-Year FY27 Guidance",
+      "source": {
+        "doc_id": "doc_crm_q2fy27xexhibit991",
+        "origin": "html_table",
+        "entity": "CRM",
+        "basis": "forecast",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[2]",
+          "table_index": 2
+        },
+        "as_of_date": "2026-08-26"
+      },
+      "columns": [
+        {
+          "id": "q3_fy27",
+          "label": "Q3 FY2027 Guidance",
+          "period_key": "2027-Q3",
+          "as_of_date": "2026-08-26",
+          "data_type": "number"
+        },
+        {
+          "id": "fy27",
+          "label": "Full-Year FY2027 Guidance",
+          "period_key": "2027-FY",
+          "as_of_date": "2026-08-26",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "revenue_low",
+          "label": "Revenue guidance (low)",
+          "category": "revenue_guidance",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "cells": {
+            "q3_fy27": {
+              "value": 11.42,
+              "raw_text": "$11.42 - $11.5 billion",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 46.1,
+              "raw_text": "$46.1 - $46.4 billion",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "revenue_high",
+          "label": "Revenue guidance (high)",
+          "category": "revenue_guidance",
+          "exemption": "standalone_disclosure",
+          "unit": "USD",
+          "scale": 1000000000,
+          "cells": {
+            "q3_fy27": {
+              "value": 11.5,
+              "raw_text": "$11.42 - $11.5 billion",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 46.4,
+              "raw_text": "$46.1 - $46.4 billion",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "revenue_growth_low",
+          "label": "GAAP revenue growth guidance (low)",
+          "category": "revenue_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "q3_fy27": {
+              "value": 11,
+              "raw_text": "11% - 12%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 11,
+              "raw_text": "11% - 12%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "revenue_growth_high",
+          "label": "GAAP revenue growth guidance (high)",
+          "category": "revenue_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "cells": {
+            "q3_fy27": {
+              "value": 12,
+              "raw_text": "11% - 12%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 12,
+              "raw_text": "11% - 12%",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "crpo_growth_approx",
+          "label": "Current RPO growth guidance (approx)",
+          "category": "revenue_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[1]",
+            "table_index": 1
+          },
+          "cells": {
+            "q3_fy27": {
+              "value": 14,
+              "raw_text": "Approximately 14%"
+            }
+          }
+        },
+        {
+          "id": "gaap_operating_margin",
+          "label": "GAAP operating margin guidance",
+          "category": "margin_guidance",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[3]",
+            "table_index": 3
+          },
+          "cells": {
+            "fy27": {
+              "value": 20.1,
+              "raw_text": "20.1%"
+            }
+          }
+        },
+        {
+          "id": "om_adj_amort_purchased_intangibles",
+          "label": "Operating margin bridge - Amortization of purchased intangibles",
+          "category": "margin_guidance",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[3]",
+            "table_index": 3
+          },
+          "cells": {
+            "fy27": {
+              "value": 4.4,
+              "raw_text": "4.4%"
+            }
+          }
+        },
+        {
+          "id": "om_adj_sbc",
+          "label": "Operating margin bridge - Stock-based compensation expense",
+          "category": "margin_guidance",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[3]",
+            "table_index": 3
+          },
+          "cells": {
+            "fy27": {
+              "value": 9,
+              "raw_text": "9.0%"
+            }
+          }
+        },
+        {
+          "id": "om_adj_restructuring_and_acq",
+          "label": "Operating margin bridge - Restructuring and acquisition-related costs",
+          "category": "margin_guidance",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[3]",
+            "table_index": 3
+          },
+          "cells": {
+            "fy27": {
+              "value": 0.8,
+              "raw_text": "0.8%"
+            }
+          }
+        },
+        {
+          "id": "nongaap_operating_margin",
+          "label": "Non-GAAP operating margin guidance",
+          "category": "margin_guidance",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[3]",
+            "table_index": 3
+          },
+          "cells": {
+            "fy27": {
+              "value": 34.3,
+              "raw_text": "34.3%"
+            }
+          }
+        },
+        {
+          "id": "gaap_diluted_eps_low",
+          "label": "GAAP diluted EPS guidance (low)",
+          "category": "eps_guidance",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "q3_fy27": {
+              "value": 1.81,
+              "raw_text": "$1.81 - $1.83",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 10.21,
+              "raw_text": "$10.21 - $10.25",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "gaap_diluted_eps_high",
+          "label": "GAAP diluted EPS guidance (high)",
+          "category": "eps_guidance",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "q3_fy27": {
+              "value": 1.83,
+              "raw_text": "$1.81 - $1.83",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 10.25,
+              "raw_text": "$10.21 - $10.25",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "eps_adj_amort_purchased_intangibles",
+          "label": "EPS guidance bridge - Amortization of purchased intangibles",
+          "raw_label": "Amortization of purchased intangibles",
+          "category": "eps_guidance_bridge",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[4]",
+            "table_index": 4
+          },
+          "cells": {
+            "q3_fy27": {
+              "value": 0.57,
+              "raw_text": "$0.57"
+            },
+            "fy27": {
+              "value": 2.45,
+              "raw_text": "$2.45"
+            }
+          }
+        },
+        {
+          "id": "eps_adj_sbc",
+          "label": "EPS guidance bridge - Stock-based compensation expense",
+          "raw_label": "Stock-based compensation expense",
+          "category": "eps_guidance_bridge",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[4]",
+            "table_index": 4
+          },
+          "cells": {
+            "q3_fy27": {
+              "value": 1.29,
+              "raw_text": "$1.29"
+            },
+            "fy27": {
+              "value": 4.96,
+              "raw_text": "$4.96"
+            }
+          }
+        },
+        {
+          "id": "eps_adj_restructuring_and_acq",
+          "label": "EPS guidance bridge - Restructuring and acquisition-related costs",
+          "raw_label": "Restructuring and acquisition-related costs(3)",
+          "category": "eps_guidance_bridge",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[4]",
+            "table_index": 4
+          },
+          "cells": {
+            "q3_fy27": {
+              "value": 0.12,
+              "raw_text": "$0.12"
+            },
+            "fy27": {
+              "value": 0.42,
+              "raw_text": "$0.42"
+            }
+          }
+        },
+        {
+          "id": "eps_adj_tax_effects",
+          "label": "EPS guidance bridge - Income tax effects and adjustments",
+          "raw_label": "Income tax effects and adjustments(4)",
+          "category": "eps_guidance_bridge",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[4]",
+            "table_index": 4
+          },
+          "cells": {
+            "q3_fy27": {
+              "value": -0.37,
+              "raw_text": "$(0.37)"
+            },
+            "fy27": {
+              "value": -1.37,
+              "raw_text": "$(1.37)"
+            }
+          }
+        },
+        {
+          "id": "nongaap_diluted_eps_low",
+          "label": "Non-GAAP diluted EPS guidance (low)",
+          "category": "eps_guidance",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "q3_fy27": {
+              "value": 3.42,
+              "raw_text": "$3.42 - $3.44",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 16.67,
+              "raw_text": "$16.67 - $16.71",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "nongaap_diluted_eps_high",
+          "label": "Non-GAAP diluted EPS guidance (high)",
+          "category": "eps_guidance",
+          "unit": "USD_per_share",
+          "scale": 1,
+          "cells": {
+            "q3_fy27": {
+              "value": 3.44,
+              "raw_text": "$3.42 - $3.44",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[1]",
+                "table_index": 1
+              }
+            },
+            "fy27": {
+              "value": 16.71,
+              "raw_text": "$16.67 - $16.71",
+              "locator": {
+                "locator_type": "html_xpath",
+                "xpath": "//table[2]",
+                "table_index": 2
+              }
+            }
+          }
+        },
+        {
+          "id": "basic_shares_guidance",
+          "label": "Shares used in computing basic EPS guidance",
+          "raw_label": "Shares used in computing basic net income per share (millions)(5)",
+          "category": "eps_guidance_bridge",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[4]",
+            "table_index": 4
+          },
+          "cells": {
+            "q3_fy27": {
+              "value": 824,
+              "raw_text": "824"
+            },
+            "fy27": {
+              "value": 835,
+              "raw_text": "835"
+            }
+          }
+        },
+        {
+          "id": "diluted_shares_guidance",
+          "label": "Shares used in computing diluted EPS guidance",
+          "raw_label": "Shares used in computing diluted net income per share (millions)(5)",
+          "category": "eps_guidance_bridge",
+          "exemption": "standalone_disclosure",
+          "unit": "shares",
+          "scale": 1000000,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[4]",
+            "table_index": 4
+          },
+          "cells": {
+            "q3_fy27": {
+              "value": 827,
+              "raw_text": "827"
+            },
+            "fy27": {
+              "value": 838,
+              "raw_text": "838"
+            }
+          }
+        },
+        {
+          "id": "ocf_growth_low",
+          "label": "Operating cash flow growth guidance (low)",
+          "category": "cash_flow_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[2]",
+            "table_index": 2
+          },
+          "cells": {
+            "fy27": {
+              "value": 4,
+              "raw_text": "Approximately 4% - 5%"
+            }
+          }
+        },
+        {
+          "id": "ocf_growth_high",
+          "label": "Operating cash flow growth guidance (high)",
+          "category": "cash_flow_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[2]",
+            "table_index": 2
+          },
+          "cells": {
+            "fy27": {
+              "value": 5,
+              "raw_text": "Approximately 4% - 5%"
+            }
+          }
+        },
+        {
+          "id": "fcf_growth_low",
+          "label": "Free cash flow growth guidance (low)",
+          "category": "cash_flow_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[2]",
+            "table_index": 2
+          },
+          "cells": {
+            "fy27": {
+              "value": 4,
+              "raw_text": "Approximately 4% - 5%"
+            }
+          }
+        },
+        {
+          "id": "fcf_growth_high",
+          "label": "Free cash flow growth guidance (high)",
+          "category": "cash_flow_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[2]",
+            "table_index": 2
+          },
+          "cells": {
+            "fy27": {
+              "value": 5,
+              "raw_text": "Approximately 4% - 5%"
+            }
+          }
+        },
+        {
+          "id": "capex_pct_revenue_approx",
+          "label": "Capital expenditures guidance (% of revenue, approx)",
+          "category": "cash_flow_guidance",
+          "exemption": "non_additive_metric",
+          "unit": "ratio",
+          "scale": 0.01,
+          "locator": {
+            "locator_type": "html_xpath",
+            "xpath": "//table[2]",
+            "table_index": 2
+          },
+          "cells": {
+            "fy27": {
+              "value": 1.5,
+              "raw_text": "Approximately 1.5% of revenue"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "nongaap_operating_margin",
+          "components": [
+            {
+              "id": "gaap_operating_margin",
+              "sign": 1
+            },
+            {
+              "id": "om_adj_amort_purchased_intangibles",
+              "sign": 1
+            },
+            {
+              "id": "om_adj_sbc",
+              "sign": 1
+            },
+            {
+              "id": "om_adj_restructuring_and_acq",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "fy27"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "nongaap_diluted_eps_low",
+          "components": [
+            {
+              "id": "gaap_diluted_eps_low",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_amort_purchased_intangibles",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_sbc",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_restructuring_and_acq",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_tax_effects",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "q3_fy27",
+            "fy27"
+          ],
+          "missing_components": "error"
+        },
+        {
+          "target_id": "nongaap_diluted_eps_high",
+          "components": [
+            {
+              "id": "gaap_diluted_eps_high",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_amort_purchased_intangibles",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_sbc",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_restructuring_and_acq",
+              "sign": 1
+            },
+            {
+              "id": "eps_adj_tax_effects",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "scope": [
+            "q3_fy27",
+            "fy27"
+          ],
+          "missing_components": "error"
+        }
+      ]
+    },
+    {
+      "table_id": "crm_rpo_quarterly",
+      "title": "Quarterly Remaining Performance Obligation History",
+      "source": {
+        "doc_id": "doc_crm_q2fy27xexhibit991",
+        "origin": "html_table",
+        "entity": "CRM",
+        "basis": "gaap",
+        "locator": {
+          "locator_type": "html_xpath",
+          "xpath": "//table[13]",
+          "table_index": 13
+        }
+      },
+      "columns": [
+        {
+          "id": "q2_fy27",
+          "label": "Q2 FY2027",
+          "raw_label": "As of July 31, 2026",
+          "period_key": "2027-Q2",
+          "unit": "USD",
+          "scale": 1000000000,
+          "as_of_date": "2026-07-31",
+          "data_type": "number"
+        },
+        {
+          "id": "q1_fy27",
+          "label": "Q1 FY2027",
+          "raw_label": "As of April 30, 2026",
+          "period_key": "2027-Q1",
+          "unit": "USD",
+          "scale": 1000000000,
+          "as_of_date": "2026-04-30",
+          "data_type": "number"
+        },
+        {
+          "id": "q4_fy26",
+          "label": "Q4 FY2026",
+          "raw_label": "As of January 31, 2026",
+          "period_key": "2026-Q4",
+          "unit": "USD",
+          "scale": 1000000000,
+          "as_of_date": "2026-01-31",
+          "data_type": "number"
+        },
+        {
+          "id": "q3_fy26",
+          "label": "Q3 FY2026",
+          "raw_label": "As of October 31, 2025",
+          "period_key": "2026-Q3",
+          "unit": "USD",
+          "scale": 1000000000,
+          "as_of_date": "2025-10-31",
+          "data_type": "number"
+        },
+        {
+          "id": "q2_fy26",
+          "label": "Q2 FY2026",
+          "raw_label": "As of July 31, 2025",
+          "period_key": "2026-Q2",
+          "unit": "USD",
+          "scale": 1000000000,
+          "as_of_date": "2025-07-31",
+          "data_type": "number"
+        }
+      ],
+      "rows": [
+        {
+          "id": "current_rpo",
+          "label": "Current remaining performance obligation",
+          "raw_label": "Current",
+          "category": "rpo",
+          "cells": {
+            "q2_fy27": {
+              "value": 33.5,
+              "raw_text": "$33.5"
+            },
+            "q1_fy27": {
+              "value": 33.6,
+              "raw_text": "33.6"
+            },
+            "q4_fy26": {
+              "value": 35.1,
+              "raw_text": "35.1"
+            },
+            "q3_fy26": {
+              "value": 29.4,
+              "raw_text": "29.4"
+            },
+            "q2_fy26": {
+              "value": 29.4,
+              "raw_text": "29.4"
+            }
+          }
+        },
+        {
+          "id": "noncurrent_rpo",
+          "label": "Noncurrent remaining performance obligation",
+          "raw_label": "Noncurrent",
+          "category": "rpo",
+          "cells": {
+            "q2_fy27": {
+              "value": 32.8,
+              "raw_text": "$32.8"
+            },
+            "q1_fy27": {
+              "value": 34.3,
+              "raw_text": "34.3"
+            },
+            "q4_fy26": {
+              "value": 37.3,
+              "raw_text": "37.3"
+            },
+            "q3_fy26": {
+              "value": 30.1,
+              "raw_text": "30.1"
+            },
+            "q2_fy26": {
+              "value": 30.5,
+              "raw_text": "30.5"
+            }
+          }
+        },
+        {
+          "id": "total_rpo",
+          "label": "Total remaining performance obligation",
+          "raw_label": "Total",
+          "category": "rpo",
+          "cells": {
+            "q2_fy27": {
+              "value": 66.3,
+              "raw_text": "$66.3"
+            },
+            "q1_fy27": {
+              "value": 67.9,
+              "raw_text": "67.9"
+            },
+            "q4_fy26": {
+              "value": 72.4,
+              "raw_text": "72.4"
+            },
+            "q3_fy26": {
+              "value": 59.5,
+              "raw_text": "59.5"
+            },
+            "q2_fy26": {
+              "value": 59.9,
+              "raw_text": "59.9"
+            }
+          }
+        }
+      ],
+      "checksums": [
+        {
+          "target_id": "total_rpo",
+          "components": [
+            {
+              "id": "current_rpo",
+              "sign": 1
+            },
+            {
+              "id": "noncurrent_rpo",
+              "sign": 1
+            }
+          ],
+          "axis": "row",
+          "tolerance": 0,
+          "missing_components": "error"
+        }
+      ]
+    }
+  ],
+  "cross_checksums": []
+}

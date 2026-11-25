@@ -7,6 +7,9 @@ Open-source repository of institutional financial models and equity valuations g
 | Engagement | Path | Excel Model | Valuation Presentation | Write-up |
 | :--- | :--- | :--- | :--- | :--- |
 | **Costco Wholesale Corp. (`COST`)** | `public-equity/costco` | `public-equity/costco/deliverables/costco-valuation.xlsx` | `public-equity/costco/deliverables/costco-equity-valuation.pdf` | [Autonomous Costco Equity Research](https://mhcfa.github.io/blog/autonomous-costco-equity-research/) |
+| **The Boeing Company (`BA`)** | `public-equity/boeing` | `public-equity/boeing/deliverables/boeing-valuation-model.xlsx` | `public-equity/boeing/deliverables/boeing-initiation-deck.pdf` | — |
+| **Meta Platforms, Inc. (`META`)** | `public-equity/meta` | `public-equity/meta/deliverables/meta_model.xlsx` | `public-equity/meta/deliverables/meta_presentation.pdf` | — |
+| **Salesforce, Inc. (`CRM`)** | `public-equity/salesforce` | `public-equity/salesforce/deliverables/salesforce_financial_model.xlsx` | `public-equity/salesforce/deliverables/salesforce-initiation.pdf` | — |
 
 ## Quick Start
 

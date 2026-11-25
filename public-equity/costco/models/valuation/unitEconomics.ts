@@ -1,6 +1,6 @@
 import type { Sheet, Table } from "f8-engine"
 import type { ClubUnitEconEntity, CostcoKnowledgeData } from "../kg.ts"
-import { rowFormatOptions } from "../timeline.ts"
+import { notedNull, rowFormatOptions } from "../timeline.ts"
 
 const UNIT_ECON_COLS: readonly ClubUnitEconEntity[] = [
   "COST_US",
@@ -49,12 +49,11 @@ export function buildUnitEconomicsSchedule(
 ): Table {
   const table = sheet.addTable(
     "ClubUnitEconomics",
-    "Warehouse Club Unit Economics Benchmark: COST vs. Sam's Club, BJ's & PriceSmart ($M / Club / SqFt)",
+    "Warehouse Club Unit Economics: COST vs. Sam's Club, BJ's & PriceSmart ($M / Club / SqFt)",
     {
       subtitle: [
-        "COST U.S. & Consolidated (FY26) vs. Sam's Club U.S. (H1 FY27 Annualized post-recast & FY26), BJ's (LTM Q2) & PriceSmart (FY26)",
-        `Source: ${kg.citations.samsClub}`,
-        kg.citations.warehouseMembership,
+        "COST FY26 vs. Sam's Club (H1 FY27 annualized & FY26), BJ's (LTM Q2), and PriceSmart (FY26)",
+        "Source: COST FY26 10-K (Note 11); WMT Q2 FY27 10-Q; BJ's Q2 FY26 10-Q; PSMT FY26 10-K",
       ],
       currency: "USD",
     }
@@ -62,7 +61,7 @@ export function buildUnitEconomicsSchedule(
 
   table.addColumn("line_item", {
     role: "descriptor",
-    header: "Unit Economic Metric",
+    header: "Unit economic metric",
   })
   for (const colId of UNIT_ECON_COLS) {
     const colHdr = UNIT_ECON_COL_HEADERS[colId]
@@ -70,6 +69,7 @@ export function buildUnitEconomicsSchedule(
       role: "measure",
       group: colHdr.group,
       headers: colHdr.headers,
+      ...(colId === "COST_US" ? { style: "bold" as const } : {}),
     })
   }
 
@@ -78,21 +78,11 @@ export function buildUnitEconomicsSchedule(
   const kpis = kg.cost.operatingKpis
   const qoe = kg.cost.qoe
 
-  const periodBasisNote = UNIT_ECON_COLS.map((c) => {
-    const m = raw.meta[c]
-    return `${m.label}: ${m.periodBasis} (${m.notes})`
-  }).join(" | ")
-
-  table.addSectionHeader("1. Physical Scale & Membership Base", {
-    note: periodBasisNote,
-  })
+  table.addSectionHeader("Physical scale and membership base")
   table.addRow("clubs", {
     ...rowFormatOptions("integer"),
     cells: {
-      line_item: {
-        value: "Ending Warehouse / Club Count",
-        note: periodBasisNote,
-      },
+      line_item: "Ending warehouse / club count",
       COST_US: { expr: 'OperatingSchedule["warehouses_us", "FY26"]' },
       COST_TOTAL: { expr: 'OperatingSchedule["warehouses_total", "FY26"]' },
       WMT_SAMS_H1_ANN: raw.sams.clubsH127,
@@ -104,28 +94,28 @@ export function buildUnitEconomicsSchedule(
   table.addRow("sales_floor_sqft_m", {
     ...rowFormatOptions("number", 1),
     cells: {
-      line_item: {
-        value: "Sales Floor Area (M SqFt)",
-        note: "BJ's omitted: Form 10-K/10-Q does not disclose total retail square footage.",
-      },
+      line_item: "Sales floor area (M SqFt)",
       COST_US: kpis.warehouseSqftUsMillions.FY26,
       COST_TOTAL: kpis.warehouseSqftTotalMillions.FY26,
       WMT_SAMS_H1_ANN: raw.sams.sqftMillionsH127,
       WMT_SAMS_FY26: raw.sams.sqftMillionsFy26,
-      BJ: null,
+      BJ: notedNull(
+        "BJ's Form 10-K/10-Q does not disclose total retail square footage."
+      ),
       PSMT: raw.psmt.sqftMillionsFy26,
     },
   })
   table.addRow("paid_members_m", {
     ...rowFormatOptions("number", 2),
     cells: {
-      line_item: {
-        value: "Paid Membership Accounts (M)",
-        note: "COST US & Sam's Club omitted: neither COST Note 11 nor WMT discloses standalone U.S. / Sam's numerical member counts.",
-      },
-      COST_US: null,
+      line_item: "Paid membership accounts (M)",
+      COST_US: notedNull(
+        "COST Note 11 omits U.S.-only paid membership counts."
+      ),
       COST_TOTAL: { expr: 'OperatingSchedule["paid_members_m", "FY26"]' },
-      WMT_SAMS_H1_ANN: null,
+      WMT_SAMS_H1_ANN: notedNull(
+        "Walmart does not disclose numerical Sam's Club member counts."
+      ),
       WMT_SAMS_FY26: null,
       BJ: raw.bj.paidMembersMillionsH127,
       PSMT: raw.psmt.paidMembersMillionsFy26,
@@ -134,7 +124,7 @@ export function buildUnitEconomicsSchedule(
   table.addRow("members_per_club_k", {
     ...rowFormatOptions("number", 1),
     cells: {
-      line_item: "Paid Members per Club (k)",
+      line_item: "Paid members per club (k)",
       COST_US: null,
       COST_TOTAL: {
         expr: '@table["paid_members_m", "COST_TOTAL"] * 1000 / @table["clubs", "COST_TOTAL"]',
@@ -150,15 +140,15 @@ export function buildUnitEconomicsSchedule(
     },
   })
 
-  table.addSectionHeader("2. Revenue, Productivity & Profitability ($M)")
+  table.addRowGutter()
+  table.addSectionHeader("Revenue, productivity and profitability ($M)")
   table.addRow("net_sales", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "Net Merchandise Sales ($M)",
-        note: "COST US omitted: Form 10-K Note 11 reports U.S. segment Total Revenue (incl. MFI) without a standalone MFI sub-split.",
-      },
-      COST_US: null,
+      line_item: "Net merchandise sales ($M)",
+      COST_US: notedNull(
+        "COST Form 10-K Note 11 reports U.S. total segment revenue including MFI without a standalone MFI split."
+      ),
       COST_TOTAL: { expr: 'IncomeStatement["net_sales", "FY26"]' },
       WMT_SAMS_H1_ANN: {
         expr: 'ClubUnitEconBridge["sams_h1_net_sales", "val"] * 2',
@@ -171,10 +161,7 @@ export function buildUnitEconomicsSchedule(
   table.addRow("mfi_and_other", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "Membership Fee & Other Income ($M)",
-        note: "COST US omitted: U.S.-only MFI is embedded inside U.S. Total Segment Revenue.",
-      },
+      line_item: "Membership fee & other ($M)",
       COST_US: null,
       COST_TOTAL: { expr: 'IncomeStatement["membership_fees", "FY26"]' },
       WMT_SAMS_H1_ANN: {
@@ -189,7 +176,7 @@ export function buildUnitEconomicsSchedule(
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     cells: {
-      line_item: "Total Revenue ($M)",
+      line_item: "Total revenue ($M)",
       COST_US: { expr: 'OperatingSchedule["seg_rev_us", "FY26"]' },
       COST_TOTAL: { expr: 'IncomeStatement["total_revenue", "FY26"]' },
       WMT_SAMS_H1_ANN: {
@@ -202,15 +189,15 @@ export function buildUnitEconomicsSchedule(
   })
   table.addRow("rev_per_club", {
     ...rowFormatOptions("currency", 1),
-    style: "subtotal",
+    style: "bold",
     highlight: true,
     expr: '@table["total_revenue", @col] / @table["clubs", @col]',
-    cells: { line_item: "Annual Revenue per Club ($M / club)" },
+    cells: { line_item: "Annual revenue per club ($M)" },
   })
   table.addRow("rev_per_sqft", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Annual Revenue per SqFt ($ / SqFt)",
+      line_item: "Annual revenue per SqFt ($)",
       COST_US: {
         expr: '@table["total_revenue", "COST_US"] / @table["sales_floor_sqft_m", "COST_US"]',
       },
@@ -232,11 +219,10 @@ export function buildUnitEconomicsSchedule(
   table.addRow("merch_gross_profit", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "Merchandise Gross Profit ex-MFI ($M)",
-        note: "COST US omitted: Form 10-K Note 11 does not split U.S. MFI out of U.S. total segment revenue; see Total Gross Profit incl. MFI below.",
-      },
-      COST_US: null,
+      line_item: "Merchandise gross profit ($M)",
+      COST_US: notedNull(
+        "U.S. segment MFI is embedded inside total segment revenue; see total gross profit below."
+      ),
       COST_TOTAL: { expr: 'IncomeStatement["merch_gross_profit", "FY26"]' },
       WMT_SAMS_H1_ANN: {
         expr: 'ClubUnitEconBridge["sams_h1_merch_gp", "val"] * 2',
@@ -255,7 +241,7 @@ export function buildUnitEconomicsSchedule(
   table.addRow("merch_gm_pct", {
     ...rowFormatOptions("percentage", 2),
     cells: {
-      line_item: "Merchandise Gross Margin (% of Net Sales, ex-MFI)",
+      line_item: "Merchandise gross margin (%)",
       COST_US: null,
       COST_TOTAL: {
         expr: '@table["merch_gross_profit", "COST_TOTAL"] / @table["net_sales", "COST_TOTAL"]',
@@ -277,7 +263,7 @@ export function buildUnitEconomicsSchedule(
   table.addRow("total_gross_profit_incl_mfi", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Total Gross Profit incl. MFI & Other ($M)",
+      line_item: "Total gross profit incl. MFI ($M)",
       COST_US: {
         expr: '@table["total_revenue", "COST_US"] - ClubUnitEconBridge["cost_us_merch_costs", "val"]',
       },
@@ -301,15 +287,12 @@ export function buildUnitEconomicsSchedule(
   table.addRow("total_gp_margin_pct", {
     ...rowFormatOptions("percentage", 2),
     expr: '@table["total_gross_profit_incl_mfi", @col] / @table["total_revenue", @col]',
-    cells: {
-      line_item:
-        "Total Gross Profit Margin incl. MFI (% of Total Revenue, apples-to-apples)",
-    },
+    cells: { line_item: "Total gross margin incl. MFI (%)" },
   })
   table.addRow("mfi_pct_rev", {
     ...rowFormatOptions("percentage", 2),
     cells: {
-      line_item: "Membership & Other Income (% of Total Revenue)",
+      line_item: "MFI and other (% total rev.)",
       COST_US: null,
       COST_TOTAL: {
         expr: '@table["mfi_and_other", "COST_TOTAL"] / @table["total_revenue", "COST_TOTAL"]',
@@ -331,7 +314,7 @@ export function buildUnitEconomicsSchedule(
   table.addRow("sga", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Operating / SG&A Expenses ($M)",
+      line_item: "Operating / SG&A expenses ($M)",
       COST_US: raw.costUs.sgaFy26,
       COST_TOTAL: { expr: 'IncomeStatement["sga", "FY26"]' },
       WMT_SAMS_H1_ANN: {
@@ -349,13 +332,13 @@ export function buildUnitEconomicsSchedule(
   table.addRow("sga_pct_rev", {
     ...rowFormatOptions("percentage", 2),
     expr: '@table["sga", @col] / @table["total_revenue", @col]',
-    cells: { line_item: "SG&A Expense (% of Total Revenue)" },
+    cells: { line_item: "SG&A (% total revenue)" },
   })
   table.addRow("operating_income", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     cells: {
-      line_item: "Operating Income / Segment EBIT ($M)",
+      line_item: "Operating income / EBIT ($M)",
       COST_US: raw.costUs.ebitFy26,
       COST_TOTAL: { expr: 'IncomeStatement["operating_income", "FY26"]' },
       WMT_SAMS_H1_ANN: {
@@ -368,19 +351,19 @@ export function buildUnitEconomicsSchedule(
   })
   table.addRow("ebit_margin_pct", {
     ...rowFormatOptions("percentage", 2),
-    style: "subtotal",
+    style: "bold",
     expr: '@table["operating_income", @col] / @table["total_revenue", @col]',
-    cells: { line_item: "Operating Margin (EBIT %)" },
+    cells: { line_item: "Operating margin (EBIT %)" },
   })
   table.addRow("ebit_per_club", {
     ...rowFormatOptions("currency", 2),
     expr: '@table["operating_income", @col] / @table["clubs", @col]',
-    cells: { line_item: "Operating Income per Club ($M / club)" },
+    cells: { line_item: "Operating income per club ($M)" },
   })
   table.addRow("da", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Depreciation & Amortization ($M)",
+      line_item: "Depreciation & amortization ($M)",
       COST_US: raw.costUs.daFy26,
       COST_TOTAL: { expr: 'WorkingCapitalPPE["da", "FY26"]' },
       WMT_SAMS_H1_ANN: {
@@ -395,17 +378,18 @@ export function buildUnitEconomicsSchedule(
     ...rowFormatOptions("currency", 0),
     style: "total",
     expr: '@table["operating_income", @col] + @table["da", @col]',
-    cells: { line_item: "Segment / Club EBITDA ($M)" },
+    cells: { line_item: "Segment / club EBITDA ($M)" },
   })
   table.addRow("ebitda_margin_pct", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     expr: '@table["ebitda", @col] / @table["total_revenue", @col]',
-    cells: { line_item: "EBITDA Margin (%)" },
+    cells: { line_item: "EBITDA margin (%)" },
   })
   table.addRow("capex", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Capital Expenditures ($M)",
+      line_item: "Capital expenditures ($M)",
       COST_US: raw.costUs.capexFy26,
       COST_TOTAL: { expr: 'WorkingCapitalPPE["capex", "FY26"]' },
       WMT_SAMS_H1_ANN: {
@@ -418,15 +402,17 @@ export function buildUnitEconomicsSchedule(
   })
   table.addRow("capex_pct_rev", {
     ...rowFormatOptions("percentage", 2),
+    style: "bold",
     expr: '@table["capex", @col] / @table["total_revenue", @col]',
-    cells: { line_item: "CapEx Intensity (% of Total Revenue)" },
+    cells: { line_item: "CapEx (% total revenue)" },
   })
 
-  table.addSectionHeader("3. Membership Pricing, Renewal & Comp Sales KPIs")
+  table.addRowGutter()
+  table.addSectionHeader("Membership pricing, renewal and comp KPIs")
   table.addRow("comp_ex_fuel", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: "Comparable Sales Growth (ex-Fuel)",
+      line_item: "Comparable sales growth (ex-fuel)",
       COST_US: { expr: 'OperatingSchedule["core_comp_us", "FY26"]' },
       COST_TOTAL: { expr: 'OperatingSchedule["comp_ex_gas_fx_total", "FY26"]' },
       WMT_SAMS_H1_ANN: {
@@ -442,32 +428,42 @@ export function buildUnitEconomicsSchedule(
   table.addRow("renewal_rate", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: {
-        value: "Trailing 12M Membership Renewal Rate",
-        note: "Sam's Club omitted: WMT does not disclose a numerical renewal rate for Sam's Club.",
-      },
+      line_item: "Trailing 12M renewal rate",
       COST_US: kpis.renewalRateUsCa.FY26,
       COST_TOTAL: kpis.renewalRateWw.FY26,
-      WMT_SAMS_H1_ANN: null,
+      WMT_SAMS_H1_ANN: notedNull(
+        "Walmart does not disclose numerical renewal rates for Sam's Club."
+      ),
       WMT_SAMS_FY26: null,
       BJ: raw.bj.renewalRateFy26,
       PSMT: raw.psmt.renewalRateFy26,
     },
   })
+  table.addRow("implied_churn_rate", {
+    ...rowFormatOptions("percentage", 1),
+    cells: {
+      line_item: "Implied annual churn (1 − renew)",
+      COST_US: { expr: '1 - @table["renewal_rate", "COST_US"]' },
+      COST_TOTAL: { expr: '1 - @table["renewal_rate", "COST_TOTAL"]' },
+      WMT_SAMS_H1_ANN: null,
+      WMT_SAMS_FY26: null,
+      BJ: { expr: '1 - @table["renewal_rate", "BJ"]' },
+      PSMT: { expr: '1 - @table["renewal_rate", "PSMT"]' },
+    },
+  })
   table.addRow("higher_tier_pct", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: {
-        value: "Premium / Executive / Plus Member Share (%)",
-        note: "Sam's Club omitted: WMT does not disclose Plus tier penetration.",
-      },
+      line_item: "Premium / Executive tier share",
       COST_US: {
         expr: 'ClubUnitEconBridge["cost_exec_members_m", "val"] / @table["paid_members_m", "COST_TOTAL"]',
       },
       COST_TOTAL: {
         expr: 'ClubUnitEconBridge["cost_exec_members_m", "val"] / @table["paid_members_m", "COST_TOTAL"]',
       },
-      WMT_SAMS_H1_ANN: null,
+      WMT_SAMS_H1_ANN: notedNull(
+        "Walmart does not disclose Sam's Club Plus penetration."
+      ),
       WMT_SAMS_FY26: null,
       BJ: raw.bj.higherTierPenetrationFy26,
       PSMT: raw.psmt.higherTierPenetrationFy26,
@@ -476,198 +472,191 @@ export function buildUnitEconomicsSchedule(
   table.addRow("entry_fee", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "Entry Tier Annual Membership Fee ($)",
-        note: "PSMT omitted: LatAm/Caribbean multi-country local fee tiers excluded from U.S. club fee comparison.",
-      },
+      line_item: "Entry tier annual fee ($)",
       COST_US: qoe.costEntryFee,
       COST_TOTAL: qoe.costEntryFee,
       WMT_SAMS_H1_ANN: raw.sams.entryFeeDollars,
       WMT_SAMS_FY26: raw.sams.entryFeeDollars,
       BJ: raw.bj.entryFeeDollars,
-      PSMT: null,
+      PSMT: notedNull(
+        "Multi-country local currency fee tiers excluded from U.S. club fee comparison."
+      ),
     },
   })
   table.addRow("premium_fee", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: {
-        value: "Premium / Rewards Tier Annual Fee ($)",
-        note: "PSMT omitted: LatAm/Caribbean multi-country local fee tiers excluded from U.S. club fee comparison.",
-      },
+      line_item: "Premium tier annual fee ($)",
       COST_US: qoe.costPremiumFee,
       COST_TOTAL: qoe.costPremiumFee,
       WMT_SAMS_H1_ANN: raw.sams.premiumFeeDollars,
       WMT_SAMS_FY26: raw.sams.premiumFeeDollars,
       BJ: raw.bj.premiumFeeDollars,
-      PSMT: null,
+      PSMT: notedNull(
+        "Multi-country local currency fee tiers excluded from U.S. club fee comparison."
+      ),
     },
   })
 
-  // Supporting Schedule: As-Reported Segment & Peer Inputs for Club Unit Economics Bridges
+  // Supporting Schedule paired right of ClubUnitEconomics
   const bridge = sheet.addTable(
     "ClubUnitEconBridge",
-    "Supporting Schedule — As-Reported Segment & Peer Inputs for Club Unit Economics ($M / %)",
+    "As-Reported Segment & Peer Inputs ($M / %)",
     {
       subtitle: [
-        "As-reported 6M H1 FY27 Sam's Club segment flows (annualized x2 in benchmark table),",
-        "Q1/Q2 comp ex-fuel, COST U.S. merchandise costs & PriceSmart FY26 expense lines",
-        `Source: ${kg.citations.samsClub}`,
+        "6M Sam's flows, COST U.S. & PSMT inputs",
+        "Source: WMT Q2 FY27 10-Q; COST/PSMT 10-K",
       ],
       currency: "USD",
-      below: table,
+      rightOf: table,
     }
   )
   bridge.addColumn("line_item", {
     role: "descriptor",
-    header: "Audited Segment / Peer Input",
+    header: "Reported segment input",
   })
   bridge.addColumn("val", {
     role: "measure",
-    headers: ["Audited", "Value"],
+    headers: ["Reported", "Value"],
   })
 
-  bridge.addSectionHeader(
-    "1. Costco U.S. Segment & Executive Membership Inputs (FY26)"
-  )
+  bridge.addSectionHeader("Costco U.S. & Executive inputs (FY26)")
   bridge.addRow("cost_us_merch_costs", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "COST U.S. Segment Merchandise Costs (10-K Note 11, $M)",
+      line_item: "COST U.S. merchandise costs ($M)",
       val: raw.costUs.merchCostsFy26,
     },
   })
   bridge.addRow("cost_exec_members_m", {
     ...rowFormatOptions("number", 2),
     cells: {
-      line_item: "COST Ending Executive Paid Memberships (10-K Item 7, M)",
+      line_item: "COST Executive paid members (M)",
       val: kpis.executiveMembersMillions.FY26,
     },
   })
 
-  bridge.addSectionHeader(
-    "2. Sam's Club U.S. H1 FY27 (6M Ended 2026-07-31) & FY26 Inputs"
-  )
+  bridge.addRowGutter()
+  bridge.addSectionHeader("Sam's Club H1 FY27 (6M) & FY26 inputs")
   bridge.addRow("sams_h1_net_sales", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Net Sales ($M)",
+      line_item: "Sam's H1 FY27 net sales ($M)",
       val: raw.sams.netSalesH127,
     },
   })
   bridge.addRow("sams_h1_mfi_other", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Membership & Other Income ($M)",
+      line_item: "Sam's H1 FY27 MFI & other ($M)",
       val: raw.sams.mfiAndOtherH127,
     },
   })
   bridge.addRow("sams_h1_total_rev", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Total Revenues ($M)",
+      line_item: "Sam's H1 FY27 total rev. ($M)",
       val: raw.sams.totalRevH127,
     },
   })
   bridge.addRow("sams_h1_merch_gp", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Merchandise Gross Profit ($M)",
+      line_item: "Sam's H1 FY27 merch. GP ($M)",
       val: raw.sams.merchGpH127,
     },
   })
   bridge.addRow("sams_h1_sga", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Operating / SG&A Expenses ($M)",
+      line_item: "Sam's H1 FY27 SG&A ($M)",
       val: raw.sams.sgaH127,
     },
   })
   bridge.addRow("sams_h1_ebit", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Operating Income ($M)",
+      line_item: "Sam's H1 FY27 EBIT ($M)",
       val: raw.sams.ebitH127,
     },
   })
   bridge.addRow("sams_h1_da", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Depreciation & Amortization ($M)",
+      line_item: "Sam's H1 FY27 D&A ($M)",
       val: raw.sams.daH127,
     },
   })
   bridge.addRow("sams_h1_capex", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club H1 FY27 (6M) Capital Expenditures ($M)",
+      line_item: "Sam's H1 FY27 CapEx ($M)",
       val: raw.sams.capexH127,
     },
   })
   bridge.addRow("sams_fy26_cost_of_sales", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Sam's Club FY26 Cost of Sales ($M)",
+      line_item: "Sam's FY26 cost of sales ($M)",
       val: raw.sams.costOfSalesFy26,
     },
   })
   bridge.addRow("sams_q1_27_comp_ex_fuel", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: "Sam's Club Q1 FY27 Comp Sales Growth ex-Fuel",
+      line_item: "Sam's Q1 FY27 comp (ex-fuel)",
       val: raw.sams.compExFuelQ127,
     },
   })
   bridge.addRow("sams_q2_27_comp_ex_fuel", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: "Sam's Club Q2 FY27 Comp Sales Growth ex-Fuel",
+      line_item: "Sam's Q2 FY27 comp (ex-fuel)",
       val: raw.sams.compExFuelQ227,
     },
   })
   bridge.addRow("sams_fy26_comp_incl_fuel", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: "Sam's Club FY26 Comp Sales Growth incl. Fuel",
+      line_item: "Sam's FY26 comp (incl. fuel)",
       val: raw.sams.compInclFuelFy26,
     },
   })
   bridge.addRow("sams_fy26_comp_fuel_impact", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: "Sam's Club FY26 Comp Sales Fuel Impact",
+      line_item: "Sam's FY26 comp fuel impact",
       val: raw.sams.compFuelImpactFy26,
     },
   })
 
-  bridge.addSectionHeader(
-    "3. PriceSmart (PSMT) FY26 Cost & Expense Inputs ($M)"
-  )
+  bridge.addRowGutter()
+  bridge.addSectionHeader("PriceSmart FY26 cost & expense inputs")
   bridge.addRow("psmt_fy26_cost_of_sales", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "PSMT FY26 Cost of Goods Sold ($M)",
+      line_item: "PSMT FY26 cost of sales ($M)",
       val: psmtPeer.costOfSalesFy26,
     },
   })
   bridge.addRow("psmt_fy26_sga", {
     ...rowFormatOptions("currency", 1),
     cells: {
-      line_item: "PSMT FY26 Warehouse Club & General/Admin SG&A ($M)",
+      line_item: "PSMT FY26 SG&A ($M)",
       val: psmtPeer.sgaFy26,
     },
   })
   bridge.addRow("psmt_fy26_pre_opening", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: "PSMT FY26 Pre-Opening Expenses ($M)",
+      line_item: "PSMT FY26 pre-opening ($M)",
       val: psmtPeer.preOpeningFy26,
     },
   })
   bridge.addRow("psmt_fy26_loss_disposal", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: "PSMT FY26 Loss on Disposal of Assets ($M)",
+      line_item: "PSMT FY26 asset disposal ($M)",
       val: psmtPeer.lossDisposalIsFy26,
     },
   })
