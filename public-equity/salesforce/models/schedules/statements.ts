@@ -9,12 +9,15 @@ export interface CoreStatementTables {
 }
 
 export interface LtmAndQ2AnchorTables {
-  readonly ltmFlowBridge: Table
+  readonly ltmOperatingBridge: Table
+  readonly ltmCashFlowAndH1Anchors: Table
   readonly q2BalanceSheetAnchor: Table
 }
 
 export function buildStatementsTables(
-  sheet: Sheet,
+  incomeSheet: Sheet,
+  balanceSheetTab: Sheet,
+  cashFlowSheet: Sheet,
   audited: AuditedDataSnapshot
 ): CoreStatementTables {
   const is = audited.crmIs
@@ -22,7 +25,7 @@ export function buildStatementsTables(
   const cf = audited.crmCf
 
   // Table 1: Consolidated Statements of Operations (FY24A-FY31E)
-  const incomeStatement = sheet.addTable(
+  const incomeStatement = incomeSheet.addTable(
     "IncomeStatement",
     "Consolidated Statements of Operations (US GAAP)",
     {
@@ -188,7 +191,7 @@ export function buildStatementsTables(
       FY25A: is.gainsOnStrategicInvestmentsNet.FY25A,
       FY26A: is.gainsOnStrategicInvestmentsNet.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["gains_on_strategic_investments_net", "H1_FY27A"]',
+        expr: 'LtmOperatingBridge["gains_on_strategic_investments_net", "H1_FY27A"]',
       }),
       FY28E: new Cell({
         value: 0,
@@ -325,7 +328,7 @@ export function buildStatementsTables(
   })
 
   // Table 2: Consolidated Balance Sheets (FY24A-FY31E)
-  const balanceSheet = sheet.addTable(
+  const balanceSheet = balanceSheetTab.addTable(
     "BalanceSheet",
     "Consolidated Balance Sheets (US GAAP)",
     {
@@ -686,7 +689,7 @@ export function buildStatementsTables(
   })
 
   // Table 3: Consolidated Statements of Cash Flows (FY24A-FY31E)
-  const cashFlowStatement = sheet.addTable(
+  const cashFlowStatement = cashFlowSheet.addTable(
     "CashFlowStatement",
     "Consolidated Statements of Cash Flows (US GAAP)",
     {
@@ -871,7 +874,7 @@ export function buildStatementsTables(
       FY25A: cf.purchasesStrategicInvestments.FY25A,
       FY26A: cf.purchasesStrategicInvestments.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["purchases_strategic_investments", "H1_FY27A"]',
+        expr: 'LtmCashFlowAndH1Anchors["purchases_strategic_investments", "H1_FY27A"]',
       }),
       FY28E: new Cell({
         value: 0,
@@ -891,7 +894,7 @@ export function buildStatementsTables(
       FY25A: cf.salesStrategicInvestments.FY25A,
       FY26A: cf.salesStrategicInvestments.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["sales_strategic_investments", "H1_FY27A"]',
+        expr: 'LtmCashFlowAndH1Anchors["sales_strategic_investments", "H1_FY27A"]',
       }),
       FY28E: new Cell({
         value: 0,
@@ -911,7 +914,7 @@ export function buildStatementsTables(
       FY25A: cf.purchasesMarketableSecurities.FY25A,
       FY26A: cf.purchasesMarketableSecurities.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["purchases_marketable_securities", "H1_FY27A"]',
+        expr: 'LtmCashFlowAndH1Anchors["purchases_marketable_securities", "H1_FY27A"]',
       }),
       FY28E: new Cell({
         value: 0,
@@ -931,7 +934,7 @@ export function buildStatementsTables(
       FY25A: cf.salesMarketableSecurities.FY25A,
       FY26A: cf.salesMarketableSecurities.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["sales_marketable_securities", "H1_FY27A"]',
+        expr: 'LtmCashFlowAndH1Anchors["sales_marketable_securities", "H1_FY27A"]',
       }),
       FY28E: new Cell({
         value: 0,
@@ -951,7 +954,7 @@ export function buildStatementsTables(
       FY25A: cf.maturitiesMarketableSecurities.FY25A,
       FY26A: cf.maturitiesMarketableSecurities.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["maturities_marketable_securities", "H1_FY27A"]',
+        expr: 'LtmCashFlowAndH1Anchors["maturities_marketable_securities", "H1_FY27A"]',
       }),
       FY28E: new Cell({
         value: 0,
@@ -1004,7 +1007,7 @@ export function buildStatementsTables(
       FY25A: cf.shareRepurchases.FY25A,
       FY26A: cf.shareRepurchases.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["share_repurchases", "H1_FY27A"] - PeriodDriversActive["incrementalShareRepurchases", "FY27E"]',
+        expr: 'LtmCashFlowAndH1Anchors["share_repurchases", "H1_FY27A"] - PeriodDriversActive["incrementalShareRepurchases", "FY27E"]',
       }),
     },
     expr: '-PeriodDriversActive["incrementalShareRepurchases", @col]',
@@ -1178,38 +1181,30 @@ export function buildLtmAndQ2AnchorTables(
   const q2bs = audited.crmH1.q2Fy27Bs
   const h1Val = (map: CrmH1Metrics, key: keyof CrmH1Metrics): number => map[key]
 
-  // Live LTM Q2 FY27 Flow Bridge (FY26A + H1 FY27A - H1 FY26A)
-  const ltmFlowBridge = sheet.addTable(
-    "LtmFlowBridge",
-    "Trailing Twelve Months (LTM Q2 FY27) Flow Bridge",
-    {
-      subtitle: wrapSubtitle(
-        `($ in Millions) | Sources: ${audited.citations.crmIs10K}; ${audited.citations.crmIs10Q} (IS & CF)`,
-        68
-      ),
-    }
-  )
-  ltmFlowBridge.addColumn("item", { role: "descriptor", header: "Line item" })
-  ltmFlowBridge.addColumn("FY26A", {
-    header: "FY26A",
-    group: "Audited Periods",
-  })
-  ltmFlowBridge.addColumn("H1_FY26A", {
-    headers: ["H1", "FY26A"],
-    group: "Audited Periods",
-  })
-  ltmFlowBridge.addColumn("H1_FY27A", {
-    headers: ["H1", "FY27A"],
-    group: "Audited Periods",
-  })
-  ltmFlowBridge.addColumnGutter()
-  ltmFlowBridge.addColumn("LTM_Q2_27", {
-    headers: ["LTM", "Q2 FY27"],
-    style: "bold",
-    shade: "muted",
-  })
+  const addLtmBridgeColumns = (table: Table): void => {
+    table.addColumn("item", { role: "descriptor", header: "Line item" })
+    table.addColumn("FY26A", {
+      header: "FY26A",
+      group: "Audited Periods",
+    })
+    table.addColumn("H1_FY26A", {
+      headers: ["H1", "FY26A"],
+      group: "Audited Periods",
+    })
+    table.addColumn("H1_FY27A", {
+      headers: ["H1", "FY27A"],
+      group: "Audited Periods",
+    })
+    table.addColumnGutter()
+    table.addColumn("LTM_Q2_27", {
+      headers: ["LTM", "Q2 FY27"],
+      style: "bold",
+      shade: "muted",
+    })
+  }
 
   const addLtmRow = (
+    table: Table,
     id: string,
     label: string,
     fy26: number | Cell,
@@ -1220,7 +1215,7 @@ export function buildLtmAndQ2AnchorTables(
       readonly shade?: "none" | "muted" | "alt"
     }
   ): void => {
-    ltmFlowBridge.addRow(id, {
+    table.addRow(id, {
       cells: {
         item: label,
         FY26A: fy26,
@@ -1237,8 +1232,24 @@ export function buildLtmAndQ2AnchorTables(
     })
   }
 
-  ltmFlowBridge.addSectionHeader("Income statement flows")
+  const ltmSubtitle = wrapSubtitle(
+    `($ in Millions) | ${audited.citations.crmIs10K} & ${audited.citations.crmIs10Q.replace(/^Salesforce, Inc\.\s*/, "")}`,
+    84
+  )
+
+  // Table 1: Live LTM Q2 FY27 Operating & Working Capital Bridge (FY26A + H1 FY27A - H1 FY26A)
+  const ltmOperatingBridge = sheet.addTable(
+    "LtmOperatingBridge",
+    "LTM Q2 FY27 Operating & Working Capital Flow Bridge",
+    {
+      subtitle: ltmSubtitle,
+    }
+  )
+  addLtmBridgeColumns(ltmOperatingBridge)
+
+  ltmOperatingBridge.addSectionHeader("Income statement flows")
   addLtmRow(
+    ltmOperatingBridge,
     "subscription_and_support_rev",
     "Subscription and support revenue",
     is.subscriptionAndSupportRev.FY26A,
@@ -1246,6 +1257,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "subscription_and_support_rev")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "professional_services_rev",
     "Professional services revenue",
     is.professionalServicesRev.FY26A,
@@ -1253,6 +1265,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "professional_services_rev")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "total_revenue",
     "Total revenues",
     is.totalRevenue.FY26A,
@@ -1261,6 +1274,7 @@ export function buildLtmAndQ2AnchorTables(
     { style: "subtotal" }
   )
   addLtmRow(
+    ltmOperatingBridge,
     "gross_profit",
     "Gross profit",
     is.grossProfit.FY26A,
@@ -1268,6 +1282,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "gross_profit")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "operating_income",
     "GAAP operating income (EBIT)",
     is.operatingIncome.FY26A,
@@ -1276,6 +1291,7 @@ export function buildLtmAndQ2AnchorTables(
     { style: "subtotal" }
   )
   addLtmRow(
+    ltmOperatingBridge,
     "interest_expense",
     "Interest expense (Q2 FY27 breakout)",
     0,
@@ -1283,19 +1299,21 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "interest_expense")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "other_income_expense_net",
     "Other income (expense), net",
     is.otherIncomeExpenseNet.FY26A,
     h1Val(h1_26, "other_income_expense_net"),
     h1Val(h1_27, "other_income_expense_net")
   )
-  ltmFlowBridge.addRow("interest_and_other_net", {
+  ltmOperatingBridge.addRow("interest_and_other_net", {
     cells: { item: "Combined interest & other, net" },
     expr: '@table["interest_expense", @col] + @table["other_income_expense_net", @col]',
     format: "currency",
     decimals: 0,
   })
   addLtmRow(
+    ltmOperatingBridge,
     "gains_on_strategic_investments_net",
     "Gains on strategic investments, net",
     is.gainsOnStrategicInvestmentsNet.FY26A,
@@ -1303,6 +1321,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "gains_on_strategic_investments_net")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "income_before_taxes",
     "Income before taxes",
     is.incomeBeforeTaxes.FY26A,
@@ -1310,6 +1329,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "income_before_taxes")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "income_tax_provision",
     "Provision for income taxes",
     is.incomeTaxProvision.FY26A,
@@ -1317,6 +1337,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "income_tax_provision")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "net_income",
     "Net income (US GAAP)",
     is.netIncome.FY26A,
@@ -1325,9 +1346,10 @@ export function buildLtmAndQ2AnchorTables(
     { style: "subtotal" }
   )
 
-  ltmFlowBridge.addRowGutter()
-  ltmFlowBridge.addSectionHeader("Cash flow & working capital flows")
+  ltmOperatingBridge.addRowGutter()
+  ltmOperatingBridge.addSectionHeader("Cash flow & working capital flows")
   addLtmRow(
+    ltmOperatingBridge,
     "da_expense",
     "Depreciation and amortization",
     cf.daExpense.FY26A,
@@ -1335,6 +1357,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "da_expense")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "amort_contract_costs",
     "Amort. of cap. contract costs",
     cf.amortContractCosts.FY26A,
@@ -1342,6 +1365,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "amort_contract_costs")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "sbc_expense",
     "Stock-based compensation (CF basis)",
     cf.sbcExpense.FY26A,
@@ -1349,6 +1373,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "sbc_expense")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "amort_intang_cor",
     "Purchased intangibles amort. — COR",
     audited.crmIsSupp.amortPurchasedIntangiblesCor.FY26A,
@@ -1356,19 +1381,21 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "amort_purchased_intangibles_cor")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "amort_intang_sm",
     "Purchased intangibles amort. — S&M",
     audited.crmIsSupp.amortPurchasedIntangiblesSm.FY26A,
     h1Val(h1_26, "amort_purchased_intangibles_sm"),
     h1Val(h1_27, "amort_purchased_intangibles_sm")
   )
-  ltmFlowBridge.addRow("purchased_intangibles_amort", {
+  ltmOperatingBridge.addRow("purchased_intangibles_amort", {
     cells: { item: "Total purchased intangibles amort." },
     expr: '@table["amort_intang_cor", @col] + @table["amort_intang_sm", @col]',
     format: "currency",
     decimals: 0,
   })
   addLtmRow(
+    ltmOperatingBridge,
     "chg_accounts_receivable",
     "Change in accounts receivable",
     cf.chgAccountsReceivable.FY26A,
@@ -1376,6 +1403,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "chg_accounts_receivable")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "chg_capitalized_contract_costs",
     "Change in cap. contract costs",
     cf.chgCapitalizedContractCosts.FY26A,
@@ -1383,6 +1411,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "chg_capitalized_contract_costs")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "chg_prepaid_and_other_assets",
     "Change in prepaid & other assets",
     cf.chgPrepaidAndOtherAssets.FY26A,
@@ -1390,6 +1419,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "chg_prepaid_and_other_assets")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "chg_ap_accrued_and_other_liab",
     "Change in AP & accrued liab.",
     cf.chgApAccruedAndOtherLiab.FY26A,
@@ -1397,6 +1427,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "chg_ap_accrued_and_other_liab")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "chg_operating_lease_liabilities",
     "Change in operating lease liab.",
     cf.chgOperatingLeaseLiabilities.FY26A,
@@ -1404,6 +1435,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "chg_operating_lease_liabilities")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "chg_unearned_revenue",
     "Change in unearned revenue",
     cf.chgUnearnedRevenue.FY26A,
@@ -1411,6 +1443,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "chg_unearned_revenue")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "operating_cash_flow",
     "Operating cash flow (OCF)",
     cf.operatingCashFlow.FY26A,
@@ -1419,6 +1452,7 @@ export function buildLtmAndQ2AnchorTables(
     { style: "subtotal" }
   )
   addLtmRow(
+    ltmOperatingBridge,
     "capex",
     "Capital expenditures",
     cf.capex.FY26A,
@@ -1426,6 +1460,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "capex")
   )
   addLtmRow(
+    ltmOperatingBridge,
     "principal_payments_financing_obligations",
     "Principal on financing obligations",
     cf.principalPaymentsFinancingObligations.FY26A,
@@ -1433,9 +1468,21 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "principal_payments_financing_obligations")
   )
 
-  ltmFlowBridge.addRowGutter()
-  ltmFlowBridge.addSectionHeader("H1 FY27 investing & financing anchors")
+  // Table 2: H1 FY27 Investing & Financing Anchors and Derived LTM Economic Cash Flows
+  const ltmCashFlowAndH1Anchors = sheet.addTable(
+    "LtmCashFlowAndH1Anchors",
+    "LTM Q2 FY27 Derived Cash Flows & H1 Investing Anchors",
+    {
+      subtitle: ltmSubtitle,
+    }
+  )
+  addLtmBridgeColumns(ltmCashFlowAndH1Anchors)
+
+  ltmCashFlowAndH1Anchors.addSectionHeader(
+    "H1 FY27 investing & financing anchors"
+  )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "acquisitions_net_of_cash",
     "Business combinations, net of cash",
     cf.acquisitionsNetOfCash.FY26A,
@@ -1443,6 +1490,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "acquisitions_net_of_cash")
   )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "purchases_strategic_investments",
     "Purchases of strategic investments",
     cf.purchasesStrategicInvestments.FY26A,
@@ -1450,6 +1498,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "purchases_strategic_investments")
   )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "sales_strategic_investments",
     "Sales of strategic investments",
     cf.salesStrategicInvestments.FY26A,
@@ -1457,6 +1506,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "sales_strategic_investments")
   )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "purchases_marketable_securities",
     "Purchases of marketable securities",
     cf.purchasesMarketableSecurities.FY26A,
@@ -1464,6 +1514,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "purchases_marketable_securities")
   )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "sales_marketable_securities",
     "Sales of marketable securities",
     cf.salesMarketableSecurities.FY26A,
@@ -1471,6 +1522,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "sales_marketable_securities")
   )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "maturities_marketable_securities",
     "Maturities of marketable securities",
     cf.maturitiesMarketableSecurities.FY26A,
@@ -1478,6 +1530,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "maturities_marketable_securities")
   )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "debt_issuance_proceeds_net",
     "Debt issuance proceeds, net",
     cf.debtIssuanceProceedsNet.FY26A,
@@ -1485,6 +1538,7 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "debt_issuance_proceeds_net")
   )
   addLtmRow(
+    ltmCashFlowAndH1Anchors,
     "share_repurchases",
     "Repurchases of common stock",
     cf.shareRepurchases.FY26A,
@@ -1492,55 +1546,57 @@ export function buildLtmAndQ2AnchorTables(
     h1Val(h1_27, "share_repurchases")
   )
 
-  ltmFlowBridge.addRowGutter()
-  ltmFlowBridge.addSectionHeader("Derived LTM & H1 economic cash flows")
-  ltmFlowBridge.addRow("gaap_ebitda", {
+  ltmCashFlowAndH1Anchors.addRowGutter()
+  ltmCashFlowAndH1Anchors.addSectionHeader(
+    "Derived LTM & H1 economic cash flows"
+  )
+  ltmCashFlowAndH1Anchors.addRow("gaap_ebitda", {
     cells: { item: "GAAP EBITDA (ex-op. lease ROU)" },
-    expr: '@table["operating_income", @col] + @table["da_expense", @col] + @table["chg_operating_lease_liabilities", @col]',
+    expr: 'LtmOperatingBridge["operating_income", @col] + LtmOperatingBridge["da_expense", @col] + LtmOperatingBridge["chg_operating_lease_liabilities", @col]',
     format: "currency",
     decimals: 0,
     style: "subtotal",
   })
-  ltmFlowBridge.addRow("adj_ebitda", {
+  ltmCashFlowAndH1Anchors.addRow("adj_ebitda", {
     cells: { item: "Adjusted EBITDA (GAAP + SBC)" },
-    expr: '@table["gaap_ebitda", @col] + @table["sbc_expense", @col]',
+    expr: '@table["gaap_ebitda", @col] + LtmOperatingBridge["sbc_expense", @col]',
     format: "currency",
     decimals: 0,
   })
-  ltmFlowBridge.addRow("ebitda_less_capex", {
+  ltmCashFlowAndH1Anchors.addRow("ebitda_less_capex", {
     cells: { item: "GAAP EBITDA less CapEx & leases" },
-    expr: '@table["gaap_ebitda", @col] + @table["capex", @col] + @table["principal_payments_financing_obligations", @col]',
+    expr: '@table["gaap_ebitda", @col] + LtmOperatingBridge["capex", @col] + LtmOperatingBridge["principal_payments_financing_obligations", @col]',
     format: "currency",
     decimals: 0,
   })
-  ltmFlowBridge.addRow("reported_fcf", {
+  ltmCashFlowAndH1Anchors.addRow("reported_fcf", {
     cells: { item: "Reported FCF (OCF less CapEx)" },
-    expr: '@table["operating_cash_flow", @col] + @table["capex", @col]',
+    expr: 'LtmOperatingBridge["operating_cash_flow", @col] + LtmOperatingBridge["capex", @col]',
     format: "currency",
     decimals: 0,
   })
-  ltmFlowBridge.addRow("fcf_ex_sbc", {
+  ltmCashFlowAndH1Anchors.addRow("fcf_ex_sbc", {
     cells: { item: "Free cash flow less SBC" },
-    expr: '@table["reported_fcf", @col] - @table["sbc_expense", @col]',
+    expr: '@table["reported_fcf", @col] - LtmOperatingBridge["sbc_expense", @col]',
     format: "currency",
     decimals: 0,
   })
-  ltmFlowBridge.addRow("economic_fcf", {
+  ltmCashFlowAndH1Anchors.addRow("economic_fcf", {
     cells: { item: "Economic FCF (ex-SBC & fin. lease)" },
-    expr: '@table["fcf_ex_sbc", @col] + @table["principal_payments_financing_obligations", @col]',
+    expr: '@table["fcf_ex_sbc", @col] + LtmOperatingBridge["principal_payments_financing_obligations", @col]',
     format: "currency",
     decimals: 0,
     style: "subtotal",
   })
-  ltmFlowBridge.addRow("effective_tax_rate", {
+  ltmCashFlowAndH1Anchors.addRow("effective_tax_rate", {
     cells: { item: "Effective GAAP tax rate" },
-    expr: 'IF(@table["income_before_taxes", @col] > 0, -@table["income_tax_provision", @col] / @table["income_before_taxes", @col], NA())',
+    expr: 'IF(LtmOperatingBridge["income_before_taxes", @col] > 0, -LtmOperatingBridge["income_tax_provision", @col] / LtmOperatingBridge["income_before_taxes", @col], NA())',
     format: "percentage",
     decimals: 1,
   })
-  ltmFlowBridge.addRow("unlevered_fcff", {
+  ltmCashFlowAndH1Anchors.addRow("unlevered_fcff", {
     cells: { item: "Unlevered economic FCFF" },
-    expr: '@table["operating_income", @col] * (1 - @table["effective_tax_rate", @col]) + @table["da_expense", @col] + @table["amort_contract_costs", @col] + SUM(@table["chg_accounts_receivable".."chg_unearned_revenue", @col]) - @table["gains_on_strategic_investments_net", @col] * @table["effective_tax_rate", @col] + @table["capex", @col] + @table["principal_payments_financing_obligations", @col]',
+    expr: 'LtmOperatingBridge["operating_income", @col] * (1 - @table["effective_tax_rate", @col]) + LtmOperatingBridge["da_expense", @col] + LtmOperatingBridge["amort_contract_costs", @col] + SUM(LtmOperatingBridge["chg_accounts_receivable".."chg_unearned_revenue", @col]) - LtmOperatingBridge["gains_on_strategic_investments_net", @col] * @table["effective_tax_rate", @col] + LtmOperatingBridge["capex", @col] + LtmOperatingBridge["principal_payments_financing_obligations", @col]',
     format: "currency",
     decimals: 0,
     style: "total",
@@ -1684,7 +1740,8 @@ export function buildLtmAndQ2AnchorTables(
   )
 
   return {
-    ltmFlowBridge,
+    ltmOperatingBridge,
+    ltmCashFlowAndH1Anchors,
     q2BalanceSheetAnchor,
   }
 }

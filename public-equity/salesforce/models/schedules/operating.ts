@@ -129,14 +129,17 @@ export function buildOperatingAnnualTables(
     decimals: 1,
   })
 
+  const compactCrmCite = (cite: string): string =>
+    cite.replace(/^Salesforce, Inc\.\s*/, "")
+
   // Table 2: PP&E, Purchased Intangibles, Goodwill & Operating Lease Roll-Forwards
   const ppeAndIntangibles = sheet.addTable(
     "PpeAndIntangiblesSchedule",
     "PP&E, Intangibles, Goodwill & Lease Roll-Forwards",
     {
       subtitle: wrapSubtitle(
-        `($ in Millions) | Sources: ${audited.citations.crmBs10KPrior}; ${audited.citations.crmBs10K}; ${audited.citations.crmIntangibles} (Notes 6 & 7)`,
-        104
+        `($ in Millions) | Sources: ${audited.citations.crmBs10KPrior}, ${compactCrmCite(audited.citations.crmBs10K)} & ${compactCrmCite(audited.citations.crmIntangibles)} (Notes 6 & 7)`,
+        130
       ),
     }
   )
@@ -150,7 +153,7 @@ export function buildOperatingAnnualTables(
       FY25A: -audited.crmCf.acquisitionsNetOfCash.FY25A,
       FY26A: -audited.crmCf.acquisitionsNetOfCash.FY26A,
       FY27E: new Cell({
-        expr: '-LtmFlowBridge["acquisitions_net_of_cash", "H1_FY27A"] + AuditedFootnoteAnchors["pending_q3_ma_total", "val"]',
+        expr: '-LtmCashFlowAndH1Anchors["acquisitions_net_of_cash", "H1_FY27A"] + AuditedFootnoteAnchors["pending_q3_ma_total", "val"]',
       }),
       FY28E: new Cell({
         expr: 'ScalarDrivers["brazeAcquisitionCash", "active"]',
@@ -218,7 +221,7 @@ export function buildOperatingAnnualTables(
   })
 
   ppeAndIntangibles.addRowGutter()
-  ppeAndIntangibles.addSectionHeader("Purchased intangibles roll-forward")
+  ppeAndIntangibles.addSectionHeader("Purchased intangibles & goodwill")
   ppeAndIntangibles.addRow("opening_intangibles", {
     cells: {
       item: "Opening purchased intangibles, net",
@@ -241,7 +244,7 @@ export function buildOperatingAnnualTables(
         expr: 'CostAndSbcSchedule["amort_cor", "FY26A"] + CostAndSbcSchedule["amort_sm", "FY26A"]',
       }),
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["purchased_intangibles_amort", "H1_FY27A"] + AuditedFootnoteAnchors["note7_amort_fy27_rem", "val"]',
+        expr: 'LtmOperatingBridge["purchased_intangibles_amort", "H1_FY27A"] + AuditedFootnoteAnchors["note7_amort_fy27_rem", "val"]',
       }),
       FY28E: new Cell({
         expr: 'AuditedFootnoteAnchors["note7_amort_fy28", "val"]',
@@ -308,9 +311,6 @@ export function buildOperatingAnnualTables(
     decimals: 0,
     style: "total",
   })
-
-  ppeAndIntangibles.addRowGutter()
-  ppeAndIntangibles.addSectionHeader("Goodwill roll-forward")
   ppeAndIntangibles.addRow("opening_goodwill", {
     cells: {
       item: "Opening goodwill",
@@ -397,7 +397,7 @@ export function buildOperatingAnnualTables(
   })
 
   ppeAndIntangibles.addRowGutter()
-  ppeAndIntangibles.addSectionHeader("Operating lease ROU & liability")
+  ppeAndIntangibles.addSectionHeader("Operating leases & consolidated D&A")
   ppeAndIntangibles.addRow("op_lease_rou_amort", {
     cells: {
       item: "Operating lease ROU amort. / cash",
@@ -471,9 +471,7 @@ export function buildOperatingAnnualTables(
     format: "currency",
     decimals: 0,
   })
-
   ppeAndIntangibles.addRowGutter()
-  ppeAndIntangibles.addSectionHeader("Consolidated D&A summary")
   ppeAndIntangibles.addRow("total_da_expense", {
     cells: {
       item: "Total consolidated D&A (CF)",
@@ -725,8 +723,8 @@ export function buildOperatingAnnualTables(
     "Working Capital & Capitalized Contract Costs",
     {
       subtitle: wrapSubtitle(
-        `($ in Millions) | Sources: ${audited.citations.crmBs10KPrior}; ${audited.citations.crmBs10K}; drives operating working capital and cash flow changes`,
-        128
+        `($ in Millions) | Sources: ${audited.citations.crmBs10KPrior} & ${compactCrmCite(audited.citations.crmBs10K)}; drives operating working capital and CF`,
+        130
       ),
     }
   )
@@ -859,7 +857,7 @@ export function buildOperatingAnnualTables(
     {
       subtitle: wrapSubtitle(
         `(Shares in Millions) | Source: ${audited.citations.crmEpsShares}; models final ASR share retirement and ongoing SBC vs. repurchases`,
-        110
+        132
       ),
     }
   )
@@ -1030,7 +1028,7 @@ export function buildOperatingAnnualTables(
       FY25A: audited.crmCf.debtIssuanceProceedsNet.FY25A,
       FY26A: audited.crmCf.debtIssuanceProceedsNet.FY26A,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["debt_issuance_proceeds_net", "H1_FY27A"] + PeriodDriversActive["newDebtIssuance", "FY27E"]',
+        expr: 'LtmCashFlowAndH1Anchors["debt_issuance_proceeds_net", "H1_FY27A"] + PeriodDriversActive["newDebtIssuance", "FY27E"]',
       }),
     },
     expr: 'PeriodDriversActive["newDebtIssuance", @col]',
@@ -1205,7 +1203,7 @@ export function buildOperatingAnnualTables(
       FY25A: 0,
       FY26A: 0,
       FY27E: new Cell({
-        expr: 'LtmFlowBridge["interest_expense", "H1_FY27A"] - 0.5 * DebtTrancheRegistry["total_debt", "annual_interest"]',
+        expr: 'LtmOperatingBridge["interest_expense", "H1_FY27A"] - 0.5 * DebtTrancheRegistry["total_debt", "annual_interest"]',
       }),
       FY28E: new Cell({
         expr: '-(DebtTrancheRegistry["total_debt", "annual_interest"] + @table["ending_new_debt_stack", col.prev] * MacroRatesTable["marginal_pretax_kd", "val"] + @table["opening_revolver", @col] * (MacroRatesTable["marginal_pretax_kd", "val"] + ScalarDrivers["revolverSpread", "active"]))',
@@ -1251,13 +1249,19 @@ export function buildAuditedFootnoteAnchorsTable(
 ): Table {
   const m = audited.crmH1.q2Fy27Meta
 
+  const compactCrmCite = (cite: string): string =>
+    cite.replace(/^Salesforce, Inc\.\s*/, "")
+  const compactConsensus = audited.citations.crmConsensusTargets.replace(
+    "Analyst Consensus Target Price — CRM ",
+    "Consensus "
+  )
   const auditedAnchors = sheet.addTable(
     "AuditedFootnoteAnchors",
     "Audited Footnote, M&A, ASR & Guidance Anchors",
     {
       subtitle: wrapSubtitle(
-        `($ in Millions, shares in Millions, per-share in $) | Sources: ${audited.citations.crmIs10K}; ${audited.citations.crmIntangibles} (Notes 6, 7 & 11); ${audited.citations.crmGuidance}; ${audited.citations.crmConsensusTargets}`,
-        68
+        `($M, sh in M, $/sh) | ${audited.citations.crmIs10K.replace("Salesforce, Inc.", "CRM")}, ${compactCrmCite(audited.citations.crmIs10Q)} (Notes 6, 7, 11), ${compactCrmCite(audited.citations.crmGuidance)} & ${compactConsensus}`,
+        70
       ),
     }
   )

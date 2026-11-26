@@ -9,31 +9,34 @@ import {
   zeroForecastCells,
 } from "../timeline.ts"
 
-export function buildDebtLeasesSchedule(
+export function buildDebtAndLeasesSchedules(
   sheet: Sheet,
   kg: CostcoKnowledgeData
-): Table {
-  const table = sheet.addTable(
-    "DebtLeasesSchedule",
-    "Debt Maturity Waterfall, Credit Facilities, Leases & Interest ($M)",
+): {
+  readonly debtSchedule: Table
+  readonly leasesInterestSchedule: Table
+} {
+  const debtTable = sheet.addTable(
+    "DebtSchedule",
+    "Long-Term Debt Maturity Waterfall & Credit Facility ($M)",
     {
       subtitle: [
-        "FY22A–FY26A audited; FY27E–FY36E contractual maturities, ASC 842 leases, and opening-balance interest ($M)",
+        "FY22A–FY26A audited; FY27E–FY36E senior note maturities, discount amortization, and liquidity facility ($M)",
         `Source: ${kg.citations.debtLeases}`,
       ],
       currency: "USD",
     }
   )
-  addTimeSeriesColumns(table, {
-    descriptorLabel: "Debt, leases & interest ($M)",
+  addTimeSeriesColumns(debtTable, {
+    descriptorLabel: "Debt & facility ($M)",
   })
 
   const dl = kg.cost.debtLeases
   const bs = kg.cost.balanceSheet
   const is = kg.cost.incomeStatement
 
-  table.addSectionHeader("Long-term debt tranches (principal roll-forward)")
-  table.addRow("tranche_may27", {
+  debtTable.addSectionHeader("Long-term debt tranches (principal roll-forward)")
+  debtTable.addRow("tranche_may27", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       dl.trancheMeta.may2027.label,
@@ -41,7 +44,7 @@ export function buildDebtLeasesSchedule(
     ),
     expr: '@table["tranche_may27", col.prev] - DebtTranches["tranche_may27", @col]',
   })
-  table.addRow("tranche_jun27", {
+  debtTable.addRow("tranche_jun27", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       dl.trancheMeta.jun2027.label,
@@ -49,7 +52,7 @@ export function buildDebtLeasesSchedule(
     ),
     expr: '@table["tranche_jun27", col.prev] - DebtTranches["tranche_jun27", @col]',
   })
-  table.addRow("tranche_apr30", {
+  debtTable.addRow("tranche_apr30", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       dl.trancheMeta.apr2030.label,
@@ -57,7 +60,7 @@ export function buildDebtLeasesSchedule(
     ),
     expr: '@table["tranche_apr30", col.prev] - DebtTranches["tranche_apr30", @col]',
   })
-  table.addRow("tranche_apr32", {
+  debtTable.addRow("tranche_apr32", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       dl.trancheMeta.apr2032.label,
@@ -65,7 +68,7 @@ export function buildDebtLeasesSchedule(
     ),
     expr: '@table["tranche_apr32", col.prev] - DebtTranches["tranche_apr32", @col]',
   })
-  table.addRow("tranche_japan", {
+  debtTable.addRow("tranche_japan", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       "Japan Guaranteed Senior Notes",
@@ -73,7 +76,7 @@ export function buildDebtLeasesSchedule(
     ),
     expr: '@table["tranche_japan", col.prev] - DebtTranches["tranche_japan", @col]',
   })
-  table.addRow("tranche_may24", {
+  debtTable.addRow("tranche_may24", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
@@ -83,7 +86,7 @@ export function buildDebtLeasesSchedule(
       ...zeroForecastCells("Retired at May 2024 maturity."),
     },
   })
-  table.addRow("tranche_may22", {
+  debtTable.addRow("tranche_may22", {
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
@@ -93,21 +96,21 @@ export function buildDebtLeasesSchedule(
       ...zeroForecastCells("Retired at May 2022 maturity."),
     },
   })
-  table.addRow("total_lt_debt_principal", {
+  debtTable.addRow("total_lt_debt_principal", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: 'SUM(@table["tranche_may27".."tranche_may22", @col])',
     cells: { line_item: "Total long-term debt principal" },
   })
-  table.addRow("unamortized_discounts", {
+  debtTable.addRow("unamortized_discounts", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       "(−) Unamortized debt discounts",
       dl.unamortizedDiscounts
     ),
-    expr: 'MAX(0, @table["unamortized_discounts", col.prev] - MIN(@table["unamortized_discounts", col.prev], ScalarAssumptionsActive["unamortized_discount_amort_annual", "val"]))',
+    expr: 'MAX(0, @table["unamortized_discounts", col.prev] - MIN(@table["unamortized_discounts", col.prev], ScalarAssumptionsOperating["unamortized_discount_amort_annual", "val"]))',
   })
-  table.addRow("discount_amortization", {
+  debtTable.addRow("discount_amortization", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Non-cash discount amortization",
@@ -122,13 +125,13 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("total_lt_debt_carrying", {
+  debtTable.addRow("total_lt_debt_carrying", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     expr: '@table["total_lt_debt_principal", @col] - @table["unamortized_discounts", @col]',
     cells: { line_item: "Total LT debt (carrying value)" },
   })
-  table.addRow("scheduled_lt_debt_repayments", {
+  debtTable.addRow("scheduled_lt_debt_repayments", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Scheduled LT debt repayments",
@@ -146,10 +149,10 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("current_portion_lt_debt_total", {
+  debtTable.addRow("current_portion_lt_debt_total", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Current portion of LT debt (total)",
+      line_item: "Total current portion of LT debt",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [p, dl.currentPortionDebtSched[p]])
       ),
@@ -164,7 +167,7 @@ export function buildDebtLeasesSchedule(
       FY36E: 0,
     },
   })
-  table.addRow("current_portion_lt_debt_bs", {
+  debtTable.addRow("current_portion_lt_debt_bs", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Current portion of LT debt (BS)",
@@ -187,20 +190,20 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("current_portion_in_ocl", {
+  debtTable.addRow("current_portion_in_ocl", {
     ...rowFormatOptions("currency", 0),
     expr: '@table["current_portion_lt_debt_total", @col] - @table["current_portion_lt_debt_bs", @col]',
-    cells: { line_item: "Current debt in OCL (FY24 reclass)" },
+    cells: { line_item: "Current debt in OCL (FY24 recl.)" },
   })
-  table.addRow("long_term_debt_excl_current", {
+  debtTable.addRow("long_term_debt_excl_current", {
     ...rowFormatOptions("currency", 0),
     expr: '@table["total_lt_debt_carrying", @col] - @table["current_portion_lt_debt_total", @col]',
     cells: { line_item: "Long-term debt, excl. current" },
   })
 
-  table.addRowGutter()
-  table.addSectionHeader("Short-term credit facility and cash floor")
-  table.addRow("revolver_beg", {
+  debtTable.addRowGutter()
+  debtTable.addSectionHeader("Short-term credit facility and cash floor")
+  debtTable.addRow("revolver_beg", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Beginning ST credit borrowings",
@@ -213,7 +216,7 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("pre_revolver_cash", {
+  debtTable.addRow("pre_revolver_cash", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Pre-facility ending cash",
@@ -230,7 +233,7 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("revolver_draw", {
+  debtTable.addRow("revolver_draw", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "(+) Credit facility draw",
@@ -239,13 +242,13 @@ export function buildDebtLeasesSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'MAX(0, ScalarAssumptionsActive["min_cash_buffer", "val"] - @table["pre_revolver_cash", @col])',
+            expr: 'MAX(0, ScalarAssumptionsOperating["min_cash_buffer", "val"] - @table["pre_revolver_cash", @col])',
           },
         ])
       ),
     },
   })
-  table.addRow("revolver_repay", {
+  debtTable.addRow("revolver_repay", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "(−) Credit facility repayment",
@@ -254,13 +257,13 @@ export function buildDebtLeasesSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'MIN(@table["revolver_beg", @col], MAX(0, @table["pre_revolver_cash", @col] - ScalarAssumptionsActive["min_cash_buffer", "val"]))',
+            expr: 'MIN(@table["revolver_beg", @col], MAX(0, @table["pre_revolver_cash", @col] - ScalarAssumptionsOperating["min_cash_buffer", "val"]))',
           },
         ])
       ),
     },
   })
-  table.addRow("revolver_end", {
+  debtTable.addRow("revolver_end", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     cells: {
@@ -279,12 +282,26 @@ export function buildDebtLeasesSchedule(
     },
   })
 
-  table.addRowGutter()
-  table.addSectionHeader("Operating and finance lease liabilities")
-  table.addRow("total_op_lease_liab", {
+  const leasesTable = sheet.addTable(
+    "LeasesInterestSchedule",
+    "ASC 842 Leases, Interest Expense & Cash Yield ($M)",
+    {
+      subtitle: [
+        "FY22A–FY26A audited; FY27E–FY36E operating and finance lease liabilities and opening-balance net interest ($M)",
+        `Source: ${kg.citations.debtLeases}`,
+      ],
+      currency: "USD",
+    }
+  )
+  addTimeSeriesColumns(leasesTable, {
+    descriptorLabel: "Leases & interest ($M)",
+  })
+
+  leasesTable.addSectionHeader("Operating and finance lease liabilities")
+  leasesTable.addRow("total_op_lease_liab", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Total operating lease liabilities",
+      line_item: "Total op. lease liabilities",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
@@ -297,21 +314,21 @@ export function buildDebtLeasesSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'WorkingCapitalPPE["op_lease_rou_assets", @col] * ScalarAssumptionsActive["op_lease_liab_to_rou_ratio", "val"]',
+            expr: 'WorkingCapitalPPE["op_lease_rou_assets", @col] * ScalarAssumptionsValuation["op_lease_liab_to_rou_ratio", "val"]',
           },
         ])
       ),
     },
   })
-  table.addRow("current_op_lease_liab", {
+  leasesTable.addRow("current_op_lease_liab", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
-      "Current operating leases (in OCL)",
+      "Current op. leases (in OCL)",
       dl.currentOpLeaseLiab
     ),
-    expr: '@table["total_op_lease_liab", @col] * ScalarAssumptionsActive["op_lease_current_share", "val"]',
+    expr: '@table["total_op_lease_liab", @col] * ScalarAssumptionsValuation["op_lease_current_share", "val"]',
   })
-  table.addRow("lt_op_lease_liab", {
+  leasesTable.addRow("lt_op_lease_liab", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       "LT operating lease liabilities",
@@ -319,7 +336,7 @@ export function buildDebtLeasesSchedule(
     ),
     expr: '@table["total_op_lease_liab", @col] - @table["current_op_lease_liab", @col]',
   })
-  table.addRow("total_fin_lease_liab", {
+  leasesTable.addRow("total_fin_lease_liab", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Total finance lease liabilities",
@@ -335,21 +352,21 @@ export function buildDebtLeasesSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["fin_lease_pct_sales", "val"]',
+            expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsValuation["fin_lease_pct_sales", "val"]',
           },
         ])
       ),
     },
   })
-  table.addRow("current_fin_lease_liab", {
+  leasesTable.addRow("current_fin_lease_liab", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       "Current finance leases (in OCL)",
       dl.currentFinLeaseLiab
     ),
-    expr: '@table["total_fin_lease_liab", @col] * ScalarAssumptionsActive["fin_lease_current_share", "val"]',
+    expr: '@table["total_fin_lease_liab", @col] * ScalarAssumptionsValuation["fin_lease_current_share", "val"]',
   })
-  table.addRow("lt_fin_lease_liab", {
+  leasesTable.addRow("lt_fin_lease_liab", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       "LT finance leases (in OLTL)",
@@ -357,15 +374,15 @@ export function buildDebtLeasesSchedule(
     ),
     expr: '@table["total_fin_lease_liab", @col] - @table["current_fin_lease_liab", @col]',
   })
-  table.addRow("fin_lease_principal_repayments", {
+  leasesTable.addRow("fin_lease_principal_repayments", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap(
       "Fin. lease principal paid (CFF)",
       dl.cashPaidFinanceLeasesCff
     ),
-    expr: '@table["total_fin_lease_liab", col.prev] * ScalarAssumptionsActive["fin_lease_principal_pct", "val"]',
+    expr: '@table["total_fin_lease_liab", col.prev] * ScalarAssumptionsValuation["fin_lease_principal_pct", "val"]',
   })
-  table.addRow("new_fin_lease_additions", {
+  leasesTable.addRow("new_fin_lease_additions", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Non-cash new fin. lease ROU add.",
@@ -380,16 +397,18 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("total_debt_and_leases", {
+  leasesTable.addRow("total_debt_and_leases", {
     ...rowFormatOptions("currency", 0),
     style: "total",
-    expr: '@table["total_lt_debt_carrying", @col] + @table["revolver_end", @col] + @table["total_fin_lease_liab", @col] + @table["total_op_lease_liab", @col]',
+    expr: 'DebtSchedule["total_lt_debt_carrying", @col] + DebtSchedule["revolver_end", @col] + @table["total_fin_lease_liab", @col] + @table["total_op_lease_liab", @col]',
     cells: { line_item: "Total debt and lease obligations" },
   })
 
-  table.addRowGutter()
-  table.addSectionHeader("Opening-balance interest expense and cash yield")
-  table.addRow("maturity_fy_absent_weight", {
+  leasesTable.addRowGutter()
+  leasesTable.addSectionHeader(
+    "Opening-balance interest expense and cash yield"
+  )
+  leasesTable.addRow("maturity_fy_absent_weight", {
     ...rowFormatOptions("percentage", 1),
     cells: {
       line_item: "Scheduled maturity absent weight",
@@ -399,12 +418,12 @@ export function buildDebtLeasesSchedule(
           p,
           p === "FY27E"
             ? {
-                expr: 'ScalarAssumptionsActive["scheduled_debt_fy_absent_weight", "val"]',
+                expr: 'ScalarAssumptionsOperating["scheduled_debt_fy_absent_weight", "val"]',
                 note: "May/Jun 2027 senior note maturities (23.0% absent weight).",
               }
             : p === "FY30E" || p === "FY32E"
               ? {
-                  expr: 'ScalarAssumptionsActive["apr_maturity_fy_absent_weight", "val"]',
+                  expr: 'ScalarAssumptionsOperating["apr_maturity_fy_absent_weight", "val"]',
                   note: "April senior note maturity (37.0% absent weight).",
                 }
               : 0,
@@ -412,7 +431,7 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("senior_notes_interest", {
+  leasesTable.addRow("senior_notes_interest", {
     ...rowFormatOptions("currency", 1),
     cells: {
       line_item: "Senior notes coupon interest",
@@ -428,13 +447,13 @@ export function buildDebtLeasesSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'SUMPRODUCT(@table["tranche_may27".."tranche_japan", col.prev], DebtTranches["tranche_may27".."tranche_japan", "coupon_rate"]) - @table["maturity_fy_absent_weight", @col] * SUMPRODUCT(DebtTranches["tranche_may27".."tranche_japan", @col], DebtTranches["tranche_may27".."tranche_japan", "coupon_rate"])',
+            expr: 'SUMPRODUCT(DebtSchedule["tranche_may27".."tranche_japan", col.prev], DebtTranches["tranche_may27".."tranche_japan", "coupon_rate"]) - @table["maturity_fy_absent_weight", @col] * SUMPRODUCT(DebtTranches["tranche_may27".."tranche_japan", @col], DebtTranches["tranche_may27".."tranche_japan", "coupon_rate"])',
           },
         ])
       ),
     },
   })
-  table.addRow("revolver_interest", {
+  leasesTable.addRow("revolver_interest", {
     ...rowFormatOptions("currency", 1),
     cells: {
       line_item: "Short-term facility interest",
@@ -443,13 +462,13 @@ export function buildDebtLeasesSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '@table["revolver_end", col.prev] * (MarketAnchors["rf_par_10y", "val"] + ScalarAssumptionsActive["revolver_spread_over_rf", "val"])',
+            expr: 'DebtSchedule["revolver_end", col.prev] * (MarketAnchorsMarket["rf_par_10y", "val"] + ScalarAssumptionsOperating["revolver_spread_over_rf", "val"])',
           },
         ])
       ),
     },
   })
-  table.addRow("debt_interest_est", {
+  leasesTable.addRow("debt_interest_est", {
     ...rowFormatOptions("currency", 1),
     cells: {
       line_item: "Debt, facility & disc. interest",
@@ -463,43 +482,43 @@ export function buildDebtLeasesSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '@table["senior_notes_interest", @col] + @table["revolver_interest", @col] + @table["discount_amortization", @col]',
+            expr: '@table["senior_notes_interest", @col] + @table["revolver_interest", @col] + DebtSchedule["discount_amortization", @col]',
           },
         ])
       ),
     },
   })
-  table.addRow("fin_lease_interest", {
+  leasesTable.addRow("fin_lease_interest", {
     ...rowFormatOptions("currency", 1),
     cells: buildHistoricalCellMap(
       "Disclosed fin. lease interest",
       dl.financeLeaseInterest
     ),
-    expr: '@table["total_fin_lease_liab", col.prev] * ScalarAssumptionsActive["fin_lease_interest_rate", "val"]',
+    expr: '@table["total_fin_lease_liab", col.prev] * ScalarAssumptionsValuation["fin_lease_interest_rate", "val"]',
   })
-  table.addRow("fin_lease_interest_in_is", {
+  leasesTable.addRow("fin_lease_interest_in_is", {
     ...rowFormatOptions("currency", 1),
-    expr: '@table["fin_lease_interest", @col] * ScalarAssumptionsActive["fin_lease_int_in_gaap_int_pct", "val"]',
+    expr: '@table["fin_lease_interest", @col] * ScalarAssumptionsValuation["fin_lease_int_in_gaap_int_pct", "val"]',
     cells: {
       line_item: "Fin. lease int. in GAAP interest",
       FY27E: {
-        expr: '@table["fin_lease_interest", "FY27E"] * ScalarAssumptionsActive["fin_lease_int_in_gaap_int_pct", "val"]',
+        expr: '@table["fin_lease_interest", "FY27E"] * ScalarAssumptionsValuation["fin_lease_int_in_gaap_int_pct", "val"]',
         note: "Reconciles to FY26 $145M GAAP interest baseline; remaining finance-lease interest is capitalized or embedded in operating costs.",
       },
     },
   })
-  table.addRow("total_interest_expense", {
+  leasesTable.addRow("total_interest_expense", {
     ...rowFormatOptions("currency", 0),
     style: "subtotal",
     cells: buildHistoricalCellMap("Total interest expense", is.interestExpense),
     expr: '@table["debt_interest_est", @col] + @table["fin_lease_interest_in_is", @col]',
   })
-  table.addRow("beg_cash_and_sti", {
+  leasesTable.addRow("beg_cash_and_sti", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Opening cash and STI",
       FY22: {
-        expr: 'MarketAnchors["fy21_cash_sti", "val"]',
+        expr: 'MarketAnchorsMarket["fy21_cash_sti", "val"]',
         note: "FY21 ending cash and short-term investments per FY22 Form 10-K.",
       },
       ...Object.fromEntries(
@@ -512,7 +531,7 @@ export function buildDebtLeasesSchedule(
       ),
     },
   })
-  table.addRow("eff_interest_bearing_cash", {
+  leasesTable.addRow("eff_interest_bearing_cash", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Effective interest-bearing cash",
@@ -527,33 +546,33 @@ export function buildDebtLeasesSchedule(
           p,
           p === "FY27E"
             ? {
-                expr: 'MAX(0, @table["beg_cash_and_sti", @col] - MarketAnchors["cc_receivables_in_cash", "val"] - ShareEquitySchedule["special_dividend_paid", @col] * ScalarAssumptionsActive["special_div_fy_absent_weight", "val"] - @table["scheduled_lt_debt_repayments", @col] * @table["maturity_fy_absent_weight", @col])',
+                expr: 'MAX(0, @table["beg_cash_and_sti", @col] - MarketAnchorsMarket["cc_receivables_in_cash", "val"] - ShareEquitySchedule["special_dividend_paid", @col] * ScalarAssumptionsOperating["special_div_fy_absent_weight", "val"] - DebtSchedule["scheduled_lt_debt_repayments", @col] * @table["maturity_fy_absent_weight", @col])',
                 note: "Excludes $2,842M non-interest-bearing card receivables in transit plus time-weighted Dec 4 special dividend and May/Jun 2027 debt maturities.",
               }
             : {
-                expr: 'MAX(0, @table["beg_cash_and_sti", @col] - MarketAnchors["cc_receivables_in_cash", "val"] - ShareEquitySchedule["special_dividend_paid", @col] * ScalarAssumptionsActive["special_div_fy_absent_weight", "val"] - @table["scheduled_lt_debt_repayments", @col] * @table["maturity_fy_absent_weight", @col])',
+                expr: 'MAX(0, @table["beg_cash_and_sti", @col] - MarketAnchorsMarket["cc_receivables_in_cash", "val"] - ShareEquitySchedule["special_dividend_paid", @col] * ScalarAssumptionsOperating["special_div_fy_absent_weight", "val"] - DebtSchedule["scheduled_lt_debt_repayments", @col] * @table["maturity_fy_absent_weight", @col])',
               },
         ])
       ),
     },
   })
-  table.addRow("interest_income", {
+  leasesTable.addRow("interest_income", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap("Interest income", is.interestIncome),
-    expr: '@table["eff_interest_bearing_cash", @col] * ScalarAssumptionsActive["cash_interest_yield", "val"]',
+    expr: '@table["eff_interest_bearing_cash", @col] * ScalarAssumptionsOperating["cash_interest_yield", "val"]',
   })
-  table.addRow("implied_cash_yield", {
+  leasesTable.addRow("implied_cash_yield", {
     ...rowFormatOptions("percentage", 2),
     style: "bold",
     expr: 'IF(@table["eff_interest_bearing_cash", @col] > 0, @table["interest_income", @col] / @table["eff_interest_bearing_cash", @col], NA())',
     cells: { line_item: "Effective interest yield (%)" },
   })
-  table.addRow("net_cash_incl_leases", {
+  leasesTable.addRow("net_cash_incl_leases", {
     ...rowFormatOptions("currency", 0),
     style: "total",
     expr: 'BalanceSheet["cash_and_equivalents", @col] + BalanceSheet["short_term_investments", @col] - @table["total_debt_and_leases", @col]',
     cells: { line_item: "Net cash / (debt incl. leases)" },
   })
 
-  return table
+  return { debtSchedule: debtTable, leasesInterestSchedule: leasesTable }
 }

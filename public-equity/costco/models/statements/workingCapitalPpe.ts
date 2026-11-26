@@ -35,7 +35,7 @@ export function buildWorkingCapitalPpeSchedule(
   table.addRow("receivables_net", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap("Receivables, net", bs.receivablesNet),
-    expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["dso_days", "val"] / OperatingSchedule["fiscal_days", @col]',
+    expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["dso_days", "val"] / OperatingVolumeSchedule["fiscal_days", @col]',
   })
   table.addRow("merchandise_inventories", {
     ...rowFormatOptions("currency", 0),
@@ -43,7 +43,7 @@ export function buildWorkingCapitalPpeSchedule(
       "Merchandise inventories",
       bs.merchandiseInventories
     ),
-    expr: 'OperatingSchedule["merchandise_costs", @col] * ScalarAssumptionsActive["dio_days", "val"] / OperatingSchedule["fiscal_days", @col]',
+    expr: 'OperatingMarginSchedule["merchandise_costs", @col] * ScalarAssumptionsOperating["dio_days", "val"] / OperatingVolumeSchedule["fiscal_days", @col]',
   })
   table.addRow("other_current_assets", {
     ...rowFormatOptions("currency", 0),
@@ -51,7 +51,7 @@ export function buildWorkingCapitalPpeSchedule(
       "Other current assets",
       bs.otherCurrentAssets
     ),
-    expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["other_current_assets_pct_sales", "val"]',
+    expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["other_current_assets_pct_sales", "val"]',
   })
   table.addRow("total_op_current_assets", {
     ...rowFormatOptions("currency", 0),
@@ -63,7 +63,7 @@ export function buildWorkingCapitalPpeSchedule(
   table.addRow("accounts_payable", {
     ...rowFormatOptions("currency", 0),
     cells: buildHistoricalCellMap("Accounts payable", bs.accountsPayable),
-    expr: 'OperatingSchedule["merchandise_costs", @col] * ScalarAssumptionsActive["dpo_days", "val"] / OperatingSchedule["fiscal_days", @col]',
+    expr: 'OperatingMarginSchedule["merchandise_costs", @col] * ScalarAssumptionsOperating["dpo_days", "val"] / OperatingVolumeSchedule["fiscal_days", @col]',
   })
   table.addRow("accrued_salaries", {
     ...rowFormatOptions("currency", 0),
@@ -71,7 +71,7 @@ export function buildWorkingCapitalPpeSchedule(
       "Accrued salaries and benefits",
       bs.accruedSalariesAndBenefits
     ),
-    expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["accrued_salaries_days", "val"] / OperatingSchedule["fiscal_days", @col]',
+    expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["accrued_salaries_days", "val"] / OperatingVolumeSchedule["fiscal_days", @col]',
   })
   table.addRow("accrued_member_rewards", {
     ...rowFormatOptions("currency", 0),
@@ -79,7 +79,7 @@ export function buildWorkingCapitalPpeSchedule(
       "Accrued member rewards",
       bs.accruedMemberRewards
     ),
-    expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["accrued_rewards_pct_sales", "val"]',
+    expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["accrued_rewards_pct_sales", "val"]',
   })
   table.addRow("deferred_membership_fees", {
     ...rowFormatOptions("currency", 0),
@@ -87,7 +87,7 @@ export function buildWorkingCapitalPpeSchedule(
       "Deferred membership fees",
       bs.deferredMembershipFees
     ),
-    expr: 'OperatingSchedule["membership_fees", @col] * ScalarAssumptionsActive["deferred_mfi_pct_mfi", "val"]',
+    expr: 'OperatingMarginSchedule["membership_fees", @col] * ScalarAssumptionsOperating["deferred_mfi_pct_mfi", "val"]',
   })
   table.addRow("other_current_liab_op", {
     ...rowFormatOptions("currency", 0),
@@ -98,11 +98,11 @@ export function buildWorkingCapitalPpeSchedule(
           p,
           p === "FY24"
             ? {
-                expr: 'BalanceSheet["other_current_liabilities", @col] - DebtLeasesSchedule["current_op_lease_liab", @col] - DebtLeasesSchedule["current_fin_lease_liab", @col] - DebtLeasesSchedule["current_portion_in_ocl", @col]',
+                expr: 'BalanceSheet["other_current_liabilities", @col] - LeasesInterestSchedule["current_op_lease_liab", @col] - LeasesInterestSchedule["current_fin_lease_liab", @col] - DebtSchedule["current_portion_in_ocl", @col]',
                 note: "Excludes current operating/finance leases and FY24 $103M reclassified current debt.",
               }
             : {
-                expr: 'BalanceSheet["other_current_liabilities", @col] - DebtLeasesSchedule["current_op_lease_liab", @col] - DebtLeasesSchedule["current_fin_lease_liab", @col] - DebtLeasesSchedule["current_portion_in_ocl", @col]',
+                expr: 'BalanceSheet["other_current_liabilities", @col] - LeasesInterestSchedule["current_op_lease_liab", @col] - LeasesInterestSchedule["current_fin_lease_liab", @col] - DebtSchedule["current_portion_in_ocl", @col]',
               },
         ])
       ),
@@ -110,7 +110,7 @@ export function buildWorkingCapitalPpeSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["other_current_liab_op_pct_sales", "val"]',
+            expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["other_current_liab_op_pct_sales", "val"]',
           },
         ])
       ),
@@ -146,17 +146,17 @@ export function buildWorkingCapitalPpeSchedule(
   table.addSectionHeader("Working capital efficiency ratios")
   table.addRow("dso_days", {
     ...rowFormatOptions("number", 1),
-    expr: '@table["receivables_net", @col] / OperatingSchedule["net_sales", @col] * OperatingSchedule["fiscal_days", @col]',
+    expr: '@table["receivables_net", @col] / OperatingVolumeSchedule["net_sales", @col] * OperatingVolumeSchedule["fiscal_days", @col]',
     cells: { line_item: "Receivables days (DSO)" },
   })
   table.addRow("dio_days", {
     ...rowFormatOptions("number", 1),
-    expr: '@table["merchandise_inventories", @col] / OperatingSchedule["merchandise_costs", @col] * OperatingSchedule["fiscal_days", @col]',
+    expr: '@table["merchandise_inventories", @col] / OperatingMarginSchedule["merchandise_costs", @col] * OperatingVolumeSchedule["fiscal_days", @col]',
     cells: { line_item: "Inventory days (DIO)" },
   })
   table.addRow("dpo_days", {
     ...rowFormatOptions("number", 1),
-    expr: '@table["accounts_payable", @col] / OperatingSchedule["merchandise_costs", @col] * OperatingSchedule["fiscal_days", @col]',
+    expr: '@table["accounts_payable", @col] / OperatingMarginSchedule["merchandise_costs", @col] * OperatingVolumeSchedule["fiscal_days", @col]',
     cells: { line_item: "Payables days (DPO)" },
   })
   table.addRow("cash_conversion_cycle", {
@@ -167,7 +167,7 @@ export function buildWorkingCapitalPpeSchedule(
   })
   table.addRow("def_mfi_pct_mfi", {
     ...rowFormatOptions("percentage", 1),
-    expr: '@table["deferred_membership_fees", @col] / OperatingSchedule["membership_fees", @col]',
+    expr: '@table["deferred_membership_fees", @col] / OperatingMarginSchedule["membership_fees", @col]',
     cells: { line_item: "Deferred MFI (% annual MFI)" },
   })
 
@@ -178,7 +178,7 @@ export function buildWorkingCapitalPpeSchedule(
     cells: {
       line_item: "Beginning net PP&E",
       FY22: {
-        expr: 'MarketAnchors["fy21_ppe_net", "val"]',
+        expr: 'MarketAnchorsMarket["fy21_ppe_net", "val"]',
         note: "FY21 ending net PP&E per FY22 Form 10-K.",
       },
       ...Object.fromEntries(
@@ -203,7 +203,7 @@ export function buildWorkingCapitalPpeSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'OperatingSchedule["net_sales", @col] * PeriodAssumptionsActive["capex_pct_net_sales", @col]',
+            expr: 'OperatingVolumeSchedule["net_sales", @col] * PeriodAssumptionsActive["capex_pct_net_sales", @col]',
           },
         ])
       ),
@@ -215,7 +215,7 @@ export function buildWorkingCapitalPpeSchedule(
       "(−) Depreciation & amortization",
       cf.depreciationAndAmortization
     ),
-    expr: '@table["beg_ppe_net", @col] * ScalarAssumptionsActive["da_pct_beg_ppe", "val"]',
+    expr: '@table["beg_ppe_net", @col] * ScalarAssumptionsOperating["da_pct_beg_ppe", "val"]',
   })
   table.addRow("ppe_fx_other", {
     ...rowFormatOptions("currency", 0),
@@ -249,7 +249,7 @@ export function buildWorkingCapitalPpeSchedule(
       "Operating lease ROU assets",
       bs.operatingLeaseRouAssets
     ),
-    expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["op_lease_rou_pct_sales", "val"]',
+    expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["op_lease_rou_pct_sales", "val"]',
   })
   table.addRow("other_lt_assets", {
     ...rowFormatOptions("currency", 0),
@@ -257,17 +257,17 @@ export function buildWorkingCapitalPpeSchedule(
       "Other long-term assets",
       bs.otherLongTermAssets
     ),
-    expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["other_lt_op_assets_pct_sales", "val"]',
+    expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["other_lt_op_assets_pct_sales", "val"]',
   })
   table.addRow("other_lt_op_liab", {
     ...rowFormatOptions("currency", 0),
     cells: {
-      line_item: "Other LT op. liab. (ex-fin. lease)",
+      line_item: "Other LT op. liab. (ex-lease)",
       ...Object.fromEntries(
         HISTORICAL_PERIODS.map((p) => [
           p,
           {
-            expr: 'BalanceSheet["other_long_term_liabilities", @col] - DebtLeasesSchedule["lt_fin_lease_liab", @col]',
+            expr: 'BalanceSheet["other_long_term_liabilities", @col] - LeasesInterestSchedule["lt_fin_lease_liab", @col]',
           },
         ])
       ),
@@ -275,7 +275,7 @@ export function buildWorkingCapitalPpeSchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'OperatingSchedule["net_sales", @col] * ScalarAssumptionsActive["other_lt_op_liab_pct_sales", "val"]',
+            expr: 'OperatingVolumeSchedule["net_sales", @col] * ScalarAssumptionsOperating["other_lt_op_liab_pct_sales", "val"]',
           },
         ])
       ),

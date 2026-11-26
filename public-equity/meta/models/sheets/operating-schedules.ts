@@ -515,7 +515,7 @@ export function buildOperatingSchedulesSheet(
   })
 
   const capexFlowCells: Record<string, Cell | number | null> = {
-    label: new Cell({ value: "Total CapEx additions (incl. finance leases)" }),
+    label: new Cell({ value: "Total CapEx additions (incl. fin. leases)" }),
     "2022A": new Cell({
       expr: '-CashFlowStatement["capex_ppe", "2022A"] - CashFlowStatement["finance_lease_principal", "2022A"]',
     }),
@@ -835,7 +835,7 @@ export function buildOperatingSchedulesSheet(
   )
   makeDeltaRow(
     "cf_chg_op_accr",
-    "Cash flow impact: Operating accrued expenses",
+    "Cash flow impact: Operating accrued exp.",
     "operating_accrued_expenses",
     1
   )
@@ -937,7 +937,7 @@ export function buildOperatingSchedulesSheet(
 
   makeDeltaRow(
     "cf_chg_legal_cur",
-    "Cash flow impact: Current accrued legal payout",
+    "Cash flow impact: Current legal payout",
     "legal_accruals_current",
     1
   )
@@ -1527,7 +1527,7 @@ export function buildOperatingSchedulesSheet(
   })
 
   const rsuNetSh: Record<string, Cell | number | null> = {
-    label: new Cell({ value: "Net RSU shares issued (after tax withholding)" }),
+    label: new Cell({ value: "Net RSU shares issued (after tax withheld)" }),
     "2022A": null,
     "2023A": null,
     "2024A": null,
@@ -1769,4 +1769,12 @@ export function buildOperatingSchedulesSheet(
     "LTM Q3 26": new Cell({ expr: '@table["headcount", "9M26A"]' }),
   }
   geo.addRow("headcount", { cells: hcCells, format: "integer" })
+
+  sheet.setBands([
+    seg,
+    geo,
+    { lanes: [ppe], pageBreakBefore: true },
+    wc,
+    { lanes: [debt], pageBreakBefore: true },
+  ])
 }

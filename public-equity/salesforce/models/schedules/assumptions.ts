@@ -43,7 +43,7 @@ function addPeriodDriverTable(
   addForecastColumns(table, "Assumption")
   table.addColumn("provenance", {
     role: "descriptor",
-    header: bundle.key === "base" ? "Basis" : "Flex vs. Base",
+    header: bundle.key === "base" ? "Basis / Source" : "Flex vs. Base",
   })
 
   let lastCategory = ""
@@ -58,7 +58,7 @@ function addPeriodDriverTable(
     }
     const provText =
       bundle.key === "base"
-        ? (driver.meta.basis ?? driver.meta.source ?? "")
+        ? formatDriverProvenance(driver.meta)
         : periodFlexLabel(key, bundle, baseBundle)
     const cells: Record<string, Cell | number | string> = {
       item: driver.meta.label,
@@ -132,17 +132,11 @@ export function buildAssumptionsSheet(
     "ScenarioControl",
     "Active Scenario Control",
     {
-      subtitle: wrapSubtitle(
-        [
-          "1 = Downside | 2 = Base | 3 = Upside",
-          "Toggling Active Case recalculates all schedules",
-        ],
-        56
-      ),
+      subtitle: "1 = Downside | 2 = Base | 3 = Upside (live toggle)",
     }
   )
   scenarioControl.addColumn("item", { role: "descriptor", header: "Control" })
-  scenarioControl.addColumn("val", { headers: ["Active", "Case"] })
+  scenarioControl.addColumn("val", { header: "Active" })
 
   scenarioControl.addRow("active", {
     cells: {
@@ -155,15 +149,10 @@ export function buildAssumptionsSheet(
     format: "integer",
   })
 
-  const scenarioGuide = sheet.addTable("ScenarioGuide", "Scenario Case Guide", {
-    subtitle: wrapSubtitle(
-      "Scenario index mapping (Downside / Base / Upside)",
-      80
-    ),
-  })
+  const scenarioGuide = sheet.addTable("ScenarioGuide", "Scenario Case Guide")
   scenarioGuide.addColumn("item", { role: "descriptor", header: "Case" })
   scenarioGuide.addColumn("idx", {
-    headers: ["Index", "Code"],
+    header: "Index",
     format: "integer",
   })
   scenarioGuide.addColumn("summary", {
@@ -207,18 +196,16 @@ export function buildAssumptionsSheet(
   )
   scalarDrivers.addColumn("item", { role: "descriptor", header: "Assumption" })
   scalarDrivers.addColumn("active", {
-    headers: ["Active", "Case"],
+    header: "Active",
     style: "bold",
     shade: "muted",
   })
   scalarDrivers.addColumn("downside", {
     header: "Downside",
-    group: "Scenario Inputs",
   })
-  scalarDrivers.addColumn("base", { header: "Base", group: "Scenario Inputs" })
+  scalarDrivers.addColumn("base", { header: "Base" })
   scalarDrivers.addColumn("upside", {
     header: "Upside",
-    group: "Scenario Inputs",
   })
   scalarDrivers.addColumn("provenance", {
     role: "descriptor",
@@ -308,7 +295,7 @@ export function buildAssumptionsSheet(
     sheet,
     "PeriodDriversBase",
     "Base Case Multi-Year Assumptions",
-    wrapSubtitle(scenarios.base.framing, 140),
+    wrapSubtitle(scenarios.base.framing, 148),
     scenarios.base,
     scenarios.base
   )

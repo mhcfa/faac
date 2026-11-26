@@ -130,22 +130,26 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
     const p = peers[ent]
     const pid = PEER_ROW_ID[ent]
     const fxRef = `PeerEvBridge["${pid}", "fx"]`
+    const ltmTbl =
+      ent === "AIR.PA" || ent === "GE" || ent === "RTX"
+        ? "PeerLtmBridge"
+        : "PeerLtmBridgeDefense"
     comps.addRow(pid, {
       cells: {
         company: `${p.name} (${ent})`,
         cohort: PEER_SHORT_COHORT[ent],
         ev_usd: new Cell({ expr: `PeerEvBridge["${pid}", "ev_usd"]` }),
         ltm_ebit_mgn: new Cell({
-          expr: `PeerLtmBridge["${pid}_ebit", "ltm_usd"] / PeerLtmBridge["${pid}_rev", "ltm_usd"]`,
+          expr: `${ltmTbl}["${pid}_ebit", "ltm_usd"] / ${ltmTbl}["${pid}_rev", "ltm_usd"]`,
         }),
         ltm_ebitda_mgn: new Cell({
-          expr: `PeerLtmBridge["${pid}_ebitda", "ltm_usd"] / PeerLtmBridge["${pid}_rev", "ltm_usd"]`,
+          expr: `${ltmTbl}["${pid}_ebitda", "ltm_usd"] / ${ltmTbl}["${pid}_rev", "ltm_usd"]`,
         }),
         ev_ltm_ebitda: new Cell({
-          expr: `IF(PeerLtmBridge["${pid}_ebitda", "ltm_usd"] > 0, @table[@row, "ev_usd"] / PeerLtmBridge["${pid}_ebitda", "ltm_usd"], NA())`,
+          expr: `IF(${ltmTbl}["${pid}_ebitda", "ltm_usd"] > 0, @table[@row, "ev_usd"] / ${ltmTbl}["${pid}_ebitda", "ltm_usd"], NA())`,
         }),
         ev_ltm_ebit: new Cell({
-          expr: `IF(PeerLtmBridge["${pid}_ebit", "ltm_usd"] > 0, @table[@row, "ev_usd"] / PeerLtmBridge["${pid}_ebit", "ltm_usd"], NA())`,
+          expr: `IF(${ltmTbl}["${pid}_ebit", "ltm_usd"] > 0, @table[@row, "ev_usd"] / ${ltmTbl}["${pid}_ebit", "ltm_usd"], NA())`,
         }),
         ev_fy26_rev: new Cell({
           expr: `@table[@row, "ev_usd"] / (PeerConsensusInputs["${pid}", "rev_26e"] * ${fxRef})`,
@@ -858,161 +862,235 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
   )
 
   // =========================================================================
-  // BAND 6: PeerLtmBridge (1:1 audited FY25, 9M25, 9M26 -> live LTM & USD)
+  // BANDS 6–7: PeerLtmBridge (Commercial/Hybrid OEMs) & PeerLtmBridgeDefense
   // =========================================================================
-  const ltm = sheet.addTable(
-    "PeerLtmBridge",
-    "Peer LTM Q3 2026 Operating Bridge (Audited Filing Components)",
-    {
-      subtitle:
-        "($ in millions USD; AIR.PA local rows in €M translated at spot EUR/USD) | LTM Q3 2026A equals FY2025A + 9M 2026A − 9M 2025A",
-    }
-  )
-  ltm.addColumn("metric", { role: "descriptor", headers: ["Peer & metric"] })
-  ltm.addColumn("fx_mult", {
-    headers: ["FX", "to USD"],
-    format: "number",
-    decimals: 4,
-  })
-  ltm.addColumn("fy25_a", {
-    group: "FY2025A",
-    headers: ["Primary"],
-    format: "number",
-    decimals: 0,
-  })
-  ltm.addColumn("fy25_b", {
-    group: "FY2025A",
-    headers: ["Addl."],
-    format: "number",
-    decimals: 0,
-  })
-  ltm.addColumn("ytd25_a", {
-    group: "9M 2025A",
-    headers: ["Primary"],
-    format: "number",
-    decimals: 0,
-  })
-  ltm.addColumn("ytd25_b", {
-    group: "9M 2025A",
-    headers: ["Addl."],
-    format: "number",
-    decimals: 0,
-  })
-  ltm.addColumn("ytd26_a", {
-    group: "9M 2026A",
-    headers: ["Primary"],
-    format: "number",
-    decimals: 0,
-  })
-  ltm.addColumn("ytd26_b", {
-    group: "9M 2026A",
-    headers: ["Addl."],
-    format: "number",
-    decimals: 0,
-  })
-  ltm.addColumn("ltm_local", {
-    group: "LTM Q3 26A",
-    headers: ["Local", "Curr."],
-    format: "number",
-    decimals: 0,
-  })
-  ltm.addColumn("ltm_usd", {
-    group: "LTM Q3 26A",
-    headers: ["USD", "($M)"],
-    format: "currency",
-    decimals: 0,
-    style: "bold",
-  })
-  ltm.addColumn("notes", { role: "descriptor", headers: ["Notes"] })
+  const buildLtmBridgeTable = (
+    tableId: string,
+    title: string,
+    subtitle: string,
+    cohortEntities: readonly PeerEntity[],
+    includeAirbusUsGaap: boolean
+  ) => {
+    const tbl = sheet.addTable(tableId, title, { subtitle })
+    tbl.addColumn("metric", { role: "descriptor", headers: ["Peer & metric"] })
+    tbl.addColumn("fx_mult", {
+      headers: ["FX", "to USD"],
+      format: "number",
+      decimals: 4,
+    })
+    tbl.addColumn("fy25_a", {
+      group: "FY2025A",
+      headers: ["Primary"],
+      format: "number",
+      decimals: 0,
+    })
+    tbl.addColumn("fy25_b", {
+      group: "FY2025A",
+      headers: ["Addl."],
+      format: "number",
+      decimals: 0,
+    })
+    tbl.addColumn("ytd25_a", {
+      group: "9M 2025A",
+      headers: ["Primary"],
+      format: "number",
+      decimals: 0,
+    })
+    tbl.addColumn("ytd25_b", {
+      group: "9M 2025A",
+      headers: ["Addl."],
+      format: "number",
+      decimals: 0,
+    })
+    tbl.addColumn("ytd26_a", {
+      group: "9M 2026A",
+      headers: ["Primary"],
+      format: "number",
+      decimals: 0,
+    })
+    tbl.addColumn("ytd26_b", {
+      group: "9M 2026A",
+      headers: ["Addl."],
+      format: "number",
+      decimals: 0,
+    })
+    tbl.addColumn("ltm_local", {
+      group: "LTM Q3 26A",
+      headers: ["Local", "Curr."],
+      format: "number",
+      decimals: 0,
+    })
+    tbl.addColumn("ltm_usd", {
+      group: "LTM Q3 26A",
+      headers: ["USD", "($M)"],
+      format: "currency",
+      decimals: 0,
+      style: "bold",
+    })
+    tbl.addColumn("notes", { role: "descriptor", headers: ["Notes"] })
 
-  for (let idx = 0; idx < PEER_ENTITIES.length; idx++) {
-    const ent = PEER_ENTITIES[idx]!
-    const p = peers[ent]
-    const pid = PEER_ROW_ID[ent]
-    if (idx > 0) ltm.addRowGutter()
-    ltm.addSectionHeader(`${p.name} (${ent}) — ${p.currency}`)
+    for (let idx = 0; idx < cohortEntities.length; idx++) {
+      const ent = cohortEntities[idx]!
+      const p = peers[ent]
+      const pid = PEER_ROW_ID[ent]
+      if (idx > 0) tbl.addRowGutter()
+      tbl.addSectionHeader(`${p.name} (${ent}) — ${p.currency}`)
 
-    const fxCell =
-      p.currency === "EUR"
-        ? new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` })
-        : 1.0
+      const fxCell =
+        p.currency === "EUR"
+          ? new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` })
+          : 1.0
 
-    const addMetricRow = (
-      suffix: string,
-      label: string,
-      fy25a: number,
-      fy25b: number,
-      ytd25a: number,
-      ytd25b: number,
-      ytd26a: number,
-      ytd26b: number,
-      noteText: string | null = null
-    ): void => {
-      ltm.addRow(`${pid}_${suffix}`, {
-        cells: {
-          metric: label,
-          fx_mult: fxCell,
-          fy25_a: fy25a,
-          fy25_b: fy25b,
-          ytd25_a: ytd25a,
-          ytd25_b: ytd25b,
-          ytd26_a: ytd26a,
-          ytd26_b: ytd26b,
-          ltm_local: new Cell({
-            expr: `(@table[@row, "fy25_a"] + @table[@row, "fy25_b"]) + (@table[@row, "ytd26_a"] + @table[@row, "ytd26_b"]) - (@table[@row, "ytd25_a"] + @table[@row, "ytd25_b"])`,
-          }),
-          ltm_usd: new Cell({
-            expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
-          }),
-          notes: noteText,
-        },
-      })
-    }
+      const addMetricRow = (
+        suffix: string,
+        label: string,
+        fy25a: number,
+        fy25b: number,
+        ytd25a: number,
+        ytd25b: number,
+        ytd26a: number,
+        ytd26b: number,
+        noteText: string | null = null
+      ): void => {
+        tbl.addRow(`${pid}_${suffix}`, {
+          cells: {
+            metric: label,
+            fx_mult: fxCell,
+            fy25_a: fy25a,
+            fy25_b: fy25b,
+            ytd25_a: ytd25a,
+            ytd25_b: ytd25b,
+            ytd26_a: ytd26a,
+            ytd26_b: ytd26b,
+            ltm_local: new Cell({
+              expr: `(@table[@row, "fy25_a"] + @table[@row, "fy25_b"]) + (@table[@row, "ytd26_a"] + @table[@row, "ytd26_b"]) - (@table[@row, "ytd25_a"] + @table[@row, "ytd25_b"])`,
+            }),
+            ltm_usd: new Cell({
+              expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
+            }),
+            notes: noteText,
+          },
+        })
+      }
 
-    addMetricRow(
-      "rev",
-      ent === "GE"
-        ? "Revenue (ex-Insurance segments)"
-        : ent === "GD"
-          ? "Revenue (53-week Q3 LTM)"
-          : "Revenue",
-      p.revFy25,
-      0,
-      p.rev9m25,
-      0,
-      p.rev9m26,
-      0,
-      ent === "GE"
-        ? "CES + DPT ex-Insurance"
-        : ent === "GD"
-          ? "277d vs 271d (+6 days)"
-          : null
-    )
-    if (ent === "GE") {
       addMetricRow(
-        "seg_corp_ebit",
-        "Segment + Corporate profit (incl. Ins.)",
-        p.ebitBaseFy25,
-        p.ebitCorpFy25,
-        p.ebitBase9m25,
-        p.ebitCorp9m25,
-        p.ebitBase9m26,
-        p.ebitCorp9m26
+        "rev",
+        ent === "GE"
+          ? "Revenue (ex-Insurance segments)"
+          : ent === "GD"
+            ? "Revenue (53-week Q3 LTM)"
+            : "Revenue",
+        p.revFy25,
+        0,
+        p.rev9m25,
+        0,
+        p.rev9m26,
+        0,
+        ent === "GE"
+          ? "CES + DPT ex-Insurance"
+          : ent === "GD"
+            ? "277d vs 271d (+6 days)"
+            : null
+      )
+      if (ent === "GE") {
+        addMetricRow(
+          "seg_corp_ebit",
+          "Segment + Corporate profit (incl. Ins.)",
+          p.ebitBaseFy25,
+          p.ebitCorpFy25,
+          p.ebitBase9m25,
+          p.ebitCorp9m25,
+          p.ebitBase9m26,
+          p.ebitCorp9m26
+        )
+        addMetricRow(
+          "ins_profit",
+          "Run-off Insurance operating profit",
+          p.ebitInsFy25,
+          0,
+          p.ebitIns9m25,
+          0,
+          p.ebitIns9m26,
+          0,
+          "Stripped from GE EBIT"
+        )
+        tbl.addRow(`${pid}_ebit`, {
+          cells: {
+            metric: "Operating profit (ex-Insurance)",
+            fx_mult: fxCell,
+            fy25_a: null,
+            fy25_b: null,
+            ytd25_a: null,
+            ytd25_b: null,
+            ytd26_a: null,
+            ytd26_b: null,
+            ltm_local: new Cell({
+              expr: `@table["ge_seg_corp_ebit", "ltm_local"] - @table["ge_ins_profit", "ltm_local"]`,
+            }),
+            ltm_usd: new Cell({
+              expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
+            }),
+            notes: "Matches ex-Ins. EV",
+          },
+        })
+      } else {
+        addMetricRow(
+          "ebit",
+          "Operating income (EBIT)",
+          p.ebitBaseFy25,
+          p.ebitCorpFy25,
+          p.ebitBase9m25,
+          p.ebitCorp9m25,
+          p.ebitBase9m26,
+          p.ebitCorp9m26
+        )
+      }
+      addMetricRow(
+        "da",
+        "Depreciation & amortization",
+        p.daPrimaryFy25,
+        p.daAmortFy25,
+        p.daPrimary9m25,
+        p.daAmort9m25,
+        p.daPrimary9m26,
+        p.daAmort9m26
       )
       addMetricRow(
-        "ins_profit",
-        "Run-off Insurance operating profit",
-        p.ebitInsFy25,
+        "ocf",
+        "Operating cash flow",
+        p.ocfFy25,
         0,
-        p.ebitIns9m25,
+        p.ocf9m25,
         0,
-        p.ebitIns9m26,
-        0,
-        "Stripped from GE EBIT"
+        p.ocf9m26,
+        0
       )
-      ltm.addRow(`${pid}_ebit`, {
+      addMetricRow(
+        "capex",
+        "Capital expenditures (outflow)",
+        p.capexFy25,
+        0,
+        p.capex9m25,
+        0,
+        p.capex9m26,
+        0
+      )
+      addMetricRow(
+        "sbc",
+        ent === "RTX"
+          ? "SBC + stock-funded 401(k) match"
+          : "Share-based compensation",
+        p.sbcBaseFy25,
+        p.sbc401kFy25,
+        p.sbcBase9m25,
+        p.sbc401k9m25,
+        p.sbcBase9m26,
+        p.sbc401k9m26,
+        ent === "RTX" ? "Incl. 401(k) match" : null
+      )
+      tbl.addRow(`${pid}_ebitda`, {
         cells: {
-          metric: "Operating profit (ex-Insurance)",
+          metric: "LTM EBITDA (EBIT + D&A)",
           fx_mult: fxCell,
           fy25_a: null,
           fy25_b: null,
@@ -1021,180 +1099,127 @@ export function buildCompsSheet(sheet: Sheet, kg: BoeingKgData): void {
           ytd26_a: null,
           ytd26_b: null,
           ltm_local: new Cell({
-            expr: `@table["ge_seg_corp_ebit", "ltm_local"] - @table["ge_ins_profit", "ltm_local"]`,
+            expr: `@table["${pid}_ebit", "ltm_local"] + @table["${pid}_da", "ltm_local"]`,
           }),
           ltm_usd: new Cell({
             expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
           }),
-          notes: "Matches ex-Ins. EV",
+          notes: null,
+        },
+        style: "subtotal",
+      })
+      tbl.addRow(`${pid}_fcf`, {
+        cells: {
+          metric: "LTM Headline FCF (OCF + CapEx)",
+          fx_mult: fxCell,
+          fy25_a: null,
+          fy25_b: null,
+          ytd25_a: null,
+          ytd25_b: null,
+          ytd26_a: null,
+          ytd26_b: null,
+          ltm_local: new Cell({
+            expr: `@table["${pid}_ocf", "ltm_local"] + @table["${pid}_capex", "ltm_local"]`,
+          }),
+          ltm_usd: new Cell({
+            expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
+          }),
+          notes: null,
         },
       })
-    } else {
-      addMetricRow(
-        "ebit",
-        "Operating income (EBIT)",
-        p.ebitBaseFy25,
-        p.ebitCorpFy25,
-        p.ebitBase9m25,
-        p.ebitCorp9m25,
-        p.ebitBase9m26,
-        p.ebitCorp9m26
-      )
     }
-    addMetricRow(
-      "da",
-      "Depreciation & amortization",
-      p.daPrimaryFy25,
-      p.daAmortFy25,
-      p.daPrimary9m25,
-      p.daAmort9m25,
-      p.daPrimary9m26,
-      p.daAmort9m26
-    )
-    addMetricRow(
-      "ocf",
-      "Operating cash flow",
-      p.ocfFy25,
-      0,
-      p.ocf9m25,
-      0,
-      p.ocf9m26,
-      0
-    )
-    addMetricRow(
-      "capex",
-      "Capital expenditures (outflow)",
-      p.capexFy25,
-      0,
-      p.capex9m25,
-      0,
-      p.capex9m26,
-      0
-    )
-    addMetricRow(
-      "sbc",
-      ent === "RTX"
-        ? "SBC + stock-funded 401(k) match"
-        : "Share-based compensation",
-      p.sbcBaseFy25,
-      p.sbc401kFy25,
-      p.sbcBase9m25,
-      p.sbc401k9m25,
-      p.sbcBase9m26,
-      p.sbc401k9m26,
-      ent === "RTX" ? "Incl. 401(k) match" : null
-    )
-    ltm.addRow(`${pid}_ebitda`, {
-      cells: {
-        metric: "LTM EBITDA (EBIT + D&A)",
-        fx_mult: fxCell,
-        fy25_a: null,
-        fy25_b: null,
-        ytd25_a: null,
-        ytd25_b: null,
-        ytd26_a: null,
-        ytd26_b: null,
-        ltm_local: new Cell({
-          expr: `@table["${pid}_ebit", "ltm_local"] + @table["${pid}_da", "ltm_local"]`,
-        }),
-        ltm_usd: new Cell({
-          expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
-        }),
-        notes: null,
-      },
-      style: "subtotal",
-    })
-    ltm.addRow(`${pid}_fcf`, {
-      cells: {
-        metric: "LTM Headline FCF (OCF + CapEx)",
-        fx_mult: fxCell,
-        fy25_a: null,
-        fy25_b: null,
-        ytd25_a: null,
-        ytd25_b: null,
-        ytd26_a: null,
-        ytd26_b: null,
-        ltm_local: new Cell({
-          expr: `@table["${pid}_ocf", "ltm_local"] + @table["${pid}_capex", "ltm_local"]`,
-        }),
-        ltm_usd: new Cell({
-          expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
-        }),
-        notes: null,
-      },
-    })
+
+    if (includeAirbusUsGaap) {
+      tbl.addRowGutter()
+      tbl.addSectionHeader(
+        "Airbus SE — Supplemental US-GAAP-Aligned LTM Cross-Check"
+      )
+      tbl.addRow("air_usgaap_ebit", {
+        cells: {
+          metric: "Airbus US-GAAP-adj. LTM EBIT",
+          fx_mult: new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` }),
+          fy25_a: null,
+          fy25_b: null,
+          ytd25_a: null,
+          ytd25_b: null,
+          ytd26_a: null,
+          ytd26_b: null,
+          ltm_local: new Cell({
+            expr: `@table["air_pa_ebit", "ltm_local"] - (CompsFxParity["air_cap_dev_add", "val"] + CompsFxParity["air_cap_dev_amort", "val"]) - CompsFxParity["air_lease_int", "val"]`,
+          }),
+          ltm_usd: new Cell({
+            expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
+          }),
+          notes: "Ex-IAS 38/IFRS 16 int.",
+        },
+      })
+      tbl.addRow("air_usgaap_ebitda", {
+        cells: {
+          metric: "Airbus US-GAAP-adj. LTM EBITDA",
+          fx_mult: new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` }),
+          fy25_a: null,
+          fy25_b: null,
+          ytd25_a: null,
+          ytd25_b: null,
+          ytd26_a: null,
+          ytd26_b: null,
+          ltm_local: new Cell({
+            expr: `@table["air_pa_ebitda", "ltm_local"] - CompsFxParity["air_cap_dev_add", "val"] + CompsFxParity["air_rou_dep", "val"] - CompsFxParity["air_lease_int", "val"]`,
+          }),
+          ltm_usd: new Cell({
+            expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
+          }),
+          notes: "Ex-IAS 38/IFRS 16 rent",
+        },
+        style: "subtotal",
+      })
+      tbl.addRow("air_usgaap_fcf", {
+        cells: {
+          metric: "Airbus US-GAAP-adj. LTM FCF",
+          fx_mult: new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` }),
+          fy25_a: null,
+          fy25_b: null,
+          ytd25_a: null,
+          ytd25_b: null,
+          ytd26_a: null,
+          ytd26_b: null,
+          ltm_local: new Cell({
+            expr: `@table["air_pa_fcf", "ltm_local"] + CompsFxParity["air_lease_repay", "val"]`,
+          }),
+          ltm_usd: new Cell({
+            expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
+          }),
+          notes: "Ex-IFRS 16 lease prin.",
+        },
+      })
+    }
+
+    return tbl
   }
 
-  // Airbus US-GAAP Parity LTM rows
-  ltm.addRowGutter()
-  ltm.addSectionHeader(
-    "Airbus SE — Supplemental US-GAAP-Aligned LTM Cross-Check"
+  const ltmOem = buildLtmBridgeTable(
+    "PeerLtmBridge",
+    "Peer LTM Q3 2026 Operating Bridge — Commercial & Hybrid OEMs",
+    "($ in millions USD; AIR.PA local rows in €M translated at spot EUR/USD) | LTM Q3 2026A equals FY2025A + 9M 2026A − 9M 2025A",
+    ["AIR.PA", "GE", "RTX"],
+    true
   )
-  ltm.addRow("air_usgaap_ebit", {
-    cells: {
-      metric: "Airbus US-GAAP-adj. LTM EBIT",
-      fx_mult: new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` }),
-      fy25_a: null,
-      fy25_b: null,
-      ytd25_a: null,
-      ytd25_b: null,
-      ytd26_a: null,
-      ytd26_b: null,
-      ltm_local: new Cell({
-        expr: `@table["air_pa_ebit", "ltm_local"] - (CompsFxParity["air_cap_dev_add", "val"] + CompsFxParity["air_cap_dev_amort", "val"]) - CompsFxParity["air_lease_int", "val"]`,
-      }),
-      ltm_usd: new Cell({
-        expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
-      }),
-      notes: "Ex-IAS 38/IFRS 16 int.",
-    },
-  })
-  ltm.addRow("air_usgaap_ebitda", {
-    cells: {
-      metric: "Airbus US-GAAP-adj. LTM EBITDA",
-      fx_mult: new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` }),
-      fy25_a: null,
-      fy25_b: null,
-      ytd25_a: null,
-      ytd25_b: null,
-      ytd26_a: null,
-      ytd26_b: null,
-      ltm_local: new Cell({
-        expr: `@table["air_pa_ebitda", "ltm_local"] - CompsFxParity["air_cap_dev_add", "val"] + CompsFxParity["air_rou_dep", "val"] - CompsFxParity["air_lease_int", "val"]`,
-      }),
-      ltm_usd: new Cell({
-        expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
-      }),
-      notes: "Ex-IAS 38/IFRS 16 rent",
-    },
-    style: "subtotal",
-  })
-  ltm.addRow("air_usgaap_fcf", {
-    cells: {
-      metric: "Airbus US-GAAP-adj. LTM FCF",
-      fx_mult: new Cell({ expr: `CompsFxParity["eurusd_spot", "val"]` }),
-      fy25_a: null,
-      fy25_b: null,
-      ytd25_a: null,
-      ytd25_b: null,
-      ytd26_a: null,
-      ytd26_b: null,
-      ltm_local: new Cell({
-        expr: `@table["air_pa_fcf", "ltm_local"] + CompsFxParity["air_lease_repay", "val"]`,
-      }),
-      ltm_usd: new Cell({
-        expr: `@table[@row, "ltm_local"] * @table[@row, "fx_mult"]`,
-      }),
-      notes: "Ex-IFRS 16 lease prin.",
-    },
-  })
+
+  const ltmDefense = buildLtmBridgeTable(
+    "PeerLtmBridgeDefense",
+    "Peer LTM Q3 2026 Operating Bridge — US Defense Primes",
+    "($ in millions USD) | Audited filing components; LTM Q3 2026A equals FY2025A + 9M 2026A − 9M 2025A",
+    ["GD", "LMT", "NOC"],
+    false
+  )
 
   sheet.setBands([
     comps,
     evb,
-    bs,
+    { lanes: [bs], pageBreakBefore: true },
     { lanes: [{ tables: [fxTbl] }, { tables: [consIn] }] },
-    evComp,
-    ltm,
+    { lanes: [evComp], pageBreakBefore: true },
+    { lanes: [ltmOem], pageBreakBefore: true },
+    { lanes: [ltmDefense], pageBreakBefore: true },
   ])
 }

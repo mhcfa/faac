@@ -441,7 +441,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     cells: {
       item: "Total revenue",
       H2_FY27E: new Cell({
-        expr: 'IncomeStatement["total_revenue", "FY27E"] - LtmFlowBridge["total_revenue", "H1_FY27A"]',
+        expr: 'IncomeStatement["total_revenue", "FY27E"] - LtmOperatingBridge["total_revenue", "H1_FY27A"]',
       }),
       terminal: new Cell({
         expr: '@table["revenue", "FY31E"] * (1 + ScalarDrivers["terminalGrowthRate", "active"])',
@@ -455,7 +455,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     cells: {
       item: "GAAP operating income (EBIT)",
       H2_FY27E: new Cell({
-        expr: 'IncomeStatement["operating_income", "FY27E"] - LtmFlowBridge["operating_income", "H1_FY27A"]',
+        expr: 'IncomeStatement["operating_income", "FY27E"] - LtmOperatingBridge["operating_income", "H1_FY27A"]',
       }),
       terminal: new Cell({
         expr: '@table["ebita", "FY31E"] * (1 + ScalarDrivers["terminalGrowthRate", "active"])',
@@ -469,7 +469,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     cells: {
       item: "Economic EBITA (ex-M&A amort.)",
       H2_FY27E: new Cell({
-        expr: 'QoeAndCashConversion["ebita", "FY27E"] - (LtmFlowBridge["operating_income", "H1_FY27A"] + LtmFlowBridge["purchased_intangibles_amort", "H1_FY27A"])',
+        expr: 'QoeAndCashConversion["ebita", "FY27E"] - (LtmOperatingBridge["operating_income", "H1_FY27A"] + LtmOperatingBridge["purchased_intangibles_amort", "H1_FY27A"])',
       }),
       terminal: new Cell({
         expr: '@table["ebita", "FY31E"] * (1 + ScalarDrivers["terminalGrowthRate", "active"])',
@@ -483,7 +483,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     cells: {
       item: "Steady-state EBITA NOPAT",
       H2_FY27E: new Cell({
-        expr: 'QoeAndCashConversion["ebita_nopat", "FY27E"] - (LtmFlowBridge["operating_income", "H1_FY27A"] + LtmFlowBridge["purchased_intangibles_amort", "H1_FY27A"]) * (1 - LtmFlowBridge["effective_tax_rate", "H1_FY27A"])',
+        expr: 'QoeAndCashConversion["ebita_nopat", "FY27E"] - (LtmOperatingBridge["operating_income", "H1_FY27A"] + LtmOperatingBridge["purchased_intangibles_amort", "H1_FY27A"]) * (1 - LtmCashFlowAndH1Anchors["effective_tax_rate", "H1_FY27A"])',
       }),
       terminal: new Cell({
         expr: '@table["ebita_nopat", "FY31E"] * (1 + ScalarDrivers["terminalGrowthRate", "active"])',
@@ -512,7 +512,7 @@ export function buildValuationSheet(sheet: Sheet): ValuationTables {
     cells: {
       item: "Unlevered economic FCFF",
       H2_FY27E: new Cell({
-        expr: 'QoeAndCashConversion["unlevered_fcff", "FY27E"] - LtmFlowBridge["unlevered_fcff", "H1_FY27A"]',
+        expr: 'QoeAndCashConversion["unlevered_fcff", "FY27E"] - LtmCashFlowAndH1Anchors["unlevered_fcff", "H1_FY27A"]',
       }),
       terminal: new Cell({
         expr: '@table["ebita_nopat", "terminal"] + @table["terminal_reinvestment", "terminal"]',

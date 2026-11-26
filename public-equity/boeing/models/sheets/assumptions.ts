@@ -205,7 +205,7 @@ export function buildAssumptionsSheet(
   }
 
   // 3. Stacked Scenario Input Tables (Downside, Base, Upside — flat, ungrouped)
-  addPeriodScenarioTable(
+  const downTbl = addPeriodScenarioTable(
     sheet,
     "PeriodDriversDown",
     "Downside Case — Forecast Operating Assumptions",
@@ -214,7 +214,7 @@ export function buildAssumptionsSheet(
     scenarios.base,
     "flex"
   )
-  addPeriodScenarioTable(
+  const baseTbl = addPeriodScenarioTable(
     sheet,
     "PeriodDriversBase",
     "Base Case — Forecast Operating Assumptions",
@@ -223,7 +223,7 @@ export function buildAssumptionsSheet(
     scenarios.base,
     "source"
   )
-  addPeriodScenarioTable(
+  const upTbl = addPeriodScenarioTable(
     sheet,
     "PeriodDriversUp",
     "Upside Case — Forecast Operating Assumptions",
@@ -232,4 +232,12 @@ export function buildAssumptionsSheet(
     scenarios.base,
     "flex"
   )
+
+  sheet.setBands([
+    scalarTbl,
+    { lanes: [activePeriodTbl], pageBreakBefore: true },
+    { lanes: [downTbl], pageBreakBefore: true },
+    { lanes: [baseTbl], pageBreakBefore: true },
+    { lanes: [upTbl], pageBreakBefore: true },
+  ])
 }

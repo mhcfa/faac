@@ -86,8 +86,10 @@ export function buildUnitEconomicsTables(
     ...rowFormatOptions("integer"),
     cells: {
       line_item: "Ending warehouse / club count",
-      COST_US: { expr: 'OperatingSchedule["warehouses_us", "FY26"]' },
-      COST_TOTAL: { expr: 'OperatingSchedule["warehouses_total", "FY26"]' },
+      COST_US: { expr: 'OperatingVolumeSchedule["warehouses_us", "FY26"]' },
+      COST_TOTAL: {
+        expr: 'OperatingVolumeSchedule["warehouses_total", "FY26"]',
+      },
       WMT_SAMS_H1_ANN: raw.sams.clubsH127,
       WMT_SAMS_FY26: raw.sams.clubsFy26,
       BJ: raw.bj.clubsH127,
@@ -115,7 +117,7 @@ export function buildUnitEconomicsTables(
       COST_US: notedNull(
         "COST Note 11 omits U.S.-only paid membership counts."
       ),
-      COST_TOTAL: { expr: 'OperatingSchedule["paid_members_m", "FY26"]' },
+      COST_TOTAL: { expr: 'OperatingMarginSchedule["paid_members_m", "FY26"]' },
       WMT_SAMS_H1_ANN: notedNull(
         "Walmart does not disclose numerical Sam's Club member counts."
       ),
@@ -157,7 +159,7 @@ export function buildUnitEconomicsTables(
         expr: 'ClubUnitEconBridge["sams_h1_net_sales", "val"] * 2',
       },
       WMT_SAMS_FY26: raw.sams.netSalesFy26,
-      BJ: { expr: 'PeerLtmBridge["bj_net_sales", "ltm"]' },
+      BJ: { expr: 'ClubPeerLtmBridge["bj_net_sales", "ltm"]' },
       PSMT: psmtPeer.netSalesFy26,
     },
   })
@@ -171,7 +173,7 @@ export function buildUnitEconomicsTables(
         expr: 'ClubUnitEconBridge["sams_h1_mfi_other", "val"] * 2',
       },
       WMT_SAMS_FY26: raw.sams.mfiAndOtherFy26,
-      BJ: { expr: 'PeerLtmBridge["bj_mfi_other", "ltm"]' },
+      BJ: { expr: 'ClubPeerLtmBridge["bj_mfi_other", "ltm"]' },
       PSMT: psmtPeer.mfiAndOtherFy26,
     },
   })
@@ -180,14 +182,14 @@ export function buildUnitEconomicsTables(
     style: "subtotal",
     cells: {
       line_item: "Total revenue ($M)",
-      COST_US: { expr: 'OperatingSchedule["seg_rev_us", "FY26"]' },
+      COST_US: { expr: 'OperatingVolumeSchedule["seg_rev_us", "FY26"]' },
       COST_TOTAL: { expr: 'IncomeStatement["total_revenue", "FY26"]' },
       WMT_SAMS_H1_ANN: {
         expr: 'ClubUnitEconBridge["sams_h1_total_rev", "val"] * 2',
       },
       WMT_SAMS_FY26: raw.sams.totalRevFy26,
-      BJ: { expr: 'PeerLtmBridge["bj_rev", "ltm"]' },
-      PSMT: { expr: 'PeerLtmBridge["psmt_rev", "ltm"]' },
+      BJ: { expr: 'ClubPeerLtmBridge["bj_rev", "ltm"]' },
+      PSMT: { expr: 'ClubPeerLtmBridge["psmt_rev", "ltm"]' },
     },
   })
   table.addRow("rev_per_club", {
@@ -234,7 +236,7 @@ export function buildUnitEconomicsTables(
         expr: '@table["net_sales", "WMT_SAMS_FY26"] - ClubUnitEconBridge["sams_fy26_cost_of_sales", "val"]',
       },
       BJ: {
-        expr: '@table["net_sales", "BJ"] - PeerLtmBridge["bj_cost_of_sales", "ltm"]',
+        expr: '@table["net_sales", "BJ"] - ClubPeerLtmBridge["bj_cost_of_sales", "ltm"]',
       },
       PSMT: {
         expr: '@table["net_sales", "PSMT"] - ClubUnitEconBridge["psmt_fy26_cost_of_sales", "val"]',
@@ -325,7 +327,7 @@ export function buildUnitEconomicsTables(
       },
       WMT_SAMS_FY26: raw.sams.sgaFy26,
       BJ: {
-        expr: 'PeerLtmBridge["bj_sga", "ltm"] + PeerLtmBridge["bj_pre_opening", "ltm"]',
+        expr: 'ClubPeerLtmBridge["bj_sga", "ltm"] + ClubPeerLtmBridge["bj_pre_opening", "ltm"]',
       },
       PSMT: {
         expr: 'SUM(ClubUnitEconBridge["psmt_fy26_sga".."psmt_fy26_loss_disposal", "val"])',
@@ -348,8 +350,8 @@ export function buildUnitEconomicsTables(
         expr: 'ClubUnitEconBridge["sams_h1_ebit", "val"] * 2',
       },
       WMT_SAMS_FY26: raw.sams.ebitFy26,
-      BJ: { expr: 'PeerLtmBridge["bj_ebit", "ltm"]' },
-      PSMT: { expr: 'PeerLtmBridge["psmt_ebit", "ltm"]' },
+      BJ: { expr: 'ClubPeerLtmBridge["bj_ebit", "ltm"]' },
+      PSMT: { expr: 'ClubPeerLtmBridge["psmt_ebit", "ltm"]' },
     },
   })
   table.addRow("ebit_margin_pct", {
@@ -373,8 +375,8 @@ export function buildUnitEconomicsTables(
         expr: 'ClubUnitEconBridge["sams_h1_da", "val"] * 2',
       },
       WMT_SAMS_FY26: raw.sams.daFy26,
-      BJ: { expr: 'PeerLtmBridge["bj_da", "ltm"]' },
-      PSMT: { expr: 'PeerLtmBridge["psmt_da", "ltm"]' },
+      BJ: { expr: 'ClubPeerLtmBridge["bj_da", "ltm"]' },
+      PSMT: { expr: 'ClubPeerLtmBridge["psmt_da", "ltm"]' },
     },
   })
   table.addRow("ebitda", {
@@ -399,8 +401,8 @@ export function buildUnitEconomicsTables(
         expr: 'ClubUnitEconBridge["sams_h1_capex", "val"] * 2',
       },
       WMT_SAMS_FY26: raw.sams.capexFy26,
-      BJ: { expr: '-PeerLtmBridge["bj_capex", "ltm"]' },
-      PSMT: { expr: '-PeerLtmBridge["psmt_capex", "ltm"]' },
+      BJ: { expr: '-ClubPeerLtmBridge["bj_capex", "ltm"]' },
+      PSMT: { expr: '-ClubPeerLtmBridge["psmt_capex", "ltm"]' },
     },
   })
   table.addRow("capex_pct_rev", {
@@ -416,8 +418,10 @@ export function buildUnitEconomicsTables(
     ...rowFormatOptions("percentage", 1),
     cells: {
       line_item: "Comparable sales growth (ex-fuel)",
-      COST_US: { expr: 'OperatingSchedule["core_comp_us", "FY26"]' },
-      COST_TOTAL: { expr: 'OperatingSchedule["comp_ex_gas_fx_total", "FY26"]' },
+      COST_US: { expr: 'OperatingVolumeSchedule["core_comp_us", "FY26"]' },
+      COST_TOTAL: {
+        expr: 'OperatingVolumeSchedule["comp_ex_gas_fx_total", "FY26"]',
+      },
       WMT_SAMS_H1_ANN: {
         expr: 'AVERAGE(ClubUnitEconBridge["sams_q1_27_comp_ex_fuel".."sams_q2_27_comp_ex_fuel", "val"])',
       },

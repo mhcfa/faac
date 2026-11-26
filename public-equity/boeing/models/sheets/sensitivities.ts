@@ -682,10 +682,13 @@ export function buildSensitivitiesSheet(sheet: Sheet): void {
 
   sheet.setBands([
     { lanes: [{ tables: [revPxGrid] }, { tables: [revGrowthPx] }] },
-    { lanes: [{ tables: [revEvGrid] }, { tables: [revGrowthEv] }] },
-    { lanes: [{ tables: [bisect] }, { tables: [bnd] }] },
-    { lanes: [{ tables: [marginHelper] }, { tables: [waccHelper] }] },
-    dfMatrix,
-    cwDf,
+    { lanes: [{ tables: [revEvGrid] }, { tables: [revGrowthEv] }], gap: 1 },
+    { lanes: [{ tables: [bisect] }, { tables: [bnd] }], gap: 1 },
+    {
+      lanes: [{ tables: [marginHelper] }, { tables: [waccHelper] }],
+      pageBreakBefore: true,
+    },
+    { lanes: [dfMatrix], gap: 1 },
+    { lanes: [cwDf], gap: 1 },
   ])
 }

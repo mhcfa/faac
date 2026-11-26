@@ -43,7 +43,7 @@ export function buildCashFlowStatement(
   })
   table.addRow("stock_based_compensation", {
     ...rowFormatOptions("currency", 0),
-    expr: 'OperatingSchedule["sbc_expense", @col]',
+    expr: 'OperatingMarginSchedule["sbc_expense", @col]',
     cells: { line_item: "Stock-based compensation" },
   })
   table.addRow("non_cash_lease_expense", {
@@ -74,13 +74,13 @@ export function buildCashFlowStatement(
     ...rowFormatOptions("currency", 0),
     cells: {
       ...buildHistoricalCellMap(
-        "Other non-cash operating & amort.",
+        "Other non-cash operating items",
         cf.otherNonCashOperating
       ),
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
           p,
-          { expr: 'DebtLeasesSchedule["discount_amortization", @col]' },
+          { expr: 'DebtSchedule["discount_amortization", @col]' },
         ])
       ),
     },
@@ -130,7 +130,7 @@ export function buildCashFlowStatement(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '(DebtLeasesSchedule["total_op_lease_liab", @col] - DebtLeasesSchedule["total_op_lease_liab", col.prev]) - (WorkingCapitalPPE["op_lease_rou_assets", @col] - WorkingCapitalPPE["op_lease_rou_assets", col.prev]) - (WorkingCapitalPPE["net_other_lt_op_assets", @col] - WorkingCapitalPPE["net_other_lt_op_assets", col.prev] - DebtLeasesSchedule["new_fin_lease_additions", @col])',
+            expr: '(LeasesInterestSchedule["total_op_lease_liab", @col] - LeasesInterestSchedule["total_op_lease_liab", col.prev]) - (WorkingCapitalPPE["op_lease_rou_assets", @col] - WorkingCapitalPPE["op_lease_rou_assets", col.prev]) - (WorkingCapitalPPE["net_other_lt_op_assets", @col] - WorkingCapitalPPE["net_other_lt_op_assets", col.prev] - LeasesInterestSchedule["new_fin_lease_additions", @col])',
           },
         ])
       ),
@@ -222,7 +222,7 @@ export function buildCashFlowStatement(
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
           p,
-          { expr: '-DebtLeasesSchedule["scheduled_lt_debt_repayments", @col]' },
+          { expr: '-DebtSchedule["scheduled_lt_debt_repayments", @col]' },
         ])
       ),
     },
@@ -300,7 +300,7 @@ export function buildCashFlowStatement(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '-DebtLeasesSchedule["fin_lease_principal_repayments", @col]',
+            expr: '-LeasesInterestSchedule["fin_lease_principal_repayments", @col]',
           },
         ])
       ),
@@ -359,7 +359,7 @@ export function buildCashFlowStatement(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'DebtLeasesSchedule["revolver_draw", @col] - DebtLeasesSchedule["revolver_repay", @col]',
+            expr: 'DebtSchedule["revolver_draw", @col] - DebtSchedule["revolver_repay", @col]',
           },
         ])
       ),

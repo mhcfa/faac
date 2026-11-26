@@ -68,9 +68,9 @@ export function extractScenarioSnapshot(
   const fy28NetCashExLease =
     compiled.num('BalanceSheet["cash_and_equivalents", "FY28E"]') +
     compiled.num('BalanceSheet["short_term_investments", "FY28E"]') -
-    (compiled.num('DebtLeasesSchedule["total_lt_debt_carrying", "FY28E"]') +
-      compiled.num('DebtLeasesSchedule["revolver_end", "FY28E"]') +
-      compiled.num('DebtLeasesSchedule["total_fin_lease_liab", "FY28E"]'))
+    (compiled.num('DebtSchedule["total_lt_debt_carrying", "FY28E"]') +
+      compiled.num('DebtSchedule["revolver_end", "FY28E"]') +
+      compiled.num('LeasesInterestSchedule["total_fin_lease_liab", "FY28E"]'))
 
   const fy28EndingDilutedShares =
     compiled.num('ShareEquitySchedule["ending_shares", "FY28E"]') +
@@ -80,13 +80,13 @@ export function extractScenarioSnapshot(
     scenario,
     wacc: compiled.num('WaccSchedule["wacc", "val"]'),
     termGrowth: compiled.num(
-      'ScalarAssumptionsActive["terminal_growth_rate", "val"]'
+      'ScalarAssumptionsValuation["terminal_growth_rate", "val"]'
     ),
     exitMult: compiled.num(
-      'ScalarAssumptionsActive["exit_ev_to_ebitda", "val"]'
+      'ScalarAssumptionsValuation["exit_ev_to_ebitda", "val"]'
     ),
     compsMult: compiled.num(
-      'ScalarAssumptionsActive["calibrated_comps_ev_to_ebitda", "val"]'
+      'ScalarAssumptionsValuation["calibrated_comps_ev_to_ebitda", "val"]'
     ),
     fy27Rev: compiled.num('IncomeStatement["total_revenue", "FY27E"]'),
     fy27Ebitda: compiled.num('IncomeStatement["ebitda", "FY27E"]'),
@@ -155,40 +155,40 @@ export function extractScenarioSnapshot(
       'ReverseDcfTable["exit_price_at_rf_400", "val"]'
     ),
     perpPeer5yBetaPrice: compiled.num(
-      'ValuationSensitivitySummary["perp_peer_5y_beta", "active_live"]'
+      'ValuationKnobSummary["perp_peer_5y_beta", "active_live"]'
     ),
     perpCashAdjWaccPrice: compiled.num(
-      'ValuationSensitivitySummary["perp_cash_adj_wacc", "active_live"]'
+      'ValuationKnobSummary["perp_cash_adj_wacc", "active_live"]'
     ),
     perpExTrappedCashPrice: compiled.num(
-      'ValuationSensitivitySummary["perp_ex_trapped_cash", "active_live"]'
+      'ValuationKnobSummary["perp_ex_trapped_cash", "active_live"]'
     ),
     perpCapexMinus50bpsPrice: compiled.num(
-      'ValuationSensitivitySummary["perp_capex_minus_50bps", "active_live"]'
+      'ValuationKnobSummary["perp_capex_minus_50bps", "active_live"]'
     ),
     perpCapexPlus50bpsPrice: compiled.num(
-      'ValuationSensitivitySummary["perp_capex_plus_50bps", "active_live"]'
+      'ValuationKnobSummary["perp_capex_plus_50bps", "active_live"]'
     ),
     fy27EpsBridgeEbit: compiled.num(
-      'ConsensusBenchmark["fy27_eps_bridge_ebit", "active"]'
+      'ConsensusEpsBridge["fy27_eps_bridge_ebit", "active"]'
     ),
     fy27EpsBridgeInt: compiled.num(
-      'ConsensusBenchmark["fy27_eps_bridge_int", "active"]'
+      'ConsensusEpsBridge["fy27_eps_bridge_int", "active"]'
     ),
     fy27EpsBridgeEsop: compiled.num(
-      'ConsensusBenchmark["fy27_eps_bridge_esop", "active"]'
+      'ConsensusEpsBridge["fy27_eps_bridge_esop", "active"]'
     ),
     fy27EpsBridgeOther: compiled.num(
-      'ConsensusBenchmark["fy27_eps_bridge_other", "active"]'
+      'ConsensusEpsBridge["fy27_eps_bridge_other", "active"]'
     ),
     fy28EpsBridgeEbit: compiled.num(
-      'ConsensusBenchmark["fy28_eps_bridge_ebit", "active"]'
+      'ConsensusEpsBridge["fy28_eps_bridge_ebit", "active"]'
     ),
     fy28EpsBridgeInt: compiled.num(
-      'ConsensusBenchmark["fy28_eps_bridge_int", "active"]'
+      'ConsensusEpsBridge["fy28_eps_bridge_int", "active"]'
     ),
     fy28EpsBridgeOther: compiled.num(
-      'ConsensusBenchmark["fy28_eps_bridge_other", "active"]'
+      'ConsensusEpsBridge["fy28_eps_bridge_other", "active"]'
     ),
   })
 }
@@ -199,7 +199,8 @@ export function buildValuationBridges(
 ): {
   readonly footballField: Table
   readonly scenarioVariance: Table
-  readonly priceAttribution: Table
+  readonly evAttribution: Table
+  readonly peAttribution: Table
 } {
   // 1. Valuation Synthesis & Football Field
   const footballField = sheet.addTable(
@@ -268,12 +269,12 @@ export function buildValuationBridges(
   footballField.addRow("perp_dcf", {
     cells: {
       line_item: "1. Unlevered Perpetuity DCF",
-      weight: { expr: 'ScalarAssumptionsActive["weight_perp_dcf", "val"]' },
+      weight: { expr: 'ScalarAssumptionsValuation["weight_perp_dcf", "val"]' },
       ev: { expr: 'DcfBridge["enterprise_value", "perp"]' },
       cum_div_price: { expr: 'DcfBridge["implied_price_cum_div", "perp"]' },
       ex_div_price: { expr: 'DcfBridge["implied_price_ex_div", "perp"]' },
       vs_close_pct: {
-        expr: '@table[@row, "cum_div_price"] / MarketAnchors["cost_close_price", "val"] - 1',
+        expr: '@table[@row, "cum_div_price"] / MarketAnchorsMarket["cost_close_price", "val"] - 1',
       },
       weighted_cum_div: {
         expr: '@table[@row, "weight"] * @table[@row, "cum_div_price"]',
@@ -287,14 +288,14 @@ export function buildValuationBridges(
   footballField.addRow("exit_mult_dcf", {
     cells: {
       line_item: "2. Exit EV/EBITDA DCF",
-      weight: { expr: 'ScalarAssumptionsActive["weight_exit_dcf", "val"]' },
+      weight: { expr: 'ScalarAssumptionsValuation["weight_exit_dcf", "val"]' },
       ev: { expr: 'DcfBridge["enterprise_value", "exit_mult"]' },
       cum_div_price: {
         expr: 'DcfBridge["implied_price_cum_div", "exit_mult"]',
       },
       ex_div_price: { expr: 'DcfBridge["implied_price_ex_div", "exit_mult"]' },
       vs_close_pct: {
-        expr: '@table[@row, "cum_div_price"] / MarketAnchors["cost_close_price", "val"] - 1',
+        expr: '@table[@row, "cum_div_price"] / MarketAnchorsMarket["cost_close_price", "val"] - 1',
       },
       weighted_cum_div: {
         expr: '@table[@row, "weight"] * @table[@row, "cum_div_price"]',
@@ -319,7 +320,7 @@ export function buildValuationBridges(
         expr: 'CompsValuationCalibration["implied_price_ex_div", "val"]',
       },
       vs_close_pct: {
-        expr: '@table[@row, "cum_div_price"] / MarketAnchors["cost_close_price", "val"] - 1',
+        expr: '@table[@row, "cum_div_price"] / MarketAnchorsMarket["cost_close_price", "val"] - 1',
       },
       weighted_cum_div: {
         expr: '@table[@row, "weight"] * @table[@row, "cum_div_price"]',
@@ -346,7 +347,7 @@ export function buildValuationBridges(
         expr: 'SUM(@table["perp_dcf".."calibrated_comps", "weighted_ex_div"])',
       },
       vs_close_pct: {
-        expr: '@table["blended_total", "cum_div_price"] / MarketAnchors["cost_close_price", "val"] - 1',
+        expr: '@table["blended_total", "cum_div_price"] / MarketAnchorsMarket["cost_close_price", "val"] - 1',
       },
       weighted_cum_div: {
         expr: 'SUM(@table["perp_dcf".."calibrated_comps", "weighted_cum_div"])',
@@ -367,7 +368,7 @@ export function buildValuationBridges(
       cum_div_price: { expr: '@table["perp_dcf", "cum_div_price"]' },
       ex_div_price: { expr: '@table["perp_dcf", "ex_div_price"]' },
       vs_close_pct: {
-        expr: '@table[@row, "cum_div_price"] / MarketAnchors["cost_close_price", "val"] - 1',
+        expr: '@table[@row, "cum_div_price"] / MarketAnchorsMarket["cost_close_price", "val"] - 1',
       },
       weighted_cum_div: null,
       weighted_ex_div: null,
@@ -386,7 +387,7 @@ export function buildValuationBridges(
         expr: 'AVERAGE(@table["perp_dcf".."calibrated_comps", "ex_div_price"])',
       },
       vs_close_pct: {
-        expr: '@table[@row, "cum_div_price"] / MarketAnchors["cost_close_price", "val"] - 1',
+        expr: '@table[@row, "cum_div_price"] / MarketAnchorsMarket["cost_close_price", "val"] - 1',
       },
       weighted_cum_div: null,
       weighted_ex_div: null,
@@ -583,10 +584,10 @@ export function buildValuationBridges(
     },
   })
 
-  // 3. 2-Year Return Attribution Walks (EV/EBITDA -> TSR and Companion P/E -> TSR)
-  const priceAttribution = sheet.addTable(
-    "PublicPriceAttribution",
-    "2-Year Total Shareholder Return Attribution (FY27E to FY28E)",
+  // 3. 2-Year Return Attribution — Enterprise-Value Walk (EV / EBITDA to TSR)
+  const evAttribution = sheet.addTable(
+    "PublicEvAttribution",
+    "2-Year Total Shareholder Return Attribution — EV / EBITDA Walk",
     {
       subtitle: [
         "Anchored on ex-special-div. spot price and ex-op.-lease EV; Downside/Base/Upside hold static snapshots",
@@ -595,52 +596,49 @@ export function buildValuationBridges(
       currency: "USD",
     }
   )
-  priceAttribution.addColumn("line_item", {
+  evAttribution.addColumn("line_item", {
     role: "descriptor",
-    header: "Return attribution step",
+    header: "EV return attribution step",
   })
-  priceAttribution.addColumn("Downside", {
+  evAttribution.addColumn("Downside", {
     role: "measure",
     headers: ["Downside", "Case"],
   })
-  priceAttribution.addColumn("Base", {
+  evAttribution.addColumn("Base", {
     role: "measure",
     headers: ["Base", "Case"],
   })
-  priceAttribution.addColumn("Upside", {
+  evAttribution.addColumn("Upside", {
     role: "measure",
     headers: ["Upside", "Case"],
   })
-  priceAttribution.addColumn("active_live", {
+  evAttribution.addColumn("active_live", {
     role: "measure",
     headers: ["Active", "Case"],
     style: "bold",
   })
-  priceAttribution.addColumn("notes", {
+  evAttribution.addColumn("notes", {
     role: "descriptor",
     header: "Bridge basis",
   })
 
-  priceAttribution.addSectionHeader(
-    "Enterprise-value walk (EV / EBITDA to TSR)"
-  )
-  priceAttribution.addRow("ex_div_spot_price", {
+  evAttribution.addRow("ex_div_spot_price", {
     ...rowFormatOptions("currency", 2),
-    expr: 'MarketAnchors["cost_close_price", "val"] - ScalarAssumptionsActive["special_dividend_ps_fy27", "val"]',
+    expr: 'MarketAnchorsMarket["cost_close_price", "val"] - ScalarAssumptionsValuation["special_dividend_ps_fy27", "val"]',
     cells: {
       line_item: "Ex-special-div. spot price ($/sh)",
       notes: "Spot less special div.",
     },
   })
-  priceAttribution.addRow("current_ev_multiple", {
+  evAttribution.addRow("current_ev_multiple", {
     ...rowFormatOptions("multiple", 2),
-    expr: 'DcfBridge["current_market_ev", "perp"] / MarketAnchors["cons_ebitda_fy27", "val"]',
+    expr: 'DcfBridge["current_market_ev", "perp"] / MarketAnchorsConsensus["cons_ebitda_fy27", "val"]',
     cells: {
       line_item: "Spot EV / cons. FY27E EBITDA",
       notes: "Ex-op.-lease EV basis",
     },
   })
-  priceAttribution.addRow("target_ev_multiple", {
+  evAttribution.addRow("target_ev_multiple", {
     ...rowFormatOptions("multiple", 1),
     cells: {
       line_item: "Calibrated FY28E EV / EBITDA",
@@ -648,12 +646,12 @@ export function buildValuationBridges(
       Base: baseSnap?.compsMult ?? 24,
       Upside: upSnap?.compsMult ?? 29.5,
       active_live: {
-        expr: 'ScalarAssumptionsActive["calibrated_comps_ev_to_ebitda", "val"]',
+        expr: 'ScalarAssumptionsValuation["calibrated_comps_ev_to_ebitda", "val"]',
       },
       notes: "Scenario target mult.",
     },
   })
-  priceAttribution.addRow("fy28_model_ebitda", {
+  evAttribution.addRow("fy28_model_ebitda", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Scenario FY28E EBITDA ($M)",
@@ -664,7 +662,7 @@ export function buildValuationBridges(
       notes: "Year-2 scenario EBITDA",
     },
   })
-  priceAttribution.addRow("fy28_implied_ev", {
+  evAttribution.addRow("fy28_implied_ev", {
     ...rowFormatOptions("currency", 0),
     expr: '@table["fy28_model_ebitda", @col] * @table["target_ev_multiple", @col]',
     cells: {
@@ -672,7 +670,7 @@ export function buildValuationBridges(
       notes: "FY28E EBITDA x mult.",
     },
   })
-  priceAttribution.addRow("fy28_net_cash", {
+  evAttribution.addRow("fy28_net_cash", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY28E net cash (ex-op. leases)",
@@ -680,12 +678,12 @@ export function buildValuationBridges(
       Base: baseSnap?.fy28NetCashExLease ?? 0,
       Upside: upSnap?.fy28NetCashExLease ?? 0,
       active_live: {
-        expr: 'BalanceSheet["cash_and_equivalents", "FY28E"] + BalanceSheet["short_term_investments", "FY28E"] - (DebtLeasesSchedule["total_lt_debt_carrying", "FY28E"] + DebtLeasesSchedule["revolver_end", "FY28E"] + DebtLeasesSchedule["total_fin_lease_liab", "FY28E"])',
+        expr: 'BalanceSheet["cash_and_equivalents", "FY28E"] + BalanceSheet["short_term_investments", "FY28E"] - (DebtSchedule["total_lt_debt_carrying", "FY28E"] + DebtSchedule["revolver_end", "FY28E"] + LeasesInterestSchedule["total_fin_lease_liab", "FY28E"])',
       },
       notes: "Post-special-div. cash",
     },
   })
-  priceAttribution.addRow("fy28_ending_shares", {
+  evAttribution.addRow("fy28_ending_shares", {
     ...rowFormatOptions("number", 3),
     cells: {
       line_item: "FY28E ending diluted shares (M)",
@@ -698,7 +696,7 @@ export function buildValuationBridges(
       notes: "Incl. TSM RSUs",
     },
   })
-  priceAttribution.addRow("fy28_implied_price", {
+  evAttribution.addRow("fy28_implied_price", {
     ...rowFormatOptions("currency", 2),
     style: "bold",
     expr: '(@table["fy28_implied_ev", @col] + @table["fy28_net_cash", @col]) / @table["fy28_ending_shares", @col]',
@@ -707,23 +705,23 @@ export function buildValuationBridges(
       notes: "(EV + net cash) / shares",
     },
   })
-  priceAttribution.addRow("ev_roll_forward", {
+  evAttribution.addRow("ev_roll_forward", {
     ...rowFormatOptions("percentage", 2),
-    expr: 'MarketAnchors["cons_ebitda_fy28", "val"] / MarketAnchors["cons_ebitda_fy27", "val"] - 1',
+    expr: 'MarketAnchorsConsensus["cons_ebitda_fy28", "val"] / MarketAnchorsConsensus["cons_ebitda_fy27", "val"] - 1',
     cells: {
       line_item: "1. Consensus EBITDA roll-forward",
       notes: "Cons. FY28E / FY27E",
     },
   })
-  priceAttribution.addRow("ev_forecast_delta", {
+  evAttribution.addRow("ev_forecast_delta", {
     ...rowFormatOptions("percentage", 2),
-    expr: '@table["fy28_model_ebitda", @col] / MarketAnchors["cons_ebitda_fy28", "val"] - 1',
+    expr: '@table["fy28_model_ebitda", @col] / MarketAnchorsConsensus["cons_ebitda_fy28", "val"] - 1',
     cells: {
       line_item: "2. Model vs. cons. FY28E EBITDA",
       notes: "Scenario forecast delta",
     },
   })
-  priceAttribution.addRow("ev_multiple_delta", {
+  evAttribution.addRow("ev_multiple_delta", {
     ...rowFormatOptions("percentage", 2),
     expr: 'IF(@table["current_ev_multiple", @col] > 0, @table["target_ev_multiple", @col] / @table["current_ev_multiple", @col] - 1, NA())',
     cells: {
@@ -731,7 +729,7 @@ export function buildValuationBridges(
       notes: "Target vs. spot mult.",
     },
   })
-  priceAttribution.addRow("implied_ev_return", {
+  evAttribution.addRow("implied_ev_return", {
     ...rowFormatOptions("percentage", 2),
     style: "bold",
     expr: '(1 + @table["ev_roll_forward", @col]) * (1 + @table["ev_forecast_delta", @col]) * (1 + @table["ev_multiple_delta", @col]) - 1',
@@ -740,23 +738,23 @@ export function buildValuationBridges(
       notes: "Compounded EV factors",
     },
   })
-  priceAttribution.addRow("net_cash_bridge_factor", {
+  evAttribution.addRow("net_cash_bridge_factor", {
     ...rowFormatOptions("percentage", 2),
-    expr: 'IF(AND(@table["ex_div_spot_price", @col] > 0, @table["current_ev_multiple", @col] > 0, @table["fy28_model_ebitda", @col] > 0), ((@table["fy28_implied_ev", @col] + @table["fy28_net_cash", @col]) / (@table["ex_div_spot_price", @col] * MarketAnchors["cost_diluted_shares", "val"])) / (1 + @table["implied_ev_return", @col]) - 1, NA())',
+    expr: 'IF(AND(@table["ex_div_spot_price", @col] > 0, @table["current_ev_multiple", @col] > 0, @table["fy28_model_ebitda", @col] > 0), ((@table["fy28_implied_ev", @col] + @table["fy28_net_cash", @col]) / (@table["ex_div_spot_price", @col] * MarketAnchorsMarket["cost_diluted_shares", "val"])) / (1 + @table["implied_ev_return", @col]) - 1, NA())',
     cells: {
       line_item: "4. Net cash accumulation bridge",
       notes: "Equity vs. EV ratio",
     },
   })
-  priceAttribution.addRow("share_count_factor", {
+  evAttribution.addRow("share_count_factor", {
     ...rowFormatOptions("percentage", 2),
-    expr: 'MarketAnchors["cost_diluted_shares", "val"] / @table["fy28_ending_shares", @col] - 1',
+    expr: 'MarketAnchorsMarket["cost_diluted_shares", "val"] / @table["fy28_ending_shares", @col] - 1',
     cells: {
       line_item: "5. Share count accretion / (dil.)",
       notes: "Spot / FY28E shares",
     },
   })
-  priceAttribution.addRow("ev_implied_price_return", {
+  evAttribution.addRow("ev_implied_price_return", {
     ...rowFormatOptions("percentage", 2),
     style: "bold",
     expr: '(1 + @table["implied_ev_return", @col]) * (1 + @table["net_cash_bridge_factor", @col]) * (1 + @table["share_count_factor", @col]) - 1',
@@ -765,7 +763,7 @@ export function buildValuationBridges(
       notes: "vs. ex-div. spot price",
     },
   })
-  priceAttribution.addRow("regular_dps_2y", {
+  evAttribution.addRow("regular_dps_2y", {
     ...rowFormatOptions("currency", 2),
     cells: {
       line_item: "7Q remaining reg. DPS (FY27–28E)",
@@ -781,7 +779,7 @@ export function buildValuationBridges(
       notes: "Excl. paid Q1 & spec.",
     },
   })
-  priceAttribution.addRow("regular_dps_yield", {
+  evAttribution.addRow("regular_dps_yield", {
     ...rowFormatOptions("percentage", 2),
     expr: 'IF(@table["ex_div_spot_price", @col] > 0, @table["regular_dps_2y", @col] / @table["ex_div_spot_price", @col], NA())',
     cells: {
@@ -789,7 +787,7 @@ export function buildValuationBridges(
       notes: "Regular DPS / ex-div.",
     },
   })
-  priceAttribution.addRow("ev_implied_tsr", {
+  evAttribution.addRow("ev_implied_tsr", {
     ...rowFormatOptions("percentage", 2),
     style: "total",
     highlight: true,
@@ -799,7 +797,7 @@ export function buildValuationBridges(
       notes: "Price return + reg. div.",
     },
   })
-  priceAttribution.addRow("ev_tsr_tie_out_check", {
+  evAttribution.addRow("ev_tsr_tie_out_check", {
     ...rowFormatOptions("percentage", 6),
     style: "bold",
     expr: 'IF(@table["ex_div_spot_price", @col] > 0, @table["ev_implied_tsr", @col] - ((@table["fy28_implied_price", @col] + @table["regular_dps_2y", @col]) / @table["ex_div_spot_price", @col] - 1), NA())',
@@ -809,17 +807,53 @@ export function buildValuationBridges(
     },
   })
 
-  priceAttribution.addRowGutter()
-  priceAttribution.addSectionHeader("Companion equity walk (P / E to TSR)")
-  priceAttribution.addRow("current_ex_div_pe", {
+  // 4. 2-Year Return Attribution — Companion Equity Walk (P / E to TSR)
+  const peAttribution = sheet.addTable(
+    "PublicPeAttribution",
+    "2-Year Total Shareholder Return Attribution — Companion P/E Walk",
+    {
+      subtitle: [
+        "Cross-checks EV/EBITDA 2-year TSR via consensus EPS roll-forward, forecast delta, and exit P/E re-rating",
+        "Downside, Base, and Upside hold static scenario snapshots; Active tracks the active case",
+      ],
+      currency: "USD",
+    }
+  )
+  peAttribution.addColumn("line_item", {
+    role: "descriptor",
+    header: "P/E return attribution step",
+  })
+  peAttribution.addColumn("Downside", {
+    role: "measure",
+    headers: ["Downside", "Case"],
+  })
+  peAttribution.addColumn("Base", {
+    role: "measure",
+    headers: ["Base", "Case"],
+  })
+  peAttribution.addColumn("Upside", {
+    role: "measure",
+    headers: ["Upside", "Case"],
+  })
+  peAttribution.addColumn("active_live", {
+    role: "measure",
+    headers: ["Active", "Case"],
+    style: "bold",
+  })
+  peAttribution.addColumn("notes", {
+    role: "descriptor",
+    header: "Bridge basis",
+  })
+
+  peAttribution.addRow("current_ex_div_pe", {
     ...rowFormatOptions("multiple", 1),
-    expr: '@table["ex_div_spot_price", @col] / MarketAnchors["cons_eps_fy27", "val"]',
+    expr: 'PublicEvAttribution["ex_div_spot_price", @col] / MarketAnchorsConsensus["cons_eps_fy27", "val"]',
     cells: {
       line_item: "Ex-div. price / cons. FY27E EPS",
       notes: "Starting forward P/E",
     },
   })
-  priceAttribution.addRow("fy28_model_eps", {
+  peAttribution.addRow("fy28_model_eps", {
     ...rowFormatOptions("currency", 2),
     cells: {
       line_item: "Scenario FY28E diluted EPS ($/sh)",
@@ -830,31 +864,31 @@ export function buildValuationBridges(
       notes: "Year-2 scenario EPS",
     },
   })
-  priceAttribution.addRow("implied_fy28_pe", {
+  peAttribution.addRow("implied_fy28_pe", {
     ...rowFormatOptions("multiple", 1),
-    expr: 'IF(@table["fy28_model_eps", @col] > 0, @table["fy28_implied_price", @col] / @table["fy28_model_eps", @col], NA())',
+    expr: 'IF(@table["fy28_model_eps", @col] > 0, PublicEvAttribution["fy28_implied_price", @col] / @table["fy28_model_eps", @col], NA())',
     cells: {
       line_item: "Implied FY28E exit P/E",
       notes: "Implied price / EPS",
     },
   })
-  priceAttribution.addRow("pe_eps_roll_forward", {
+  peAttribution.addRow("pe_eps_roll_forward", {
     ...rowFormatOptions("percentage", 2),
-    expr: 'MarketAnchors["cons_eps_fy28", "val"] / MarketAnchors["cons_eps_fy27", "val"] - 1',
+    expr: 'MarketAnchorsConsensus["cons_eps_fy28", "val"] / MarketAnchorsConsensus["cons_eps_fy27", "val"] - 1',
     cells: {
       line_item: "1. Consensus EPS roll-forward",
       notes: "Cons. FY28E / FY27E",
     },
   })
-  priceAttribution.addRow("pe_eps_forecast_delta", {
+  peAttribution.addRow("pe_eps_forecast_delta", {
     ...rowFormatOptions("percentage", 2),
-    expr: '@table["fy28_model_eps", @col] / MarketAnchors["cons_eps_fy28", "val"] - 1',
+    expr: '@table["fy28_model_eps", @col] / MarketAnchorsConsensus["cons_eps_fy28", "val"] - 1',
     cells: {
       line_item: "2. Model vs. cons. FY28E EPS",
       notes: "Scenario EPS delta",
     },
   })
-  priceAttribution.addRow("pe_multiple_delta", {
+  peAttribution.addRow("pe_multiple_delta", {
     ...rowFormatOptions("percentage", 2),
     expr: 'IF(@table["current_ex_div_pe", @col] > 0, @table["implied_fy28_pe", @col] / @table["current_ex_div_pe", @col] - 1, NA())',
     cells: {
@@ -862,7 +896,7 @@ export function buildValuationBridges(
       notes: "Exit vs. starting P/E",
     },
   })
-  priceAttribution.addRow("pe_implied_price_return", {
+  peAttribution.addRow("pe_implied_price_return", {
     ...rowFormatOptions("percentage", 2),
     style: "bold",
     expr: '(1 + @table["pe_eps_roll_forward", @col]) * (1 + @table["pe_eps_forecast_delta", @col]) * (1 + @table["pe_multiple_delta", @col]) - 1',
@@ -871,24 +905,24 @@ export function buildValuationBridges(
       notes: "Compounded P/E factors",
     },
   })
-  priceAttribution.addRow("pe_implied_tsr", {
+  peAttribution.addRow("pe_implied_tsr", {
     ...rowFormatOptions("percentage", 2),
     style: "total",
-    expr: '@table["pe_implied_price_return", @col] + @table["regular_dps_yield", @col]',
+    expr: '@table["pe_implied_price_return", @col] + PublicEvAttribution["regular_dps_yield", @col]',
     cells: {
       line_item: "Implied 2Y total return (P/E walk)",
       notes: "Price return + reg. div.",
     },
   })
-  priceAttribution.addRow("pe_tsr_tie_out_check", {
+  peAttribution.addRow("pe_tsr_tie_out_check", {
     ...rowFormatOptions("percentage", 6),
     style: "bold",
-    expr: 'IF(@table["ex_div_spot_price", @col] > 0, @table["pe_implied_tsr", @col] - ((@table["fy28_implied_price", @col] + @table["regular_dps_2y", @col]) / @table["ex_div_spot_price", @col] - 1), NA())',
+    expr: 'IF(PublicEvAttribution["ex_div_spot_price", @col] > 0, @table["pe_implied_tsr", @col] - ((PublicEvAttribution["fy28_implied_price", @col] + PublicEvAttribution["regular_dps_2y", @col]) / PublicEvAttribution["ex_div_spot_price", @col] - 1), NA())',
     cells: {
       line_item: "P/E walk TSR tie-out check",
       notes: "Walk − direct TSR",
     },
   })
 
-  return { footballField, scenarioVariance, priceAttribution }
+  return { footballField, scenarioVariance, evAttribution, peAttribution }
 }

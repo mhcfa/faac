@@ -16,7 +16,10 @@ import {
   buildAuditedFootnoteAnchorsTable,
   buildOperatingAnnualTables,
 } from "./schedules/operating.ts"
-import { buildPeerCompsSheet } from "./schedules/peerComps.ts"
+import {
+  buildPeerCompsSheet,
+  buildPeerFinancialsSheet,
+} from "./schedules/peerComps.ts"
 import {
   buildLtmAndQ2AnchorTables,
   buildStatementsTables,
@@ -204,18 +207,53 @@ function buildModelInternal(
   const model = new Model({
     name: "Salesforce, Inc. (NYSE: CRM) — Integrated Financial Model",
     theme: "corporate_navy",
+    print: {
+      paperSize: "letter",
+      orientation: "landscape",
+      fit: "fit_width",
+      centerHorizontally: true,
+      header: {
+        left: "{model}",
+        right: "{sheet}",
+      },
+      footer: {
+        left: "Michael Hu, CFA | mhu@outlook.co.nz",
+        center: "As of November 18, 2026",
+        right: "Page {page} of {pages}",
+      },
+    },
   })
 
   const execSheet = model.addSheet("ExecutiveSummary", {
     tabColor: "#1B365D",
     layout: "grid",
+    print: { fit: "fit_page" },
   })
   const assumptionsSheet = model.addSheet("Assumptions", {
     tabColor: "#2C5282",
     layout: "grid",
   })
-  const financialModelSheet = model.addSheet("FinancialModel", {
+  const incomeSheet = model.addSheet("IncomeStatement", {
     tabColor: "#276749",
+    layout: "grid",
+    print: { fit: "fit_page" },
+  })
+  const balanceSheetTab = model.addSheet("BalanceSheet", {
+    tabColor: "#276749",
+    layout: "grid",
+    print: { fit: "fit_page" },
+  })
+  const cashFlowSheet = model.addSheet("CashFlow", {
+    tabColor: "#276749",
+    layout: "grid",
+    print: { fit: "fit_page" },
+  })
+  const operatingSheet = model.addSheet("OperatingSchedules", {
+    tabColor: "#2F855A",
+    layout: "grid",
+  })
+  const historicalAnchorsSheet = model.addSheet("HistoricalAnchors", {
+    tabColor: "#38A169",
     layout: "grid",
   })
   const valuationSheet = model.addSheet("Valuation", {
@@ -225,6 +263,11 @@ function buildModelInternal(
   const peerCompsSheet = model.addSheet("PeerComps", {
     tabColor: "#742A2A",
     layout: "grid",
+    colWidth: 10,
+  })
+  const peerFinancialsSheet = model.addSheet("PeerFinancials", {
+    tabColor: "#9B2C2C",
+    layout: "grid",
   })
   const marketBetaSheet = model.addSheet("MarketAndBeta", {
     tabColor: "#44337A",
@@ -233,9 +276,14 @@ function buildModelInternal(
   const marketDataSheet = model.addSheet("MarketData", {
     tabColor: "#553C9A",
     layout: "grid",
+    colWidth: 11,
   })
 
-  buildExecutiveSummarySheet(execSheet, snapshots)
+  const execTables = buildExecutiveSummarySheet(execSheet, snapshots)
+  execSheet.setBands([
+    execTables.executiveDashboard,
+    { lanes: [execTables.valuationFootballField], gap: 1 },
+  ])
 
   const assumptionTables = buildAssumptionsSheet(
     assumptionsSheet,
@@ -250,40 +298,51 @@ function buildModelInternal(
         { tables: [assumptionTables.scenarioGuide] },
       ],
     },
-    assumptionTables.scalarDrivers,
-    assumptionTables.periodDriversActive,
-    assumptionTables.periodDriversDownside,
-    assumptionTables.periodDriversBase,
-    assumptionTables.periodDriversUpside,
-    assumptionTables.debtTrancheRegistry,
+    { lanes: [assumptionTables.scalarDrivers], gap: 1 },
+    { lanes: [assumptionTables.periodDriversActive], pageBreakBefore: true },
+    { lanes: [assumptionTables.periodDriversDownside], pageBreakBefore: true },
+    { lanes: [assumptionTables.periodDriversBase], pageBreakBefore: true },
+    { lanes: [assumptionTables.periodDriversUpside], pageBreakBefore: true },
+    { lanes: [assumptionTables.debtTrancheRegistry], pageBreakBefore: true },
   ])
 
-  const stmtTables = buildStatementsTables(financialModelSheet, audited)
-  const opTables = buildOperatingAnnualTables(financialModelSheet, audited)
-  const diagTables = buildDiagnosticsTables(financialModelSheet)
-  const anchorTables = buildLtmAndQ2AnchorTables(financialModelSheet, audited)
-  const auditedAnchors = buildAuditedFootnoteAnchorsTable(
-    financialModelSheet,
+  buildStatementsTables(incomeSheet, balanceSheetTab, cashFlowSheet, audited)
+
+  const opTables = buildOperatingAnnualTables(operatingSheet, audited)
+  const diagTables = buildDiagnosticsTables(operatingSheet)
+  operatingSheet.setBands([
+    opTables.revenueSchedule,
+    { lanes: [opTables.ppeAndIntangibles], pageBreakBefore: true },
+    { lanes: [opTables.costAndSbc], pageBreakBefore: true },
+    { lanes: [opTables.workingCapital], pageBreakBefore: true },
+    { lanes: [opTables.shareCount], gap: 1 },
+    { lanes: [opTables.debtSchedule], pageBreakBefore: true },
+    { lanes: [diagTables.qoeAndCashConversion], pageBreakBefore: true },
+    { lanes: [diagTables.investedCapitalAndRoic], pageBreakBefore: true },
+    { lanes: [diagTables.capitalAllocation], pageBreakBefore: true },
+  ])
+
+  const anchorTables = buildLtmAndQ2AnchorTables(
+    historicalAnchorsSheet,
     audited
   )
-  financialModelSheet.setBands([
-    stmtTables.incomeStatement,
-    stmtTables.balanceSheet,
-    stmtTables.cashFlowStatement,
-    opTables.revenueSchedule,
-    opTables.ppeAndIntangibles,
-    opTables.costAndSbc,
-    opTables.workingCapital,
-    opTables.shareCount,
-    opTables.debtSchedule,
-    diagTables.qoeAndCashConversion,
-    diagTables.investedCapitalAndRoic,
-    diagTables.capitalAllocation,
+  const auditedAnchors = buildAuditedFootnoteAnchorsTable(
+    historicalAnchorsSheet,
+    audited
+  )
+  historicalAnchorsSheet.setBands([
     {
       lanes: [
-        { tables: [anchorTables.ltmFlowBridge] },
-        { tables: [anchorTables.q2BalanceSheetAnchor, auditedAnchors] },
+        { tables: [anchorTables.ltmOperatingBridge] },
+        { tables: [auditedAnchors] },
       ],
+    },
+    {
+      lanes: [
+        { tables: [anchorTables.ltmCashFlowAndH1Anchors] },
+        { tables: [anchorTables.q2BalanceSheetAnchor] },
+      ],
+      pageBreakBefore: true,
     },
   ])
 
@@ -295,12 +354,13 @@ function buildModelInternal(
         { tables: [valTables.dcfSummary] },
       ],
     },
-    valTables.dcfModel,
+    { lanes: [valTables.dcfModel], pageBreakBefore: true },
     {
       lanes: [
         { tables: [valTables.evToEquityBridge] },
         { tables: [valTables.scenarioVarianceBridge] },
       ],
+      pageBreakBefore: true,
     },
     {
       lanes: [
@@ -312,6 +372,7 @@ function buildModelInternal(
           tableGap: 1,
         },
       ],
+      pageBreakBefore: true,
     },
     {
       lanes: [
@@ -323,8 +384,9 @@ function buildModelInternal(
           tableGap: 1,
         },
       ],
+      pageBreakBefore: true,
     },
-    valTables.terminalReinvestSensitivity,
+    { lanes: [valTables.terminalReinvestSensitivity], pageBreakBefore: true },
     {
       lanes: [
         {
@@ -332,10 +394,22 @@ function buildModelInternal(
           tableGap: 1,
         },
       ],
+      gap: 1,
     },
   ])
 
-  buildPeerCompsSheet(peerCompsSheet, audited)
+  const peerCompsTables = buildPeerCompsSheet(peerCompsSheet, audited)
+  peerCompsSheet.setBands([
+    peerCompsTables.tradingComps,
+    { lanes: [peerCompsTables.compsImpliedValuation], gap: 1 },
+  ])
+
+  const peerFinTables = buildPeerFinancialsSheet(peerFinancialsSheet, audited)
+  peerFinancialsSheet.setBands([
+    peerFinTables.peerLtmOperatingBridge,
+    { lanes: [peerFinTables.peerLtmCashFlowBridge], pageBreakBefore: true },
+    { lanes: [peerFinTables.peerEvBridge], pageBreakBefore: true },
+  ])
 
   const marketBetaTables = buildMarketAndBetaSheet(marketBetaSheet, audited)
   marketBetaSheet.setBands([
@@ -347,7 +421,11 @@ function buildModelInternal(
     },
   ])
 
-  buildMarketDataSheet(marketDataSheet, audited)
+  const marketDataTables = buildMarketDataSheet(marketDataSheet, audited)
+  marketDataSheet.setBands([
+    marketDataTables.betaMonthly5Y,
+    { lanes: [marketDataTables.betaWeekly2Y], pageBreakBefore: true },
+  ])
 
   return model
 }

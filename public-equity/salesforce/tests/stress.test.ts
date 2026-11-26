@@ -142,16 +142,17 @@ describe("Extreme stress & boundary stability tests (C6)", () => {
   it("C6c: zero or negative peer EBITDA and EPS denominators return #N/A cleanly without #DIV/0!", () => {
     const audited = loadAuditedData()
     const model = buildSalesforceModel({ scenario: "base", audited })
-    const peerBridge = model.getTable("PeerLtmBridge")
+    const peerOpBridge = model.getTable("PeerLtmOperatingBridge")
+    const peerEvBridge = model.getTable("PeerEvBridge")
 
     // Force HUBS LTM EBITDA <= 0 and FY1 consensus EPS = 0
-    peerBridge.setCell("fy_ebit", "HUBS", -5000)
-    peerBridge.setCell("fy1_cons_eps", "HUBS", 0)
+    peerOpBridge.setCell("fy_ebit", "HUBS", -5000)
+    peerEvBridge.setCell("fy1_cons_eps", "HUBS", 0)
 
     const compiled = model.compile()
     try {
       expect(
-        compiled.num("PeerLtmBridge", "ltm_gaap_ebitda", "HUBS")
+        compiled.num("PeerLtmCashFlowBridge", "ltm_gaap_ebitda", "HUBS")
       ).toBeLessThan(0)
       expect(compiled.value("TradingCompsTable", "HUBS", "net_lev")).toBe(
         "#N/A"

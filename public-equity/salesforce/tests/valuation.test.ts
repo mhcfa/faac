@@ -167,7 +167,11 @@ describe("Multi-horizon Hamada betas, ASC 842 consistency, DCF bridges, sensitiv
 
     // GAAP EBITDA excludes ASC 842 operating lease ROU amortization across historical, forecast, and LTM bridges
     const fy26IsEbitda = base.num("IncomeStatement", "gaap_ebitda", "FY26A")
-    const fy26LtmEbitda = base.num("LtmFlowBridge", "gaap_ebitda", "FY26A")
+    const fy26LtmEbitda = base.num(
+      "LtmCashFlowAndH1Anchors",
+      "gaap_ebitda",
+      "FY26A"
+    )
     expect(Math.abs(fy26IsEbitda - fy26LtmEbitda)).toBeLessThan(1e-6)
     expect(fy26IsEbitda).toBeCloseTo(11395, 6)
 
@@ -188,22 +192,24 @@ describe("Multi-horizon Hamada betas, ASC 842 consistency, DCF bridges, sensitiv
       ).toBeLessThan(1e-6)
     }
 
-    const ltmEbit = base.num("LtmFlowBridge", "operating_income", "LTM_Q2_27")
-    const ltmDa = base.num("LtmFlowBridge", "da_expense", "LTM_Q2_27")
+    const ltmEbit = base.num(
+      "LtmOperatingBridge",
+      "operating_income",
+      "LTM_Q2_27"
+    )
+    const ltmDa = base.num("LtmOperatingBridge", "da_expense", "LTM_Q2_27")
     const ltmChgOpLease = base.num(
-      "LtmFlowBridge",
+      "LtmOperatingBridge",
       "chg_operating_lease_liabilities",
       "LTM_Q2_27"
     )
     expect(ltmChgOpLease).toBeCloseTo(-574, 6)
-    expect(base.num("LtmFlowBridge", "gaap_ebitda", "LTM_Q2_27")).toBeCloseTo(
-      ltmEbit + ltmDa + ltmChgOpLease,
-      6
-    )
-    expect(base.num("LtmFlowBridge", "gaap_ebitda", "LTM_Q2_27")).toBeCloseTo(
-      12083,
-      6
-    )
+    expect(
+      base.num("LtmCashFlowAndH1Anchors", "gaap_ebitda", "LTM_Q2_27")
+    ).toBeCloseTo(ltmEbit + ltmDa + ltmChgOpLease, 6)
+    expect(
+      base.num("LtmCashFlowAndH1Anchors", "gaap_ebitda", "LTM_Q2_27")
+    ).toBeCloseTo(12083, 6)
 
     // WaccSchedule funded_debt_and_fin_leases excludes $2,455M operating leases
     const grossDebtQ2 = base.num(
@@ -234,14 +240,14 @@ describe("Multi-horizon Hamada betas, ASC 842 consistency, DCF bridges, sensitiv
       "op_lease_liabilities"
     )
 
-    // PeerLtmBridge[total_debt_leases_pref] excludes peer operating leases across all 6 peers
+    // PeerEvBridge[total_debt_leases_pref] excludes peer operating leases across all 6 peers
     for (const peer of PEER_TICKERS) {
-      const debtCur = base.num("PeerLtmBridge", "debt_current", peer)
-      const debtNc = base.num("PeerLtmBridge", "debt_noncurrent", peer)
-      const pref = base.num("PeerLtmBridge", "pref_stock", peer)
-      const nci = base.num("PeerLtmBridge", "nci", peer)
+      const debtCur = base.num("PeerEvBridge", "debt_current", peer)
+      const debtNc = base.num("PeerEvBridge", "debt_noncurrent", peer)
+      const pref = base.num("PeerEvBridge", "pref_stock", peer)
+      const nci = base.num("PeerEvBridge", "nci", peer)
       const totalDebtPref = base.num(
-        "PeerLtmBridge",
+        "PeerEvBridge",
         "total_debt_leases_pref",
         peer
       )
@@ -483,34 +489,46 @@ describe("Multi-horizon Hamada betas, ASC 842 consistency, DCF bridges, sensitiv
     )
   })
 
-  it("C5: strips strategic-investment deferred tax in LtmFlowBridge[unlevered_fcff] and removes phantom M&A WC OCF in FY27E-FY28E", () => {
+  it("C5: strips strategic-investment deferred tax in LtmCashFlowAndH1Anchors[unlevered_fcff] and removes phantom M&A WC OCF in FY27E-FY28E", () => {
     const base = compiled.base
 
     // H1 FY27A unlevered_fcff strips gains * ETR and reconciles exactly to OCF - SBC - after-tax non-op interest/other - CapEx - FinLeases
-    const h1Ocf = base.num("LtmFlowBridge", "operating_cash_flow", "H1_FY27A")
-    const h1Sbc = base.num("LtmFlowBridge", "sbc_expense", "H1_FY27A")
+    const h1Ocf = base.num(
+      "LtmOperatingBridge",
+      "operating_cash_flow",
+      "H1_FY27A"
+    )
+    const h1Sbc = base.num("LtmOperatingBridge", "sbc_expense", "H1_FY27A")
     const h1IntOther = base.num(
-      "LtmFlowBridge",
+      "LtmOperatingBridge",
       "interest_and_other_net",
       "H1_FY27A"
     )
-    const h1Etr = base.num("LtmFlowBridge", "effective_tax_rate", "H1_FY27A")
-    const h1Capex = base.num("LtmFlowBridge", "capex", "H1_FY27A")
+    const h1Etr = base.num(
+      "LtmCashFlowAndH1Anchors",
+      "effective_tax_rate",
+      "H1_FY27A"
+    )
+    const h1Capex = base.num("LtmOperatingBridge", "capex", "H1_FY27A")
     const h1FinLease = base.num(
-      "LtmFlowBridge",
+      "LtmOperatingBridge",
       "principal_payments_financing_obligations",
       "H1_FY27A"
     )
-    const h1Fcff = base.num("LtmFlowBridge", "unlevered_fcff", "H1_FY27A")
+    const h1Fcff = base.num(
+      "LtmCashFlowAndH1Anchors",
+      "unlevered_fcff",
+      "H1_FY27A"
+    )
     const expH1Fcff =
       h1Ocf - h1Sbc - h1IntOther * (1 - h1Etr) + h1Capex + h1FinLease
     expect(Math.abs(h1Fcff - expH1Fcff)).toBeLessThan(1e-6)
 
-    // FY26A unlevered_fcff matches identically between QoeAndCashConversion and LtmFlowBridge
+    // FY26A unlevered_fcff matches identically between QoeAndCashConversion and LtmCashFlowAndH1Anchors
     expect(
       Math.abs(
         base.num("QoeAndCashConversion", "unlevered_fcff", "FY26A") -
-          base.num("LtmFlowBridge", "unlevered_fcff", "FY26A")
+          base.num("LtmCashFlowAndH1Anchors", "unlevered_fcff", "FY26A")
       )
     ).toBeLessThan(1e-6)
 
@@ -751,9 +769,7 @@ describe("Multi-horizon Hamada betas, ASC 842 consistency, DCF bridges, sensitiv
       expect(inspected.isFormula).toBe(false)
       expect(inspected.note).toContain("Excluded from peer mean and median")
     }
-    expect(comps.value("ORCL", "ltm_basis")).toBe(
-      "LTM Q1 FY27 (Aug 2026; pref. & NCI)"
-    )
+    expect(comps.value("ORCL", "ltm_basis")).toBe("LTM Q1 FY27 (Aug)")
     expect(
       base.inspectCell("TradingCompsTable", "ORCL", "item").note
     ).toBeNull()
@@ -819,15 +835,18 @@ describe("Multi-horizon Hamada betas, ASC 842 consistency, DCF bridges, sensitiv
     // CRM EV/(FCF - SBC) matches peer OCF - CapEx - SBC basis; CRM_net_strat shows finance-lease-inclusive Economic FCF
     expect(
       base.num("CompsImpliedValuation", "ev_fcf_sbc", "crm_metric")
-    ).toBeCloseTo(base.num("LtmFlowBridge", "fcf_ex_sbc", "LTM_Q2_27"), 6)
+    ).toBeCloseTo(
+      base.num("LtmCashFlowAndH1Anchors", "fcf_ex_sbc", "LTM_Q2_27"),
+      6
+    )
     expect(comps.num("CRM", "ev_fcf_sbc")).toBeCloseTo(
       comps.num("CRM", "ev") /
-        base.num("LtmFlowBridge", "fcf_ex_sbc", "LTM_Q2_27"),
+        base.num("LtmCashFlowAndH1Anchors", "fcf_ex_sbc", "LTM_Q2_27"),
       6
     )
     expect(comps.num("CRM_net_strat", "ev_fcf_sbc")).toBeCloseTo(
       comps.num("CRM_net_strat", "ev") /
-        base.num("LtmFlowBridge", "economic_fcf", "LTM_Q2_27"),
+        base.num("LtmCashFlowAndH1Anchors", "economic_fcf", "LTM_Q2_27"),
       6
     )
 

@@ -725,7 +725,7 @@ export function buildFinancialStatementsSheet(
   bs.addRow("accrued_expenses_and_other_current_liabilities", {
     cells: buildBsLine(
       accrHist,
-      "Accrued expenses & other current liabilities",
+      "Accrued expenses & other current liab.",
       'WorkingCapitalSchedule["operating_accrued_expenses", @col] + WorkingCapitalSchedule["legal_accruals_current", @col] + DebtHybridShareSchedule["current_portion_lt_debt", @col]',
       {
         "Q3 26A":
@@ -833,7 +833,7 @@ export function buildFinancialStatementsSheet(
   bs.addRow("mandatory_convertible_preferred", {
     cells: {
       label: new Cell({
-        value: "Series A mandatory convertible preferred stock",
+        value: "Series A mandatory convertible preferred",
       }),
       "2022A": 0,
       "2023A": 0,
@@ -886,7 +886,7 @@ export function buildFinancialStatementsSheet(
   bs.addRow("accumulated_other_comprehensive_income", {
     cells: buildBsLine(
       aociHist,
-      "Accumulated other comprehensive income (loss)",
+      "Accum. other comprehensive income (loss)",
       '@table["accumulated_other_comprehensive_income", col.prev]'
     ),
     format: "currency",
@@ -945,11 +945,11 @@ export function buildFinancialStatementsSheet(
   // =========================================================================
   const cf = sheet.addTable(
     "CashFlowStatement",
-    "Consolidated Statements of Cash Flows & Free Cash Flow Bridge",
+    "Consolidated Statements of Cash Flows",
     {
       subtitle: [
         SCALE_NOTE_USD_M,
-        "Meta Platforms Form 10-K (FY2023–FY2025) & Form 10-Q (Q3 2026); reconciles cash & restricted cash",
+        "Meta Platforms Form 10-K (FY2023–FY2025) & Form 10-Q (Q3 2026)",
       ],
     }
   )
@@ -1083,7 +1083,7 @@ export function buildFinancialStatementsSheet(
   cf.addRow("unrealized_gain_loss_equity_investments", {
     cells: buildCfRow(
       cfHist("unrealized_gain_loss_equity_investments", { defaultZero: true }),
-      "Unrealized (gain) loss on equity investments",
+      "Unrealized (gain) loss on equity inv.",
       0,
       0
     ),
@@ -1228,7 +1228,7 @@ export function buildFinancialStatementsSheet(
       cfHist("purchases_of_non_marketable_equity_investments", {
         defaultZero: true,
       }),
-      "Purchases of non-marketable equity investments",
+      "Purchases of non-marketable equity inv.",
       0,
       0
     ),
@@ -1238,7 +1238,7 @@ export function buildFinancialStatementsSheet(
   cf.addRow("acquisitions_of_businesses_and_intangibles", {
     cells: buildCfRow(
       cfHist("acquisitions_of_businesses_and_intangibles"),
-      "Acquisitions of businesses & intangible assets",
+      "Acquisitions of businesses & intangibles",
       0,
       0
     ),
@@ -1373,7 +1373,7 @@ export function buildFinancialStatementsSheet(
   cf.addRow("debt_issuance_proceeds_net", {
     cells: buildCfRow(
       cfHist("debt_issuance_proceeds_net"),
-      "Proceeds from issuance of long-term debt, net",
+      "Proceeds from issuance of LT debt, net",
       'DebtHybridShareSchedule["new_usd_notes", "2026E"] + DebtHybridShareSchedule["new_eur_notes_usd", "2026E"]',
       'DebtHybridShareSchedule["new_usd_notes", @col] + DebtHybridShareSchedule["new_eur_notes_usd", @col]'
     ),
@@ -1427,7 +1427,7 @@ export function buildFinancialStatementsSheet(
         "9M25A": 0,
         "9M26A": 0,
       },
-      "Proceeds from forward common stock settlement",
+      "Proceeds from forward stock settlement",
       'DebtHybridShareSchedule["fwd_equity_proceeds", "2026E"]',
       'DebtHybridShareSchedule["fwd_equity_proceeds", @col]'
     ),
@@ -1471,7 +1471,7 @@ export function buildFinancialStatementsSheet(
         "9M25A": 0,
         "9M26A": 0,
       },
-      "Short-term credit facility draw / (repayment)",
+      "Short-term revolver draw / (repayment)",
       'DebtHybridShareSchedule["revolver_draw_repay", "2026E"]',
       'DebtHybridShareSchedule["revolver_draw_repay", @col]'
     ),
@@ -1499,19 +1499,36 @@ export function buildFinancialStatementsSheet(
     decimals: 0,
   })
 
-  cf.addRow("net_change_in_cash", {
+  // =========================================================================
+  // 4. Cash & Restricted Cash Reconciliation & Free Cash Flow Bridge
+  // =========================================================================
+  const cfReconFcf = sheet.addTable(
+    "CashReconAndFcf",
+    "Cash & Restricted Cash Reconciliation & Free Cash Flow Bridge",
+    {
+      subtitle: [
+        SCALE_NOTE_USD_M,
+        "Meta Platforms Form 10-K (FY2023–FY2025) & Form 10-Q (Q3 2026); cash tie-out & FCF bridge",
+      ],
+    }
+  )
+  cfReconFcf.addColumn("label", {
+    role: "descriptor",
+    header: "Cash Reconciliation / FCF Line",
+  })
+  addTimelineColumns(cfReconFcf, "flow")
+
+  cfReconFcf.addSectionHeader("Cash & restricted cash reconciliation")
+
+  cfReconFcf.addRow("net_change_in_cash", {
     cells: {
       label: new Cell({ value: "Net change in cash & restricted cash" }),
     },
-    expr: '@table["cfo", @col] + @table["cfi", @col] + @table["cff", @col] + @table["fx_effect_on_cash", @col]',
+    expr: 'CashFlowStatement["cfo", @col] + CashFlowStatement["cfi", @col] + CashFlowStatement["cff", @col] + CashFlowStatement["fx_effect_on_cash", @col]',
     format: "currency",
     decimals: 0,
     style: "subtotal",
   })
-
-  // Cash Reconciliation & Tie-Out
-  cf.addRowGutter()
-  cf.addSectionHeader("Cash & restricted cash reconciliation")
 
   const begCashHist = cfHist("cash_and_restricted_beginning")
   const endCashHist = cfHist("cash_and_restricted_ending")
@@ -1519,7 +1536,7 @@ export function buildFinancialStatementsSheet(
   const endRestNcHist = cfHist("ending_restricted_cash_noncurrent")
 
   const begCashCells: Record<string, Cell | number | null> = {
-    label: new Cell({ value: "Beginning cash, equivalents & restricted cash" }),
+    label: new Cell({ value: "Beginning cash & restricted cash" }),
   }
   for (const p of FLOW_HIST_PERIODS) {
     begCashCells[p] = begCashHist[p]
@@ -1538,7 +1555,7 @@ export function buildFinancialStatementsSheet(
       expr: '@table["cash_and_restricted_ending", col.prev]',
     })
   }
-  cf.addRow("cash_and_restricted_beginning", {
+  cfReconFcf.addRow("cash_and_restricted_beginning", {
     cells: begCashCells,
     format: "currency",
     decimals: 0,
@@ -1552,7 +1569,7 @@ export function buildFinancialStatementsSheet(
       expr: '@table["cash_and_restricted_beginning", @col] + @table["net_change_in_cash", @col]',
     })
   }
-  cf.addRow("cash_and_restricted_ending", {
+  cfReconFcf.addRow("cash_and_restricted_ending", {
     cells: endCashCells,
     format: "currency",
     decimals: 0,
@@ -1585,12 +1602,12 @@ export function buildFinancialStatementsSheet(
       expr: '@table["ending_restricted_nc", col.prev] - DebtHybridShareSchedule["escrow_cash_release", @col]',
     })
   }
-  cf.addRow("ending_restricted_cur", {
+  cfReconFcf.addRow("ending_restricted_cur", {
     cells: restCurCells,
     format: "currency",
     decimals: 0,
   })
-  cf.addRow("ending_restricted_nc", {
+  cfReconFcf.addRow("ending_restricted_nc", {
     cells: restNcCells,
     format: "currency",
     decimals: 0,
@@ -1616,13 +1633,13 @@ export function buildFinancialStatementsSheet(
       expr: 'BalanceSheet["cash_and_equivalents", @col] + @table["ending_restricted_cur", @col] + @table["ending_restricted_nc", @col]',
     })
   }
-  cf.addRow("bs_cash_reconciled", {
+  cfReconFcf.addRow("bs_cash_reconciled", {
     cells: auditedEndCashCells,
     format: "currency",
     decimals: 0,
   })
 
-  cf.addRow("cash_tie_check", {
+  cfReconFcf.addRow("cash_tie_check", {
     cells: {
       label: new Cell({ value: "Cash tie-out check (CFS − BS cash)" }),
     },
@@ -1632,35 +1649,42 @@ export function buildFinancialStatementsSheet(
   })
 
   // Free Cash Flow Diagnostics
-  cf.addRowGutter()
-  cf.addSectionHeader(
+  cfReconFcf.addRowGutter()
+  cfReconFcf.addSectionHeader(
     "Free cash flow metrics (reported vs. economic after SBC)"
   )
 
-  cf.addRow("total_capex_outflow", {
+  cfReconFcf.addRow("total_capex_outflow", {
     cells: {
       label: new Cell({ value: "Total CapEx (PP&E + finance leases)" }),
     },
-    expr: '@table["capex_ppe", @col] + @table["finance_lease_principal", @col]',
+    expr: 'CashFlowStatement["capex_ppe", @col] + CashFlowStatement["finance_lease_principal", @col]',
     format: "currency",
     decimals: 0,
   })
-  cf.addRow("reported_fcf", {
+  cfReconFcf.addRow("reported_fcf", {
     cells: {
       label: new Cell({ value: "Reported free cash flow (CFO − CapEx)" }),
     },
-    expr: '@table["cfo", @col] + @table["total_capex_outflow", @col]',
+    expr: 'CashFlowStatement["cfo", @col] + @table["total_capex_outflow", @col]',
     format: "currency",
     decimals: 0,
     style: "subtotal",
   })
-  cf.addRow("economic_fcf_after_sbc", {
+  cfReconFcf.addRow("economic_fcf_after_sbc", {
     cells: {
       label: new Cell({ value: "Economic FCF after SBC (FCF − SBC)" }),
     },
-    expr: '@table["reported_fcf", @col] - @table["share_based_compensation", @col]',
+    expr: '@table["reported_fcf", @col] - CashFlowStatement["share_based_compensation", @col]',
     format: "currency",
     decimals: 0,
     style: "total",
   })
+
+  sheet.setBands([
+    is,
+    { lanes: [bs], pageBreakBefore: true },
+    { lanes: [cf], pageBreakBefore: true },
+    { lanes: [cfReconFcf], pageBreakBefore: true },
+  ])
 }

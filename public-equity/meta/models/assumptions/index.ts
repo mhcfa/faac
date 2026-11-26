@@ -8,8 +8,8 @@ export type {
   ValuationScalarDrivers,
 } from "./types.ts"
 export {
+  formatDriverBasisSource,
   formatDriverDiff,
-  formatDriverRationale,
   periodDriver,
   scalarDriver,
 } from "./types.ts"

@@ -11,7 +11,7 @@ try {
   compiled.save(outputPath, {
     title:
       "Salesforce, Inc. (NYSE: CRM) — Integrated Financial Model & Valuation",
-    author: "Institutional Equity Research",
+    author: "Michael Hu, CFA | mhu@outlook.co.nz",
   })
   const summary = compiled.summary()
   const basePrice = compiled.formatted(

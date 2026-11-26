@@ -22,15 +22,15 @@ describe("C7: Boundary stress tests & live ScenarioControl toggle", () => {
         expect(compiled.value("DcfBridge", "implied_share_price", "val")).toBe(
           "#N/A"
         )
-        expect(compiled.value("DcfBridge", "term_val_at_base", "val")).toBe(
-          "#N/A"
-        )
-        expect(compiled.value("DcfBridge", "ev_at_base_params", "val")).toBe(
-          "#N/A"
-        )
-        expect(compiled.value("DcfBridge", "px_at_base_params", "val")).toBe(
-          "#N/A"
-        )
+        expect(
+          compiled.value("DcfDilutionAndSpotAnchor", "term_val_at_base", "val")
+        ).toBe("#N/A")
+        expect(
+          compiled.value("DcfDilutionAndSpotAnchor", "ev_at_base_params", "val")
+        ).toBe("#N/A")
+        expect(
+          compiled.value("DcfDilutionAndSpotAnchor", "px_at_base_params", "val")
+        ).toBe("#N/A")
       } finally {
         compiled.dispose()
       }
@@ -61,7 +61,7 @@ describe("C7: Boundary stress tests & live ScenarioControl toggle", () => {
       }
       for (const p of FLOW_ALL_PERIODS) {
         expect(
-          Math.abs(c25.num("CashFlowStatement", "cash_tie_check", p))
+          Math.abs(c25.num("CashReconAndFcf", "cash_tie_check", p))
         ).toBeLessThan(1e-6)
       }
     } finally {
@@ -100,7 +100,7 @@ describe("C7: Boundary stress tests & live ScenarioControl toggle", () => {
       expect(maxRevolver).toBeGreaterThan(0)
       for (const p of FLOW_ALL_PERIODS) {
         expect(
-          Math.abs(cExt.num("CashFlowStatement", "cash_tie_check", p))
+          Math.abs(cExt.num("CashReconAndFcf", "cash_tie_check", p))
         ).toBeLessThan(1e-6)
       }
     } finally {
@@ -173,7 +173,7 @@ describe("C7: Boundary stress tests & live ScenarioControl toggle", () => {
       }
       for (const p of FLOW_ALL_PERIODS) {
         expect(
-          Math.abs(c75.num("CashFlowStatement", "cash_tie_check", p))
+          Math.abs(c75.num("CashReconAndFcf", "cash_tie_check", p))
         ).toBeLessThan(1e-6)
       }
       expect(

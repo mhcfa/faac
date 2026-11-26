@@ -36,8 +36,8 @@ export function buildRoicSchedule(sheet: Sheet): Table {
   })
   table.addRow("net_op_lease_assets", {
     ...rowFormatOptions("currency", 0),
-    expr: 'BalanceSheet["operating_lease_rou_assets", @col] - DebtLeasesSchedule["total_op_lease_liab", @col]',
-    cells: { line_item: "Net op. lease assets (ROU − liab.)" },
+    expr: 'BalanceSheet["operating_lease_rou_assets", @col] - LeasesInterestSchedule["total_op_lease_liab", @col]',
+    cells: { line_item: "Net op. lease (ROU − liab.)" },
   })
   table.addRow("net_other_lt_op_assets", {
     ...rowFormatOptions("currency", 0),
@@ -60,12 +60,12 @@ export function buildRoicSchedule(sheet: Sheet): Table {
   table.addSectionHeader("Financing invested capital (capital side)")
   table.addRow("total_debt_incl_current", {
     ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["total_lt_debt_carrying", @col] + DebtLeasesSchedule["revolver_end", @col]',
+    expr: 'DebtSchedule["total_lt_debt_carrying", @col] + DebtSchedule["revolver_end", @col]',
     cells: { line_item: "Total carrying financial debt" },
   })
   table.addRow("finance_lease_liabilities", {
     ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["total_fin_lease_liab", @col]',
+    expr: 'LeasesInterestSchedule["total_fin_lease_liab", @col]',
     cells: { line_item: "Finance lease liabilities" },
   })
   table.addRow("total_equity", {
@@ -154,7 +154,7 @@ export function buildRoicSchedule(sheet: Sheet): Table {
   })
   table.addRow("sbc_after_tax_memo", {
     ...rowFormatOptions("currency", 0),
-    expr: 'OperatingSchedule["sbc_expense", @col] * (1 - @table["tax_rate_applied", @col])',
+    expr: 'OperatingMarginSchedule["sbc_expense", @col] * (1 - @table["tax_rate_applied", @col])',
     cells: { line_item: "Memo: After-tax SBC in NOPAT" },
   })
   table.addRow("unlevered_fcff_ex_sbc_memo", {

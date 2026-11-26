@@ -40,6 +40,21 @@ function buildSingleModel(
   const model = new Model({
     name: "The Boeing Company (NYSE: BA) — Initiation & Valuation Model",
     theme: "corporate_navy",
+    print: {
+      paperSize: "letter",
+      orientation: "landscape",
+      fit: "fit_width",
+      centerHorizontally: true,
+      header: {
+        left: "{model}",
+        right: "{sheet}",
+      },
+      footer: {
+        left: "Michael Hu, CFA | mhu@outlook.co.nz",
+        center: "Valuation Date: Nov 20, 2026",
+        right: "Page {page} of {pages}",
+      },
+    },
   })
 
   const summarySheet = model.addSheet("Summary", {
@@ -52,10 +67,12 @@ function buildSingleModel(
   })
   const modelSheet = model.addSheet("Model", {
     layout: "grid",
+    colWidth: 10.5,
     tabColor: "#2B6CB0",
   })
   const schedulesSheet = model.addSheet("Schedules", {
     layout: "grid",
+    colWidth: 10.5,
     tabColor: "#3182CE",
   })
   const valuationSheet = model.addSheet("Valuation", {
@@ -72,6 +89,7 @@ function buildSingleModel(
   })
   const betaSheet = model.addSheet("Beta Data", {
     layout: "grid",
+    colWidth: 10,
     tabColor: "#718096",
   })
   const notesSheet = model.addSheet("Notes", {

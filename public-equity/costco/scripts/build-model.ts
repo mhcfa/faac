@@ -54,7 +54,7 @@ function main(): void {
       compiled.save(OUTPUT_PATH, {
         title:
           "Costco Wholesale Corporation (COST) Financial Model & Valuation",
-        author: "PublicEquity Research",
+        author: "Michael Hu, CFA | mhu@outlook.co.nz",
       })
       const summary = compiled.summary()
       console.log(

@@ -2,4 +2,4 @@ packages:
   - "public-equity/*"
   - "packages/*"
 minimumReleaseAgeExclude:
-  - f8-engine@0.7.0 || 0.8.0
+  - f8-engine@0.7.0 || 0.8.0 || 0.8.1

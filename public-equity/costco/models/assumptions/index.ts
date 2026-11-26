@@ -50,10 +50,10 @@ export function getScenarioDrivers(
         framing:
           "Slower openings, competitive comp deceleration, wage and tariff margin pressure, higher ERP, and lower multiples",
         framingColumns: Object.freeze({
-          growth: "Slower net club openings and competitive comp deceleration",
+          growth: "Slower net club openings and comp deceleration",
           marginCapital:
             "Wage and tariff margin drag with elevated depot CapEx",
-          valuation: "Higher equity risk premium and peer-converging multiples",
+          valuation: "Higher ERP and peer-converging multiples",
         }),
         operating: downsideOperatingDrivers(),
         workingCapital: downsideWorkingCapitalDrivers(),
@@ -66,10 +66,9 @@ export function getScenarioDrivers(
         framing:
           "Guided openings, moderating comps, post-hike fee normalization, near-term CapEx step-up, and cycle-average WACC",
         framingColumns: Object.freeze({
-          growth: "Guided club rollout with moderating core comparable sales",
-          marginCapital:
-            "Post-hike MFI normalization and near-term CapEx step-up",
-          valuation: "Cycle-average WACC and ROIC-calibrated trading multiples",
+          growth: "Guided club rollout with moderating core comps",
+          marginCapital: "Post-hike MFI normalization and near-term CapEx",
+          valuation: "Cycle-average WACC and calibrated multiples",
         }),
         operating: baseOperatingDrivers(),
         workingCapital: baseWorkingCapitalDrivers(),
@@ -82,10 +81,9 @@ export function getScenarioDrivers(
         framing:
           "Sustained global rollout, resilient comps, private-label margin lift, cash SG&A leverage, lower ERP, and sustained multiples",
         framingColumns: Object.freeze({
-          growth: "Accelerated global club rollout and resilient core comps",
-          marginCapital:
-            "Private-label margin lift with cash SG&A leverage discipline",
-          valuation: "Lower equity risk premium and sustained spot multiples",
+          growth: "Accelerated global rollout and resilient core comps",
+          marginCapital: "Private-label lift with cash SG&A leverage",
+          valuation: "Lower ERP and sustained spot multiples",
         }),
         operating: upsideOperatingDrivers(),
         workingCapital: upsideWorkingCapitalDrivers(),

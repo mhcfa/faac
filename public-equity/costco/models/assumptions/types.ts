@@ -89,7 +89,7 @@ export function periodDriver(
 export function formatDriverBasisSource(meta: DriverMeta): string {
   if (meta.basis && meta.source) {
     const combined = `${meta.basis}; ${meta.source}`
-    return combined.length <= 35 ? combined : meta.basis
+    return combined.length <= 32 ? combined : meta.basis
   }
   return meta.basis ?? meta.source ?? ""
 }

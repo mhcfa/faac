@@ -60,13 +60,13 @@ function addBetaStatsTable(
     format: "integer",
   })
   stats.addRow("mean_ret", {
-    cells: { metric: "Mean periodic return" },
+    cells: { metric: "Mean return" },
     expr: `AVERAGE(${returnsId}["${firstRetRow}".."${lastRetRow}", @col])`,
     format: "percentage",
     decimals: 2,
   })
   stats.addRow("sum_xy", {
-    cells: { metric: "Cross-product sum (XY)" },
+    cells: { metric: "Cross-product (XY)" },
     expr: `SUMPRODUCT(${returnsId}["${firstRetRow}".."${lastRetRow}", @col], ${returnsId}["${firstRetRow}".."${lastRetRow}", "SPX"])`,
     format: "number",
     decimals: 5,
@@ -84,19 +84,19 @@ function addBetaStatsTable(
     decimals: 5,
   })
   stats.addRow("cov_num", {
-    cells: { metric: "Covariance numerator" },
+    cells: { metric: "Covariance num." },
     expr: `@table["sum_xy", @col] - @table["obs_count", @col] * @table["mean_ret", @col] * @table["mean_ret", "SPX"]`,
     format: "number",
     decimals: 5,
   })
   stats.addRow("var_m_num", {
-    cells: { metric: "Market var. numerator" },
+    cells: { metric: "Market var. num." },
     expr: `@table["sum_xx", @col] - @table["obs_count", @col] * @table["mean_ret", "SPX"] * @table["mean_ret", "SPX"]`,
     format: "number",
     decimals: 5,
   })
   stats.addRow("var_i_num", {
-    cells: { metric: "Asset var. numerator" },
+    cells: { metric: "Asset var. num." },
     expr: `@table["sum_yy", @col] - @table["obs_count", @col] * @table["mean_ret", @col] * @table["mean_ret", @col]`,
     format: "number",
     decimals: 5,
@@ -109,7 +109,7 @@ function addBetaStatsTable(
     style: "subtotal",
   })
   stats.addRow("r_squared", {
-    cells: { metric: "Regression R-squared" },
+    cells: { metric: "R-squared" },
     expr: `(@table["cov_num", @col] * @table["cov_num", @col]) / (@table["var_i_num", @col] * @table["var_m_num", @col])`,
     format: "percentage",
     decimals: 1,
@@ -229,7 +229,13 @@ export function buildBetaDataSheet(sheet: Sheet, kg: BoeingKgData): void {
 
   sheet.setBands([
     { lanes: [{ tables: [stats5y] }, { tables: [stats2y] }] },
-    { lanes: [{ tables: [prices5y] }, { tables: [returns5y] }] },
-    { lanes: [{ tables: [prices2y] }, { tables: [returns2y] }] },
+    {
+      lanes: [{ tables: [prices5y] }, { tables: [returns5y] }],
+      pageBreakBefore: true,
+    },
+    {
+      lanes: [{ tables: [prices2y] }, { tables: [returns2y] }],
+      pageBreakBefore: true,
+    },
   ])
 }

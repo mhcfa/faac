@@ -57,6 +57,18 @@ function buildRawMetaModelSpec(
   const model = new Model({
     name: "Meta Platforms, Inc. (META) Financial Model",
     theme: "corporate_navy",
+    print: {
+      paperSize: "letter",
+      orientation: "landscape",
+      fit: "fit_width",
+      centerHorizontally: true,
+      header: { left: "{model}", right: "{sheet}" },
+      footer: {
+        left: "Michael Hu, CFA | mhu@outlook.co.nz",
+        center: "As of Nov 20, 2026",
+        right: "Page {page} of {pages}",
+      },
+    },
   })
 
   if (snapshots !== undefined) {
@@ -74,18 +86,22 @@ function buildRawMetaModelSpec(
   const statementsSheet = model.addSheet("Financial Statements", {
     tabColor: "#2B6CB0",
     layout: "grid",
+    colWidth: 11,
   })
   const operatingSheet = model.addSheet("Operating Schedules", {
     tabColor: "#3182CE",
     layout: "grid",
+    colWidth: 11,
   })
   const diagnosticsSheet = model.addSheet("Diagnostics & QoE", {
     tabColor: "#4A5568",
     layout: "grid",
+    colWidth: 11,
   })
   const betaWaccSheet = model.addSheet("Beta & WACC", {
     tabColor: "#2F855A",
     layout: "grid",
+    colWidth: 11,
   })
   const dcfSheet = model.addSheet("DCF Valuation", {
     tabColor: "#276749",
@@ -98,10 +114,12 @@ function buildRawMetaModelSpec(
   const compsSheet = model.addSheet("Trading Comps", {
     tabColor: "#744210",
     layout: "grid",
+    colWidth: 11,
   })
   const betaDataSheet = model.addSheet("Beta Data", {
     tabColor: "#718096",
     layout: "grid",
+    print: "none",
   })
   const peerLtmDataSheet = model.addSheet("Peer LTM Data", {
     tabColor: "#718096",
@@ -155,9 +173,9 @@ function extractScenarioSnapshot(
       "normalized_ebit_margin",
       "2031E"
     ),
-    capex26: -compiled.num("CashFlowStatement", "total_capex_outflow", "2026E"),
-    capex27: -compiled.num("CashFlowStatement", "total_capex_outflow", "2027E"),
-    capex31: -compiled.num("CashFlowStatement", "total_capex_outflow", "2031E"),
+    capex26: -compiled.num("CashReconAndFcf", "total_capex_outflow", "2026E"),
+    capex27: -compiled.num("CashReconAndFcf", "total_capex_outflow", "2027E"),
+    capex31: -compiled.num("CashReconAndFcf", "total_capex_outflow", "2031E"),
     fcff27: compiled.num("DcfFcff", "full_period_fcff", "2027E"),
     fcff31: compiled.num("DcfFcff", "full_period_fcff", "2031E"),
     cleanEps26: compiled.num("IncomeStatement", "normalized_eps", "2026E"),
@@ -168,8 +186,16 @@ function extractScenarioSnapshot(
     impliedSharePrice: compiled.num("DcfBridge", "implied_share_price", "val"),
     tvPctEv: compiled.num("DcfBridge", "tv_pct_ev", "val"),
     exitEvEbitda: compiled.num("DcfBridge", "implied_exit_ev_ebitda", "val"),
-    evAtBaseParams: compiled.num("DcfBridge", "ev_at_base_params", "val"),
-    pxAtBaseParams: compiled.num("DcfBridge", "px_at_base_params", "val"),
+    evAtBaseParams: compiled.num(
+      "DcfDilutionAndSpotAnchor",
+      "ev_at_base_params",
+      "val"
+    ),
+    pxAtBaseParams: compiled.num(
+      "DcfDilutionAndSpotAnchor",
+      "px_at_base_params",
+      "val"
+    ),
     breakevenYear,
   })
 }

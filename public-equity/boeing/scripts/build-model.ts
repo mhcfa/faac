@@ -16,7 +16,7 @@ if (errs.length > 0) {
 
 compiled.save(OUT_PATH, {
   title: "The Boeing Company (NYSE: BA) — Initiation & Valuation Model",
-  author: "Public Equity Research",
+  author: "Michael Hu, CFA",
 })
 
 const sizeBytes = statSync(OUT_PATH).size

@@ -49,7 +49,7 @@ export function buildDebtTranches(
   const japan2029 = dl.maturities2029
   const japan2031 = dl.maturities2031
   const japanAnnualTailExpr = Object.freeze({
-    expr: '(MarketAnchors["maturities_thereafter", "val"] - @table["tranche_apr32", "fy26_principal"] - ScalarAssumptionsActive["japan_post_fy36_principal", "val"]) / 5',
+    expr: '(MarketAnchorsMarket["maturities_thereafter", "val"] - @table["tranche_apr32", "fy26_principal"] - ScalarAssumptionsOperating["japan_post_fy36_principal", "val"]) / 5',
   })
 
   return Object.freeze([
@@ -74,7 +74,7 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Cash-funded maturity (10-K Note 4)",
+      note: "Cash-funded (Note 4)",
     }),
     Object.freeze({
       id: "tranche_jun27",
@@ -97,7 +97,7 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Cash-funded maturity (10-K Note 4)",
+      note: "Cash-funded (Note 4)",
     }),
     Object.freeze({
       id: "tranche_apr30",
@@ -120,7 +120,7 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Cash-funded maturity (10-K Note 4)",
+      note: "Cash-funded (Note 4)",
     }),
     Object.freeze({
       id: "tranche_apr32",
@@ -143,14 +143,14 @@ export function buildDebtTranches(
         0,
         0,
       ]),
-      note: "Cash-funded maturity (10-K Note 4)",
+      note: "Cash-funded (Note 4)",
     }),
     Object.freeze({
       id: "tranche_japan",
       label: "Japan Guaranteed Senior Notes",
       couponCell: Object.freeze({
         kind: "expr" as const,
-        expr: 'ScalarAssumptionsActive["japan_debt_coupon_rate", "val"]',
+        expr: 'ScalarAssumptionsOperating["japan_debt_coupon_rate", "val"]',
       }),
       maturityDate: "2029-2041",
       fy26Principal: japanFy26,
@@ -166,7 +166,7 @@ export function buildDebtTranches(
         FY35E: japanAnnualTailExpr,
         FY36E: japanAnnualTailExpr,
       }),
-      note: "FY29/31 exact; $500M due FY41",
+      note: "FY29/31; $500M FY41",
     }),
   ])
 }

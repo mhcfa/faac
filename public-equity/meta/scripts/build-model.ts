@@ -7,7 +7,7 @@ function main(): void {
   try {
     compiled.save(OUTPUT_PATH, {
       title: "Meta Platforms, Inc. (META) Financial Model & Valuation",
-      author: "Institutional Equity Research",
+      author: "Michael Hu, CFA | mhu@outlook.co.nz",
     })
     const summary = compiled.summary()
     const px = compiled.num("DcfBridge", "implied_share_price", "val")

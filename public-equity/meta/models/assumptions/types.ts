@@ -56,19 +56,18 @@ export function periodDriver(
 }
 
 /**
- * Formats full visible driver provenance (basis, rationale, source) for wrapped
+ * Formats concise visible driver provenance (basis and source) for compact
  * descriptor columns on the Assumptions sheet. Strictly omits code-only gapId.
  */
-export function formatDriverRationale(meta: DriverMeta): string {
+export function formatDriverBasisSource(meta: DriverMeta): string {
   const parts: string[] = []
   if (meta.basis !== undefined && meta.basis.length > 0) {
-    parts.push(`${meta.basis}:`)
+    parts.push(meta.basis)
   }
-  parts.push(meta.rationale)
   if (meta.source !== undefined && meta.source.length > 0) {
-    parts.push(`Source: ${meta.source}.`)
+    parts.push(meta.source)
   }
-  return parts.join(" ")
+  return parts.join(" — ")
 }
 
 /**

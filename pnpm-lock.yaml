@@ -184,8 +184,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/audited-reader
       f8-engine:
-        specifier: ^0.8.0
-        version: 0.8.0
+        specifier: ^0.8.1
+        version: 0.8.1
 
   public-equity/costco:
     dependencies:
@@ -193,8 +193,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/audited-reader
       f8-engine:
-        specifier: ^0.8.0
-        version: 0.8.0
+        specifier: ^0.8.1
+        version: 0.8.1
 
   public-equity/meta:
     dependencies:
@@ -202,8 +202,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/audited-reader
       f8-engine:
-        specifier: ^0.8.0
-        version: 0.8.0
+        specifier: ^0.8.1
+        version: 0.8.1
 
   public-equity/salesforce:
     dependencies:
@@ -211,8 +211,8 @@ importers:
         specifier: workspace:*
         version: link:../../packages/audited-reader
       f8-engine:
-        specifier: ^0.8.0
-        version: 0.8.0
+        specifier: ^0.8.1
+        version: 0.8.1
 
 packages:
 
@@ -520,8 +520,8 @@ packages:
     resolution: {integrity: sha512-KfYbmpRm0VbLjEvVa9yGwCi9GI34xvi7A/HXYWQO65CSD2u3MczUJSuwXKFIxlGsgBQizV9q5J9NHj4VG0n+pA==}
     engines: {node: '>=12.0.0'}
 
-  f8-engine@0.8.0:
-    resolution: {integrity: sha512-V3p4yVEXuGcLlxhXxDBFzs6fWghNkeumzvirzZ+MPYIG6Nt1d9Dv1hgj7utm2BZmiM2KQHo08PfUm7kGJhJNGw==}
+  f8-engine@0.8.1:
+    resolution: {integrity: sha512-l9yfv9pKOxf5Jh/o4qMX3/SFwUgwNALvpVRNnEbqFaC2JBVVgC+JnD2w4YHkjKPbiEWvwAOOzkfXNWSA/sYkPA==}
     engines: {node: '>=22.3.0'}
     hasBin: true
 
@@ -953,7 +953,7 @@ snapshots:
 
   expect-type@1.4.0: {}
 
-  f8-engine@0.8.0: {}
+  f8-engine@0.8.1: {}
 
   fdir@6.5.0(picomatch@4.0.7):
     optionalDependencies:

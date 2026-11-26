@@ -110,7 +110,7 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
           `${scen} implied_share_price`
         )
         expectParity(
-          compiled.num("DcfBridge", "spot_pf_ev", "val"),
+          compiled.num("DcfDilutionAndSpotAnchor", "spot_pf_ev", "val"),
           exp.spotPfEv,
           `${scen} spot_pf_ev`
         )
@@ -129,7 +129,11 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
           `${scen} hist_avg_de_ratio`
         )
         expectParity(
-          compiled.num("DcfBridge", "spot_elapsed_q4_burn_base", "val"),
+          compiled.num(
+            "DcfDilutionAndSpotAnchor",
+            "spot_elapsed_q4_burn_base",
+            "val"
+          ),
           PRE_REFACTOR_SPOT_ELAPSED_Q4_BURN_BASE,
           `${scen} spot_elapsed_q4_burn_base`
         )
@@ -178,14 +182,14 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
 
         for (const p of FLOW_ALL_PERIODS) {
           expect(
-            Math.abs(compiled.num("CashFlowStatement", "cash_tie_check", p)),
+            Math.abs(compiled.num("CashReconAndFcf", "cash_tie_check", p)),
             `CFS cash tie mismatch at ${p} (${scen})`
           ).toBeLessThan(1e-6)
         }
 
         // Cross-check audited Meta Non-GAAP FCF reconciliation
         expect(
-          compiled.num("CashFlowStatement", "reported_fcf", "9M26A")
+          compiled.num("CashReconAndFcf", "reported_fcf", "9M26A")
         ).toBeCloseTo(
           data.val("meta_nongaap_fcf", "free_cash_flow", "2026-Q3-YTD", {
             entity: "META",
@@ -194,7 +198,7 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
           6
         )
         expect(
-          compiled.num("CashFlowStatement", "reported_fcf", "9M25A")
+          compiled.num("CashReconAndFcf", "reported_fcf", "9M25A")
         ).toBeCloseTo(
           data.val("meta_nongaap_fcf", "free_cash_flow", "2025-Q3-YTD", {
             entity: "META",
@@ -215,7 +219,34 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
     try {
       const summary = compiled.summary()
 
-      // C2: Sheet layout configuration, zero freezePanes, and zero collapsible tables
+      // C2: Workbook print defaults, per-sheet print/layout config, zero freezePanes & zero collapsible tables
+      const EXPECTED_PRINT = {
+        paperSize: "letter",
+        orientation: "landscape",
+        fit: "fit_width",
+        centerHorizontally: true,
+        header: { left: "{model}", right: "{sheet}" },
+        footer: {
+          left: "Michael Hu, CFA | mhu@outlook.co.nz",
+          center: "As of Nov 20, 2026",
+          right: "Page {page} of {pages}",
+        },
+      }
+      expect(model.print).toEqual(EXPECTED_PRINT)
+
+      const EXPECTED_GRID_WIDTH: Readonly<Record<string, number>> = {
+        "Executive Summary": 12,
+        "Financial Statements": 11,
+        "Operating Schedules": 11,
+        "Diagnostics & QoE": 11,
+        "Beta & WACC": 11,
+        "DCF Valuation": 12,
+        Sensitivities: 12,
+        "Trading Comps": 11,
+        "Beta Data": 12,
+        "Peer LTM Data": 12,
+      }
+
       expect(spec.manifest.sheets.length).toBe(11)
       expect(spec.manifest.sheets.map((s) => s.name)).toEqual(
         EXPECTED_SHEET_NAMES
@@ -225,6 +256,17 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
           sheetSpec.freezePanes,
           `Unexpected freezePanes on sheet "${sheetSpec.name}"`
         ).toBeUndefined()
+        if (sheetSpec.name === "Beta Data") {
+          expect(
+            sheetSpec.print,
+            'Sheet "Beta Data" must opt out via print: "none"'
+          ).toBeUndefined()
+        } else {
+          expect(
+            sheetSpec.print,
+            `Printable sheet "${sheetSpec.name}" must resolve workbook print defaults`
+          ).toEqual(EXPECTED_PRINT)
+        }
         if (sheetSpec.name === "Assumptions") {
           expect(
             sheetSpec.layout === undefined || sheetSpec.layout.kind === "auto",
@@ -244,10 +286,49 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         ).toBe(false)
       }
 
+      // C3: Print diagnostics in toMarkdown("layout") — all 10 printable tabs >= 60% scale, zero ! overflows, zero W re-expansion, zero subtitle overflow
+      const layoutMd = compiled.toMarkdown("layout")
+      const sheetSections = layoutMd.split(/^## Sheet: /m).slice(1)
+      expect(sheetSections.length).toBe(11)
+      expect(layoutMd).not.toContain("[low scale <60%]")
+      expect(layoutMd).not.toMatch(/ch>w\)/)
+      expect(layoutMd).not.toMatch(/Layout: grid \(W=\d+(?:\.\d+)?, base=/)
+      for (const section of sheetSections) {
+        const firstLine = section.split("\n")[0]?.trim() ?? ""
+        const printLine = section
+          .split("\n")
+          .find((l) => l.startsWith("Print: "))
+        if (firstLine === "Beta Data") {
+          expect(
+            printLine,
+            'Sheet "Beta Data" must not emit a Print: line'
+          ).toBeUndefined()
+        } else {
+          expect(
+            printLine,
+            `Missing Print: line on sheet "${firstLine}"`
+          ).toBeDefined()
+          expect(printLine).toContain(
+            "letter landscape | Fit: fit_width (1 x auto)"
+          )
+          const scaleMatch = printLine?.match(/Est\. scale: ~(\d+)%/)
+          expect(
+            Number(scaleMatch?.[1] ?? 0),
+            `Sheet "${firstLine}" scale below 60%: ${printLine}`
+          ).toBeGreaterThanOrEqual(60)
+          expect(
+            printLine,
+            `Page overflow flag (!) on sheet "${firstLine}": ${printLine}`
+          ).not.toMatch(/pg!/)
+        }
+      }
+
       const ALLOWED_COLUMN_GUTTER_TABLES = new Set<string>([
+        "ScalarDrivers",
         "IncomeStatement",
         "BalanceSheet",
         "CashFlowStatement",
+        "CashReconAndFcf",
         "SegmentBuild",
         "PpeSchedule",
         "WorkingCapitalSchedule",
@@ -325,7 +406,12 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
       ])[] = [
         [
           "Financial Statements",
-          ["IncomeStatement", "BalanceSheet", "CashFlowStatement"],
+          [
+            "IncomeStatement",
+            "BalanceSheet",
+            "CashFlowStatement",
+            "CashReconAndFcf",
+          ],
         ],
         [
           "Operating Schedules",
@@ -361,8 +447,8 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         ]) {
           expect(
             si.colWidths[colIdx],
-            `${sheetName} measure col ${colIdx} should stay compact at width 12`
-          ).toBe(12)
+            `${sheetName} measure col ${colIdx} should stay compact at width 11`
+          ).toBe(11)
         }
         const byTbl = physicalColsByTable(sheetName)
         for (const tid of tableIds) {
@@ -447,7 +533,7 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         ).toBe(12)
       }
 
-      // C2/C3b/C4/C5: Uniform W=12 & zero wrap/newlines on grid sheets, zero descriptor/measure overlap on auto (Assumptions),
+      // C2/C3b/C4/C5: Uniform declared W (11/12) & zero wrap/newlines on grid sheets, zero descriptor/measure overlap on auto (Assumptions),
       // zero descNotes across every table, zero leading row gutters, and < 360-char formula ceiling
       let maxFormulaLen = 0
       let maxFormulaCoord = ""
@@ -469,10 +555,11 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
                 measureCols.add(cell.physicalCol)
               }
               if (isGrid && cell.kind === "data") {
+                const expectedW = EXPECTED_GRID_WIDTH[s.name]
                 expect(
                   sheetInsp.colWidths[cell.physicalCol],
-                  `Grid sheet "${s.name}" data col ${cell.physicalCol} (${cell.tableId}[${cell.colId}]) must have uniform width 12`
-                ).toBe(12)
+                  `Grid sheet "${s.name}" data col ${cell.physicalCol} (${cell.tableId}[${cell.colId}]) must have uniform width ${expectedW}`
+                ).toBe(expectedW)
               }
             }
           }
@@ -594,10 +681,11 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         `Max formula length ${maxFormulaLen} at ${maxFormulaCoord}`
       ).toBeLessThan(360)
 
-      // C4a: Semantic bold style on non-summary columns (LTM Q3 26, active, PeerLtmEvBridge key cols)
+      // C4a: Semantic bold style on non-summary columns (LTM Q3 26, active, Peer LTM Data key cols)
       const boldCols: readonly (readonly [string, string])[] = [
         ["IncomeStatement", "LTM Q3 26"],
         ["CashFlowStatement", "LTM Q3 26"],
+        ["CashReconAndFcf", "LTM Q3 26"],
         ["SegmentBuild", "LTM Q3 26"],
         ["GeoAndKpis", "LTM Q3 26"],
         ["QoeNormalizationBridge", "LTM Q3 26"],
@@ -606,10 +694,10 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         ["ScenarioComparison", "active"],
         ["ScenarioVarianceAttribution", "active"],
         ["ReturnAttribution", "active"],
-        ["PeerLtmEvBridge", "ev"],
-        ["PeerLtmEvBridge", "ltm_rev"],
-        ["PeerLtmEvBridge", "ltm_ebit"],
-        ["PeerLtmEvBridge", "ltm_ebitda"],
+        ["PeerEvBridge", "ev"],
+        ["PeerLtmPnl", "ltm_rev"],
+        ["PeerLtmPnl", "ltm_ebit"],
+        ["PeerLtmPnl", "ltm_ebitda"],
       ]
       for (const [tblId, colId] of boldCols) {
         const col = compiled
@@ -654,25 +742,28 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
           .excelFormula
       ).toMatch(/^=AVERAGE\(/)
       expect(
-        compiled.inspectCell("DcfBridge", "spot_elapsed_q4_burn_base", "val")
-          .excelFormula
+        compiled.inspectCell(
+          "DcfDilutionAndSpotAnchor",
+          "spot_elapsed_q4_burn_base",
+          "val"
+        ).excelFormula
       ).toMatch(/^=SUM\(/)
       const helperCoords: readonly (readonly [string, string, string])[] = [
         ["WaccBuild", "hist_de_2022a", "val"],
         ["WaccBuild", "hist_de_q326a", "val"],
         ["WaccBuild", "beta_base_relevered", "val"],
         ["WaccBuild", "ke_base_ref", "val"],
-        ["DcfBridge", "bridge_r2_r4_adj", "val"],
-        ["DcfBridge", "bridge_r3_adj", "val"],
-        ["DcfBridge", "shares_r2_total", "val"],
-        ["DcfBridge", "shares_r3_total", "val"],
-        ["DcfBridge", "shares_r4_total", "val"],
-        ["DcfBridge", "spot_q4_base_ebit", "val"],
-        ["DcfBridge", "spot_q4_base_nopat", "val"],
-        ["DcfBridge", "spot_q4_base_da", "val"],
-        ["DcfBridge", "spot_q4_base_capex", "val"],
-        ["DcfBridge", "spot_q4_base_chg_nwc", "val"],
-        ["DcfBridge", "terminal_fcff_at_base", "val"],
+        ["DcfDilutionAndSpotAnchor", "bridge_r2_r4_adj", "val"],
+        ["DcfDilutionAndSpotAnchor", "bridge_r3_adj", "val"],
+        ["DcfDilutionAndSpotAnchor", "shares_r2_total", "val"],
+        ["DcfDilutionAndSpotAnchor", "shares_r3_total", "val"],
+        ["DcfDilutionAndSpotAnchor", "shares_r4_total", "val"],
+        ["DcfDilutionAndSpotAnchor", "spot_q4_base_ebit", "val"],
+        ["DcfDilutionAndSpotAnchor", "spot_q4_base_nopat", "val"],
+        ["DcfDilutionAndSpotAnchor", "spot_q4_base_da", "val"],
+        ["DcfDilutionAndSpotAnchor", "spot_q4_base_capex", "val"],
+        ["DcfDilutionAndSpotAnchor", "spot_q4_base_chg_nwc", "val"],
+        ["DcfDilutionAndSpotAnchor", "terminal_fcff_at_base", "val"],
       ]
       for (const [tbl, row, col] of helperCoords) {
         expect(
@@ -739,8 +830,8 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         ["IncomeStatement", "revenue", "2026E"],
         ["IncomeStatement", "normalized_ebit", "LTM Q3 26"],
         ["IncomeStatement", "normalized_ebitda", "2026E"],
-        ["CashFlowStatement", "reported_fcf", "LTM Q3 26"],
-        ["CashFlowStatement", "economic_fcf_after_sbc", "2027E"],
+        ["CashReconAndFcf", "reported_fcf", "LTM Q3 26"],
+        ["CashReconAndFcf", "economic_fcf_after_sbc", "2027E"],
         ["DcfFcff", "full_period_fcff", "2027E"],
         ["DcfFcff", "pv_fcff", "2031E"],
         ["BetaSummary", "META", "beta_5y_raw"],
@@ -748,8 +839,8 @@ describe("Model compilation, zero-drift parity, layout/provenance/formula invari
         ["WaccBuild", "wacc", "val"],
         ["DcfBridge", "implied_ev", "val"],
         ["DcfBridge", "implied_share_price", "val"],
-        ["PeerLtmEvBridge", "MSFT", "ltm_rev"],
-        ["PeerLtmEvBridge", "GOOGL", "ev"],
+        ["PeerLtmPnl", "MSFT", "ltm_rev"],
+        ["PeerEvBridge", "GOOGL", "ev"],
         ["TradingComps", "GOOGL", "ev_ebitda"],
         ["TradingComps", "group_a_median", "ev_ebitda"],
         ["CompsImpliedValuation", "grp_a_ev_ebitda", "implied_px"],

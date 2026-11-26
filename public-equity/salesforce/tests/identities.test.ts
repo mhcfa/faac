@@ -34,7 +34,7 @@ const ANNUAL_TABLE_IDS = [
 ] as const
 
 const FORBIDDEN_INTERNAL_RE =
-  /(\b(GAP-\d+|KgRegistry|DATA_GAPS|PROJECT\.md|RUN_LOG|FEEDBACK\.md|doc_[a-z0-9_]+|crm_[a-z0-9_]+|peer_[a-z0-9_]+|macro_rates|market_prices|consensus_[a-z0-9_]+|f1|f2|f8|f12|CompiledModel|0D null|CHOOSE|pure DAG|helper|pre-compiled|compiled|closed[- ]form|guarded|circularity|zero[- ]plugs?|2D reverse[- ]DCF|scalar drivers?|period drivers?|verbatim|Posture:|Neutral|monotonic|decision-framing|critical debates|PeerComps|ExecutiveSummary|FinancialModel|MarketAndBeta|MarketData|beta_U|beta_L|D\/E_hist|D\/E_curr|r_term|Ke_U)\b|data\/audited|#N\/A)/i
+  /(\b(GAP-\d+|KgRegistry|DATA_GAPS|PROJECT\.md|RUN_LOG|FEEDBACK\.md|doc_[a-z0-9_]+|crm_[a-z0-9_]+|peer_[a-z0-9_]+|macro_rates|market_prices|consensus_[a-z0-9_]+|f1|f2|f8|f12|CompiledModel|0D null|CHOOSE|pure DAG|helper|pre-compiled|compiled|closed[- ]form|guarded|circularity|zero[- ]plugs?|2D reverse[- ]DCF|scalar drivers?|period drivers?|verbatim|Posture:|Neutral|monotonic|decision-framing|critical debates|PeerComps|PeerFinancials|ExecutiveSummary|FinancialModel|OperatingSchedules|HistoricalAnchors|IncomeStatement|BalanceSheet|CashFlow|MarketAndBeta|MarketData|beta_U|beta_L|D\/E_hist|D\/E_curr|r_term|Ke_U)\b|data\/audited|#N\/A)/i
 
 describe("Accounting identities, liveness, formula clarity, layout & client hygiene (C1-C6)", () => {
   let compiled: Readonly<Record<ScenarioKey, CompiledModel>>
@@ -49,12 +49,12 @@ describe("Accounting identities, liveness, formula clarity, layout & client hygi
     }
   })
 
-  it("C1: compiles all 3 scenarios with 7 sheets and zero unexpected Excel errors", () => {
+  it("C1: compiles all 3 scenarios with 12 sheets, 47 tables, and zero unexpected Excel errors", () => {
     for (const key of SCENARIO_KEYS) {
       const model = compiled[key]
       const summary = model.summary()
-      expect(summary.totalSheets).toBe(7)
-      expect(summary.totalTables).toBeGreaterThanOrEqual(34)
+      expect(summary.totalSheets).toBe(12)
+      expect(summary.totalTables).toBe(47)
       expect(summary.totalFormulas).toBeGreaterThan(3000)
 
       const unexpectedErrors: string[] = []
@@ -123,7 +123,7 @@ describe("Accounting identities, liveness, formula clarity, layout & client hygi
       expect(
         Math.abs(
           m.num("IncomeStatement", "gaap_ebitda", "FY26A") -
-            m.num("LtmFlowBridge", "gaap_ebitda", "FY26A")
+            m.num("LtmCashFlowAndH1Anchors", "gaap_ebitda", "FY26A")
         )
       ).toBeLessThan(1e-6)
 
@@ -255,9 +255,9 @@ describe("Accounting identities, liveness, formula clarity, layout & client hygi
       ["BalanceSheet", "total_assets", "FY31E"],
       ["CashFlowStatement", "acquired_ma_wc_adj", "FY27E"],
       ["CashFlowStatement", "ending_cash", "FY31E"],
-      ["LtmFlowBridge", "total_revenue", "LTM_Q2_27"],
-      ["LtmFlowBridge", "gaap_ebitda", "LTM_Q2_27"],
-      ["LtmFlowBridge", "unlevered_fcff", "LTM_Q2_27"],
+      ["LtmOperatingBridge", "total_revenue", "LTM_Q2_27"],
+      ["LtmCashFlowAndH1Anchors", "gaap_ebitda", "LTM_Q2_27"],
+      ["LtmCashFlowAndH1Anchors", "unlevered_fcff", "LTM_Q2_27"],
       ["InvestedCapitalAndRoic", "headline_roic", "FY31E"],
       ["DebtTrancheRegistry", "senior_notes_mar_2046", "ytm"],
       ["DebtTrancheRegistry", "senior_notes_mar_2046", "yrs_to_mat"],
@@ -298,7 +298,9 @@ describe("Accounting identities, liveness, formula clarity, layout & client hygi
       ["IcStressScenarios", "flat_fy27_ebita_mgn", "implied_price"],
       ["IcStressScenarios", "ongoing_ma_leakage", "implied_price"],
       ["IcStressWorkings", "flat_fy27_ebita_mgn", "pv_explicit"],
-      ["PeerLtmBridge", "enterprise_value", "NOW"],
+      ["PeerLtmOperatingBridge", "ltm_rev", "NOW"],
+      ["PeerLtmCashFlowBridge", "ltm_gaap_ebitda", "NOW"],
+      ["PeerEvBridge", "enterprise_value", "NOW"],
       ["TradingCompsTable", "CRM", "ev_ebitda"],
       ["TradingCompsTable", "CRM_net_strat", "ev_fcf_sbc"],
       ["CompsImpliedValuation", "ev_gaap_ebitda", "mature_px"],
@@ -382,21 +384,100 @@ describe("Accounting identities, liveness, formula clarity, layout & client hygi
     }
   })
 
-  it("C3 & C4: enforces 7-tab grid layout hygiene, zero subtitle overflows/widened gutters, section gutters, FY26A|FY27E column gutters, bold non-summary columns, and clean note placement", () => {
+  it("C2 & C3: enforces 12-tab grid layout, uniform letter landscape print config, author footer, explicit valuation date, scale >= 60%, zero overflow markers on printable tabs, section gutters, FY26A|FY27E column gutters, bold non-summary columns, and clean note placement", () => {
     const base = compiled.base
     const layoutMd = base.toMarkdown("layout")
 
-    // All 7 sheets use layout: "grid" with no freezePanes and no collapsible outlines
-    expect(layoutMd.match(/Layout: grid/g)?.length ?? 0).toBe(7)
+    // All 12 sheets use layout: "grid" with no freezePanes and no collapsible outlines
+    expect(layoutMd.match(/Layout: grid/g)?.length ?? 0).toBe(12)
     expect(layoutMd).not.toMatch(/Freeze:/)
     expect(layoutMd).not.toMatch(/\bcollapsible\b/)
+
+    // Print setup diagnostics across all 12 sheets (C2)
+    expect(layoutMd.match(/Print: letter landscape/g)?.length ?? 0).toBe(12)
+    expect(layoutMd.match(/Fit: fit_page \(1 x 1\)/g)?.length ?? 0).toBe(4)
+    expect(layoutMd.match(/Fit: fit_width \(1 x auto\)/g)?.length ?? 0).toBe(8)
+    expect(layoutMd).not.toMatch(/\[low scale <60%\]/)
+
+    // Split layout markdown by sheet to verify fit_page sheets, scale >= 68%, and zero '!' on 11 non-MarketData sheets
+    const sheetSections = layoutMd.split(/^## Sheet: /m).slice(1)
+    expect(sheetSections).toHaveLength(12)
+    const fitPageSheets = new Set([
+      "ExecutiveSummary",
+      "IncomeStatement",
+      "BalanceSheet",
+      "CashFlow",
+    ])
+    for (const section of sheetSections) {
+      const sheetName = section.split("\n", 1)[0]?.trim() ?? ""
+      const printLine =
+        section.split("\n").find((l) => l.startsWith("Print: ")) ?? ""
+      expect(printLine, `${sheetName} missing Print: line`).toContain(
+        "Print: letter landscape"
+      )
+      if (fitPageSheets.has(sheetName)) {
+        expect(printLine, `${sheetName} should be fit_page`).toContain(
+          "Fit: fit_page (1 x 1)"
+        )
+        const scaleMatch = printLine.match(/Est\. scale: ~(\d+)%/)
+        const scale = Number(scaleMatch?.[1] ?? 0)
+        expect(
+          scale,
+          `${sheetName} fit_page scale ${scale}% < 68%`
+        ).toBeGreaterThanOrEqual(68)
+      } else {
+        expect(printLine, `${sheetName} should be fit_width`).toContain(
+          "Fit: fit_width (1 x auto)"
+        )
+      }
+      if (sheetName !== "MarketData") {
+        expect(
+          printLine,
+          `${sheetName} has page overflow marker '!': ${printLine}`
+        ).not.toMatch(/~[\d.]+pg!/)
+      }
+    }
+
+    // Print author footer & explicit valuation date (no {date}) on every sheet in model.toSpec() (C3)
+    const spec = buildSalesforceModel({ scenario: "base" }).toSpec()
+    expect(base.summary().modelName).not.toMatch(FORBIDDEN_INTERNAL_RE)
+    expect(spec.manifest.sheets).toHaveLength(12)
+    for (const sheetSpec of spec.manifest.sheets) {
+      const sp = sheetSpec.print
+      expect(sp, `${sheetSpec.name} missing print spec`).toBeDefined()
+      if (sp === undefined) continue
+      expect(sp.paperSize).toBe("letter")
+      expect(sp.orientation).toBe("landscape")
+      expect(sp.centerHorizontally).toBe(true)
+      expect(sp.fit).toBe(
+        fitPageSheets.has(sheetSpec.name) ? "fit_page" : "fit_width"
+      )
+      expect(sp.header?.left).toBe("{model}")
+      expect(sp.header?.right).toBe("{sheet}")
+      expect(sp.footer?.left).toBe("Michael Hu, CFA | mhu@outlook.co.nz")
+      expect(sp.footer?.center).toBe("As of November 18, 2026")
+      expect(sp.footer?.center).not.toContain("{date}")
+      expect(sp.footer?.right).toBe("Page {page} of {pages}")
+      for (const hfStr of [
+        sp.header?.left,
+        sp.header?.center,
+        sp.header?.right,
+        sp.footer?.left,
+        sp.footer?.center,
+        sp.footer?.right,
+      ]) {
+        if (hfStr !== undefined) {
+          expect(hfStr).not.toMatch(FORBIDDEN_INTERNAL_RE)
+        }
+      }
+    }
 
     // Zero subtitle overflows, zero wrapped cells, zero widened gutters
     expect(layoutMd).not.toMatch(/sub:\d+\(\d+ch>w\)/)
     expect(layoutMd).not.toMatch(/\bwrap:[1-9]\d*\b/)
     expect(layoutMd).not.toMatch(/gutter\s+[A-Z]+(?:\.\.[A-Z]+)?\(\d+c,\s*w:/)
 
-    // Annual column gutter separates FY26A from FY27E on all 12 FinancialModel annual tables
+    // Annual column gutter separates FY26A from FY27E on all 12 annual statement & operating tables
     for (const tblId of ANNUAL_TABLE_IDS) {
       const ti = base.inspectTable(tblId)
       const fy26Idx = ti.columns.findIndex((c) => c.id === "FY26A")
@@ -512,13 +593,17 @@ describe("Accounting identities, liveness, formula clarity, layout & client hygi
     }
   })
 
-  it("C5: enforces zero repo/SDK/methodology/plumbing jargon across all rendered strings and measure headers & 1-col group banners <= 11 chars", () => {
+  it("C5: enforces zero repo/SDK/methodology/plumbing jargon across all rendered strings and measure headers & 1-col group banners within grid colWidth - 1", () => {
     const longHeaders: string[] = []
     const forbiddenStrings: string[] = []
 
     for (const key of SCENARIO_KEYS) {
       const model = compiled[key]
       for (const sheet of model.summary().sheets) {
+        const si = model.inspectSheet(sheet.name)
+        const nonGutterWidths = Object.values(si.colWidths).filter((w) => w > 2)
+        const maxHdrLen =
+          (nonGutterWidths.length > 0 ? Math.max(...nonGutterWidths) : 12) - 1
         for (const tblMeta of sheet.tables) {
           const ti = model.inspectTable(tblMeta.id)
           for (const str of [ti.title, ...ti.subtitles]) {
@@ -540,16 +625,16 @@ describe("Accounting identities, liveness, formula clarity, layout & client hygi
               const nextSame =
                 i + 1 < ti.columns.length &&
                 ti.columns[i + 1]?.group === col.group
-              if (!prevSame && !nextSame && col.group.length > 11) {
+              if (!prevSame && !nextSame && col.group.length > maxHdrLen) {
                 longHeaders.push(
-                  `${tblMeta.id}.${col.id} 1-col group: "${col.group}" (${col.group.length})`
+                  `${tblMeta.id}.${col.id} 1-col group: "${col.group}" (${col.group.length} > ${maxHdrLen})`
                 )
               }
             }
             for (const h of col.headers) {
-              if (!col.isDescriptor && h.length > 11) {
+              if (!col.isDescriptor && h.length > maxHdrLen) {
                 longHeaders.push(
-                  `${tblMeta.id}.${col.id}: "${h}" (${h.length})`
+                  `${tblMeta.id}.${col.id}: "${h}" (${h.length} > ${maxHdrLen})`
                 )
               }
               if (FORBIDDEN_INTERNAL_RE.test(h)) {

@@ -376,9 +376,12 @@ export function buildSensitivitiesSheet(
   if (tornTable !== undefined) {
     bands.push(tornTable)
   }
-  bands.push(
-    indiffTable !== undefined ? { lanes: [indiffTable, gHelper] } : gHelper
-  )
+  if (indiffTable !== undefined) {
+    bands.push({ lanes: [indiffTable], pageBreakBefore: true })
+    bands.push(gHelper)
+  } else {
+    bands.push({ lanes: [gHelper], pageBreakBefore: true })
+  }
   bands.push(wHelper)
   sheet.setBands(bands)
 }

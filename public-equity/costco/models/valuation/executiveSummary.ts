@@ -21,6 +21,7 @@ export function buildExecutiveSummaryTables(
   readonly kpiTable: Table
   readonly scenarioSummary: Table
   readonly consensusTable: Table
+  readonly consensusEpsBridge: Table
 } {
   // Control panel & date anchors
   const control = sheet.addTable(
@@ -133,7 +134,7 @@ export function buildExecutiveSummaryTables(
     ...rowFormatOptions("currency", 2),
     cells: {
       line_item: "Spot share price (cum-div.)",
-      val: { expr: 'MarketAnchors["cost_close_price", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["cost_close_price", "val"]' },
       notes: "2026-11-13 close",
     },
   })
@@ -142,7 +143,7 @@ export function buildExecutiveSummaryTables(
     cells: {
       line_item: "Implied ex-special-div. price",
       val: {
-        expr: '@table["close_price_cum", "val"] - ScalarAssumptionsActive["special_dividend_ps_fy27", "val"]',
+        expr: '@table["close_price_cum", "val"] - ScalarAssumptionsValuation["special_dividend_ps_fy27", "val"]',
       },
       notes: "Spot less special div.",
     },
@@ -170,7 +171,7 @@ export function buildExecutiveSummaryTables(
     ...rowFormatOptions("multiple", 1),
     cells: {
       line_item: "Spot P / consensus FY27E EPS",
-      val: { expr: 'TradingCompsForward["COST", "pe_27"]' },
+      val: { expr: 'TradingCompsForwardValuation["COST", "pe_27"]' },
       notes: "Cum-dividend close",
     },
   })
@@ -179,7 +180,7 @@ export function buildExecutiveSummaryTables(
     cells: {
       line_item: "Spot EV / cons. FY27E EBITDA",
       val: {
-        expr: '@table["enterprise_value", "val"] / MarketAnchors["cons_ebitda_fy27", "val"]',
+        expr: '@table["enterprise_value", "val"] / MarketAnchorsConsensus["cons_ebitda_fy27", "val"]',
       },
       notes: "Valuation-date EV",
     },
@@ -189,7 +190,7 @@ export function buildExecutiveSummaryTables(
     cells: {
       line_item: "Cons. FY27E FCF yield on EV",
       val: {
-        expr: 'IF(@table["enterprise_value", "val"] > 0, MarketAnchors["cons_fcf_fy27", "val"] / @table["enterprise_value", "val"], NA())',
+        expr: 'IF(@table["enterprise_value", "val"] > 0, MarketAnchorsConsensus["cons_fcf_fy27", "val"] / @table["enterprise_value", "val"], NA())',
       },
       notes: "vs. 10Y Treasury yield",
     },
@@ -198,7 +199,7 @@ export function buildExecutiveSummaryTables(
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "U.S. 10Y Treasury par yield",
-      val: { expr: 'MarketAnchors["rf_par_10y", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["rf_par_10y", "val"]' },
       notes: "2026-11-13 CMT par",
     },
   })
@@ -344,7 +345,7 @@ export function buildExecutiveSummaryTables(
     "Terminal perpetuity growth (g)",
     "percentage",
     2,
-    'ScalarAssumptionsActive["terminal_growth_rate", "val"]',
+    'ScalarAssumptionsValuation["terminal_growth_rate", "val"]',
     (s) => s.termGrowth,
     "<= nominal GDP"
   )
@@ -353,7 +354,7 @@ export function buildExecutiveSummaryTables(
     "Exit EV / FY36E EBITDA",
     "multiple",
     1,
-    'ScalarAssumptionsActive["exit_ev_to_ebitda", "val"]',
+    'ScalarAssumptionsValuation["exit_ev_to_ebitda", "val"]',
     (s) => s.exitMult,
     "Cross-check"
   )
@@ -362,7 +363,7 @@ export function buildExecutiveSummaryTables(
     "Calibrated FY27E EV / EBITDA",
     "multiple",
     1,
-    'ScalarAssumptionsActive["calibrated_comps_ev_to_ebitda", "val"]',
+    'ScalarAssumptionsValuation["calibrated_comps_ev_to_ebitda", "val"]',
     (s) => s.compsMult,
     "ROIC-calibrated"
   )
@@ -595,9 +596,9 @@ export function buildExecutiveSummaryTables(
     "FY27E total revenue ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_rev_fy27", "val"]',
-    'MarketAnchors["cons_rev_low_fy27", "val"]',
-    'MarketAnchors["cons_rev_high_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_rev_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_rev_low_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_rev_high_fy27", "val"]',
     (s) => s.fy27Rev,
     'IncomeStatement["total_revenue", "FY27E"]'
   )
@@ -606,7 +607,7 @@ export function buildExecutiveSummaryTables(
     "FY27E EBITDA ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_ebitda_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_ebitda_fy27", "val"]',
     null,
     null,
     (s) => s.fy27Ebitda,
@@ -617,7 +618,7 @@ export function buildExecutiveSummaryTables(
     "FY27E EBIT ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_ebit_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_ebit_fy27", "val"]',
     null,
     null,
     (s) => s.fy27Ebit,
@@ -628,9 +629,9 @@ export function buildExecutiveSummaryTables(
     "FY27E diluted EPS ($/sh)",
     "currency",
     2,
-    'MarketAnchors["cons_eps_fy27", "val"]',
-    'MarketAnchors["cons_eps_low_fy27", "val"]',
-    'MarketAnchors["cons_eps_high_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_eps_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_eps_low_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_eps_high_fy27", "val"]',
     (s) => s.fy27Eps,
     'IncomeStatement["diluted_eps", "FY27E"]',
     "bold"
@@ -640,7 +641,7 @@ export function buildExecutiveSummaryTables(
     "FY27E regular DPS ($/sh)",
     "currency",
     2,
-    'MarketAnchors["cons_dps_fy27", "val"]',
+    'MarketAnchorsConsensus["cons_dps_fy27", "val"]',
     null,
     null,
     (s) => s.fy27RegDps,
@@ -682,7 +683,9 @@ export function buildExecutiveSummaryTables(
     ...rowFormatOptions("integer"),
     cells: {
       line_item: "FY27E covering analyst count",
-      cons: { expr: 'MarketAnchors["cons_analyst_count_fy27", "val"]' },
+      cons: {
+        expr: 'MarketAnchorsConsensus["cons_analyst_count_fy27", "val"]',
+      },
       low: null,
       high: null,
       downside: null,
@@ -700,7 +703,7 @@ export function buildExecutiveSummaryTables(
     "FY28E total revenue ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_rev_fy28", "val"]',
+    'MarketAnchorsConsensus["cons_rev_fy28", "val"]',
     null,
     null,
     (s) => s.fy28Rev,
@@ -711,7 +714,7 @@ export function buildExecutiveSummaryTables(
     "FY28E EBITDA ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_ebitda_fy28", "val"]',
+    'MarketAnchorsConsensus["cons_ebitda_fy28", "val"]',
     null,
     null,
     (s) => s.fy28Ebitda,
@@ -722,7 +725,7 @@ export function buildExecutiveSummaryTables(
     "FY28E EBIT ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_ebit_fy28", "val"]',
+    'MarketAnchorsConsensus["cons_ebit_fy28", "val"]',
     null,
     null,
     (s) => s.fy28Ebit,
@@ -733,7 +736,7 @@ export function buildExecutiveSummaryTables(
     "FY28E diluted EPS ($/sh)",
     "currency",
     2,
-    'MarketAnchors["cons_eps_fy28", "val"]',
+    'MarketAnchorsConsensus["cons_eps_fy28", "val"]',
     null,
     null,
     (s) => s.fy28Eps,
@@ -745,7 +748,7 @@ export function buildExecutiveSummaryTables(
     "FY28E regular DPS ($/sh)",
     "currency",
     2,
-    'MarketAnchors["cons_dps_fy28", "val"]',
+    'MarketAnchorsConsensus["cons_dps_fy28", "val"]',
     null,
     null,
     (s) => s.fy28RegDps,
@@ -759,7 +762,7 @@ export function buildExecutiveSummaryTables(
     "FY29E total revenue ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_rev_fy29", "val"]',
+    'MarketAnchorsConsensus["cons_rev_fy29", "val"]',
     null,
     null,
     (s) => s.fy29Rev,
@@ -770,7 +773,7 @@ export function buildExecutiveSummaryTables(
     "FY29E EBITDA ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_ebitda_fy29", "val"]',
+    'MarketAnchorsConsensus["cons_ebitda_fy29", "val"]',
     null,
     null,
     (s) => s.fy29Ebitda,
@@ -781,7 +784,7 @@ export function buildExecutiveSummaryTables(
     "FY29E EBIT ($M)",
     "currency",
     0,
-    'MarketAnchors["cons_ebit_fy29", "val"]',
+    'MarketAnchorsConsensus["cons_ebit_fy29", "val"]',
     null,
     null,
     (s) => s.fy29Ebit,
@@ -792,7 +795,7 @@ export function buildExecutiveSummaryTables(
     "FY29E diluted EPS ($/sh)",
     "currency",
     2,
-    'MarketAnchors["cons_eps_fy29", "val"]',
+    'MarketAnchorsConsensus["cons_eps_fy29", "val"]',
     null,
     null,
     (s) => s.fy29Eps,
@@ -807,9 +810,9 @@ export function buildExecutiveSummaryTables(
     "Price target vs. blended ($/sh)",
     "currency",
     2,
-    'MarketAnchors["cons_pt_avg", "val"]',
-    'MarketAnchors["cons_pt_low", "val"]',
-    'MarketAnchors["cons_pt_high", "val"]',
+    'MarketAnchorsConsensus["cons_pt_avg", "val"]',
+    'MarketAnchorsConsensus["cons_pt_low", "val"]',
+    'MarketAnchorsConsensus["cons_pt_high", "val"]',
     (s) => s.blendedCumPrice,
     'FootballField["blended_total", "cum_div_price"]',
     "bold"
@@ -818,7 +821,7 @@ export function buildExecutiveSummaryTables(
     ...rowFormatOptions("currency", 2),
     cells: {
       line_item: "Street median price target ($/sh)",
-      cons: { expr: 'MarketAnchors["cons_pt_median", "val"]' },
+      cons: { expr: 'MarketAnchorsConsensus["cons_pt_median", "val"]' },
       low: null,
       high: null,
       downside: null,
@@ -838,7 +841,7 @@ export function buildExecutiveSummaryTables(
     cells: {
       line_item: "Street buy-rated share (%)",
       cons: {
-        expr: '(MarketAnchors["cons_ratings_strong_buy", "val"] + MarketAnchors["cons_ratings_buy", "val"]) / MarketAnchors["cons_ratings_total", "val"]',
+        expr: '(MarketAnchorsConsensus["cons_ratings_strong_buy", "val"] + MarketAnchorsConsensus["cons_ratings_buy", "val"]) / MarketAnchorsConsensus["cons_ratings_total", "val"]',
       },
       low: notedNull("Buy + Strong Buy divided by total rated analysts."),
       high: null,
@@ -864,73 +867,126 @@ export function buildExecutiveSummaryTables(
     },
   })
 
-  consensusTable.addRowGutter()
-  consensusTable.addSectionHeader("FY27E–FY28E EPS bridge vs. consensus ($/sh)")
+  // FY27E–FY28E EPS Bridge vs. Consensus
+  const consensusEpsBridge = sheet.addTable(
+    "ConsensusEpsBridge",
+    "FY27E–FY28E Diluted EPS Bridge vs. Street Consensus ($/sh)",
+    {
+      subtitle: [
+        "Decomposes scenario EPS variance vs. Street consensus into EBIT, net interest reset, ESOP shield, and residual",
+        "Downside, Base, and Upside hold static scenario snapshots; Active tracks the active case",
+      ],
+      currency: "USD",
+    }
+  )
+  consensusEpsBridge.addColumn("line_item", {
+    role: "descriptor",
+    header: "EPS variance component ($/sh)",
+  })
+  consensusEpsBridge.addColumn("downside", {
+    role: "measure",
+    headers: ["Downside", "Case"],
+  })
+  consensusEpsBridge.addColumn("base", {
+    role: "measure",
+    headers: ["Base", "Case"],
+  })
+  consensusEpsBridge.addColumn("upside", {
+    role: "measure",
+    headers: ["Upside", "Case"],
+  })
+  consensusEpsBridge.addColumn("active", {
+    role: "measure",
+    headers: ["Active", "Case"],
+    style: "bold",
+  })
+  consensusEpsBridge.addColumn("base_vs_cons", {
+    role: "measure",
+    headers: ["Base %", "of Cons."],
+  })
+  consensusEpsBridge.addColumn("active_vs_cons", {
+    role: "measure",
+    headers: ["Active %", "of Cons."],
+    style: "bold",
+  })
+  consensusEpsBridge.addColumn("notes", {
+    role: "descriptor",
+    header: "Variance mechanism",
+  })
+
   const addEpsBridgeRow = (
     id: string,
     label: string,
     consRefRow: "fy27_eps" | "fy28_eps",
     getter: (s: ScenarioSnapshot) => number,
     activeExpr: string,
+    notes: string,
     style?: "subtotal" | "bold"
   ): void => {
-    consensusTable.addRow(id, {
+    consensusEpsBridge.addRow(id, {
       ...rowFormatOptions("currency", 2),
       ...(style ? { style } : {}),
       cells: {
         line_item: label,
-        cons: null,
-        low: null,
-        high: null,
         downside: downSnap ? getter(downSnap) : 0,
         base: baseSnap ? getter(baseSnap) : 0,
         upside: upSnap ? getter(upSnap) : 0,
         active: { expr: activeExpr },
         base_vs_cons: {
-          expr: `@table[@row, "base"] / @table["${consRefRow}", "cons"]`,
+          expr: `@table[@row, "base"] / ConsensusBenchmark["${consRefRow}", "cons"]`,
           format: "percentage",
           decimals: 1,
         },
+        active_vs_cons: {
+          expr: `@table[@row, "active"] / ConsensusBenchmark["${consRefRow}", "cons"]`,
+          format: "percentage",
+          decimals: 1,
+        },
+        notes,
       },
     })
   }
 
+  consensusEpsBridge.addSectionHeader(
+    "FY27E–FY28E EPS bridge vs. consensus ($/sh)"
+  )
   addEpsBridgeRow(
     "fy27_eps_bridge_ebit",
     "FY27E: Operating EBIT & MFI delta",
     "fy27_eps",
     (s) => s.fy27EpsBridgeEbit,
-    '(IncomeStatement["operating_income", "FY27E"] - MarketAnchors["cons_ebit_fy27", "val"]) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY27E"]) / IncomeStatement["wavg_diluted_shares", "FY27E"]'
+    '(IncomeStatement["operating_income", "FY27E"] - MarketAnchorsConsensus["cons_ebit_fy27", "val"]) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY27E"]) / IncomeStatement["wavg_diluted_shares", "FY27E"]',
+    "After-tax EBIT delta vs. Street"
   )
   addEpsBridgeRow(
     "fy27_eps_bridge_int",
     "FY27E: Spec.-div. net int. reset",
     "fy27_eps",
     (s) => s.fy27EpsBridgeInt,
-    '((IncomeStatement["interest_income", "FY27E"] - IncomeStatement["interest_expense", "FY27E"]) - (IncomeStatement["interest_income", "FY26"] - IncomeStatement["interest_expense", "FY26"])) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY27E"]) / IncomeStatement["wavg_diluted_shares", "FY27E"]'
+    '((IncomeStatement["interest_income", "FY27E"] - IncomeStatement["interest_expense", "FY27E"]) - (IncomeStatement["interest_income", "FY26"] - IncomeStatement["interest_expense", "FY26"])) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY27E"]) / IncomeStatement["wavg_diluted_shares", "FY27E"]',
+    "Cash draw lowers net int. income"
   )
   addEpsBridgeRow(
     "fy27_eps_bridge_esop",
     "FY27E: ESOP spec.-div. tax shield",
     "fy27_eps",
     (s) => s.fy27EpsBridgeEsop,
-    'IncomeStatement["esop_special_div_tax_benefit", "FY27E"] / IncomeStatement["wavg_diluted_shares", "FY27E"]'
+    'IncomeStatement["esop_special_div_tax_benefit", "FY27E"] / IncomeStatement["wavg_diluted_shares", "FY27E"]',
+    "One-time Sec. 404(k) tax shield"
   )
   addEpsBridgeRow(
     "fy27_eps_bridge_other",
     "FY27E: Non-op, tax & share resid.",
     "fy27_eps",
     (s) => s.fy27EpsBridgeOther,
-    '(IncomeStatement["diluted_eps", "FY27E"] - MarketAnchors["cons_eps_fy27", "val"]) - SUM(@table["fy27_eps_bridge_ebit".."fy27_eps_bridge_esop", "active"])'
+    '(IncomeStatement["diluted_eps", "FY27E"] - MarketAnchorsConsensus["cons_eps_fy27", "val"]) - SUM(@table["fy27_eps_bridge_ebit".."fy27_eps_bridge_esop", "active"])',
+    "ETR, FX & share count residual"
   )
-  consensusTable.addRow("fy27_eps_bridge_total", {
+  consensusEpsBridge.addRow("fy27_eps_bridge_total", {
     ...rowFormatOptions("currency", 2),
     style: "subtotal",
     cells: {
       line_item: "FY27E total EPS delta vs. cons.",
-      cons: null,
-      low: null,
-      high: null,
       downside: {
         expr: 'SUM(@table["fy27_eps_bridge_ebit".."fy27_eps_bridge_other", @col])',
       },
@@ -944,10 +1000,16 @@ export function buildExecutiveSummaryTables(
         expr: 'SUM(@table["fy27_eps_bridge_ebit".."fy27_eps_bridge_other", @col])',
       },
       base_vs_cons: {
-        expr: '@table[@row, "base"] / @table["fy27_eps", "cons"]',
+        expr: '@table[@row, "base"] / ConsensusBenchmark["fy27_eps", "cons"]',
         format: "percentage",
         decimals: 1,
       },
+      active_vs_cons: {
+        expr: '@table[@row, "active"] / ConsensusBenchmark["fy27_eps", "cons"]',
+        format: "percentage",
+        decimals: 1,
+      },
+      notes: "Reconciled FY27E EPS delta",
     },
   })
   addEpsBridgeRow(
@@ -955,30 +1017,30 @@ export function buildExecutiveSummaryTables(
     "FY28E: Operating EBIT & 53W delta",
     "fy28_eps",
     (s) => s.fy28EpsBridgeEbit,
-    '(IncomeStatement["operating_income", "FY28E"] - MarketAnchors["cons_ebit_fy28", "val"]) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY28E"]) / IncomeStatement["wavg_diluted_shares", "FY28E"]'
+    '(IncomeStatement["operating_income", "FY28E"] - MarketAnchorsConsensus["cons_ebit_fy28", "val"]) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY28E"]) / IncomeStatement["wavg_diluted_shares", "FY28E"]',
+    "Includes 53-week fiscal uplift"
   )
   addEpsBridgeRow(
     "fy28_eps_bridge_int",
     "FY28E: Post-div. net int. reset",
     "fy28_eps",
     (s) => s.fy28EpsBridgeInt,
-    '((IncomeStatement["interest_income", "FY28E"] - IncomeStatement["interest_expense", "FY28E"]) - (IncomeStatement["interest_income", "FY26"] - IncomeStatement["interest_expense", "FY26"])) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY28E"]) / IncomeStatement["wavg_diluted_shares", "FY28E"]'
+    '((IncomeStatement["interest_income", "FY28E"] - IncomeStatement["interest_expense", "FY28E"]) - (IncomeStatement["interest_income", "FY26"] - IncomeStatement["interest_expense", "FY26"])) * (1 - PeriodAssumptionsActive["effective_tax_rate", "FY28E"]) / IncomeStatement["wavg_diluted_shares", "FY28E"]',
+    "Full-year lower opening cash"
   )
   addEpsBridgeRow(
     "fy28_eps_bridge_other",
     "FY28E: Non-op, tax & share resid.",
     "fy28_eps",
     (s) => s.fy28EpsBridgeOther,
-    '(IncomeStatement["diluted_eps", "FY28E"] - MarketAnchors["cons_eps_fy28", "val"]) - SUM(@table["fy28_eps_bridge_ebit".."fy28_eps_bridge_int", "active"])'
+    '(IncomeStatement["diluted_eps", "FY28E"] - MarketAnchorsConsensus["cons_eps_fy28", "val"]) - SUM(@table["fy28_eps_bridge_ebit".."fy28_eps_bridge_int", "active"])',
+    "ETR, buybacks & share residual"
   )
-  consensusTable.addRow("fy28_eps_bridge_total", {
+  consensusEpsBridge.addRow("fy28_eps_bridge_total", {
     ...rowFormatOptions("currency", 2),
     style: "subtotal",
     cells: {
       line_item: "FY28E total EPS delta vs. cons.",
-      cons: null,
-      low: null,
-      high: null,
       downside: {
         expr: 'SUM(@table["fy28_eps_bridge_ebit".."fy28_eps_bridge_other", @col])',
       },
@@ -992,10 +1054,16 @@ export function buildExecutiveSummaryTables(
         expr: 'SUM(@table["fy28_eps_bridge_ebit".."fy28_eps_bridge_other", @col])',
       },
       base_vs_cons: {
-        expr: '@table[@row, "base"] / @table["fy28_eps", "cons"]',
+        expr: '@table[@row, "base"] / ConsensusBenchmark["fy28_eps", "cons"]',
         format: "percentage",
         decimals: 1,
       },
+      active_vs_cons: {
+        expr: '@table[@row, "active"] / ConsensusBenchmark["fy28_eps", "cons"]',
+        format: "percentage",
+        decimals: 1,
+      },
+      notes: "Reconciled FY28E EPS delta",
     },
   })
 
@@ -1004,5 +1072,6 @@ export function buildExecutiveSummaryTables(
     kpiTable,
     scenarioSummary,
     consensusTable,
+    consensusEpsBridge,
   }
 }

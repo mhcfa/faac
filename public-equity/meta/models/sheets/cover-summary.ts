@@ -257,7 +257,7 @@ export function buildCoverSummarySheet(
     cells: {
       label: new Cell({ value: "Current market spot (Nov 20, 2026)" }),
       ev: new Cell({
-        expr: 'DcfBridge["spot_pf_ev", "val"]',
+        expr: 'DcfDilutionAndSpotAnchor["spot_pf_ev", "val"]',
         format: "currency",
         decimals: 0,
       }),
@@ -339,7 +339,9 @@ export function buildCoverSummarySheet(
       label: new Cell({ value: "Cash flows at Base WACC / g / RONIC" }),
       downside: snaps.downside.evAtBaseParams,
       upside: snaps.upside.evAtBaseParams,
-      active: new Cell({ expr: 'DcfBridge["ev_at_base_params", "val"]' }),
+      active: new Cell({
+        expr: 'DcfDilutionAndSpotAnchor["ev_at_base_params", "val"]',
+      }),
     },
     format: "currency",
     decimals: 0,
@@ -406,7 +408,9 @@ export function buildCoverSummarySheet(
       label: new Cell({ value: "Cash flows at Base WACC/g ($/sh)" }),
       downside: snaps.downside.pxAtBaseParams,
       upside: snaps.upside.pxAtBaseParams,
-      active: new Cell({ expr: 'DcfBridge["px_at_base_params", "val"]' }),
+      active: new Cell({
+        expr: 'DcfDilutionAndSpotAnchor["px_at_base_params", "val"]',
+      }),
     },
     format: "currency",
     decimals: 2,
@@ -624,7 +628,7 @@ export function buildCoverSummarySheet(
     snaps.downside.capex26,
     snaps.base.capex26,
     snaps.upside.capex26,
-    '-CashFlowStatement["total_capex_outflow", "2026E"]',
+    '-CashReconAndFcf["total_capex_outflow", "2026E"]',
     "currency",
     0,
     "diff",
@@ -1036,5 +1040,10 @@ export function buildCoverSummarySheet(
     },
   })
 
-  sheet.setBands([{ lanes: [valSum, varAttr] }, comp, ret, ms])
+  sheet.setBands([
+    { lanes: [valSum, varAttr] },
+    { lanes: [comp], pageBreakBefore: true },
+    { lanes: [ret], pageBreakBefore: true },
+    { lanes: [ms], gap: 1 },
+  ])
 }

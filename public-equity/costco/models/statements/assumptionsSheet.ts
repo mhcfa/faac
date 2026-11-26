@@ -56,13 +56,12 @@ function collectPeriodDriverEntries(
   ]
 }
 
-function collectScalarDriverEntries(
+function collectOperatingScalarEntries(
   bundle: ScenarioDriverBundle
 ): readonly ScalarDriverEntry[] {
   const op: OperatingDrivers = bundle.operating
   const wc: WorkingCapitalDrivers = bundle.workingCapital
   const cap: CapitalStructureDrivers = bundle.capitalStructure
-  const val: ValuationDrivers = bundle.valuation
   return [
     { id: "new_club_productivity", driver: op.newClubProductivity },
     { id: "dso_days", driver: wc.dsoDays },
@@ -106,6 +105,15 @@ function collectScalarDriverEntries(
       id: "apr_maturity_fy_absent_weight",
       driver: cap.aprMaturityFyAbsentWeight,
     },
+  ]
+}
+
+function collectValuationScalarEntries(
+  bundle: ScenarioDriverBundle
+): readonly ScalarDriverEntry[] {
+  const cap: CapitalStructureDrivers = bundle.capitalStructure
+  const val: ValuationDrivers = bundle.valuation
+  return [
     { id: "special_dividend_ps_fy27", driver: cap.specialDividendPerShareFy27 },
     { id: "regular_dps_growth", driver: cap.regularDpsGrowth },
     {
@@ -252,18 +260,17 @@ function buildPeriodDriverTable(
   return table
 }
 
-function buildScalarDriverTable(sheet: Sheet): Table {
-  const table = sheet.addTable(
-    "ScalarAssumptionsActive",
-    "Operating, Balance-Sheet & Valuation Assumptions",
-    {
-      subtitle: [
-        "Scenario case parameters ($M, %, days, or multiples) with active case selection",
-        "Basis and source citations listed alongside each parameter",
-      ],
-      currency: "USD",
-    }
-  )
+function buildScalarDriverTable(
+  sheet: Sheet,
+  id: string,
+  title: string,
+  subtitle: readonly string[],
+  collector: (bundle: ScenarioDriverBundle) => readonly ScalarDriverEntry[]
+): Table {
+  const table = sheet.addTable(id, title, {
+    subtitle,
+    currency: "USD",
+  })
   table.addColumn("line_item", {
     role: "descriptor",
     header: "Assumption / Parameter",
@@ -286,9 +293,9 @@ function buildScalarDriverTable(sheet: Sheet): Table {
     header: "Basis / Source",
   })
 
-  const downEntries = collectScalarDriverEntries(ALL_SCENARIO_DRIVERS.Downside)
-  const baseEntries = collectScalarDriverEntries(ALL_SCENARIO_DRIVERS.Base)
-  const upEntries = collectScalarDriverEntries(ALL_SCENARIO_DRIVERS.Upside)
+  const downEntries = collector(ALL_SCENARIO_DRIVERS.Downside)
+  const baseEntries = collector(ALL_SCENARIO_DRIVERS.Base)
+  const upEntries = collector(ALL_SCENARIO_DRIVERS.Upside)
 
   let currentCategory = ""
   let isFirstSection = true
@@ -330,8 +337,10 @@ export function buildAssumptionsTables(
   activeScenario: ScenarioName
 ): {
   readonly framingTable: Table
-  readonly scalarActive: Table
-  readonly anchors: Table
+  readonly scalarOperating: Table
+  readonly scalarValuation: Table
+  readonly anchorsMarket: Table
+  readonly anchorsConsensus: Table
   readonly periodActive: Table
   readonly periodScenarios: readonly Table[]
   readonly debtTable: Table
@@ -387,29 +396,51 @@ export function buildAssumptionsTables(
     })
   }
 
-  // Scalar assumptions & audited market/opening anchors
-  const scalarActive = buildScalarDriverTable(sheet)
+  // Operating, working capital & liquidity parameters
+  const scalarOperating = buildScalarDriverTable(
+    sheet,
+    "ScalarAssumptionsOperating",
+    "Operating, Working Capital & Liquidity Assumptions",
+    [
+      "Scenario parameters ($M, %, days, or bps) with active case selection",
+      "Covers club ramp, working capital, PP&E, non-operating items, and debt",
+    ],
+    collectOperatingScalarEntries
+  )
 
-  const anchors = sheet.addTable(
-    "MarketAnchors",
-    "Market, Consensus & Opening Anchors",
+  // Capital return, lease & valuation parameters
+  const scalarValuation = buildScalarDriverTable(
+    sheet,
+    "ScalarAssumptionsValuation",
+    "Capital Return, Lease & Valuation Assumptions",
+    [
+      "Scenario parameters ($M, %, or multiples) with active case selection",
+      "Covers dividends, buybacks, leases, ERP, terminal values, and grid steps",
+    ],
+    collectValuationScalarEntries
+  )
+
+  // Market close, rates & FY21 opening anchors
+  const anchorsMarket = sheet.addTable(
+    "MarketAnchorsMarket",
+    "Market Close, Rates & Opening Anchors",
     {
       subtitle: [
-        "2026-11-13 close, Street consensus & FY21 anchors",
+        "2026-11-13 market close, rates & FY21 anchors",
         kg.citations.equityQuotes,
       ],
       currency: "USD",
     }
   )
-  anchors.addColumn("line_item", {
+  anchorsMarket.addColumn("line_item", {
     role: "descriptor",
     header: "Audited benchmark",
   })
-  anchors.addColumn("val", {
+  anchorsMarket.addColumn("val", {
     role: "measure",
     headers: ["Reported", "Value"],
   })
-  anchors.addColumn("notes", {
+  anchorsMarket.addColumn("notes", {
     role: "descriptor",
     header: "Source",
   })
@@ -424,8 +455,8 @@ export function buildAssumptionsTables(
   }
   const costConsFcf27 = cCost.saFcf27
 
-  anchors.addSectionHeader("Market close and rates (2026-11-13)")
-  anchors.addRow("cost_close_price", {
+  anchorsMarket.addSectionHeader("Market close and rates (2026-11-13)")
+  anchorsMarket.addRow("cost_close_price", {
     ...rowFormatOptions("currency", 2),
     cells: {
       line_item: "COST closing price (cum-div.)",
@@ -433,7 +464,7 @@ export function buildAssumptionsTables(
       notes: "NASDAQ close (2026-11-13)",
     },
   })
-  anchors.addRow("cost_sec_shares", {
+  anchorsMarket.addRow("cost_sec_shares", {
     ...rowFormatOptions("number", 3),
     cells: {
       line_item: "SEC common shares (M)",
@@ -441,7 +472,7 @@ export function buildAssumptionsTables(
       notes: "FY26 Form 10-K cover",
     },
   })
-  anchors.addRow("cost_dilutive_rsus", {
+  anchorsMarket.addRow("cost_dilutive_rsus", {
     ...rowFormatOptions("number", 3),
     cells: {
       line_item: "TSM dilutive RSUs (M)",
@@ -452,7 +483,7 @@ export function buildAssumptionsTables(
       notes: "FY26 10-K Note 9",
     },
   })
-  anchors.addRow("cost_diluted_shares", {
+  anchorsMarket.addRow("cost_diluted_shares", {
     ...rowFormatOptions("number", 3),
     style: "bold",
     cells: {
@@ -463,7 +494,7 @@ export function buildAssumptionsTables(
       notes: "Valuation per-share base",
     },
   })
-  anchors.addRow("lt_debt_fair_value", {
+  anchorsMarket.addRow("lt_debt_fair_value", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY26 LT debt fair value ($M)",
@@ -474,7 +505,7 @@ export function buildAssumptionsTables(
       notes: "FY26 10-K Note 4",
     },
   })
-  anchors.addRow("cc_receivables_in_cash", {
+  anchorsMarket.addRow("cc_receivables_in_cash", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Unsettled card rec. in cash ($M)",
@@ -485,7 +516,7 @@ export function buildAssumptionsTables(
       notes: "FY26 10-K Note 1",
     },
   })
-  anchors.addRow("cost_beta_5y", {
+  anchorsMarket.addRow("cost_beta_5y", {
     ...rowFormatOptions("number", 2),
     cells: {
       line_item: "COST 5Y monthly beta",
@@ -493,7 +524,7 @@ export function buildAssumptionsTables(
       notes: "5Y monthly vs. S&P 500",
     },
   })
-  anchors.addRow("cost_beta_2y", {
+  anchorsMarket.addRow("cost_beta_2y", {
     ...rowFormatOptions("number", 2),
     cells: {
       line_item: "COST 2Y weekly beta",
@@ -501,7 +532,7 @@ export function buildAssumptionsTables(
       notes: "2Y weekly vs. S&P 500",
     },
   })
-  anchors.addRow("oct2026_qtr_dps", {
+  anchorsMarket.addRow("oct2026_qtr_dps", {
     ...rowFormatOptions("currency", 2),
     cells: {
       line_item: "Quarterly dividend declared",
@@ -509,7 +540,7 @@ export function buildAssumptionsTables(
       notes: "Oct 14, 2026 release",
     },
   })
-  anchors.addRow("cost_reg_dps_annualized", {
+  anchorsMarket.addRow("cost_reg_dps_annualized", {
     ...rowFormatOptions("currency", 2),
     cells: {
       line_item: "Annualized regular DPS",
@@ -517,7 +548,7 @@ export function buildAssumptionsTables(
       notes: "Quarterly dividend x 4",
     },
   })
-  anchors.addRow("rf_par_10y", {
+  anchorsMarket.addRow("rf_par_10y", {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "U.S. 10Y Treasury par yield",
@@ -525,7 +556,7 @@ export function buildAssumptionsTables(
       notes: "U.S. Treasury H.15",
     },
   })
-  anchors.addRow("rf_real_10y", {
+  anchorsMarket.addRow("rf_real_10y", {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "U.S. 10Y real TIPS yield",
@@ -533,7 +564,7 @@ export function buildAssumptionsTables(
       notes: "U.S. Treasury TIPS",
     },
   })
-  anchors.addRow("t10yie_breakeven", {
+  anchorsMarket.addRow("t10yie_breakeven", {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "10Y breakeven inflation",
@@ -541,7 +572,7 @@ export function buildAssumptionsTables(
       notes: "FRED T10YIE",
     },
   })
-  anchors.addRow("dff_fed_funds", {
+  anchorsMarket.addRow("dff_fed_funds", {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "Effective federal funds rate",
@@ -552,7 +583,7 @@ export function buildAssumptionsTables(
       notes: "FRED H.15 (2026-11-12)",
     },
   })
-  anchors.addRow("oas_aa", {
+  anchorsMarket.addRow("oas_aa", {
     ...rowFormatOptions("basis_points"),
     cells: {
       line_item: "ICE BofA AA corporate OAS",
@@ -561,228 +592,9 @@ export function buildAssumptionsTables(
     },
   })
 
-  anchors.addRowGutter()
-  anchors.addSectionHeader("Street consensus and targets (COST)")
-  anchors.addRow("cons_rev_fy27", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY27E revenue ($M)",
-      val: cCost.rev27,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_rev_low_fy27", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY27E rev. low ($M)",
-      val: cdCost.revLow27,
-      notes: "FY27E Street low",
-    },
-  })
-  anchors.addRow("cons_rev_high_fy27", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY27E rev. high ($M)",
-      val: cdCost.revHigh27,
-      notes: "FY27E Street high",
-    },
-  })
-  anchors.addRow("cons_ebitda_fy27", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY27E EBITDA ($M)",
-      val: cCost.ebitda27,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_ebit_fy27", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY27E EBIT ($M)",
-      val: cCost.ebit27,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_eps_fy27", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Consensus FY27E EPS ($/sh)",
-      val: cCost.epsHeadline27,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_eps_low_fy27", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Consensus FY27E EPS low",
-      val: cdCost.epsLow27,
-      notes: "FY27E Street low",
-    },
-  })
-  anchors.addRow("cons_eps_high_fy27", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Consensus FY27E EPS high",
-      val: cdCost.epsHigh27,
-      notes: "FY27E Street high",
-    },
-  })
-  anchors.addRow("cons_dps_fy27", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Consensus FY27E reg. DPS",
-      val: cdCost.dps27,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_fcf_fy27", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY27E FCF ($M)",
-      val: costConsFcf27,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_analyst_count_fy27", {
-    ...rowFormatOptions("integer"),
-    cells: {
-      line_item: "FY27E covering analysts",
-      val: cCost.analystCount27,
-      notes: "FY27E estimate count",
-    },
-  })
-  anchors.addRow("cons_rev_fy28", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY28E revenue ($M)",
-      val: cCost.rev28,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_ebitda_fy28", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY28E EBITDA ($M)",
-      val: cCost.ebitda28,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_ebit_fy28", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY28E EBIT ($M)",
-      val: cCost.ebit28,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_eps_fy28", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Consensus FY28E EPS ($/sh)",
-      val: cCost.epsHeadline28,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_dps_fy28", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Consensus FY28E reg. DPS",
-      val: cdCost.dps28,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_rev_fy29", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY29E revenue ($M)",
-      val: cdCost.rev29,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_ebitda_fy29", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY29E EBITDA ($M)",
-      val: cdCost.ebitda29,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_ebit_fy29", {
-    ...rowFormatOptions("currency", 0),
-    cells: {
-      line_item: "Consensus FY29E EBIT ($M)",
-      val: cdCost.ebit29,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_eps_fy29", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Consensus FY29E EPS ($/sh)",
-      val: cdCost.epsHeadline29,
-      notes: "Street consensus",
-    },
-  })
-  anchors.addRow("cons_pt_low", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Street price target — low",
-      val: cCost.ptLow,
-      notes: "Analyst target range",
-    },
-  })
-  anchors.addRow("cons_pt_avg", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Street price target — mean",
-      val: cCost.ptAverage,
-      notes: "Analyst mean target",
-    },
-  })
-  anchors.addRow("cons_pt_median", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Street price target — median",
-      val: cCost.ptMedian,
-      notes: "Analyst median target",
-    },
-  })
-  anchors.addRow("cons_pt_high", {
-    ...rowFormatOptions("currency", 2),
-    cells: {
-      line_item: "Street price target — high",
-      val: cCost.ptHigh,
-      notes: "Analyst target range",
-    },
-  })
-  anchors.addRow("cons_ratings_strong_buy", {
-    ...rowFormatOptions("integer"),
-    cells: {
-      line_item: "Analyst ratings — strong buy",
-      val: cdCost.ratingsStrongBuy,
-      notes: "Street rating breakdown",
-    },
-  })
-  anchors.addRow("cons_ratings_buy", {
-    ...rowFormatOptions("integer"),
-    cells: {
-      line_item: "Analyst ratings — buy",
-      val: cdCost.ratingsBuy,
-      notes: "Street rating breakdown",
-    },
-  })
-  anchors.addRow("cons_ratings_total", {
-    ...rowFormatOptions("integer"),
-    cells: {
-      line_item: "Analyst ratings — total",
-      val: cdCost.ratingsTotal,
-      notes: "Total rated analysts",
-    },
-  })
-
-  anchors.addRowGutter()
-  anchors.addSectionHeader("FY21 opening & maturity anchors")
-  anchors.addRow("fy21_cash", {
+  anchorsMarket.addRowGutter()
+  anchorsMarket.addSectionHeader("FY21 opening & maturity anchors")
+  anchorsMarket.addRow("fy21_cash", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY21 ending cash ($M)",
@@ -790,7 +602,7 @@ export function buildAssumptionsTables(
       notes: "FY22 Form 10-K BS",
     },
   })
-  anchors.addRow("fy21_sti", {
+  anchorsMarket.addRow("fy21_sti", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY21 ending STI ($M)",
@@ -798,7 +610,7 @@ export function buildAssumptionsTables(
       notes: "FY22 Form 10-K BS",
     },
   })
-  anchors.addRow("fy21_cash_sti", {
+  anchorsMarket.addRow("fy21_cash_sti", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY21 ending cash & STI ($M)",
@@ -806,7 +618,7 @@ export function buildAssumptionsTables(
       notes: "Opening liquidity base",
     },
   })
-  anchors.addRow("fy21_ppe_net", {
+  anchorsMarket.addRow("fy21_ppe_net", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY21 ending net PP&E ($M)",
@@ -814,7 +626,7 @@ export function buildAssumptionsTables(
       notes: "FY22 Form 10-K BS",
     },
   })
-  anchors.addRow("fy21_warehouses_total", {
+  anchorsMarket.addRow("fy21_warehouses_total", {
     ...rowFormatOptions("integer"),
     cells: {
       line_item: "FY21 ending warehouses",
@@ -822,7 +634,7 @@ export function buildAssumptionsTables(
       notes: "FY22 Form 10-K Item 1",
     },
   })
-  anchors.addRow("fy21_paid_members", {
+  anchorsMarket.addRow("fy21_paid_members", {
     ...rowFormatOptions("number", 2),
     cells: {
       line_item: "FY21 paid members (M)",
@@ -830,7 +642,7 @@ export function buildAssumptionsTables(
       notes: "FY22 Form 10-K Item 7",
     },
   })
-  anchors.addRow("fy21_ending_shares", {
+  anchorsMarket.addRow("fy21_ending_shares", {
     ...rowFormatOptions("number", 3),
     cells: {
       line_item: "FY21 ending shares (M)",
@@ -838,7 +650,7 @@ export function buildAssumptionsTables(
       notes: "FY22 Form 10-K BS",
     },
   })
-  anchors.addRow("maturities_thereafter", {
+  anchorsMarket.addRow("maturities_thereafter", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY26 maturities thereafter ($M)",
@@ -849,7 +661,7 @@ export function buildAssumptionsTables(
       notes: "FY26 10-K Note 4",
     },
   })
-  anchors.addRow("fy24_special_div_total", {
+  anchorsMarket.addRow("fy24_special_div_total", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY24 special dividend ($M)",
@@ -857,7 +669,7 @@ export function buildAssumptionsTables(
       notes: "FY24 10-K Note 8 / CF",
     },
   })
-  anchors.addRow("fy24_esop_tax_benefit", {
+  anchorsMarket.addRow("fy24_esop_tax_benefit", {
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "FY24 ESOP spec.-div. tax ($M)",
@@ -866,6 +678,255 @@ export function buildAssumptionsTables(
         note: "FY24 discrete IRC Sec. 404(k) ESOP tax benefit on $15/sh special dividend (1.412% of payout).",
       },
       notes: "FY24 10-K Note 8",
+    },
+  })
+
+  // Street consensus estimates & targets
+  const anchorsConsensus = sheet.addTable(
+    "MarketAnchorsConsensus",
+    "Street Consensus & Price Targets (COST)",
+    {
+      subtitle: [
+        "FY27E–FY29E consensus & targets (2026-11-13)",
+        kg.citations.consensusEstimates,
+      ],
+      currency: "USD",
+    }
+  )
+  anchorsConsensus.addColumn("line_item", {
+    role: "descriptor",
+    header: "Consensus benchmark",
+  })
+  anchorsConsensus.addColumn("val", {
+    role: "measure",
+    headers: ["Reported", "Value"],
+  })
+  anchorsConsensus.addColumn("notes", {
+    role: "descriptor",
+    header: "Source",
+  })
+
+  anchorsConsensus.addSectionHeader("FY27E consensus and dispersion")
+  anchorsConsensus.addRow("cons_rev_fy27", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY27E revenue ($M)",
+      val: cCost.rev27,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_rev_low_fy27", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY27E rev. low ($M)",
+      val: cdCost.revLow27,
+      notes: "FY27E Street low",
+    },
+  })
+  anchorsConsensus.addRow("cons_rev_high_fy27", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY27E rev. high ($M)",
+      val: cdCost.revHigh27,
+      notes: "FY27E Street high",
+    },
+  })
+  anchorsConsensus.addRow("cons_ebitda_fy27", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY27E EBITDA ($M)",
+      val: cCost.ebitda27,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_ebit_fy27", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY27E EBIT ($M)",
+      val: cCost.ebit27,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_eps_fy27", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Consensus FY27E EPS ($/sh)",
+      val: cCost.epsHeadline27,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_eps_low_fy27", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Consensus FY27E EPS low",
+      val: cdCost.epsLow27,
+      notes: "FY27E Street low",
+    },
+  })
+  anchorsConsensus.addRow("cons_eps_high_fy27", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Consensus FY27E EPS high",
+      val: cdCost.epsHigh27,
+      notes: "FY27E Street high",
+    },
+  })
+  anchorsConsensus.addRow("cons_dps_fy27", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Consensus FY27E reg. DPS",
+      val: cdCost.dps27,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_fcf_fy27", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY27E FCF ($M)",
+      val: costConsFcf27,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_analyst_count_fy27", {
+    ...rowFormatOptions("integer"),
+    cells: {
+      line_item: "FY27E covering analysts",
+      val: cCost.analystCount27,
+      notes: "FY27E estimate count",
+    },
+  })
+
+  anchorsConsensus.addRowGutter()
+  anchorsConsensus.addSectionHeader("FY28E–FY29E consensus estimates")
+  anchorsConsensus.addRow("cons_rev_fy28", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY28E revenue ($M)",
+      val: cCost.rev28,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_ebitda_fy28", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY28E EBITDA ($M)",
+      val: cCost.ebitda28,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_ebit_fy28", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY28E EBIT ($M)",
+      val: cCost.ebit28,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_eps_fy28", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Consensus FY28E EPS ($/sh)",
+      val: cCost.epsHeadline28,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_dps_fy28", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Consensus FY28E reg. DPS",
+      val: cdCost.dps28,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_rev_fy29", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY29E revenue ($M)",
+      val: cdCost.rev29,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_ebitda_fy29", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY29E EBITDA ($M)",
+      val: cdCost.ebitda29,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_ebit_fy29", {
+    ...rowFormatOptions("currency", 0),
+    cells: {
+      line_item: "Consensus FY29E EBIT ($M)",
+      val: cdCost.ebit29,
+      notes: "Street consensus",
+    },
+  })
+  anchorsConsensus.addRow("cons_eps_fy29", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Consensus FY29E EPS ($/sh)",
+      val: cdCost.epsHeadline29,
+      notes: "Street consensus",
+    },
+  })
+
+  anchorsConsensus.addRowGutter()
+  anchorsConsensus.addSectionHeader("Analyst price targets and ratings")
+  anchorsConsensus.addRow("cons_pt_low", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Street price target — low",
+      val: cCost.ptLow,
+      notes: "Analyst target range",
+    },
+  })
+  anchorsConsensus.addRow("cons_pt_avg", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Street price target — mean",
+      val: cCost.ptAverage,
+      notes: "Analyst mean target",
+    },
+  })
+  anchorsConsensus.addRow("cons_pt_median", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Street price target — median",
+      val: cCost.ptMedian,
+      notes: "Analyst median target",
+    },
+  })
+  anchorsConsensus.addRow("cons_pt_high", {
+    ...rowFormatOptions("currency", 2),
+    cells: {
+      line_item: "Street price target — high",
+      val: cCost.ptHigh,
+      notes: "Analyst target range",
+    },
+  })
+  anchorsConsensus.addRow("cons_ratings_strong_buy", {
+    ...rowFormatOptions("integer"),
+    cells: {
+      line_item: "Analyst ratings — strong buy",
+      val: cdCost.ratingsStrongBuy,
+      notes: "Street rating breakdown",
+    },
+  })
+  anchorsConsensus.addRow("cons_ratings_buy", {
+    ...rowFormatOptions("integer"),
+    cells: {
+      line_item: "Analyst ratings — buy",
+      val: cdCost.ratingsBuy,
+      notes: "Street rating breakdown",
+    },
+  })
+  anchorsConsensus.addRow("cons_ratings_total", {
+    ...rowFormatOptions("integer"),
+    cells: {
+      line_item: "Analyst ratings — total",
+      val: cdCost.ratingsTotal,
+      notes: "Total rated analysts",
     },
   })
 
@@ -981,7 +1042,7 @@ export function buildAssumptionsTables(
         format: "percentage",
         decimals: 3,
       },
-      maturity_date: { value: "FY27E–FY36E", format: "text" },
+      maturity_date: { value: "FY27E-36E", format: "text" },
       fy26_principal: {
         expr: 'SUM(DebtTranches["tranche_may27".."tranche_japan", "fy26_principal"])',
         format: "currency",
@@ -997,14 +1058,16 @@ export function buildAssumptionsTables(
           },
         ])
       ),
-      notes: "Weighted coupon & maturities",
+      notes: "Weighted maturity",
     },
   })
 
   return {
     framingTable,
-    scalarActive,
-    anchors,
+    scalarOperating,
+    scalarValuation,
+    anchorsMarket,
+    anchorsConsensus,
     periodActive,
     periodScenarios,
     debtTable,

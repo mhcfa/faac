@@ -1964,8 +1964,11 @@ export function buildValuationSheet(sheet: Sheet, kg: BoeingKgData): void {
 
   sheet.setBands([
     { lanes: [{ tables: [wacc, sec] }, { tables: [bridge] }] },
-    dcf,
-    { lanes: [{ tables: [sotp] }, { tables: [postNol] }] },
+    { lanes: [dcf], pageBreakBefore: true },
+    {
+      lanes: [{ tables: [sotp] }, { tables: [postNol] }],
+      pageBreakBefore: true,
+    },
     { lanes: [{ tables: [divPv] }, { tables: [cy] }] },
   ])
 }

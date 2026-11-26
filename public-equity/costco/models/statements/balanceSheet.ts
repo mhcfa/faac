@@ -47,7 +47,7 @@ export function buildBalanceSheet(
         bs.shortTermInvestments
       ),
       FY27E: {
-        expr: 'MAX(0, @table["short_term_investments", col.prev] - ScalarAssumptionsActive["sti_net_maturity_fy27", "val"])',
+        expr: 'MAX(0, @table["short_term_investments", col.prev] - ScalarAssumptionsOperating["sti_net_maturity_fy27", "val"])',
       },
       ...Object.fromEntries(
         FORECAST_PERIODS.slice(1).map((p) => [
@@ -124,18 +124,18 @@ export function buildBalanceSheet(
   })
   balanceSheet.addRow("current_portion_of_long_term_debt", {
     ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["current_portion_lt_debt_bs", @col]',
+    expr: 'DebtSchedule["current_portion_lt_debt_bs", @col]',
     cells: {
       line_item: "Current portion of LT debt",
       FY24: {
-        expr: 'DebtLeasesSchedule["current_portion_lt_debt_bs", "FY24"]',
+        expr: 'DebtSchedule["current_portion_lt_debt_bs", "FY24"]',
         note: "FY24 $103M current debt folded into other current liabilities on FY25 10-K comparative balance sheet; separate line restored in FY25–FY26.",
       },
     },
   })
   balanceSheet.addRow("short_term_borrowings", {
     ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["revolver_end", @col]',
+    expr: 'DebtSchedule["revolver_end", @col]',
     cells: { line_item: "Short-term borrowings" },
   })
   balanceSheet.addRow("other_current_liabilities", {
@@ -149,7 +149,7 @@ export function buildBalanceSheet(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'WorkingCapitalPPE["other_current_liab_op", @col] + DebtLeasesSchedule["current_op_lease_liab", @col] + DebtLeasesSchedule["current_fin_lease_liab", @col] + DebtLeasesSchedule["current_portion_in_ocl", @col]',
+            expr: 'WorkingCapitalPPE["other_current_liab_op", @col] + LeasesInterestSchedule["current_op_lease_liab", @col] + LeasesInterestSchedule["current_fin_lease_liab", @col] + DebtSchedule["current_portion_in_ocl", @col]',
           },
         ])
       ),
@@ -163,12 +163,12 @@ export function buildBalanceSheet(
   })
   balanceSheet.addRow("long_term_debt", {
     ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["long_term_debt_excl_current", @col]',
+    expr: 'DebtSchedule["long_term_debt_excl_current", @col]',
     cells: { line_item: "Long-term debt, excl. current" },
   })
   balanceSheet.addRow("long_term_operating_lease_liabilities", {
     ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["lt_op_lease_liab", @col]',
+    expr: 'LeasesInterestSchedule["lt_op_lease_liab", @col]',
     cells: { line_item: "LT operating lease liabilities" },
   })
   balanceSheet.addRow("other_long_term_liabilities", {
@@ -182,7 +182,7 @@ export function buildBalanceSheet(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'WorkingCapitalPPE["other_lt_op_liab", @col] + DebtLeasesSchedule["lt_fin_lease_liab", @col]',
+            expr: 'WorkingCapitalPPE["other_lt_op_liab", @col] + LeasesInterestSchedule["lt_fin_lease_liab", @col]',
           },
         ])
       ),
@@ -266,7 +266,7 @@ export function buildShareEquitySchedule(
     cells: {
       line_item: "Beginning common shares (M)",
       FY22: {
-        expr: 'MarketAnchors["fy21_ending_shares", "val"]',
+        expr: 'MarketAnchorsMarket["fy21_ending_shares", "val"]',
         note: "FY21 ending common shares per FY22 Form 10-K.",
       },
       ...Object.fromEntries(
@@ -293,14 +293,14 @@ export function buildShareEquitySchedule(
         HISTORICAL_PERIODS.map((p) => [p, eq.repurchaseAvgPrice[p]])
       ),
       FY27E: {
-        expr: '(MarketAnchors["cost_close_price", "val"] - ScalarAssumptionsActive["special_dividend_ps_fy27", "val"]) * ((1 + ScalarAssumptionsActive["buyback_price_growth", "val"]) ^ DcfSchedule["discount_years", "FY27E"])',
+        expr: '(MarketAnchorsMarket["cost_close_price", "val"] - ScalarAssumptionsValuation["special_dividend_ps_fy27", "val"]) * ((1 + ScalarAssumptionsValuation["buyback_price_growth", "val"]) ^ DcfSchedule["discount_years", "FY27E"])',
         note: "Anchored to 2026-11-13 ex-special-dividend share price, pro-rated to FY27E cash-flow midpoint.",
       },
       ...Object.fromEntries(
         FORECAST_PERIODS.slice(1).map((p) => [
           p,
           {
-            expr: '@table["assumed_repurchase_price", col.prev] * (1 + ScalarAssumptionsActive["buyback_price_growth", "val"])',
+            expr: '@table["assumed_repurchase_price", col.prev] * (1 + ScalarAssumptionsValuation["buyback_price_growth", "val"])',
           },
         ])
       ),
@@ -323,7 +323,7 @@ export function buildShareEquitySchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'MAX(0, (DebtLeasesSchedule["beg_cash_and_sti", @col] - DebtLeasesSchedule["scheduled_lt_debt_repayments", @col] - @table["special_dividend_paid", @col]) - ScalarAssumptionsActive["target_operating_cash_buffer", "val"]) * ScalarAssumptionsActive["excess_cash_buyback_sweep_pct", "val"]',
+            expr: 'MAX(0, (LeasesInterestSchedule["beg_cash_and_sti", @col] - DebtSchedule["scheduled_lt_debt_repayments", @col] - @table["special_dividend_paid", @col]) - ScalarAssumptionsValuation["target_operating_cash_buffer", "val"]) * ScalarAssumptionsValuation["excess_cash_buyback_sweep_pct", "val"]',
           },
         ])
       ),
@@ -388,7 +388,7 @@ export function buildShareEquitySchedule(
       "Incremental dilutive RSUs (M)",
       eq.dilutiveRsusMillions
     ),
-    expr: 'ScalarAssumptionsActive["dilutive_rsu_shares", "val"]',
+    expr: 'ScalarAssumptionsValuation["dilutive_rsu_shares", "val"]',
   })
   shareEquity.addRow("wavg_diluted_shares", {
     ...rowFormatOptions("number", 3),
@@ -457,7 +457,7 @@ export function buildShareEquitySchedule(
       FY25: 0,
       FY26: 0,
       FY27E: {
-        expr: 'ScalarAssumptionsActive["special_dividend_ps_fy27", "val"] * MarketAnchors["cost_sec_shares", "val"]',
+        expr: 'ScalarAssumptionsValuation["special_dividend_ps_fy27", "val"] * MarketAnchorsMarket["cost_sec_shares", "val"]',
         note: "Declared special cash dividend across SEC shares (ex-date Nov 24, payable Dec 4, 2026).",
       },
       ...Object.fromEntries(FORECAST_PERIODS.slice(1).map((p) => [p, 0])),
@@ -477,7 +477,7 @@ export function buildShareEquitySchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'OperatingSchedule["sbc_expense", @col] * ScalarAssumptionsActive["rsu_tax_withholding_pct_sbc", "val"]',
+            expr: 'OperatingMarginSchedule["sbc_expense", @col] * ScalarAssumptionsValuation["rsu_tax_withholding_pct_sbc", "val"]',
           },
         ])
       ),
@@ -516,7 +516,7 @@ export function buildShareEquitySchedule(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: '@table["common_stock_and_apic", col.prev] + OperatingSchedule["sbc_expense", @col] - @table["rsu_tax_withholdings", @col]',
+            expr: '@table["common_stock_and_apic", col.prev] + OperatingMarginSchedule["sbc_expense", @col] - @table["rsu_tax_withholdings", @col]',
           },
         ])
       ),

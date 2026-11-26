@@ -522,7 +522,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
   })
   is.addRow("operating_income", {
-    cells: { line_item: "Earnings / (loss) from operations (EBIT)" },
+    cells: { line_item: "Operating income / (loss) (EBIT)" },
     expr: `SegmentOperatingBuild["operating_income", @col]`,
     format: "currency",
     decimals: 0,
@@ -602,7 +602,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   is.addRow("pref_dividends", {
     cells: histFlowCells(
-      "Less: mandatory convertible pref dividends",
+      "Less: mandatory pref. dividends",
       ba.is.pref_dividends!,
       {
         ...ltmAndFy26Cells(
@@ -619,7 +619,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
   })
   is.addRow("net_income_common", {
-    cells: { line_item: "Net income / (loss) to common shareholders" },
+    cells: { line_item: "Net income / (loss) to common" },
     expr: `@table["net_income_boeing", @col] - @table["pref_dividends", @col]`,
     format: "currency",
     decimals: 0,
@@ -729,7 +729,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   is.addRow("qoe_hrl_gain_adj", {
     cells: {
-      line_item: "(−) HRL Laboratories sale gain (Q3 2026)",
+      line_item: "(−) HRL Laboratories sale gain",
       "2021A": 0,
       "2022A": 0,
       "2023A": 0,
@@ -800,7 +800,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   is.addRow("stock_comp_memo", {
     cells: {
-      line_item: "Memo: SBC + 401(k) stock comp (in EBIT)",
+      line_item: "Memo: SBC + 401(k) comp (in EBIT)",
     },
     expr: `CashFlowStatement["sbc", @col] + CashFlowStatement["treasury_shares_401k", @col]`,
     format: "currency",
@@ -911,7 +911,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   bs.addRow("current_financing_receivables", {
     cells: histBsCells(
-      "Current portion of financing receivables",
+      "Short-term financing receivables",
       ba.bs.current_financing_receivables!,
       bsProjFlat()
     ),
@@ -1319,7 +1319,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   cf.addRow("treasury_shares_401k", {
     cells: histFlowCells(
-      "Treasury shares issued for 401(k) plans",
+      "Treasury shares for 401(k) match",
       ba.cf.treasury_shares_401k!,
       ltmAndFy26Cells(
         `PeriodDriversActive["treasury401k", "Q4_26E"]`,
@@ -1520,7 +1520,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
   })
   cf.addRow("ocf_continuing", {
-    cells: { line_item: "Cash provided / (used) by operating activities" },
+    cells: { line_item: "Operating cash flow (continuing)" },
     expr: `SUM(@table["net_income".."wc_other", @col])`,
     format: "currency",
     decimals: 0,
@@ -1530,7 +1530,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   cf.addRowGutter()
   cf.addSectionHeader("Investing activities")
   cf.addRow("capex", {
-    cells: { line_item: "Additions to property, plant & equipment" },
+    cells: { line_item: "Capital expenditures (PP&E)" },
     expr: `-PpeCapexDaSchedule["capex", @col]`,
     format: "currency",
     decimals: 0,
@@ -1611,7 +1611,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
   })
   cf.addRow("investing_cf", {
-    cells: { line_item: "Cash provided / (used) by investing activities" },
+    cells: { line_item: "Investing cash flow" },
     expr: `SUM(@table["capex".."investing_other", @col])`,
     format: "currency",
     decimals: 0,
@@ -1685,7 +1685,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   cf.addRow("preferred_stock_issuance", {
     cells: histFlowCells(
-      "Mandatory convertible preferred issuance",
+      "Mandatory preferred stock issuance",
       ba.cf.preferred_stock_issuance!,
       zeroForecast()
     ),
@@ -1720,7 +1720,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
   })
   cf.addRow("financing_cf", {
-    cells: { line_item: "Cash provided / (used) by financing activities" },
+    cells: { line_item: "Financing cash flow" },
     expr: `SUM(@table["new_borrowings".."financing_other", @col])`,
     format: "currency",
     decimals: 0,
@@ -1731,7 +1731,7 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
   cf.addSectionHeader("Cash reconciliation & free cash flow")
   cf.addRow("fx_effect_cash", {
     cells: histFlowCells(
-      "Effect of exchange rate changes on cash",
+      "FX effect on cash & equivalents",
       ba.cf.fx_effect_cash!,
       zeroForecast()
     ),
@@ -1881,4 +1881,11 @@ export function buildCoreModelSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
     style: "bold",
   })
+
+  sheet.setBands([
+    seg,
+    { lanes: [is], pageBreakBefore: true },
+    { lanes: [bs], pageBreakBefore: true },
+    { lanes: [cf], pageBreakBefore: true },
+  ])
 }

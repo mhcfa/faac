@@ -1,7 +1,7 @@
 import { Cell, type Sheet, type Table } from "f8-engine"
 import {
+  formatDriverBasisSource,
   formatDriverDiff,
-  formatDriverRationale,
   type AllScenarioDriverBundles,
   type Driver,
   type OperatingScalarDrivers,
@@ -99,7 +99,7 @@ function addPeriodVectorTable(
   options: {
     readonly isActiveSelector?: boolean
     readonly referenceVectors?: OperatingVectorDrivers
-    readonly notesMode: "full" | "diff" | "basis"
+    readonly notesMode: "basisSource" | "diff" | "basis"
     readonly baseVectorsForDiff?: OperatingVectorDrivers
   }
 ): Table {
@@ -120,8 +120,8 @@ function addPeriodVectorTable(
   }
 
   const notesHeader =
-    options.notesMode === "full"
-      ? "Basis & Rationale"
+    options.notesMode === "basisSource"
+      ? "Basis / Source"
       : options.notesMode === "diff"
         ? "Flex vs. Base"
         : "Basis"
@@ -147,8 +147,8 @@ function addPeriodVectorTable(
     }
 
     let noteVal: string | null = null
-    if (options.notesMode === "full") {
-      noteVal = formatDriverRationale(drv.meta)
+    if (options.notesMode === "basisSource") {
+      noteVal = formatDriverBasisSource(drv.meta)
     } else if (options.notesMode === "basis") {
       noteVal = drv.meta.basis ?? null
     } else if (
@@ -217,7 +217,7 @@ export function buildAssumptionsSheet(
   )
 
   // =========================================================================
-  // Left Lane (Cols B..H): Scenario Selection & Multi-Year Operating Assumptions
+  // Single-Lane Vertical Stack (Cols B..H): Scenario Selection & Drivers
   // =========================================================================
   const control = sheet.addTable(
     "ScenarioControl",
@@ -266,7 +266,7 @@ export function buildAssumptionsSheet(
     {
       isActiveSelector: true,
       referenceVectors: bundles.base.vectors,
-      notesMode: "full",
+      notesMode: "basisSource",
     }
   )
 
@@ -313,8 +313,7 @@ export function buildAssumptionsSheet(
   )
 
   // =========================================================================
-  // Right Lane (Cols J..O; laneGap Col I = width 2):
-  // Scenario Framing, Core Assumptions & Post-Q3 Financing Schedule
+  // Scenario Framing, Core Assumptions & Post-Q3 Financing Schedule (Cols B..H)
   // =========================================================================
   const framing = sheet.addTable(
     "ScenarioFraming",
@@ -365,9 +364,10 @@ export function buildAssumptionsSheet(
   })
   scalars.addColumn("base", { header: "Base", group: "Scenario Inputs" })
   scalars.addColumn("upside", { header: "Upside", group: "Scenario Inputs" })
+  scalars.addColumnGutter()
   scalars.addColumn("notes", {
     role: "descriptor",
-    header: "Basis & Rationale",
+    header: "Basis / Source",
   })
 
   let curCat = ""
@@ -397,7 +397,7 @@ export function buildAssumptionsSheet(
         downside: dDown.value,
         base: dBase.value,
         upside: dUp.value,
-        notes: formatDriverRationale(dBase.meta),
+        notes: formatDriverBasisSource(dBase.meta),
       },
       format: dBase.meta.format,
     }
@@ -424,7 +424,7 @@ export function buildAssumptionsSheet(
     )
   }
 
-  // Post-Q3 2026 Financing & Capital Structure Schedule (Cols J..L only; no descriptor in M..N)
+  // Post-Q3 2026 Financing & Capital Structure Schedule (Cols B..D)
   const reg = sheet.addTable(
     "PostQ3FinancingRegistry",
     "Post-Q3 2026 Financing & Capital Structure Schedule",
@@ -843,11 +843,13 @@ export function buildAssumptionsSheet(
   })
 
   sheet.setBands([
-    {
-      lanes: [
-        { tables: [control, vecActive, vecDown, vecBase, vecUp] },
-        { tables: [framing, scalars, reg] },
-      ],
-    },
+    control,
+    framing,
+    { lanes: [vecActive], pageBreakBefore: true },
+    { lanes: [vecDown], pageBreakBefore: true },
+    { lanes: [vecBase], pageBreakBefore: true },
+    { lanes: [vecUp], pageBreakBefore: true },
+    { lanes: [scalars], pageBreakBefore: true },
+    { lanes: [reg], pageBreakBefore: true },
   ])
 }

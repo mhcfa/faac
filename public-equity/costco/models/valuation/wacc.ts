@@ -32,7 +32,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "Risk-free rate (10Y UST par)",
-      val: { expr: 'MarketAnchors["rf_par_10y", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["rf_par_10y", "val"]' },
       notes: "2026-11-13 Treasury H.15",
     },
   })
@@ -40,7 +40,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "Memo: 10Y real TIPS yield",
-      val: { expr: 'MarketAnchors["rf_real_10y", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["rf_real_10y", "val"]' },
       notes: "Real rate benchmark",
     },
   })
@@ -48,7 +48,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "Memo: 10Y breakeven inflation",
-      val: { expr: 'MarketAnchors["t10yie_breakeven", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["t10yie_breakeven", "val"]' },
       notes: "FRED T10YIE",
     },
   })
@@ -56,7 +56,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "Memo: Effective fed funds rate",
-      val: { expr: 'MarketAnchors["dff_fed_funds", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["dff_fed_funds", "val"]' },
       notes: "FRED H.15 (2026-11-12)",
     },
   })
@@ -64,7 +64,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("number", 2),
     cells: {
       line_item: "5Y monthly equity beta",
-      val: { expr: 'MarketAnchors["cost_beta_5y", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["cost_beta_5y", "val"]' },
       notes: "Through-cycle vs. S&P 500",
     },
   })
@@ -72,7 +72,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "U.S. equity risk premium",
-      val: { expr: 'ScalarAssumptionsActive["equity_risk_premium", "val"]' },
+      val: { expr: 'ScalarAssumptionsValuation["equity_risk_premium", "val"]' },
       notes: "Active case ERP",
     },
   })
@@ -94,7 +94,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("basis_points"),
     cells: {
       line_item: "AA corporate credit spread",
-      val: { expr: 'MarketAnchors["oas_aa", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["oas_aa", "val"]' },
       notes: "ICE BofA AA OAS",
     },
   })
@@ -137,7 +137,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     cells: {
       line_item: "Market equity value ($M)",
       val: {
-        expr: 'MarketAnchors["cost_close_price", "val"] * MarketAnchors["cost_diluted_shares", "val"]',
+        expr: 'MarketAnchorsMarket["cost_close_price", "val"] * MarketAnchorsMarket["cost_diluted_shares", "val"]',
       },
       notes: "Spot x diluted shares",
     },
@@ -147,7 +147,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     cells: {
       line_item: "Financial debt & fin. leases",
       val: {
-        expr: 'MarketAnchors["lt_debt_fair_value", "val"] + DebtLeasesSchedule["revolver_end", "FY26"] + DebtLeasesSchedule["total_fin_lease_liab", "FY26"]',
+        expr: 'MarketAnchorsMarket["lt_debt_fair_value", "val"] + DebtSchedule["revolver_end", "FY26"] + LeasesInterestSchedule["total_fin_lease_liab", "FY26"]',
         note: "Uses FY26 disclosed $5,689M LT debt fair value plus $1,413M finance leases; excludes $2,606M ASC 842 operating leases to match post-rent FCFF.",
       },
       notes: "FV debt + fin. leases",
@@ -201,7 +201,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("number", 2),
     cells: {
       line_item: "2Y weekly equity beta",
-      val: { expr: 'MarketAnchors["cost_beta_2y", "val"]' },
+      val: { expr: 'MarketAnchorsMarket["cost_beta_2y", "val"]' },
       notes: "2-year decoupling memo",
     },
   })
@@ -231,7 +231,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("percentage", 2),
     cells: {
       line_item: "Stress 10Y Treasury benchmark",
-      val: { expr: 'ScalarAssumptionsActive["rf_stress_rate", "val"]' },
+      val: { expr: 'ScalarAssumptionsValuation["rf_stress_rate", "val"]' },
       notes: "Lower-rate stress anchor",
     },
   })
@@ -270,7 +270,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     ...rowFormatOptions("number", 2),
     cells: {
       line_item: "Peer group 5Y mean beta",
-      val: { expr: 'AVERAGE(TradingCompsLTM["BJ".."KR", "beta_5y"])' },
+      val: { expr: 'AVERAGE(TradingCompsLtmProfile["BJ".."KR", "beta_5y"])' },
       notes: "5-peer mean (BJ..KR)",
     },
   })
@@ -309,7 +309,7 @@ export function buildWaccSchedule(sheet: Sheet): Table {
     cells: {
       line_item: "Memo: Base Ke (Base ERP)",
       val: {
-        expr: '@table["rf_nominal", "val"] + @table["equity_beta", "val"] * ScalarAssumptionsActive["equity_risk_premium", "Base"]',
+        expr: '@table["rf_nominal", "val"] + @table["equity_beta", "val"] * ScalarAssumptionsValuation["equity_risk_premium", "Base"]',
       },
       notes: "Base attribution anchor",
     },

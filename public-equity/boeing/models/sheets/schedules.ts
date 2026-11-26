@@ -586,7 +586,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   debt.addRow("refinanced_debt_beg", {
     cells: {
-      line_item: "Of which: cumulative new/refinanced debt",
+      line_item: "Of which: cum. new/refinanced debt",
       "2022A": null,
       "2023A": null,
       "2024A": null,
@@ -607,7 +607,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   debt.addRow("cf_pre_debt", {
     cells: {
-      line_item: "Cash available before STI & debt service",
+      line_item: "Cash avail. before STI & debt svc.",
       "2022A": null,
       "2023A": null,
       "2024A": null,
@@ -670,7 +670,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   debt.addRow("sti_liquidation", {
     cells: {
-      line_item: "(+) Liquid short-term investments drawn",
+      line_item: "(+) Short-term investments drawn",
       "2022A": null,
       "2023A": null,
       "2024A": null,
@@ -714,7 +714,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   debt.addRow("optional_repayment", {
     cells: {
-      line_item: "(−) Discretionary excess-cash debt sweep",
+      line_item: "(−) Discretionary excess-cash sweep",
       "2022A": null,
       "2023A": null,
       "2024A": null,
@@ -902,7 +902,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   debt.addRow("undrawn_revolver_2027", {
     cells: {
-      line_item: "Revolving facility — 364-day (Aug 2027)",
+      line_item: "Revolver — 364-day (Aug 2027)",
       "2022A": null,
       "2023A": null,
       "2024A": null,
@@ -947,7 +947,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   debt.addRow("total_liquidity", {
     cells: {
-      line_item: "Total liquidity (Cash + STI + Revolvers)",
+      line_item: "Total liquidity (Cash+STI+Rev.)",
       "2022A": null,
       "2023A": null,
       "2024A": null,
@@ -1364,7 +1364,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   sh.addSectionHeader("Mandatory convertible preferred (Series A) dividends")
   sh.addRow("pref_dividends", {
     cells: histFlowCells(
-      "Series A 6.00% preferred dividends accrued ($M)",
+      "Series A pref. dividends accrued ($M)",
       ba.is.pref_dividends!,
       {
         LTM: new Cell({
@@ -1395,7 +1395,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   sh.addRow("pref_dividends_cash", {
     cells: {
-      line_item: "Series A preferred cash dividends paid ($M)",
+      line_item: "Series A pref. dividends paid ($M)",
       "2021A": null,
       "2022A": null,
       "2023A": null,
@@ -1427,7 +1427,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   sh.addRow("chg_pref_div_payable", {
     cells: {
-      line_item: "Chg in accrued preferred dividend payable ($M)",
+      line_item: "Chg in pref. dividend payable ($M)",
       "2021A": null,
       "2022A": null,
       "2023A": null,
@@ -1521,7 +1521,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   })
   sh.addRow("wa_shares_diluted", {
     cells: histFlowCells(
-      "Weighted-average diluted shares (GAAP EPS)",
+      "Weighted-avg. diluted shares (GAAP)",
       ba.epsShares.wa_shares_diluted!,
       {
         LTM: new Cell({ expr: `@table["wa_shares_diluted", "9M26A"]` }),
@@ -1567,7 +1567,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
   })
   ic.addRow("ic_nwc_core", {
-    cells: { line_item: "Core net working capital (US GAAP rent basis)" },
+    cells: { line_item: "Core net working capital (US GAAP)" },
     expr: `(BalanceSheet["accounts_receivable", @col] + BalanceSheet["unbilled_receivables", @col] + BalanceSheet["inventories", @col] + BalanceSheet["current_financing_receivables", @col] + BalanceSheet["other_current_assets", @col]) - (BalanceSheet["accounts_payable", @col] + BalanceSheet["accrued_liabilities", @col] + BalanceSheet["advances_and_progress_billings", @col])`,
     format: "currency",
     decimals: 0,
@@ -1601,13 +1601,13 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
   ic.addRowGutter()
   ic.addSectionHeader("Financing approach — Capital Employed")
   ic.addRow("fin_total_debt", {
-    cells: { line_item: "Total carrying debt (incl. finance leases)" },
+    cells: { line_item: "Total carrying debt (incl. FL)" },
     expr: `BalanceSheet["short_term_debt", @col] + BalanceSheet["long_term_debt", @col]`,
     format: "currency",
     decimals: 0,
   })
   ic.addRow("fin_pension_opeb", {
-    cells: { line_item: "Unfunded pension & retiree health liab." },
+    cells: { line_item: "Unfunded pension & OPEB liabilities" },
     expr: `BalanceSheet["accrued_pension_liab", @col] + BalanceSheet["accrued_retiree_health", @col]`,
     format: "currency",
     decimals: 0,
@@ -1619,7 +1619,7 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     decimals: 0,
   })
   ic.addRow("fin_less_excess_cash", {
-    cells: { line_item: "(−) Excess cash & STI (above $5.0B floor)" },
+    cells: { line_item: "(−) Excess cash & STI (>$5.0B floor)" },
     expr: `-MAX(0, BalanceSheet["cash_and_equivalents", @col] + BalanceSheet["short_term_investments", @col] - ScalarDrivers["minLiquidityCovenant", "active"])`,
     format: "currency",
     decimals: 0,
@@ -1779,4 +1779,13 @@ export function buildSchedulesSheet(sheet: Sheet, kg: BoeingKgData): void {
     format: "percentage",
     decimals: 1,
   })
+
+  sheet.setBands([
+    wc,
+    ppe,
+    { lanes: [debt], pageBreakBefore: true },
+    { lanes: [tax], pageBreakBefore: true },
+    sh,
+    { lanes: [ic], pageBreakBefore: true },
+  ])
 }

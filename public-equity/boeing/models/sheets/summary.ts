@@ -1077,9 +1077,9 @@ export function buildSummarySheet(
 
   sheet.setBands([
     { lanes: [{ tables: [ctrl, clearSummary] }, { tables: [mkt] }] },
-    vs,
-    cb,
-    attr,
+    { lanes: [vs], pageBreakBefore: true },
+    { lanes: [cb], pageBreakBefore: true },
+    { lanes: [attr], pageBreakBefore: true },
     sens,
   ])
 }

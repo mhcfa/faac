@@ -16,7 +16,8 @@ export function buildDcfTables(
   readonly dcfBridge: Table
   readonly reverseDcf: Table
   readonly impliedRateCalc: Table
-  readonly valuationSensSummary: Table
+  readonly indifferenceFrontier: Table
+  readonly valuationKnobs: Table
   readonly sensitivityPerp: Table
   readonly sensitivityExit: Table
   readonly sensitivityOps: Table
@@ -61,10 +62,10 @@ export function buildDcfTables(
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
           p,
-          { expr: 'OperatingSchedule["period_start_date", @col]' },
+          { expr: 'OperatingVolumeSchedule["period_start_date", @col]' },
         ])
       ),
-      Terminal: { expr: 'OperatingSchedule["period_end_date", "FY36E"]' },
+      Terminal: { expr: 'OperatingVolumeSchedule["period_end_date", "FY36E"]' },
     },
   })
   dcfSchedule.addRow("period_end_date", {
@@ -74,10 +75,10 @@ export function buildDcfTables(
       ...Object.fromEntries(
         FORECAST_PERIODS.map((p) => [
           p,
-          { expr: 'OperatingSchedule["period_end_date", @col]' },
+          { expr: 'OperatingVolumeSchedule["period_end_date", @col]' },
         ])
       ),
-      Terminal: { expr: 'OperatingSchedule["period_end_date", "FY36E"]' },
+      Terminal: { expr: 'OperatingVolumeSchedule["period_end_date", "FY36E"]' },
     },
   })
   dcfSchedule.addRow("discount_years", {
@@ -88,7 +89,7 @@ export function buildDcfTables(
         FORECAST_PERIODS.map((p) => [
           p,
           {
-            expr: 'YEARFRAC(ScenarioControl["valuation_date", "val"], @table["period_end_date", @col], 3) - 0.5 * ScalarAssumptionsActive["mid_year_convention_flag", "val"] * YEARFRAC(@table["period_start_date", @col], @table["period_end_date", @col], 3)',
+            expr: 'YEARFRAC(ScenarioControl["valuation_date", "val"], @table["period_end_date", @col], 3) - 0.5 * ScalarAssumptionsValuation["mid_year_convention_flag", "val"] * YEARFRAC(@table["period_start_date", @col], @table["period_end_date", @col], 3)',
           },
         ])
       ),
@@ -109,7 +110,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["discount_years", "Terminal"] - 0.5 * ScalarAssumptionsActive["mid_year_convention_flag", "val"]',
+        expr: '@table["discount_years", "Terminal"] - 0.5 * ScalarAssumptionsValuation["mid_year_convention_flag", "val"]',
         note: "Mid-year Gordon Growth continuity: places FY37E perpetuity cash flow exactly 1.000 yr after FY36E midpoint.",
       },
     },
@@ -128,7 +129,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["ebit", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["ebit", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -143,7 +144,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["nopat", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["nopat", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -158,7 +159,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["da", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["da", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -173,7 +174,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["capex", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["capex", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -188,7 +189,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["net_reinvestment", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["net_reinvestment", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -204,7 +205,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["unlevered_fcff", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["unlevered_fcff", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -219,7 +220,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["ebitda", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["ebitda", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -234,7 +235,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["sbc_after_tax_memo", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["sbc_after_tax_memo", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -249,7 +250,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: '@table["unlevered_fcff_ex_sbc_memo", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["unlevered_fcff_ex_sbc_memo", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
     },
   })
@@ -280,7 +281,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (@table["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * @table["discount_factor_perp", "Terminal"], NA())',
+        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (@table["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * @table["discount_factor_perp", "Terminal"], NA())',
       },
     },
   })
@@ -297,7 +298,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (@table["unlevered_fcff_ex_sbc_memo", "Terminal"] / (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * @table["discount_factor_perp", "Terminal"], NA())',
+        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (@table["unlevered_fcff_ex_sbc_memo", "Terminal"] / (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * @table["discount_factor_perp", "Terminal"], NA())',
       },
     },
   })
@@ -314,7 +315,7 @@ export function buildDcfTables(
         ])
       ),
       Terminal: {
-        expr: 'IF(WaccSchedule["base_wacc_memo", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "Base"], (@table["unlevered_fcff", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "Base"]) / (WaccSchedule["base_wacc_memo", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "Base"])) / ((1 + WaccSchedule["base_wacc_memo", "val"]) ^ @table["discount_years_perp", "Terminal"]), NA())',
+        expr: 'IF(WaccSchedule["base_wacc_memo", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "Base"], (@table["unlevered_fcff", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "Base"]) / (WaccSchedule["base_wacc_memo", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "Base"])) / ((1 + WaccSchedule["base_wacc_memo", "val"]) ^ @table["discount_years_perp", "Terminal"]), NA())',
       },
     },
   })
@@ -326,7 +327,7 @@ export function buildDcfTables(
         FORECAST_PERIODS.map((p) => [p, { expr: '@table["pv_fcff", @col]' }])
       ),
       Terminal: {
-        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "Base"], (@table["unlevered_fcff", "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "Base"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "Base"])) * @table["discount_factor_perp", "Terminal"], NA())',
+        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "Base"], (@table["unlevered_fcff", "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "Base"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "Base"])) * @table["discount_factor_perp", "Terminal"], NA())',
       },
     },
   })
@@ -338,8 +339,8 @@ export function buildDcfTables(
   })
   dcfSchedule.addRow("ust_crossover_flag", {
     ...rowFormatOptions("integer"),
-    expr: 'IF(@table["fcf_yield_on_current_ev", @col] >= MarketAnchors["rf_par_10y", "val"], 1, 0)',
-    cells: { line_item: "Clears 10Y Treasury yield (1=Yes)" },
+    expr: 'IF(@table["fcf_yield_on_current_ev", @col] >= MarketAnchorsMarket["rf_par_10y", "val"], 1, 0)',
+    cells: { line_item: "Clears 10Y UST yield (1=Yes)" },
   })
 
   // DCF Valuation Summary & EV-to-Equity Bridge
@@ -365,11 +366,11 @@ export function buildDcfTables(
   })
   dcfBridge.addColumn("exit_mult", {
     role: "measure",
-    headers: ["Cross-Check", "Exit Mult."],
+    headers: ["Exit Check", "Exit Mult."],
   })
   dcfBridge.addColumn("perp_ex_sbc", {
     role: "measure",
-    headers: ["Memo: Perp.", "(ex-SBC)"],
+    headers: ["Perp. Memo", "(ex-SBC)"],
   })
   dcfBridge.addColumn("notes", {
     role: "descriptor",
@@ -395,7 +396,7 @@ export function buildDcfTables(
       line_item: "PV of terminal value",
       perp: { expr: 'DcfSchedule["pv_fcff", "Terminal"]' },
       exit_mult: {
-        expr: 'DcfSchedule["ebitda", "FY36E"] * ScalarAssumptionsActive["exit_ev_to_ebitda", "val"] * DcfSchedule["discount_factor", "Terminal"]',
+        expr: 'DcfSchedule["ebitda", "FY36E"] * ScalarAssumptionsValuation["exit_ev_to_ebitda", "val"] * DcfSchedule["discount_factor", "Terminal"]',
       },
       perp_ex_sbc: { expr: 'DcfSchedule["pv_fcff_ex_sbc_memo", "Terminal"]' },
       notes: "Discounted from FY36E",
@@ -431,11 +432,11 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("less_q1_reg_div", {
     ...rowFormatOptions("currency", 0),
-    expr: '-MarketAnchors["oct2026_qtr_dps", "val"] * MarketAnchors["cost_diluted_shares", "val"]',
+    expr: '-MarketAnchorsMarket["oct2026_qtr_dps", "val"] * MarketAnchorsMarket["cost_diluted_shares", "val"]',
     cells: {
       line_item: "(−) Q1 FY27 regular div. paid",
       perp: {
-        expr: '-MarketAnchors["oct2026_qtr_dps", "val"] * MarketAnchors["cost_diluted_shares", "val"]',
+        expr: '-MarketAnchorsMarket["oct2026_qtr_dps", "val"] * MarketAnchorsMarket["cost_diluted_shares", "val"]',
         note: "Q1 FY27 $1.47/sh regular quarterly dividend paid Nov 13, 2026; deducted from Aug 30 cash.",
       },
       notes: "Paid Nov 13, 2026",
@@ -443,11 +444,11 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("less_debt_leases", {
     ...rowFormatOptions("currency", 0),
-    expr: '-(MarketAnchors["lt_debt_fair_value", "val"] + DebtLeasesSchedule["revolver_end", "FY26"] + DebtLeasesSchedule["total_fin_lease_liab", "FY26"])',
+    expr: '-(MarketAnchorsMarket["lt_debt_fair_value", "val"] + DebtSchedule["revolver_end", "FY26"] + LeasesInterestSchedule["total_fin_lease_liab", "FY26"])',
     cells: {
       line_item: "(−) Debt (FV) & finance leases",
       perp: {
-        expr: '-(MarketAnchors["lt_debt_fair_value", "val"] + DebtLeasesSchedule["revolver_end", "FY26"] + DebtLeasesSchedule["total_fin_lease_liab", "FY26"])',
+        expr: '-(MarketAnchorsMarket["lt_debt_fair_value", "val"] + DebtSchedule["revolver_end", "FY26"] + LeasesInterestSchedule["total_fin_lease_liab", "FY26"])',
         note: "Uses FY26 LT debt fair value ($5,689M vs. $6,162M carrying, -$473M mark-to-market) plus $1,413M finance leases; excludes $2,606M ASC 842 operating leases.",
       },
       notes: "FV debt + fin. leases",
@@ -473,11 +474,11 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("diluted_shares", {
     ...rowFormatOptions("number", 3),
-    expr: 'MarketAnchors["cost_diluted_shares", "val"]',
+    expr: 'MarketAnchorsMarket["cost_diluted_shares", "val"]',
     cells: {
       line_item: "Diluted shares (TSM, M)",
       perp: {
-        expr: 'MarketAnchors["cost_diluted_shares", "val"]',
+        expr: 'MarketAnchorsMarket["cost_diluted_shares", "val"]',
         note: "443.129M SEC shares + 0.474M TSM dilutive RSUs; excludes 704k vested-undelivered RSUs and ~56k special-dividend anti-dilution gross-up.",
       },
       notes: "SEC + 0.474M RSUs",
@@ -495,7 +496,7 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("less_special_div_ps", {
     ...rowFormatOptions("currency", 2),
-    expr: '-ScalarAssumptionsActive["special_dividend_ps_fy27", "val"]',
+    expr: '-ScalarAssumptionsValuation["special_dividend_ps_fy27", "val"]',
     cells: {
       line_item: "(−) Special dividend ($/sh)",
       notes: "Nov 24 ex / Dec 4 pay",
@@ -512,7 +513,7 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("current_price_cum_div", {
     ...rowFormatOptions("currency", 2),
-    expr: 'MarketAnchors["cost_close_price", "val"]',
+    expr: 'MarketAnchorsMarket["cost_close_price", "val"]',
     cells: {
       line_item: "Spot closing price (cum-div.)",
       notes: "2026-11-13 close",
@@ -528,7 +529,7 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("headline_ev_incl_op_leases_memo", {
     ...rowFormatOptions("currency", 0),
-    expr: '@table["current_market_ev", @col] + DebtLeasesSchedule["total_op_lease_liab", "FY26"]',
+    expr: '@table["current_market_ev", @col] + LeasesInterestSchedule["total_op_lease_liab", "FY26"]',
     cells: {
       line_item: "Memo: Headline EV (incl. leases)",
       notes: "Adds ASC 842 op. leases",
@@ -536,7 +537,7 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("debt_fv_vs_carrying_memo", {
     ...rowFormatOptions("currency", 0),
-    expr: 'DebtLeasesSchedule["total_lt_debt_carrying", "FY26"] - MarketAnchors["lt_debt_fair_value", "val"]',
+    expr: 'DebtSchedule["total_lt_debt_carrying", "FY26"] - MarketAnchorsMarket["lt_debt_fair_value", "val"]',
     cells: {
       line_item: "Memo: LT debt carrying vs. FV",
       notes: "Carrying less fair val.",
@@ -544,7 +545,7 @@ export function buildDcfTables(
   })
   dcfBridge.addRow("price_ex_trapped_cash_memo", {
     ...rowFormatOptions("currency", 2),
-    expr: '(@table["equity_value_cum_div", @col] - MarketAnchors["cc_receivables_in_cash", "val"]) / @table["diluted_shares", @col]',
+    expr: '(@table["equity_value_cum_div", @col] - MarketAnchorsMarket["cc_receivables_in_cash", "val"]) / @table["diluted_shares", @col]',
     cells: {
       line_item: "Memo: Price ex-$2.8B card rec.",
       notes: "Deducts working cash",
@@ -632,7 +633,7 @@ export function buildDcfTables(
     ...rowFormatOptions("percentage", 1),
     expr: 'IF(@table["fy36_ronic", @col] > 0, @table["implied_perp_growth", @col] / @table["fy36_ronic", @col], NA())',
     cells: {
-      line_item: "Required reinvestment (g / RONIC)",
+      line_item: "Required reinvest. (g / RONIC)",
       notes: "Steady-state rate",
     },
   })
@@ -664,9 +665,9 @@ export function buildDcfTables(
     ...rowFormatOptions("currency", 2),
     style: "bold",
     cells: {
-      line_item: "Steady-state reinvest price ($/sh)",
+      line_item: "Steady-state reinv. price ($/sh)",
       perp: {
-        expr: 'IF(AND(@table["fy36_ronic", "perp"] > 0, WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"]), (@table["pv_explicit_fcff", "perp"] + (@table["steady_state_term_fcff", "perp"] / (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * DcfSchedule["discount_factor_perp", "Terminal"] + @table["net_cash_bridge", "perp"]) / @table["diluted_shares", "perp"], NA())',
+        expr: 'IF(AND(@table["fy36_ronic", "perp"] > 0, WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"]), (@table["pv_explicit_fcff", "perp"] + (@table["steady_state_term_fcff", "perp"] / (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * DcfSchedule["discount_factor_perp", "Terminal"] + @table["net_cash_bridge", "perp"]) / @table["diluted_shares", "perp"], NA())',
       },
       exit_mult: null,
       perp_ex_sbc: null,
@@ -712,7 +713,7 @@ export function buildDcfTables(
   dcfBridge.addRow("perp_price_at_sc_wacc_base_g", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: "Memo: Perp. price at WACC & Base g",
+      line_item: "Memo: Perp. at WACC & Base g",
       perp: {
         expr: '(SUM(DcfSchedule["pv_fcff_sc_wacc_base_g", "FY27E".."Terminal"]) + @table["net_cash_bridge", "perp"]) / @table["diluted_shares", "perp"]',
       },
@@ -805,7 +806,7 @@ export function buildDcfTables(
         expr: '(@table["implied_gordon_tv", "val"] * WaccSchedule["wacc", "val"] - DcfSchedule["unlevered_fcff", "FY36E"]) / (@table["implied_gordon_tv", "val"] + DcfSchedule["unlevered_fcff", "FY36E"])',
       },
       active_model: {
-        expr: 'ScalarAssumptionsActive["terminal_growth_rate", "val"]',
+        expr: 'ScalarAssumptionsValuation["terminal_growth_rate", "val"]',
       },
     },
   })
@@ -826,7 +827,7 @@ export function buildDcfTables(
     cells: {
       line_item: "Required FY36E FCFF at active g",
       val: {
-        expr: '@table["implied_gordon_tv", "val"] * (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"]) / (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"])',
+        expr: '@table["implied_gordon_tv", "val"] * (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"]) / (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"])',
       },
       active_model: { expr: 'DcfSchedule["unlevered_fcff", "FY36E"]' },
     },
@@ -834,7 +835,7 @@ export function buildDcfTables(
   reverseDcf.addRow("implied_10y_fcff_cagr", {
     ...rowFormatOptions("percentage", 1),
     cells: {
-      line_item: "Implied 10Y FCFF CAGR (at active g)",
+      line_item: "Implied 10Y FCFF CAGR (active g)",
       val: {
         expr: 'IF(@table["req_fy36_fcff_at_base_g", "val"] > 0, (@table["req_fy36_fcff_at_base_g", "val"] / InvestedCapitalROIC["unlevered_fcff", "FY26"]) ^ 0.1 - 1, NA())',
       },
@@ -851,7 +852,7 @@ export function buildDcfTables(
     style: "bold",
     highlight: true,
     cells: {
-      line_item: "Implied WACC (at active FCFF & g)",
+      line_item: "Implied WACC (active FCFF & g)",
       val: {
         expr: 'IF(DcfBridge["current_market_ev", "perp"] > 0, IF(ABS(MarketImpliedRateCalc["ev_error", "iter_5"]) < 1, MarketImpliedRateCalc["trial_wacc", "iter_5"], NA()), NA())',
       },
@@ -872,7 +873,7 @@ export function buildDcfTables(
     ...rowFormatOptions("number", 2),
     style: "bold",
     cells: {
-      line_item: "Implied equity beta (at active ERP)",
+      line_item: "Implied equity beta (active ERP)",
       val: {
         expr: 'IF(ISERROR(@table["implied_ke_at_base_g", "val"]), NA(), (@table["implied_ke_at_base_g", "val"] - WaccSchedule["rf_nominal", "val"]) / WaccSchedule["erp", "val"])',
       },
@@ -895,7 +896,7 @@ export function buildDcfTables(
     cells: {
       line_item: "Perp. DCF at 2Y-beta WACC ($/sh)",
       val: {
-        expr: 'IF(WaccSchedule["wacc_2y_memo", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_2y_beta", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_2y_memo", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_2y_beta", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())',
+        expr: 'IF(WaccSchedule["wacc_2y_memo", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_2y_beta", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_2y_memo", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_2y_beta", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())',
       },
       active_model: { expr: 'DcfBridge["implied_price_cum_div", "perp"]' },
     },
@@ -903,9 +904,9 @@ export function buildDcfTables(
   reverseDcf.addRow("perp_price_at_rf_400", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: "Perp. DCF at stress 10Y UST ($/sh)",
+      line_item: "Perp. DCF at stress UST ($/sh)",
       val: {
-        expr: 'IF(WaccSchedule["wacc_rf_stress", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_rf_stress", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_rf_stress", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_rf_stress", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())',
+        expr: 'IF(WaccSchedule["wacc_rf_stress", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_rf_stress", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_rf_stress", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_rf_stress", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())',
       },
       active_model: { expr: 'DcfBridge["implied_price_cum_div", "perp"]' },
     },
@@ -913,9 +914,9 @@ export function buildDcfTables(
   reverseDcf.addRow("exit_price_at_rf_400", {
     ...rowFormatOptions("currency", 2),
     cells: {
-      line_item: "Exit DCF at stress 10Y UST ($/sh)",
+      line_item: "Exit DCF at stress UST ($/sh)",
       val: {
-        expr: '(DcfRateDiscountFactors["w_rf_stress", "pv_explicit"] + DcfSchedule["ebitda", "FY36E"] * ScalarAssumptionsActive["exit_ev_to_ebitda", "val"] * DcfRateDiscountFactors["w_rf_stress", "Terminal"] + DcfBridge["net_cash_bridge", "exit_mult"]) / DcfBridge["diluted_shares", "exit_mult"]',
+        expr: '(DcfRateDiscountFactors["w_rf_stress", "pv_explicit"] + DcfSchedule["ebitda", "FY36E"] * ScalarAssumptionsValuation["exit_ev_to_ebitda", "val"] * DcfRateDiscountFactors["w_rf_stress", "Terminal"] + DcfBridge["net_cash_bridge", "exit_mult"]) / DcfBridge["diluted_shares", "exit_mult"]',
       },
       active_model: { expr: 'DcfBridge["implied_price_cum_div", "exit_mult"]' },
     },
@@ -924,7 +925,7 @@ export function buildDcfTables(
     ...rowFormatOptions("currency", 2),
     style: "bold",
     cells: {
-      line_item: "Blended price at stress UST ($/sh)",
+      line_item: "Blended at stress UST ($/sh)",
       val: {
         expr: 'FootballField["perp_dcf", "weight"] * @table["perp_price_at_rf_400", "val"] + FootballField["exit_mult_dcf", "weight"] * @table["exit_price_at_rf_400", "val"] + FootballField["calibrated_comps", "weight"] * CompsValuationCalibration["implied_price_cum_div", "val"]',
       },
@@ -986,16 +987,16 @@ export function buildDcfTables(
       disc_yr: null,
       fcff: null,
       iter_0: {
-        expr: 'MAX(ScalarAssumptionsActive["terminal_growth_rate", "val"] + 0.005, WaccSchedule["wacc", "val"])',
+        expr: 'MAX(ScalarAssumptionsValuation["terminal_growth_rate", "val"] + 0.005, WaccSchedule["wacc", "val"])',
       },
       iter_1: {
-        expr: 'IF(DcfBridge["current_market_ev", "perp"] > 0, MAX(ScalarAssumptionsActive["terminal_growth_rate", "val"] + 0.0005, ScalarAssumptionsActive["terminal_growth_rate", "val"] + (@table["trial_wacc", "iter_0"] - ScalarAssumptionsActive["terminal_growth_rate", "val"]) * (@table["implied_ev", "iter_0"] / DcfBridge["current_market_ev", "perp"])), NA())',
+        expr: 'IF(DcfBridge["current_market_ev", "perp"] > 0, MAX(ScalarAssumptionsValuation["terminal_growth_rate", "val"] + 0.0005, ScalarAssumptionsValuation["terminal_growth_rate", "val"] + (@table["trial_wacc", "iter_0"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"]) * (@table["implied_ev", "iter_0"] / DcfBridge["current_market_ev", "perp"])), NA())',
       },
       ...Object.fromEntries(
         iterCols.slice(2).map((col) => [
           col,
           {
-            expr: 'IF(ISERROR(@table["inv_ev_delta", col.prev]), NA(), IF(ABS(@table["inv_ev_delta", col.prev] - @table["inv_ev_delta", col.prev(2)]) < 1e-14, @table["trial_wacc", col.prev], MAX(ScalarAssumptionsActive["terminal_growth_rate", "val"] + 0.0005, @table["trial_wacc", col.prev] - @table["inv_ev_delta", col.prev] * (@table["trial_wacc", col.prev] - @table["trial_wacc", col.prev(2)]) / (@table["inv_ev_delta", col.prev] - @table["inv_ev_delta", col.prev(2)]))))',
+            expr: 'IF(ISERROR(@table["inv_ev_delta", col.prev]), NA(), IF(ABS(@table["inv_ev_delta", col.prev] - @table["inv_ev_delta", col.prev(2)]) < 1e-14, @table["trial_wacc", col.prev], MAX(ScalarAssumptionsValuation["terminal_growth_rate", "val"] + 0.0005, @table["trial_wacc", col.prev] - @table["inv_ev_delta", col.prev] * (@table["trial_wacc", col.prev] - @table["trial_wacc", col.prev(2)]) / (@table["inv_ev_delta", col.prev] - @table["inv_ev_delta", col.prev(2)]))))',
           },
         ])
       ),
@@ -1078,7 +1079,7 @@ export function buildDcfTables(
         iterCols.map((col) => [
           col,
           {
-            expr: 'IF(ISERROR(@table["trial_wacc", @col]), NA(), IF(@table["trial_wacc", @col] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (@table["df_Terminal", "fcff"] / (@table["trial_wacc", @col] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * @table["df_Terminal", @col], NA()))',
+            expr: 'IF(ISERROR(@table["trial_wacc", @col]), NA(), IF(@table["trial_wacc", @col] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (@table["df_Terminal", "fcff"] / (@table["trial_wacc", @col] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * @table["df_Terminal", @col], NA()))',
           },
         ])
       ),
@@ -1117,7 +1118,7 @@ export function buildDcfTables(
     },
   })
   impliedRateCalc.addRow("inv_ev_delta", {
-    ...rowFormatOptions("number", 8),
+    ...rowFormatOptions("number", 6),
     cells: {
       line_item: "Reciprocal EV spread",
       disc_yr: null,
@@ -1133,49 +1134,49 @@ export function buildDcfTables(
     },
   })
 
-  // Joint Indifference Frontier & Key Economic Knobs Summary
+  // Paired Companion Tables: Joint Indifference Frontier | Key Economic Knobs
   const downSnap = snapshots?.Downside ?? null
   const baseSnap = snapshots?.Base ?? null
   const upSnap = snapshots?.Upside ?? null
 
-  const valuationSensSummary = sheet.addTable(
-    "ValuationSensitivitySummary",
-    "Joint Indifference Frontier & Key Economic Knobs ($/sh / % / x)",
+  const indifferenceFrontier = sheet.addTable(
+    "IndifferenceFrontier",
+    "Joint Indifference Frontier at Spot EV (% / x / $/sh)",
     {
       subtitle: [
-        "Downside, Base, and Upside hold static scenario snapshots; Active recalculates live",
-        "Tests market-implied discount rates, peer beta, cash-adjusted WACC, trapped cash, and CapEx",
+        "Downside, Base, and Upside hold static snapshots; Active updates live",
+        "Tests market-implied WACC, beta, ERP, 2Y-beta, and rate-stress values",
       ],
       currency: "USD",
     }
   )
-  valuationSensSummary.addColumn("line_item", {
+  indifferenceFrontier.addColumn("line_item", {
     role: "descriptor",
-    header: "Frontier metric / valuation knob",
+    header: "Frontier metric (spot EV)",
   })
-  valuationSensSummary.addColumn("Downside", {
+  indifferenceFrontier.addColumn("Downside", {
     role: "measure",
     headers: ["Downside", "Case"],
   })
-  valuationSensSummary.addColumn("Base", {
+  indifferenceFrontier.addColumn("Base", {
     role: "measure",
     headers: ["Base", "Case"],
   })
-  valuationSensSummary.addColumn("Upside", {
+  indifferenceFrontier.addColumn("Upside", {
     role: "measure",
     headers: ["Upside", "Case"],
   })
-  valuationSensSummary.addColumn("active_live", {
+  indifferenceFrontier.addColumn("active_live", {
     role: "measure",
     headers: ["Active", "Case"],
     style: "bold",
   })
-  valuationSensSummary.addColumn("notes", {
+  indifferenceFrontier.addColumn("notes", {
     role: "descriptor",
-    header: "Basis / Mechanism",
+    header: "Basis",
   })
 
-  const addSensRow = (
+  const addFrontierRow = (
     id: string,
     label: string,
     format: "currency" | "percentage" | "number",
@@ -1185,7 +1186,7 @@ export function buildDcfTables(
     notes: string,
     style?: "bold"
   ): void => {
-    valuationSensSummary.addRow(id, {
+    indifferenceFrontier.addRow(id, {
       ...rowFormatOptions(format, decimals),
       ...(style ? { style } : {}),
       cells: {
@@ -1199,123 +1200,163 @@ export function buildDcfTables(
     })
   }
 
-  valuationSensSummary.addSectionHeader(
-    "Joint indifference frontier (at spot EV)"
-  )
-  addSensRow(
+  addFrontierRow(
     "implied_wacc",
     "Market-implied WACC (%)",
     "percentage",
     2,
     (s) => s.impliedWacc,
     'ReverseDcfTable["implied_wacc_at_base_g", "val"]',
-    "Clears spot EV at case FCFF & g",
+    "Clears spot EV",
     "bold"
   )
-  addSensRow(
+  addFrontierRow(
     "implied_beta",
     "Market-implied equity beta",
     "number",
     2,
     (s) => s.impliedBeta,
     'ReverseDcfTable["implied_beta_at_base_g", "val"]',
-    "At case ERP & 10Y UST"
+    "At case ERP & UST"
   )
-  addSensRow(
+  addFrontierRow(
     "implied_erp",
     "Market-implied ERP (at 5Y beta)",
     "percentage",
     2,
     (s) => s.impliedErp,
     'ReverseDcfTable["implied_erp_at_5y_beta", "val"]',
-    "At 0.85 5Y monthly beta"
+    "At 0.85 5Y beta"
   )
-  addSensRow(
+  addFrontierRow(
     "perp_2y_beta",
     "Perp. DCF at 2Y-beta WACC ($/sh)",
     "currency",
     2,
     (s) => s.perp2yBetaPrice,
     'ReverseDcfTable["perp_price_at_2y_beta_wacc", "val"]',
-    "At 0.22 2Y weekly beta"
+    "At 0.22 2Y beta"
   )
-  addSensRow(
+  addFrontierRow(
     "perp_rf_stress",
     "Perp. DCF at stress UST ($/sh)",
     "currency",
     2,
     (s) => s.perpRfStressPrice,
     'ReverseDcfTable["perp_price_at_rf_400", "val"]',
-    "Lower sovereign yield regime"
+    "Lower UST stress"
   )
-  addSensRow(
+  addFrontierRow(
     "exit_rf_stress",
     "Exit DCF at stress UST ($/sh)",
     "currency",
     2,
     (s) => s.exitRfStressPrice,
     'ReverseDcfTable["exit_price_at_rf_400", "val"]',
-    "Exit cross-check at stress UST"
+    "Exit at stress UST"
   )
 
-  valuationSensSummary.addRowGutter()
-  valuationSensSummary.addSectionHeader(
-    "Key economic knobs — Perpetuity DCF ($/sh cum-div.)"
+  const valuationKnobs = sheet.addTable(
+    "ValuationKnobSummary",
+    "Key Economic Knobs — Perpetuity DCF ($/sh cum-div.)",
+    {
+      subtitle: [
+        "Downside, Base, and Upside static snapshots; Active updates live",
+        "Tests peer beta, cash-adj. WACC, trapped cash, and +/-50 bps CapEx",
+      ],
+      currency: "USD",
+    }
   )
-  addSensRow(
+  valuationKnobs.addColumn("line_item", {
+    role: "descriptor",
+    header: "Perp. DCF knob ($/sh)",
+  })
+  valuationKnobs.addColumn("Downside", {
+    role: "measure",
+    headers: ["Downside", "Case"],
+  })
+  valuationKnobs.addColumn("Base", {
+    role: "measure",
+    headers: ["Base", "Case"],
+  })
+  valuationKnobs.addColumn("Upside", {
+    role: "measure",
+    headers: ["Upside", "Case"],
+  })
+  valuationKnobs.addColumn("active_live", {
+    role: "measure",
+    headers: ["Active", "Case"],
+    style: "bold",
+  })
+  valuationKnobs.addColumn("notes", {
+    role: "descriptor",
+    header: "Mechanism",
+  })
+
+  const addKnobRow = (
+    id: string,
+    label: string,
+    getter: (s: ScenarioSnapshot) => number,
+    activeExpr: string,
+    notes: string,
+    style?: "bold"
+  ): void => {
+    valuationKnobs.addRow(id, {
+      ...rowFormatOptions("currency", 2),
+      ...(style ? { style } : {}),
+      cells: {
+        line_item: label,
+        Downside: downSnap ? getter(downSnap) : 0,
+        Base: baseSnap ? getter(baseSnap) : 0,
+        Upside: upSnap ? getter(upSnap) : 0,
+        active_live: { expr: activeExpr },
+        notes,
+      },
+    })
+  }
+
+  addKnobRow(
     "perp_base_ref",
-    "Primary Perp. DCF (5Y beta)",
-    "currency",
-    2,
+    "Primary Perp. DCF",
     (s) => s.perpCumPrice,
     'DcfBridge["implied_price_cum_div", "perp"]',
-    "Reference active Perp. DCF",
+    "5Y beta baseline",
     "bold"
   )
-  addSensRow(
+  addKnobRow(
     "perp_peer_5y_beta",
-    "Peer 5Y mean beta (0.56) WACC",
-    "currency",
-    2,
+    "Peer 5Y beta WACC",
     (s) => s.perpPeer5yBetaPrice,
-    'IF(WaccSchedule["wacc_peer_beta_5y", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_peer_5y_beta", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_peer_beta_5y", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_peer_5y_beta", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())',
-    "5-peer average 5Y monthly beta"
+    'IF(WaccSchedule["wacc_peer_beta_5y", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_peer_5y_beta", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_peer_beta_5y", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_peer_5y_beta", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())',
+    "5-peer 0.56 beta"
   )
-  addSensRow(
+  addKnobRow(
     "perp_cash_adj_wacc",
-    "Cash-adjusted unlevered WACC",
-    "currency",
-    2,
+    "Cash-adj. WACC",
     (s) => s.perpCashAdjWaccPrice,
-    'IF(ISERROR(WaccSchedule["wacc_cash_adj_unlev", "val"]), NA(), IF(WaccSchedule["wacc_cash_adj_unlev", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_cash_adj_unlev", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_cash_adj_unlev", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_cash_adj_unlev", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA()))',
-    "Unlevered beta = 5Y x MktCap/EV"
+    'IF(ISERROR(WaccSchedule["wacc_cash_adj_unlev", "val"]), NA(), IF(WaccSchedule["wacc_cash_adj_unlev", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (DcfRateDiscountFactors["w_cash_adj_unlev", "pv_explicit"] + (DcfSchedule["unlevered_fcff", "Terminal"] / (WaccSchedule["wacc_cash_adj_unlev", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"])) * DcfRateDiscountFactors["w_cash_adj_unlev", "Terminal_Perp"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA()))',
+    "Unlev. MktCap/EV"
   )
-  addSensRow(
+  addKnobRow(
     "perp_ex_trapped_cash",
-    "Excl. $2.8B unsettled card rec.",
-    "currency",
-    2,
+    "Excl. card rec.",
     (s) => s.perpExTrappedCashPrice,
     'DcfBridge["price_ex_trapped_cash_memo", "perp"]',
-    "Deducts trapped working cash"
+    "Ex-$2.8B card rec."
   )
-  addSensRow(
+  addKnobRow(
     "perp_capex_minus_50bps",
-    "Lower CapEx intensity (-50 bps)",
-    "currency",
-    2,
+    "CapEx -50 bps",
     (s) => s.perpCapexMinus50bpsPrice,
     'DcfBridge["implied_price_cum_div", "perp"] + DcfOperatingSensFactors["capex_50bps_fcff_drag", "pv_total"] / DcfBridge["diluted_shares", "perp"]',
-    "-50 bps CapEx/sales net of tax"
+    "-50 bps CapEx/sales"
   )
-  addSensRow(
+  addKnobRow(
     "perp_capex_plus_50bps",
-    "Higher CapEx intensity (+50 bps)",
-    "currency",
-    2,
+    "CapEx +50 bps",
     (s) => s.perpCapexPlus50bpsPrice,
     'DcfBridge["implied_price_cum_div", "perp"] - DcfOperatingSensFactors["capex_50bps_fcff_drag", "pv_total"] / DcfBridge["diluted_shares", "perp"]',
-    "+50 bps CapEx/sales net of tax"
+    "+50 bps CapEx/sales"
   )
 
   // Rate & Terminal Sensitivity Grids (WACC vs. Terminal g / Exit Multiple)
@@ -1366,7 +1407,7 @@ export function buildDcfTables(
         gSteps.map((s, idx) => [
           gColIds[idx]!,
           {
-            expr: `ScalarAssumptionsActive["terminal_growth_rate", "val"] + (${s}) * ScalarAssumptionsActive["term_growth_step_sensitivity", "val"]`,
+            expr: `ScalarAssumptionsValuation["terminal_growth_rate", "val"] + (${s}) * ScalarAssumptionsValuation["term_growth_step_sensitivity", "val"]`,
             format: "percentage",
             decimals: 2,
           },
@@ -1384,7 +1425,7 @@ export function buildDcfTables(
       cells: {
         line_item: label,
         wacc_axis: {
-          expr: `WaccSchedule["wacc", "val"] + (${step}) * ScalarAssumptionsActive["wacc_step_sensitivity", "val"]`,
+          expr: `WaccSchedule["wacc", "val"] + (${step}) * ScalarAssumptionsValuation["wacc_step_sensitivity", "val"]`,
           format: "percentage",
           decimals: 2,
         },
@@ -1408,8 +1449,8 @@ export function buildDcfTables(
     "Sensitivity: Exit-Multiple DCF Cum-Div. Price — WACC vs. Exit EV/EBITDA",
     {
       subtitle: [
-        "WACC (+/-100 bps in 50 bps steps) vs. exit multiple (+/-4.0x in 2.0x steps)",
-        "Cum-dividend share price ($/sh); center cell ties to Exit-Multiple DCF",
+        "WACC (+/-100 bps, 50 bps steps) vs. exit mult. (+/-4.0x, 2.0x steps)",
+        "Cum-dividend share price ($/sh); center ties to Exit-Multiple DCF",
       ],
       currency: "USD",
     }
@@ -1447,7 +1488,7 @@ export function buildDcfTables(
         gSteps.map((s, idx) => [
           mColIds[idx]!,
           {
-            expr: `ScalarAssumptionsActive["exit_ev_to_ebitda", "val"] + (${s}) * ScalarAssumptionsActive["exit_multiple_step_sensitivity", "val"]`,
+            expr: `ScalarAssumptionsValuation["exit_ev_to_ebitda", "val"] + (${s}) * ScalarAssumptionsValuation["exit_multiple_step_sensitivity", "val"]`,
             format: "multiple",
             decimals: 1,
           },
@@ -1465,7 +1506,7 @@ export function buildDcfTables(
       cells: {
         line_item: label,
         wacc_axis: {
-          expr: `WaccSchedule["wacc", "val"] + (${step}) * ScalarAssumptionsActive["wacc_step_sensitivity", "val"]`,
+          expr: `WaccSchedule["wacc", "val"] + (${step}) * ScalarAssumptionsValuation["wacc_step_sensitivity", "val"]`,
           format: "percentage",
           decimals: 2,
         },
@@ -1490,8 +1531,8 @@ export function buildDcfTables(
     "Sensitivity: Perpetuity DCF Cum-Div. Price — EBIT Margin vs. Rev. Growth",
     {
       subtitle: [
-        "Parallel 10Y EBIT margin (+/-50 bps, 25 bps steps) vs. rev. growth (+/-100 bps, 50 bps steps)",
-        "Scales NOPAT, CapEx & non-PP&E IC proportionally; center ties to Perpetuity DCF ($/sh)",
+        "10Y EBIT margin (+/-50 bps, 25 bps steps) vs. rev. growth (+/-100 bps, 50 bps)",
+        "Scales NOPAT, CapEx & non-PP&E IC; center ties to Perpetuity DCF ($/sh)",
       ],
       currency: "USD",
     }
@@ -1524,7 +1565,7 @@ export function buildDcfTables(
         gSteps.map((s, idx) => [
           cColIds[idx]!,
           {
-            expr: `(${s}) * ScalarAssumptionsActive["comp_growth_step_sensitivity", "val"]`,
+            expr: `(${s}) * ScalarAssumptionsValuation["comp_growth_step_sensitivity", "val"]`,
             format: "percentage",
             decimals: 2,
           },
@@ -1545,7 +1586,7 @@ export function buildDcfTables(
       cells: {
         line_item: label,
         margin_delta_axis: {
-          expr: `(${step}) * ScalarAssumptionsActive["ebit_margin_step_sensitivity", "val"]`,
+          expr: `(${step}) * ScalarAssumptionsValuation["ebit_margin_step_sensitivity", "val"]`,
           format: "percentage",
           decimals: 2,
         },
@@ -1553,7 +1594,7 @@ export function buildDcfTables(
           cColIds.map((cCol) => [
             cCol,
             {
-              expr: `IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], (DcfOperatingSensFactors["fcff_base_${cCol}", "pv_total"] + (@table[@row, "margin_delta_axis"] * 100) * DcfOperatingSensFactors["nopat_slope_${cCol}", "pv_total"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())`,
+              expr: `IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], (DcfOperatingSensFactors["fcff_base_${cCol}", "pv_total"] + (@table[@row, "margin_delta_axis"] * 100) * DcfOperatingSensFactors["nopat_slope_${cCol}", "pv_total"] + DcfBridge["net_cash_bridge", "perp"]) / DcfBridge["diluted_shares", "perp"], NA())`,
               format: "currency",
               decimals: 2,
               ...(step === 0 && cCol === "c_0" ? { highlight: true } : {}),
@@ -1634,7 +1675,7 @@ export function buildDcfTables(
           cColIds.map((cCol) => [
             cCol,
             {
-              expr: `SensitivityOpsPerp["${rowId}", "${cCol}"] / MarketAnchors["cost_close_price", "val"] - 1`,
+              expr: `SensitivityOpsPerp["${rowId}", "${cCol}"] / MarketAnchorsMarket["cost_close_price", "val"] - 1`,
               format: "percentage",
               decimals: 1,
               ...(step === 0 && cCol === "c_0" ? { highlight: true } : {}),
@@ -1849,7 +1890,7 @@ export function buildDcfTables(
           ])
         ),
         Terminal: {
-          expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], @table[@row, "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"]), NA())',
+          expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], @table[@row, "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"]), NA())',
         },
         pv_total: {
           expr: 'SUMPRODUCT(@table[@row, "FY27E".."Terminal"], DcfSchedule["discount_factor_perp", "FY27E".."Terminal"])',
@@ -1880,7 +1921,7 @@ export function buildDcfTables(
           ])
         ),
         Terminal: {
-          expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], @table[@row, "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"]), NA())',
+          expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], @table[@row, "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"]), NA())',
         },
         pv_total: {
           expr: 'SUMPRODUCT(@table[@row, "FY27E".."Terminal"], DcfSchedule["discount_factor_perp", "FY27E".."Terminal"])',
@@ -1897,12 +1938,12 @@ export function buildDcfTables(
     ...rowFormatOptions("currency", 0),
     cells: {
       line_item: "Incremental net PP&E (+50 bps)",
-      FY27E: { expr: '0.005 * OperatingSchedule["net_sales", "FY27E"]' },
+      FY27E: { expr: '0.005 * OperatingVolumeSchedule["net_sales", "FY27E"]' },
       ...Object.fromEntries(
         FORECAST_PERIODS.slice(1).map((p) => [
           p,
           {
-            expr: '@table[@row, col.prev] * (1 - ScalarAssumptionsActive["da_pct_beg_ppe", "val"]) + 0.005 * OperatingSchedule["net_sales", @col]',
+            expr: '@table[@row, col.prev] * (1 - ScalarAssumptionsOperating["da_pct_beg_ppe", "val"]) + 0.005 * OperatingVolumeSchedule["net_sales", @col]',
           },
         ])
       ),
@@ -1915,17 +1956,17 @@ export function buildDcfTables(
     style: "bold",
     cells: {
       line_item: "FCFF drag per +50 bps CapEx",
-      FY27E: { expr: '0.005 * OperatingSchedule["net_sales", "FY27E"]' },
+      FY27E: { expr: '0.005 * OperatingVolumeSchedule["net_sales", "FY27E"]' },
       ...Object.fromEntries(
         FORECAST_PERIODS.slice(1).map((p) => [
           p,
           {
-            expr: '0.005 * OperatingSchedule["net_sales", @col] - @table["capex_50bps_cum_ppe", col.prev] * ScalarAssumptionsActive["da_pct_beg_ppe", "val"] * PeriodAssumptionsActive["effective_tax_rate", @col]',
+            expr: '0.005 * OperatingVolumeSchedule["net_sales", @col] - @table["capex_50bps_cum_ppe", col.prev] * ScalarAssumptionsOperating["da_pct_beg_ppe", "val"] * PeriodAssumptionsActive["effective_tax_rate", @col]',
           },
         ])
       ),
       Terminal: {
-        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsActive["terminal_growth_rate", "val"], @table[@row, "FY36E"] * (1 + ScalarAssumptionsActive["terminal_growth_rate", "val"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsActive["terminal_growth_rate", "val"]), NA())',
+        expr: 'IF(WaccSchedule["wacc", "val"] > ScalarAssumptionsValuation["terminal_growth_rate", "val"], @table[@row, "FY36E"] * (1 + ScalarAssumptionsValuation["terminal_growth_rate", "val"]) / (WaccSchedule["wacc", "val"] - ScalarAssumptionsValuation["terminal_growth_rate", "val"]), NA())',
       },
       pv_total: {
         expr: 'SUMPRODUCT(@table[@row, "FY27E".."Terminal"], DcfSchedule["discount_factor_perp", "FY27E".."Terminal"])',
@@ -1938,7 +1979,8 @@ export function buildDcfTables(
     dcfBridge,
     reverseDcf,
     impliedRateCalc,
-    valuationSensSummary,
+    indifferenceFrontier,
+    valuationKnobs,
     sensitivityPerp,
     sensitivityExit,
     sensitivityOps,

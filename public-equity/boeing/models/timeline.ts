@@ -149,7 +149,7 @@ export function addFlowTimelineColumns(table: Table): void {
   })
   table.addColumn("LTM", {
     group: "Interim / LTM / Stub",
-    headers: ["LTM Q3 26A"],
+    headers: ["LTM 3Q26"],
     style: "bold",
   })
   table.addColumn("Q4_26E", {

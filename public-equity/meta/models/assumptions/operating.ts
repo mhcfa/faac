@@ -80,10 +80,10 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       format: "percentage",
       decimals: 1,
       category: "Operating cost structure",
-      basis: "Moderate scale taper vs. lease & SBC headwinds",
+      basis: "Scale taper vs. lease & SBC headwinds",
       rationale:
         "Balances modest revenue-scale leverage off clean 9M26 cash OpEx against rising data-center power/rent from uncommenced leases ($355.7B) and sticky AI talent/RSU costs.",
-      source: "Meta Platforms Form 10-Q (Q3 2026), Note 10 & Note 11",
+      source: "Q3 2026 Form 10-Q, Notes 10 & 11",
     }
   ),
   rlOperatingLoss: periodDriver(
@@ -102,7 +102,7 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       basis: "Guided loss moderation",
       rationale:
         "Balances management's FY2027 Reality Labs cost-reduction target and wearable scale against a multi-year history of widening annual hardware and AR/VR R&D deficits.",
-      source: "Meta Platforms Q3 2026 Earnings Release (Exhibit 99.1)",
+      source: "Q3 2026 Earnings Release (Ex. 99.1)",
     }
   ),
   capexPctRevenue: periodDriver(
@@ -118,10 +118,10 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       format: "percentage",
       decimals: 1,
       category: "Capital intensity & depreciation",
-      basis: "Gradual AI buildout digestion toward FY24 base rate",
+      basis: "AI buildout digestion to FY24 rate",
       rationale:
         "Balances multi-year GPU/data-center purchase commitments and recurring AI cluster refresh against post-2027 digestion toward Meta's pre-boom capital intensity.",
-      source: "Meta Platforms Q3 2026 Form 10-Q, Note 10 & Exhibit 99.1",
+      source: "Q3 2026 Form 10-Q (N.10) & Ex. 99.1",
     }
   ),
   daPctBegNetPpe: periodDriver(
@@ -137,10 +137,10 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       format: "percentage",
       decimals: 1,
       category: "Capital intensity & depreciation",
-      basis: "Server-heavy asset mix & CIP commissioning",
+      basis: "Server-heavy mix & CIP commissioning",
       rationale:
         "Balances temporarily lower near-term depreciation from non-depreciating Q3 CIP against higher steady-state depreciation as shorter-lived 5.5-year AI servers dominate incremental net PP&E.",
-      source: "Meta Platforms Form 10-K (FY2025), Note 6 & Q3 2026 Form 10-Q",
+      source: "FY25 10-K (Note 6) & Q3 2026 10-Q",
     }
   ),
   sbcPctRevenue: periodDriver(
@@ -159,7 +159,7 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       basis: "Unrecognized RSU amortization",
       rationale:
         "Balances gradual revenue-scale dilution of the unrecognized RSU backlog against intense frontier AI engineering compensation; fully expensed inside EBIT and FCFF.",
-      source: "Meta Platforms Q3 2026 Form 10-Q, Note 11",
+      source: "Q3 2026 Form 10-Q, Note 11",
     }
   ),
   apPctRevenue: periodDriver(
@@ -178,7 +178,7 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       basis: "Unpaid PP&E payable normalization",
       rationale:
         "Balances elevated near-term AI vendor payables against natural working-capital unwind of unpaid PP&E balances as CapEx intensity moderates across FY2028E-FY2031E.",
-      source: "Meta Platforms Q3 2026 Form 10-Q, Cash Flow Supplemental",
+      source: "Q3 2026 Form 10-Q, Cash Flow Supp.",
     }
   ),
   opAccruedPctRevenue: periodDriver(
@@ -194,10 +194,10 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       format: "percentage",
       decimals: 1,
       category: "Working capital unwind",
-      basis: "Ex-legal, ex-debt operating run-rate taper",
+      basis: "Ex-legal, ex-debt accrual taper",
       rationale:
         "Balances high Q3 2026 accrued property & equipment balances against steady-state accrual normalization as construction intensity fades (excludes current LT debt and legal reserves).",
-      source: "Meta Platforms Q3 2026 Form 10-Q, Note 8",
+      source: "Q3 2026 Form 10-Q, Note 8",
     }
   ),
   commonDividendPerShare: periodDriver(
@@ -216,7 +216,7 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       basis: "Modest dividend progression",
       rationale:
         "Balances steady dividend-per-share progression with liquidity preservation during peak AI capital expenditure absorption.",
-      source: "Meta Platforms Q3 2026 Form 10-Q, Statement of Cash Flows",
+      source: "Q3 2026 Form 10-Q, Cash Flows",
     }
   ),
   annualShareRepurchases: periodDriver(
@@ -235,7 +235,7 @@ export const baseOperatingVectors: OperatingVectorDrivers = Object.freeze({
       basis: "FCF-gated buyback resumption",
       rationale:
         "Balances near-term buyback suspension during negative/constrained FCF against resumed share count management once post-CapEx cash generation inflects.",
-      source: "Meta Platforms Q3 2026 Form 10-Q (zero 9M26 repurchases)",
+      source: "Q3 2026 Form 10-Q (zero 9M26)",
     }
   ),
 })
@@ -249,7 +249,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Management guidance midpoint",
     rationale:
       "Balances holiday ad-demand momentum against seasonal macro sensitivity at the midpoint of CFO Q4 2026 consolidated revenue outlook.",
-    source: "Meta Platforms Q3 2026 Earnings Release (Exhibit 99.1)",
+    source: "Q3 2026 Earnings Release (Ex. 99.1)",
   }),
   q4RlRevenue: scalarDriver(931, {
     label: "Q4 2026E Reality Labs revenue",
@@ -259,7 +259,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Prior-year holiday run-rate",
     rationale:
       "Balances holiday AI smart-glasses demand against flat Quest hardware volumes relative to prior-year Q4 seasonality.",
-    source: "Meta Platforms Form 10-K (FY2025) & Q3 2026 Form 10-Q",
+    source: "FY25 Form 10-K & Q3 2026 Form 10-Q",
   }),
   q4FoaOtherRevenue: scalarDriver(1_200, {
     label: "Q4 2026E FoA other revenue",
@@ -269,7 +269,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Sequential run-rate",
     rationale:
       "Balances sequential WhatsApp Business messaging expansion against a modest non-advertising revenue base.",
-    source: "Meta Platforms Q3 2026 Form 10-Q, Note 14",
+    source: "Q3 2026 Form 10-Q, Note 14",
   }),
   fy26TotalGaapExpenses: scalarDriver(177_000, {
     label: "FY2026E total GAAP expenses",
@@ -279,7 +279,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Management guidance midpoint",
     rationale:
       "Balances cost discipline from May 2026 workforce reductions against rising infrastructure depreciation and AI compensation at the FY2026 expense guidance midpoint.",
-    source: "Meta Platforms Q3 2026 Earnings Release (Exhibit 99.1)",
+    source: "Q3 2026 Earnings Release (Ex. 99.1)",
   }),
   fy26RlOperatingLoss: scalarDriver(-18_500, {
     label: "FY2026E Reality Labs operating loss",
@@ -289,7 +289,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Management guidance midpoint",
     rationale:
       "Balances early wearable revenue contribution against ongoing AR/VR hardware R&D spending at the FY2026 guidance midpoint.",
-    source: "Meta Platforms Q3 2026 Earnings Release (Exhibit 99.1)",
+    source: "Q3 2026 Earnings Release (Ex. 99.1)",
   }),
   fy26TotalCapex: scalarDriver(140_000, {
     label: "FY2026E total CapEx (incl. finance leases)",
@@ -299,17 +299,17 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Management guidance midpoint",
     rationale:
       "Balances Q4 server delivery and data-center construction pace against potential vendor supply bottlenecks at the FY2026 CapEx guidance midpoint.",
-    source: "Meta Platforms Q3 2026 Earnings Release (Exhibit 99.1)",
+    source: "Q3 2026 Earnings Release (Ex. 99.1)",
   }),
   q4DaAnnualizedRate: scalarDriver(0.136, {
     label: "Q4 2026E annualized D&A % opening net PP&E",
     format: "percentage",
     decimals: 1,
     category: "FY2026 stub & guidance anchors",
-    basis: "Opening PP&E run-rate adjusted for CIP share",
+    basis: "Opening PP&E run-rate (CIP-adjusted)",
     rationale:
       "Balances elevated non-depreciating Q3 construction-in-progress share against accelerating server commissioning entering Q4 2026.",
-    source: "Meta Platforms Q3 2026 Form 10-Q, Note 6",
+    source: "Q3 2026 Form 10-Q, Note 6",
   }),
   q4SbcPctRevenue: scalarDriver(0.105, {
     label: "Q4 2026E SBC % of revenue",
@@ -319,7 +319,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Quarterly run-rate",
     rationale:
       "Balances seasonally higher Q4 revenue denominator against expanding quarterly RSU amortization from 2026 AI hiring.",
-    source: "Meta Platforms Q3 2026 Form 10-Q, Note 11",
+    source: "Q3 2026 Form 10-Q, Note 11",
   }),
   financeLeaseCapexShare: scalarDriver(0.032, {
     label: "Finance lease principal % of total CapEx",
@@ -329,17 +329,17 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "9M26 actual mix",
     rationale:
       "Balances recent cash finance-lease principal share against potential future shift between direct PP&E ownership and leased data-center structures.",
-    source: "Meta Platforms Q3 2026 Form 10-Q, Statement of Cash Flows",
+    source: "Q3 2026 Form 10-Q, Cash Flows",
   }),
   effectiveTaxRate: scalarDriver(0.165, {
     label: "Normalized effective tax rate",
     format: "percentage",
     decimals: 1,
     category: "Working capital, tax & financing",
-    basis: "Guided run-rate vs. statutory & UTB tail risk",
+    basis: "Guided run-rate vs. statutory/UTB risk",
     rationale:
       "Balances OBBBA immediate R&D expensing and Q4 2026 guided tax rate against upward risk from CAMT, Pillar Two, and adverse IRS transfer-pricing resolution.",
-    source: "Meta Platforms Q3 2026 Earnings Release (Exhibit 99.1) & Note 12",
+    source: "Q3 2026 Ex. 99.1 & 10-Q Note 12",
   }),
   arDays: scalarDriver(35.5, {
     label: "Accounts receivable days (DSO)",
@@ -349,7 +349,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Historical average",
     rationale:
       "Balances stable historical digital-advertising billing cycles against seasonal year-end agency collection timing.",
-    source: "Meta Platforms Form 10-K (FY2025) & Q3 2026 Form 10-Q",
+    source: "FY25 Form 10-K & Q3 2026 Form 10-Q",
   }),
   prepaidPctRevenue: scalarDriver(0.048, {
     label: "Prepaid & other current assets % of revenue",
@@ -359,17 +359,17 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Normalized working capital",
     rationale:
       "Balances partial normalization from elevated Q3 2026 vendor/power prepayments against ongoing upfront AI capacity deposits.",
-    source: "Meta Platforms Q3 2026 Form 10-Q",
+    source: "Q3 2026 Form 10-Q",
   }),
   annualLegalSettlementPayout: scalarDriver(2_000, {
     label: "Annual cash payout of accrued legal reserves",
     format: "currency",
     decimals: 0,
     category: "Working capital, tax & financing",
-    basis: "Installment settlement schedule (ex-DCF)",
+    basis: "Installment schedule (ex-DCF)",
     rationale:
       "Models cash settlement drawdown of existing Q3 2026 accrued legal reserves on the 3-statement balance sheet and CFO; excluded from unlevered DCF to prevent double-counting with the EV bridge deduction.",
-    source: "Meta Platforms Q3 2026 Form 10-Q, Note 8 & Note 10",
+    source: "Q3 2026 Form 10-Q, Notes 8 & 10",
   }),
   cashYieldRate: scalarDriver(0.04, {
     label: "Interest yield on cash & marketable securities",
@@ -379,7 +379,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Money-market & Treasury curve",
     rationale:
       "Weighs elevated Treasury yields against potential Federal Reserve rate easing across the forecast horizon.",
-    source: "Meta Platforms Q3 2026 Form 10-Q & Federal Reserve yields",
+    source: "Q3 2026 Form 10-Q & Fed yields",
   }),
   legacyDebtAvgCoupon: scalarDriver(0.0525, {
     label: "Blended coupon on pre-Nov 2026 senior notes",
@@ -389,7 +389,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Tranche-weighted face coupon",
     rationale:
       "Weighted average effective coupon across the Aug 2022 through May 2026 USD senior notes, reflecting lower legacy issuance costs relative to Nov 2026 refinancing rates.",
-    source: "Meta Platforms Q3 2026 Form 10-Q, Note 9",
+    source: "Q3 2026 Form 10-Q, Note 9",
   }),
   revolverRate: scalarDriver(0.065, {
     label: "Short-term credit facility / revolver rate",
@@ -399,7 +399,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "SOFR + IG facility margin",
     rationale:
       "Short-term liquidity facility cost triggered only if unrestricted cash breaches the minimum operating buffer under downside stress.",
-    source: "Meta Platforms Nov 2026 Senior Notes pricing reference",
+    source: "Nov 2026 Senior Notes pricing ref.",
   }),
   minimumOperatingCash: scalarDriver(15_000, {
     label: "Minimum operating cash buffer",
@@ -416,11 +416,10 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     format: "percentage",
     decimals: 1,
     category: "Working capital, tax & financing",
-    basis: "Statutory RSU tax withholding alignment",
+    basis: "Statutory RSU tax withholding",
     rationale:
       "Aligns statutory employee payroll tax withholding with grant-date fair value as share price normalizes toward recent grant prices.",
-    source:
-      "Meta Platforms Q3 2026 Form 10-Q, Statement of Cash Flows & Note 11",
+    source: "Q3 2026 Form 10-Q, CFS & Note 11",
   }),
   annualGrossRsuDilutionShares: scalarDriver(64.0, {
     label: "Annual gross RSU vesting (million shares)",
@@ -430,7 +429,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "FY24-9M26 vesting run-rate",
     rationale:
       "Reflects trailing annual gross RSU vesting cadence alongside higher 2026 AI engineering grant volumes.",
-    source: "Meta Platforms Q3 2026 Form 10-Q, Note 11",
+    source: "Q3 2026 Form 10-Q, Note 11",
   }),
   rsuNetShareWithholdingRate: scalarDriver(0.42, {
     label: "RSU shares withheld for taxes % of gross",
@@ -440,7 +439,7 @@ export const baseOperatingScalars: OperatingScalarDrivers = Object.freeze({
     basis: "Statutory employee tax withholding",
     rationale:
       "Matches statutory share withholding retirement rate on employee RSU vestings, limiting net share expansion relative to gross grants.",
-    source: "Meta Platforms Form 10-K (FY2025) & Q3 2026 Form 10-Q",
+    source: "FY25 Form 10-K & Q3 2026 Form 10-Q",
   }),
   revenueStressShockPct: scalarDriver(0.0, {
     label: "Revenue stress shock (FY27E overlay)",

@@ -30,15 +30,84 @@ function collectModelFiles(dir: string): string[] {
 }
 
 const FIFTEEN_YEAR_TABLES = [
-  "OperatingSchedule",
+  "OperatingVolumeSchedule",
+  "OperatingMarginSchedule",
   "IncomeStatement",
   "BalanceSheet",
   "CashFlowStatement",
   "WorkingCapitalPPE",
-  "DebtLeasesSchedule",
+  "DebtSchedule",
+  "LeasesInterestSchedule",
   "ShareEquitySchedule",
   "InvestedCapitalROIC",
 ] as const
+
+const EXPECTED_SHEET_COL_WIDTHS: Readonly<Record<string, number>> = {
+  "Exec Summary": 12,
+  Assumptions: 11,
+  "3-Statement Model": 11.5,
+  "Schedules & ROIC": 11,
+  "DCF & WACC": 11,
+  "Trading Comps": 11,
+  "Unit Economics": 12,
+}
+
+const EXPECTED_AUTHOR = "Michael Hu, CFA | mhu@outlook.co.nz"
+
+const BASELINE_INVARIANT_TARGETS: Readonly<
+  Record<
+    ScenarioName,
+    {
+      readonly wacc: number
+      readonly implWacc: number
+      readonly fy27Rev: number
+      readonly fy27Ebitda: number
+      readonly fy27Eps: number
+      readonly fy36Fcff: number
+      readonly perpCum: number
+      readonly exitCum: number
+      readonly compsCum: number
+      readonly blendedCum: number
+    }
+  >
+> = {
+  Downside: {
+    wacc: 0.0911796731576377,
+    implWacc: 0.04269085421409248,
+    fy27Rev: 321484.9160100851,
+    fy27Ebitda: 14697.08905850361,
+    fy27Eps: 20.2916569625504,
+    fy36Fcff: 7734.813997110199,
+    perpCum: 254.4957374012411,
+    exitCum: 454.3677413347519,
+    compsCum: 693.161322925545,
+    blendedCum: 473.82853016339305,
+  },
+  Base: {
+    wacc: 0.08908911886719324,
+    implWacc: 0.05468073955913243,
+    fy27Rev: 330016.83441521745,
+    fy27Ebitda: 15665.093848736611,
+    fy27Eps: 22.100557306749295,
+    fy36Fcff: 12600.73736235681,
+    perpCum: 417.6472619254272,
+    exitCum: 717.3135478239207,
+    compsCum: 878.0572922289834,
+    blendedCum: 647.8522770772054,
+  },
+  Upside: {
+    wacc: 0.08699856457674884,
+    implWacc: 0.06491213025706481,
+    fy27Rev: 340799.35259509727,
+    fy27Ebitda: 16757.41862217017,
+    fy27Eps: 24.149202155495633,
+    fy36Fcff: 18519.968364949706,
+    perpCum: 620.0627276244112,
+    exitCum: 1064.6326320395137,
+    compsCum: 1144.9209154437426,
+    blendedCum: 882.491821534077,
+  },
+}
 
 describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
   const compiledByScenario = new Map<ScenarioName, CompiledModel>()
@@ -156,17 +225,17 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
         ).toBeLessThan(1e-4)
 
         const debtCarry = compiled.num(
-          "DebtLeasesSchedule",
+          "DebtSchedule",
           "total_lt_debt_carrying",
           p
         )
         const debtCur = compiled.num(
-          "DebtLeasesSchedule",
+          "DebtSchedule",
           "current_portion_lt_debt_total",
           p
         )
         const debtLt = compiled.num(
-          "DebtLeasesSchedule",
+          "DebtSchedule",
           "long_term_debt_excl_current",
           p
         )
@@ -196,31 +265,19 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
       expect(specialDiv).toBeCloseTo(30 * 443.129349, 2)
       expect(Math.round(specialDiv)).toBe(13294)
       expect(
-        compiled.num(
-          "DebtLeasesSchedule",
-          "scheduled_lt_debt_repayments",
-          "FY27E"
-        )
+        compiled.num("DebtSchedule", "scheduled_lt_debt_repayments", "FY27E")
       ).toBeCloseTo(2250, 4)
-      expect(compiled.num("DebtLeasesSchedule", "tranche_may27", "FY27E")).toBe(
-        0
-      )
-      expect(compiled.num("DebtLeasesSchedule", "tranche_jun27", "FY27E")).toBe(
-        0
-      )
-      expect(compiled.num("DebtLeasesSchedule", "revolver_draw", "FY27E")).toBe(
-        0
-      )
-      expect(compiled.num("DebtLeasesSchedule", "revolver_end", "FY27E")).toBe(
-        0
-      )
+      expect(compiled.num("DebtSchedule", "tranche_may27", "FY27E")).toBe(0)
+      expect(compiled.num("DebtSchedule", "tranche_jun27", "FY27E")).toBe(0)
+      expect(compiled.num("DebtSchedule", "revolver_draw", "FY27E")).toBe(0)
+      expect(compiled.num("DebtSchedule", "revolver_end", "FY27E")).toBe(0)
       expect(
         compiled.num("BalanceSheet", "cash_and_equivalents", "FY27E")
       ).toBeGreaterThan(4000)
 
       // SUMPRODUCT tranche interest formula check
       const intCell = compiled.inspectCell(
-        "DebtLeasesSchedule",
+        "LeasesInterestSchedule",
         "senior_notes_interest",
         "FY27E"
       )
@@ -256,7 +313,7 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
           p
         )
         const opLiab = compiled.num(
-          "DebtLeasesSchedule",
+          "LeasesInterestSchedule",
           "total_op_lease_liab",
           p
         )
@@ -273,7 +330,7 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
           p
         )
         const finLeasePrin = compiled.num(
-          "DebtLeasesSchedule",
+          "LeasesInterestSchedule",
           "fin_lease_principal_repayments",
           p
         )
@@ -282,38 +339,42 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
       }
 
       // [O1]/[O2]/[O4]/[E5] 53-week calendar, Japan 2041 notes, pro-rated interest, card rec. exclusion & ESOP shield
-      expect(compiled.num("OperatingSchedule", "fiscal_days", "FY27E")).toBe(
-        364
-      )
-      expect(compiled.num("OperatingSchedule", "fiscal_days", "FY28E")).toBe(
-        371
-      )
-      expect(compiled.num("OperatingSchedule", "fiscal_days", "FY29E")).toBe(
-        364
-      )
-      expect(compiled.num("OperatingSchedule", "fiscal_days", "FY34E")).toBe(
-        371
-      )
       expect(
-        compiled.num("DebtLeasesSchedule", "tranche_japan", "FY36E")
+        compiled.num("OperatingVolumeSchedule", "fiscal_days", "FY27E")
+      ).toBe(364)
+      expect(
+        compiled.num("OperatingVolumeSchedule", "fiscal_days", "FY28E")
+      ).toBe(371)
+      expect(
+        compiled.num("OperatingVolumeSchedule", "fiscal_days", "FY29E")
+      ).toBe(364)
+      expect(
+        compiled.num("OperatingVolumeSchedule", "fiscal_days", "FY34E")
+      ).toBe(371)
+      expect(
+        compiled.num("DebtSchedule", "tranche_japan", "FY36E")
       ).toBeCloseTo(500, 4)
       expect(
-        compiled.num("DebtLeasesSchedule", "total_interest_expense", "FY27E")
+        compiled.num(
+          "LeasesInterestSchedule",
+          "total_interest_expense",
+          "FY27E"
+        )
       ).toBeLessThan(
-        compiled.num("DebtLeasesSchedule", "total_interest_expense", "FY26")
+        compiled.num("LeasesInterestSchedule", "total_interest_expense", "FY26")
       )
       const begCash27 = compiled.num(
-        "DebtLeasesSchedule",
+        "LeasesInterestSchedule",
         "beg_cash_and_sti",
         "FY27E"
       )
       const ccRec = compiled.num(
-        "MarketAnchors",
+        "MarketAnchorsMarket",
         "cc_receivables_in_cash",
         "val"
       )
       const effCash27 = compiled.num(
-        "DebtLeasesSchedule",
+        "LeasesInterestSchedule",
         "eff_interest_bearing_cash",
         "FY27E"
       )
@@ -355,12 +416,12 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
     const baseCompiled = getCompiled("Base")
     const wbFlex = buildCostcoWorkbook("Base")
     const baseDaRate = baseCompiled.num(
-      "ScalarAssumptionsActive",
+      "ScalarAssumptionsOperating",
       "da_pct_beg_ppe",
       "Base"
     )
     wbFlex
-      .getTable("ScalarAssumptionsActive")
+      .getTable("ScalarAssumptionsOperating")
       .setCell("da_pct_beg_ppe", "Base", baseDaRate + 0.01)
     using flexed = wbFlex.compile()
 
@@ -434,11 +495,15 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
       upCompiled.num("IncomeStatement", "total_revenue", "FY27E")
     ).toBeGreaterThanOrEqual(340_100)
     expect(
-      upCompiled.num("ScalarAssumptionsActive", "terminal_growth_rate", "val")
+      upCompiled.num(
+        "ScalarAssumptionsValuation",
+        "terminal_growth_rate",
+        "val"
+      )
     ).toBeLessThanOrEqual(0.037)
     expect(
       upCompiled.num(
-        "ScalarAssumptionsActive",
+        "ScalarAssumptionsValuation",
         "calibrated_comps_ev_to_ebitda",
         "val"
       )
@@ -588,7 +653,7 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
         "Terminal"
       )
       const midFlag = compiled.num(
-        "ScalarAssumptionsActive",
+        "ScalarAssumptionsValuation",
         "mid_year_convention_flag",
         "val"
       )
@@ -599,7 +664,11 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
       expect(
         compiled.num("DcfBridge", "implied_perp_growth", "perp")
       ).toBeCloseTo(
-        compiled.num("ScalarAssumptionsActive", "terminal_growth_rate", "val"),
+        compiled.num(
+          "ScalarAssumptionsValuation",
+          "terminal_growth_rate",
+          "val"
+        ),
         6
       )
 
@@ -777,50 +846,42 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
       compiled.num("DcfOperatingSensFactors", "fcff_base_c_0", "FY27E")
     )
 
-    // [E6] ValuationSensitivitySummary: Joint Indifference Frontier & Key Economic Knobs
+    // [E6] IndifferenceFrontier & ValuationKnobSummary
     const sensBaseRef = compiled.num(
-      "ValuationSensitivitySummary",
+      "ValuationKnobSummary",
       "perp_base_ref",
       "active_live"
     )
     expect(sensBaseRef).toBeCloseTo(cumPerp, 6)
     expect(
-      compiled.num("ValuationSensitivitySummary", "implied_wacc", "Base")
+      compiled.num("IndifferenceFrontier", "implied_wacc", "Base")
     ).toBeCloseTo(
       compiled.num("ReverseDcfTable", "implied_wacc_at_base_g", "val"),
       6
     )
     expect(
-      compiled.num(
-        "ValuationSensitivitySummary",
-        "perp_peer_5y_beta",
-        "active_live"
-      )
+      compiled.num("ValuationKnobSummary", "perp_peer_5y_beta", "active_live")
     ).toBeGreaterThan(sensBaseRef)
     expect(
-      compiled.num(
-        "ValuationSensitivitySummary",
-        "perp_cash_adj_wacc",
-        "active_live"
-      )
+      compiled.num("ValuationKnobSummary", "perp_cash_adj_wacc", "active_live")
     ).toBeLessThan(sensBaseRef)
     expect(
       compiled.num(
-        "ValuationSensitivitySummary",
+        "ValuationKnobSummary",
         "perp_ex_trapped_cash",
         "active_live"
       )
     ).toBeLessThan(sensBaseRef)
     expect(
       compiled.num(
-        "ValuationSensitivitySummary",
+        "ValuationKnobSummary",
         "perp_capex_minus_50bps",
         "active_live"
       )
     ).toBeGreaterThan(sensBaseRef)
     expect(
       compiled.num(
-        "ValuationSensitivitySummary",
+        "ValuationKnobSummary",
         "perp_capex_plus_50bps",
         "active_live"
       )
@@ -828,7 +889,7 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
 
     // [E5]/[O1]/[O2] Ex-op-lease EV bridge: Q1 $1.47/sh div, LT debt FV ($5,689M) + fin leases ($1,413M), diluted shares (443.603M)
     const dilutedShares = compiled.num(
-      "MarketAnchors",
+      "MarketAnchorsMarket",
       "cost_diluted_shares",
       "val"
     )
@@ -863,38 +924,42 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
     )
   })
 
-  it("validates 2Y PublicPriceAttribution, 50/0/50 FootballField, ConsensusBenchmark EPS bridge, ex-op-lease Comps & WMT NCI, and Unit Economics churn (C3/C5/C6)", () => {
+  it("validates 2Y PublicEv/PeAttribution, 50/0/50 FootballField, ConsensusBenchmark & EPS bridge, ex-op-lease Comps & WMT NCI, and Unit Economics churn (C3/C5/C6)", () => {
     using kg = compileKgFromDir("data/audited")
     const compiled = getCompiled("Base")
 
-    // 1. PublicPriceAttribution: 7 remaining quarterly regular dividends + EV & P/E 2Y TSR tie-outs (< 1e-6)
-    const closePrice = compiled.num("MarketAnchors", "cost_close_price", "val")
+    // 1. PublicEvAttribution & PublicPeAttribution: 7 remaining quarterly regular dividends + EV & P/E 2Y TSR tie-outs (< 1e-6)
+    const closePrice = compiled.num(
+      "MarketAnchorsMarket",
+      "cost_close_price",
+      "val"
+    )
     const baseFy27Dps = compiled.num("IncomeStatement", "regular_dps", "FY27E")
     const baseFy28Dps = compiled.num("IncomeStatement", "regular_dps", "FY28E")
     expect(
-      compiled.num("PublicPriceAttribution", "regular_dps_2y", "Base")
+      compiled.num("PublicEvAttribution", "regular_dps_2y", "Base")
     ).toBeCloseTo(0.75 * baseFy27Dps + baseFy28Dps, 4)
     for (const col of ["Downside", "Base", "Upside", "active_live"] as const) {
       expect(
-        compiled.num("PublicPriceAttribution", "ex_div_spot_price", col)
+        compiled.num("PublicEvAttribution", "ex_div_spot_price", col)
       ).toBeCloseTo(closePrice - 30, 6)
       expect(
-        compiled.num("PublicPriceAttribution", "regular_dps_2y", col)
+        compiled.num("PublicEvAttribution", "regular_dps_2y", col)
       ).toBeLessThan(15)
       expect(
         Math.abs(
-          compiled.num("PublicPriceAttribution", "ev_tsr_tie_out_check", col)
+          compiled.num("PublicEvAttribution", "ev_tsr_tie_out_check", col)
         )
       ).toBeLessThan(1e-6)
       expect(
         Math.abs(
-          compiled.num("PublicPriceAttribution", "pe_tsr_tie_out_check", col)
+          compiled.num("PublicPeAttribution", "pe_tsr_tie_out_check", col)
         )
       ).toBeLessThan(1e-6)
       expect(
-        compiled.num("PublicPriceAttribution", "ev_implied_tsr", col)
+        compiled.num("PublicEvAttribution", "ev_implied_tsr", col)
       ).toBeCloseTo(
-        compiled.num("PublicPriceAttribution", "pe_implied_tsr", col),
+        compiled.num("PublicPeAttribution", "pe_implied_tsr", col),
         6
       )
     }
@@ -1012,52 +1077,51 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
 
     // FY27E–FY28E Base vs. Consensus EPS Bridge exact tie-out
     expect(
-      compiled.num("ConsensusBenchmark", "fy27_eps_bridge_total", "base")
+      compiled.num("ConsensusEpsBridge", "fy27_eps_bridge_total", "base")
     ).toBeCloseTo(
       compiled.num("IncomeStatement", "diluted_eps", "FY27E") -
         compiled.num("ConsensusBenchmark", "fy27_eps", "cons"),
       6
     )
     expect(
-      compiled.num("ConsensusBenchmark", "fy28_eps_bridge_total", "base")
+      compiled.num("ConsensusEpsBridge", "fy28_eps_bridge_total", "base")
     ).toBeCloseTo(
       compiled.num("IncomeStatement", "diluted_eps", "FY28E") -
         compiled.num("ConsensusBenchmark", "fy28_eps", "cons"),
       6
     )
     expect(
-      compiled.num("ConsensusBenchmark", "fy27_eps_bridge_esop", "base")
+      compiled.num("ConsensusEpsBridge", "fy27_eps_bridge_esop", "base")
     ).toBeGreaterThan(0.35)
     expect(
-      compiled.num("ConsensusBenchmark", "fy27_eps_bridge_int", "base")
+      compiled.num("ConsensusEpsBridge", "fy27_eps_bridge_int", "base")
     ).toBeLessThan(-0.35)
 
-    // 4. [E3]/[R2]/[R4]/[R6] Ex-operating-lease TradingCompsLTM/Forward, WMT+KR NCI & ExecutiveKPIs/CompsCalibration alignment
+    // 4. [E3]/[R2]/[R4]/[R6] Ex-operating-lease TradingCompsLtm*/Forward*, WMT+KR NCI & ExecutiveKPIs/CompsCalibration alignment
     expect(compiled.table("WorkingCapitalPPE").rows).not.toContain(
       "change_lt_op_assets_net"
     )
-    const ltmTable = compiled.table("TradingCompsLTM")
-    expect(ltmTable.value("KR", "ev_ltm_ebit_rep")).toBeNull()
-    expect(ltmTable.value("KR", "pe_ltm_rep")).toBeNull()
-    expect(ltmTable.num("COST", "beta_5y")).toBeCloseTo(0.85, 4)
-    expect(ltmTable.num("COST", "beta_2y")).toBeCloseTo(0.22, 4)
-    expect(ltmTable.num("WMT", "beta_2y")).toBeCloseTo(0.48, 4)
-    expect(compiled.num("PeerEvAndQoeBridge", "total_nci", "WMT")).toBeCloseTo(
+    const ltmValTable = compiled.table("TradingCompsLtmValuation")
+    const ltmProfileTable = compiled.table("TradingCompsLtmProfile")
+    expect(ltmProfileTable.value("KR", "ev_ltm_ebit_rep")).toBeNull()
+    expect(ltmProfileTable.value("KR", "pe_ltm_rep")).toBeNull()
+    expect(ltmProfileTable.num("COST", "beta_5y")).toBeCloseTo(0.85, 4)
+    expect(ltmProfileTable.num("COST", "beta_2y")).toBeCloseTo(0.22, 4)
+    expect(ltmProfileTable.num("WMT", "beta_2y")).toBeCloseTo(0.48, 4)
+    expect(compiled.num("PeerEvBridge", "total_nci", "WMT")).toBeCloseTo(
       6561,
       2
     )
-    expect(
-      compiled.num("PeerEvAndQoeBridge", "nonredeemable_nci", "KR")
-    ).toBeCloseTo(6, 2)
-    expect(compiled.num("PeerEvAndQoeBridge", "total_nci", "KR")).toBeCloseTo(
+    expect(compiled.num("PeerEvBridge", "nonredeemable_nci", "KR")).toBeCloseTo(
       6,
       2
     )
+    expect(compiled.num("PeerEvBridge", "total_nci", "KR")).toBeCloseTo(6, 2)
     expect(
-      compiled.inspectCell("TradingCompsLTM", "COST", "ev").note
+      compiled.inspectCell("TradingCompsLtmValuation", "COST", "ev").note
     ).toBeTruthy()
     expect(
-      compiled.num("PeerEvAndQoeBridge", "invested_capital", "COST")
+      compiled.num("PeerEvBridge", "invested_capital", "COST")
     ).toBeCloseTo(
       compiled.num("InvestedCapitalROIC", "operating_ic", "FY26"),
       4
@@ -1072,48 +1136,59 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
       Math.abs(
         compiled.num("ExecutiveKPIs", "fy27e_cons_ev_ebitda", "val") -
           compiled.num("ExecutiveKPIs", "enterprise_value", "val") /
-            compiled.num("MarketAnchors", "cons_ebitda_fy27", "val")
+            compiled.num("MarketAnchorsConsensus", "cons_ebitda_fy27", "val")
       )
     ).toBeLessThan(1e-6)
     expect(
       Math.abs(
         compiled.num("ExecutiveKPIs", "fy27e_cons_ev_ebitda", "val") -
-          compiled.num("PublicPriceAttribution", "current_ev_multiple", "Base")
+          compiled.num("PublicEvAttribution", "current_ev_multiple", "Base")
       )
     ).toBeLessThan(1e-6)
-    expect(ltmTable.num("COST", "ltm_roic")).toBeCloseTo(
-      compiled.num("PeerEvAndQoeBridge", "ltm_roic", "COST"),
+    expect(ltmProfileTable.num("COST", "ltm_roic")).toBeCloseTo(
+      compiled.num("PeerQoeRoicBridge", "ltm_roic", "COST"),
       6
     )
     expect(
-      compiled.dependentsOf("PeerEvAndQoeBridge", "ltm_roic", "COST")
-        .directCount
+      compiled.dependentsOf("PeerQoeRoicBridge", "ltm_roic", "COST").directCount
     ).toBeGreaterThan(0)
-    expect(ltmTable.num("COST", "ltm_roic")).toBeGreaterThan(0.3)
-    expect(ltmTable.num("COST", "capex_pct_sales")).toBeGreaterThan(0.015)
-    expect(ltmTable.num("COST", "ev_ebitda_ex_capex")).toBeGreaterThan(
-      ltmTable.num("COST", "ev_ltm_ebitda_qoe")
+    expect(ltmProfileTable.num("COST", "ltm_roic")).toBeGreaterThan(0.3)
+    expect(ltmProfileTable.num("COST", "capex_pct_sales")).toBeGreaterThan(
+      0.015
+    )
+    expect(ltmValTable.num("COST", "ev_ebitda_ex_capex")).toBeGreaterThan(
+      ltmValTable.num("COST", "ev_ltm_ebitda_qoe")
     )
 
-    const ltmFormulaCols = [
+    const ltmValFormulaCols = [
       "ev",
       "ltm_rev",
+      "ltm_ebitda_qoe",
+      "ev_ltm_sales",
+      "ev_ltm_ebitda_qoe",
+      "ev_ebitda_ex_capex",
+    ] as const
+    const ltmProfileFormulaCols = [
       "ltm_ebitda_rep",
       "qoe_ebitda_adj",
       "ltm_ebitda_qoe",
       "ltm_roic",
       "capex_pct_sales",
       "net_lev_qoe",
-      "ev_ltm_sales",
       "ev_ltm_ebitda_rep",
-      "ev_ltm_ebitda_qoe",
-      "ev_ebitda_ex_capex",
     ] as const
     for (const ticker of ["COST", "BJ", "PSMT", "WMT", "TGT", "KR"] as const) {
-      for (const col of ltmFormulaCols) {
+      for (const col of ltmValFormulaCols) {
         expect(
-          compiled.inspectCell("TradingCompsLTM", ticker, col).isFormula,
-          `TradingCompsLTM["${ticker}", "${col}"] must be a live formula`
+          compiled.inspectCell("TradingCompsLtmValuation", ticker, col)
+            .isFormula,
+          `TradingCompsLtmValuation["${ticker}", "${col}"] must be a live formula`
+        ).toBe(true)
+      }
+      for (const col of ltmProfileFormulaCols) {
+        expect(
+          compiled.inspectCell("TradingCompsLtmProfile", ticker, col).isFormula,
+          `TradingCompsLtmProfile["${ticker}", "${col}"] must be a live formula`
         ).toBe(true)
       }
       for (const bridgeRow of [
@@ -1121,33 +1196,36 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
         "total_debt_ex_op_leases",
         "total_nci",
         "headline_ev_incl_op_leases",
-        "qoe_ebitda_adj",
-        "qoe_ni_adj",
       ] as const) {
         expect(
-          compiled.inspectCell("PeerEvAndQoeBridge", bridgeRow, ticker)
-            .isFormula,
-          `PeerEvAndQoeBridge["${bridgeRow}", "${ticker}"] must be a live formula`
+          compiled.inspectCell("PeerEvBridge", bridgeRow, ticker).isFormula,
+          `PeerEvBridge["${bridgeRow}", "${ticker}"] must be a live formula`
+        ).toBe(true)
+      }
+      for (const qoeRow of ["qoe_ebitda_adj", "qoe_ni_adj"] as const) {
+        expect(
+          compiled.inspectCell("PeerQoeRoicBridge", qoeRow, ticker).isFormula,
+          `PeerQoeRoicBridge["${qoeRow}", "${ticker}"] must be a live formula`
         ).toBe(true)
       }
       expect(
-        compiled.num(
-          "PeerEvAndQoeBridge",
-          "headline_ev_incl_op_leases",
-          ticker
-        ) - compiled.num("PeerEvAndQoeBridge", "operating_leases", ticker)
-      ).toBeCloseTo(ltmTable.num(ticker, "ev"), 2)
-      expect(ltmTable.num(ticker, "ltm_roic")).toBeGreaterThan(0.03)
-      expect(ltmTable.num(ticker, "capex_pct_sales")).toBeGreaterThan(0.01)
+        compiled.num("PeerEvBridge", "headline_ev_incl_op_leases", ticker) -
+          compiled.num("PeerEvBridge", "operating_leases", ticker)
+      ).toBeCloseTo(ltmValTable.num(ticker, "ev"), 2)
+      expect(ltmProfileTable.num(ticker, "ltm_roic")).toBeGreaterThan(0.03)
+      expect(ltmProfileTable.num(ticker, "capex_pct_sales")).toBeGreaterThan(
+        0.01
+      )
     }
 
-    const fwdTable = compiled.table("TradingCompsForward")
-    expect(fwdTable.value("PSMT", "fcf_27")).toBeNull()
-    expect(fwdTable.value("PSMT", "p_fcf_27")).toBeNull()
-    expect(fwdTable.num("COST", "ev_ebitda_27")).toBeCloseTo(29.43, 1)
-    expect(fwdTable.num("COST", "rev_growth_28")).toBeGreaterThan(0.06)
-    expect(fwdTable.num("COST", "ebitda_margin_27")).toBeGreaterThan(0.045)
-    expect(fwdTable.num("COST", "ebitda_margin_27")).toBeLessThan(0.055)
+    const fwdValTable = compiled.table("TradingCompsForwardValuation")
+    const fwdEstTable = compiled.table("TradingCompsForwardEstimates")
+    expect(fwdEstTable.value("PSMT", "fcf_27")).toBeNull()
+    expect(fwdValTable.value("PSMT", "p_fcf_27")).toBeNull()
+    expect(fwdValTable.num("COST", "ev_ebitda_27")).toBeCloseTo(29.43, 1)
+    expect(fwdEstTable.num("COST", "rev_growth_28")).toBeGreaterThan(0.06)
+    expect(fwdEstTable.num("COST", "ebitda_margin_27")).toBeGreaterThan(0.045)
+    expect(fwdEstTable.num("COST", "ebitda_margin_27")).toBeLessThan(0.055)
 
     // 5. ClubUnitEconomics 0D null hygiene, churn complements & bridge liveness
     const ueTable = compiled.table("ClubUnitEconomics")
@@ -1183,12 +1261,77 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
     }
   })
 
-  it("enforces 7-sheet grid geometry, zero subtitle/wrap/gutter overflows, zero descriptor hover notes, clean client copy, formula length <= 350, and Excel emission (C7)", () => {
+  it("verifies zero numerical drift (<= 1e-9) vs. baseline invariants across Downside, Base, and Upside (C1)", () => {
+    for (const sc of SCENARIOS) {
+      const compiled = getCompiled(sc)
+      const target = BASELINE_INVARIANT_TARGETS[sc]
+      const actual = {
+        wacc: compiled.num("WaccSchedule", "wacc", "val"),
+        implWacc: compiled.num(
+          "ReverseDcfTable",
+          "implied_wacc_at_base_g",
+          "val"
+        ),
+        fy27Rev: compiled.num("IncomeStatement", "total_revenue", "FY27E"),
+        fy27Ebitda: compiled.num("IncomeStatement", "ebitda", "FY27E"),
+        fy27Eps: compiled.num("IncomeStatement", "diluted_eps", "FY27E"),
+        fy36Fcff: compiled.num(
+          "InvestedCapitalROIC",
+          "unlevered_fcff",
+          "FY36E"
+        ),
+        perpCum: compiled.num("DcfBridge", "implied_price_cum_div", "perp"),
+        exitCum: compiled.num(
+          "DcfBridge",
+          "implied_price_cum_div",
+          "exit_mult"
+        ),
+        compsCum: compiled.num(
+          "CompsValuationCalibration",
+          "implied_price_cum_div",
+          "val"
+        ),
+        blendedCum: compiled.num(
+          "FootballField",
+          "blended_total",
+          "cum_div_price"
+        ),
+      }
+      for (const [k, exp] of Object.entries(target)) {
+        const got = actual[k as keyof typeof actual]
+        expect(
+          Math.abs(got - exp),
+          `[${sc}] baseline drift on ${k}: got=${got} exp=${exp}`
+        ).toBeLessThanOrEqual(1e-9)
+      }
+      expect(
+        Math.abs(
+          compiled.num(
+            "TradingCompsLtmValuation",
+            "COST",
+            "ev_ltm_ebitda_qoe"
+          ) - 33.35443592280644
+        )
+      ).toBeLessThanOrEqual(1e-9)
+      expect(
+        Math.abs(
+          compiled.num(
+            "TradingCompsForwardValuation",
+            "pure_club_median",
+            "ev_ebitda_27"
+          ) - 12.248757891513236
+        )
+      ).toBeLessThanOrEqual(1e-9)
+    }
+  })
+
+  it("enforces print setup, scale >= 63%, zero page overflows, author attribution, 7-sheet grid geometry, clean client copy, and Excel emission (C2/C3/C4)", () => {
     const bannedCopyPattern =
       /\b(GAP-\d+|PROJECT\.md|RUN_LOG\.jsonl|data\/audited|KgRegistry|CompiledModel|pure DAG|zero circularity|zero-plug|zero plugs|decision-framing|2D reverse DCF|guarded with #N\/A|per-scenario compiles|f8|f12|f2)\b/i
 
     for (const sc of SCENARIOS) {
       const compiled = getCompiled(sc)
+      const wbSpec = buildCostcoWorkbook(sc).toSpec()
       const summary = compiled.summary()
       expect(summary.totalSheets).toBe(7)
       expect(summary.sheets.map((s) => s.name)).toEqual([
@@ -1200,12 +1343,61 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
         "Trading Comps",
         "Unit Economics",
       ])
-      // Layout grid audit: zero errors, zero subtitle overflows, zero wrapped cells, zero widened gutters
+
+      // Exact print configuration & author footer on all 7 sheets (C2/C3)
+      expect(wbSpec.manifest.sheets.length).toBe(7)
+      for (const shSpec of wbSpec.manifest.sheets) {
+        expect(shSpec.print?.paperSize).toBe("letter")
+        expect(shSpec.print?.orientation).toBe("landscape")
+        expect(shSpec.print?.centerHorizontally).toBe(true)
+        expect(shSpec.print?.fit).toBe(
+          shSpec.name === "Unit Economics" ? "fit_page" : "fit_width"
+        )
+        expect(shSpec.print?.header).toEqual({
+          left: "{model}",
+          right: "{sheet}",
+        })
+        expect(shSpec.print?.footer).toEqual({
+          left: EXPECTED_AUTHOR,
+          center: "Valuation as of Nov 13, 2026",
+          right: "Page {page} of {pages}",
+        })
+      }
+
+      // Layout grid & print audit: zero errors, zero low-scale/page overflows, zero subtitle/wrap/gutter overflows (C2)
       const layoutMd = compiled.toMarkdown("layout")
       expect(layoutMd).toContain("Errors: 0")
+      expect(layoutMd.match(/\[low scale[^\]]*\]/g) ?? []).toEqual([])
+      expect(layoutMd.match(/~\d+\.\d+pg!/g) ?? []).toEqual([])
       expect(layoutMd.match(/sub:\d+\([^)]+\)/g) ?? []).toEqual([])
       expect(layoutMd.match(/wrap:\d+/g) ?? []).toEqual([])
-      expect(layoutMd.match(/gutter [A-Z]+\(1c, w:12\)/g) ?? []).toEqual([])
+      expect(
+        layoutMd.match(/gutter [A-Z]+\(1c, w:(11|11\.5|12)\)/g) ?? []
+      ).toEqual([])
+
+      const printLines = layoutMd
+        .split("\n")
+        .filter((line) => line.startsWith("Print: "))
+      expect(printLines.length).toBe(7)
+      for (const pLine of printLines) {
+        expect(pLine).toContain("Print: letter landscape |")
+        const scaleMatch = pLine.match(/Est\. scale: ~(\d+)%/)
+        expect(scaleMatch).not.toBeNull()
+        expect(Number(scaleMatch![1])).toBeGreaterThanOrEqual(63)
+      }
+      expect(layoutMd).toContain(
+        "## Sheet: Unit Economics\nLayout: grid (W=12)"
+      )
+      expect(layoutMd).toContain(
+        "Print: letter landscape | Fit: fit_page (1 x 1)"
+      )
+      for (const [sheetName, expectedW] of Object.entries(
+        EXPECTED_SHEET_COL_WIDTHS
+      )) {
+        expect(layoutMd).toContain(
+          `## Sheet: ${sheetName}\nLayout: grid (W=${expectedW})`
+        )
+      }
 
       // [F2] No static active-case framing subtitles or residual "$30" labels on dynamic schedules
       for (const tblId of [
@@ -1216,7 +1408,8 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
         expect(subs).not.toContain(ALL_SCENARIO_DRIVERS[sc].framing)
       }
       for (const tblId of [
-        "PublicPriceAttribution",
+        "PublicEvAttribution",
+        "PublicPeAttribution",
         "CompsValuationCalibration",
         "IncomeStatement",
         "ShareEquitySchedule",
@@ -1241,13 +1434,15 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
 
       for (const s of summary.sheets) {
         const sheetInsp = compiled.inspectSheet(s.name)
+        const expectedColWidth = EXPECTED_SHEET_COL_WIDTHS[s.name]
+        expect(expectedColWidth).toBeDefined()
         for (const rowInsp of sheetInsp.rows) {
           for (const cellInsp of rowInsp.cells) {
             if (cellInsp.kind === "data" && !cellInsp.isDescriptor) {
               expect(
                 sheetInsp.colWidths[cellInsp.physicalCol],
-                `Measure column ${cellInsp.physicalCol} on "${s.name}" stretched above 12`
-              ).toBe(12)
+                `Measure column ${cellInsp.physicalCol} on "${s.name}" stretched above ${expectedColWidth}`
+              ).toBe(expectedColWidth)
             }
           }
         }
@@ -1329,8 +1524,10 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
 
       // Trailing Notes/Basis descriptor column on assumption tables
       for (const tblId of [
-        "ScalarAssumptionsActive",
-        "MarketAnchors",
+        "ScalarAssumptionsOperating",
+        "ScalarAssumptionsValuation",
+        "MarketAnchorsMarket",
+        "MarketAnchorsConsensus",
         "PeriodAssumptionsActive",
         "PeriodAssumptionsDownside",
         "PeriodAssumptionsBase",
@@ -1350,7 +1547,7 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
         expect(cols[fy26Idx + 1]?.isGutter).toBe(true)
       }
 
-      // Zero unused rows on MarketAnchors, ScalarAssumptionsActive, PeriodAssumptionsActive
+      // Zero unused rows on MarketAnchors*, ScalarAssumptions*, PeriodAssumptionsActive
       for (const r of compiled.table("PeriodAssumptionsActive").rows) {
         for (const p of FORECAST_PERIODS) {
           expect(
@@ -1362,19 +1559,28 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
             .directCount
         ).toBeGreaterThan(0)
       }
-      for (const r of compiled.table("ScalarAssumptionsActive").rows) {
-        expect(
-          compiled.inspectCell("ScalarAssumptionsActive", r, "val").isFormula
-        ).toBe(true)
-        expect(
-          compiled.dependentsOf("ScalarAssumptionsActive", r, "val").directCount
-        ).toBeGreaterThan(0)
+      for (const tblId of [
+        "ScalarAssumptionsOperating",
+        "ScalarAssumptionsValuation",
+      ] as const) {
+        for (const r of compiled.table(tblId).rows) {
+          expect(compiled.inspectCell(tblId, r, "val").isFormula).toBe(true)
+          expect(
+            compiled.dependentsOf(tblId, r, "val").directCount,
+            `${tblId}["${r}", "val"] has 0 dependents`
+          ).toBeGreaterThan(0)
+        }
       }
-      for (const r of compiled.table("MarketAnchors").rows) {
-        expect(
-          compiled.dependentsOf("MarketAnchors", r, "val").directCount,
-          `MarketAnchors["${r}", "val"] has 0 dependents`
-        ).toBeGreaterThan(0)
+      for (const tblId of [
+        "MarketAnchorsMarket",
+        "MarketAnchorsConsensus",
+      ] as const) {
+        for (const r of compiled.table(tblId).rows) {
+          expect(
+            compiled.dependentsOf(tblId, r, "val").directCount,
+            `${tblId}["${r}", "val"] has 0 dependents`
+          ).toBeGreaterThan(0)
+        }
       }
 
       const bytes = compiled.emitWorkbook()
@@ -1384,7 +1590,7 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
 
   it("handles extreme low equity price stress ($100/sh) cleanly with NA() guards and converged implied WACC (C7)", () => {
     const wb = buildCostcoWorkbook("Base")
-    wb.getTable("MarketAnchors").setCell("cost_close_price", "val", 100)
+    wb.getTable("MarketAnchorsMarket").setCell("cost_close_price", "val", 100)
     using stressed = wb.compile()
 
     expect(
@@ -1400,12 +1606,12 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
     for (const col of ["Downside", "Base", "Upside", "active_live"] as const) {
       expect(
         Math.abs(
-          stressed.num("PublicPriceAttribution", "ev_tsr_tie_out_check", col)
+          stressed.num("PublicEvAttribution", "ev_tsr_tie_out_check", col)
         )
       ).toBeLessThan(1e-6)
       expect(
         Math.abs(
-          stressed.num("PublicPriceAttribution", "pe_tsr_tie_out_check", col)
+          stressed.num("PublicPeAttribution", "pe_tsr_tie_out_check", col)
         )
       ).toBeLessThan(1e-6)
     }
@@ -1468,12 +1674,14 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
 
     // (a) $30.00/sh close price stress (ex_div_spot_price = 0, assumed_repurchase_price = 0)
     const wbPrice30 = buildCostcoWorkbook("Base")
-    wbPrice30.getTable("MarketAnchors").setCell("cost_close_price", "val", 30)
+    wbPrice30
+      .getTable("MarketAnchorsMarket")
+      .setCell("cost_close_price", "val", 30)
     using stressed30 = wbPrice30.compile()
     assertZeroHardErrors(stressed30, "$30/sh equity price stress")
 
     expect(
-      stressed30.num("PublicPriceAttribution", "ex_div_spot_price", "Base")
+      stressed30.num("PublicEvAttribution", "ex_div_spot_price", "Base")
     ).toBe(0)
     expect(
       stressed30.num("ShareEquitySchedule", "shares_repurchased", "FY27E")
@@ -1483,16 +1691,16 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
     ).toBe("#N/A")
     for (const col of ["Downside", "Base", "Upside", "active_live"] as const) {
       expect(
-        stressed30.value("PublicPriceAttribution", "ev_implied_tsr", col)
+        stressed30.value("PublicEvAttribution", "ev_implied_tsr", col)
       ).toBe("#N/A")
       expect(
-        stressed30.value("PublicPriceAttribution", "ev_tsr_tie_out_check", col)
+        stressed30.value("PublicEvAttribution", "ev_tsr_tie_out_check", col)
       ).toBe("#N/A")
       expect(
-        stressed30.value("PublicPriceAttribution", "pe_implied_tsr", col)
+        stressed30.value("PublicPeAttribution", "pe_implied_tsr", col)
       ).toBe("#N/A")
       expect(
-        stressed30.value("PublicPriceAttribution", "pe_tsr_tie_out_check", col)
+        stressed30.value("PublicPeAttribution", "pe_tsr_tie_out_check", col)
       ).toBe("#N/A")
     }
 
@@ -1538,11 +1746,7 @@ describe("Costco (COST) 3-Statement Financial Model & Valuation Suite", () => {
       )
     ).toBe("#N/A")
     expect(
-      stressedGm4.value(
-        "PublicPriceAttribution",
-        "implied_fy28_pe",
-        "active_live"
-      )
+      stressedGm4.value("PublicPeAttribution", "implied_fy28_pe", "active_live")
     ).toBe("#N/A")
   }, 20_000)
 })

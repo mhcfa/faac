@@ -126,16 +126,28 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
       label: string
     ): number => {
       const p = c.num("DcfBridge", "implied_share_price", "val")
-      const basic = c.num("DcfBridge", "basic_shares_cover", "val")
-      const fwd = c.num("DcfBridge", "fwd_shares", "val")
-      const rsuUnvested = c.num("DcfBridge", "rsu_unvested_shares", "val")
-      const rsuUnrec = c.num("DcfBridge", "rsu_unrecognized_comp", "val")
-      const mcpSh = c.num("DcfBridge", "mcp_conv_shares", "val")
+      const basic = c.num(
+        "DcfDilutionAndSpotAnchor",
+        "basic_shares_cover",
+        "val"
+      )
+      const fwd = c.num("DcfDilutionAndSpotAnchor", "fwd_shares", "val")
+      const rsuUnvested = c.num(
+        "DcfDilutionAndSpotAnchor",
+        "rsu_unvested_shares",
+        "val"
+      )
+      const rsuUnrec = c.num(
+        "DcfDilutionAndSpotAnchor",
+        "rsu_unrecognized_comp",
+        "val"
+      )
+      const mcpSh = c.num("DcfDilutionAndSpotAnchor", "mcp_conv_shares", "val")
       const mcpCash = c.num("DcfBridge", "mcp_cash_claim", "val")
       const coreEq = c.num("DcfBridge", "core_eq_pre_mcp", "val")
       const rsuInc = Math.max(0, rsuUnvested - rsuUnrec / p)
       expect(
-        c.num("DcfBridge", "rsu_tsm_inc_shares", "val"),
+        c.num("DcfDilutionAndSpotAnchor", "rsu_tsm_inc_shares", "val"),
         `${label} TSM RSU mismatch`
       ).toBeCloseTo(rsuInc, 6)
       const lhs = p * (basic + fwd + rsuInc + mcpSh) - mcpCash
@@ -151,11 +163,12 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
     try {
       const px1 = assertFourRegimeIdentity(base, "Regime 1 (Base)")
       expect(px1).toBeLessThanOrEqual(562.12)
-      expect(base.num("DcfBridge", "rsu_tsm_inc_shares", "val")).toBe(0)
-      expect(base.num("DcfBridge", "mcp_conv_shares", "val")).toBeCloseTo(
-        20.0,
-        6
-      )
+      expect(
+        base.num("DcfDilutionAndSpotAnchor", "rsu_tsm_inc_shares", "val")
+      ).toBe(0)
+      expect(
+        base.num("DcfDilutionAndSpotAnchor", "mcp_conv_shares", "val")
+      ).toBeCloseTo(20.0, 6)
       expect(base.num("DcfBridge", "mcp_cash_claim", "val")).toBe(0)
     } finally {
       base.dispose()
@@ -172,12 +185,11 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
       expect(px2).toBeGreaterThan(562.12)
       expect(px2).toBeLessThan(625)
       expect(
-        reg2.num("DcfBridge", "rsu_tsm_inc_shares", "val")
+        reg2.num("DcfDilutionAndSpotAnchor", "rsu_tsm_inc_shares", "val")
       ).toBeGreaterThan(0)
-      expect(reg2.num("DcfBridge", "mcp_conv_shares", "val")).toBeCloseTo(
-        20.0,
-        6
-      )
+      expect(
+        reg2.num("DcfDilutionAndSpotAnchor", "mcp_conv_shares", "val")
+      ).toBeCloseTo(20.0, 6)
       expect(reg2.num("DcfBridge", "mcp_cash_claim", "val")).toBe(0)
     } finally {
       reg2.dispose()
@@ -197,9 +209,11 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
       expect(px3).toBeGreaterThanOrEqual(625)
       expect(px3).toBeLessThanOrEqual(734.215)
       expect(
-        reg3.num("DcfBridge", "rsu_tsm_inc_shares", "val")
+        reg3.num("DcfDilutionAndSpotAnchor", "rsu_tsm_inc_shares", "val")
       ).toBeGreaterThan(0)
-      expect(reg3.num("DcfBridge", "mcp_conv_shares", "val")).toBe(0)
+      expect(
+        reg3.num("DcfDilutionAndSpotAnchor", "mcp_conv_shares", "val")
+      ).toBe(0)
       expect(reg3.num("DcfBridge", "mcp_cash_claim", "val")).toBeCloseTo(
         -12_500,
         6
@@ -214,12 +228,11 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
       const px4 = assertFourRegimeIdentity(upside, "Regime 4 (Upside)")
       expect(px4).toBeGreaterThan(734.215)
       expect(
-        upside.num("DcfBridge", "rsu_tsm_inc_shares", "val")
+        upside.num("DcfDilutionAndSpotAnchor", "rsu_tsm_inc_shares", "val")
       ).toBeGreaterThan(0)
-      expect(upside.num("DcfBridge", "mcp_conv_shares", "val")).toBeCloseTo(
-        17.025,
-        6
-      )
+      expect(
+        upside.num("DcfDilutionAndSpotAnchor", "mcp_conv_shares", "val")
+      ).toBeCloseTo(17.025, 6)
       expect(upside.num("DcfBridge", "mcp_cash_claim", "val")).toBe(0)
     } finally {
       upside.dispose()
@@ -303,7 +316,7 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
         }
       }
 
-      // PeerLtmEvBridge apples-to-apples finance lease principal inclusion in LTM CapEx & MSFT CY calendarization
+      // PeerLtmCapexSbc apples-to-apples finance lease principal inclusion in LTM CapEx & PeerConsensusEps MSFT CY calendarization
       const expectedFlp: Readonly<Record<string, number>> = {
         GOOGL: 3544,
         AMZN: 1681,
@@ -313,28 +326,28 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
         RDDT: 0,
       }
       for (const [ticker, flpVal] of Object.entries(expectedFlp)) {
-        expect(compiled.num("PeerLtmEvBridge", ticker, "ltm_flp")).toBeCloseTo(
+        expect(compiled.num("PeerLtmCapexSbc", ticker, "ltm_flp")).toBeCloseTo(
           flpVal,
           6
         )
         const ppe = -(
-          compiled.num("PeerLtmEvBridge", ticker, "cx_fy") +
-          compiled.num("PeerLtmEvBridge", ticker, "cx_ytd1") -
-          compiled.num("PeerLtmEvBridge", ticker, "cx_ytd0")
+          compiled.num("PeerLtmCapexSbc", ticker, "cx_fy") +
+          compiled.num("PeerLtmCapexSbc", ticker, "cx_ytd1") -
+          compiled.num("PeerLtmCapexSbc", ticker, "cx_ytd0")
         )
         expect(
-          compiled.num("PeerLtmEvBridge", ticker, "ltm_capex")
+          compiled.num("PeerLtmCapexSbc", ticker, "ltm_capex")
         ).toBeCloseTo(ppe + flpVal, 6)
       }
-      expect(compiled.num("PeerLtmEvBridge", "MSFT", "eps_cy26")).toBeCloseTo(
+      expect(compiled.num("PeerConsensusEps", "MSFT", "eps_cy26")).toBeCloseTo(
         (17.95 + 19.91) / 2,
         6
       )
-      expect(compiled.num("PeerLtmEvBridge", "MSFT", "eps_cy27")).toBeCloseTo(
+      expect(compiled.num("PeerConsensusEps", "MSFT", "eps_cy27")).toBeCloseTo(
         (19.91 + 23.81) / 2,
         6
       )
-      expect(compiled.num("PeerLtmEvBridge", "MSFT", "eps_cy28")).toBeCloseTo(
+      expect(compiled.num("PeerConsensusEps", "MSFT", "eps_cy28")).toBeCloseTo(
         (23.81 + 29.27) / 2,
         6
       )
@@ -419,20 +432,52 @@ describe("C4-C6: Live OLS betas, piecewise METAM conversion, attributions & comp
           6
         )
 
-        const spotEv = c.num("DcfBridge", "spot_pf_ev", "val")
+        const spotEv = c.num("DcfDilutionAndSpotAnchor", "spot_pf_ev", "val")
         spotEvByScenario.push(spotEv)
 
         if (scen === "base") {
           // Substituting spot_pf_ev into the exact 4-regime TSM RSU + METAM bridge reproduces spot ($560.84)
           const netBridge = c.num("DcfBridge", "net_bridge_ex_mcp", "val")
-          const evRsu = c.num("DcfBridge", "ev_rsu_cutoff", "val")
-          const evLower = c.num("DcfBridge", "ev_lower_cutoff", "val")
-          const evUpper = c.num("DcfBridge", "ev_upper_cutoff", "val")
-          const shMax = c.num("DcfBridge", "shares_max_conv", "val")
-          const shMin = c.num("DcfBridge", "shares_min_conv", "val")
-          const shFwd = c.num("DcfBridge", "shares_with_fwd", "val")
-          const rsuU = c.num("DcfBridge", "rsu_unvested_shares", "val")
-          const rsuC = c.num("DcfBridge", "rsu_unrecognized_comp", "val")
+          const evRsu = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "ev_rsu_cutoff",
+            "val"
+          )
+          const evLower = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "ev_lower_cutoff",
+            "val"
+          )
+          const evUpper = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "ev_upper_cutoff",
+            "val"
+          )
+          const shMax = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "shares_max_conv",
+            "val"
+          )
+          const shMin = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "shares_min_conv",
+            "val"
+          )
+          const shFwd = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "shares_with_fwd",
+            "val"
+          )
+          const rsuU = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "rsu_unvested_shares",
+            "val"
+          )
+          const rsuC = c.num(
+            "DcfDilutionAndSpotAnchor",
+            "rsu_unrecognized_comp",
+            "val"
+          )
           const mcpPref = c.num(
             "PostQ3FinancingRegistry",
             "mcp_base_liq_pref",

@@ -84,47 +84,47 @@ export function buildCompsSheet(
     const cells: Record<string, Cell | null> = {
       label: new Cell({ value: `${p.name} (${t})` }),
       spot_px: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "spot_px"]`,
+        expr: `PeerEvBridge["${t}", "spot_px"]`,
         format: "currency",
         decimals: 2,
       }),
       mkt_cap: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "mkt_cap"]`,
+        expr: `PeerEvBridge["${t}", "mkt_cap"]`,
         format: "currency",
         decimals: 0,
       }),
       ev: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "ev"]`,
+        expr: `PeerEvBridge["${t}", "ev"]`,
         format: "currency",
         decimals: 0,
       }),
       ltm_rev: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "ltm_rev"]`,
+        expr: `PeerLtmPnl["${t}", "ltm_rev"]`,
         format: "currency",
         decimals: 0,
       }),
       ytd_gr: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "ytd_rev_gr"]`,
+        expr: `PeerLtmPnl["${t}", "ytd_rev_gr"]`,
         format: "percentage",
         decimals: 1,
       }),
       ebit_mgn: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "ltm_ebit"] / PeerLtmEvBridge["${t}", "ltm_rev"]`,
+        expr: `PeerLtmPnl["${t}", "ltm_ebit"] / PeerLtmPnl["${t}", "ltm_rev"]`,
         format: "percentage",
         decimals: 1,
       }),
       capex_pct: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "ltm_capex"] / PeerLtmEvBridge["${t}", "ltm_rev"]`,
+        expr: `PeerLtmCapexSbc["${t}", "ltm_capex"] / PeerLtmPnl["${t}", "ltm_rev"]`,
         format: "percentage",
         decimals: 1,
       }),
       sbc_pct: new Cell({
-        expr: `PeerLtmEvBridge["${t}", "ltm_sbc"] / PeerLtmEvBridge["${t}", "ltm_rev"]`,
+        expr: `PeerLtmCapexSbc["${t}", "ltm_sbc"] / PeerLtmPnl["${t}", "ltm_rev"]`,
         format: "percentage",
         decimals: 1,
       }),
       roic: new Cell({
-        expr: `IF(PeerLtmEvBridge["${t}", "invested_capital"] > 0, PeerLtmEvBridge["${t}", "ltm_ebit"] * (1 - ScalarDrivers["effectiveTaxRate", "base"]) / PeerLtmEvBridge["${t}", "invested_capital"], NA())`,
+        expr: `IF(PeerEvBridge["${t}", "invested_capital"] > 0, PeerLtmPnl["${t}", "ltm_ebit"] * (1 - ScalarDrivers["effectiveTaxRate", "base"]) / PeerEvBridge["${t}", "invested_capital"], NA())`,
         format: "percentage",
         decimals: 1,
       }),
@@ -135,7 +135,7 @@ export function buildCompsSheet(
               note: "Suppressed: near-zero LTM GAAP EBITDA ($61M) produces non-meaningful 140.7x multiple.",
             })
           : new Cell({
-              expr: `IF(PeerLtmEvBridge["${t}", "ltm_ebitda"] > 0, PeerLtmEvBridge["${t}", "ev"] / PeerLtmEvBridge["${t}", "ltm_ebitda"], NA())`,
+              expr: `IF(PeerLtmPnl["${t}", "ltm_ebitda"] > 0, PeerEvBridge["${t}", "ev"] / PeerLtmPnl["${t}", "ltm_ebitda"], NA())`,
               format: "multiple",
               decimals: 1,
               note:
@@ -150,7 +150,7 @@ export function buildCompsSheet(
               note: "Suppressed: negative LTM GAAP operating income (-$119M).",
             })
           : new Cell({
-              expr: `IF(PeerLtmEvBridge["${t}", "ltm_ebit"] > 0, PeerLtmEvBridge["${t}", "ev"] / PeerLtmEvBridge["${t}", "ltm_ebit"], NA())`,
+              expr: `IF(PeerLtmPnl["${t}", "ltm_ebit"] > 0, PeerEvBridge["${t}", "ev"] / PeerLtmPnl["${t}", "ltm_ebit"], NA())`,
               format: "multiple",
               decimals: 1,
             }),
@@ -164,7 +164,7 @@ export function buildCompsSheet(
                   : "Suppressed: negative LTM EBITDA less CapEx (-$146M).",
             })
           : new Cell({
-              expr: `IF(PeerLtmEvBridge["${t}", "ltm_ebitda_ex_capex"] > 0, PeerLtmEvBridge["${t}", "ev"] / PeerLtmEvBridge["${t}", "ltm_ebitda_ex_capex"], NA())`,
+              expr: `IF(PeerLtmCapexSbc["${t}", "ltm_ebitda_ex_capex"] > 0, PeerEvBridge["${t}", "ev"] / PeerLtmCapexSbc["${t}", "ltm_ebitda_ex_capex"], NA())`,
               format: "multiple",
               decimals: 1,
             }),
@@ -175,7 +175,7 @@ export function buildCompsSheet(
               note: "Suppressed: near-zero CY26E consensus EPS ($0.02) produces non-meaningful 227.5x multiple.",
             })
           : new Cell({
-              expr: `IF(PeerLtmEvBridge["${t}", "eps_cy26"] > 0, PeerLtmEvBridge["${t}", "spot_px"] / PeerLtmEvBridge["${t}", "eps_cy26"], NA())`,
+              expr: `IF(PeerConsensusEps["${t}", "eps_cy26"] > 0, PeerEvBridge["${t}", "spot_px"] / PeerConsensusEps["${t}", "eps_cy26"], NA())`,
               format: "multiple",
               decimals: 1,
               note:
@@ -186,7 +186,7 @@ export function buildCompsSheet(
                     : undefined,
             }),
       pe_fy2: new Cell({
-        expr: `IF(PeerLtmEvBridge["${t}", "eps_cy27"] > 0, PeerLtmEvBridge["${t}", "spot_px"] / PeerLtmEvBridge["${t}", "eps_cy27"], NA())`,
+        expr: `IF(PeerConsensusEps["${t}", "eps_cy27"] > 0, PeerEvBridge["${t}", "spot_px"] / PeerConsensusEps["${t}", "eps_cy27"], NA())`,
         format: "multiple",
         decimals: 1,
         note:
@@ -195,7 +195,7 @@ export function buildCompsSheet(
             : undefined,
       }),
       pe_fy3: new Cell({
-        expr: `IF(PeerLtmEvBridge["${t}", "eps_cy28"] > 0, PeerLtmEvBridge["${t}", "spot_px"] / PeerLtmEvBridge["${t}", "eps_cy28"], NA())`,
+        expr: `IF(PeerConsensusEps["${t}", "eps_cy28"] > 0, PeerEvBridge["${t}", "spot_px"] / PeerConsensusEps["${t}", "eps_cy28"], NA())`,
         format: "multiple",
         decimals: 1,
         note:
@@ -330,7 +330,7 @@ export function buildCompsSheet(
         decimals: 0,
       }),
       ev: new Cell({
-        expr: 'DcfBridge["spot_pf_ev", "val"]',
+        expr: 'DcfDilutionAndSpotAnchor["spot_pf_ev", "val"]',
         format: "currency",
         decimals: 0,
         note: "Pro forma diluted spot EV incl. fair-value legacy notes, Nov 2026 USD/EUR notes, METAM preferred, 46M forward sale, non-op equity ex-VIEs, escrow PV, elapsed Q4 burn & $19.9B accrued legal.",
@@ -351,7 +351,7 @@ export function buildCompsSheet(
         decimals: 1,
       }),
       capex_pct: new Cell({
-        expr: '-CashFlowStatement["total_capex_outflow", "LTM Q3 26"] / IncomeStatement["revenue", "LTM Q3 26"]',
+        expr: '-CashReconAndFcf["total_capex_outflow", "LTM Q3 26"] / IncomeStatement["revenue", "LTM Q3 26"]',
         format: "percentage",
         decimals: 1,
       }),
@@ -367,17 +367,17 @@ export function buildCompsSheet(
         note: "Peer-aligned Q3 2026 ending financing IC (Equity + Carrying Debt - Cash, ex-legal accruals) for apples-to-apples peer comparison.",
       }),
       ev_ebitda: new Cell({
-        expr: 'DcfBridge["spot_pf_ev", "val"] / IncomeStatement["normalized_ebitda", "LTM Q3 26"]',
+        expr: 'DcfDilutionAndSpotAnchor["spot_pf_ev", "val"] / IncomeStatement["normalized_ebitda", "LTM Q3 26"]',
         format: "multiple",
         decimals: 1,
       }),
       ev_ebit: new Cell({
-        expr: 'DcfBridge["spot_pf_ev", "val"] / IncomeStatement["normalized_ebit", "LTM Q3 26"]',
+        expr: 'DcfDilutionAndSpotAnchor["spot_pf_ev", "val"] / IncomeStatement["normalized_ebit", "LTM Q3 26"]',
         format: "multiple",
         decimals: 1,
       }),
       ev_ebitda_capex: new Cell({
-        expr: 'IF((IncomeStatement["normalized_ebitda", "LTM Q3 26"] + CashFlowStatement["total_capex_outflow", "LTM Q3 26"]) > 0, DcfBridge["spot_pf_ev", "val"] / (IncomeStatement["normalized_ebitda", "LTM Q3 26"] + CashFlowStatement["total_capex_outflow", "LTM Q3 26"]), NA())',
+        expr: 'IF((IncomeStatement["normalized_ebitda", "LTM Q3 26"] + CashReconAndFcf["total_capex_outflow", "LTM Q3 26"]) > 0, DcfDilutionAndSpotAnchor["spot_pf_ev", "val"] / (IncomeStatement["normalized_ebitda", "LTM Q3 26"] + CashReconAndFcf["total_capex_outflow", "LTM Q3 26"]), NA())',
         format: "multiple",
         decimals: 1,
       }),
@@ -420,7 +420,7 @@ export function buildCompsSheet(
     header: "Benchmark Valuation Method",
   })
   xchk.addColumn("mult", { header: "Multiple" })
-  xchk.addColumn("metric", { header: "META Metric" })
+  xchk.addColumn("metric", { header: "META Value" })
   xchk.addColumn("implied_ev", { header: "Implied EV" })
   xchk.addColumn("implied_px", { header: "Implied Px" })
   xchk.addColumn("vs_spot", { header: "vs. Spot" })
@@ -458,7 +458,7 @@ export function buildCompsSheet(
         format: "percentage",
         decimals: 1,
       }),
-      notes: "Does not adjust for Meta's higher CapEx-to-EBITDA burden",
+      notes: "Excludes Meta's higher CapEx-to-EBITDA burden",
     },
   })
 
@@ -518,7 +518,7 @@ export function buildCompsSheet(
         format: "percentage",
         decimals: 1,
       }),
-      notes: "Calendarized (MSFT 50/50) on $33.92 FY27E consensus EPS",
+      notes: "Calendarized (MSFT 50/50) on $33.92 FY27E cons. EPS",
     },
   })
 
@@ -585,67 +585,242 @@ export function buildCompsSheet(
   })
 
   // =========================================================================
-  // 3. Peer LTM Calendarization & EV Bridge (Peer LTM Data Tab)
+  // 3. Peer LTM Calendarization & EV Bridge (4 Cohesive Stacked Tables)
   // =========================================================================
-  const sup = peerLtmDataSheet.addTable(
-    "PeerLtmEvBridge",
-    "Peer LTM Q3 2026 Calendarization & Enterprise Value Bridge",
+  const peerEv = peerLtmDataSheet.addTable(
+    "PeerEvBridge",
+    "Peer Market Capitalization, Balance Sheet & Enterprise Value Bridge",
     {
       subtitle: [
         SCALE_NOTE_USD_M,
-        "Audited SEC Form 10-K / Form 10-Q components; LTM = FY + current YTD − prior YTD (MSFT Jun 30 FYE: FY26 + Q1 FY27 − Q1 FY26)",
+        `Audited SEC Form 10-K / Form 10-Q balance sheet components; market prices as of ${VALUATION_AS_OF_DATE}`,
       ],
     }
   )
-  sup.addColumn("label", { role: "descriptor", header: "Peer" })
-  sup.addColumn("spot_px", { headers: ["Spot", "Px"] })
-  sup.addColumn("shares", { headers: ["Shares", "(M)"] })
-  sup.addColumn("mkt_cap", { headers: ["Market", "Cap"] })
-  sup.addColumn("cash", { headers: ["Cash &", "Equiv."] })
-  sup.addColumn("mkt_sec", { headers: ["Mkt.", "Sec."] })
-  sup.addColumn("ltd", { headers: ["LT", "Debt"] })
-  sup.addColumn("ltd_cur", { headers: ["Cur. LT", "Debt"] })
-  sup.addColumn("st_debt", { headers: ["ST", "Debt"] })
-  sup.addColumn("fl_cur", { headers: ["Fin. Lse", "Cur."] })
-  sup.addColumn("fl_nc", { headers: ["Fin. Lse", "Non-Cur."] })
-  sup.addColumn("pref", { headers: ["Pref.", "Stock"] })
-  sup.addColumn("equity", { headers: ["Book", "Equity"] })
-  sup.addColumn("invested_capital", { headers: ["Invested", "Capital"] })
-  sup.addColumn("ev", { headers: ["Ent.", "Value"], style: "bold" })
-  sup.addColumn("rev_fy", { headers: ["Rev", "FY"] })
-  sup.addColumn("rev_ytd1", { headers: ["Rev", "YTD 1"] })
-  sup.addColumn("rev_ytd0", { headers: ["Rev", "YTD 0"] })
-  sup.addColumn("ltm_rev", { headers: ["LTM", "Rev"], style: "bold" })
-  sup.addColumn("ytd_rev_gr", { headers: ["YTD", "Growth"] })
-  sup.addColumn("ebit_fy", { headers: ["EBIT", "FY"] })
-  sup.addColumn("ebit_ytd1", { headers: ["EBIT", "YTD 1"] })
-  sup.addColumn("ebit_ytd0", { headers: ["EBIT", "YTD 0"] })
-  sup.addColumn("ltm_ebit", { headers: ["LTM", "EBIT"], style: "bold" })
-  sup.addColumn("da_fy", { headers: ["D&A", "FY"] })
-  sup.addColumn("da_ytd1", { headers: ["D&A", "YTD 1"] })
-  sup.addColumn("da_ytd0", { headers: ["D&A", "YTD 0"] })
-  sup.addColumn("ltm_da", { headers: ["LTM", "D&A"] })
-  sup.addColumn("ltm_ebitda", { headers: ["LTM", "EBITDA"], style: "bold" })
-  sup.addColumn("cx_fy", { headers: ["PP&E", "FY"] })
-  sup.addColumn("cx_ytd1", { headers: ["PP&E", "YTD 1"] })
-  sup.addColumn("cx_ytd0", { headers: ["PP&E", "YTD 0"] })
-  sup.addColumn("flp_fy", { headers: ["Fin. Lse", "FY"] })
-  sup.addColumn("flp_ytd1", { headers: ["Fin. Lse", "YTD 1"] })
-  sup.addColumn("flp_ytd0", { headers: ["Fin. Lse", "YTD 0"] })
-  sup.addColumn("ltm_flp", { headers: ["LTM", "Fin. Lse"] })
-  sup.addColumn("ltm_capex", { headers: ["LTM", "CapEx"] })
-  sup.addColumn("ltm_ebitda_ex_capex", { headers: ["EBITDA", "− CapEx"] })
-  sup.addColumn("sbc_fy", { headers: ["SBC", "FY"] })
-  sup.addColumn("sbc_ytd1", { headers: ["SBC", "YTD 1"] })
-  sup.addColumn("sbc_ytd0", { headers: ["SBC", "YTD 0"] })
-  sup.addColumn("ltm_sbc", { headers: ["LTM", "SBC"] })
-  sup.addColumn("eps_fy0", { headers: ["EPS", "FY0A"] })
-  sup.addColumn("eps_fy1", { headers: ["EPS", "FY1"] })
-  sup.addColumn("eps_fy2", { headers: ["EPS", "FY2"] })
-  sup.addColumn("eps_fy3", { headers: ["EPS", "FY3"] })
-  sup.addColumn("eps_cy26", { headers: ["CY26E", "EPS"] })
-  sup.addColumn("eps_cy27", { headers: ["CY27E", "EPS"] })
-  sup.addColumn("eps_cy28", { headers: ["CY28E", "EPS"] })
+  peerEv.addColumn("label", { role: "descriptor", header: "Peer" })
+  peerEv.addColumn("spot_px", { headers: ["Spot", "Px"], group: "Market Cap" })
+  peerEv.addColumn("shares", {
+    headers: ["Shares", "(M)"],
+    group: "Market Cap",
+  })
+  peerEv.addColumn("mkt_cap", {
+    headers: ["Market", "Cap"],
+    group: "Market Cap",
+  })
+  peerEv.addColumn("cash", {
+    headers: ["Cash &", "Equiv."],
+    group: "Cash & Sec.",
+  })
+  peerEv.addColumn("mkt_sec", {
+    headers: ["Mkt.", "Sec."],
+    group: "Cash & Sec.",
+  })
+  peerEv.addColumn("ltd", {
+    headers: ["LT", "Debt"],
+    group: "Debt & Finance Leases",
+  })
+  peerEv.addColumn("ltd_cur", {
+    headers: ["Cur. LT", "Debt"],
+    group: "Debt & Finance Leases",
+  })
+  peerEv.addColumn("st_debt", {
+    headers: ["ST", "Debt"],
+    group: "Debt & Finance Leases",
+  })
+  peerEv.addColumn("fl_cur", {
+    headers: ["Fin. Lse", "Cur."],
+    group: "Debt & Finance Leases",
+  })
+  peerEv.addColumn("fl_nc", {
+    headers: ["Fin. Lse", "Non-Cur."],
+    group: "Debt & Finance Leases",
+  })
+  peerEv.addColumn("pref", {
+    headers: ["Pref.", "Stock"],
+    group: "Debt & Finance Leases",
+  })
+  peerEv.addColumn("equity", {
+    headers: ["Book", "Equity"],
+    group: "Valuation Bridge",
+  })
+  peerEv.addColumn("invested_capital", {
+    headers: ["Invested", "Capital"],
+    group: "Valuation Bridge",
+  })
+  peerEv.addColumn("ev", {
+    headers: ["Ent.", "Value"],
+    group: "Valuation Bridge",
+    style: "bold",
+  })
+
+  const peerPnl = peerLtmDataSheet.addTable(
+    "PeerLtmPnl",
+    "Peer LTM Q3 2026 Calendarized Revenue, EBIT & EBITDA Bridge",
+    {
+      subtitle: [
+        SCALE_NOTE_USD_M,
+        "Audited SEC Form 10-K / Form 10-Q; LTM = FY + current YTD − prior YTD (MSFT Jun 30 FYE: FY26 + Q1 FY27 − Q1 FY26)",
+      ],
+    }
+  )
+  peerPnl.addColumn("label", { role: "descriptor", header: "Peer" })
+  peerPnl.addColumn("rev_fy", { headers: ["Rev", "FY"], group: "LTM Revenue" })
+  peerPnl.addColumn("rev_ytd1", {
+    headers: ["Rev", "YTD 1"],
+    group: "LTM Revenue",
+  })
+  peerPnl.addColumn("rev_ytd0", {
+    headers: ["Rev", "YTD 0"],
+    group: "LTM Revenue",
+  })
+  peerPnl.addColumn("ltm_rev", {
+    headers: ["LTM", "Rev"],
+    group: "LTM Revenue",
+    style: "bold",
+  })
+  peerPnl.addColumn("ytd_rev_gr", {
+    headers: ["YTD", "Growth"],
+    group: "LTM Revenue",
+  })
+  peerPnl.addColumn("ebit_fy", { headers: ["EBIT", "FY"], group: "LTM EBIT" })
+  peerPnl.addColumn("ebit_ytd1", {
+    headers: ["EBIT", "YTD 1"],
+    group: "LTM EBIT",
+  })
+  peerPnl.addColumn("ebit_ytd0", {
+    headers: ["EBIT", "YTD 0"],
+    group: "LTM EBIT",
+  })
+  peerPnl.addColumn("ltm_ebit", {
+    headers: ["LTM", "EBIT"],
+    group: "LTM EBIT",
+    style: "bold",
+  })
+  peerPnl.addColumn("da_fy", {
+    headers: ["D&A", "FY"],
+    group: "LTM D&A & EBITDA",
+  })
+  peerPnl.addColumn("da_ytd1", {
+    headers: ["D&A", "YTD 1"],
+    group: "LTM D&A & EBITDA",
+  })
+  peerPnl.addColumn("da_ytd0", {
+    headers: ["D&A", "YTD 0"],
+    group: "LTM D&A & EBITDA",
+  })
+  peerPnl.addColumn("ltm_da", {
+    headers: ["LTM", "D&A"],
+    group: "LTM D&A & EBITDA",
+  })
+  peerPnl.addColumn("ltm_ebitda", {
+    headers: ["LTM", "EBITDA"],
+    group: "LTM D&A & EBITDA",
+    style: "bold",
+  })
+
+  const peerCapexSbc = peerLtmDataSheet.addTable(
+    "PeerLtmCapexSbc",
+    "Peer LTM Q3 2026 CapEx, Finance Lease & Share-Based Compensation Bridge",
+    {
+      subtitle: [
+        SCALE_NOTE_USD_M,
+        "LTM CapEx includes cash PP&E purchases and finance lease principal; EBITDA − CapEx links to LTM P&L",
+      ],
+    }
+  )
+  peerCapexSbc.addColumn("label", { role: "descriptor", header: "Peer" })
+  peerCapexSbc.addColumn("cx_fy", {
+    headers: ["PP&E", "FY"],
+    group: "Cash PP&E CapEx",
+  })
+  peerCapexSbc.addColumn("cx_ytd1", {
+    headers: ["PP&E", "YTD 1"],
+    group: "Cash PP&E CapEx",
+  })
+  peerCapexSbc.addColumn("cx_ytd0", {
+    headers: ["PP&E", "YTD 0"],
+    group: "Cash PP&E CapEx",
+  })
+  peerCapexSbc.addColumn("flp_fy", {
+    headers: ["Fin. Lse", "FY"],
+    group: "Finance Lease Principal",
+  })
+  peerCapexSbc.addColumn("flp_ytd1", {
+    headers: ["Fin. Lse", "YTD 1"],
+    group: "Finance Lease Principal",
+  })
+  peerCapexSbc.addColumn("flp_ytd0", {
+    headers: ["Fin. Lse", "YTD 0"],
+    group: "Finance Lease Principal",
+  })
+  peerCapexSbc.addColumn("ltm_flp", {
+    headers: ["LTM", "Fin. Lse"],
+    group: "Finance Lease Principal",
+  })
+  peerCapexSbc.addColumn("ltm_capex", {
+    headers: ["LTM", "CapEx"],
+    group: "LTM CapEx & CF",
+  })
+  peerCapexSbc.addColumn("ltm_ebitda_ex_capex", {
+    headers: ["EBITDA", "− CapEx"],
+    group: "LTM CapEx & CF",
+  })
+  peerCapexSbc.addColumn("sbc_fy", {
+    headers: ["SBC", "FY"],
+    group: "Share-Based Comp.",
+  })
+  peerCapexSbc.addColumn("sbc_ytd1", {
+    headers: ["SBC", "YTD 1"],
+    group: "Share-Based Comp.",
+  })
+  peerCapexSbc.addColumn("sbc_ytd0", {
+    headers: ["SBC", "YTD 0"],
+    group: "Share-Based Comp.",
+  })
+  peerCapexSbc.addColumn("ltm_sbc", {
+    headers: ["LTM", "SBC"],
+    group: "Share-Based Comp.",
+  })
+
+  const peerEps = peerLtmDataSheet.addTable(
+    "PeerConsensusEps",
+    "Peer Consensus Diluted EPS & Calendarization Bridge",
+    {
+      subtitle: [
+        `Nasdaq analyst consensus EPS as of ${VALUATION_AS_OF_DATE} ($/share)`,
+        "MSFT Jun 30 FYE calendarized 50/50 across adjacent fiscal years",
+      ],
+    }
+  )
+  peerEps.addColumn("label", { role: "descriptor", header: "Peer" })
+  peerEps.addColumn("eps_fy0", {
+    headers: ["EPS", "FY0A"],
+    group: "Fiscal Year EPS",
+  })
+  peerEps.addColumn("eps_fy1", {
+    headers: ["EPS", "FY1"],
+    group: "Fiscal Year EPS",
+  })
+  peerEps.addColumn("eps_fy2", {
+    headers: ["EPS", "FY2"],
+    group: "Fiscal Year EPS",
+  })
+  peerEps.addColumn("eps_fy3", {
+    headers: ["EPS", "FY3"],
+    group: "Fiscal Year EPS",
+  })
+  peerEps.addColumn("eps_cy26", {
+    headers: ["CY26E", "EPS"],
+    group: "Calendarized EPS",
+  })
+  peerEps.addColumn("eps_cy27", {
+    headers: ["CY27E", "EPS"],
+    group: "Calendarized EPS",
+  })
+  peerEps.addColumn("eps_cy28", {
+    headers: ["CY28E", "EPS"],
+    group: "Calendarized EPS",
+  })
 
   for (const p of PEER_DEFINITIONS) {
     const t = p.ticker
@@ -658,7 +833,7 @@ export function buildCompsSheet(
         ? v(p.flpSchedule, p.flpRowId, period)
         : 0
 
-    sup.addRow(t, {
+    peerEv.addRow(t, {
       cells: {
         label: new Cell({ value: t }),
         spot_px: new Cell({
@@ -755,6 +930,12 @@ export function buildCompsSheet(
           format: "currency",
           decimals: 0,
         }),
+      },
+    })
+
+    peerPnl.addRow(t, {
+      cells: {
+        label: new Cell({ value: t }),
         rev_fy: new Cell({
           value: v("peer_income_statement", "revenue", p.fyPeriod),
           format: "currency",
@@ -845,6 +1026,12 @@ export function buildCompsSheet(
           format: "currency",
           decimals: 0,
         }),
+      },
+    })
+
+    peerCapexSbc.addRow(t, {
+      cells: {
+        label: new Cell({ value: t }),
         cx_fy: new Cell({
           value: v("peer_cash_flow", "capex_ppe", p.fyPeriod),
           format: "currency",
@@ -886,7 +1073,7 @@ export function buildCompsSheet(
           decimals: 0,
         }),
         ltm_ebitda_ex_capex: new Cell({
-          expr: '@table[@row, "ltm_ebitda"] - @table[@row, "ltm_capex"]',
+          expr: 'PeerLtmPnl[@row, "ltm_ebitda"] - @table[@row, "ltm_capex"]',
           format: "currency",
           decimals: 0,
         }),
@@ -918,6 +1105,12 @@ export function buildCompsSheet(
           format: "currency",
           decimals: 0,
         }),
+      },
+    })
+
+    peerEps.addRow(t, {
+      cells: {
+        label: new Cell({ value: t }),
         eps_fy0:
           p.epsFy0Period !== null
             ? new Cell({
@@ -976,4 +1169,11 @@ export function buildCompsSheet(
       },
     })
   }
+
+  peerLtmDataSheet.setBands([
+    peerEv,
+    peerPnl,
+    { lanes: [peerCapexSbc], pageBreakBefore: true },
+    peerEps,
+  ])
 }

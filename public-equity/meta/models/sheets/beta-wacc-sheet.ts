@@ -109,7 +109,7 @@ export function buildBetaWaccSheet(
   wacc.addRow("basic_shares_cover", {
     cells: {
       label: new Cell({ value: "Total basic common shares (Oct 16, M)" }),
-      notes: "Equals diluted at spot (< $562.12)",
+      notes: "Equals diluted (<$562.12)",
     },
     expr: '@table["class_a_shares_cover", "val"] + @table["class_b_shares_cover", "val"]',
     format: "number",
@@ -118,7 +118,7 @@ export function buildBetaWaccSheet(
   wacc.addRow("spot_mkt_cap", {
     cells: {
       label: new Cell({ value: "Spot common equity market cap ($M)" }),
-      notes: "Cover basic shares × $560.84 spot",
+      notes: "Basic cover shares × $560.84",
     },
     expr: '@table["spot_price", "val"] * @table["basic_shares_cover", "val"]',
     format: "currency",
@@ -167,7 +167,7 @@ export function buildBetaWaccSheet(
     cells: {
       label: new Cell({ value: "ICE BofA U.S. Corporate Single-A OAS" }),
       val: data.val("macro_rates", "a_oas", "2026-11-19", { entity: "US" }),
-      notes: "FRED Single-A corporate index OAS",
+      notes: "FRED Single-A corp. index OAS",
     },
     format: "percentage",
     decimals: 2,
@@ -190,7 +190,7 @@ export function buildBetaWaccSheet(
   wacc.addRow("pf_pure_debt", {
     cells: {
       label: new Cell({ value: "Pro forma funded pure debt (fair value)" }),
-      notes: "Legacy FV + Nov 2026 USD/EUR notes",
+      notes: "Legacy FV + Nov 2026 notes",
     },
     expr: '@table["q3_legacy_debt_fv", "val"] + PostQ3FinancingRegistry["total_closed_q4_debt", "val"]',
     format: "currency",
@@ -280,7 +280,7 @@ export function buildBetaWaccSheet(
   wacc.addRow("hist_avg_de_ratio", {
     cells: {
       label: new Cell({ value: "Lookback avg. gross D/E (FY22–Q3 26)" }),
-      notes: "5-point avg. for Hamada unlevering",
+      notes: "5-pt avg. for Hamada unlevering",
     },
     expr: 'AVERAGE(@table["hist_de_2022a".."hist_de_q326a", "val"])',
     format: "percentage",
@@ -331,7 +331,7 @@ export function buildBetaWaccSheet(
   wacc.addRow("active_beta", {
     cells: {
       label: new Cell({ value: "Pro forma relevered equity beta" }),
-      notes: "Hamada-relevered to pro forma D/E",
+      notes: "Hamada-relevered to PF D/E",
     },
     expr: '@table["unlevered_beta", "val"] * (1 + (1 - @table["tax_rate", "val"]) * @table["pf_de_ratio", "val"])',
     format: "number",
@@ -354,7 +354,7 @@ export function buildBetaWaccSheet(
   wacc.addRow("kd_pretax", {
     cells: {
       label: new Cell({ value: "Marginal pre-tax Kd (Nov 2026 10Y USD)" }),
-      notes: "Nov 5, 2026 10Y senior note coupon",
+      notes: "Nov 5, 2026 10Y note coupon",
     },
     expr: 'PostQ3FinancingRegistry["nov_usd_2036", "coupon"]',
     format: "percentage",
@@ -402,7 +402,7 @@ export function buildBetaWaccSheet(
   wacc.addRow("beta_base_relevered", {
     cells: {
       label: new Cell({ value: "Memo: Base Case relevered equity beta" }),
-      notes: "5Y raw beta relevered at Base ETR",
+      notes: "5Y raw beta at Base ETR",
     },
     expr: 'BetaSummary["META", "beta_5y_raw"] / (1 + (1 - ScalarDrivers["effectiveTaxRate", "base"]) * @table["hist_avg_de_ratio", "val"]) * (1 + (1 - ScalarDrivers["effectiveTaxRate", "base"]) * @table["pf_de_ratio", "val"])',
     format: "number",
@@ -531,7 +531,7 @@ export function buildBetaWaccSheet(
   betaSum.addSectionHeader("Peer group medians")
   betaSum.addRow("group_a_median", {
     cells: {
-      label: new Cell({ value: "Group A Median (GOOGL, AMZN, MSFT)" }),
+      label: new Cell({ value: "Group A Median (GOOGL/AMZN/MSFT)" }),
       beta_5y_raw: new Cell({
         expr: 'MEDIAN(@table["GOOGL".."MSFT", @col])',
         format: "number",
@@ -572,7 +572,7 @@ export function buildBetaWaccSheet(
   })
   betaSum.addRow("group_b_median", {
     cells: {
-      label: new Cell({ value: "Group B Median (PINS, SNAP, RDDT)" }),
+      label: new Cell({ value: "Group B Median (PINS/SNAP/RDDT)" }),
       beta_5y_raw: new Cell({
         expr: 'MEDIAN(@table["PINS".."RDDT", @col])',
         format: "number",

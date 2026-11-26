@@ -65,21 +65,23 @@ export interface SpotIndifferenceRow {
 /**
  * Exact price-consistent EV-to-share-price formula combining Treasury Stock
  * Method unvested RSUs and contractual METAM mandatory convertible preferred
- * conversion terms, factored via live threshold rows on DcfBridge.
+ * conversion terms, factored via live threshold rows on DcfDilutionAndSpotAnchor.
  */
 export function exactFourRegimePriceExpr(
   evExpr: string,
-  tablePrefix = "DcfBridge"
+  bridgeTable = "DcfBridge",
+  dilutionTable = "DcfDilutionAndSpotAnchor"
 ): string {
-  const t = tablePrefix
+  const b = bridgeTable
+  const d = dilutionTable
   return (
-    `IF(${evExpr} < ${t}["ev_rsu_cutoff", "val"], ` +
-    `(${evExpr} + ${t}["net_bridge_ex_mcp", "val"]) / ${t}["shares_max_conv", "val"], ` +
-    `IF(${evExpr} < ${t}["ev_lower_cutoff", "val"], ` +
-    `(${evExpr} + ${t}["bridge_r2_r4_adj", "val"]) / ${t}["shares_r2_total", "val"], ` +
-    `IF(${evExpr} <= ${t}["ev_upper_cutoff", "val"], ` +
-    `(${evExpr} + ${t}["bridge_r3_adj", "val"]) / ${t}["shares_r3_total", "val"], ` +
-    `(${evExpr} + ${t}["bridge_r2_r4_adj", "val"]) / ${t}["shares_r4_total", "val"])))`
+    `IF(${evExpr} < ${d}["ev_rsu_cutoff", "val"], ` +
+    `(${evExpr} + ${b}["net_bridge_ex_mcp", "val"]) / ${d}["shares_max_conv", "val"], ` +
+    `IF(${evExpr} < ${d}["ev_lower_cutoff", "val"], ` +
+    `(${evExpr} + ${d}["bridge_r2_r4_adj", "val"]) / ${d}["shares_r2_total", "val"], ` +
+    `IF(${evExpr} <= ${d}["ev_upper_cutoff", "val"], ` +
+    `(${evExpr} + ${d}["bridge_r3_adj", "val"]) / ${d}["shares_r3_total", "val"], ` +
+    `(${evExpr} + ${d}["bridge_r2_r4_adj", "val"]) / ${d}["shares_r4_total", "val"])))`
   )
 }
 
@@ -342,204 +344,16 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
   })
 
   bridge.addRowGutter()
-  bridge.addSectionHeader("Diluted share count & mandatory convertible payoff")
+  bridge.addSectionHeader("Implied equity value & per-share valuation")
 
-  bridge.addRow("basic_shares_cover", {
-    cells: {
-      label: new Cell({ value: "Basic common shares (Oct 16, 2026 cover)" }),
-      notes: "Q3 2026 Form 10-Q cover page (M)",
-    },
-    expr: 'WaccBuild["basic_shares_cover", "val"]',
-    format: "number",
-    decimals: 2,
-  })
-  bridge.addRow("fwd_shares", {
-    cells: {
-      label: new Cell({ value: "(+) Class A forward sale shares (M)" }),
-      notes: "Base + exercised over-allotment",
-    },
-    expr: 'PostQ3FinancingRegistry["fwd_total_shares", "val"]',
-    format: "number",
-    decimals: 2,
-  })
-  bridge.addRow("shares_with_fwd", {
-    cells: {
-      label: new Cell({ value: "Basic + forward sale shares (M)" }),
-      notes: null,
-    },
-    expr: '@table["basic_shares_cover", "val"] + @table["fwd_shares", "val"]',
-    format: "number",
-    decimals: 2,
-  })
-  bridge.addRow("rsu_unvested_shares", {
-    cells: {
-      label: new Cell({ value: "Unvested RSUs outstanding (Q3 26, M)" }),
-      val: rsuUnvested,
-      notes: "Q3 2026 Form 10-Q Note 11",
-    },
-    format: "number",
-    decimals: 3,
-  })
-  bridge.addRow("rsu_unrecognized_comp", {
-    cells: {
-      label: new Cell({ value: "Unrecognized RSU comp. cost (Q3 26, $M)" }),
-      val: rsuUnrecComp,
-      notes: "Assumed TSM buyback cash (N.11)",
-    },
-    format: "currency",
-    decimals: 0,
-  })
-  bridge.addRow("rsu_breakeven_px", {
-    cells: {
-      label: new Cell({ value: "TSM RSU dilution break-even share price" }),
-      notes: "Zero RSU dilution below $562.12",
-    },
-    expr: '@table["rsu_unrecognized_comp", "val"] / @table["rsu_unvested_shares", "val"]',
-    format: "currency",
-    decimals: 2,
-  })
-  bridge.addRow("shares_max_conv", {
-    cells: {
-      label: new Cell({ value: "Basic + fwd + max METAM shares (< $625)" }),
-      notes: "20.000M max METAM conv. shares",
-    },
-    expr: '@table["shares_with_fwd", "val"] + PostQ3FinancingRegistry["mcp_max_shares", "val"]',
-    format: "number",
-    decimals: 3,
-  })
-  bridge.addRow("shares_min_conv", {
-    cells: {
-      label: new Cell({ value: "Basic + fwd + min METAM shares (> $734)" }),
-      notes: "17.025M min METAM conv. shares",
-    },
-    expr: '@table["shares_with_fwd", "val"] + PostQ3FinancingRegistry["mcp_min_shares", "val"]',
-    format: "number",
-    decimals: 3,
-  })
-  bridge.addRow("bridge_r2_r4_adj", {
-    cells: {
-      label: new Cell({
-        value: "Equity bridge incl. unrecognized RSU SBC",
-        indent: 1,
-      }),
-      notes: "For P > $562.12 outside band",
-    },
-    expr: '@table["net_bridge_ex_mcp", "val"] + @table["rsu_unrecognized_comp", "val"]',
-    format: "currency",
-    decimals: 1,
-  })
-  bridge.addRow("bridge_r3_adj", {
-    cells: {
-      label: new Cell({
-        value: "Fixed-value band bridge (less $12.5B pref)",
-        indent: 1,
-      }),
-      notes: "In $625.00–$734.21 METAM band",
-    },
-    expr: '@table["bridge_r2_r4_adj", "val"] - PostQ3FinancingRegistry["mcp_base_liq_pref", "val"]',
-    format: "currency",
-    decimals: 1,
-  })
-  bridge.addRow("shares_r2_total", {
-    cells: {
-      label: new Cell({
-        value: "Diluted shares: max METAM + unvested RSUs",
-        indent: 1,
-      }),
-      notes: "Price band $562.12–$625.00 (M sh)",
-    },
-    expr: '@table["shares_max_conv", "val"] + @table["rsu_unvested_shares", "val"]',
-    format: "number",
-    decimals: 3,
-  })
-  bridge.addRow("shares_r3_total", {
-    cells: {
-      label: new Cell({
-        value: "Diluted shares: basic + fwd + unvested RSUs",
-        indent: 1,
-      }),
-      notes: "Price band $625.00–$734.21 (M sh)",
-    },
-    expr: '@table["shares_with_fwd", "val"] + @table["rsu_unvested_shares", "val"]',
-    format: "number",
-    decimals: 3,
-  })
-  bridge.addRow("shares_r4_total", {
-    cells: {
-      label: new Cell({
-        value: "Diluted shares: min METAM + unvested RSUs",
-        indent: 1,
-      }),
-      notes: "Price band > $734.21 (M sh)",
-    },
-    expr: '@table["shares_min_conv", "val"] + @table["rsu_unvested_shares", "val"]',
-    format: "number",
-    decimals: 3,
-  })
-  bridge.addRow("ev_rsu_cutoff", {
-    cells: {
-      label: new Cell({ value: "EV threshold: TSM RSU break-even ($562.12)" }),
-      notes: null,
-    },
-    expr: '@table["rsu_breakeven_px", "val"] * @table["shares_max_conv", "val"] - @table["net_bridge_ex_mcp", "val"]',
-    format: "currency",
-    decimals: 0,
-  })
-  bridge.addRow("ev_lower_cutoff", {
-    cells: {
-      label: new Cell({ value: "EV threshold: METAM lower ($625.00)" }),
-      notes: null,
-    },
-    expr: 'PostQ3FinancingRegistry["mcp_lower_threshold", "val"] * @table["shares_r2_total", "val"] - @table["bridge_r2_r4_adj", "val"]',
-    format: "currency",
-    decimals: 0,
-  })
-  bridge.addRow("ev_upper_cutoff", {
-    cells: {
-      label: new Cell({ value: "EV threshold: METAM upper ($734.21)" }),
-      notes: null,
-    },
-    expr: 'PostQ3FinancingRegistry["mcp_upper_threshold", "val"] * @table["shares_r4_total", "val"] - @table["bridge_r2_r4_adj", "val"]',
-    format: "currency",
-    decimals: 0,
-  })
-  bridge.addRow("implied_share_price", {
-    cells: {
-      label: new Cell({ value: "Diluted share price (DCF)" }),
-      notes: "Price-consistent TSM RSU & METAM",
-    },
-    expr: exactFourRegimePriceExpr('@table["implied_ev", "val"]', "@table"),
-    format: "currency",
-    decimals: 2,
-    style: "total",
-    highlight: true,
-  })
-  bridge.addRow("rsu_tsm_inc_shares", {
-    cells: {
-      label: new Cell({ value: "Incremental TSM RSU shares at DCF px (M)" }),
-      notes: "Zero below $562.12/sh break-even",
-    },
-    expr: 'IF(@table["implied_share_price", "val"] > 0, MAX(0, @table["rsu_unvested_shares", "val"] - @table["rsu_unrecognized_comp", "val"] / @table["implied_share_price", "val"]), 0)',
-    format: "number",
-    decimals: 3,
-  })
   bridge.addRow("mcp_cash_claim", {
     cells: {
       label: new Cell({ value: "METAM fixed cash-equivalent claim" }),
       notes: "−$12.5B inside $625–$734.21 band",
     },
-    expr: 'IF(AND(@table["implied_ev", "val"] >= @table["ev_lower_cutoff", "val"], @table["implied_ev", "val"] <= @table["ev_upper_cutoff", "val"]), -PostQ3FinancingRegistry["mcp_base_liq_pref", "val"], 0)',
+    expr: 'IF(AND(@table["implied_ev", "val"] >= DcfDilutionAndSpotAnchor["ev_lower_cutoff", "val"], @table["implied_ev", "val"] <= DcfDilutionAndSpotAnchor["ev_upper_cutoff", "val"]), -PostQ3FinancingRegistry["mcp_base_liq_pref", "val"], 0)',
     format: "currency",
     decimals: 0,
-  })
-  bridge.addRow("mcp_conv_shares", {
-    cells: {
-      label: new Cell({ value: "METAM conversion shares added (M)" }),
-      notes: "20.0M < $625; 17.025M > $734.21",
-    },
-    expr: 'IF(@table["implied_ev", "val"] < @table["ev_lower_cutoff", "val"], PostQ3FinancingRegistry["mcp_max_shares", "val"], IF(@table["implied_ev", "val"] > @table["ev_upper_cutoff", "val"], PostQ3FinancingRegistry["mcp_min_shares", "val"], 0))',
-    format: "number",
-    decimals: 3,
   })
   bridge.addRow("implied_common_equity", {
     cells: {
@@ -554,11 +368,26 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
   bridge.addRow("pro_forma_diluted_shares", {
     cells: {
       label: new Cell({ value: "Pro forma diluted shares at DCF px (M)" }),
-      notes: null,
+      notes: "Basic + fwd + TSM RSUs + METAM",
     },
-    expr: '@table["shares_with_fwd", "val"] + @table["rsu_tsm_inc_shares", "val"] + @table["mcp_conv_shares", "val"]',
+    expr: 'DcfDilutionAndSpotAnchor["shares_with_fwd", "val"] + DcfDilutionAndSpotAnchor["rsu_tsm_inc_shares", "val"] + DcfDilutionAndSpotAnchor["mcp_conv_shares", "val"]',
     format: "number",
     decimals: 3,
+  })
+  bridge.addRow("implied_share_price", {
+    cells: {
+      label: new Cell({ value: "Diluted share price (DCF)" }),
+      notes: "Price-consistent TSM RSU & METAM",
+    },
+    expr: exactFourRegimePriceExpr(
+      '@table["implied_ev", "val"]',
+      "@table",
+      "DcfDilutionAndSpotAnchor"
+    ),
+    format: "currency",
+    decimals: 2,
+    style: "total",
+    highlight: true,
   })
   bridge.addRow("upside_downside_vs_spot", {
     cells: {
@@ -571,10 +400,214 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     style: "bold",
   })
 
-  bridge.addRowGutter()
-  bridge.addSectionHeader("Spot enterprise value & variance attribution anchor")
+  // =========================================================================
+  // 1b. Page 2 Left Lane (Cols B..I): Diluted Share Mechanics & Spot Anchor
+  // =========================================================================
+  const dilutionAnchor = sheet.addTable(
+    "DcfDilutionAndSpotAnchor",
+    "Diluted Share Count Mechanics & Spot Enterprise Value Anchor",
+    {
+      subtitle: [
+        SCALE_NOTE_USD_M,
+        "Price-consistent TSM RSU / METAM dilution cutoffs & invariant spot EV anchor",
+      ],
+    }
+  )
+  dilutionAnchor.addColumn("label", {
+    role: "descriptor",
+    header: "Dilution / Spot Anchor Line",
+  })
+  dilutionAnchor.addColumn("val", { header: "Value" })
+  dilutionAnchor.addColumn("notes", { role: "descriptor", header: "Notes" })
 
-  bridge.addRow("spot_q4_base_ebit", {
+  dilutionAnchor.addSectionHeader(
+    "Diluted share count & mandatory convertible payoff"
+  )
+
+  dilutionAnchor.addRow("basic_shares_cover", {
+    cells: {
+      label: new Cell({ value: "Basic common shares (Oct 16, 2026 cover)" }),
+      notes: "Q3 2026 Form 10-Q cover page (M)",
+    },
+    expr: 'WaccBuild["basic_shares_cover", "val"]',
+    format: "number",
+    decimals: 2,
+  })
+  dilutionAnchor.addRow("fwd_shares", {
+    cells: {
+      label: new Cell({ value: "(+) Class A forward sale shares (M)" }),
+      notes: "Base + exercised over-allotment",
+    },
+    expr: 'PostQ3FinancingRegistry["fwd_total_shares", "val"]',
+    format: "number",
+    decimals: 2,
+  })
+  dilutionAnchor.addRow("shares_with_fwd", {
+    cells: {
+      label: new Cell({ value: "Basic + forward sale shares (M)" }),
+      notes: null,
+    },
+    expr: '@table["basic_shares_cover", "val"] + @table["fwd_shares", "val"]',
+    format: "number",
+    decimals: 2,
+  })
+  dilutionAnchor.addRow("rsu_unvested_shares", {
+    cells: {
+      label: new Cell({ value: "Unvested RSUs outstanding (Q3 26, M)" }),
+      val: rsuUnvested,
+      notes: "Q3 2026 Form 10-Q Note 11",
+    },
+    format: "number",
+    decimals: 3,
+  })
+  dilutionAnchor.addRow("rsu_unrecognized_comp", {
+    cells: {
+      label: new Cell({ value: "Unrecognized RSU comp. cost (Q3 26, $M)" }),
+      val: rsuUnrecComp,
+      notes: "Assumed TSM buyback cash (N.11)",
+    },
+    format: "currency",
+    decimals: 0,
+  })
+  dilutionAnchor.addRow("rsu_breakeven_px", {
+    cells: {
+      label: new Cell({ value: "TSM RSU dilution break-even share price" }),
+      notes: "Zero RSU dilution below $562.12",
+    },
+    expr: '@table["rsu_unrecognized_comp", "val"] / @table["rsu_unvested_shares", "val"]',
+    format: "currency",
+    decimals: 2,
+  })
+  dilutionAnchor.addRow("shares_max_conv", {
+    cells: {
+      label: new Cell({ value: "Basic + fwd + max METAM shares (< $625)" }),
+      notes: "20.000M max METAM conv. shares",
+    },
+    expr: '@table["shares_with_fwd", "val"] + PostQ3FinancingRegistry["mcp_max_shares", "val"]',
+    format: "number",
+    decimals: 3,
+  })
+  dilutionAnchor.addRow("shares_min_conv", {
+    cells: {
+      label: new Cell({ value: "Basic + fwd + min METAM shares (> $734)" }),
+      notes: "17.025M min METAM conv. shares",
+    },
+    expr: '@table["shares_with_fwd", "val"] + PostQ3FinancingRegistry["mcp_min_shares", "val"]',
+    format: "number",
+    decimals: 3,
+  })
+  dilutionAnchor.addRow("bridge_r2_r4_adj", {
+    cells: {
+      label: new Cell({
+        value: "Equity bridge incl. unrecognized RSU SBC",
+        indent: 1,
+      }),
+      notes: "For P > $562.12 outside band",
+    },
+    expr: 'DcfBridge["net_bridge_ex_mcp", "val"] + @table["rsu_unrecognized_comp", "val"]',
+    format: "currency",
+    decimals: 1,
+  })
+  dilutionAnchor.addRow("bridge_r3_adj", {
+    cells: {
+      label: new Cell({
+        value: "Fixed-value band bridge (less $12.5B pref)",
+        indent: 1,
+      }),
+      notes: "In $625.00–$734.21 METAM band",
+    },
+    expr: '@table["bridge_r2_r4_adj", "val"] - PostQ3FinancingRegistry["mcp_base_liq_pref", "val"]',
+    format: "currency",
+    decimals: 1,
+  })
+  dilutionAnchor.addRow("shares_r2_total", {
+    cells: {
+      label: new Cell({
+        value: "Diluted shares: max METAM + unvested RSUs",
+        indent: 1,
+      }),
+      notes: "Price band $562.12–$625.00 (M sh)",
+    },
+    expr: '@table["shares_max_conv", "val"] + @table["rsu_unvested_shares", "val"]',
+    format: "number",
+    decimals: 3,
+  })
+  dilutionAnchor.addRow("shares_r3_total", {
+    cells: {
+      label: new Cell({
+        value: "Diluted shares: basic + fwd + unvested RSUs",
+        indent: 1,
+      }),
+      notes: "Price band $625.00–$734.21 (M sh)",
+    },
+    expr: '@table["shares_with_fwd", "val"] + @table["rsu_unvested_shares", "val"]',
+    format: "number",
+    decimals: 3,
+  })
+  dilutionAnchor.addRow("shares_r4_total", {
+    cells: {
+      label: new Cell({
+        value: "Diluted shares: min METAM + unvested RSUs",
+        indent: 1,
+      }),
+      notes: "Price band > $734.21 (M sh)",
+    },
+    expr: '@table["shares_min_conv", "val"] + @table["rsu_unvested_shares", "val"]',
+    format: "number",
+    decimals: 3,
+  })
+  dilutionAnchor.addRow("ev_rsu_cutoff", {
+    cells: {
+      label: new Cell({ value: "EV threshold: TSM RSU break-even ($562.12)" }),
+      notes: null,
+    },
+    expr: '@table["rsu_breakeven_px", "val"] * @table["shares_max_conv", "val"] - DcfBridge["net_bridge_ex_mcp", "val"]',
+    format: "currency",
+    decimals: 0,
+  })
+  dilutionAnchor.addRow("ev_lower_cutoff", {
+    cells: {
+      label: new Cell({ value: "EV threshold: METAM lower ($625.00)" }),
+      notes: null,
+    },
+    expr: 'PostQ3FinancingRegistry["mcp_lower_threshold", "val"] * @table["shares_r2_total", "val"] - @table["bridge_r2_r4_adj", "val"]',
+    format: "currency",
+    decimals: 0,
+  })
+  dilutionAnchor.addRow("ev_upper_cutoff", {
+    cells: {
+      label: new Cell({ value: "EV threshold: METAM upper ($734.21)" }),
+      notes: null,
+    },
+    expr: 'PostQ3FinancingRegistry["mcp_upper_threshold", "val"] * @table["shares_r4_total", "val"] - @table["bridge_r2_r4_adj", "val"]',
+    format: "currency",
+    decimals: 0,
+  })
+  dilutionAnchor.addRow("rsu_tsm_inc_shares", {
+    cells: {
+      label: new Cell({ value: "Incremental TSM RSU shares at DCF px (M)" }),
+      notes: "Zero below $562.12/sh break-even",
+    },
+    expr: 'IF(DcfBridge["implied_share_price", "val"] > 0, MAX(0, @table["rsu_unvested_shares", "val"] - @table["rsu_unrecognized_comp", "val"] / DcfBridge["implied_share_price", "val"]), 0)',
+    format: "number",
+    decimals: 3,
+  })
+  dilutionAnchor.addRow("mcp_conv_shares", {
+    cells: {
+      label: new Cell({ value: "METAM conversion shares added (M)" }),
+      notes: "20.0M < $625; 17.025M > $734.21",
+    },
+    expr: 'IF(DcfBridge["implied_ev", "val"] < @table["ev_lower_cutoff", "val"], PostQ3FinancingRegistry["mcp_max_shares", "val"], IF(DcfBridge["implied_ev", "val"] > @table["ev_upper_cutoff", "val"], PostQ3FinancingRegistry["mcp_min_shares", "val"], 0))',
+    format: "number",
+    decimals: 3,
+  })
+
+  dilutionAnchor.addRowGutter()
+  dilutionAnchor.addSectionHeader(
+    "Spot enterprise value & variance attribution anchor"
+  )
+
+  dilutionAnchor.addRow("spot_q4_base_ebit", {
     cells: {
       label: new Cell({
         value: "Base Q4 2026E EBIT (spot EV anchor)",
@@ -586,7 +619,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 1,
   })
-  bridge.addRow("spot_q4_base_nopat", {
+  dilutionAnchor.addRow("spot_q4_base_nopat", {
     cells: {
       label: new Cell({ value: "Base Q4 2026E NOPAT", indent: 1 }),
       notes: null,
@@ -595,7 +628,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 1,
   })
-  bridge.addRow("spot_q4_base_da", {
+  dilutionAnchor.addRow("spot_q4_base_da", {
     cells: {
       label: new Cell({ value: "Base Q4 2026E D&A", indent: 1 }),
       notes: null,
@@ -604,7 +637,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 1,
   })
-  bridge.addRow("spot_q4_base_capex", {
+  dilutionAnchor.addRow("spot_q4_base_capex", {
     cells: {
       label: new Cell({
         value: "Base Q4 2026E total CapEx outflow",
@@ -612,11 +645,11 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
       }),
       notes: null,
     },
-    expr: '-(ScalarDrivers["fy26TotalCapex", "base"] + CashFlowStatement["total_capex_outflow", "9M26A"])',
+    expr: '-(ScalarDrivers["fy26TotalCapex", "base"] + CashReconAndFcf["total_capex_outflow", "9M26A"])',
     format: "currency",
     decimals: 1,
   })
-  bridge.addRow("spot_q4_base_chg_nwc", {
+  dilutionAnchor.addRow("spot_q4_base_chg_nwc", {
     cells: {
       label: new Cell({
         value: "Base Q4 2026E change in operating NWC",
@@ -628,7 +661,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 1,
   })
-  bridge.addRow("spot_elapsed_q4_burn_base", {
+  dilutionAnchor.addRow("spot_elapsed_q4_burn_base", {
     cells: {
       label: new Cell({ value: "Memo: Base elapsed Q4 26E burn (51/92)" }),
       notes: "Base Q4 anchor for invariant spot",
@@ -637,16 +670,16 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 1,
   })
-  bridge.addRow("spot_net_bridge_ref", {
+  dilutionAnchor.addRow("spot_net_bridge_ref", {
     cells: {
       label: new Cell({ value: "Memo: Base net EV-to-equity bridge" }),
       notes: "Anchors invariant spot EV",
     },
-    expr: `@table["net_bridge_ex_mcp", "val"] - @table["elapsed_q4_fcff_burn", "val"] + @table["spot_elapsed_q4_burn_base", "val"] - @table["pv_escrow_release", "val"] + (${escrowInfra} / ((1 + WaccBuild["wacc_base_ref", "val"]) ^ 2.75))`,
+    expr: `DcfBridge["net_bridge_ex_mcp", "val"] - DcfBridge["elapsed_q4_fcff_burn", "val"] + @table["spot_elapsed_q4_burn_base", "val"] - DcfBridge["pv_escrow_release", "val"] + (${escrowInfra} / ((1 + WaccBuild["wacc_base_ref", "val"]) ^ 2.75))`,
     format: "currency",
     decimals: 1,
   })
-  bridge.addRow("spot_pf_ev", {
+  dilutionAnchor.addRow("spot_pf_ev", {
     cells: {
       label: new Cell({ value: "Pro forma spot enterprise value" }),
       notes: "Bridge inverse at $560.84 spot",
@@ -662,7 +695,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 0,
   })
-  bridge.addRow("terminal_fcff_at_base", {
+  dilutionAnchor.addRow("terminal_fcff_at_base", {
     cells: {
       label: new Cell({ value: "Terminal FCFF at Base g / RONIC" }),
       notes: null,
@@ -671,7 +704,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 0,
   })
-  bridge.addRow("term_val_at_base", {
+  dilutionAnchor.addRow("term_val_at_base", {
     cells: {
       label: new Cell({ value: "Terminal value at Base WACC / g / RONIC" }),
       notes: "Mid-year adj.; requires WACC > g",
@@ -680,7 +713,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 0,
   })
-  bridge.addRow("ev_at_base_params", {
+  dilutionAnchor.addRow("ev_at_base_params", {
     cells: {
       label: new Cell({ value: "Active cash flows at Base parameters" }),
       notes: "Isolates operating CF variance",
@@ -689,13 +722,14 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     format: "currency",
     decimals: 0,
   })
-  bridge.addRow("px_at_base_params", {
+  dilutionAnchor.addRow("px_at_base_params", {
     cells: {
       label: new Cell({ value: "Share price at Base parameters" }),
       notes: null,
     },
     expr: exactFourRegimePriceExpr(
       '@table["ev_at_base_params", "val"]',
+      "DcfBridge",
       "@table"
     ),
     format: "currency",
@@ -918,7 +952,7 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
   })
   cy.addRow("fcff_yield_spot_ev", {
     cells: { label: new Cell({ value: "FCFF yield on spot pro forma EV" }) },
-    expr: '@table["fcff", @col] / DcfBridge["spot_pf_ev", "val"]',
+    expr: '@table["fcff", @col] / DcfDilutionAndSpotAnchor["spot_pf_ev", "val"]',
     format: "percentage",
     decimals: 2,
     style: "bold",
@@ -1055,5 +1089,8 @@ export function buildDcfSheet(sheet: Sheet, data: AuditedModelData): void {
     "total"
   )
 
-  sheet.setBands([{ lanes: [bridge, { tables: [fcff, cy, tail] }] }])
+  sheet.setBands([
+    { lanes: [bridge, { tables: [fcff, cy] }] },
+    { lanes: [dilutionAnchor, tail], pageBreakBefore: true },
+  ])
 }

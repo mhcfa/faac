@@ -234,28 +234,28 @@ export function buildDiagnosticsSheet(
   const restCashCells: Record<string, Cell | number> = {
     label: new Cell({ value: "Restricted cash excluded from IC" }),
     "2022A": new Cell({
-      expr: 'CashFlowStatement["ending_restricted_cur", "2022A"] + CashFlowStatement["ending_restricted_nc", "2022A"]',
+      expr: 'CashReconAndFcf["ending_restricted_cur", "2022A"] + CashReconAndFcf["ending_restricted_nc", "2022A"]',
     }),
     "2023A": new Cell({
-      expr: 'CashFlowStatement["ending_restricted_cur", "2023A"] + CashFlowStatement["ending_restricted_nc", "2023A"]',
+      expr: 'CashReconAndFcf["ending_restricted_cur", "2023A"] + CashReconAndFcf["ending_restricted_nc", "2023A"]',
     }),
     "2024A": new Cell({
-      expr: 'CashFlowStatement["ending_restricted_cur", "2024A"] + CashFlowStatement["ending_restricted_nc", "2024A"]',
+      expr: 'CashReconAndFcf["ending_restricted_cur", "2024A"] + CashReconAndFcf["ending_restricted_nc", "2024A"]',
     }),
     "2025A": new Cell({
-      expr: 'CashFlowStatement["ending_restricted_cur", "2025A"] + CashFlowStatement["ending_restricted_nc", "2025A"]',
+      expr: 'CashReconAndFcf["ending_restricted_cur", "2025A"] + CashReconAndFcf["ending_restricted_nc", "2025A"]',
     }),
     "Q3 26A": new Cell({
-      expr: 'CashFlowStatement["ending_restricted_cur", "9M26A"] + CashFlowStatement["ending_restricted_nc", "9M26A"]',
+      expr: 'CashReconAndFcf["ending_restricted_cur", "9M26A"] + CashReconAndFcf["ending_restricted_nc", "9M26A"]',
       note: "$13,132M ($597M current + $12,535M non-current), declining as $10.8B infrastructure escrow releases across FY2028E–FY2030E.",
     }),
     "2026E": new Cell({
-      expr: 'CashFlowStatement["ending_restricted_cur", "2026E"] + CashFlowStatement["ending_restricted_nc", "2026E"]',
+      expr: 'CashReconAndFcf["ending_restricted_cur", "2026E"] + CashReconAndFcf["ending_restricted_nc", "2026E"]',
     }),
   }
   for (const p of FORECAST_PERIODS) {
     restCashCells[p] = new Cell({
-      expr: `CashFlowStatement["ending_restricted_cur", "${p}"] + CashFlowStatement["ending_restricted_nc", "${p}"]`,
+      expr: `CashReconAndFcf["ending_restricted_cur", "${p}"] + CashReconAndFcf["ending_restricted_nc", "${p}"]`,
     })
   }
   ic.addRow("restricted_cash_excluded_ic", {
@@ -514,13 +514,13 @@ export function buildDiagnosticsSheet(
   })
   dep.addRow("total_capex", {
     cells: { label: new Cell({ value: "Total CapEx (incl. finance leases)" }) },
-    expr: 'CashFlowStatement["total_capex_outflow", @col]',
+    expr: 'CashReconAndFcf["total_capex_outflow", @col]',
     format: "currency",
     decimals: 0,
   })
   dep.addRow("reported_fcf", {
     cells: { label: new Cell({ value: "Reported FCF (CFO − Total CapEx)" }) },
-    expr: 'CashFlowStatement["reported_fcf", @col]',
+    expr: 'CashReconAndFcf["reported_fcf", @col]',
     format: "currency",
     decimals: 0,
     style: "subtotal",
@@ -535,7 +535,7 @@ export function buildDiagnosticsSheet(
   })
   dep.addRow("economic_fcf_after_sbc", {
     cells: { label: new Cell({ value: "Economic FCF after SBC" }) },
-    expr: 'CashFlowStatement["economic_fcf_after_sbc", @col]',
+    expr: 'CashReconAndFcf["economic_fcf_after_sbc", @col]',
     format: "currency",
     decimals: 0,
     style: "subtotal",
@@ -574,7 +574,7 @@ export function buildDiagnosticsSheet(
   dep.addSectionHeader("Capital productivity & sustainability ratios")
   dep.addRow("capex_pct_rev", {
     cells: { label: new Cell({ value: "Total CapEx % of revenue" }) },
-    expr: '-CashFlowStatement["total_capex_outflow", @col] / IncomeStatement["revenue", @col]',
+    expr: '-CashReconAndFcf["total_capex_outflow", @col] / IncomeStatement["revenue", @col]',
     format: "percentage",
     decimals: 1,
   })
@@ -582,7 +582,7 @@ export function buildDiagnosticsSheet(
     cells: {
       label: new Cell({ value: "CapEx / D&A ratio (reinvestment check)" }),
     },
-    expr: '-CashFlowStatement["total_capex_outflow", @col] / SegmentBuild["consolidated_da", @col]',
+    expr: '-CashReconAndFcf["total_capex_outflow", @col] / SegmentBuild["consolidated_da", @col]',
     format: "multiple",
     decimals: 1,
   })
@@ -596,7 +596,7 @@ export function buildDiagnosticsSheet(
     cells: {
       label: new Cell({ value: "Economic FCF % of normalized EBITDA" }),
     },
-    expr: 'IF(IncomeStatement["normalized_ebitda", @col] > 0, CashFlowStatement["economic_fcf_after_sbc", @col] / IncomeStatement["normalized_ebitda", @col], NA())',
+    expr: 'IF(IncomeStatement["normalized_ebitda", @col] > 0, CashReconAndFcf["economic_fcf_after_sbc", @col] / IncomeStatement["normalized_ebitda", @col], NA())',
     format: "percentage",
     decimals: 1,
   })
@@ -639,7 +639,7 @@ export function buildDiagnosticsSheet(
         format: "percentage",
         decimals: 1,
       }),
-      notes: "Q3 + Oct–Nov raises + 51d Q4 burn",
+      notes: "Q3 + Oct–Nov raises + 51d burn",
     },
   })
   pfCap.addRow("pf_funded_pure_debt", {
@@ -741,7 +741,7 @@ export function buildDiagnosticsSheet(
         format: "percentage",
         decimals: 1,
       }),
-      notes: "+46M fwd, 20M METAM, RSU − buybacks",
+      notes: "Fwd, METAM & RSUs less buybacks",
     },
     style: "bold",
   })
@@ -838,13 +838,13 @@ export function buildDiagnosticsSheet(
     "vie_dc_rvg",
     "Memo: Data-center residual value guarantees",
     lc("vie_dc_max_rvg", "2026-Q3"),
-    "Max RVG payout if JV leases not renewed (N.5)"
+    "Max RVG if JV leases not renewed (Note 5)"
   )
   addObsRow(
     "contingent_cloud",
     "Contingent cloud compute commitments",
     lc("contingent_cloud_commitments", "2026-Q3"),
-    "Third-party cloud subject to milestones (N.10)"
+    "3rd-party cloud on milestones (Note 10)"
   )
 
   obs.addRowGutter()
@@ -874,7 +874,7 @@ export function buildDiagnosticsSheet(
     {
       expr: `@table["nm_ag_penalty", "amount"] * ${nmRate} * 2`,
     },
-    "Simple statutory interest during appeal (N.10)"
+    "Simple statutory appeal interest (Note 10)"
   )
   const grossUtb = lc("gross_unrecognized_tax_benefits", "2026-Q3")
   const utbInt = lc("utb_accrued_interest_penalties", "2026-Q3")
@@ -882,7 +882,7 @@ export function buildDiagnosticsSheet(
     "gross_utb_and_interest",
     "Gross UTBs + accrued interest & penalties",
     grossUtb + utbInt,
-    "$20.8B UTB + $3.5B int. ($15.9B IRS TP, N.12)"
+    "$20.8B UTB + $3.5B int. (IRS TP, N.12)"
   )
   addObsRow(
     "lt_income_taxes_memo",
@@ -894,9 +894,9 @@ export function buildDiagnosticsSheet(
     "restricted_cash_excluded",
     "Restricted cash excluded from EV cash",
     {
-      expr: 'CashFlowStatement["ending_restricted_cur", "9M26A"] + CashFlowStatement["ending_restricted_nc", "9M26A"]',
+      expr: 'CashReconAndFcf["ending_restricted_cur", "9M26A"] + CashReconAndFcf["ending_restricted_nc", "9M26A"]',
     },
-    "$597M cur. + $12.5B non-cur. ($10.8B escrow)"
+    "$597M cur. + $12.5B NC ($10.8B escrow)"
   )
   addObsRow(
     "total_off_bs_commitments",
@@ -904,9 +904,14 @@ export function buildDiagnosticsSheet(
     {
       expr: '@table["uncommenced_leases", "amount"] + @table["purchase_commitments_total", "amount"] + @table["vie_dc_max_exposure", "amount"]',
     },
-    "Combined gross off-BS infrastructure exposure",
+    "Combined gross off-BS infra. exposure",
     "total"
   )
 
-  sheet.setBands([qoe, ic, dep, { lanes: [pfCap, obs] }])
+  sheet.setBands([
+    qoe,
+    ic,
+    { lanes: [dep], pageBreakBefore: true },
+    { lanes: [pfCap, obs] },
+  ])
 }
